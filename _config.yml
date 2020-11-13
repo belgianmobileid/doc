@@ -22,8 +22,8 @@ title: itsme OIDC Documentation
 email: your-email@example.com
 description: >- # this means to ignore newlines until "baseurl:"
   This website documents how to use the itsme OpenID Connect interface.
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
+baseurl: "/doc" # the subpath of your site, e.g. /blog
+url: "https://belgianmobileid.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 
 # Build settings
 theme: just-the-docs
