@@ -2,6 +2,7 @@
 layout: page
 title: Test
 permalink: /test/
+nav_exclude: true
 ---
 
 Voilà une page de test de Jekyll
