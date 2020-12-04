@@ -52,5 +52,5 @@ The integration steps, with linked code-level documentation are :
   <li>Request the additional User information from the itsme® userInfo Endpoint by presenting the Access Token obtained in the previous step.</li>
   <li>Confirm the success of the operation and display a success message.</li>
 </ol>
-
+blabla
 If a user doesn't have the itsme® app, they'll be redirected to a mobile website with more information and download links.
