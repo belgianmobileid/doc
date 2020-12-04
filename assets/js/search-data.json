@@ -287,6 +287,24 @@
     "url": "https://belgianmobileid.github.io/doc/identification/",
     "relUrl": "/identification/"
   },"48": {
+    "doc": "Home",
+    "title": "Prerequisite",
+    "content": "In order to start your integration we will first set-up your personal Sanbox environment. To do this you will be requested to provide the following information : . | Contact details such as your email, name, phone number. | Organisation details as shown on the company register for your jurisdiction. | Information about the project you want to set-up (the services you want to use, the client authentication method you want to set-up, the user attributes you want to request, ...) | . Our onboarding team will review your project and get in touch within 3 days with your credentials: . | a \"client_id\" | a \"service_code\" | information about your client authentication method | the list of user attributes you can request | . Request your Sandbox&lt;/br&gt; . ",
+    "url": "https://belgianmobileid.github.io/doc/index#prerequisite",
+    "relUrl": "/index#prerequisite"
+  },"49": {
+    "doc": "Home",
+    "title": "Integration sequence",
+    "content": "itsme® integration is based on the Authorization Code Flow of OpenID Connect 1.0. The Authorization Code Flow goes through the steps as defined in OpenID Connect Core Authorization Code Flow Steps, depicted in the following diagram: . The integration steps, with linked code-level documentation are : . | Add itsme® button to your front-end page so the User can indicate he wishes to authenticate with itsme® : itsme® button specifications | . | Create the Authorization Request to authenticate the User.. This request will redirect the User to the itsme® Front-End. itsme® then authenticates the User by asking him . | to enter his phone number on the itsme® OpenID web page | authorize the release of some information to your application | to provide his credentials (itsme® code or fingerprint or FaceID) | . It is also in this Authorization Request that you will be able to request claims about the User and the Authentication event&lt;/br&gt; | Collect the Authorization Code and redirect the user to your mobile or web application once the User has authorized the request and has been authenticated, | Exchange the Authorization Code for an ID Token (e.g. identifying the User) and an Access Token. | Request the additional User information from the itsme® userInfo Endpoint by presenting the Access Token obtained in the previous step. | Confirm the success of the operation and display a success message. | . If a user doesn’t have the itsme® app, they’ll be redirected to a mobile website with more information and download links. ",
+    "url": "https://belgianmobileid.github.io/doc/index#integration-sequence",
+    "relUrl": "/index#integration-sequence"
+  },"50": {
+    "doc": "Home",
+    "title": "Home",
+    "content": ". ",
+    "url": "https://belgianmobileid.github.io/doc/index",
+    "relUrl": "/index"
+  },"51": {
     "doc": "Test",
     "title": "Test",
     "content": "Voilà une page de test de Jekyll . First tabs . | js | ruby | . | tagada . | tsoin tsoin . | . Second tabs . | yaml | json | . | hello: . | ‘whatsup’ | ‘hi’ | . | { “hello”: [“whatsup”, “hi”] } . | . ",
