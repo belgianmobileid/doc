@@ -2,6 +2,7 @@
 layout: page
 title: Authentication
 permalink: /authentication/
+nav_order: 3
 ---
 
 # 1. Introduction

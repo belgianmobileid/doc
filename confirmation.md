@@ -2,6 +2,7 @@
 layout: page
 title: Confirmation
 permalink: /confirmation/
+nav_order: 4
 ---
 
 # 1. Introduction
