@@ -7,6 +7,34 @@ nav_order: 1
 
 ---
 
+# Welcome
+
+itsme® API allows partners to use verified identities for authentication and authorization on web desktop, mobile web or mobile applications.
+
+Learn how to integrate our services that you and your business will benefit from. For a more detailed, in-depth explanation of each, please read through the appropriate developer docs.
+
+
+## itsme® use cases
+
+For more information on how itsme® can best work for your business, please <a href = "mailto: onboarding@itsme.be">contact us</a>. We’re happy to help!.
+
+
+## Services
+
+Head over to our developer documentation for each our services. Here you will find:
+
+<ul>
+  <li>A techical overview</li>
+  <li>Step by step instructions on how to integrate</li>
+  <li>Code snipplets</li>
+</ul>
+
+
+
+
+
+
+
 <a name="Onboarding"></a>
 # Prerequisite
 
