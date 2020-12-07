@@ -91,7 +91,7 @@
   },"15": {
     "doc": "Authentication",
     "title": "Authentication",
-    "content": " ",
+    "content": ".. endpoint:: :method: POST :url: https://api.mollie.com/v2/payments . ",
     "url": "https://belgianmobileid.github.io/doc/authentication/",
     "relUrl": "/authentication/"
   },"16": {
