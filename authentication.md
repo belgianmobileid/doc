@@ -5,6 +5,10 @@ permalink: /authentication/
 nav_order: 3
 ---
 
+.. endpoint::
+   :method: POST
+   :url: https://api.mollie.com/v2/payments
+
 # 1. Introduction
 itsme® is a trusted identity provider allowing partners to use verified identities for authentication and authorization on web desktop, mobile web or mobile applications. 
 
