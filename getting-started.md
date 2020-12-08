@@ -22,11 +22,11 @@ Our onboarding team will review your project and get in touch within 3 days with
 <ul>
   <li>a <i>"client_id"</i></li>
   <li>a <i>"service_code"</i></li>
-  <li>information about your <a href="https://belgianmobileid.github.io/slate/v2/test2#selecting-your-client-authentication-method" target="blank">client authentication method</a></li>
+  <li>information about your <a href="https://belgianmobileid.github.io/doc/getting-started.html#authentication" target="blank">client authentication method</a></li>
   <li>the list of user attributes you can request</li>
 </ul>
 
-<br><button type="button"><a href="https://docs.google.com/forms/d/e/1FAIpQLSdyfhKiiehNg4DhFzhQeHaj9EG2VeFoyPNVaI-TSwnG5WlFfw/viewform" target="blank">Request your Sandbox</a></button></br>
+<button type="button"><a href="https://docs.google.com/forms/d/e/1FAIpQLSdyfhKiiehNg4DhFzhQeHaj9EG2VeFoyPNVaI-TSwnG5WlFfw/viewform" target="blank">Request your Sandbox</a></button>
 
 
 # Authentication
@@ -36,13 +36,13 @@ A client authentication method is requied to protect the exhange of entitlement 
 The itsme API offers two authentication methods :
 
 <ul>
-  <li><b>private_key_jwt</b></li>
-  <li><b>client_secret_post</b></li>
+  <li>asymmetric RSA key pair</li>
+  <li>symmetric shared secret</li>
 </ul>
 
 We recommend using the private_key_jwt method as it is more secure.  
 
-### private_key_jwt method
+### Asymmetric RSA 
 
 This method requires that each party exposes its public keys as a simple JWK Set document on a URI accessible to all, and keep its private set for itself. For itsme®, this URI can be retrieved from the [itsme® Discovery document](#OpenIDConfig), using the <i>"jwks_uri"</i> key.</li>
 
@@ -59,8 +59,8 @@ The Yeoman tool will generate two files, the jwks_private.json which MUST be sto
 <aside class="notice">Whatever the tool you are chossing to create your key pairs, don't forget to send your JWK Set URI by email to <a href = "mailto: onboarding@itsme.be">onboarding@itsme.be</a> and we’ll make sure to complete the configuration for you in no time!
 </aside>
 
-### client_secret_post method
+### Symmetric secret 
 
 This method requires the exchange of a static secret that will be used to authenticate with our Back-End. 
 
-The client_secret value will be provided by itsme® when [registering your project](#Onboarding).
+The client_secret value will be provided by itsme® when <a href="https://belgianmobileid.github.io/doc/getting-started.html#getting-started" target="blank">registering your project</a>.
