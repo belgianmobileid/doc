@@ -16,7 +16,7 @@ Learn how to integrate our services that you and your business will benefit from
 
 ## Use cases
 
-For more information on how itsme® can best work for your business, please <a href = "mailto: onboarding@itsme.be">contact us</a>. We’re happy to help!.
+For more information on how itsme® can best work for your business, please <a href = "mailto: onboarding@itsme.be">contact us</a>. We’re happy to help !
 
 
 ## Services
