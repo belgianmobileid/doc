@@ -66,9 +66,6 @@ Upon clicking this button, we will open a modal view which contains a field that
 
 <b><code>GET https://idp.<i>[e2e/prd]</i>.itsme.services/v2/authorization</code></b>
 
-<aside class="notice">By opposition to the OpenID Connect specifications, POST method is not authorized when triggering the itsme® App through the Universal/App Link mechanism only support the HTTP GET method on the Authorisation Endpoint. More information about Universal links and App links can be found in the <a href="#UniversalLinks">section 3.3</a>.
-</aside>
-
 ### Parameters
 
 :-------- | :--------| :----- 
