@@ -26,7 +26,7 @@ Our onboarding team will review your project and get in touch within 3 days with
   <li>the list of user attributes you can request</li>
 </ul>
 
-<button type="button"><a href="https://docs.google.com/forms/d/e/1FAIpQLSdyfhKiiehNg4DhFzhQeHaj9EG2VeFoyPNVaI-TSwnG5WlFfw/viewform" target="blank">Request your Sandbox</a></button>
+<br><button type="button"><a href="https://docs.google.com/forms/d/e/1FAIpQLSdyfhKiiehNg4DhFzhQeHaj9EG2VeFoyPNVaI-TSwnG5WlFfw/viewform" target="blank">Request your Sandbox</a></button></br>
 
 
 # Authentication
@@ -44,7 +44,7 @@ We recommend using the private_key_jwt method as it is more secure.
 
 ### Asymmetric RSA 
 
-This method requires that each party exposes its public keys as a simple JWK Set document on a URI accessible to all, and keep its private set for itself. For itsme®, this URI can be retrieved from the [itsme® Discovery document](#OpenIDConfig), using the <i>"jwks_uri"</i> key.</li>
+This method requires that each party exposes its public keys as a simple JWK Set document on a URI accessible to all, and keep its private set for itself. For itsme®, this URI can be retrieved from the [itsme® Discovery document](#OpenIDConfig), using the <i>"jwks_uri"</i> key.
 
 Your private and public keys can be generated using your own tool or via Yeoman. If using Yeoman, you need to install generator-itsme with NPM:
 
