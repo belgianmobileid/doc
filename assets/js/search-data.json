@@ -330,6 +330,12 @@
     "relUrl": "/index#oidc-protocol"
   },"55": {
     "doc": "Test",
+    "title": "testing code snippet",
+    "content": "// Javascript code with syntax highlighting. var fun = function lang(l) { dateformat.i18n = require('./lang/' + l) return true; } . $ npm install -g yo generator-itsme . &lt;code style=display:block;white-space:pre-wrap&gt;$ npm install -g yo generator-itsme&lt;/code&gt; . ",
+    "url": "https://belgianmobileid.github.io/doc/test/#testing-code-snippet",
+    "relUrl": "/test/#testing-code-snippet"
+  },"56": {
+    "doc": "Test",
     "title": "Test",
     "content": "Voilà une page de test de Jekyll . First tabs . | js | ruby | . | tagada . | tsoin tsoin . | . Second tabs . | yaml | json | . | hello: . | ‘whatsup’ | ‘hi’ | . | { “hello”: [“whatsup”, “hi”] } . | . ",
     "url": "https://belgianmobileid.github.io/doc/test/",
