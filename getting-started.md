@@ -48,11 +48,15 @@ This method requires that each party exposes its public keys as a simple JWK Set
 
 Your private and public keys can be generated using your own tool or via Yeoman. If using Yeoman, you need to install generator-itsme with NPM:
 
-<code style=display:block;white-space:pre-wrap>$ npm install -g yo generator-itsme</code>
+```
+$ npm install -g yo generator-itsme
+```
 
 After installation, run the generator:
 
-<code style=display:block;white-space:pre-wrap>$ yo itsme</code>
+```
+$ yo itsme
+```
 
 The Yeoman tool will generate two files, the jwks_private.json which MUST be stored securely somewhere in your systems, and the jwks_public.json which need to be exposed as a JWK Set on a URI accessible to all parties.
 
