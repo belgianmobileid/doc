@@ -1,17 +1,10 @@
-# 3. Integration guide
+# Overview
 
 Our itsme® app can be seamlessly be integrated with your web desktop, mobile web or mobile application so you can perform secure identity checks.
 
-**Technical overview**
-
-itsme® integration is based on the <a href="http://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth" target="blank">Authorization Code Flow</a> of OpenID Connect 1.0. The Authorization Code Flow goes through the steps as defined in <a href="http://openid.net/specs/openid-connect-core-1_0.html#CodeFlowSteps" target="blank">OpenID Connect Core Authorization Code Flow Steps</a>, depicted in the following diagram:
+The diagram below describes the **Authentication** process and how your backend is integrated with the itsme® architecture :
   
  ![Sequence diagram describing the OpenID flow](OpenID_Login_SeqDiag.png)
-
-<aside class="notice">OpenID Connect provides certified libraries, products, and tools which could help you integrating the itsme® service. For more information, please visit the official webpage: <a href="https://openid.net/developers/libraries/" target="blank">https://openid.net/developers/libraries/</a>.
-</aside>
- 
-**How it works**
 
 <ol>
   <li>The User indicates on your end he wishes to authenticate with itsme®</li>
