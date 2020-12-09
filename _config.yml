@@ -30,7 +30,7 @@ theme: just-the-docs
 plugins:
   - jekyll-feed
 
-highlighter: none
+highlighter: rouge
 
 color_scheme: itsme
 

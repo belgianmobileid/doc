@@ -46,3 +46,19 @@ hello:
 {% endtab %}
 
 {% endtabs %}
+
+## testing code snippet
+
+```js
+// Javascript code with syntax highlighting.
+var fun = function lang(l) {
+  dateformat.i18n = require('./lang/' + l)
+  return true;
+}
+```
+
+```
+$ npm install -g yo generator-itsme
+```
+
+<code style=display:block;white-space:pre-wrap>$ npm install -g yo generator-itsme</code>
