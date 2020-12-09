@@ -64,10 +64,7 @@ Upon clicking this button, we will open a modal view which contains a field that
 
 ## Create Authentication API
 
-GET https://idp.<i>[e2e/prd]</i>.itsme.services/v2/authorization HTTP/1.1
-
-
-
+<b><code>GET https://idp.<i>[e2e/prd]</i>.itsme.services/v2/authorization</code></b>
 
 <aside class="notice">By opposition to the OpenID Connect specifications, POST method is not authorized when triggering the itsme® App through the Universal/App Link mechanism only support the HTTP GET method on the Authorisation Endpoint. More information about Universal links and App links can be found in the <a href="#UniversalLinks">section 3.3</a>.
 </aside>
@@ -95,39 +92,24 @@ GET https://idp.<i>[e2e/prd]</i>.itsme.services/v2/authorization HTTP/1.1
 **request_uri** | Optional | This parameter enables OpenID Connect parameters to be passed by reference. The <i>"request_uri"</i> value is a URL using the https scheme referencing a resource containing a Request Object value, which is a JWT containing the request parameters. <br>When the <i>"request_uri"</i> parameter is used, the OpenID Connect request parameter values contained in the referenced JWT supersede those passed using the OAuth 2.0 request syntax.</br><br>The following validations should be done when using the <i>"request_uri"</i> parameter:</br><ul><li>The values for the <i>"response_type"</i> and <i>"client_id"</i> parameters MUST be filled in the Authentication Request, since they are REQUIRED in the OpenID Connect Core specifications. The values for these parameters MUST match those in the Request Object, if present.</li><li>Even if a <i>"scope"</i> parameter is present in the Request Object value, a <i>"scope"</i> parameter – containing the <i>"openid"</i> scope value to indicate to the underlying OpenID Connect Core logic that this is an OpenID Connect request – MUST always be passed in the Authentication Request.</li><li>The Request Object MUST be MUST be <b>signed</b> then <b>encrypted</b>, with the result being a Nested JWT, as defined in the <a href="https://belgianmobileid.github.io/slate/jose.html" target="blank">JSON Web Token</a> (JWT) section. As the Request Object is a nested JWT, it MUST contain the claims <i>"iss"</i> (issuer) and <i>"aud"</i> (audience) as members. The <i>"iss"</i> value MUST be your Client ID. The <i>"aud"</i> value MUST be the value corresponding to the key "authorization_endpoint" in the <a href="#OpenIDConfig" target="blank">itsme® Discovery document</a>.</li>><li>You need to store the Request Object resource remotely at a URL the the Authorization Server can access. This URL is the Request URI, <i>"request_uri"</i>. Usage of 'localhost' is not permitted.<li>The Request URI MUST contain the port 443 as in this example: https://test.istme.be:443/p/test.</li><li>The Request URI value is a URL using the <i>https</i> scheme.</li></ul><br>Don't forget to send share this URI by email to onboarding@itsme.be and we’ll make sure to complete the configuration for you in no time!</br><br>If the <i>"request"</i> parameters is used, this parameter MUST NOT be used in the same request.</br>
 **request** | Optional | If the <i>"request_uri"</i> parameters is used, this parameter MUST NOT be used in the same request.</br>
 
+**Example**
 
-<aside class="notice">When implementing the <b>Identification</b> service, following rule apply : you MUST at least specify one User claim in the <i>"scope"</i> parameter or use the <i>"claims"</i> parameter.
-</aside>
+{% tabs code_authorization %}
 
+{% tab code_authorization js %}
 
-The following is a non-normative example of a request that would be sent to the Authorization Server :
+XXX
 
-<code style=display:block;white-space:pre-wrap>
-    GET ${baseUrl}/v2/authorization
-    &response_type=code
-    &client_id=MY_PARTNER_CODE
-    &scope=openid service:TEST_code profile email
-    &redirect_uri=https://test.istme.be
-    &request_uri=https://test.istme.be:443/p/test
-    &acr_values=http://itsme.services/V2/claim/acr_basic
-    &nonce=A_VALID_NONCE<br></br>
-With some parameters passed as a JWT in the <i>"request_uri"</i>, before base64url encoding, signing and encrypting :<br></br>
-    {
-      "response_type":"code",
-      "client_id":"MY_PARTNER_CODE",
-      "scope": "openid service:TEST_code profile email",
-      "redirect_uri": "https://test.istme.be",  
-      "state":"A_VALID_STATE",      
-      "aud": "${baseUrl}/v2/authorization",
-      "iss":"MY_PARTNER_CODE",
-      "claims":{
-        "userinfo":{
-          "http://itsme.services/V2/claim/BEeidSN":null,
-          "http://itsme.services/v2/claim/place_of_birth":null
-          }
-        }
-     }<br></br>
-</code>
+{% endtab %}
+
+{% tab code_authorization ruby %}
+
+YYY
+
+{% endtab %}
+
+{% endtabs %}
+
 
 
 <a name="Data"></a>
