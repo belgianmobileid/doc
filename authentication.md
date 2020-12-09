@@ -66,7 +66,6 @@ Upon clicking this button, we will open a modal view which contains a field that
 
 **Endpoint**
 
- |  
 --- | ---
 GET | https://idp.<i>[e2e/prd]</i>.itsme.services/v2/authorization
 
