@@ -71,46 +71,57 @@ Upon clicking this button, we will open a modal view which contains a field that
 <table>
   <tbody>
     <tr>
-      <td>{% include parameter.html name="Param1" req="required" %}</td>
+      <td>{% include parameter.html name="client_id" req="REQUIRED" %}</td>
+      <td>It identifies the client. This parameter value is generated during registration.</td>
+    </tr>
+     <tr>
+      <td>{% include parameter.html name="response_type" req="REQUIRED" %}</td>
+      <td>This defines the processing flow to be used when forming the response. Because itsme® uses the Authorization Code Flow, this value MUST be <code>code"</code>.</td>
+    </tr>   
+    <tr>
+      <td>{% include parameter.html name="scope" req="REQUIRED" %}</td>
       <td>
-        Global description of Param1<br />
+        It allows the application to express the desired scope of the access request. Each scope returns a set of user attributes. The scopes an application should request depend on which user attributes the application needs. Once the user authorizes the requested scopes, his details are returned in an ID Token and are also available through the /userinfo endpoint.<br>All scope values must be space-separated.</br><br>Possible scope values : <code>service</code> <code>openid</code> <code>profile</code> <code>email</code> <code>address</code> <code>phone</code></br><br />
         <table>
           <tr>
-            <td>{% include parameter.html name="subparam1" req="optional" %}</td><td>description of subparam1</td>
+            <td>{% include parameter.html name="service" req="REQUIRED" %}</td><td>It indicates the itsme® service your application intends to use, e.g. <code>service:TEST_code</code> by replacing "TEST_code" with the service code generated during registration.</td>
           </tr>
           <tr>
-            <td>{% include parameter.html name="subparam2" req="required" %}</td><td>description of subparam2</td>
+            <td>{% include parameter.html name="openid" req="REQUIRED" %}</td><td>It indicates that your application intends to use the OpenID Connect protocol to verify a user's identity by returning a <code>sub</code> claim which represents a unique identifier for the authenticated user.</td>
           </tr>
+          <tr>
+            <td>{% include parameter.html name="profile" req="OPTIONAL" %}</td><td>Returns claims that represent basic profile information, including <code>family_name</code>, <code>given_name</code>, <code>name</code>, <code>gender</code> and <code>birthdate</code>.</td>
+          </tr>
+          <tr>
+            <td>{% include parameter.html name="email" req="OPTIONAL" %}</td><td>Returns the <code>email</code> claim, which contains the user's email address, and <code>email_verified</code>, which is a boolean indicating whether the email address was verified by the user.</td>
+          </tr>
+          <tr>
+            <td>{% include parameter.html name="address" req="OPTIONAL" %}</td><td>Returns the information about the user's postal address, including <code>formatted</code>, <code>street_address</code>, <code>postal_code</code>, <code>locality</code> and <code>country</code>.</td>
+          </tr> 
+          <tr>
+            <td>{% include parameter.html name="phone" req="OPTIONAL" %}</td><td>Returns the <code>phone</code> claim, which contains the user's phone number, and <code>phone_number_verified</code>, which is a boolean indicating whether the phone number was verified by the user.</td>
+          </tr> 
         </table>
       </td>
     </tr>
     <tr>
-      <td>{% include parameter.html name="Param2" req="optional" %}</td>
-      <td>Global description of Param2</td>
+      <td>{% include parameter.html name="redirect_uri" req="REQUIRED" %}</td>
+      <td>This is the URI to which the authentication response will be sent. The Redirection URI MUST use the <i>"https"</i> scheme. The Redirection URI MAY NOT use the <i>"http"</i> or an alternate scheme, such as one that is intended to identify a callback into a native application.<br></br><b>Note</b> : <ul><li>this URI MUST be whitelisted in our systems. So, don't forget to send your it by email to onboarding@itsme.be and we’ll make sure to complete the configuration for you in no time!</li><li>Regardless of the application you are building you should make sure that your redirect URIs support the Universal links and App links mechanism. Functionally, it will allow you to have only one single link that will either open your desktop web application, your mobile app or your mobile site on the User’s device. Universal links and App links are standard web links (http://mydomain.com) that point to both a web page and a piece of content inside an app. When a Universal Link is opened, the app OS checks to see if any installed app is registered for that domain. If so, the app is launched immediately without ever loading the web page. If not, the web URL is loaded into the webbrowser. The specifications for the implementation of Universal links and App links can be found in the Appendix.</li></ul></td>
+    </tr>
+    <tr>
+      <td>{% include parameter.html name="state" req="Strongly RECOMMENDED" %}</td>
+      <td> An opaque value used in the Authentication Request, which will be returned unchanged in the Authorization Code. This parameter SHOULD be used for preventing cross-site request forgery (XRSF). <br>When deciding how to implement this, one suggestion is to use a private key together with some easily verifiable variables, for example, your client ID and a session cookie, to compute a hashed value. This will result in a byte value that will be infeasibility difficult to guess without the private key. After computing such an HMAC, base-64 encode it and pass it to the Authorization  Server as <i>"state"</i> parameter. Another suggestion is to hash the current date and time. This requires your application to save the time of transmission in order to verify it or to allow a sliding period of validity.</br></td>
     </tr>
   </tbody>
 </table>
 
 
 
-:-------- | :--------
-**client_id**<br>string</br><br>REQUIRED</br> | It identifies the client. This parameter value is generated during registration. 
-**response_type**<br>string</br><br>REQUIRED</br> | This defines the processing flow to be used when forming the response. Because itsme® uses the Authorization Code Flow, this value MUST be <code>code</code>.
-**scope**<br>string</br><br>REQUIRED</br> | It allows the application to express the desired scope of the access request. Each scope returns a set of user attributes. The scopes an application should request depend on which user attributes the application needs. Once the user authorizes the requested scopes, his details are returned in an ID Token and are also available through the /userinfo endpoint.<br>All scope values must be space-separated.</br><br>Possible scope values : <code>service</code> <code>openid</code> <code>profile</code> <code>email</code> <code>address</code> <code>phone</code></br>
-**service**<br>string</br><br>REQUIRED</br> | It indicates the itsme® service your application intends to use, e.g. <code>service:TEST_code</code> by replacing "TEST_code" with the service code generated during registration.
 
 
-:-------- | :--------| :----- 
-**client_id** | Required | It identifies the client. This parameter value is generated during registration. 
-**response_type** | Required | This defines the processing flow to be used when forming the response. Because itsme® uses the Authorization Code Flow, this value MUST be <i>"code"</i>.
-**scope** | Required | It allows the application to express the desired scope of the access request. Each scope returns a set of user attributes. The scopes an application should request depend on which user attributes the application needs. Once the user authorizes the requested scopes, his details are returned in an ID Token and are also available through the /userinfo endpoint.<br>All scope values must be space-separated.</br><br>Possible scope values : <code>service</code> <code>openid</code> <code>profile</code> <code>email</code> <code>address</code> <code>phone</code></br>
-**service** | Required | It indicates the itsme® service your application intends to use, e.g. <code>service:TEST_code</code> by replacing "TEST_code" with the service code generated during registration.
-**openid** | Required | It  indicates that your application intends to use the OpenID Connect protocol to verify a user's identity by returning a <code>sub</code> claim which represents a unique identifier for the authenticated user.
-**profile** | Optional | Returns claims that represent basic profile information, including <code>family_name</code>, <code>given_name</code>, <code>name</code>, <code>gender</code> and <code>birthdate</code>.
-**email** | Optional | Returns the <code>email</code> claim, which contains the user's email address, and <code>email_verified</code>, which is a boolean indicating whether the email address was verified by the user.
-**address** | Optional | Returns the information about the user's postal address, including <code>formatted</code>, <code>street_address</code>, <code>postal_code</code>, <code>locality</code> and <code>country</code>.
-**phone** | Optional | Returns the <code>phone</code> claim, which contains the user's phone number, and <code>phone_number_verified</code>, which is a boolean indicating whether the phone number was verified by the user.
-**redirect_uri** | Required | This is the URI to which the authentication response will be sent. The Redirection URI MUST use the <i>"https"</i> scheme. The Redirection URI MAY NOT use the <i>"http"</i> or an alternate scheme, such as one that is intended to identify a callback into a native application.<br></br><b>Note</b> : <ul><li>this URI MUST be whitelisted in our systems. So, don't forget to send your it by email to onboarding@itsme.be and we’ll make sure to complete the configuration for you in no time!</li><li>Regardless of the application you are building you should make sure that your redirect URIs support the Universal links and App links mechanism. Functionally, it will allow you to have only one single link that will either open your desktop web application, your mobile app or your mobile site on the User’s device. Universal links and App links are standard web links (http://mydomain.com) that point to both a web page and a piece of content inside an app. When a Universal Link is opened, the app OS checks to see if any installed app is registered for that domain. If so, the app is launched immediately without ever loading the web page. If not, the web URL is loaded into the webbrowser. The specifications for the implementation of Universal links and App links can be found in the Appendix.</li></ul>
+
+
+--- | --- | ---
 **state** | Strongly RECOMMENDED | An opaque value used in the Authentication Request, which will be returned unchanged in the Authorization Code. This parameter SHOULD be used for preventing cross-site request forgery (XRSF). <br>When deciding how to implement this, one suggestion is to use a private key together with some easily verifiable variables, for example, your client ID and a session cookie, to compute a hashed value. This will result in a byte value that will be infeasibility difficult to guess without the private key. After computing such an HMAC, base-64 encode it and pass it to the Authorization  Server as <i>"state"</i> parameter. Another suggestion is to hash the current date and time. This requires your application to save the time of transmission in order to verify it or to allow a sliding period of validity.</br>
 **nonce** | Strongly RECOMMENDED | A string value used to associate a session with an ID Token, and to mitigate replay attacks. The value is passed through unmodified from the Authentication Request to the ID Token. Sufficient entropy MUST be present in the <i>"nonce"</i> values used to prevent attackers from guessing values. See <a href="http://openid.net/specs/openid-connect-core-1_0.html#NonceNotes" target="blank">OpenID Connect Core specifications</a> for more information.
 **login_hint** | Optional | Can be used to pre-fill the phone number field on the itsme® OpenID web page for the User, if your application knows ahead of time which User is trying to authenticate. If provided, this value MUST be a phone number in the format specified for the <i>"phone_number"</i> claim: <i>"<countrycode>+<phonenumber>"</i>. E.g. <i>"login_hint=32+123456789"</i>.</br><br><i>"login_hint"</i> with invalid syntax will be ignored.</br>
