@@ -115,6 +115,7 @@ Upon clicking this button, we will open a modal view which contains a field that
     <tr>
       <td>{% include parameter.html name="nonce" req="Strongly RECOMMENDED" %}</td>
       <td>A string value used to associate a session with an ID Token, and to mitigate replay attacks. The value is passed through unmodified from the Authentication Request to the ID Token. Sufficient entropy MUST be present in the <i>"nonce"</i> values used to prevent attackers from guessing values. See <a href="http://openid.net/specs/openid-connect-core-1_0.html#NonceNotes" target="blank">OpenID Connect Core specifications</a> for more information.</td>
+    </tr>
     <tr>
       <td>{% include parameter.html name="display" req="OPTIONAL" %}</td>
       <td>ASCII string value that specifies how the Authorization Server displays the authentication and consent User interface pages to the User. MUST be <i>"page"</i> if provided.<br>Other values will yield an HTTP ERROR <i>"not_implemented"</i>.</br></td>
