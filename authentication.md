@@ -68,18 +68,18 @@ Upon clicking this button, we will open a modal view which contains a field that
 
 ### Parameters
 
-:-------- | :--------| :----- 
-**client_id** | Required | It identifies the client. This parameter value is generated during registration. 
-**response_type** | Required | This defines the processing flow to be used when forming the response. Because itsme® uses the Authorization Code Flow, this value MUST be <i>"code"</i>.
-**scope** | Required | It allows the application to express the desired scope of the access request. Each scope returns a set of user attributes. The scopes an application should request depend on which user attributes the application needs. Once the user authorizes the requested scopes, his details are returned in an ID Token and are also available through the /userinfo endpoint.<br>All scope values must be space-separated.</br><br>Possible scope values : <code>service</code> <code>openid</code> <code>profile</code> <code>email</code> <code>address</code> <code>phone</code></br>
-**service** | Required | It indicates the itsme® serivce your application intends to use, e.g. <code>service:TEST_code</code> by replacing "TEST_code" with the service code generated during registration.
-**openid** | Required | It  indicates that your application intends to use the OpenID Connect protocol to verify a user's identity by returning a <code>sub</code> claim which represents a unique identifier for the authenticated user.
+:-------- | :--------
+**client_id**<br>string</br><br>REQUIRED</br> | It identifies the client. This parameter value is generated during registration. 
+**response_type**<br>string</br><br>REQUIRED</br> | This defines the processing flow to be used when forming the response. Because itsme® uses the Authorization Code Flow, this value MUST be <code>code</code>.
+**scope**<br>string</br><br>REQUIRED</br> | It allows the application to express the desired scope of the access request. Each scope returns a set of user attributes. The scopes an application should request depend on which user attributes the application needs. Once the user authorizes the requested scopes, his details are returned in an ID Token and are also available through the /userinfo endpoint.<br>All scope values must be space-separated.</br><br>Possible scope values : <code>service</code> <code>openid</code> <code>profile</code> <code>email</code> <code>address</code> <code>phone</code></br>
+**service**<br>string</br><br>REQUIRED</br> | It indicates the itsme® service your application intends to use, e.g. <code>service:TEST_code</code> by replacing "TEST_code" with the service code generated during registration.
+
 
 :-------- | :--------| :----- 
 **client_id** | Required | It identifies the client. This parameter value is generated during registration. 
 **response_type** | Required | This defines the processing flow to be used when forming the response. Because itsme® uses the Authorization Code Flow, this value MUST be <i>"code"</i>.
 **scope** | Required | It allows the application to express the desired scope of the access request. Each scope returns a set of user attributes. The scopes an application should request depend on which user attributes the application needs. Once the user authorizes the requested scopes, his details are returned in an ID Token and are also available through the /userinfo endpoint.<br>All scope values must be space-separated.</br><br>Possible scope values : <code>service</code> <code>openid</code> <code>profile</code> <code>email</code> <code>address</code> <code>phone</code></br>
-**service** | Required | It indicates the itsme® serivce your application intends to use, e.g. <code>service:TEST_code</code> by replacing "TEST_code" with the service code generated during registration.
+**service** | Required | It indicates the itsme® service your application intends to use, e.g. <code>service:TEST_code</code> by replacing "TEST_code" with the service code generated during registration.
 **openid** | Required | It  indicates that your application intends to use the OpenID Connect protocol to verify a user's identity by returning a <code>sub</code> claim which represents a unique identifier for the authenticated user.
 **profile** | Optional | Returns claims that represent basic profile information, including <code>family_name</code>, <code>given_name</code>, <code>name</code>, <code>gender</code> and <code>birthdate</code>.
 **email** | Optional | Returns the <code>email</code> claim, which contains the user's email address, and <code>email_verified</code>, which is a boolean indicating whether the email address was verified by the user.
