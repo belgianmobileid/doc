@@ -118,11 +118,10 @@ Upon clicking this button, we will open a modal view which contains a field that
     </tr>
     <tr>
       <td>{% include parameter.html name="login_hint" req="OPTIONAL" %}</td>
-      <td>Can be used to pre-fill the phone number field on the itsme® OpenID web page for the User, if your application knows ahead of time which User is trying to authenticate. If provided, this value MUST be a phone number in the format specified for the <i>"phone_number"</i> claim: <i>"<countrycode>+<phonenumber>"</i>. E.g. <i>"login_hint=32+123456789"</i>.</br><br><i>"login_hint"</i> with invalid syntax will be ignored.</br></td>
+      <td>Can be used to pre-fill the phone number field on the itsme® OpenID web page for the User, if your application knows ahead of time which User is trying to authenticate. If provided, this value MUST be a phone number in the format specified for the <i>"phone_number"</i> claim: <i>"<countrycode>+<phonenumber>"</i>.</td>
     </tr>
   </tbody>
 </table>
-
 
 
 ### Response
