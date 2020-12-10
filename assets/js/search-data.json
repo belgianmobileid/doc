@@ -295,7 +295,7 @@
   },"49": {
     "doc": "Test",
     "title": "testing code snippet",
-    "content": "// Javascript code with syntax highlighting. var fun = function lang(l) { dateformat.i18n = require('./lang/' + l) return true; } . $ npm install -g yo generator-itsme . &lt;code style=display:block;white-space:pre-wrap&gt;$ npm install -g yo generator-itsme&lt;/code&gt; . ",
+    "content": "// Javascript code with syntax highlighting. var fun = function lang(l) { dateformat.i18n = require('./lang/' + l) return true; } . $ npm install -g yo generator-itsme . &lt;code style=display:block;white-space:pre-wrap&gt;$ npm install -g yo generator-itsme&lt;/code&gt; . | Parameter | Description | . | Param1required | Global description of Param1 | subparam1optional | description of subparam1 | . | subparam2required | description of subparam2 | . | . | Param2optional | Global description of Param2 | . ",
     "url": "https://belgianmobileid.github.io/doc/test/#testing-code-snippet",
     "relUrl": "/test/#testing-code-snippet"
   },"50": {

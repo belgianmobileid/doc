@@ -1548,6 +1548,14 @@ aside.notice { border-color: white; }
 
 .notice::before { content: "🛈"; font-size: large; font-weight: bold; color: #ff4612; margin-right: 6px; position: absolute; top: 15px; left: 15px; }
 
-td, th { border-left: none; }
+td, th { border-left: none; vertical-align: top; }
+
+thead { text-align: left; }
+
+.table-wrapper .table-wrapper { box-shadow: none; }
+
+.paramName { color: #ff4612; font-weight: bold; }
+
+.paramReq { color: gray; font-style: italic; text-transform: capitalize; }
 
 /*# sourceMappingURL=just-the-docs-default.css.map */
