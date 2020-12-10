@@ -68,6 +68,31 @@ Upon clicking this button, we will open a modal view which contains a field that
 
 ### Parameters
 
+<table>
+  <tbody>
+    <tr>
+      <td>{% include parameter.html name="Param1" req="required" %}</td>
+      <td>
+        Global description of Param1<br />
+        <table>
+          <tr>
+            <td>{% include parameter.html name="subparam1" req="optional" %}</td><td>description of subparam1</td>
+          </tr>
+          <tr>
+            <td>{% include parameter.html name="subparam2" req="required" %}</td><td>description of subparam2</td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td>{% include parameter.html name="Param2" req="optional" %}</td>
+      <td>Global description of Param2</td>
+    </tr>
+  </tbody>
+</table>
+
+
+
 :-------- | :--------
 **client_id**<br>string</br><br>REQUIRED</br> | It identifies the client. This parameter value is generated during registration. 
 **response_type**<br>string</br><br>REQUIRED</br> | This defines the processing flow to be used when forming the response. Because itsme® uses the Authorization Code Flow, this value MUST be <code>code</code>.
