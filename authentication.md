@@ -81,7 +81,7 @@ Upon clicking this button, we will open a modal view which contains a field that
     <tr>
       <td>{% include parameter.html name="scope" req="REQUIRED" %}</td>
       <td>
-        It allows the application to express the desired scope of the access request. Each scope returns a set of user attributes. The scopes an application should request depend on which user attributes the application needs. Once the user authorizes the requested scopes, his details are returned in an ID Token and are also available through the /userinfo endpoint.<br></br>All scope values must be space-separated.<br></br>Possible scope values : <code>service</code> <code>openid</code> <code>profile</code> <code>email</code> <code>address</code> <code>phone</code><br />
+        It allows the application to express the desired scope of the access request. Each scope returns a set of user attributes. The scopes an application should request depend on which user attributes the application needs. Once the user authorizes the requested scopes, his details are returned in an ID Token and are also available through the /userinfo endpoint.<br><br>All scope values must be space-separated.<br><br>Possible scope values : <code>service</code> <code>openid</code> <code>profile</code> <code>email</code> <code>address</code> <code>phone</code><br />
         <table>
           <tr>
             <td>{% include parameter.html name="service" req="REQUIRED" %}</td><td>It indicates the itsme® service your application intends to use, e.g. <code>service:TEST_code</code> by replacing "TEST_code" with the service code generated during registration.</td>
