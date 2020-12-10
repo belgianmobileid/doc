@@ -29,4 +29,24 @@ aside.notice {
 
 td, th {
     border-left: none;
+    vertical-align: top;
+}
+
+thead {
+    text-align: left;
+}
+
+.table-wrapper .table-wrapper {
+    box-shadow: none;
+}
+
+.paramName {
+    color: #ff4612;
+    font-weight: bold;
+}
+
+.paramReq {
+    color: gray;
+    font-style: italic;
+    text-transform: capitalize;
 }
