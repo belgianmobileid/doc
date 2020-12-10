@@ -71,7 +71,9 @@ Upon clicking this button, we will open a modal view which contains a field that
 :-------- | :--------| :----- 
 **client_id** | Required | It identifies the client. This parameter value is generated during registration. 
 **response_type** | Required | This defines the processing flow to be used when forming the response. Because itsme® uses the Authorization Code Flow, this value MUST be <i>"code"</i>.
-**scope** | Required | It specifies the user's detail your application can access. If the user authorizes access to the data defined by the scopes, you will get access to his data's.
+**scope** | Required | It allows the application to express the desired scope of the access request. Each scope returns a set of user attributes. The scopes an application should request depend on which user attributes the application needs. Once the user authorizes the requested scopes, his details are returned in an ID Token and are also available through the /userinfo endpoint.
+
+
 
 governs the access and privileges an user will grant authorization to your application for.
 
