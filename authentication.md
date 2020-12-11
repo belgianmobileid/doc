@@ -266,8 +266,6 @@ Upon clicking this button, we will open a modal view which contains a field that
   </tbody>
 </table>
 
-XXXXXXXXXXXXXXXXXXXXXXXXXXX
-
 ### Response
 
 <code>200</code> <code>application/hal+json</code>
@@ -276,7 +274,7 @@ XXXXXXXXXXXXXXXXXXXXXXXXXXX
   <tbody>
     <tr>
       <td>{% include parameter.html name="code" req="" %}</td>
-      <td></td>
+      <td>Holds the authorization code which is a string value. It has a lifetime of 3 minutes.</td>
     </tr>
     <tr>
       <td>{% include parameter.html name="state" req="" %}</td>
