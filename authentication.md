@@ -35,6 +35,11 @@ If a user doesn't have the itsme® app, they'll be redirected to a mobile websit
 <a name="OpenIDConfig"></a>
 # itsme® OpenID Provider configuration
 
+
+{% tabs itsme_config %}
+
+{% tab itsme_config RSA keys %}
+
 To simplify implementations and increase flexibility, <a href="https://openid.net/specs/openid-connect-discovery-1_0.html" target="blank">OpenID Connect allows the use of a Discovery Document</a>, a JSON document containing key-value pairs which provide details about itsme® configuration, such as the URIs of the 
 
 <ul>
@@ -50,6 +55,16 @@ Environment | URL
 :-------- | :--------
 **SANDBOX** | <a href="https://idp.e2e.itsme.services/v2/.well-known/openid-configuration" target="blank">https://idp.e2e.itsme.services/v2/.well-known/openid-configuration</a>
 **PRODUCTION** | <a href="https://idp.prd.itsme.services/v2/.well-known/openid-configuration" target="blank">https://idp.prd.itsme.services/v2/.well-known/openid-configuration</a>
+
+{% endtab %}
+
+{% tab itsme_config Symmetric keys %}
+
+YYY
+
+{% endtab %}
+
+{% endtabs %}
 
 
 # Generate itsme® button
