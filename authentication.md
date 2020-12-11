@@ -64,7 +64,6 @@ Upon clicking this button, we will open a modal view which contains a field that
 
 ## Create Authentication API
 
-**Request**
 
 {% tabs create_authentication_API %}
 
