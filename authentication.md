@@ -238,9 +238,9 @@ Upon clicking this button, we will open a modal view which contains a field that
   </tbody>
 </table>
 
+XXXXXXXXXXXXXXXXXXXXXXXXXXX
 
 ### Response
-
 
 
 A payment object is returned, as described in Get Payment API.
