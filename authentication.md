@@ -11,7 +11,7 @@ Our itsme® app can be seamlessly be integrated with your web desktop, mobile we
 
 The diagram below describes the **Authentication** process and how your backend is integrated within the itsme® architecture :
   
- ![Sequence diagram describing the OpenID flow](OpenID_Login_SeqDiag.png)
+ ![Sequence diagram describing the OpenID flow](OpenID_SeqDiag.png)
 
 <ol>
   <li>The User indicates on your end he wishes to authenticate with itsme®</li>
