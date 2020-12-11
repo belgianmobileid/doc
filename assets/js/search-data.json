@@ -155,23 +155,23 @@
     "url": "https://belgianmobileid.github.io/doc/confirmation/",
     "relUrl": "/confirmation/"
   },"26": {
-    "doc": "Getting started",
+    "doc": "Guide",
     "title": "Getting started",
     "content": "In order to start your integration we will first set-up your personal Sanbox environment. To do this you will be requested to provide the following information : . | Contact details such as your email, name, phone number. | Organisation details as shown on the company register for your jurisdiction. | Information about the project you want to set-up (the services you want to use, the client authentication method you want to set-up, the user attributes you want to request, ...) | . Our onboarding team will review your project and get in touch within 3 days with your credentials: . | a \"client_id\" | a \"service_code\" | information about your client authentication method | the list of user attributes you can request | . Request your Sandbox . ",
-    "url": "https://belgianmobileid.github.io/doc/getting-started#getting-started",
-    "relUrl": "/getting-started#getting-started"
+    "url": "https://belgianmobileid.github.io/doc/Guide#getting-started",
+    "relUrl": "/Guide#getting-started"
   },"27": {
-    "doc": "Getting started",
+    "doc": "Guide",
     "title": "Authentication",
     "content": "A client authentication method is requied to protect the exhange of entitlement information between us, ensure the requested information get issued to a legitimate service provider and not some other party. The itsme API offers two authentication methods : . | asymmetric RSA key pair | symmetric shared secret | . We recommend using the private_key_jwt method as it is more secure. Asymmetric RSA . This method requires that each party exposes its public keys as a simple JWK Set document on a URI accessible to all, and keep its private set for itself. For itsme®, this URI can be retrieved from the itsme® Discovery document, using the “jwks_uri” key. Your private and public keys can be generated using your own tool or via Yeoman. If using Yeoman, you need to install generator-itsme with NPM: . $ npm install -g yo generator-itsme . After installation, run the generator: . $ yo itsme . The Yeoman tool will generate two files, the jwks_private.json which MUST be stored securely somewhere in your systems, and the jwks_public.json which need to be exposed as a JWK Set on a URI accessible to all parties. Whatever the tool you are choosing to create your key pairs, don't forget to send your JWK Set URI by email to onboarding@itsme.be and we’ll make sure to complete the configuration for you in no time! Symmetric secret . This method requires the exchange of a static secret that will be used to authenticate with our Back-End. The client_secret value will be provided by itsme® when registering your project. ",
-    "url": "https://belgianmobileid.github.io/doc/getting-started#authentication",
-    "relUrl": "/getting-started#authentication"
+    "url": "https://belgianmobileid.github.io/doc/Guide#authentication",
+    "relUrl": "/Guide#authentication"
   },"28": {
-    "doc": "Getting started",
-    "title": "Getting started",
+    "doc": "Guide",
+    "title": "Guide",
     "content": ". ",
-    "url": "https://belgianmobileid.github.io/doc/getting-started",
-    "relUrl": "/getting-started"
+    "url": "https://belgianmobileid.github.io/doc/Guide",
+    "relUrl": "/Guide"
   },"29": {
     "doc": "Identification",
     "title": "1. Introduction",
