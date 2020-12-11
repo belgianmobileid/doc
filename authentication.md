@@ -227,14 +227,34 @@ Upon clicking this button, we will open a modal view which contains a field that
         </table>
       </td>
     </tr>
+    <tr>
+      <td>{% include parameter.html name="request_uri" req="OPTIONAL" %}</td>
+      <td>A URL using the https scheme referencing a resource containing a JWT whose claims are the request parameters. The <code>request_uri</code> parameter is used to secure parameters in the authentication request from tainting or inspection when sending the request to the itsme® Authorization Endpoint.<br><br>If used, the JWT MUST be signed then encrypted, with the result being a Nested JWT.</td>
+    </tr>
+    <tr>
+      <td>{% include parameter.html name="request" req="OPTIONAL" %}</td>
+      <td>It represents the request as a JWT whose Claims are the request parameters. The <code>request</code> parameter is used to secure parameters in the authentication request from tainting or inspection when sending the request to the itsme® Authorization Endpoint.<br><br>If used, the JWT MUST be signed then encrypted, with the result being a Nested JWT.</td>
+    </tr>
   </tbody>
 </table>
 
 
-
 ### Response
 
-201 application/hal+json
+<code>200</code> <code>application/hal+json</code>
+
+<table>
+  <tbody>
+    <tr>
+      <td>{% include parameter.html name="code" req="" %}</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>{% include parameter.html name="state" req="" %}</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
 
 A payment object is returned, as described in Get Payment API.
 
