@@ -36,11 +36,26 @@ Product | Description
 **Confirmation** | Enable your users/customers to give their consent to a payment or order/action.
 **Signing** | Enable your users/customers to sign documents electronically. The itsme® Sign responds to the requirements for the creation of Qualified Electronic Signature (QES).
 
+<a name="Onboarding"></a>
+## Getting started
 
-## OIDC protocol
+In order to start your integration we will first set-up your personal Sanbox environment. To do this you will be requested to provide the following information :  
 
-The API is based on the Authorization Code Flow of OpenID Connect 1.0. It allows computing clients to verify the identity of an end-user based on the authentication performed by an authorization server, as well as to obtain basic profile information about the end-user in an interoperable and REST-like manner. Sounds technical, but it’s really quite easy. The REST architecture mainly breaks down to HTTP-methods GET and POST.
+<ul>
+  <li>Contact details such as your email, name, phone number.</li>
+  <li>Organisation details as shown on the company register for your jurisdiction.</li>
+  <li>Information about the project you want to set-up (the services you want to use, the client authentication method you want to set-up, the user attributes you want to request, ...)</li>
+</ul>
 
-REST also implies a nice and clean structure for URLs or endpoints. This means you can reach any part of the itsme® API on https://idp.prd.itsme.services/v2/ adding the name of the resource you want to interact with. 
+Our onboarding team will review your project and get in touch within 3 days with your credentials:
+<ul>
+  <li>a <i>"client_id"</i></li>
+  <li>a <i>"service_code"</i></li>
+  <li>information about your <a href="https://belgianmobileid.github.io/doc/getting-started.html#authentication" target="blank">client authentication method</a></li>
+  <li>the list of user attributes you can request</li>
+</ul>
+
+<br><br><button type="button"><a href="https://docs.google.com/forms/d/e/1FAIpQLSdyfhKiiehNg4DhFzhQeHaj9EG2VeFoyPNVaI-TSwnG5WlFfw/viewform" target="blank">Request your Sandbox</a></button>
+
 
 
