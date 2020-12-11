@@ -258,10 +258,10 @@
     "relUrl": "/index#services"
   },"43": {
     "doc": "Welcome",
-    "title": "OIDC protocol",
-    "content": "The API is based on the Authorization Code Flow of OpenID Connect 1.0. It allows computing clients to verify the identity of an end-user based on the authentication performed by an authorization server, as well as to obtain basic profile information about the end-user in an interoperable and REST-like manner. Sounds technical, but it’s really quite easy. The REST architecture mainly breaks down to HTTP-methods GET and POST. REST also implies a nice and clean structure for URLs or endpoints. This means you can reach any part of the itsme® API on https://idp.prd.itsme.services/v2/ adding the name of the resource you want to interact with. ",
-    "url": "https://belgianmobileid.github.io/doc/index#oidc-protocol",
-    "relUrl": "/index#oidc-protocol"
+    "title": "Getting started",
+    "content": "In order to start your integration we will first set-up your personal Sanbox environment. To do this you will be requested to provide the following information : . | Contact details such as your email, name, phone number. | Organisation details as shown on the company register for your jurisdiction. | Information about the project you want to set-up (the services you want to use, the client authentication method you want to set-up, the user attributes you want to request, ...) | . Our onboarding team will review your project and get in touch within 3 days with your credentials: . | a \"client_id\" | a \"service_code\" | information about your client authentication method | the list of user attributes you can request | . Request your Sandbox . ",
+    "url": "https://belgianmobileid.github.io/doc/index#getting-started",
+    "relUrl": "/index#getting-started"
   },"44": {
     "doc": "Test",
     "title": "testing code snippet",
