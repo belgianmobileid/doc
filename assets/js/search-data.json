@@ -7,7 +7,7 @@
   },"1": {
     "doc": "Authentication",
     "title": "itsme® OpenID Provider configuration",
-    "content": "To simplify implementations and increase flexibility, OpenID Connect allows the use of a Discovery Document, a JSON document containing key-value pairs which provide details about itsme® configuration, such as the URIs of the . | Authorization, Token and userInfo Endpoints | supported claims | JWKSet URL | ... | . The Discovery document for itsme® can be retrieved from: . | Environment | URL | . | SANDBOX | https://idp.e2e.itsme.services/v2/.well-known/openid-configuration | . | PRODUCTION | https://idp.prd.itsme.services/v2/.well-known/openid-configuration | . ",
+    "content": ". | RSA keys | Symmetric keys | . | To simplify implementations and increase flexibility, OpenID Connect allows the use of a Discovery Document, a JSON document containing key-value pairs which provide details about itsme® configuration, such as the URIs of the . | Authorization, Token and userInfo Endpoints | supported claims | JWKSet URL | ... | . The Discovery document for itsme® can be retrieved from: . | Environment | URL | . | SANDBOX | https://idp.e2e.itsme.services/v2/.well-known/openid-configuration | . | PRODUCTION | https://idp.prd.itsme.services/v2/.well-known/openid-configuration | . | YYY . | . ",
     "url": "https://belgianmobileid.github.io/doc/authentication/#itsme-openid-provider-configuration",
     "relUrl": "/authentication/#itsme-openid-provider-configuration"
   },"2": {
