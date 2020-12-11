@@ -1,8 +1,8 @@
 ---
 
 layout: page
-title: Getting started
-permalink: /getting-started
+title: Guide
+permalink: /Guide
 nav_order: 2
 
 ---
