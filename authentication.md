@@ -241,20 +241,7 @@ Upon clicking this button, we will open a modal view which contains a field that
 
 ### Response
 
-<code>200</code> <code>application/hal+json</code>
 
-<table>
-  <tbody>
-    <tr>
-      <td>{% include parameter.html name="code" req="" %}</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>{% include parameter.html name="state" req="" %}</td>
-      <td></td>
-    </tr>
-  </tbody>
-</table>
 
 A payment object is returned, as described in Get Payment API.
 
