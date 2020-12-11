@@ -77,7 +77,7 @@ Upon clicking this button, we will open a modal view which contains a field that
 <a name="AuthNRequest"></a>
 # API reference
 
-## Create Authentication API
+## Create Authentication Request
 
 
 {% tabs create_authentication_API %}
@@ -101,7 +101,7 @@ Upon clicking this button, we will open a modal view which contains a field that
     <tr>
       <td>{% include parameter.html name="scope" req="REQUIRED" %}</td>
       <td>
-        It allows the application to express the desired scope of the access request. Each scope returns a set of user attributes. The scopes an application should request depend on which user attributes the application needs. Once the user authorizes the requested scopes, his details are returned in an ID Token and are also available through the /userinfo endpoint.<br><br>All scope values must be space-separated.<br><br>The basic (and required) scopes is <code>openid</code> and <code>service</code>. Beyond that, your application can ask for additional scopes : <code>profile</code> <code>email</code> <code>address</code> <code>phone</code><br />
+        It allows the application to express the desired scope of the access request. Each scope returns a set of user attributes. The scopes an application should request depend on which user attributes the application needs. Once the user authorizes the requested scopes, his details are returned in an ID Token and are also available through the UserInfo Endpoint.<br><br>All scope values must be space-separated.<br><br>The basic (and required) scopes is <code>openid</code> and <code>service</code>. Beyond that, your application can ask for additional standard scopes values which map to sets of related claims : <code>profile</code> <code>email</code> <code>address</code> <code>phone</code><br />
         <table>
           <tr>
             <td>{% include parameter.html name="service" req="REQUIRED" %}</td><td>It indicates the itsme® service your application intends to use, e.g. <code>service:TEST_code</code> by replacing "TEST_code" with the service code generated during registration.</td>
@@ -161,10 +161,44 @@ Upon clicking this button, we will open a modal view which contains a field that
         </table>
       </td>
     </tr>
+    <tr>
+      <td>{% include parameter.html name="claims" req="OPTIONAL" %}</td>
+      <td>Requests that specific user's details be returned from the UserInfo Endpoint and/or in the ID Token. It is represented as a JSON object that has two members - <code>{"userinfo":{...}</code> and <code>{"id_token":{...}</code>, which content indicates which claims to return at the UserInfo Endpoint and which with the ID Token, together with indication whether the claim is voluntary (default) or essential.<br><br>Possible user's details your application can request is listed below.<br />
+        <table>
+          <tr>
+            <td>{% include parameter.html name="name" req="OPTIONAL" %}</td><td>User's full name in displayable form including all name parts, possibly including titles and suffixes</td>
+          </tr>
+          <tr>
+            <td>{% include parameter.html name="given_name" req="OPTIONAL" %}</td><td>Given name(s) or first name(s) of the user. Note that in some cultures, people can have multiple given names; all can be present, with the names being separated by space characters.</td>
+          </tr>
+          <tr>
+            <td>{% include parameter.html name="family_name" req="OPTIONAL" %}</td><td>Surname(s) or last name(s) of the user. Note that in some cultures, people can have multiple family names or no family name; all can be present, with the names being separated by space characters.</td>
+          </tr> 
+          <tr>
+            <td>{% include parameter.html name="birtdate" req="OPTIONAL" %}</td><td>User's birthday, represented as a YYYY-MM-DD format.</td>
+          </tr> 
+          <tr>
+            <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/birthdate_as_string" req="OPTIONAL" %}</td><td>User's birthday, represented as a string.</td>
+          </tr> 
+          <tr>
+            <td>{% include parameter.html name="gender" req="OPTIONAL" %}</td><td>User's gender. Possible values are : <code>F</code> <code>M</code></td>
+          </tr> 
+          <tr>
+            <td>{% include parameter.html name="email" req="OPTIONAL" %}</td><td>User's email address.</td>
+          </tr> 
+        </table>
+      </td>
+    </tr>
   </tbody>
 </table>
 
+
+
 ### Response
+
+201 application/hal+json
+
+A payment object is returned, as described in Get Payment API.
 
 ### Example
 
