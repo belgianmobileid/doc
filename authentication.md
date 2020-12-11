@@ -124,7 +124,24 @@ Upon clicking this button, we will open a modal view which contains a field that
       <td>{% include parameter.html name="ui_locales" req="OPTIONAL" %}</td>
       <td>Indicates the user's preferred languages for the itsme® sign-in page, represented as a space-separated list of language tag values, ordered by preference.<br><br>Possible values : <code>fr</code> <code>nl</code> <code>de</code> <code>en</code></td>
     </tr>
-   </tbody>
+    <tr>
+      <td>{% include parameter.html name="display" req="OPTIONAL" %}</td>
+      <td>Specify how the itsme® sign-in page should be displayed to the user. If set to <code>touch</code>, it SHOULD displays the itsme® sign-in page with a device that leverages a touch interface. If set to <code>page</code>, the itsme® sign-in UI SHOULD be consistent with a full page view of the User-Agent. If the <code>display</code> parameter is not specified, this is the default display mode.</td>
+    </tr>
+    <tr>
+      <td>{% include parameter.html name="acr_values" req="OPTIONAL" %}</td>
+      <td>Indicates the authentication method required to process the request, represented as a space-separated list of tag values, ordered by preference.<br><br>Possible values : <code>http://itsme.services/v2/claim/acr_basic</code> <code>http://itsme.services/v2/claim/acr_advanced</code><br><br><b>Note :</b> If these two values are provided only the most constraining authentication method will be applied, e.g. <code>http://itsme.services/v2/claim/acr_advanced</code>.<br />
+        <table>
+          <tr>
+            <td>{% include parameter.html name="http://itsme.services/v2/claim/acr_basic" req="" %}</td><td>It lets the user to choose either fingerprint usage (if device is compatible) or itsme® code. If the <code>display</code> parameter is not specified, this is the default authentication method.</td>
+          </tr>
+          <tr>
+            <td>{% include parameter.html name="http://itsme.services/v2/claim/acr_advanced" req="" %}</td><td>It forces the user to use his itsme® code.</td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </tbody>
 </table>
 
 
