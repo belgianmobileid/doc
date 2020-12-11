@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Authentication
+title: Authentication API
 permalink: /authentication/
 nav_order: 3
 ---
