@@ -124,10 +124,6 @@ Upon clicking this button, we will open a modal view which contains a field that
       <td>{% include parameter.html name="ui_locales" req="OPTIONAL" %}</td>
       <td>Indicates the user's preferred languages for the itsme® sign-in page, represented as a space-separated list of language tag values, ordered by preference.<br><br>Possible values : <code>fr</code> <code>nl</code> <code>de</code> <code>en</code></td>
     </tr>
-    <tr>
-      <td>{% include parameter.html name="display" req="OPTIONAL" %}</td>
-      <td>Specify how the itsme® sign-in page should be displayed to the user. If set to <touch>, it SHOULD displays the itsme® sign-in page with a device that leverages a touch interface. If set to <page>, the itsme® sign-in UI SHOULD be consistent with a full page view of the User-Agent. If the <code>display</code> parameter is not specified, this is the default display mode.</td>
-    </tr>
    </tbody>
 </table>
 
