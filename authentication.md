@@ -64,6 +64,12 @@ Upon clicking this button, we will open a modal view which contains a field that
 
 ## Create Authentication API
 
+**Request**
+
+{% tabs create_authentication_API %}
+
+{% tab create_authentication_API RSA keys %}
+
 <b><code>GET https://idp.<i>[e2e/prd]</i>.itsme.services/v2/authorization</code></b>
 
 ### Parameters
@@ -144,35 +150,23 @@ Upon clicking this button, we will open a modal view which contains a field that
   </tbody>
 </table>
 
-
-
-
-
-
 ### Response
 
 ### Example
 
 **Request**
 
-{% tabs code_authorization %}
-
-{% tab code_authorization js %}
-
-XXX
+**Response**
 
 {% endtab %}
 
-{% tab code_authorization ruby %}
+{% tab create_authentication_API Symmetric keys %}
 
 YYY
 
 {% endtab %}
 
 {% endtabs %}
-
-**Response**
-
 
 <a name="Data"></a>
 ###  Requesting claims about the User and the Authentication event 
