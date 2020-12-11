@@ -1,11 +1,16 @@
 ---
-
 layout: page
 title: Guide
 permalink: /Guide
-nav_order: 3
-
+nav_order: 2
 ---
+
+# OIDC protocol
+
+The API is based on the Authorization Code Flow of OpenID Connect 1.0. It allows computing clients to verify the identity of an end-user based on the authentication performed by an authorization server, as well as to obtain basic profile information about the end-user in an interoperable and REST-like manner. Sounds technical, but it’s really quite easy. The REST architecture mainly breaks down to HTTP-methods GET and POST.
+
+REST also implies a nice and clean structure for URLs or endpoints. This means you can reach any part of the itsme® API on https://idp.prd.itsme.services/v2/ adding the name of the resource you want to interact with. 
+
 
 # Authentication
 
