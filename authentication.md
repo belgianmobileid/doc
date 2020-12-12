@@ -283,35 +283,6 @@ Upon clicking this button, we will open a modal view which contains a field that
   </tbody>
 </table>
 
-**Error reponse**
-
-<table>
-  <tbody>
-    <tr>
-      <td>{% include parameter.html name="error" req="" %}</td>
-      <td>A single error code.<br><br>Possible values : <br />
-        <table>
-          <tr>
-            <td>{% include parameter.html name="X" req="" %}</td><td>XX</td>
-          </tr>
-          <tr>
-            <td>{% include parameter.html name="Y" req="" %}</td><td>YY</td>
-          </tr>
-        </table>
-      </td>
-    </tr>
-    <tr>
-      <td>{% include parameter.html name="error_description" req="" %}</td>
-      <td>Human-readable text providing additional information, used to assist the developer in understanding the error that occurred.</td>
-    </tr>
-    <tr>
-      <td>{% include parameter.html name="state" req="" %}</td>
-      <td>The string value provided in the Authorization Request. You SHOULD validate that the value returned matches the one supplied.</td>
-    </tr>
-  </tbody>
-</table>
-
-
 ### Example
 
 **Request**
