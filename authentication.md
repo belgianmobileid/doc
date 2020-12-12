@@ -274,17 +274,14 @@ Upon clicking this button, we will open a modal view which contains a field that
   <tbody>
     <tr>
       <td>{% include parameter.html name="code" req="" %}</td>
-      <td>Holds the authorization code which is a string value. It has a lifetime of 3 minutes.</td>
+      <td>An intermediate opaque credential used to retrieve the ID Token.<br><br><b>Note</b> : the code has a lifetime of 3 minutes.</td>
     </tr>
     <tr>
       <td>{% include parameter.html name="state" req="" %}</td>
-      <td></td>
+      <td>The string value provided in the Authorization Request. You SHOULD validate that the value returned matches the one supplied.</td>
     </tr>
   </tbody>
 </table>
-
-
-A payment object is returned, as described in Get Payment API.
 
 ### Example
 
