@@ -63,11 +63,38 @@ Whenever you send a request to the itsme® API you’ll get a response in JSON (
 
 ### The error response type
 
-The following classes of codes are relevant to the itsme® API:
+**Error reponse**
 
-<ul>
-  <li>XXX</li>
-  <li>XXX</li>
-</ul>
+In case an error is returned, the JSON will look like :
+
+<table>
+  <tbody>
+    <tr>
+      <td>{% include parameter.html name="error" req="" %}</td>
+      <td>A single error code.<br><br>Possible values are listed in the table below.</td>
+    </tr>
+    <tr>
+      <td>{% include parameter.html name="error_description" req="" %}</td>
+      <td>Human-readable text providing additional information, used to assist the developer in understanding the error that occurred.</td>
+    </tr>
+    <tr>
+      <td>{% include parameter.html name="state" req="" %}</td>
+      <td>The string value provided in the Authorization Request. You SHOULD validate that the value returned matches the one supplied.</td>
+    </tr>
+  </tbody>
+</table>
 
 ### All possible status codes
+
+<table>
+  <tbody>
+    <tr>
+      <td>{% include parameter.html name="XXX" req="" %}</td>
+      <td>XXX</td>
+    </tr>
+    <tr>
+      <td>{% include parameter.html name="YYYY" req="" %}</td>
+      <td>YYYY</td>
+    </tr>
+   </tbody>
+</table>
