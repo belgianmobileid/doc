@@ -51,3 +51,23 @@ The Yeoman tool will generate two files, the jwks_private.json which MUST be sto
 This method requires the exchange of a static secret that will be used to authenticate with our Back-End. 
 
 The client_secret value will be provided by itsme® when <a href="https://belgianmobileid.github.io/doc/getting-started.html#getting-started" target="blank">registering your project</a>.
+
+
+# Handling errors
+
+Whenever you send a request to the itsme® API you’ll get a response in JSON (JavaScript Object Notation) format. This is a standard for data communication that’s easy to read for humans as well as machines. Alongside the JSON-response an HTTP status code is sent that shows whether the request was successful or not. If it wasn’t, you can tell by the code and the message in the response what went wrong, why it went wrong and whether there is something you can do about it.
+
+
+### A successful response
+
+
+### The error response type
+
+The following classes of codes are relevant to the itsme® API:
+
+<ul>
+  <li>XXX</li>
+  <li>XXX</li>
+</ul>
+
+### All possible status codes
