@@ -298,7 +298,7 @@ Some endpoints require client authentication. To make requests to these endpoint
   <tbody>
     <tr>
       <td>{% include parameter.html name="grant_type" req="REQUIRED" %}</td>
-      <td>Set this to <code>authorization_code</code> to tell the Token Endpoint that the application wants to exchange an authorization code for an ID koken and access token.</td>
+      <td>Set this to <code>authorization_code</code> to tell the Token Endpoint that the application wants to exchange an authorization code for an ID koken and access token. </td>
     </tr>
      <tr>
       <td>{% include parameter.html name="code" req="REQUIRED" %}</td>
@@ -307,6 +307,10 @@ Some endpoints require client authentication. To make requests to these endpoint
     <tr>
       <td>{% include parameter.html name="redirect_uri" req="REQUIRED" %}</td>
       <td>It is the URL to which users are redirected once the authentication is complete. It MUST match the value used in the Authorization Request.
+    </tr>
+    <tr>
+      <td>{% include parameter.html name="client_assertion_type" req="REQUIRED" %}</td>
+      <td>specifies the type of assertion. Set this to <code>urn:ietf:params:oauth:client-assertion-type:jwt-bearer</code>.
     </tr>
     <tr>
       <td>{% include parameter.html name="client_assertion" req="REQUIRED" %}</td>
@@ -319,16 +323,13 @@ Some endpoints require client authentication. To make requests to these endpoint
             <td>{% include parameter.html name="sub" req="REQUIRED" %}</td><td>The subject of the token. This value must be the same as the <code>client_id</code>.</td>
           </tr>
           <tr>
-            <td>{% include parameter.html name="profile" req="OPTIONAL" %}</td><td>Returns claims that represent basic profile information, including <code>family_name</code>, <code>given_name</code>, <code>name</code>, <code>gender</code> and <code>birthdate</code>.</td>
+            <td>{% include parameter.html name="aud" req="OPTIONAL" %}</td><td>The full URL of the resource you're using the JWT to authenticate to. Set this to <code>https://idp.prd.itsme.services/v2/token</code>.</td>
           </tr>
           <tr>
-            <td>{% include parameter.html name="email" req="OPTIONAL" %}</td><td>Returns the <code>email</code> claim, which contains the user's email address, and <code>email_verified</code>, which is a boolean indicating whether the email address was verified by the user.</td>
+            <td>{% include parameter.html name="jti" req="OPTIONAL" %}</td><td>An unique identifier for the token.</td>
           </tr>
           <tr>
-            <td>{% include parameter.html name="address" req="OPTIONAL" %}</td><td>Returns the information about the user's postal address. The value of the address member is a JSON structure containing some or all of these members <code>formatted</code> <code>street_address</code> <code>postal_code</code> <code>locality</code> <code>country</code></td>
-          </tr> 
-          <tr>
-            <td>{% include parameter.html name="phone" req="OPTIONAL" %}</td><td>Returns the <code>phone</code> claim, which contains the user's phone number, and <code>phone_number_verified</code>, which is a boolean indicating whether the phone number was verified by the user.</td>
+            <td>{% include parameter.html name="exp" req="OPTIONAL" %}</td><td>The expiration time of the token in seconds since January 1, 1970 UTC.</td>
           </tr> 
         </table>
       </td>
