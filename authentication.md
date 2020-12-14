@@ -305,15 +305,24 @@ To asserts the identity of the user, the <code>code</code> received previously n
 <table>
   <tbody>
     <tr>
-      <td>{% include parameter.html name="code" req="" %}</td>
-      <td>An intermediate opaque credential used to retrieve the ID Token.<br><br><b>Note</b> : the code has a lifetime of 3 minutes.</td>
+      <td>{% include parameter.html name="access_token" req="" %}</td>
+      <td>Allows an application to retrieve consented user information from the UserInfo Endpoint.</td>
     </tr>
     <tr>
-      <td>{% include parameter.html name="state" req="" %}</td>
-      <td>The string value provided in the Authorization Request. You SHOULD validate that the value returned matches the one supplied.</td>
+      <td>{% include parameter.html name="token_type" req="" %}</td>
+      <td>Provides the application with the information required to successfully utilize the access token. Set this to <code>Bearer</code>.</td>
+    </tr>
+    <tr>
+      <td>{% include parameter.html name="token_type" req="" %}</td>
+      <td>Specifies the additional attributes sent to the UserInfo Endpoint  together with the <code>access_token</code> response parameter. Returned value is <code>Bearer</code>.</td>      
+    </tr>
+    <tr>
+      <td>{% include parameter.html name="id_token" req="" %}</td>
+      <td>A security token that contains claims about the authentication of an user, and potentially other requested claims. The <code>id_token</code> value is represented as a signed and encrypted JSON Web Token. So, before being able to use the ID Token claim's you will have to decrypt and verify it using the RSA keys.</td>      
     </tr>
   </tbody>
 </table>
+
 
 ### Example
 
