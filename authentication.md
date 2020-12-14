@@ -246,4 +246,81 @@ Upon clicking this button, we will open a modal view which contains a field that
 **Response**
 
 
+## Build Token Request
+
+
+To asserts the identity of the user, the <code>code</code> received previously need to be exchanged for an ID Token and Access Token. During this step, your application has to authenticate itself to our server using RSA keys. 
+
+<b><code>POST https://idp.<i>[e2e/prd]</i>.itsme.services/v2/token</code></b>
+
+### Parameters
+
+<table>
+  <tbody>
+    <tr>
+      <td>{% include parameter.html name="grant_type" req="REQUIRED" %}</td>
+      <td>Set this to <code>authorization_code</code> to tell the Token Endpoint that the application wants to exchange an authorization code for an ID koken and access token. </td>
+    </tr>
+    <tr>
+      <td>{% include parameter.html name="code" req="REQUIRED" %}</td>
+      <td>The intermediate opaque credential received in the Authorization Response.</td>
+    </tr>
+    <tr>
+      <td>{% include parameter.html name="redirect_uri" req="REQUIRED" %}</td>
+      <td>It is the URL to which users are redirected once the authentication is complete. It MUST match the value used in the Authorization Request.
+    </tr>
+    <tr>
+      <td>{% include parameter.html name="client_assertion_type" req="REQUIRED" %}</td>
+      <td>specifies the type of assertion. Set this to <code>urn:ietf:params:oauth:client-assertion-type:jwt-bearer</code>.
+    </tr>
+    <tr>
+      <td>{% include parameter.html name="client_assertion" req="REQUIRED" %}</td>
+      <td>Contains a JWT token that is signed, and then encrypted, using the client RSA keys. This ensures that the request to get the id token and access token is made only from the application, and not from a potential attacker that may have intercepted the authorization code.<br><br> The JWT contains the following claims.       
+        <table>
+          <tr>
+            <td>{% include parameter.html name="iss" req="REQUIRED" %}</td><td>The issuer of the token. This value must be the same as the <code>client_id</code>.</td>
+          </tr>
+          <tr>
+            <td>{% include parameter.html name="sub" req="REQUIRED" %}</td><td>The subject of the token. This value must be the same as the <code>client_id</code>.</td>
+          </tr>
+          <tr>
+            <td>{% include parameter.html name="aud" req="OPTIONAL" %}</td><td>The full URL of the resource you're using the JWT to authenticate to. Set this to <code>https://idp.prd.itsme.services/v2/token</code>.</td>
+          </tr>
+          <tr>
+            <td>{% include parameter.html name="jti" req="OPTIONAL" %}</td><td>An unique identifier for the token.</td>
+          </tr>
+          <tr>
+            <td>{% include parameter.html name="exp" req="OPTIONAL" %}</td><td>The expiration time of the token in seconds since January 1, 1970 UTC.</td>
+          </tr> 
+        </table>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+### Response
+
+<code>200</code> <code>application/hal+json</code>
+
+<table>
+  <tbody>
+    <tr>
+      <td>{% include parameter.html name="code" req="" %}</td>
+      <td>An intermediate opaque credential used to retrieve the ID Token.<br><br><b>Note</b> : the code has a lifetime of 3 minutes.</td>
+    </tr>
+    <tr>
+      <td>{% include parameter.html name="state" req="" %}</td>
+      <td>The string value provided in the Authorization Request. You SHOULD validate that the value returned matches the one supplied.</td>
+    </tr>
+  </tbody>
+</table>
+
+### Example
+
+**Request**
+
+**Response**
+
+
 
