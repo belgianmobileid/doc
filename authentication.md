@@ -281,7 +281,9 @@ YYY
 
 {% tab build_token_API RSA keys %}
 
-To asserts the identity of the user, the <code>code</code> received previously need to be exchanged for an ID Token. 
+To asserts the identity of the user, the <code>code</code> received previously need to be exchanged for an ID Token and Access Token. 
+
+As the Token 
 
 
 
