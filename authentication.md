@@ -77,12 +77,12 @@ Upon clicking this button, we will open a modal view which contains a field that
 <a name="AuthNRequest"></a>
 # API reference
 
-## Create Authentication Request
+## Create Authorization Request
 
 
-{% tabs create_authentication_API %}
+{% tabs create_authorization_API %}
 
-{% tab create_authentication_API RSA keys %}
+{% tab create_autorization_API RSA keys %}
 
 <b><code>GET https://idp.<i>[e2e/prd]</i>.itsme.services/v2/authorization</code></b>
 
@@ -240,31 +240,102 @@ Upon clicking this button, we will open a modal view which contains a field that
 </table>
 
 
+### Response
 
-
+<code>200</code> <code>application/hal+json</code>
 
 <table>
   <tbody>
     <tr>
-      <td>{% include parameter.html name="Param1" req="required" %}</td>
-      <td>
-        Global description of Param1<br />
-        <table>
-          <tr>
-            <td>{% include parameter.html name="subparam1" req="optional" %}</td><td>description of subparam1</td>
-          </tr>
-          <tr>
-            <td>{% include parameter.html name="subparam2" req="required" %}</td><td>description of subparam2</td>
-          </tr>
-        </table>
-      </td>
+      <td>{% include parameter.html name="code" req="" %}</td>
+      <td>An intermediate opaque credential used to retrieve the ID Token and Access Token.<br><br><b>Note</b> : the code has a lifetime of 3 minutes.</td>
     </tr>
     <tr>
-      <td>{% include parameter.html name="Param2" req="optional" %}</td>
-      <td>Global description of Param2</td>
+      <td>{% include parameter.html name="state" req="" %}</td>
+      <td>The string value provided in the Authorization Request. You SHOULD validate that the value returned matches the one supplied.</td>
     </tr>
   </tbody>
 </table>
+
+### Example
+
+**Request**
+
+**Response**
+
+{% endtab %}
+
+{% tab create_autorization_API Symmetric keys %}
+
+YYY
+
+{% endtab %}
+
+{% endtabs %}
+
+
+## Build Token Request
+
+
+{% tabs build_token_API %}
+
+{% tab build_token_API RSA keys %}
+
+To asserts the identity of the user, the <code>code</code> received previously need to be exchanged for an ID Token. 
+
+
+
+Some endpoints require client authentication. To make requests to these endpoints, you must include a header or parameter in the request depending on the authentication method that the application is configured with.
+
+
+<b><code>POST https://idp.<i>[e2e/prd]</i>.itsme.services/v2/token</code></b>
+
+### Parameters
+
+<table>
+  <tbody>
+    <tr>
+      <td>{% include parameter.html name="grant_type" req="REQUIRED" %}</td>
+      <td>Set this to <code>authorization_code</code> to tell the Token Endpoint that the application wants to exchange an authorization code for an ID koken and access token.</td>
+    </tr>
+     <tr>
+      <td>{% include parameter.html name="code" req="REQUIRED" %}</td>
+      <td>The intermediate opaque credential received in the Authorization Response.</td>
+    </tr>
+    <tr>
+      <td>{% include parameter.html name="redirect_uri" req="REQUIRED" %}</td>
+      <td>It is the URL to which users are redirected once the authentication is complete. It MUST match the value used in the Authorization Request.
+    </tr>
+    <tr>
+      <td>{% include parameter.html name="client_assertion" req="REQUIRED" %}</td>
+      <td>Contains a JWT token that was signed, and then encrypted, using the client RSA keys. This ensures that the request to get the id token and access token is made only from the application, and not from a potential attacker that may have intercepted the authorization code.
+        
+        
+        <table>
+          <tr>
+            <td>{% include parameter.html name="service" req="REQUIRED" %}</td><td>It indicates the itsme® service your application intends to use, e.g. <code>service:TEST_code</code> by replacing "TEST_code" with the service code generated during registration.</td>
+          </tr>
+          <tr>
+            <td>{% include parameter.html name="openid" req="REQUIRED" %}</td><td>It indicates that your application intends to use the OpenID Connect protocol to verify a user's identity by returning a <code>sub</code> claim which represents a unique identifier for the authenticated user.</td>
+          </tr>
+          <tr>
+            <td>{% include parameter.html name="profile" req="OPTIONAL" %}</td><td>Returns claims that represent basic profile information, including <code>family_name</code>, <code>given_name</code>, <code>name</code>, <code>gender</code> and <code>birthdate</code>.</td>
+          </tr>
+          <tr>
+            <td>{% include parameter.html name="email" req="OPTIONAL" %}</td><td>Returns the <code>email</code> claim, which contains the user's email address, and <code>email_verified</code>, which is a boolean indicating whether the email address was verified by the user.</td>
+          </tr>
+          <tr>
+            <td>{% include parameter.html name="address" req="OPTIONAL" %}</td><td>Returns the information about the user's postal address. The value of the address member is a JSON structure containing some or all of these members <code>formatted</code> <code>street_address</code> <code>postal_code</code> <code>locality</code> <code>country</code></td>
+          </tr> 
+          <tr>
+            <td>{% include parameter.html name="phone" req="OPTIONAL" %}</td><td>Returns the <code>phone</code> claim, which contains the user's phone number, and <code>phone_number_verified</code>, which is a boolean indicating whether the phone number was verified by the user.</td>
+          </tr> 
+        </table>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
 
 ### Response
 
@@ -291,11 +362,10 @@ Upon clicking this button, we will open a modal view which contains a field that
 
 {% endtab %}
 
-{% tab create_authentication_API Symmetric keys %}
+{% tab build_token_API Symmetric keys %}
 
 YYY
 
 {% endtab %}
 
 {% endtabs %}
-
