@@ -224,7 +224,7 @@ Upon clicking this button, we will open a modal view which contains a field that
 
 ### Response
 
-<code>200</code> <code>application/hal+json</code>
+<code>200</code> <code>application/json</code>
 
 <table>
   <tbody>
@@ -249,9 +249,9 @@ Upon clicking this button, we will open a modal view which contains a field that
 ## Build Token Request
 
 
-To asserts the identity of the user, the <code>code</code> received previously need to be exchanged for an ID Token and Access Token. During this step, your application has to authenticate itself to our server using RSA keys. 
-
 <b><code>POST https://idp.<i>[e2e/prd]</i>.itsme.services/v2/token</code></b>
+
+To asserts the identity of the user, the <code>code</code> received previously need to be exchanged for an ID Token and Access Token. During this step, your application has to authenticate itself to our server using RSA keys. 
 
 ### Parameters
 
@@ -301,7 +301,7 @@ To asserts the identity of the user, the <code>code</code> received previously n
 
 ### Response
 
-<code>200</code> <code>application/hal+json</code>
+<code>200</code> <code>application/json</code>
 
 <table>
   <tbody>
