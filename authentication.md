@@ -224,7 +224,7 @@ Upon clicking this button, we will open a modal view which contains a field that
 
 ### Response
 
-<code>200</code> <code>application/json</code>
+<code>200</code> <code>application/hal+json</code>
 
 <table>
   <tbody>
@@ -301,7 +301,7 @@ To asserts the identity of the user, the <code>code</code> received previously n
 
 ### Response
 
-<code>200</code> <code>application/json</code>
+<code>200</code> <code>application/hal+json</code>
 
 <table>
   <tbody>
