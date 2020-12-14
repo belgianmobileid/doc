@@ -283,13 +283,6 @@ YYY
 
 To asserts the identity of the user, the <code>code</code> received previously need to be exchanged for an ID Token and Access Token. During this step, your application has to authenticate itself to our server using RSA keys. 
 
-As the Token 
-
-
-
-Some endpoints require client authentication. To make requests to these endpoints, you must include a header or parameter in the request depending on the authentication method that the application is configured with.
-
-
 <b><code>POST https://idp.<i>[e2e/prd]</i>.itsme.services/v2/token</code></b>
 
 ### Parameters
@@ -300,7 +293,7 @@ Some endpoints require client authentication. To make requests to these endpoint
       <td>{% include parameter.html name="grant_type" req="REQUIRED" %}</td>
       <td>Set this to <code>authorization_code</code> to tell the Token Endpoint that the application wants to exchange an authorization code for an ID koken and access token. </td>
     </tr>
-     <tr>
+    <tr>
       <td>{% include parameter.html name="code" req="REQUIRED" %}</td>
       <td>The intermediate opaque credential received in the Authorization Response.</td>
     </tr>
