@@ -14,9 +14,9 @@ REST also implies a nice and clean structure for URLs or endpoints. This means y
 
 # Authentication
 
-A client authentication method is requied to protect the exhange of entitlement information between us, ensure the requested information get issued to a legitimate service provider and not some other party.
+The itsme® API is based on the Authorization Code Flow of OpenID Connect, meaning that some of the endpoints require a client authentication to protect the exhange of entitlement information and ensure the requested information get issued to a legitimate application and not some other party.
 
-The itsme API offers two authentication methods :
+itsme® Okta supports the following authentication methods :
 
 <ul>
   <li>asymmetric RSA key pair</li>
