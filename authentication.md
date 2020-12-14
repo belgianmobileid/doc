@@ -271,7 +271,7 @@ To asserts the identity of the user, the <code>code</code> received previously n
     </tr>
     <tr>
       <td>{% include parameter.html name="client_assertion_type" req="REQUIRED" %}</td>
-      <td>specifies the type of assertion. Set this to <code>urn:ietf:params:oauth:client-assertion-type:jwt-bearer</code>.
+      <td>specifies the type of assertion. Set this to <code>urn:ietf:params:oauth:client-assertion-type:jwt-bearer</code>.</td>
     </tr>
     <tr>
       <td>{% include parameter.html name="client_assertion" req="REQUIRED" %}</td>
