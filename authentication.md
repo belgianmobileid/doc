@@ -33,7 +33,7 @@ The diagram below describes the **Authentication** process and how your backend 
 
 If a user doesn't have the itsme® app, he will be redirected to a mobile website with more information and download links.
 
-# Generate itsme® button
+## Generate itsme® button
 
 First, you will need to create a button to allow your users to authenticate with itsme®. See the <a href="https://brand.belgianmobileid.be/d/CX5YsAKEmVI7/documentation#/ux/buttons-1518207548" target="blank">Button design guide</a> before you start the integration. 
 
