@@ -5,9 +5,13 @@ permalink: /authentication/
 nav_order: 4
 ---
 
-# Overview
+# Guide
 
-Our itsme® app can be seamlessly be integrated with your web desktop, mobile web or mobile application so you can perform secure identity checks.
+## OIDC protocol and diagram
+
+This API is based on the Authorization Code Flow of OpenID Connect 1.0. It allows computing clients to verify the identity of an end-user based on the authentication performed by an authorization server, as well as to obtain basic profile information about the end-user in an interoperable and REST-like manner. Sounds technical, but it’s really quite easy. The REST architecture mainly breaks down to HTTP-methods GET and POST.
+
+REST also implies a nice and clean structure for URLs or endpoints. This means you can reach any part of the itsme® API on https://idp.prd.itsme.services/v2/ adding the name of the resource you want to interact with. 
 
 The diagram below describes the **Authentication** process and how your backend is integrated within the itsme® architecture :
   
@@ -15,25 +19,119 @@ The diagram below describes the **Authentication** process and how your backend 
 
 <ol>
   <li>The User indicates on your end he wishes to authenticate with itsme®</li>
-  <li>Your web desktop, mobile web or mobile application (aka 'Relying Party' in the OpenID Connect specification) sends a request to itsme® (aka 'OpenID Provider' in the OpenID Connect specification) to authenticate the User. This request will redirect the User to the itsme® Front-End. itsme® then authenticates the User by asking him
+  <li>Your web desktop, mobile web or mobile application sends a request to itsme® to authenticate the User. This request will redirect the user to the itsme® Front-End. itsme® then authenticates the user by asking him
     <ul type>
-      <li>to enter his phone number on the itsme® OpenID web page</li>
+      <li>to enter his phone number on the itsme® sign-in page</li>
       <li>authorize the release of some information’s to your application</li>
-      <li>to provide his credentials (itsme® code or fingerprint or FaceID)</li>
-    </ul>
-  
-  If you are building a mobile web or mobile application, the User don’t need to enter his mobile phone number on the itsme® OpenID web page, he will be automatically redirected to the itsme app via the Universal links or App links mechanism.</li>
-  <li>Once the User has authorized the request and has been authenticated, itsme® will return an Authorization Code to the Service Provider Front-End, redirecting the user to your mobile or web application.</li>
-  <li>The Service Provider Back-End calls the itsme® Token Endpoint and exchanges the Authorization Code for an ID Token identifying the User and an Access Token.</li>
-  <li>The Service Provider Back-End MAY request the additional User information from the itsme® userInfo Endpoint by presenting the Access Token obtained in the previous step.</li>
+      <li>to enter his credentials into the itsme® app (itsme® code or fingerprint or FaceID)</li>
+    </ul><br>If you are building a mobile web or mobile application, the User don’t need to enter his mobile phone number on the itsme® sign-in page, he will be automatically redirected to the itsme® app via the Universal links or App links mechanism.</li>
+  <li>Once the user has authorized the request and has been authenticated, itsme® will return an Authorization Code to the Service Provider Front-End, redirecting the user to your mobile or web application.</li>
+  <li>The Service Provider Back-End calls the itsme® Token Endpoint and exchanges the Authorization Code for an ID token and an access token.</li>
+  <li>If the required claims are not returned in the ID koken, you can obtain the additional claims by presenting the access token to the itsme® UserInfo Endpoint.</li>
   <li>At this stage you are able to confirm the success of the operation and display a success message.</li>
 </ol>
 
-If a user doesn't have the itsme® app, they'll be redirected to a mobile website with more information and download links.
+If a user doesn't have the itsme® app, he will be redirected to a mobile website with more information and download links.
 
+# Generate itsme® button
+
+First, you will need to create a button to allow your users to authenticate with itsme®. See the <a href="https://brand.belgianmobileid.be/d/CX5YsAKEmVI7/documentation#/ux/buttons-1518207548" target="blank">Button design guide</a> before you start the integration. 
+
+Upon clicking this button, we will open a modal view which contains a field that need to be filled by the end user with it’s phone number. Note that mobile web users will skip the phone number step, as they use the itsme® mobile app directly to authenticate.
+
+## Authentication
+
+The itsme® API is based on the Authorization Code Flow of OpenID Connect, meaning that some of the endpoints require a client authentication to protect the exhange of entitlement information and ensure the requested information get issued to a legitimate application and not some other party.
+
+itsme® Okta supports the following authentication methods :
+
+<ul>
+  <li>asymmetric RSA key pair</li>
+  <li>symmetric shared secret</li>
+</ul>
+
+We recommend using the private_key_jwt method as it is more secure.  
+
+### Asymmetric RSA 
+
+This method requires that each party exposes its public keys as a simple JWK Set document on a URI accessible to all, and keep its private set for itself. For itsme®, this URI can be retrieved from the [itsme® Discovery document](#OpenIDConfig), using the <i>"jwks_uri"</i> key.
+
+Your private and public keys can be generated using your own tool or via Yeoman. If using Yeoman, you need to install generator-itsme with NPM:
+
+```
+$ npm install -g yo generator-itsme
+```
+
+After installation, run the generator:
+
+```
+$ yo itsme
+```
+
+The Yeoman tool will generate two files, the jwks_private.json which MUST be stored securely somewhere in your systems, and the jwks_public.json which need to be exposed as a JWK Set on a URI accessible to all parties.
+
+<aside class="notice">Whatever the tool you are choosing to create your key pairs, don't forget to send your JWK Set URI by email to <a href = "mailto: onboarding@itsme.be">onboarding@itsme.be</a> and we’ll make sure to complete the configuration for you in no time!
+</aside>
+
+### Symmetric secret 
+
+This method requires the exchange of a static secret that will be used to authenticate with our Back-End. 
+
+The client_secret value will be provided by itsme® when <a href="https://belgianmobileid.github.io/doc/getting-started.html#getting-started" target="blank">registering your project</a>.
+
+
+## Handling errors
+
+Whenever you send a request to the itsme® API you’ll get a response in JSON (JavaScript Object Notation) format. This is a standard for data communication that’s easy to read for humans as well as machines. Alongside the JSON-response an HTTP status code is sent that shows whether the request was successful or not. If it wasn’t, you can tell by the code and the message in the response what went wrong, why it went wrong and whether there is something you can do about it.
+
+
+### A successful response
+
+
+### The error response type
+
+**Error reponse**
+
+In case an error is returned, the JSON will look like :
+
+<table>
+  <tbody>
+    <tr>
+      <td>{% include parameter.html name="error" req="" %}</td>
+      <td>A single error code.<br><br>Possible values are listed in the table below.</td>
+    </tr>
+    <tr>
+      <td>{% include parameter.html name="error_description" req="" %}</td>
+      <td>Human-readable text providing additional information, used to assist the developer in understanding the error that occurred.</td>
+    </tr>
+    <tr>
+      <td>{% include parameter.html name="state" req="" %}</td>
+      <td>The string value provided in the Authorization Request. You SHOULD validate that the value returned matches the one supplied.</td>
+    </tr>
+  </tbody>
+</table>
+
+### All possible status codes
+
+<table>
+  <tbody>
+    <tr>
+      <td>{% include parameter.html name="XXX" req="" %}</td>
+      <td>XXX</td>
+    </tr>
+    <tr>
+      <td>{% include parameter.html name="YYYY" req="" %}</td>
+      <td>YYYY</td>
+    </tr>
+   </tbody>
+</table>
+
+
+<a name="AuthNRequest"></a>
+# API reference
 
 <a name="OpenIDConfig"></a>
-# itsme® OpenID Provider configuration
+## itsme® Discovery Document
 
 
 To simplify implementations and increase flexibility, <a href="https://openid.net/specs/openid-connect-discovery-1_0.html" target="blank">OpenID Connect allows the use of a Discovery Document</a>, a JSON document containing key-value pairs which provide details about itsme® configuration, such as the URIs of the 
@@ -53,16 +151,6 @@ Environment | URL
 **PRODUCTION** | <a href="https://idp.prd.itsme.services/v2/.well-known/openid-configuration" target="blank">https://idp.prd.itsme.services/v2/.well-known/openid-configuration</a>
 
 
-
-# Generate itsme® button
-
-First, you will need to create a button to allow your users to authenticate with itsme®. See the <a href="https://brand.belgianmobileid.be/d/CX5YsAKEmVI7/documentation#/ux/buttons-1518207548" target="blank">Button design guide</a> before you start the integration. 
-
-Upon clicking this button, we will open a modal view which contains a field that need to be filled by the end user with it’s phone number. Note that mobile web users will skip the phone number step, as they use the itsme® mobile app directly to authenticate.
-
-
-<a name="AuthNRequest"></a>
-# API reference
 
 ## Authorization Request
 
@@ -402,7 +490,6 @@ Content-Type: application/json
    "picture": "http://example.com/janedoe/me.jpg"
   }
 ```
-
 
 {% endtab %}
 
