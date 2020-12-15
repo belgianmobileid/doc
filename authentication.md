@@ -19,7 +19,7 @@ The diagram below describes the **Authentication** integration process and how y
 
 <ol>
   <li>Add itsme® button to your front-end page so the User can indicate he wishes to authenticate with itsme® : <a href="https://brand.belgianmobileid.be/d/CX5YsAKEmVI7/documentation#/ux/buttons-1518207548" target="blank">itsme® button specifications</a>.</li>
-  <li>Create the <a href="AuthNRequest" target="blank">Authorization Request</a> to authenticate the User. This request will redirect the User to the itsme® Front-End. itsme® then authenticates the User by asking him 
+  <li>Create the <a href="https://belgianmobileid.github.io/doc/authentication/authorization-request" target="blank">Authorization Request</a> to authenticate the User. This request will redirect the User to the itsme® Front-End/app. itsme® then authenticates the User by asking him 
     <ul type>
       <li>to enter his phone number on the itsme® sign-in page</li>
       <li>authorize the release of some information to your application</li>
