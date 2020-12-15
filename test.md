@@ -20,6 +20,7 @@ tagada
 {% tab truc ruby %}
 
 tsoin tsoin
+here goes some code
 
 {% endtab %}
 
