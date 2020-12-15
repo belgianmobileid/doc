@@ -66,6 +66,10 @@ Upon clicking this button, we will open a modal view which contains a field that
 
 ## Authorization Request
 
+{% tabs AuthorizationRequest %}
+
+{% tab AuthorizationRequest RSA keys %}
+
 <b><code>GET https://idp.<i>[e2e/prd]</i>.itsme.services/v2/authorization</code></b>
 
 ### Parameters
@@ -245,6 +249,15 @@ Upon clicking this button, we will open a modal view which contains a field that
 
 **Response**
 
+{% endtab %}
+
+{% tab AuthorizationRequest Symmetric keys %}
+
+XXX
+
+{% endtab %}
+
+{% endtabs %}
 
 ## Token Request
 
