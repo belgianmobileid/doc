@@ -261,6 +261,10 @@ XXX
 
 ## Token Request
 
+{% tabs TokenRequest %}
+
+{% tab TokenRequest RSA keys %}
+
 <b><code>POST https://idp.<i>[e2e/prd]</i>.itsme.services/v2/token</code></b>
 
 To asserts the identity of the user, the <code>code</code> received previously need to be exchanged for an ID Token and Access Token. During this step, your application has to authenticate itself to our server using RSA keys. 
@@ -343,6 +347,15 @@ To asserts the identity of the user, the <code>code</code> received previously n
 
 **Response**
 
+{% endtab %}
+
+{% tab TokenRequest Symmetric keys %}
+
+XXX
+
+{% endtab %}
+
+{% endtabs %}
 
 ## UserInfo Request
 
