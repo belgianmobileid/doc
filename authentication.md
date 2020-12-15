@@ -133,6 +133,9 @@ In case an error is returned, the JSON will look like :
 <a name="OpenIDConfig"></a>
 ## itsme® Discovery Document
 
+{% tabs DiscoveryDocument %}
+
+{% tab DiscoveryDocument RSA keys %}
 
 To simplify implementations and increase flexibility, <a href="https://openid.net/specs/openid-connect-discovery-1_0.html" target="blank">OpenID Connect allows the use of a Discovery Document</a>, a JSON document containing key-value pairs which provide details about itsme® configuration, such as the URIs of the 
 
@@ -150,7 +153,15 @@ Environment | URL
 **SANDBOX** | <a href="https://idp.e2e.itsme.services/v2/.well-known/openid-configuration" target="blank">https://idp.e2e.itsme.services/v2/.well-known/openid-configuration</a>
 **PRODUCTION** | <a href="https://idp.prd.itsme.services/v2/.well-known/openid-configuration" target="blank">https://idp.prd.itsme.services/v2/.well-known/openid-configuration</a>
 
+{% endtab %}
 
+{% tab DiscoveryDocument Symmetric keys %}
+
+XXX
+
+{% endtab %}
+
+{% endtabs %}
 
 ## Authorization Request
 
