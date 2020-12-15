@@ -19,7 +19,7 @@ The diagram below describes the **Authentication** integration process and how y
 
 <ol>
   <li>Add itsme® button to your front-end page so the User can indicate he wishes to authenticate with itsme® : <a href="https://brand.belgianmobileid.be/d/CX5YsAKEmVI7/documentation#/ux/buttons-1518207548" target="blank">itsme® button specifications</a>.</li>
-  <li>Create the <a href="https://belgianmobileid.github.io/doc/authentication/authorization-request" target="blank">Authorization Request</a> to authenticate the User. This request will redirect the User to the itsme® Front-End/app. itsme® then authenticates the User by asking him 
+  <li>Create the <a href="#AuthNReq" >Authorization Request</a> to authenticate the User. This request will redirect the User to the itsme® Front-End/app. itsme® then authenticates the User by asking him 
     <ul type>
       <li>to enter his phone number on the itsme® sign-in page</li>
       <li>authorize the release of some information to your application</li>
@@ -141,7 +141,6 @@ In a limited number of cases (e.g. technical issue,…) a user could ask itsme®
 If the same user would opt to (re)create an itsme® afterwards, he will need to re-bind his itsme® account with your application server (as the initial identifier is no longer valid as explained before). To re-bind his itsme® account one of the above scenario should be used. After successful (re)binding you will need to overwrite the initial reference with the new <code>sub</code> claim value in your database.
 
 
-<a name="AuthNRequest"></a>
 # API reference
 
 <a name="OpenIDConfig"></a>
@@ -177,6 +176,7 @@ XXX
 
 {% endtabs %}
 
+<a id="AuthNReq"></a>
 ## Authorization Request
 
 {% tabs AuthorizationRequest %}
