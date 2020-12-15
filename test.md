@@ -86,7 +86,7 @@ $ npm install -g yo generator-itsme
     </tr>
     <tr>
       <td>{% include parameter.html name="Param2" req="optional" %}</td>
-      <td>Global description of Param2</td>
+      <td>Global description of Param2 </td>
     </tr>
   </tbody>
 </table>
