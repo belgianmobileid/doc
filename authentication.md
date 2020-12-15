@@ -15,7 +15,7 @@ REST also implies a nice and clean structure for URLs or endpoints. This means y
 
 The diagram below describes the **Authentication** integration process and how your backend is integrated within the itsme® architecture :
   
- ![Sequence diagram describing the OpenID flow](OpenID_SeqDiag.png)
+ ![Sequence diagram describing the OpenID flow](/doc/public/images/OpenID_SeqDiag.png)
 
 <ol>
   <li>Add itsme® button to your front-end page so the User can indicate he wishes to authenticate with itsme® : <a href="https://brand.belgianmobileid.be/d/CX5YsAKEmVI7/documentation#/ux/buttons-1518207548" target="blank">itsme® button specifications</a>.</li>
