@@ -133,10 +133,6 @@ In case an error is returned, the JSON will look like :
 <a name="OpenIDConfig"></a>
 ## itsme® Discovery Document
 
-{% tabs DiscoveryDocument %}
-
-{% tab DiscoveryDocument RSA keys %}
-
 To simplify implementations and increase flexibility, <a href="https://openid.net/specs/openid-connect-discovery-1_0.html" target="blank">OpenID Connect allows the use of a Discovery Document</a>, a JSON document containing key-value pairs which provide details about itsme® configuration, such as the URIs of the 
 
 <ul>
@@ -147,6 +143,10 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
 </ul>
 
 The Discovery document for itsme® can be retrieved from: 
+
+{% tabs DiscoveryDocument %}
+
+{% tab DiscoveryDocument RSA keys %}
 
 Environment | URL
 :-------- | :--------
