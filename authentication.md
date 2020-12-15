@@ -7,28 +7,28 @@ nav_order: 4
 
 # Guide
 
-## OIDC protocol and diagram
+## Overview
 
 This API is based on the Authorization Code Flow of OpenID Connect 1.0. It allows computing clients to verify the identity of an end-user based on the authentication performed by an authorization server, as well as to obtain basic profile information about the end-user in an interoperable and REST-like manner. Sounds technical, but it’s really quite easy. The REST architecture mainly breaks down to HTTP-methods GET and POST.
 
 REST also implies a nice and clean structure for URLs or endpoints. This means you can reach any part of the itsme® API on <code>https://idp.prd.itsme.services/v2/</code> adding the name of the resource you want to interact with. 
 
-The diagram below describes the **Authentication** process and how your backend is integrated within the itsme® architecture :
+The diagram below describes the **Authentication** integration process and how your backend is integrated within the itsme® architecture :
   
  ![Sequence diagram describing the OpenID flow](OpenID_SeqDiag.png)
 
 <ol>
-  <li>The User indicates on your end he wishes to authenticate with itsme®</li>
-  <li>Your web desktop, mobile web or mobile application sends a request to itsme® to authenticate the User. This request will redirect the user to the itsme® Front-End. itsme® then authenticates the user by asking him
+  <li>Add itsme® button to your front-end page so the User can indicate he wishes to authenticate with itsme® : <a href="https://brand.belgianmobileid.be/d/CX5YsAKEmVI7/documentation#/ux/buttons-1518207548" target="blank">itsme® button specifications</a>.</li>
+  <li>Create the <a href="AuthNRequest" target="blank">Authorization Request</a> to authenticate the User. This request will redirect the User to the itsme® Front-End. itsme® then authenticates the User by asking him 
     <ul type>
       <li>to enter his phone number on the itsme® sign-in page</li>
-      <li>authorize the release of some information’s to your application</li>
-      <li>to enter his credentials into the itsme® app (itsme® code or fingerprint or FaceID)</li>
-    </ul><br>If you are building a mobile web or mobile application, the User don’t need to enter his mobile phone number on the itsme® sign-in page, he will be automatically redirected to the itsme® app via the Universal links or App links mechanism.</li>
-  <li>Once the user has authorized the request and has been authenticated, itsme® will return an Authorization Code to the Service Provider Front-End, redirecting the user to your mobile or web application.</li>
-  <li>The Service Provider Back-End calls the itsme® Token Endpoint and exchanges the Authorization Code for an ID token and an access token.</li>
-  <li>If the required claims are not returned in the ID koken, you can obtain the additional claims by presenting the access token to the itsme® UserInfo Endpoint.</li>
-  <li>At this stage you are able to confirm the success of the operation and display a success message.</li>
+      <li>authorize the release of some information to your application</li>
+      <li>to provide his credentials (itsme® code or fingerprint or FaceID)</li>
+    </ul><br>It is also in this Authorization Request that you will be able to request claims about the User and the Authentication event.</li>
+  <li>Collect the Authorization Code and redirect the user to your mobile or web application once the User has authorized the request and has been authenticated.</li>
+  <li>Exchange the Authorization Code for an ID Token (e.g. identifying the User) and an Access Token.</li>
+  <li>Obtain the additional claims by presenting the access token to the itsme® UserInfo Endpoint if the required claims are not returned in the ID token.</li>
+  <li>Confirm the success of the operation and display a success message.</li>
 </ol>
 
 If a user doesn't have the itsme® app, he will be redirected to a mobile website with more information and download links.
