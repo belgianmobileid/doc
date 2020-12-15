@@ -15,19 +15,19 @@ REST also implies a nice and clean structure for URLs or endpoints. This means y
 
 The diagram below describes the **Authentication** integration process and how your backend is integrated within the itsme® architecture :
   
- ![Sequence diagram describing the OpenID flow](/doc/public/images/OpenID_SeqDiag.png)
+ ![Sequence diagram describing the OpenID flow](OpenID_SeqDiag.png)
 
 <ol>
   <li>Add itsme® button to your front-end page so the User can indicate he wishes to authenticate with itsme® : <a href="https://brand.belgianmobileid.be/d/CX5YsAKEmVI7/documentation#/ux/buttons-1518207548" target="blank">itsme® button specifications</a>.</li>
   <li>Create the <a href="#AuthNReq" >Authorization Request</a> to authenticate the User. This request will redirect the User to the itsme® Front-End/app. itsme® then authenticates the User by asking him 
     <ul type>
-      <li>to enter his phone number on the itsme® sign-in page</li>
+      <li>to enter his phone number on the itsme® sign-in page</li> 
       <li>authorize the release of some information to your application</li>
       <li>to provide his credentials (itsme® code or fingerprint or FaceID)</li>
     </ul><br>It is also in this Authorization Request that you will be able to request claims about the User and the Authentication event.</li>
-  <li>Collect the Authorization Code and redirect the user to your mobile or web application once the User has authorized the request and has been authenticated.</li>
-  <li>Exchange the Authorization Code for an ID Token (e.g. identifying the User) and an Access Token.</li>
-  <li>Obtain the additional claims by presenting the access token to the itsme® UserInfo Endpoint if the required claims are not returned in the ID token.</li>
+  <li><a href="#AuthNResp" >Collect the Authorization Code</a> and redirect the user to your mobile or web application once the User has authorized the request and has been authenticated.</li>
+  <li><a href="#TokenReq" >Exchange the Authorization Code for an ID token</a> (e.g. identifying the User) and an Access Token.</li>
+  <li>Obtain the additional claims by <a href="#UserInfoReq" >presenting the access token to the itsme® UserInfo Endpoint</a> if the required claims are not returned in the ID token.</li>
   <li>Confirm the success of the operation and display a success message.</li>
 </ol>
 
@@ -143,7 +143,7 @@ If the same user would opt to (re)create an itsme® afterwards, he will need to 
 
 # API reference
 
-<a name="OpenIDConfig"></a>
+<a id="OpenIDConfig"></a>
 ## itsme® Discovery Document
 
 To simplify implementations and increase flexibility, <a href="https://openid.net/specs/openid-connect-discovery-1_0.html" target="blank">OpenID Connect allows the use of a Discovery Document</a>, a JSON document containing key-value pairs which provide details about itsme® configuration, such as the URIs of the 
@@ -338,7 +338,7 @@ XXX
   </tbody>
 </table>
 
-
+<a id="AuthNResp"></a>
 ### Response
 
 <code>200</code> <code>application/json</code>
@@ -372,6 +372,8 @@ XXX
 
 {% endtabs %}
 
+
+<a id="TokenReq"></a>
 ## Token Request
 
 {% tabs TokenRequest %}
@@ -470,6 +472,7 @@ XXX
 
 {% endtabs %}
 
+<a id="UserInfoReq"></a>
 ## UserInfo Request
 
 {% tabs UserInfoRequest %}
