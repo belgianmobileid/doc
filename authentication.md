@@ -146,6 +146,22 @@ If the same user would opt to (re)create an itsme® afterwards, he will need to 
 <a id="OpenIDConfig"></a>
 ## itsme® Discovery Document
 
+{% tabs DiscoveryDocument %}
+
+{% tab DiscoveryDocument RSA keys %}
+
+<b><code>GET https://idp.<i>[e2e/prd]</i>.itsme.services/v2/.well-known/openid-configuration</code></b>
+
+{% endtab %}
+
+{% tab DiscoveryDocument Symmetric keys %}
+
+<b><code>GET https://oidc.<i>[e2e/prd]</i>.itsme.services/clientsecret-oidc/csapi/v0.1/.well-known/openid-configuration</code></b>
+
+{% endtab %}
+
+{% endtabs %}
+
 To simplify implementations and increase flexibility, <a href="https://openid.net/specs/openid-connect-discovery-1_0.html" target="blank">OpenID Connect allows the use of a Discovery Document</a>, a JSON document containing key-value pairs which provide details about itsme® configuration, such as the URIs of the 
 
 <ul>
@@ -155,26 +171,6 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
   <li>...</li>
 </ul>
 
-The Discovery document for itsme® can be retrieved from: 
-
-{% tabs DiscoveryDocument %}
-
-{% tab DiscoveryDocument RSA keys %}
-
-Environment | URL
-:-------- | :--------
-**SANDBOX** | <a href="https://idp.e2e.itsme.services/v2/.well-known/openid-configuration" target="blank">https://idp.e2e.itsme.services/v2/.well-known/openid-configuration</a>
-**PRODUCTION** | <a href="https://idp.prd.itsme.services/v2/.well-known/openid-configuration" target="blank">https://idp.prd.itsme.services/v2/.well-known/openid-configuration</a>
-
-{% endtab %}
-
-{% tab DiscoveryDocument Symmetric keys %}
-
-XXX
-
-{% endtab %}
-
-{% endtabs %}
 
 <a id="AuthNReq"></a>
 ## Authorization Request
