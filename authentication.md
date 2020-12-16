@@ -780,3 +780,38 @@ This is illustrated in the example below.
 {% endtab %}
 
 {% endtabs %}
+
+## Revoke Request
+
+{% tabs UserInfoRequest %}
+
+{% tab UserInfoRequest RSA keys %}
+
+Not applicable.
+
+{% endtab %}
+
+{% tab UserInfoRequest Symmetric keys %}
+
+<b><code>POST https://oidc.<i>[e2e/prd]</i>.itsme.services/clientsecret-oidc/csapi/v0.1/connect/revoke</code></b>
+
+
+
+
+### Response
+
+
+
+### Example
+
+**Request**
+
+
+**Response**
+
+
+
+{% endtab %}
+
+{% endtabs %}
+
