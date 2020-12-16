@@ -555,7 +555,7 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
 
 <b><code>POST https://idp.<i>[e2e/prd]</i>.itsme.services/v2/token</code></b>
 
-To asserts the identity of the user, the <code>code</code> received previously need to be exchanged for an ID Token and Access Token. During this step, your application has to authenticate itself to our server using RSA keys. 
+To asserts the identity of the user, the <code>code</code> received previously need to be exchanged for an ID token and access token. During this step, your application has to authenticate itself to our server using RSA keys. 
 
 ### Parameters
 
@@ -639,7 +639,66 @@ To asserts the identity of the user, the <code>code</code> received previously n
 
 {% tab TokenRequest Symmetric keys %}
 
-XXX
+<b><code>https://oidc.<i>[e2e/prd]</i>.itsme.services/clientsecret-oidc/csapi/v0.1/connect/token</code></b>
+
+To asserts the identity of the user, the <code>code</code> received previously need to be exchanged for an ID token and access token. During this step, your application has to authenticate itself to our server using RSA keys. 
+
+### Parameters
+
+<table>
+  <tbody>
+    <tr>
+      <td>{% include parameter.html name="grant_type" req="REQUIRED" %}</td>
+      <td>Set this to <code>authorization_code</code> to tell the Token Endpoint that the application wants to exchange an authorization code for an ID koken and access token. </td>
+    </tr>
+    <tr>
+      <td>{% include parameter.html name="code" req="REQUIRED" %}</td>
+      <td>The intermediate opaque credential received in the Authorization Response.</td>
+    </tr>
+    <tr>
+      <td>{% include parameter.html name="redirect_uri" req="REQUIRED" %}</td>
+      <td>It is the URL to which users are redirected once the authentication is complete. It MUST match the value used in the Authorization Request.</td>
+    </tr>
+    <tr>
+      <td>{% include parameter.html name="client_secret" req="REQUIRED" %}</td>
+      <td>Contains the a key you reveiced when registering your application. This ensures that the request to get the id token and access token is made only from the application, and not from a potential attacker that may have intercepted the authorization code.</td>
+    </tr>
+  </tbody>
+</table>
+
+
+### Response
+
+<code>200</code> <code>application/json</code>
+
+<table>
+  <tbody>
+    <tr>
+      <td>{% include parameter.html name="access_token" req="" %}</td>
+      <td>Allows an application to retrieve consented user information from the UserInfo Endpoint.</td>
+    </tr>
+    <tr>
+      <td>{% include parameter.html name="token_type" req="" %}</td>
+      <td>Provides the application with the information required to successfully utilize the access token. Set this to <code>Bearer</code>.</td>
+    </tr>
+    <tr>
+      <td>{% include parameter.html name="token_type" req="" %}</td>
+      <td>Specifies the additional attributes sent to the UserInfo Endpoint  together with the <code>access_token</code> response parameter. Returned value is <code>Bearer</code>.</td>      
+    </tr>
+    <tr>
+      <td>{% include parameter.html name="id_token" req="" %}</td>
+      <td>A security token that contains claims about the authentication of an user, and potentially other requested claims. The <code>id_token</code> value is represented as a signed and encrypted JSON Web Token. So, before being able to use the ID Token claim's you will have to decrypt and verify it using the RSA keys.</td>      
+    </tr>
+  </tbody>
+</table>
+
+
+### Example
+
+**Request**
+
+**Response**
+
 
 {% endtab %}
 
@@ -696,7 +755,27 @@ Content-Type: application/json
 
 {% tab UserInfoRequest Symmetric keys %}
 
-XXX
+<b><code>GET https://oidc.<i>[e2e/prd]</i>.itsme.services/clientsecret-oidc/csapi/v0.1/connect/userinfo</code></b>
+
+The UserInfo Endpoint returns previously consented user profile information to your application. In other words, if the required claims are not returned in the ID Token, you can obtain the additional claims by presenting the access token to the itsme® UserInfo Endpoint. This is achieved by sending a HTTP GET request over TLS to the Userinfo Endpoint , passing the access token value in the Authorization header using the Bearer authentication scheme.
+
+This is illustrated in the example below.
+
+
+### Response
+
+The UserInfo Response is a signed and encrypted JSON Web Token. So, before being able to extract the claims you will have to decrypt and verify it using the RSA keys.
+
+This is illustrated in the example below.
+
+### Example
+
+**Request**
+
+
+**Response**
+
+
 
 {% endtab %}
 
