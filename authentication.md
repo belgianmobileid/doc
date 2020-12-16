@@ -187,7 +187,7 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
   <tbody>
     <tr>
       <td>{% include parameter.html name="client_id" req="REQUIRED" %}</td>
-      <td>It identifies the client. This parameter value is generated during registration.</td>
+      <td>It identifies your application. This parameter value is generated during registration.</td>
     </tr>
      <tr>
       <td>{% include parameter.html name="response_type" req="REQUIRED" %}</td>
@@ -795,12 +795,34 @@ Not applicable.
 
 <b><code>POST https://oidc.<i>[e2e/prd]</i>.itsme.services/clientsecret-oidc/csapi/v0.1/connect/revoke</code></b>
 
+The Revocation Endpoint enables your application to notify itsme® that a previously obtained access token is no longer needed and MUST be revoked.
 
+ ### Parameters
 
+<table>
+  <tbody>
+    <tr>
+      <td>{% include parameter.html name="client_id" req="REQUIRED" %}</td>
+      <td>It identifies your application. This parameter value is generated during registration.</td>
+    </tr>
+    <tr>
+      <td>{% include parameter.html name="client_secret" req="REQUIRED" %}</td>
+      <td>Contains the a key you reveiced when registering your application.</td>
+    </tr>
+    <tr>
+      <td>{% include parameter.html name="token" req="REQUIRED" %}</td>
+      <td>The <code>access_token</code> previously obtained that you want to revoke.</td>
+    </tr>
+    <tr>
+      <td>{% include parameter.html name="token_type_hint" req="OPTIONAL" %}</td>
+      <td>If used, this is set to <code>access_token</code> because itsme® API don't support refresh tokens.</td>
+    </tr>
+  </tbody>
+</table>
 
 ### Response
 
-
+The response is very simple: it’s always an HTTP 200 if the token is revoked or unknown.
 
 ### Example
 
