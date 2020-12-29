@@ -21,30 +21,30 @@ For more information on how itsme® can best work for your business, please <a h
 
 ## Services
 
-Head over to our developer documentation for each our services. Here you will find:
+Head over to our developer documentation for each of our services. Here you will find:
 
 <ul>
   <li>A techical overview</li>
   <li>Step by step instructions on how to integrate</li>
-  <li>Code snipplets</li>
+  <li>Code snippets</li>
 </ul>
 
 Product | Description
 :-------- | :--------
-**Authentication** | Enable your users/customers to log in securely to your application (on web, tablet or mobile)
-**Identification** | Enable you to identify your users and access their verified data.
-**Confirmation** | Enable your users/customers to give their consent to a payment or order/action.
-**Signing** | Enable your users/customers to sign documents electronically. The itsme® Sign responds to the requirements for the creation of Qualified Electronic Signature (QES).
+**Authentication** | Enables your users/customers to log in securely to your application (on web, tablet or mobile)
+**Identification** | Enables you to identify your users and access their verified data.
+**Confirmation** | Enables your users/customers to give their consent to a payment or order/action.
+**Signing** | Enables your users/customers to sign documents electronically. The itsme® Sign responds to the requirements for the creation of Qualified Electronic Signature (QES).
 
 <a name="Onboarding"></a>
 ## Getting started
 
-In order to start your integration we will first set-up your personal Sanbox environment. To do this you will be requested to provide the following information :  
+In order to start your integration we will first setup your personal Sanbox environment. To do this you will be requested to provide the following information :  
 
 <ul>
   <li>Contact details such as your email, name, phone number.</li>
   <li>Organisation details as shown on the company register for your jurisdiction.</li>
-  <li>Information about the project you want to set-up (the services you want to use, the client authentication method you want to set-up, the user attributes you want to request, ...)</li>
+  <li>Information about the project you want to setup (the services you want to use, the client authentication method you want to set-up, the user attributes you want to request, ...)</li>
 </ul>
 
 Our onboarding team will review your project and get in touch within 3 days with your credentials:
