@@ -23,7 +23,7 @@ The diagram below describes the **Authentication** integration process and how y
     <ul type>
       <li>to enter his phone number on the itsme® sign-in page</li> 
       <li>authorize the release of some information to your application</li>
-      <li>to provide his credentials (itsme® code or fingerprint or FaceID)</li>
+      <li>to provide his credentials (itsme® code, fingerprint or FaceID)</li>
     </ul><br>It is also in this Authorization Request that you will be able to request claims about the User and the Authentication event.</li>
   <li><a href="#AuthNResp" >Collect the Authorization Code</a> and redirect the user to your mobile or web application once the User has authorized the request and has been authenticated.</li>
   <li><a href="#TokenReq" >Exchange the Authorization Code for an ID token</a> (e.g. identifying the User) and an Access Token.</li>
@@ -35,13 +35,13 @@ If a user doesn't have the itsme® app, he will be redirected to a mobile websit
 
 ## Generate itsme® button
 
-First, you will need to create a button to allow your users to authenticate with itsme®. See the <a href="https://brand.belgianmobileid.be/d/CX5YsAKEmVI7/documentation#/ux/buttons-1518207548" target="blank">Button design guide</a> before you start the integration. 
+First, you will need to create a button to allow your users to authenticate with itsme®. Check the <a href="https://brand.belgianmobileid.be/d/CX5YsAKEmVI7/documentation#/ux/buttons-1518207548" target="blank">Button design guide</a> before you start the integration. 
 
-Upon clicking this button, we will open a modal view which contains a field that need to be filled by the end user with it’s phone number. Note that mobile web users will skip the phone number step, as they use the itsme® mobile app directly to authenticate.
+Upon clicking this button, we will open a modal view which contains a field that needs to be filled by the end user with its phone number. Note that mobile web users will skip the phone number step, as they use the itsme® mobile app directly to authenticate.
 
 ## Authentication
 
-The itsme® API is based on the Authorization Code Flow of OpenID Connect, meaning that some of the endpoints require a client authentication to protect the exhange of entitlement information and ensure the requested information get issued to a legitimate application and not some other party.
+The itsme® API is based on the Authorization Code Flow of OpenID Connect, meaning that some of the endpoints require a client authentication to protect the exchange of entitlement information and ensure the requested information gets issued to a legitimate application and not some other party.
 
 itsme® Okta supports the following authentication methods :
 
@@ -68,7 +68,7 @@ After installation, run the generator:
 $ yo itsme
 ```
 
-The Yeoman tool will generate two files, the jwks_private.json which MUST be stored securely somewhere in your systems, and the jwks_public.json which need to be exposed as a JWK Set on a URI accessible to all parties.
+The Yeoman tool will generate two files, the jwks_private.json which MUST be stored securely in your system, and the jwks_public.json which needs to be exposed as a JWK Set on a URI accessible to all parties.
 
 <aside class="notice">Whatever the tool you are choosing to create your key pairs, don't forget to send your JWK Set URI by email to <a href = "mailto: onboarding@itsme.be">onboarding@itsme.be</a> and we’ll make sure to complete the configuration for you in no time!
 </aside>
