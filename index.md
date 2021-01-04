@@ -55,7 +55,7 @@ Our onboarding team will review your project and get in touch within 3 days with
   <li>the list of user attributes you can request</li>
 </ul>
 
-<br><br><button type="button"><a href="https://docs.google.com/forms/d/e/1FAIpQLSdyfhKiiehNg4DhFzhQeHaj9EG2VeFoyPNVaI-TSwnG5WlFfw/viewform" target="blank">Request your Sandbox</a></button>
+<br><br><button type="button"><a href="https://partner-support.itsme.be/hc/en-us/requests/new?ticket_form_id=360004640194" target="blank">Request your Sandbox</a></button>
 
 
 
