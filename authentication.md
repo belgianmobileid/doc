@@ -196,7 +196,7 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
     <tr>
       <td>{% include parameter.html name="scope" req="REQUIRED" %}</td>
       <td>
-        It allows the application to express the desired scope of the access request. Each scope returns a set of user attributes. The scopes an application should request depend on which user attributes the application needs. Once the user authorizes the requested scopes, his details are returned in an ID Token and are also available through the UserInfo Endpoint.<br><br>All scope values must be space-separated.<br><br>The basic (and required) scopes are <code>openid</code> and <code>service</code>. Beyond that, your application can ask for additional standard scopes values which map to sets of related claims are: <code>profile</code> <code>email</code> <code>address</code> <code>phone</code><br />
+        It allows your application to express the desired scope of the access request. Each scope returns a set of user attributes. The scopes an application should request depend on which user attributes your application needs. Once the user authorizes the requested scopes, his details are returned in an ID Token and are also available through the UserInfo Endpoint.<br><br>All scope values must be space-separated.<br><br>The basic (and required) scopes are <code>openid</code> and <code>service</code>. Beyond that, your application can ask for additional standard scopes values which map to sets of related claims are: <code>profile</code> <code>email</code> <code>address</code> <code>phone</code><br />
         <table>
           <tr>
             <td>{% include parameter.html name="service" req="REQUIRED" %}</td><td>It indicates the itsme® service your application intends to use, e.g. <code>service:TEST_code</code> by replacing "TEST_code" with the service code generated during registration.</td>
@@ -379,7 +379,7 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
     <tr>
       <td>{% include parameter.html name="scope" req="REQUIRED" %}</td>
       <td>
-        It allows the application to express the desired scope of the access request. Each scope returns a set of user attributes. The scopes an application should request depend on which user attributes the application needs. Once the user authorizes the requested scopes, his details are returned in an ID Token and are also available through the UserInfo Endpoint.<br><br>All scope values must be space-separated.<br><br>The basic (and required) scopes is <code>openid</code> and <code>service</code>. Beyond that, your application can ask for additional standard scopes values which map to sets of related claims : <code>profile</code> <code>email</code> <code>address</code> <code>phone</code><br />
+        It allows your application to express the desired scope of the access request. Each scope returns a set of user attributes. The scopes an application should request depend on which user attributes your application needs. Once the user authorizes the requested scopes, his details are returned in an ID Token and are also available through the UserInfo Endpoint.<br><br>All scope values must be space-separated.<br><br>The basic (and required) scopes is <code>openid</code> and <code>service</code>. Beyond that, your application can ask for additional standard scopes values which map to sets of related claims : <code>profile</code> <code>email</code> <code>address</code> <code>phone</code><br />
         <table>
           <tr>
             <td>{% include parameter.html name="service" req="REQUIRED" %}</td><td>It indicates the itsme® service your application intends to use, e.g. <code>service:TEST_code</code> by replacing "TEST_code" with the service code generated during registration.</td>
@@ -563,7 +563,7 @@ To assert the identity of the user, the <code>code</code> received previously ne
   <tbody>
     <tr>
       <td>{% include parameter.html name="grant_type" req="REQUIRED" %}</td>
-      <td>Set this to <code>authorization_code</code> to tell the Token Endpoint that the application wants to exchange an authorization code for an ID koken and access token. </td>
+      <td>Set this to <code>authorization_code</code> to tell the Token Endpoint that your application wants to exchange an authorization code for an ID koken and access token. </td>
     </tr>
     <tr>
       <td>{% include parameter.html name="code" req="REQUIRED" %}</td>
@@ -579,7 +579,7 @@ To assert the identity of the user, the <code>code</code> received previously ne
     </tr>
     <tr>
       <td>{% include parameter.html name="client_assertion" req="REQUIRED" %}</td>
-      <td>Contains a JWT token that is signed, and then encrypted, using the client RSA keys. This ensures that the request to get the id token and access token is made only from the application, and not from a potential attacker that may have intercepted the authorization code.<br><br>The JWT contains the following claims.<br />       
+      <td>Contains a JWT token that is signed, and then encrypted, using the client RSA keys. This ensures that the request to get the id token and access token is made only from your application, and not from a potential attacker that may have intercepted the authorization code.<br><br>The JWT contains the following claims.<br />       
         <table>
           <tr>
             <td>{% include parameter.html name="iss" req="REQUIRED" %}</td><td>The issuer of the token. This value must be the same as the <code>client_id</code>.</td>
@@ -615,7 +615,7 @@ To assert the identity of the user, the <code>code</code> received previously ne
     </tr>
     <tr>
       <td>{% include parameter.html name="token_type" req="" %}</td>
-      <td>Provides the application with the information required to successfully utilize the access token. Set this to <code>Bearer</code>.</td>
+      <td>Provides your application with the information required to successfully utilize the access token. Set this to <code>Bearer</code>.</td>
     </tr>
     <tr>
       <td>{% include parameter.html name="token_type" req="" %}</td>
@@ -649,7 +649,7 @@ To asserts the identity of the user, the <code>code</code> received previously n
   <tbody>
     <tr>
       <td>{% include parameter.html name="grant_type" req="REQUIRED" %}</td>
-      <td>Set this to <code>authorization_code</code> to tell the Token Endpoint that the application wants to exchange an authorization code for an ID koken and access token. </td>
+      <td>Set this to <code>authorization_code</code> to tell the Token Endpoint that your application wants to exchange an authorization code for an ID koken and access token. </td>
     </tr>
     <tr>
       <td>{% include parameter.html name="code" req="REQUIRED" %}</td>
@@ -661,7 +661,7 @@ To asserts the identity of the user, the <code>code</code> received previously n
     </tr>
     <tr>
       <td>{% include parameter.html name="client_secret" req="REQUIRED" %}</td>
-      <td>Contains the a key you reveiced when registering your application. This ensures that the request to get the id token and access token is made only from the application, and not from a potential attacker that may have intercepted the authorization code.</td>
+      <td>Contains the a key you reveiced when registering your application. This ensures that the request to get the id token and access token is made only from your application, and not from a potential attacker that may have intercepted the authorization code.</td>
     </tr>
   </tbody>
 </table>
@@ -679,7 +679,7 @@ To asserts the identity of the user, the <code>code</code> received previously n
     </tr>
     <tr>
       <td>{% include parameter.html name="token_type" req="" %}</td>
-      <td>Provides the application with the information required to successfully utilize the access token. Set this to <code>Bearer</code>.</td>
+      <td>Provides your application with the information required to successfully utilize the access token. Set this to <code>Bearer</code>.</td>
     </tr>
     <tr>
       <td>{% include parameter.html name="token_type" req="" %}</td>
