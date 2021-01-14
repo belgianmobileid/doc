@@ -289,7 +289,7 @@
   },"48": {
     "doc": "Welcome",
     "title": "Getting started",
-    "content": "In order to start your integration you will first need to setup your personal Sanbox environment. To do this you will be requested to provide the following information : . | Contact details such as your email, name, phone number. | Organisation details as shown on the company register for your jurisdiction. | Information about the project you want to setup (the services you want to use, the client authentication method you want to set-up, the user attributes you want to request, ...) | . Our onboarding team will review your project and get in touch within 3 days with your credentials: . | a \"client_id\" | a \"service_code\" | information about your client authentication method | the list of user attributes you can request | . Request your Sandbox . ",
+    "content": "In order to start your integration you will first need to setup your personal Sanbox environment. To do this you will be requested to provide the following information : . | Contact details such as your email, name, phone number. | Organisation details as shown on the company register for your jurisdiction. | Information about the project you want to setup (the services you want to use, the client authentication method you want to set-up, the user attributes you want to request, ...) | . Our onboarding team will review your project and get in touch with you in no time : . | a \"client_id\" | a \"service_code\" | information about your client authentication method | the list of user attributes you can request | . Request your Sandbox . ",
     "url": "https://belgianmobileid.github.io/doc/index#getting-started",
     "relUrl": "/index#getting-started"
   },"49": {
