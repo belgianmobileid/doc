@@ -47,7 +47,7 @@ In order to start your integration you will first need to setup your personal Sa
   <li>Information about the project you want to setup (the services you want to use, the client authentication method you want to set-up, the user attributes you want to request, ...)</li>
 </ul>
 
-Our onboarding team will review your project and get in touch within 3 days with your credentials:
+Our onboarding team will review your project and get in touch with you in no time :
 <ul>
   <li>a <i>"client_id"</i></li>
   <li>a <i>"service_code"</i></li>
