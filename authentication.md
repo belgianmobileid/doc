@@ -9,11 +9,9 @@ nav_order: 4
 
 ## Overview
 
-This API is based on the Authorization Code Flow of OpenID Connect 1.0. It allows computing clients to verify the identity of an end-user based on the authentication performed by an authorization server, as well as to obtain basic profile information about the end-user in an interoperable and REST-like manner. Sounds technical, but it’s really quite easy. The REST architecture mainly breaks down to HTTP-methods GET and POST.
+This API is based on the Authorization Code Flow of OpenID Connect 1.0. It allows you to verify the identity of an end-user based on the authentication performed by an authorization server, as well as to obtain basic profile information about the end-user in an interoperable and REST-like manner. Sounds technical, but it’s really quite easy. The REST architecture mainly breaks down to HTTP-methods GET and POST.
 
-REST also implies a nice and clean structure for URLs or endpoints. This means you can reach any part of the itsme® API on <code>https://idp.prd.itsme.services/v2/</code> adding the name of the resource you want to interact with. 
-
-The diagram below describes the **Authentication** integration process and how your backend is integrated within the itsme® architecture :
+The diagram below describes the **Authentication**  process and how your systems will be interacting with itsme® :
   
  ![Sequence diagram describing the OpenID flow](/doc/public/images/OpenID_SeqDiag.png)
 
@@ -31,30 +29,29 @@ The diagram below describes the **Authentication** integration process and how y
   <li>Confirm the success of the operation and display a success message.</li>
 </ol>
 
-If a user doesn't have the itsme® app, he will be redirected to a mobile website with more information and download links.
-
 ## Generate itsme® button
 
 First, you will need to create a button to allow your users to authenticate with itsme®. Check the <a href="https://brand.belgianmobileid.be/d/CX5YsAKEmVI7/documentation#/ux/buttons-1518207548" target="blank">Button design guide</a> before you start the integration. 
 
-Upon clicking this button, itsme® will open a modal view which contains a field that needs to be filled by the end user with its phone number. Note that mobile web users will skip the phone number step, as they use the itsme® mobile app directly to authenticate.
+Upon clicking this button, the browser will redirect the User to our Front-End. itsme® then take care of authenticating him.
+
 
 ## Authentication
 
 The itsme® API is based on the Authorization Code Flow of OpenID Connect, meaning that some of the endpoints require a client authentication to protect the exchange of entitlement information and ensure the requested information gets issued to a legitimate application and not some other party.
 
-itsme® Okta supports the following authentication methods :
+itsme® supports the following authentication methods :
 
 <ul>
   <li>asymmetric RSA key pair</li>
   <li>symmetric shared secret</li>
 </ul>
 
-itsme® recommend using the private_key_jwt method as it is more secure.  
+itsme® recommend using the asymmetric RSA key pair method as it is more secure.  
 
 ### Asymmetric RSA 
 
-This method requires that each party exposes its public keys as a simple JWK Set document on a URI accessible to all, and keep its private set for itself. For itsme®, this URI can be retrieved from the [itsme® Discovery document](#OpenIDConfig), using the <i>"jwks_uri"</i> key.
+This method requires that each party exposes its public keys as a simple JWK Set document on a URI publicly accessible, and keep its private keys for itself. For itsme®, this URI can be retrieved from the [itsme® Discovery document](#OpenIDConfig), using the <i>"jwks_uri"</i> key.
 
 Your private and public keys can be generated using your own tool or via Yeoman. If using Yeoman, you need to install generator-itsme with NPM:
 
@@ -68,7 +65,7 @@ After installation, run the generator:
 $ yo itsme
 ```
 
-The Yeoman tool will generate two files, the jwks_private.json which MUST be stored securely in your system, and the jwks_public.json which needs to be exposed as a JWK Set on a URI accessible to all parties.
+The Yeoman tool will generate two files, the jwks_private.json which MUST be stored securely in your system, and the jwks_public.json which needs to be exposed as a JWK Set on a URI publicly accessible and have the HTTPS scheme.
 
 <aside class="notice">Whatever the tool you are choosing to create your key pairs, don't forget to send your JWK Set URI by email to <a href = "mailto: onboarding@itsme.be">onboarding@itsme.be</a> and itsme® will make sure to complete the configuration for you in no time!
 </aside>
@@ -128,17 +125,17 @@ In case an error is returned, the JSON will look like :
 
 ## Mapping the user
 
-To sign in successfully in your web desktop, mobile web or mobile application, a given user must be provisioned in OpenID Connect and then mapped to a user account in your database. By default, your application Server will use the subject identifier, or <code>sub</code> claim, in the ID Token to identify and verify a user account. Typically, the <code>sub</code> claim is a unique string that identifies a given user account. The benefit of using a <code>sub</code> claim is that it will not change, even if other user attributes (email, phone number, etc) associated with that account are updated.
+To sign in successfully in your web desktop, mobile web or mobile application, a given user must be provisioned in OpenID Connect and then mapped to a user account in your database. By default, your application Server will use the subject identifier, or <code>sub</code> claim, in the ID Token to identify and verify a user account. Typically, the <code>sub</code> claim is a string that uniquely identifies a given user account. The benefit of using a <code>sub</code> claim is that it will not change, even if other user attributes (email, phone number, etc) associated with that account are updated.
 
-The <code>sub</code> claim value must be mapped to the corresponding user in your application Server. If you already mapped this <code>sub</code> to an account in your application repository, you should start an application session for that user.
+The <code>sub</code> claim value must be mapped to the corresponding user in your application Server. 
 
-If no user record is storing the <code>sub</code> claim value, then you should allow the User to associate his new or existing account during the first sign-in session.
+If no user record is storing the <code>sub</code> claim value, then you should allow the User to associate his new or existing account to the <code>sub</code>.
 
 All these flows are depicted in the itsme® B2B portal.
 
-In a limited number of cases (e.g. technical issue,…) a user could ask itsme® to ‘delete’ his account. As a result the specific account will be ‘archived’ (for compliancy reasons) and thus also the unique identifier(s) (e.g. "sub"), used to interact with the different Service Providers the specific users is active with, will be automatically deleted in our database.
+In a limited number of cases (e.g. technical issue,…) a user could ask itsme® to ‘delete’ his account. As a result the specific account will be ‘archived’ (for compliancy reasons) and thus also the unique identifier(s) (e.g. "sub").
 
-If the same user would opt to (re)create an itsme® afterwards, he will need to re-bind his itsme® account with your application server (as the initial identifier is no longer valid as explained before). To re-bind his itsme® account one of the above scenario should be used. After successful (re)binding you will need to overwrite the initial reference with the new <code>sub</code> claim value in your database.
+If the same user would opt to re-create an itsme® afterwards, he will need to re-bind his itsme® account with your application server, in the same way as for the initial binding. After successful re-binding you will need to overwrite the initial reference with the new <code>sub</code> claim value in your database.
 
 
 # API reference
