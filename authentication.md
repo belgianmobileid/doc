@@ -37,7 +37,7 @@ If a user doesn't have the itsme® app, he will be redirected to a mobile websit
 
 First, you will need to create a button to allow your users to authenticate with itsme®. Check the <a href="https://brand.belgianmobileid.be/d/CX5YsAKEmVI7/documentation#/ux/buttons-1518207548" target="blank">Button design guide</a> before you start the integration. 
 
-Upon clicking this button, we will open a modal view which contains a field that needs to be filled by the end user with its phone number. Note that mobile web users will skip the phone number step, as they use the itsme® mobile app directly to authenticate.
+Upon clicking this button, itsme® will open a modal view which contains a field that needs to be filled by the end user with its phone number. Note that mobile web users will skip the phone number step, as they use the itsme® mobile app directly to authenticate.
 
 ## Authentication
 
@@ -50,7 +50,7 @@ itsme® Okta supports the following authentication methods :
   <li>symmetric shared secret</li>
 </ul>
 
-We recommend using the private_key_jwt method as it is more secure.  
+itsme® recommend using the private_key_jwt method as it is more secure.  
 
 ### Asymmetric RSA 
 
@@ -70,7 +70,7 @@ $ yo itsme
 
 The Yeoman tool will generate two files, the jwks_private.json which MUST be stored securely in your system, and the jwks_public.json which needs to be exposed as a JWK Set on a URI accessible to all parties.
 
-<aside class="notice">Whatever the tool you are choosing to create your key pairs, don't forget to send your JWK Set URI by email to <a href = "mailto: onboarding@itsme.be">onboarding@itsme.be</a> and we’ll make sure to complete the configuration for you in no time!
+<aside class="notice">Whatever the tool you are choosing to create your key pairs, don't forget to send your JWK Set URI by email to <a href = "mailto: onboarding@itsme.be">onboarding@itsme.be</a> and itsme® will make sure to complete the configuration for you in no time!
 </aside>
 
 ### Symmetric secret 
