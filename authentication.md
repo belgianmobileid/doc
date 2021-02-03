@@ -482,10 +482,6 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
       <td>{% include parameter.html name="request_uri" req="OPTIONAL" %}</td>
       <td>A URL using the https scheme referencing a resource containing a JWT whose claims are the request parameters. The <code>request_uri</code> parameter is used to secure parameters in the authentication request from tainting or inspection when sending the request to the itsme® Authorization Endpoint.<br><br>If used, the JWT MUST be signed.<!--This is the only difference regarding JWKSet text--></td>
     </tr>
-    <tr>
-      <td>{% include parameter.html name="request" req="OPTIONAL" %}</td>
-      <td>It represents the request as a JWT whose Claims are the request parameters. The <code>request</code> parameter is used to secure parameters in the authentication request from tainting or inspection when sending the request to the itsme® Authorization Endpoint.<br><br>If used, the JWT MUST be signed.<!--This is the only difference regarding JWKSet text--></td>
-    </tr>
   </tbody>
 </table>
 
