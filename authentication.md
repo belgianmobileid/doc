@@ -620,6 +620,10 @@ To asserts the identity of the user, the <code>code</code> received previously n
       <td>Set this to <code>authorization_code</code> to tell the Token Endpoint that your application wants to exchange an authorization code for an ID koken and access token. </td>
     </tr>
     <tr>
+      <td>{% include parameter.html name="client_id" req="REQUIRED" %}</td>
+      <td>It identifies your application. This parameter value is generated during registration.</td>
+    </tr>
+    <tr>
       <td>{% include parameter.html name="code" req="REQUIRED" %}</td>
       <td>The intermediate opaque credential received in the Authorization Response.</td>
     </tr>
