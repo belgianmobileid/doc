@@ -651,11 +651,11 @@ To asserts the identity of the user, the <code>code</code> received previously n
     </tr>
     <tr>
       <td>{% include parameter.html name="token_type" req="" %}</td>
-      <td>Specifies the additional attributes sent to the UserInfo Endpoint  together with the <code>access_token</code> response parameter. Returned value is <code>Bearer</code>.</td>      
+      <td>Specifies the additional attributes sent to the UserInfo Endpoint together with the <code>access_token</code> response parameter. Returned value is <code>Bearer</code>.</td>      
     </tr>
     <tr>
       <td>{% include parameter.html name="id_token" req="" %}</td>
-      <td>A security token that contains claims about the authentication of an user, and potentially other requested claims. The <code>id_token</code> value is represented as a signed and encrypted JSON Web Token. So, before being able to use the ID Token claim's you will have to decrypt and verify it using the RSA keys.</td>      
+      <td>A security token that contains claims about the authentication of an user, and potentially other requested claims. The <code>id_token</code> value is represented as a signed JSON Web Token. So, before being able to use the ID Token claim's you will have to verify it using the symmetric keys.</td>      
     </tr>
   </tbody>
 </table>
