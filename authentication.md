@@ -367,7 +367,7 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
   <tbody>
     <tr>
       <td>{% include parameter.html name="client_id" req="REQUIRED" %}</td>
-      <td>It identifies the client. This parameter value is generated during registration.</td>
+      <td>It identifies your application. This parameter value is generated during registration.</td>
     </tr>
      <tr>
       <td>{% include parameter.html name="response_type" req="REQUIRED" %}</td>
@@ -410,31 +410,6 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
     <tr>
       <td>{% include parameter.html name="nonce" req="Strongly RECOMMENDED" %}</td>
       <td>A string value used to associate a session with an ID Token, and to mitigate replay attacks. The value is passed through unmodified from the Authentication Request to the ID Token.</td>
-    </tr>
-    <tr>
-      <td>{% include parameter.html name="login_hint" req="OPTIONAL" %}</td>
-      <td>If your application knows which user is trying to authenticate, it can use this parameter to pre-fill the phone number of the user on the itsme® sign-in page, e.g. <code>32+123456789</code> with <code>32</code> the country code and <code>123456789</code> the user's phone number.</td>
-    </tr>
-    <tr>
-      <td>{% include parameter.html name="ui_locales" req="OPTIONAL" %}</td>
-      <td>Indicates the user's preferred languages for the itsme® sign-in page, represented as a space-separated list of language tag values, ordered by preference.<br><br>Possible values : <code>fr</code> <code>nl</code> <code>de</code> <code>en</code></td>
-    </tr>
-    <tr>
-      <td>{% include parameter.html name="display" req="OPTIONAL" %}</td>
-      <td>Specify how the itsme® sign-in page should be displayed to the user. If set to <code>touch</code>, it SHOULD displays the itsme® sign-in page with a device that leverages a touch interface. If set to <code>page</code>, the itsme® sign-in UI SHOULD be consistent with a full page view of the User-Agent. If the <code>display</code> parameter is not specified, this is the default display mode.</td>
-    </tr>
-    <tr>
-      <td>{% include parameter.html name="acr_values" req="OPTIONAL" %}</td>
-      <td>Indicates the authentication method required to process the request, represented as a space-separated list of tag values, ordered by preference.<br><br>Possible values : <code>http://itsme.services/v2/claim/acr_basic</code> <code>http://itsme.services/v2/claim/acr_advanced</code><br><br><b>Note</b> : If these two values are provided only the most constraining authentication method will be applied, e.g. <code>http://itsme.services/v2/claim/acr_advanced</code>.<br />
-        <table>
-          <tr>
-            <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/acr_basic" req="" %}</td><td>It lets the user to choose either fingerprint usage (if device is compatible) or itsme® code. If the <code>display</code> parameter is not specified, this is the default authentication method.</td>
-          </tr>
-          <tr>
-            <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/acr_advanced" req="" %}</td><td>It forces the user to use his itsme® code.</td>
-          </tr>
-        </table>
-      </td>
     </tr>
     <tr>
       <td>{% include parameter.html name="claims" req="OPTIONAL" %}</td>
