@@ -609,7 +609,7 @@ To assert the identity of the user, the <code>code</code> received previously ne
 
 <b><code>https://oidc.<i>[e2e/prd]</i>.itsme.services/clientsecret-oidc/csapi/v0.1/connect/token</code></b>
 
-To asserts the identity of the user, the <code>code</code> received previously need to be exchanged for an ID token and access token. During this step, your application has to authenticate itself to our server using RSA keys. 
+To asserts the identity of the user, the <code>code</code> received previously need to be exchanged for an ID token and access token. During this step, your application has to authenticate itself to our server using symmetric keys. 
 
 ### Parameters
 
