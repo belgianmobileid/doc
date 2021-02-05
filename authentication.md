@@ -36,7 +36,7 @@ First, you will need to create a button to allow your users to authenticate with
 Upon clicking this button, the browser will redirect the User to our Front-End. itsme® then take care of authenticating him.
 
 
-## Authentication
+## Client Authentication methods
 
 The itsme® API is based on the Authorization Code Flow of OpenID Connect, meaning that some of the endpoints require a client authentication to protect the exchange of entitlement information and ensure the requested information gets issued to a legitimate application and not some other party.
 
