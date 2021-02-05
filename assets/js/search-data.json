@@ -18,10 +18,10 @@
     "relUrl": "/authentication/#generate-itsme-button"
   },"3": {
     "doc": "Authentication API",
-    "title": "Authentication",
+    "title": "Client Authentication methods",
     "content": "The itsme® API is based on the Authorization Code Flow of OpenID Connect, meaning that some of the endpoints require a client authentication to protect the exchange of entitlement information and ensure the requested information gets issued to a legitimate application and not some other party. itsme® supports the following authentication methods : . | asymmetric RSA key pair | symmetric shared secret | . itsme® recommend using the asymmetric RSA key pair method as it is more secure. Asymmetric RSA . This method requires that each party exposes its public keys as a simple JWK Set document on a URI publicly accessible, and keep its private keys for itself. For itsme®, this URI can be retrieved from the itsme® Discovery document, using the “jwks_uri” key. Your private and public keys can be generated using your own tool or via Yeoman. If using Yeoman, you need to install generator-itsme with NPM: . $ npm install -g yo generator-itsme . After installation, run the generator: . $ yo itsme . The Yeoman tool will generate two files, the jwks_private.json which MUST be stored securely in your system, and the jwks_public.json which needs to be exposed as a JWK Set on a URI publicly accessible and have the HTTPS scheme. Whatever the tool you are choosing to create your key pairs, don't forget to send your JWK Set URI by email to onboarding@itsme.be and itsme® will make sure to complete the configuration for you in no time! Symmetric secret . This method requires the exchange of a static secret that will be used to authenticate with our Back-End. The client_secret value will be provided by itsme® when registering your project. ",
-    "url": "https://belgianmobileid.github.io/doc/authentication/#authentication",
-    "relUrl": "/authentication/#authentication"
+    "url": "https://belgianmobileid.github.io/doc/authentication/#client-authentication-methods",
+    "relUrl": "/authentication/#client-authentication-methods"
   },"4": {
     "doc": "Authentication API",
     "title": "Handling errors",
