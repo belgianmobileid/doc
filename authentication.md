@@ -693,7 +693,6 @@ This is illustrated in the example below.
 
 The UserInfo Response is a signed and encrypted JSON Web Token. So, before being able to extract the claims you will have to decrypt and verify it using the RSA keys.
 
-This is illustrated in the example below.
 
 ### Example
 
@@ -737,7 +736,6 @@ This is illustrated in the example below.
 
 The UserInfo Response is a signed JSON Web Token. So, before being able to extract the claims you will have to verify it using the symmetric keys.
 
-This is illustrated in the example below.
 
 ### Example
 
