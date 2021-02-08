@@ -639,11 +639,11 @@ Pragma: no-cache
 
 {% endtab %}
 
-{% tab TokenRequest Symmetric keys %}
+{% tab TokenRequest Symmetric key %}
 
-<b><code>https://oidc.<i>[e2e/prd]</i>.itsme.services/clientsecret-oidc/csapi/v0.1/connect/token</code></b>
+<b><code>POST https://oidc.<i>[e2e/prd]</i>.itsme.services/clientsecret-oidc/csapi/v0.1/connect/token</code></b>
 
-To asserts the identity of the user, the <code>code</code> received previously need to be exchanged for an ID token and access token. During this step, your application has to authenticate itself to our server using symmetric keys. 
+To asserts the identity of the user, the <code>code</code> received previously need to be exchanged for an ID token and access token. During this step, your application has to authenticate itself to our server using a symmetric key. 
 
 ### Parameters
 
@@ -754,7 +754,7 @@ Pragma: no-cache
 
 <b><code>GET https://idp.<i>[e2e/prd]</i>.itsme.services/v2/userinfo</code></b>
 
-The UserInfo Endpoint returns previously consented user profile information to your application. In other words, if the required claims are not returned in the ID Token, you can obtain the additional claims by presenting the access token to the itsme® UserInfo Endpoint. This is achieved by sending a HTTP GET request over TLS to the Userinfo Endpoint , passing the access token value in the Authorization header using the Bearer authentication scheme.
+The UserInfo Endpoint returns previously consented user profile information to your application. In other words, if the required claims are not returned in the ID Token, you can obtain the additional claims by presenting the access token to the itsme® UserInfo Endpoint. This is achieved by sending a HTTP GET request to the Userinfo Endpoint, passing the access token value in the Authorization header using the Bearer authentication scheme.
 
 This is illustrated in the example below.
 
@@ -793,11 +793,11 @@ Content-Type: application/json
 
 {% endtab %}
 
-{% tab UserInfoRequest Symmetric keys %}
+{% tab UserInfoRequest Symmetric key %}
 
 <b><code>GET https://oidc.<i>[e2e/prd]</i>.itsme.services/clientsecret-oidc/csapi/v0.1/connect/userinfo</code></b>
 
-The UserInfo Endpoint returns previously consented user profile information to your application. In other words, if the required claims are not returned in the ID Token, you can obtain the additional claims by presenting the access token to the itsme® UserInfo Endpoint. This is achieved by sending a HTTP GET request over TLS to the Userinfo Endpoint , passing the access token value in the Authorization header using the Bearer authentication scheme.
+The UserInfo Endpoint returns previously consented user profile information to your application. In other words, if the required claims are not returned in the ID Token, you can obtain the additional claims by presenting the access token to the itsme® UserInfo Endpoint. This is achieved by sending a HTTP GET request to the Userinfo Endpoint, passing the access token value in the Authorization header using the Bearer authentication scheme.
 
 This is illustrated in the example below.
 
