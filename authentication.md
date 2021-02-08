@@ -600,7 +600,42 @@ To assert the identity of the user, the <code>code</code> received previously ne
 
 **Request**
 
+```http
+POST /token HTTP/1.1
+Host: openid.c2id.com
+Content-Type: application/x-www-form-urlencoded
+
+grant_type=authorization_code
+ &code=SplxlOBeZQQYbYS6WxSbIA
+ &redirect_uri=https%3A%2F%2Fclient.example.org%2Fcb
+ &client_assertion_type=urn:ietf:params:oauth:client-assertion-type:jwt-bearer
+ &client_assertion=PHNhbWxwOl ... ZT
+```
+
 **Response**
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+Cache-Control: no-store
+Pragma: no-cache
+
+{
+  "id_token": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjFlOWdkazcifQ.ewogImlzc
+    yI6ICJodHRwOi8vc2VydmVyLmV4YW1wbGUuY29tIiwKICJzdWIiOiAiMjQ4Mjg5
+    NzYxMDAxIiwKICJhdWQiOiAiczZCaGRSa3F0MyIsCiAibm9uY2UiOiAibi0wUzZ
+    fV3pBMk1qIiwKICJleHAiOiAxMzExMjgxOTcwLAogImlhdCI6IDEzMTEyODA5Nz
+    AKfQ.ggW8hZ1EuVLuxNuuIJKX_V8a_OMXzR0EHR9R6jgdqrOOF4daGU96Sr_P6q
+    Jp6IcmD3HP99Obi1PRs-cwh3LO-p146waJ8IhehcwL7F09JdijmBqkvPeB2T9CJ
+    NqeGpe-gccMg4vfKjkM8FcGvnzZUN4_KSP0aAp1tOJ1zZwgjxqGByKHiOtX7Tpd
+    QyHE5lcMiKPXfEIQILVq0pc_E2DzL7emopWoaoZTF_m0_N0YzFC6g6EJbOEoRoS
+    K5hoDalrcvRYLSrQAZZKflyuVCyixEoV9GfNQC3_osjzw2PAithfubEEBLuVVk4
+    XUVrWOLrLl0nx7RkKU8NXNHq-rvKMzqg"
+  "access_token": "SlAV32hkKG",
+  "token_type": "Bearer",
+  "expires_in": 3600,
+}
+```
 
 {% endtab %}
 
@@ -658,7 +693,7 @@ To asserts the identity of the user, the <code>code</code> received previously n
     </tr>
     <tr>
       <td>{% include parameter.html name="id_token" req="" %}</td>
-      <td>A security token that contains claims about the authentication of an user, and potentially other requested claims. The <code>id_token</code> value is represented as a signed JSON Web Token. So, before being able to use the ID Token claim's you will have to verify it using the symmetric keys.</td>      
+      <td>A security token that contains claims about the authentication of an user, and potentially other requested claims. The <code>id_token</code> value is represented as a signed JSON Web Token. So, before being able to use the ID Token claim's you will have to verify it using the symmetric key.</td>      
     </tr>
   </tbody>
 </table>
@@ -668,7 +703,42 @@ To asserts the identity of the user, the <code>code</code> received previously n
 
 **Request**
 
+```http
+POST /token HTTP/1.1
+Host: openid.c2id.com
+Content-Type: application/x-www-form-urlencoded
+
+grant_type=authorization_code
+ &code=SplxlOBeZQQYbYS6WxSbIA
+ &redirect_uri=https%3A%2F%2Fclient.example.org%2Fcb
+ &client_assertion_type=urn:ietf:params:oauth:client-assertion-type:jwt-bearer
+ &client_assertion=PHNhbWxwOl ... ZT
+```
+
 **Response**
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+Cache-Control: no-store
+Pragma: no-cache
+
+{
+  "id_token": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjFlOWdkazcifQ.ewogImlzc
+    yI6ICJodHRwOi8vc2VydmVyLmV4YW1wbGUuY29tIiwKICJzdWIiOiAiMjQ4Mjg5
+    NzYxMDAxIiwKICJhdWQiOiAiczZCaGRSa3F0MyIsCiAibm9uY2UiOiAibi0wUzZ
+    fV3pBMk1qIiwKICJleHAiOiAxMzExMjgxOTcwLAogImlhdCI6IDEzMTEyODA5Nz
+    AKfQ.ggW8hZ1EuVLuxNuuIJKX_V8a_OMXzR0EHR9R6jgdqrOOF4daGU96Sr_P6q
+    Jp6IcmD3HP99Obi1PRs-cwh3LO-p146waJ8IhehcwL7F09JdijmBqkvPeB2T9CJ
+    NqeGpe-gccMg4vfKjkM8FcGvnzZUN4_KSP0aAp1tOJ1zZwgjxqGByKHiOtX7Tpd
+    QyHE5lcMiKPXfEIQILVq0pc_E2DzL7emopWoaoZTF_m0_N0YzFC6g6EJbOEoRoS
+    K5hoDalrcvRYLSrQAZZKflyuVCyixEoV9GfNQC3_osjzw2PAithfubEEBLuVVk4
+    XUVrWOLrLl0nx7RkKU8NXNHq-rvKMzqg"
+  "access_token": "SlAV32hkKG",
+  "token_type": "Bearer",
+  "expires_in": 3600,
+}
+```
 
 
 {% endtab %}
@@ -734,7 +804,7 @@ This is illustrated in the example below.
 
 ### Response
 
-The UserInfo Response is a signed JSON Web Token. So, before being able to extract the claims you will have to verify it using the symmetric keys.
+The UserInfo Response is a signed JSON Web Token. So, before being able to extract the claims you will have to verify it using the symmetric key.
 
 
 ### Example
