@@ -333,7 +333,7 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
 <a id="AuthNResp"></a>
 ### Response
 
-<code>200</code> <code>application/json</code>
+<code>302</code> <code>application/json</code>
 
 <table>
   <tbody>
@@ -352,7 +352,27 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
 
 **Request**
 
+```http
+GET /authorize HTTP/1.1
+Host: server.example.com
+
+response_type=code
+  &client_id=s6BhdRkqt3
+  &redirect_uri=https%3A%2F%2Fclient.example.org%2Fcb
+  &scope=openid%20service:TEST_code%20profile%20email
+  &nonce=n-0S6_WzA2Mj
+  &state=af0ifjsldkj
+  &acr_values=http://itsme.services/V2/claim/acr_basic
+```
+
 **Response**
+
+```http
+HTTP/1.1 302 Found
+Location: https://client.example.org/cb?
+  code=SplxlOBeZQQYbYS6WxSbIA
+  &state=af0ifjsldkj
+```
 
 {% endtab %}
 
@@ -487,7 +507,7 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
 <a id="AuthNResp"></a>
 ### Response
 
-<code>200</code> <code>application/json</code>
+<code>302</code> <code>application/json</code>
 
 <table>
   <tbody>
@@ -506,7 +526,27 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
 
 **Request**
 
+```http
+GET /authorize HTTP/1.1
+Host: server.example.com
+
+response_type=code
+  &client_id=s6BhdRkqt3
+  &redirect_uri=https%3A%2F%2Fclient.example.org%2Fcb
+  &scope=openid%20service:TEST_code%20profile%20email
+  &nonce=n-0S6_WzA2Mj
+  &state=af0ifjsldkj
+  &acr_values=http://itsme.services/V2/claim/acr_basic
+```
+
 **Response**
+
+```http
+HTTP/1.1 302 Found
+Location: https://client.example.org/cb?
+  code=SplxlOBeZQQYbYS6WxSbIA
+  &state=af0ifjsldkj
+```
 
 {% endtab %}
 
