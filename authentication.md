@@ -164,7 +164,6 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
 <ul>
   <li>Authorization, Token and userInfo Endpoints</li>
   <li>supported claims</li>
-  <li>JWKSet URL</li>
   <li>...</li>
 </ul>
 
