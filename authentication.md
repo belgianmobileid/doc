@@ -874,7 +874,7 @@ Not applicable.
 
 {% endtab %}
 
-{% tab UserInfoRequest Symmetric keys %}
+{% tab RevokeRequest Symmetric keys %}
 
 <b><code>POST https://oidc.<i>[e2e/prd]</i>.itsme.services/clientsecret-oidc/csapi/v0.1/connect/revoke</code></b>
 
