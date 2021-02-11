@@ -561,7 +561,7 @@ To assert the identity of the user, the <code>code</code> received previously ne
             <td>{% include parameter.html name="sub" req="REQUIRED" %}</td><td>The subject of the token. This value must be the same as the <code>client_id</code>.</td>
           </tr>
           <tr>
-            <td>{% include parameter.html name="aud" req="OPTIONAL" %}</td><td>The full URL of the resource you're using the JWT to authenticate to. Set this to <code>https://idp.prd.itsme.services/v2/token</code>.</td>
+            <td>{% include parameter.html name="aud" req="OPTIONAL" %}</td><td>The full URL of the resource you're using the JWT to authenticate to. Set this to <code>https://idp.<i>[e2e/prd]</i>.itsme.services/v2/token</code>.</td>
           </tr>
           <tr>
             <td>{% include parameter.html name="jti" req="OPTIONAL" %}</td><td>An unique identifier for the token.</td>
@@ -588,15 +588,11 @@ To assert the identity of the user, the <code>code</code> received previously ne
     </tr>
     <tr>
       <td>{% include parameter.html name="token_type" req="" %}</td>
-      <td>Provides your application with the information required to successfully utilize the access token. Set this to <code>Bearer</code>.</td>
-    </tr>
-    <tr>
-      <td>{% include parameter.html name="token_type" req="" %}</td>
-      <td>Specifies the additional attributes sent to the UserInfo Endpoint  together with the <code>access_token</code> response parameter. Returned value is <code>Bearer</code>.</td>      
+      <td>Provides your application with the information required to successfully utilize the access token. Returned value is <code>Bearer</code>..</td>
     </tr>
     <tr>
       <td>{% include parameter.html name="id_token" req="" %}</td>
-      <td>A security token that contains claims about the authentication of an user, and potentially other requested claims. The <code>id_token</code> value is represented as a signed and encrypted JSON Web Token. So, before being able to use the ID Token claim's you will have to decrypt and verify it using the RSA keys.</td>      
+      <td>A security token that contains information about the authentication of an user, and potentially other requested claim data's. The <code>id_token</code> value is represented as a signed and encrypted JSON Web Token. So, before being able to use the ID Token claim's you will have to decrypt and verify it using the RSA keys.</td>      
     </tr>
   </tbody>
 </table>
@@ -649,15 +645,11 @@ To asserts the identity of the user, the <code>code</code> received previously n
     </tr>
     <tr>
       <td>{% include parameter.html name="token_type" req="" %}</td>
-      <td>Provides your application with the information required to successfully utilize the access token. Set this to <code>Bearer</code>.</td>
-    </tr>
-    <tr>
-      <td>{% include parameter.html name="token_type" req="" %}</td>
-      <td>Specifies the additional attributes sent to the UserInfo Endpoint together with the <code>access_token</code> response parameter. Returned value is <code>Bearer</code>.</td>      
+      <td>Provides your application with the information required to successfully utilize the access token. Returned value is <code>Bearer</code>.</td>
     </tr>
     <tr>
       <td>{% include parameter.html name="id_token" req="" %}</td>
-      <td>A security token that contains claims about the authentication of an user, and potentially other requested claims. The <code>id_token</code> value is represented as a signed JSON Web Token. So, before being able to use the ID Token claim's you will have to verify it using the symmetric key.</td>      
+      <td>A security token that contains information about the authentication of an user, and potentially other requested claim data's. The <code>id_token</code> value is represented as a signed JSON Web Token. So, before being able to use the ID Token claim's you will have to verify it using the symmetric key.</td>      
     </tr>
   </tbody>
 </table>
