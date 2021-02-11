@@ -61,7 +61,7 @@
   },"10": {
     "doc": "Authentication API",
     "title": "Revoke Request",
-    "content": ". | RSA keys | . | Not applicable. | . Example . | RSA keys | Symmetric key | . | Not applicable. | Request . Response . | . ",
+    "content": ". | RSA keys | Symmetric keys | . | Not applicable. | POST https://oidc.[e2e/prd].itsme.services/clientsecret-oidc/csapi/v0.1/connect/revoke . The Revocation Endpoint enables your application to notify itsme® that a previously obtained access token is no longer needed and MUST be revoked. ### Parameters . | client_idREQUIRED | It identifies your application. This parameter value is generated during registration. | . | client_secretREQUIRED | Contains the a key you reveiced when registering your application. | . | tokenREQUIRED | The access_token previously obtained that you want to revoke. | . | token_type_hintOPTIONAL | If used, this is set to access_token because itsme® API don't support refresh tokens. | . Response . The response is very simple: it’s always an HTTP 200 if the token is revoked or unknown. | . Example . | RSA keys | Symmetric key | . | Not applicable. | Request . Response . | . ",
     "url": "https://belgianmobileid.github.io/doc/authentication/#revoke-request",
     "relUrl": "/authentication/#revoke-request"
   },"11": {
