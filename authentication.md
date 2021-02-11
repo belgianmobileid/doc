@@ -13,7 +13,7 @@ The diagram below describes the **Authentication**  process and how your systems
   
  ![Sequence diagram describing the OpenID flow](/doc/public/images/OpenID_SeqDiag.png)
 
-TO get to this result please make sure you 
+To get to this result please make sure you 
 
 <ol>
   <li>add itsme® button to your front-end page so the user can indicate he wishes to authenticate with itsme® : <a href="https://brand.belgianmobileid.be/d/CX5YsAKEmVI7/documentation#/ux/buttons-1518207548" target="blank">itsme® button specifications</a>.</li>
