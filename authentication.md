@@ -866,9 +866,9 @@ Content-Type: application/json
 
 ## Revoke Request
 
-{% tabs UserInfoRequest %}
+{% tabs RevokeRequest %}
 
-{% tab UserInfoRequest RSA keys %}
+{% tab RevokeRequest RSA keys %}
 
 Not applicable.
 
@@ -907,14 +907,26 @@ The Revocation Endpoint enables your application to notify itsme® that a previo
 
 The response is very simple: it’s always an HTTP 200 if the token is revoked or unknown.
 
+{% endtab %}
+
+{% endtabs %}
+
 ### Example
+
+{% tabs RevokeExample %}
+
+{% tab RevokeExample RSA keys %}
+
+Not applicable.
+
+{% endtab %}
+
+{% tab RevokeExample Symmetric key %}
 
 **Request**
 
 
 **Response**
-
-
 
 {% endtab %}
 
