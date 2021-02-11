@@ -13,16 +13,18 @@ The diagram below describes the **Authentication**  process and how your systems
   
  ![Sequence diagram describing the OpenID flow](/doc/public/images/OpenID_SeqDiag.png)
 
+TO get to this result please make sure you 
+
 <ol>
-  <li>Add itsme® button to your front-end page so the User can indicate he wishes to authenticate with itsme® : <a href="https://brand.belgianmobileid.be/d/CX5YsAKEmVI7/documentation#/ux/buttons-1518207548" target="blank">itsme® button specifications</a>.</li>
-  <li>Create the <a href="#AuthNReq" >Authorization Request</a> to authenticate the User. This request will redirect the User to the itsme® Front-End/app. itsme® then authenticates the User by asking him 
+  <li>add itsme® button to your front-end page so the user can indicate he wishes to authenticate with itsme® : <a href="https://brand.belgianmobileid.be/d/CX5YsAKEmVI7/documentation#/ux/buttons-1518207548" target="blank">itsme® button specifications</a>.</li>
+  <li>create the <a href="#AuthNReq" >Authorization Request</a> to authenticate the User. This request will redirect the user to the itsme® app. itsme® will then authenticates the user by asking him 
     <ul type>
       <li>to enter his phone number on the itsme® sign-in page</li> 
       <li>authorize the release of some information to your application</li>
       <li>to provide his credentials (itsme® code, fingerprint or FaceID)</li>
-    </ul><br>It is also in this Authorization Request that you will be able to request claims about the User and the Authentication event.</li>
-  <li><a href="#AuthNResp" >Collect the Authorization Code</a> and redirect the user to your mobile or web application once the User has authorized the request and has been authenticated.</li>
-  <li><a href="#TokenReq" >Exchange the Authorization Code for an ID token</a> (e.g. identifying the User) and an Access Token.</li>
+    </ul><br>It is also in this Authorization Request that you will be able to request claims about the user and the Authentication event.</li>
+  <li><a href="#AuthNResp" >collect the Authorization Code</a> once the user has been authenticated and redirected by itsme® to your mobile or web application.</li>
+  <li><a href="#TokenReq" >exchange the Authorization Code for an ID token</a> (e.g. identifying the user) and an Access Token.</li>
   <li>Obtain the additional claims by <a href="#UserInfoReq" >presenting the access token to the itsme® UserInfo Endpoint</a> if the required claims are not returned in the ID token.</li>
   <li>Confirm the success of the operation and display a success message.</li>
 </ol>
@@ -45,7 +47,7 @@ itsme® supports the following authentication methods to protect the exchange of
   <li>symmetric shared secret</li>
 </ul>
 
-itsme® recommend using the asymmetric RSA key pair method as it is more secure.  
+itsme® recommend using the asymmetric RSA key pair method and allow you to rotate your keys without the need to sync with us.  
 
 ### Asymmetric RSA 
 
@@ -81,7 +83,7 @@ To sign in successfully in your web desktop, mobile web or mobile application, a
 
 The <code>sub</code> claim value must be mapped to the corresponding user in your application Server. 
 
-If no user record is storing the <code>sub</code> claim value, then you should allow the User to associate his new or existing account to the <code>sub</code>.
+If no user record is storing the <code>sub</code> claim value, then you should allow the user to associate his new or existing account to the <code>sub</code>.
 
 All these flows are depicted in the itsme® B2B portal.
 
