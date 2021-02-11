@@ -79,7 +79,7 @@ The client_secret value will be provided by itsme® when <a href="https://belgia
 
 ## Mapping the user
 
-To sign in successfully in your web desktop, mobile web or mobile application, a given user must be provisioned in OpenID Connect and then mapped to a user account in your database. By default, your application Server will use the subject identifier, or <code>sub</code> claim, in the ID Token to identify and verify a user account. Typically, the <code>sub</code> claim is a string that uniquely identifies a given user account. The benefit of using a <code>sub</code> claim is that it will not change, even if other user attributes (email, phone number, etc) associated with that account are updated.
+To sign in successfully in your web desktop, mobile web or mobile application, a given user must be mapped to a user account in your database. By default, your application Server will use the subject identifier, or <code>sub</code> claim, in the ID Token to identify and verify a user account. The <code>sub</code> claim is a string that uniquely identifies a given user account. The benefit of using a <code>sub</code> claim is that it will not change, even if other user attributes (email, phone number, etc) associated with that account are updated.
 
 The <code>sub</code> claim value must be mapped to the corresponding user in your application Server. 
 
@@ -141,7 +141,7 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
     </tr>
      <tr>
       <td>{% include parameter.html name="response_type" req="REQUIRED" %}</td>
-      <td>This defines the processing flow to be used when forming the response. Because itsme® uses the Authorization Code Flow, this value MUST be <code>code</code>.</td>
+      <td>This defines the processing flow to be used when forming the response. Because itsme® supports the Authorization Code Flow, this value MUST be <code>code</code>.</td>
     </tr>
     <tr>
       <td>{% include parameter.html name="scope" req="REQUIRED" %}</td>
@@ -155,7 +155,7 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
             <td>{% include parameter.html name="openid" req="REQUIRED" %}</td><td>It indicates that your application intends to use the OpenID Connect protocol to verify a user's identity by returning a <code>sub</code> claim which represents a unique identifier for the authenticated user.</td>
           </tr>
           <tr>
-            <td>{% include parameter.html name="profile" req="OPTIONAL" %}</td><td>Returns claims that represent basic profile information, including <code>family_name</code>, <code>given_name</code>, <code>name</code>, <code>gender</code> and <code>birthdate</code>.</td>
+            <td>{% include parameter.html name="profile" req="OPTIONAL" %}</td><td>Returns claims that represent basic profile information, specifically <code>family_name</code>, <code>given_name</code>, <code>name</code>, <code>gender</code> and <code>birthdate</code>.</td>
           </tr>
           <tr>
             <td>{% include parameter.html name="email" req="OPTIONAL" %}</td><td>Returns the <code>email</code> claim, which contains the user's email address, and <code>email_verified</code>, which is a boolean indicating whether the email address was verified by the user.</td>
@@ -171,7 +171,7 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
     </tr>
     <tr>
       <td>{% include parameter.html name="redirect_uri" req="REQUIRED" %}</td>
-      <td>It is the URL to which users are redirected once the authentication is complete. It MUST match the value preregistered during the registration and use the HTTPS scheme. http://localhost is only permitted for development purposes, it’s not for use in production.<br><br><b>Note</b> : make sure that your redirect URIs support the Universal links and App links mechanism. Functionally, it will allow you to have only one single link that will either open your desktop web application, your mobile app or your mobile site on the User’s device. Universal links and App links are standard web links (http://mydomain.com) that point to both a web page and a piece of content inside an app. When a Universal Link is opened, the app OS checks to see if any installed app is registered for that domain. If so, the app is launched immediately without ever loading the web page. If not, the web URL is loaded into the webbrowser.</td>
+      <td>It is the URL to which users are redirected once the authentication is complete. It MUST match the value preregistered during the registration and use the HTTPS scheme. http://localhost is only permitted for development purposes, it’s not for use in production.<br><br><b>Note</b> : if relevant (in case you have a mobile app) make sure that your redirect URIs support the Universal links and App links mechanism. Functionally, it will allow you to have only one single link that will either open your desktop web application, your mobile app or your mobile site on the User’s device. Universal links and App links are standard web links (http://mydomain.com) that point to both a web page and a piece of content inside an app. When a Universal Link is opened, the app OS checks to see if any installed app is registered for that domain. If so, the app is launched immediately without ever loading the web page. If not, the web URL is loaded into the webbrowser.</td>
     </tr>
     <tr>
       <td>{% include parameter.html name="state" req="Strongly RECOMMENDED" %}</td>
@@ -208,7 +208,7 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
     </tr>
     <tr>
       <td>{% include parameter.html name="claims" req="OPTIONAL" %}</td>
-      <td>Requests that specific user's details be returned from the UserInfo Endpoint and/or in the ID Token. It is represented as a JSON object that has two members - <code>{"userinfo":{...}</code> and <code>{"id_token":{...}</code>, which content indicates which claims to return at the UserInfo Endpoint and which at the ID Token, together with indication whether the claim is voluntary (default) or essential.<br><br>Possible user's details your application can request is listed below.<br />
+      <td>Requests specific user's details to be returned from the UserInfo Endpoint and/or in the ID Token. It is represented as a JSON object that has two members - <code>{"userinfo":{...}</code> and <code>{"id_token":{...}</code>, which content indicates which claims to return at the UserInfo Endpoint and which at the ID Token, together with indication whether the claim is voluntary (default) or essential.<br><br>Possible user's details your application can request is listed below.<br />
         <table>
           <tr>
             <td>{% include parameter.html name="name" req="OPTIONAL" %}</td><td>User's full name in displayable form including all name parts, possibly including titles and suffixes</td>
@@ -302,35 +302,9 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
   </tbody>
 </table>
 
-### Example
-
-**Request**
-
-```http
-GET /authorize HTTP/1.1
-Host: server.example.com
-
-response_type=code
-  &client_id=s6BhdRkqt3
-  &redirect_uri=https%3A%2F%2Fclient.example.org%2Fcb
-  &scope=openid%20service:TEST_code%20profile%20email
-  &nonce=n-0S6_WzA2Mj
-  &state=af0ifjsldkj
-  &acr_values=http://itsme.services/V2/claim/acr_basic
-```
-
-**Response**
-
-```http
-HTTP/1.1 302 Found
-Location: https://client.example.org/cb?
-  code=SplxlOBeZQQYbYS6WxSbIA
-  &state=af0ifjsldkj
-```
-
 {% endtab %}
 
-{% tab AuthorizationRequest Symmetric keys %}
+{% tab AuthorizationRequest Symmetric key %}
 
 <b><code>GET https://oidc.<i>[e2e/prd]</i>.itsme.services/clientsecret-oidc/csapi/v0.1/connect/authorize</code></b>
 
@@ -344,7 +318,7 @@ Location: https://client.example.org/cb?
     </tr>
      <tr>
       <td>{% include parameter.html name="response_type" req="REQUIRED" %}</td>
-      <td>This defines the processing flow to be used when forming the response. Because itsme® uses the Authorization Code Flow, this value MUST be <code>code</code>.</td>
+      <td>This defines the processing flow to be used when forming the response. Because itsme® supports the Authorization Code Flow, this value MUST be <code>code</code>.</td>
     </tr>
     <tr>
       <td>{% include parameter.html name="scope" req="REQUIRED" %}</td>
@@ -358,7 +332,7 @@ Location: https://client.example.org/cb?
             <td>{% include parameter.html name="openid" req="REQUIRED" %}</td><td>It indicates that your application intends to use the OpenID Connect protocol to verify a user's identity by returning a <code>sub</code> claim which represents a unique identifier for the authenticated user.</td>
           </tr>
           <tr>
-            <td>{% include parameter.html name="profile" req="OPTIONAL" %}</td><td>Returns claims that represent basic profile information, including <code>family_name</code>, <code>given_name</code>, <code>name</code>, <code>gender</code> and <code>birthdate</code>.</td>
+            <td>{% include parameter.html name="profile" req="OPTIONAL" %}</td><td>Returns claims that represent basic profile information, specifically <code>family_name</code>, <code>given_name</code>, <code>name</code>, <code>gender</code> and <code>birthdate</code>.</td>
           </tr>
           <tr>
             <td>{% include parameter.html name="email" req="OPTIONAL" %}</td><td>Returns the <code>email</code> claim, which contains the user's email address, and <code>email_verified</code>, which is a boolean indicating whether the email address was verified by the user.</td>
@@ -374,11 +348,11 @@ Location: https://client.example.org/cb?
     </tr>
     <tr>
       <td>{% include parameter.html name="redirect_uri" req="REQUIRED" %}</td>
-      <td>It is the URL to which users are redirected once the authentication is complete. It MUST match the value preregistered during the registration and use the HTTPS scheme. http://localhost is only permitted for development purposes, it’s not for use in production.<br><br><b>Note</b> : make sure that your redirect URIs support the Universal links and App links mechanism. Functionally, it will allow you to have only one single link that will either open your desktop web application, your mobile app or your mobile site on the User’s device. Universal links and App links are standard web links (http://mydomain.com) that point to both a web page and a piece of content inside an app. When a Universal Link is opened, the app OS checks to see if any installed app is registered for that domain. If so, the app is launched immediately without ever loading the web page. If not, the web URL is loaded into the webbrowser.</td>
+      <td>It is the URL to which users are redirected once the authentication is complete. It MUST match the value preregistered during the registration and use the HTTPS scheme. http://localhost is only permitted for development purposes, it’s not for use in production.<br><br><b>Note</b> : if relevant (in case you have a mobile app) make sure that your redirect URIs support the Universal links and App links mechanism. Functionally, it will allow you to have only one single link that will either open your desktop web application, your mobile app or your mobile site on the User’s device. Universal links and App links are standard web links (http://mydomain.com) that point to both a web page and a piece of content inside an app. When a Universal Link is opened, the app OS checks to see if any installed app is registered for that domain. If so, the app is launched immediately without ever loading the web page. If not, the web URL is loaded into the webbrowser.</td>
     </tr>
     <tr>
       <td>{% include parameter.html name="state" req="Strongly RECOMMENDED" %}</td>
-      <td>Specifies any string value that your application uses to maintain state between your Authorization Request and the Authorization Server's response. You can use this parameter for several purposes, such as directing the user to the correct resource in your application and mitigating cross-site request forgery. Since your redirect_uri can be guessed, using a state value can increase your assurance that an incoming connection is the result of an authentication request. If you generate a random string or encode the hash of a cookie or another value that captures the client's state, you can validate the response to additionally ensure that the request and response originated in the same browser, providing protection against attacks such as cross-site request forgery.</td>
+      <td>Specifies any string value that your application uses to maintain state between your Authorization Request and the Authorization Server's response. You can use this parameter for several purposes, such as directing the user to the correct resource in your application and mitigating cross-site request forgery.</td>
     </tr>
     <tr>
       <td>{% include parameter.html name="nonce" req="Strongly RECOMMENDED" %}</td>
@@ -386,7 +360,7 @@ Location: https://client.example.org/cb?
     </tr>
     <tr>
       <td>{% include parameter.html name="claims" req="OPTIONAL" %}</td>
-      <td>Requests that specific user's details be returned from the UserInfo Endpoint and/or in the ID Token. It is represented as a JSON object that has two members - <code>{"userinfo":{...}</code> and <code>{"id_token":{...}</code>, which content indicates which claims to return at the UserInfo Endpoint and which with the ID Token, together with indication whether the claim is voluntary (default) or essential.<br><br>Possible user's details your application can request is listed below.<br />
+      <td>Requests specific user's details to be returned from the UserInfo Endpoint and/or in the ID Token. It is represented as a JSON object that has two members - <code>{"userinfo":{...}</code> and <code>{"id_token":{...}</code>, which content indicates which claims to return at the UserInfo Endpoint and which with the ID Token, together with indication whether the claim is voluntary (default) or essential.<br><br>Possible user's details your application can request is listed below.<br />
         <table>
           <tr>
             <td>{% include parameter.html name="name" req="OPTIONAL" %}</td><td>User's full name in displayable form including all name parts, possibly including titles and suffixes</td>
@@ -476,7 +450,45 @@ Location: https://client.example.org/cb?
   </tbody>
 </table>
 
+{% endtab %}
+
+{% endtabs %}
+
+
 ### Example
+
+{% tabs AuthorizationExample %}
+
+{% tab AuthorizationExample RSA keys %}
+
+**Request**
+
+```http
+GET /authorize HTTP/1.1
+Host: server.example.com
+
+response_type=code
+  &client_id=s6BhdRkqt3
+  &redirect_uri=https%3A%2F%2Fclient.example.org%2Fcb
+  &scope=openid%20service:TEST_code%20profile%20email
+  &nonce=n-0S6_WzA2Mj
+  &state=af0ifjsldkj
+  &acr_values=http://itsme.services/V2/claim/acr_basic
+```
+
+**Response**
+
+```http
+HTTP/1.1 302 Found
+Location: https://client.example.org/cb?
+  code=SplxlOBeZQQYbYS6WxSbIA
+  &state=af0ifjsldkj
+```
+
+{% endtab %}
+
+{% tab AuthorizationExample Symmetric key %}
+
 
 **Request**
 
@@ -589,48 +601,6 @@ To assert the identity of the user, the <code>code</code> received previously ne
   </tbody>
 </table>
 
-
-### Example
-
-**Request**
-
-```http
-POST /token HTTP/1.1
-Host: openid.c2id.com
-Content-Type: application/x-www-form-urlencoded
-
-grant_type=authorization_code
- &code=SplxlOBeZQQYbYS6WxSbIA
- &redirect_uri=https%3A%2F%2Fclient.example.org%2Fcb
- &client_assertion_type=urn:ietf:params:oauth:client-assertion-type:jwt-bearer
- &client_assertion=PHNhbWxwOl ... ZT
-```
-
-**Response**
-
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-Cache-Control: no-store
-Pragma: no-cache
-
-{
-  "id_token": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjFlOWdkazcifQ.ewogImlzc
-    yI6ICJodHRwOi8vc2VydmVyLmV4YW1wbGUuY29tIiwKICJzdWIiOiAiMjQ4Mjg5
-    NzYxMDAxIiwKICJhdWQiOiAiczZCaGRSa3F0MyIsCiAibm9uY2UiOiAibi0wUzZ
-    fV3pBMk1qIiwKICJleHAiOiAxMzExMjgxOTcwLAogImlhdCI6IDEzMTEyODA5Nz
-    AKfQ.ggW8hZ1EuVLuxNuuIJKX_V8a_OMXzR0EHR9R6jgdqrOOF4daGU96Sr_P6q
-    Jp6IcmD3HP99Obi1PRs-cwh3LO-p146waJ8IhehcwL7F09JdijmBqkvPeB2T9CJ
-    NqeGpe-gccMg4vfKjkM8FcGvnzZUN4_KSP0aAp1tOJ1zZwgjxqGByKHiOtX7Tpd
-    QyHE5lcMiKPXfEIQILVq0pc_E2DzL7emopWoaoZTF_m0_N0YzFC6g6EJbOEoRoS
-    K5hoDalrcvRYLSrQAZZKflyuVCyixEoV9GfNQC3_osjzw2PAithfubEEBLuVVk4
-    XUVrWOLrLl0nx7RkKU8NXNHq-rvKMzqg"
-  "access_token": "SlAV32hkKG",
-  "token_type": "Bearer",
-  "expires_in": 3600,
-}
-```
-
 {% endtab %}
 
 {% tab TokenRequest Symmetric key %}
@@ -692,8 +662,16 @@ To asserts the identity of the user, the <code>code</code> received previously n
   </tbody>
 </table>
 
+{% endtab %}
+
+{% endtabs %}
+
 
 ### Example
+
+{% tabs TokenExample %}
+
+{% tab TokenExample RSA keys %}
 
 **Request**
 
@@ -734,6 +712,48 @@ Pragma: no-cache
 }
 ```
 
+{% endtab %}
+
+{% tab TokenExample Symmetric key %}
+
+**Request**
+
+```http
+POST /token HTTP/1.1
+Host: openid.c2id.com
+Content-Type: application/x-www-form-urlencoded
+
+grant_type=authorization_code
+ &code=SplxlOBeZQQYbYS6WxSbIA
+ &redirect_uri=https%3A%2F%2Fclient.example.org%2Fcb
+ &client_id=s6BhdRkqt3
+ &client_secret=PHNhbWxwOl ... ZT
+```
+
+**Response**
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+Cache-Control: no-store
+Pragma: no-cache
+
+{
+  "id_token": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjFlOWdkazcifQ.ewogImlzc
+    yI6ICJodHRwOi8vc2VydmVyLmV4YW1wbGUuY29tIiwKICJzdWIiOiAiMjQ4Mjg5
+    NzYxMDAxIiwKICJhdWQiOiAiczZCaGRSa3F0MyIsCiAibm9uY2UiOiAibi0wUzZ
+    fV3pBMk1qIiwKICJleHAiOiAxMzExMjgxOTcwLAogImlhdCI6IDEzMTEyODA5Nz
+    AKfQ.ggW8hZ1EuVLuxNuuIJKX_V8a_OMXzR0EHR9R6jgdqrOOF4daGU96Sr_P6q
+    Jp6IcmD3HP99Obi1PRs-cwh3LO-p146waJ8IhehcwL7F09JdijmBqkvPeB2T9CJ
+    NqeGpe-gccMg4vfKjkM8FcGvnzZUN4_KSP0aAp1tOJ1zZwgjxqGByKHiOtX7Tpd
+    QyHE5lcMiKPXfEIQILVq0pc_E2DzL7emopWoaoZTF_m0_N0YzFC6g6EJbOEoRoS
+    K5hoDalrcvRYLSrQAZZKflyuVCyixEoV9GfNQC3_osjzw2PAithfubEEBLuVVk4
+    XUVrWOLrLl0nx7RkKU8NXNHq-rvKMzqg"
+  "access_token": "SlAV32hkKG",
+  "token_type": "Bearer",
+  "expires_in": 3600,
+}
+```
 
 {% endtab %}
 
@@ -758,33 +778,6 @@ This is illustrated in the example below.
 The UserInfo Response is a signed and encrypted JSON Web Token. So, before being able to extract the claims you will have to decrypt and verify it using the RSA keys.
 
 
-### Example
-
-**Request**
-
-```http
-GET /userinfo HTTP/1.1
-Host: server.example.com
-Authorization: Bearer SlAV32hkKG
-```
-
-**Response**
-
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-  {
-   "sub": "248289761001",
-   "name": "Jane Doe",
-   "given_name": "Jane",
-   "family_name": "Doe",
-   "preferred_username": "j.doe",
-   "email": "janedoe@example.com",
-   "picture": "http://example.com/janedoe/me.jpg"
-  }
-```
-
 {% endtab %}
 
 {% tab UserInfoRequest Symmetric key %}
@@ -800,8 +793,16 @@ This is illustrated in the example below.
 
 The UserInfo Response is a signed JSON Web Token. So, before being able to extract the claims you will have to verify it using the symmetric key.
 
+{% endtab %}
+
+{% endtabs %}
+
 
 ### Example
+
+{% tabs UserInfoExample %}
+
+{% tab UserInfoExample RSA keys %}
 
 **Request**
 
@@ -828,11 +829,40 @@ Content-Type: application/json
   }
 ```
 
+{% endtab %}
 
+{% tab UserInfoExample Symmetric key %}
+
+**Request**
+
+```http
+GET /userinfo HTTP/1.1
+Host: server.example.com
+Authorization: Bearer SlAV32hkKG
+```
+
+**Response**
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+  {
+   "sub": "248289761001",
+   "name": "Jane Doe",
+   "given_name": "Jane",
+   "family_name": "Doe",
+   "preferred_username": "j.doe",
+   "email": "janedoe@example.com",
+   "picture": "http://example.com/janedoe/me.jpg"
+  }
+```
 
 {% endtab %}
 
 {% endtabs %}
+
+
 
 ## Revoke Request
 
