@@ -5,11 +5,9 @@ permalink: /authentication/
 nav_order: 4
 ---
 
-# Guide
+# Overview
 
-## Overview
-
-This API is based on the Authorization Code Flow of OpenID Connect 1.0. It allows you to verify the identity of an end-user based on the authentication performed by an authorization server, as well as to obtain basic profile information about the end-user in an interoperable and REST-like manner. Sounds technical, but it’s really quite easy. The REST architecture mainly breaks down to HTTP-methods GET and POST.
+This API is based on the Authorization Code Flow of OpenID Connect 1.0. It allows you to verify the identity of an end-user based on the authentication performed by an authorization server, as well as to obtain basic profile information about the end-user. 
 
 The diagram below describes the **Authentication**  process and how your systems will be interacting with itsme® :
   
@@ -29,6 +27,8 @@ The diagram below describes the **Authentication**  process and how your systems
   <li>Confirm the success of the operation and display a success message.</li>
 </ol>
 
+# Guides
+
 ## Generate itsme® button
 
 First, you will need to create a button to allow your users to authenticate with itsme®. Check the <a href="https://brand.belgianmobileid.be/d/CX5YsAKEmVI7/documentation#/ux/buttons-1518207548" target="blank">Button design guide</a> before you start the integration. 
@@ -38,9 +38,7 @@ Upon clicking this button, the browser will redirect the User to our Front-End. 
 
 ## Client Authentication methods
 
-The itsme® API is based on the Authorization Code Flow of OpenID Connect, meaning that some of the endpoints require a client authentication to protect the exchange of entitlement information and ensure the requested information gets issued to a legitimate application and not some other party.
-
-itsme® supports the following authentication methods :
+itsme® supports the following authentication methods to protect the exchange of sensitive information and ensure the requested information gets issued to a legitimate application and not some other party :
 
 <ul>
   <li>asymmetric RSA key pair</li>
@@ -76,52 +74,6 @@ This method requires the exchange of a static secret that will be used to authen
 
 The client_secret value will be provided by itsme® when <a href="https://belgianmobileid.github.io/doc/getting-started.html#getting-started" target="blank">registering your project</a>.
 
-
-## Handling errors
-
-Whenever you send a request to the itsme® API you’ll get a response in JSON (JavaScript Object Notation) format. This is a standard for data communication that’s easy to read for humans as well as machines. Alongside the JSON-response an HTTP status code is sent that shows whether the request was successful or not. If it wasn’t, you can tell by the code and the message in the response what went wrong, why it went wrong and whether there is something you can do about it.
-
-
-### A successful response
-
-
-### The error response type
-
-**Error reponse**
-
-In case an error is returned, the JSON will look like :
-
-<table>
-  <tbody>
-    <tr>
-      <td>{% include parameter.html name="error" req="" %}</td>
-      <td>A single error code.<br><br>Possible values are listed in the table below.</td>
-    </tr>
-    <tr>
-      <td>{% include parameter.html name="error_description" req="" %}</td>
-      <td>Human-readable text providing additional information, used to assist the developer in understanding the error that occurred.</td>
-    </tr>
-    <tr>
-      <td>{% include parameter.html name="state" req="" %}</td>
-      <td>The string value provided in the Authorization Request. You SHOULD validate that the value returned matches the one supplied.</td>
-    </tr>
-  </tbody>
-</table>
-
-### All possible status codes
-
-<table>
-  <tbody>
-    <tr>
-      <td>{% include parameter.html name="XXX" req="" %}</td>
-      <td>XXX</td>
-    </tr>
-    <tr>
-      <td>{% include parameter.html name="YYYY" req="" %}</td>
-      <td>YYYY</td>
-    </tr>
-   </tbody>
-</table>
 
 ## Mapping the user
 
@@ -159,7 +111,7 @@ If the same user would opt to re-create an itsme® afterwards, he will need to r
 
 {% endtabs %}
 
-To simplify implementations and increase flexibility, <a href="https://openid.net/specs/openid-connect-discovery-1_0.html" target="blank">OpenID Connect allows the use of a Discovery Document</a>, a JSON document containing key-value pairs which provide details about itsme® configuration, such as the URIs of the 
+To simplify implementations and increase flexibility, <a href="https://openid.net/specs/openid-connect-discovery-1_0.html" target="blank">OpenID Connect allows the use of a Discovery Document</a>, a JSON document containing key-value pairs which provide details about itsme® configuration, such as the  
 
 <ul>
   <li>Authorization, Token and userInfo Endpoints</li>
@@ -221,7 +173,7 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
     </tr>
     <tr>
       <td>{% include parameter.html name="state" req="Strongly RECOMMENDED" %}</td>
-      <td>Specifies any string value that your application uses to maintain state between your Authorization Request and the Authorization Server's response. You can use this parameter for several purposes, such as directing the user to the correct resource in your application and mitigating cross-site request forgery. Since your redirect_uri can be guessed, using a state value can increase your assurance that an incoming connection is the result of an authentication request. If you generate a random string or encode the hash of a cookie or another value that captures the client's state, you can validate the response to additionally ensure that the request and response originated in the same browser, providing protection against attacks such as cross-site request forgery.</td>
+      <td>Specifies any string value that your application uses to maintain state between your Authorization Request and the Authorization Server's response. You can use this parameter for several purposes, such as directing the user to the correct resource in your application and mitigating cross-site request forgery.</td>
     </tr>
     <tr>
       <td>{% include parameter.html name="nonce" req="Strongly RECOMMENDED" %}</td>
