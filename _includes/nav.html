@@ -66,7 +66,7 @@
         {%- endif -%}
         <a href="{{ node.url | absolute_url }}" class="nav-list-link{% if page.url == node.url %} active{% endif %}">{{ node.title }}</a>
         {%- if node.toc_list -%}
-            {% include toc.html sanitize=true html=node.content class="nav-list" item_class="nav-list-item" anchor_class="nav-list-link" submenu_class="nav-list" h_max=2 %}
+            {% include toc.html sanitize=true html=node.content class="nav-list" item_class="nav-list-item active" anchor_class="nav-list-link" submenu_class="nav-list" h_max=2 %}
         {%- endif -%}
         {%- if node.has_children -%}
           {%- assign children_list = pages_list | where: "parent", node.title -%}
