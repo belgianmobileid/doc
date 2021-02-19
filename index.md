@@ -15,12 +15,12 @@ itsme® API allows partners to use verified identities for authentication and au
 Learn how to integrate our services that you and your business will benefit from. For a more detailed, in-depth explanation of each, please read through the appropriate developer docs.
 
 
-## Use cases
+# Use cases
 
 For more information on how itsme® can best work for your business, please <a href = "mailto: onboarding@itsme.be">contact us</a>. itsme® will be happy to help !
 
 
-## Services
+# Services
 
 Head over to our developer documentation for each of our services. Here you will find:
 
@@ -38,7 +38,7 @@ Services | Description
 **Signing** | Enables your users/customers to sign documents electronically. The itsme® Sign responds to the requirements for the creation of Qualified Electronic Signature (QES).
 
 <a name="Onboarding"></a>
-## Getting started
+# Getting started
 
 In order to start your integration you will first need to setup your personal Sanbox environment. To do so, you will be requested to provide the following information :  
 
