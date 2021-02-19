@@ -3,6 +3,7 @@ layout: page
 title: Authentication API
 permalink: /authentication/
 nav_order: 4
+toc_list: true
 ---
 
 # Overview
