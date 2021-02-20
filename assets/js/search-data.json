@@ -71,14 +71,14 @@
     "url": "https://belgianmobileid.github.io/doc/authentication/",
     "relUrl": "/authentication/"
   },"12": {
-    "doc": "Confirmation",
-    "title": "Confirmation",
+    "doc": "Confirmation API",
+    "title": "Confirmation API",
     "content": " ",
     "url": "https://belgianmobileid.github.io/doc/confirmation/",
     "relUrl": "/confirmation/"
   },"13": {
-    "doc": "Identification",
-    "title": "Identification",
+    "doc": "Identification API",
+    "title": "Identification API",
     "content": " ",
     "url": "https://belgianmobileid.github.io/doc/identification/",
     "relUrl": "/identification/"
