@@ -77,42 +77,66 @@
     "url": "https://belgianmobileid.github.io/doc/confirmation/",
     "relUrl": "/confirmation/"
   },"13": {
+    "doc": "Welcome",
+    "title": "Welcome",
+    "content": "itsme® API allows partners to use verified identities for authentication and authorization on web desktop, mobile web or mobile applications. Learn how to integrate our services that you and your business will benefit from. For a more detailed, in-depth explanation of each, please read through the appropriate developer docs. ",
+    "url": "https://belgianmobileid.github.io/doc/direct-integration.html",
+    "relUrl": "/direct-integration.html"
+  },"14": {
+    "doc": "Welcome",
+    "title": "Use cases",
+    "content": "For more information on how itsme® can best work for your business, please contact us. itsme® will be happy to help ! . ",
+    "url": "https://belgianmobileid.github.io/doc/direct-integration.html#use-cases",
+    "relUrl": "/direct-integration.html#use-cases"
+  },"15": {
+    "doc": "Welcome",
+    "title": "Services",
+    "content": "Head over to our developer documentation for each of our services. Here you will find: . | A techical overview | Step by step instructions on how to integrate | Code snippets | . | Services | Description | . | Authentication | Enables your users/customers to log in securely to your application (on web, tablet or mobile) | . | Identification | Enables you to identify your users and access their verified data. | . | Confirmation | Enables your users/customers to give their consent to a payment or order/action. | . | Signing | Enables your users/customers to sign documents electronically. The itsme® Sign responds to the requirements for the creation of Qualified Electronic Signature (QES). | . ",
+    "url": "https://belgianmobileid.github.io/doc/direct-integration.html#services",
+    "relUrl": "/direct-integration.html#services"
+  },"16": {
+    "doc": "Welcome",
+    "title": "Getting started",
+    "content": "In order to start your integration you will first need to setup your personal Sanbox environment. To do so, you will be requested to provide the following information : . | Contact details such as your email, name, phone number. | Organisation details as shown on the company register for your jurisdiction. | Information about the project you want to setup (the services you want to use, the client authentication method you want to set-up, the user attributes you want to request, ...) | . Our onboarding team will review your project and get in touch with you in no time to provide your credentials : . | a \"client_id\" | a \"service_code\" | information about your client authentication method | the list of user attributes you can request | . Request your Sandbox . ",
+    "url": "https://belgianmobileid.github.io/doc/direct-integration.html#getting-started",
+    "relUrl": "/direct-integration.html#getting-started"
+  },"17": {
     "doc": "Identification API",
     "title": "Identification API",
     "content": " ",
     "url": "https://belgianmobileid.github.io/doc/identification/",
     "relUrl": "/identification/"
-  },"14": {
+  },"18": {
     "doc": "Welcome",
     "title": "Welcome",
     "content": "itsme® API allows partners to use verified identities for authentication and authorization on web desktop, mobile web or mobile applications. Learn how to integrate our services that you and your business will benefit from. For a more detailed, in-depth explanation of each, please read through the appropriate developer docs. ",
     "url": "https://belgianmobileid.github.io/doc/index",
     "relUrl": "/index"
-  },"15": {
+  },"19": {
     "doc": "Welcome",
     "title": "Use cases",
     "content": "For more information on how itsme® can best work for your business, please contact us. itsme® will be happy to help ! . ",
     "url": "https://belgianmobileid.github.io/doc/index#use-cases",
     "relUrl": "/index#use-cases"
-  },"16": {
+  },"20": {
     "doc": "Welcome",
     "title": "Services",
     "content": "Head over to our developer documentation for each of our services. Here you will find: . | A techical overview | Step by step instructions on how to integrate | Code snippets | . | Services | Description | . | Authentication | Enables your users/customers to log in securely to your application (on web, tablet or mobile) | . | Identification | Enables you to identify your users and access their verified data. | . | Confirmation | Enables your users/customers to give their consent to a payment or order/action. | . | Signing | Enables your users/customers to sign documents electronically. The itsme® Sign responds to the requirements for the creation of Qualified Electronic Signature (QES). | . ",
     "url": "https://belgianmobileid.github.io/doc/index#services",
     "relUrl": "/index#services"
-  },"17": {
+  },"21": {
     "doc": "Welcome",
     "title": "Getting started",
     "content": "In order to start your integration you will first need to setup your personal Sanbox environment. To do so, you will be requested to provide the following information : . | Contact details such as your email, name, phone number. | Organisation details as shown on the company register for your jurisdiction. | Information about the project you want to setup (the services you want to use, the client authentication method you want to set-up, the user attributes you want to request, ...) | . Our onboarding team will review your project and get in touch with you in no time to provide your credentials : . | a \"client_id\" | a \"service_code\" | information about your client authentication method | the list of user attributes you can request | . Request your Sandbox . ",
     "url": "https://belgianmobileid.github.io/doc/index#getting-started",
     "relUrl": "/index#getting-started"
-  },"18": {
+  },"22": {
     "doc": "Test",
     "title": "testing code snippet",
     "content": "// Javascript code with syntax highlighting. var fun = function lang(l) { dateformat.i18n = require('./lang/' + l) return true; } . $ npm install -g yo generator-itsme . &lt;code style=display:block;white-space:pre-wrap&gt;$ npm install -g yo generator-itsme&lt;/code&gt; . | Parameter | Description | . | Param1required | Global description of Param1 | subparam1optional | description of subparam1 | . | subparam2required | description of subparam2 | . | . | Param2optional | Global description of Param2 | . ",
     "url": "https://belgianmobileid.github.io/doc/test/#testing-code-snippet",
     "relUrl": "/test/#testing-code-snippet"
-  },"19": {
+  },"23": {
     "doc": "Test",
     "title": "Test",
     "content": "Voilà une page de test de Jekyll . First tabs . | js | ruby | . | tagada . | tsoin tsoin here goes some code . | . Second tabs . | yaml | json | . | hello: . | ‘whatsup’ | ‘hi’ | . | { “hello”: [“whatsup”, “hi”] } . | . ",
