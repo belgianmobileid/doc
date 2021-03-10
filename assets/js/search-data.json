@@ -77,41 +77,41 @@
     "url": "https://belgianmobileid.github.io/doc/directIntegration/authentication/",
     "relUrl": "/directIntegration/authentication/"
   },"13": {
-    "doc": "Welcome",
-    "title": "Welcome",
-    "content": "itsme® API allows partners to use verified identities for authentication and authorization on web desktop, mobile web or mobile applications. Learn how to integrate our services that you and your business will benefit from. For a more detailed, in-depth explanation of each, please read through the appropriate developer docs. ",
-    "url": "https://belgianmobileid.github.io/doc/azureB2C",
-    "relUrl": "/azureB2C"
-  },"14": {
-    "doc": "Welcome",
-    "title": "Use cases",
-    "content": "For more information on how itsme® can best work for your business, please contact us. itsme® will be happy to help ! . ",
-    "url": "https://belgianmobileid.github.io/doc/azureB2C#use-cases",
-    "relUrl": "/azureB2C#use-cases"
-  },"15": {
-    "doc": "Welcome",
-    "title": "Services",
-    "content": "Head over to our developer documentation for each of our services. Here you will find: . | A techical overview | Step by step instructions on how to integrate | Code snippets | . | Services | Description | . | Authentication | Enables your users/customers to log in securely to your application (on web, tablet or mobile) | . | Identification | Enables you to identify your users and access their verified data. | . | Confirmation | Enables your users/customers to give their consent to a payment or order/action. | . | Signing | Enables your users/customers to sign documents electronically. The itsme® Sign responds to the requirements for the creation of Qualified Electronic Signature (QES). | . ",
-    "url": "https://belgianmobileid.github.io/doc/azureB2C#services",
-    "relUrl": "/azureB2C#services"
-  },"16": {
-    "doc": "Welcome",
-    "title": "Getting started",
-    "content": "In order to start your integration you will first need to setup your personal Sanbox environment. To do so, you will be requested to provide the following information : . | Contact details such as your email, name, phone number. | Organisation details as shown on the company register for your jurisdiction. | Information about the project you want to setup (the services you want to use, the client authentication method you want to set-up, the user attributes you want to request, ...) | . Our onboarding team will review your project and get in touch with you in no time to provide your credentials : . | a \"client_id\" | a \"service_code\" | information about your client authentication method | the list of user attributes you can request | . Request your Sandbox . ",
-    "url": "https://belgianmobileid.github.io/doc/azureB2C#getting-started",
-    "relUrl": "/azureB2C#getting-started"
-  },"17": {
     "doc": "Confirmation API",
     "title": "Confirmation API",
     "content": " ",
     "url": "https://belgianmobileid.github.io/doc/directIntegration/confirmation/",
     "relUrl": "/directIntegration/confirmation/"
-  },"18": {
+  },"14": {
     "doc": "Identification API",
     "title": "Identification API",
     "content": " ",
     "url": "https://belgianmobileid.github.io/doc/directIntegration/identification/",
     "relUrl": "/directIntegration/identification/"
+  },"15": {
+    "doc": "Welcome",
+    "title": "Welcome",
+    "content": "itsme® API allows partners to use verified identities for authentication and authorization on web desktop, mobile web or mobile applications. Learn how to integrate our services that you and your business will benefit from. For a more detailed, in-depth explanation of each, please read through the appropriate developer docs. ",
+    "url": "https://belgianmobileid.github.io/doc/azureB2C",
+    "relUrl": "/azureB2C"
+  },"16": {
+    "doc": "Welcome",
+    "title": "Use cases",
+    "content": "For more information on how itsme® can best work for your business, please contact us. itsme® will be happy to help ! . ",
+    "url": "https://belgianmobileid.github.io/doc/azureB2C#use-cases",
+    "relUrl": "/azureB2C#use-cases"
+  },"17": {
+    "doc": "Welcome",
+    "title": "Services",
+    "content": "Head over to our developer documentation for each of our services. Here you will find: . | A techical overview | Step by step instructions on how to integrate | Code snippets | . | Services | Description | . | Authentication | Enables your users/customers to log in securely to your application (on web, tablet or mobile) | . | Identification | Enables you to identify your users and access their verified data. | . | Confirmation | Enables your users/customers to give their consent to a payment or order/action. | . | Signing | Enables your users/customers to sign documents electronically. The itsme® Sign responds to the requirements for the creation of Qualified Electronic Signature (QES). | . ",
+    "url": "https://belgianmobileid.github.io/doc/azureB2C#services",
+    "relUrl": "/azureB2C#services"
+  },"18": {
+    "doc": "Welcome",
+    "title": "Getting started",
+    "content": "In order to start your integration you will first need to setup your personal Sanbox environment. To do so, you will be requested to provide the following information : . | Contact details such as your email, name, phone number. | Organisation details as shown on the company register for your jurisdiction. | Information about the project you want to setup (the services you want to use, the client authentication method you want to set-up, the user attributes you want to request, ...) | . Our onboarding team will review your project and get in touch with you in no time to provide your credentials : . | a \"client_id\" | a \"service_code\" | information about your client authentication method | the list of user attributes you can request | . Request your Sandbox . ",
+    "url": "https://belgianmobileid.github.io/doc/azureB2C#getting-started",
+    "relUrl": "/azureB2C#getting-started"
   },"19": {
     "doc": "Welcome",
     "title": "Welcome",
