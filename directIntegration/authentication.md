@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Authentication API
-permalink: /authentication/
+permalink: directIntegration/authentication/
 nav_order: 4
 toc_list: true
 ---
