@@ -77,6 +77,9 @@ This method requires the exchange of a static secret that will be used to authen
 
 The client_secret value will be provided by itsme® when <a href="https://belgianmobileid.github.io/doc/getting-started.html#getting-started" target="blank">registering your project</a>.
 
+## Certificates and website security
+
+
 
 ## Mapping the user
 
