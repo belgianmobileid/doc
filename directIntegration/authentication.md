@@ -575,7 +575,7 @@ To assert the identity of the user, the <code>code</code> received previously ne
             <td>{% include parameter.html name="aud" req="OPTIONAL" %}</td><td>The full URL of the resource you're using the JWT to authenticate to. Set this to <code>https://idp.<i>[e2e/prd]</i>.itsme.services/v2/token</code>.</td>
           </tr>
           <tr>
-            <td>{% include parameter.html name="jti" req="OPTIONAL" %}</td><td>An unique identifier for the token. This parameter has a maximum length of 255 characters.</td>
+            <td>{% include parameter.html name="jti" req="OPTIONAL" %}</td><td>An unique identifier for the token, containing maximum 255 characters.</td>
           </tr>
           <tr>
             <td>{% include parameter.html name="exp" req="OPTIONAL" %}</td><td>The expiration time of the token in seconds since January 1, 1970 UTC.</td>
