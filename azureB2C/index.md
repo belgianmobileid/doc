@@ -12,7 +12,7 @@ toc_list: true
 
 itsme® API allows partners to use verified identities for authentication and authorization on web desktop, mobile web or mobile applications.
 
-Learn how to integrate our services that you and your business will benefit from. For a more detailed, in-depth explanation of each, please read through the appropriate developer docs.
+Learn how to integrate our services with Azure Active Directory B2C. For a more detailed, in-depth explanation of each, please read through the appropriate developer docs.
 
 
 # Use cases
@@ -22,22 +22,14 @@ For more information on how itsme® can best work for your business, please <a h
 
 # Services
 
-Head over to our developer documentation for each of our services. Here you will find:
-
-<ul>
-  <li>A techical overview</li>
-  <li>Step by step instructions on how to integrate</li>
-  <li>Code snippets</li>
-</ul>
+Hereby the list of itsme® services that can be implemented through Azure Active Directory B2C :
 
 Services | Description
 :-------- | :--------
 **Authentication** | Enables your users/customers to log in securely to your application (on web, tablet or mobile)
 **Identification** | Enables you to identify your users and access their verified data.
-**Confirmation** | Enables your users/customers to give their consent to a payment or order/action.
-**Signing** | Enables your users/customers to sign documents electronically. The itsme® Sign responds to the requirements for the creation of Qualified Electronic Signature (QES).
 
-<a name="Onboarding"></a>
+
 # Getting started
 
 In order to start your integration you will first need to setup your personal Sanbox environment. To do so, you will be requested to provide the following information :  
@@ -52,11 +44,15 @@ Our onboarding team will review your project and get in touch with you in no tim
 <ul>
   <li>a <i>"client_id"</i></li>
   <li>a <i>"service_code"</i></li>
-  <li>information about your <a href="https://belgianmobileid.github.io/doc/authentication/#client-authentication-methods" target="blank">client authentication method</a></li>
+  <li>an email to a one-time link to the <i>"client_secret"</i></li>
   <li>the list of user attributes you can request</li>
 </ul>
 
 <br><br><button type="button"><a href="https://partner-support.itsme.be/hc/en-us/requests/new?ticket_form_id=360004640194" target="blank">Request your Sandbox</a></button>
+
+On top of this, you will also need to have an Azure Active Directory subscription. For more information, please visit the Microsoft partner documentation : https://docs.microsoft.com/en-us/azure/active-directory-b2c/partner-itsme.
+
+
 
 
 
