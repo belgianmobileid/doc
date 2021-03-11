@@ -2,7 +2,6 @@
 
 layout: page
 title: Welcome
-permalink: /azureB2C
 nav_order: 1
 toc_list: true
 
