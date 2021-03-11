@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Confirmation API
-permalink: directIntegration/confirmation/
+permalink: confirmation/
 nav_order: 5
 toc_list: true
 ---
