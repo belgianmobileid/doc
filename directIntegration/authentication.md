@@ -79,6 +79,13 @@ The client_secret value will be provided by itsme® when <a href="https://belgia
 
 ## Certificates and website security
 
+itsme® requires HTTPS connections to guarantee security. This means the itsme API can only be accessed through the secure <code>https</code> protocol. All of the API URL we publish use HTTPS.
+
+With the <code>https</code> protocol, a web site operator obtains a certificate by applying to a certificate authority with a certificate signing request. The certificate request is an electronic document that contains the web site name, company information and the public key. The certificate provider signs the request, thus producing a public certificate. During web browsing, this public certificate is served to any web browser that connects to the web site and proves to the web browser that the provider believes it has issued a certificate to the owner of the web site.
+
+A certificate provider can opt to issue three types of certificates, each requiring its own degree of vetting rigor. In order of increasing rigor (and naturally, cost) they are: Domain Validation, Organization Validation and Extended Validation.
+
+The Domain Validation certificate doesn’t provide sufficient identity guarantees to itsme. So, <b>only the Organization Validation and Extended Validation certificates are supported</b>.
 
 
 ## Mapping the user
