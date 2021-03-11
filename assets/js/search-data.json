@@ -92,26 +92,26 @@
     "doc": "Welcome",
     "title": "Welcome",
     "content": "itsme® API allows partners to use verified identities for authentication and authorization on web desktop, mobile web or mobile applications. Learn how to integrate our services with Azure Active Directory B2C. For a more detailed, in-depth explanation of each, please read through the appropriate developer docs. ",
-    "url": "https://belgianmobileid.github.io/doc/azureB2C",
-    "relUrl": "/azureB2C"
+    "url": "https://belgianmobileid.github.io/doc/azureB2C/",
+    "relUrl": "/azureB2C/"
   },"16": {
     "doc": "Welcome",
     "title": "Use cases",
     "content": "For more information on how itsme® can best work for your business, please contact us. itsme® will be happy to help ! . ",
-    "url": "https://belgianmobileid.github.io/doc/azureB2C#use-cases",
-    "relUrl": "/azureB2C#use-cases"
+    "url": "https://belgianmobileid.github.io/doc/azureB2C/#use-cases",
+    "relUrl": "/azureB2C/#use-cases"
   },"17": {
     "doc": "Welcome",
     "title": "Services",
     "content": "Hereby the list of itsme® services that can be implemented through Azure Active Directory B2C : . | Services | Description | . | Authentication | Enables your users/customers to log in securely to your application (on web, tablet or mobile) | . | Identification | Enables you to identify your users and access their verified data. | . ",
-    "url": "https://belgianmobileid.github.io/doc/azureB2C#services",
-    "relUrl": "/azureB2C#services"
+    "url": "https://belgianmobileid.github.io/doc/azureB2C/#services",
+    "relUrl": "/azureB2C/#services"
   },"18": {
     "doc": "Welcome",
     "title": "Getting started",
     "content": "In order to start your integration you will first need to setup your personal Sanbox environment. To do so, you will be requested to provide the following information : . | Contact details such as your email, name, phone number. | Organisation details as shown on the company register for your jurisdiction. | Information about the project you want to setup (the services you want to use, the client authentication method you want to set-up, the user attributes you want to request, ...) | . Our onboarding team will review your project and get in touch with you in no time to provide your credentials : . | a \"client_id\" | a \"service_code\" | an email to a one-time link to the \"client_secret\" | the list of user attributes you can request | . Request your Sandbox . On top of this, you will also need to have an Azure Active Directory subscription. For more information, please visit the Microsoft partner documentation : https://docs.microsoft.com/en-us/azure/active-directory-b2c/partner-itsme. ",
-    "url": "https://belgianmobileid.github.io/doc/azureB2C#getting-started",
-    "relUrl": "/azureB2C#getting-started"
+    "url": "https://belgianmobileid.github.io/doc/azureB2C/#getting-started",
+    "relUrl": "/azureB2C/#getting-started"
   },"19": {
     "doc": "Welcome",
     "title": "Welcome",
