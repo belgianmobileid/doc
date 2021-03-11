@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Authentication API
-permalink: directIntegration/authentication/
+permalink: authentication/
 nav_order: 4
 toc_list: true
 ---
@@ -85,7 +85,7 @@ With the <code>https</code> protocol, a web site operator obtains a certificate 
 
 A certificate provider can opt to issue three types of certificates, each requiring its own degree of vetting rigor. In order of increasing rigor (and naturally, cost) they are: Domain Validation, Organization Validation and Extended Validation.
 
-The Domain Validation certificate doesn’t provide sufficient identity guarantees to itsme. So, <b>only the Organization Validation and Extended Validation certificates are supported</b>.
+The Domain Validation certificate doesn’t provide sufficient identity guarantees to itsme. So, <b>only the Organization Validation and Extended Validation certificates</b> are supported.
 
 
 ## Mapping the user
