@@ -2,7 +2,7 @@
 
 layout: page
 title: Welcome
-permalink: /index
+permalink: index/
 nav_order: 1
 toc_list: true
 
