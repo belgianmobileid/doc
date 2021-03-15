@@ -1,7 +1,7 @@
 ---
 layout: page
 title: App to App test links
-permalink: authentication/
+permalink: TestLinks/
 nav_order: 4
 toc_list: false
 ---
