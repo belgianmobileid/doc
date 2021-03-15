@@ -1,10 +1,11 @@
 ---
+layout: page
 title: App to App test links
-
-toc_footers:
- - <a href='#'>Sign Up for a Developer Key</a> -->
- - <a href='https://github.com/lord/slate'>Documentation Powered by Slate</a>
+permalink: authentication/
+nav_order: 4
+toc_list: false
 ---
+
 # Requested data
 
 Please note all the requests below ask for the following claims (all from 'scope' values):
