@@ -2,38 +2,38 @@
     "doc": "App to App test links",
     "title": "Requested data",
     "content": "Please note all the requests below ask for the following claims (all from ‘scope’ values): &lt;ul&gt; &lt;li&gt;profile&lt;/li&gt; &lt;li&gt;eid&lt;/li&gt; &lt;li&gt;email&lt;/li&gt; &lt;li&gt;address&lt;/li&gt; &lt;/ul&gt; . Please note also the Confirm links are only valid for a limited amount of time. After a while, the request object on which they are based are wiped in the hosting server. To re-create new ones, please consult How to create A2A confirm links (hosted on BMID Confluence). ",
-    "url": "https://belgianmobileid.github.io/doc/TestLinks/A2ATL.html#requested-data",
-    "relUrl": "/TestLinks/A2ATL.html#requested-data"
+    "url": "https://belgianmobileid.github.io/doc/authentication/#requested-data",
+    "relUrl": "/authentication/#requested-data"
   },"1": {
     "doc": "App to App test links",
     "title": "Links",
     "content": " ",
-    "url": "https://belgianmobileid.github.io/doc/TestLinks/A2ATL.html#links",
-    "relUrl": "/TestLinks/A2ATL.html#links"
+    "url": "https://belgianmobileid.github.io/doc/authentication/#links",
+    "relUrl": "/authentication/#links"
   },"2": {
     "doc": "App to App test links",
     "title": "UAT",
     "content": "Login . UAT - OIDC V1 login . UAT - OIDC V2 login . Confirm links . UAT - OIDC V1 confirm . UAT - OIDC V2 confirm . Azure B2C ClientSecret . UAT - Azure B2C . ",
-    "url": "https://belgianmobileid.github.io/doc/TestLinks/A2ATL.html#uat",
-    "relUrl": "/TestLinks/A2ATL.html#uat"
+    "url": "https://belgianmobileid.github.io/doc/authentication/#uat",
+    "relUrl": "/authentication/#uat"
   },"3": {
     "doc": "App to App test links",
     "title": "E2E",
     "content": "Login . E2E - OIDC V1 login . E2E - OIDC V2 login . Confirm . E2E - OIDC V1 confirm . E2E - OIDC V2 confirm . Azure B2C ClientSecret . E2E - Azure B2C . ",
-    "url": "https://belgianmobileid.github.io/doc/TestLinks/A2ATL.html#e2e",
-    "relUrl": "/TestLinks/A2ATL.html#e2e"
+    "url": "https://belgianmobileid.github.io/doc/authentication/#e2e",
+    "relUrl": "/authentication/#e2e"
   },"4": {
     "doc": "App to App test links",
     "title": "PRD",
     "content": "Login . PRD - OIDC V1 login . PRD - OIDC V2 login . Confirm . PRD - OIDC V1 Confirm . PRD - OIDC V2 Confirm . ",
-    "url": "https://belgianmobileid.github.io/doc/TestLinks/A2ATL.html#prd",
-    "relUrl": "/TestLinks/A2ATL.html#prd"
+    "url": "https://belgianmobileid.github.io/doc/authentication/#prd",
+    "relUrl": "/authentication/#prd"
   },"5": {
     "doc": "App to App test links",
     "title": "App to App test links",
     "content": " ",
-    "url": "https://belgianmobileid.github.io/doc/TestLinks/A2ATL.html",
-    "relUrl": "/TestLinks/A2ATL.html"
+    "url": "https://belgianmobileid.github.io/doc/authentication/",
+    "relUrl": "/authentication/"
   },"6": {
     "doc": "Authentication API",
     "title": "Overview",
