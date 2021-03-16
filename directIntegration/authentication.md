@@ -77,6 +77,7 @@ This method requires the exchange of a static secret that will be used to authen
 
 The client_secret value will be provided by itsme® when <a href="https://belgianmobileid.github.io/doc/getting-started.html#getting-started" target="blank">registering your project</a>.
 
+
 ## Certificates and website security
 
 itsme® requires HTTPS connections to guarantee security. This means the itsme API can only be accessed through the secure <code>https</code> protocol. All of the API URL we publish use HTTPS.
@@ -85,7 +86,10 @@ With the <code>https</code> protocol, a web site operator obtains a certificate 
 
 A certificate provider can opt to issue three types of certificates, each requiring its own degree of vetting rigor. In order of increasing rigor (and naturally, cost) they are: Domain Validation, Organization Validation and Extended Validation.
 
-The Domain Validation certificate doesn’t provide sufficient identity guarantees to itsme. So, <b>only the Organization Validation and Extended Validation certificates</b> are supported.
+The Domain Validation certificate doesn’t provide sufficient identity guarantees to itsme. So, <b>only the Organization Validation and Extended Validation certificates</b> are supported. For example, using the Let's Encrypt open certificate authority is not suffcient because it only provide standard Domain Validation certificates. 
+
+<aside class="notice">The chain of trust of these certificates need to be publicly accessible, meaning that our systems need to be able to access the root and the intermediate certificates.
+</aside>
 
 
 ## Mapping the user
