@@ -92,6 +92,104 @@ The Domain Validation certificate doesn’t provide sufficient identity guarante
 </aside>
 
 
+## Handling responses
+
+### A successful response
+
+An HTTP status 200 OK or 302 Found is issued whenever your request was a success. You see this type of response in our examples like the one where we successfully retrieve the <a href="https://belgianmobileid.github.io/doc/authentication/#example-1" target="blank">Token Response</a>.
+
+{% tabs TokenExample %}
+
+{% tab TokenExample RSA keys %}
+
+**Request**
+
+```http
+POST /token HTTP/1.1
+Host: openid.c2id.com
+Content-Type: application/x-www-form-urlencoded
+
+grant_type=authorization_code
+ &code=SplxlOBeZQQYbYS6WxSbIA
+ &redirect_uri=https%3A%2F%2Fclient.example.org%2Fcb
+ &client_assertion_type=urn:ietf:params:oauth:client-assertion-type:jwt-bearer
+ &client_assertion=PHNhbWxwOl ... ZT
+```
+
+**Response**
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+Cache-Control: no-store
+Pragma: no-cache
+
+{
+  "id_token": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjFlOWdkazcifQ.ewogImlzc
+    yI6ICJodHRwOi8vc2VydmVyLmV4YW1wbGUuY29tIiwKICJzdWIiOiAiMjQ4Mjg5
+    NzYxMDAxIiwKICJhdWQiOiAiczZCaGRSa3F0MyIsCiAibm9uY2UiOiAibi0wUzZ
+    fV3pBMk1qIiwKICJleHAiOiAxMzExMjgxOTcwLAogImlhdCI6IDEzMTEyODA5Nz
+    AKfQ.ggW8hZ1EuVLuxNuuIJKX_V8a_OMXzR0EHR9R6jgdqrOOF4daGU96Sr_P6q
+    Jp6IcmD3HP99Obi1PRs-cwh3LO-p146waJ8IhehcwL7F09JdijmBqkvPeB2T9CJ
+    NqeGpe-gccMg4vfKjkM8FcGvnzZUN4_KSP0aAp1tOJ1zZwgjxqGByKHiOtX7Tpd
+    QyHE5lcMiKPXfEIQILVq0pc_E2DzL7emopWoaoZTF_m0_N0YzFC6g6EJbOEoRoS
+    K5hoDalrcvRYLSrQAZZKflyuVCyixEoV9GfNQC3_osjzw2PAithfubEEBLuVVk4
+    XUVrWOLrLl0nx7RkKU8NXNHq-rvKMzqg"
+  "access_token": "SlAV32hkKG",
+  "token_type": "Bearer",
+  "expires_in": 3600,
+}
+```
+
+{% endtab %}
+
+{% tab TokenExample Symmetric key %}
+
+
+### The error responses
+
+
+
+### The error response type
+
+**Error reponse**
+
+In case an error is returned, the JSON will look like :
+
+<table>
+  <tbody>
+    <tr>
+      <td>{% include parameter.html name="error" req="" %}</td>
+      <td>A single error code.<br><br>Possible values are listed in the table below.</td>
+    </tr>
+    <tr>
+      <td>{% include parameter.html name="error_description" req="" %}</td>
+      <td>Human-readable text providing additional information, used to assist the developer in understanding the error that occurred.</td>
+    </tr>
+    <tr>
+      <td>{% include parameter.html name="state" req="" %}</td>
+      <td>The string value provided in the Authorization Request. You SHOULD validate that the value returned matches the one supplied.</td>
+    </tr>
+  </tbody>
+</table>
+
+### All possible status codes
+
+<table>
+  <tbody>
+    <tr>
+      <td>{% include parameter.html name="XXX" req="" %}</td>
+      <td>XXX</td>
+    </tr>
+    <tr>
+      <td>{% include parameter.html name="YYYY" req="" %}</td>
+      <td>YYYY</td>
+    </tr>
+   </tbody>
+</table>
+
+
+
 ## Mapping the user
 
 To sign in successfully in your web desktop, mobile web or mobile application, a given user must be mapped to a user account in your database. By default, your application Server will use the subject identifier, or <code>sub</code> claim, in the ID Token to identify and verify a user account. The <code>sub</code> claim is a string that uniquely identifies a given user account. The benefit of using a <code>sub</code> claim is that it will not change, even if other user attributes (email, phone number, etc) associated with that account are updated.
@@ -312,7 +410,7 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
 <a id="AuthNResp"></a>
 ### Response
 
-<code>302</code> <code>application/json</code>
+<code>302</code> <code>application/x-www-form-urlencoded</code>
 
 <table>
   <tbody>
@@ -326,6 +424,12 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
     </tr>
   </tbody>
 </table>
+
+**Error reponses**
+
+If the request fails due to a missing, invalid, or mismatching redirection URI, or if the client identifier is missing or invalid, the authorization server informs you about the error and will not automatically redirect the User to the invalid redirection URI.
+
+If the User denies the access request or if the request fails for reasons other than a missing or invalid redirection URI, the authorization server informs you by adding the following parameters to the query component of the redirection URI using the "application/x-www-form-urlencoded" format
 
 {% endtab %}
 
@@ -460,7 +564,7 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
 <a id="AuthNResp"></a>
 ### Response
 
-<code>302</code> <code>application/json</code>
+<code>302</code> <code>application/x-www-form-urlencoded</code>
 
 <table>
   <tbody>
