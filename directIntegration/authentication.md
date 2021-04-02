@@ -145,6 +145,10 @@ Pragma: no-cache
 
 {% tab TokenExample Symmetric key %}
 
+{% endtab %}
+
+{% endtabs %}
+
 
 ### The error responses
 
@@ -1045,7 +1049,6 @@ Not applicable.
 {% tab RevokeExample Symmetric key %}
 
 **Request**
-
 
 **Response**
 
