@@ -184,7 +184,7 @@ List of error codes and corresponding error description :
   <tbody>
     <tr>
       <td>{% include parameter.html name="invalid_request" req="" %}</td>
-      <td>Unable to parse Authorization Request. No corresponding service found for the given OpenID scope (Client ID '[clientID]' - scope '[scope]').</td>
+      <td>Unable to parse Authorization Request. No corresponding service found for the given OpenID scope.</td>
     </tr>
      <tr>
       <td>{% include parameter.html name="login_required" req="" %}</td>
@@ -223,26 +223,22 @@ List of error codes and corresponding error description :
       <td>Only <code>page</code> is supported.</td>
     </tr>
     <tr>
-      <td>{% include parameter.html name="" req="unauthorized_client" %}</td>
+      <td>{% include parameter.html name="unauthorized_client" req="" %}</td>
       <td>Unknown or unspecified <code>client_id</code>.</td>
     </tr>
     <tr>
-      <td>{% include parameter.html name="" req="unsupported_response_type" %}</td>
+      <td>{% include parameter.html name="unsupported_response_type" req="" %}</td>
       <td>Unsupported <code>response_type</code>.</td>
     </tr>
     <tr>
       <td>{% include parameter.html name="invalid_request_object" req="" %}</td>
-      <td>Possible root causes : 
-        <ul>
-          <li>The request object contained in the request is unencrypted.</li>
-          <li>The request object contained in the request is unsigned.</li>
-          <li>Unable to parse the request object.<li>
-          <li>Invalid request object: Payload of JWE object is not a valid JSON object.</li>
-          <li>Invalid request object: Signed JWT rejected: Another algorithm expected, or no matching key(s) found.</li>
-        </ul>
-      </td>
+      <td>Possible root causes : <ul><li>The request object contained in the request is unencrypted.</li><li>The request object contained in the request is unsigned.</li><li>Unable to parse the request object.<li><li>Invalid request object: Payload of JWE object is not a valid JSON object.</li><li>Invalid request object: Signed JWT rejected: Another algorithm expected, or no matching key(s) found.</li></ul></td>
     </tr>
-    <tr>
+  </tbody>
+</table>
+
+
+   <tr>
       <td>{% include parameter.html name="invalid_request_uri" req="" %}</td>
       <td>Possible root causes : 
         <ul>
@@ -261,8 +257,19 @@ List of error codes and corresponding error description :
       <td>{% include parameter.html name="temporary_unavailable" req="" %}</td>
       <td>System is temporary unavailable.</td>
     </tr>
-  </tbody>
-</table>
+
+
+      <td>Possible root causes : 
+        <ul>
+          <li>The request object contained in the request is unencrypted.</li>
+          <li>The request object contained in the request is unsigned.</li>
+          <li>Unable to parse the request object.<li>
+          <li>Invalid request object: Payload of JWE object is not a valid JSON object.</li>
+          <li>Invalid request object: Signed JWT rejected: Another algorithm expected, or no matching key(s) found.</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
 
 <u><i>Token Request</i></u> - if the request fails the Token Endpoint responds with an HTTP 400 (Bad Request) status code and includes the parameters in the entity-body of the HTTP response using the "application/json" media type. 
 
