@@ -151,7 +151,7 @@ Pragma: no-cache
 
 Things will sometimes go wrong. Concretely,
 
-<u><b>Authorization Request</b></u> - if the request fails due to a missing, invalid, or mismatching redirection URI, or if the client identifier is missing or invalid,... the Authorization Endpoint will inform you of the error our itsme® sign-in page (possible values are listed in the table below).
+<u><i>Authorization Request</i></u> - if the request fails due to a missing, invalid, or mismatching redirection URI, or if the client identifier is missing or invalid,... the Authorization Endpoint will inform you of the error our itsme® sign-in page (possible values are listed in the table below).
 
  ![Authorization Endpoint error reponse](/doc/public/images/AuthorizationEndpoint_ErrorResponse.png)
  
@@ -264,7 +264,7 @@ List of error codes and corresponding error description :
   </tbody>
 </table>
 
-<u><b>Token Request</b></u> - if the request fails the Token Endpoint responds with an HTTP 400 (Bad Request) status code and includes the parameters in the entity-body of the HTTP response using the "application/json" media type. 
+<u><i>Token Request</i></u> - if the request fails the Token Endpoint responds with an HTTP 400 (Bad Request) status code and includes the parameters in the entity-body of the HTTP response using the "application/json" media type. 
 
 For example:
 
@@ -292,7 +292,7 @@ List of error codes and corresponding error description :
    </tbody>
 </table>
 
-<u><b>UserInfo Request</b></u> - When a request fails, the UserInfo Endpoint responds using the appropriate HTTP status code (typically, 400, 401, 403, or 405) and includes specific error codes in the response.
+<u><i>UserInfo Request</i></u> - When a request fails, the UserInfo Endpoint responds using the appropriate HTTP status code (typically, 400, 401, 403, or 405) and includes specific error codes in the response.
 
 For example:
 
