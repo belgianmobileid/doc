@@ -275,29 +275,50 @@ List of error codes and corresponding error description :
 <table>
   <tbody>
     <tr>
-      <td>{% include parameter.html name="invalid_request" req="" %}</td>
-      <td>Unable to parse Authorization Request. No corresponding service found for the given OpenID scope (Client ID '[clientID]' - scope '[scope]').</td>
+      <td>{% include parameter.html name="unauthorized_client" req="" %}</td>
+      <td>Possible root causes : 
+        <ul>
+          <li>Assertion type should be <code>urn:ietf:params:oauth:client-assertion-type:jwt-bearer</code>.</li>
+          <li>Missing <code>client_assertion</code> parameter.</li>
+          <li>Missing <code>client_assertion_type</code> parameter.<li>
+          <li>Signature algorithm is not supported.</li>
+          <li>Signed assertion is not valid.</li>
+          <li>Error when verifying private_key_jwt.</li>
+          <li>JWT ID is blank or null.</li>
+          <li><code>client_assertion</code> value was not signed nor encrypted.</li>
+        </ul>
+      </td>
     </tr>
-     <tr>
-      <td>{% include parameter.html name="login_required" req="" %}</td>
-      <td>The Authorization Server requires User authentication.</td>
-    </tr>
-    <tr>
-      <td>{% include parameter.html name="interaction_required" req="" %}</td>
-      <td>Prompt value <code>none</code> is not supported.</td>
-    </tr>
-  </tbody>
+   </tbody>
 </table>
 
-UserInfo Request - When a request fails, the resource server responds using the appropriate HTTP status code (typically, 400, 401, 403, or 405) and includes specific error codes in the response.
+<u><b>UserInfo Request</b></u> - When a request fails, the UserInfo Endpoint responds using the appropriate HTTP status code (typically, 400, 401, 403, or 405) and includes specific error codes in the response.
 
 For example:
 
 <code>HTTP/1.1 401 Unauthorized WWW-Authenticate: Bearer realm="example"</code>
 
+List of error codes and corresponding error description :
 
+<table>
+  <tbody>
+    <tr>
+      <td>{% include parameter.html name="invalid_token" req="" %}</td>
+      <td>Possible root causes : 
+        <ul>
+          <li>Invalid token.</code>.</li>
+          <li>Expired token.</li>
+          <li>Account does not exists.<li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>{% include parameter.html name="invalid_request" req="" %}</td>
+      <td>The request is missing a required parameter, includes an invalid parameter value, includes a parameter more than once, or is otherwise malformed.</td>
+    </tr>
+   </tbody>
+</table>
 
-Revoke Request - I haven't found any information on this one. To be further detailed.
 
 ### The error response type
 
