@@ -108,7 +108,7 @@ This is a standard for data communication that’s easy to read for humans as we
 
 An HTTP status <code>200 OK</code> or <code>302 Found</code> is issued whenever your request was a success. You see this type of response in our examples like the one where we successfully retrieve the <a href="https://belgianmobileid.github.io/doc/authentication/#example-1" target="blank">Token Response</a>.
 
-**Request**
+***Request***
 
 ```http
 POST /token HTTP/1.1
@@ -122,7 +122,7 @@ grant_type=authorization_code
  &client_assertion=PHNhbWxwOl ... ZT
 ```
 
-**Response**
+***Response***
 
 ```http
 HTTP/1.1 200 OK
@@ -209,7 +209,7 @@ For example:
 
 ### Possible error codes and corresponding error description
 
-**Authorization Endpoint errors**
+<i><b>Authorization Endpoint errors</b></i>
 
 <table>
   <tbody>
@@ -280,7 +280,7 @@ For example:
   </tbody>
 </table>
 
-**Token Endpoint errors**
+***Token Endpoint errors***
 
 <table>
   <tbody>
@@ -295,7 +295,7 @@ For example:
    </tbody>
 </table>
 
-**UserInfo Endpoint errors**
+***UserInfo Endpoint errors***
 
 <table>
   <tbody>
@@ -543,7 +543,7 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
   </tbody>
 </table>
 
-**Error reponses**
+***Error reponses***
 
 If the request fails due to a missing, invalid, or mismatching redirection URI, or if the client identifier is missing or invalid, the authorization server informs you about the error and will not automatically redirect the User to the invalid redirection URI.
 
@@ -705,7 +705,7 @@ If the User denies the access request or if the request fails for reasons other 
 
 {% tab AuthorizationExample RSA keys %}
 
-**Request**
+***Request***
 
 ```http
 GET /authorize HTTP/1.1
@@ -720,7 +720,7 @@ response_type=code
   &acr_values=http://itsme.services/V2/claim/acr_basic
 ```
 
-**Response**
+***Response***
 
 ```http
 HTTP/1.1 302 Found
@@ -734,7 +734,7 @@ Location: https://client.example.org/cb?
 {% tab AuthorizationExample Symmetric key %}
 
 
-**Request**
+***Request***
 
 ```http
 GET /authorize HTTP/1.1
@@ -749,7 +749,7 @@ response_type=code
   &acr_values=http://itsme.services/V2/claim/acr_basic
 ```
 
-**Response**
+***Response***
 
 ```http
 HTTP/1.1 302 Found
@@ -909,7 +909,7 @@ To asserts the identity of the user, the <code>code</code> received previously n
 
 {% tab TokenExample RSA keys %}
 
-**Request**
+***Request***
 
 ```http
 POST /token HTTP/1.1
@@ -923,7 +923,7 @@ grant_type=authorization_code
  &client_assertion=PHNhbWxwOl ... ZT
 ```
 
-**Response**
+***Response***
 
 ```http
 HTTP/1.1 200 OK
@@ -952,7 +952,7 @@ Pragma: no-cache
 
 {% tab TokenExample Symmetric key %}
 
-**Request**
+***Request***
 
 ```http
 POST /token HTTP/1.1
@@ -966,7 +966,7 @@ grant_type=authorization_code
  &client_secret=PHNhbWxwOl ... ZT
 ```
 
-**Response**
+***Response***
 
 ```http
 HTTP/1.1 200 OK
@@ -1040,7 +1040,7 @@ The UserInfo Response is a signed JSON Web Token. So, before being able to extra
 
 {% tab UserInfoExample RSA keys %}
 
-**Request**
+***Request***
 
 ```http
 GET /userinfo HTTP/1.1
@@ -1048,7 +1048,7 @@ Host: server.example.com
 Authorization: Bearer SlAV32hkKG
 ```
 
-**Response**
+***Response***
 
 ```http
 HTTP/1.1 200 OK
@@ -1069,7 +1069,7 @@ Content-Type: application/json
 
 {% tab UserInfoExample Symmetric key %}
 
-**Request**
+***Request***
 
 ```http
 GET /userinfo HTTP/1.1
@@ -1077,7 +1077,7 @@ Host: server.example.com
 Authorization: Bearer SlAV32hkKG
 ```
 
-**Response**
+***Response***
 
 ```http
 HTTP/1.1 200 OK
@@ -1159,9 +1159,9 @@ Not applicable.
 
 {% tab RevokeExample Symmetric key %}
 
-**Request**
+***Request***
 
-**Response**
+***Response***
 
 {% endtab %}
 
