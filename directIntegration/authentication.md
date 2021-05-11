@@ -151,31 +151,149 @@ Pragma: no-cache
 
 Things will sometimes go wrong. Concretely,
 
-<u><b>Authorization Request</b></u> - if the request fails due to a missing, invalid, or mismatching redirection URI, or if the client identifier is missing or invalid,... the Authorization Endpoint will inform you of the error our itsme® sign-in page.
+<u><b>Authorization Request</b></u> - if the request fails due to a missing, invalid, or mismatching redirection URI, or if the client identifier is missing or invalid,... the Authorization Endpoint will inform you of the error our itsme® sign-in page (possible values are listed in the table below).
 
  ![Authorization Endpoint error reponse](/doc/public/images/AuthorizationEndpoint_ErrorResponse.png)
+ 
+If the User denies the access request or the User authentication fails, the Authorization Endpoint will inform you by adding the following parameters to the query component of the redirection URI using the "application/x-www-form-urlencoded" format :
 
-If the User denies the access request or if the request fails for reasons other than the one mentionned above, the Authorization Endpoint will inform you by adding the following parameters to the query component of the redirection URI using the "application/x-www-form-urlencoded" format. For more information see https://tools.ietf.org/html/rfc6749#section-4.1.2
+<table>
+  <tbody>
+    <tr>
+      <td>{% include parameter.html name="error" req="REQUIRED" %}</td>
+      <td>A single ASCII error code.</td>
+    </tr>
+     <tr>
+      <td>{% include parameter.html name="error_description" req="OPTIONAL" %}</td>
+      <td>Human-readable text providing additional information, used to assist the developer in understanding the error that occurred.</td>
+    </tr>
+    <tr>
+      <td>{% include parameter.html name="state" req="" %}</td>
+      <td>The string value provided in the Authorization Request. You SHOULD validate that the value returned matches the one supplied.</td>
+    </tr>
+  </tbody>
+</table>
 
-For example, the authorization server redirects the user-agent by sending the following HTTP response:
+For example, the Authorization Endpoint redirects the User by sending the following HTTP response:
 
-HTTP/1.1 302 Found Location: https://client.example.com/cb?error=access_denied&state=xyz
+<code>HTTP/1.1 302 Found Location: https://client.example.com/cb?error=access_denied&state=xyz</code>
 
+List of error codes and corresponding error description :
 
+<table>
+  <tbody>
+    <tr>
+      <td>{% include parameter.html name="invalid_request" req="" %}</td>
+      <td>Unable to parse Authorization Request. No corresponding service found for the given OpenID scope (Client ID '[clientID]' - scope '[scope]').</td>
+    </tr>
+     <tr>
+      <td>{% include parameter.html name="login_required" req="" %}</td>
+      <td>The Authorization Server requires User authentication.</td>
+    </tr>
+    <tr>
+      <td>{% include parameter.html name="interaction_required" req="" %}</td>
+      <td>Prompt value <code>none</code> is not supported.</td>
+    </tr>
+    <tr>
+      <td>{% include parameter.html name="unsupported_request" req="" %}</td>
+      <td>The request contains a not supported parameter.</td>
+    </tr>
+    <tr>
+      <td>{% include parameter.html name="invalid_client_id" req="" %}</td>
+      <td>The request contains an invalid <code>client_id</code>.</td>
+    </tr>
+    <tr>
+      <td>{% include parameter.html name="invalid_redirect_uri" req="" %}</td>
+      <td>The request contains an invalid redirect URI.</td>
+    </tr>
+    <tr>
+      <td>{% include parameter.html name="unsupported_grant_type" req="" %}</td>
+      <td>Grant type not supported.</td>
+    </tr>
+    <tr>
+      <td>{% include parameter.html name="invalid_grant" req="" %}</td>
+      <td>Invalid grant.</td>
+    </tr>
+    <tr>
+      <td>{% include parameter.html name="invalid_scope" req="" %}</td>
+      <td>Scope must be <code>openid</code></td>
+    </tr>
+    <tr>
+      <td>{% include parameter.html name="unsupported_display" req="" %}</td>
+      <td>Only <code>page</code> is supported.</td>
+    </tr>
+    <tr>
+      <td>{% include parameter.html name="" req="unauthorized_client" %}</td>
+      <td>Unknown or unspecified <code>client_id</code>.</td>
+    </tr>
+    <tr>
+      <td>{% include parameter.html name="" req="unsupported_response_type" %}</td>
+      <td>Unsupported <code>response_type</code>.</td>
+    </tr>
+    <tr>
+      <td>{% include parameter.html name="invalid_request_object" req="" %}</td>
+      <td>Possible root causes : 
+        <ul>
+          <li>The request object contained in the request is unencrypted.</li>
+          <li>The request object contained in the request is unsigned.</li>
+          <li>Unable to parse the request object.<li>
+          <li>Invalid request object: Payload of JWE object is not a valid JSON object.</li>
+          <li>Invalid request object: Signed JWT rejected: Another algorithm expected, or no matching key(s) found.</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>{% include parameter.html name="invalid_request_uri" req="" %}</td>
+      <td>Possible root causes : 
+        <ul>
+          <li>Request URI does not have <code>https</code> scheme.</li>
+          <li>Request URI is not white listed.</li>
+          <li>No JWT found with request URI.<li>
+          <li>Invalid JWT.</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>{% include parameter.html name="invalid_request" req="" %}</td>
+      <td>Oauth2 parameters do not match Request object.</td>
+    </tr>
+    <tr>
+      <td>{% include parameter.html name="temporary_unavailable" req="" %}</td>
+      <td>System is temporary unavailable.</td>
+    </tr>
+  </tbody>
+</table>
 
-Token Request - if the request fails the Token Endpoint responds with an HTTP 400 (Bad Request) status code (unless specified otherwise) and includes the parameters in the entity-body of the HTTP response using the "application/json" media type. For more information see https://tools.ietf.org/html/rfc6749#section-5.2
+<u><b>Token Request</b></u> - if the request fails the Token Endpoint responds with an HTTP 400 (Bad Request) status code and includes the parameters in the entity-body of the HTTP response using the "application/json" media type. 
 
 For example:
 
-HTTP/1.1 400 Bad Request Content-Type: application/json;charset=UTF-8 Cache-Control: no-store Pragma: no-cache { "error":"invalid_request" }
+<code>HTTP/1.1 400 Bad Request Content-Type: application/json;charset=UTF-8 Cache-Control: no-store Pragma: no-cache { "error":"invalid_request" }</code>
 
+List of error codes and corresponding error description :
 
+<table>
+  <tbody>
+    <tr>
+      <td>{% include parameter.html name="invalid_request" req="" %}</td>
+      <td>Unable to parse Authorization Request. No corresponding service found for the given OpenID scope (Client ID '[clientID]' - scope '[scope]').</td>
+    </tr>
+     <tr>
+      <td>{% include parameter.html name="login_required" req="" %}</td>
+      <td>The Authorization Server requires User authentication.</td>
+    </tr>
+    <tr>
+      <td>{% include parameter.html name="interaction_required" req="" %}</td>
+      <td>Prompt value <code>none</code> is not supported.</td>
+    </tr>
+  </tbody>
+</table>
 
 UserInfo Request - When a request fails, the resource server responds using the appropriate HTTP status code (typically, 400, 401, 403, or 405) and includes specific error codes in the response.
 
 For example:
 
-HTTP/1.1 401 Unauthorized WWW-Authenticate: Bearer realm="example"
+<code>HTTP/1.1 401 Unauthorized WWW-Authenticate: Bearer realm="example"</code>
 
 
 
