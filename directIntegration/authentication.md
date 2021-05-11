@@ -153,7 +153,7 @@ Things will sometimes go wrong. Concretely,
 
 <u><b>Authorization Request</b></u> - if the request fails due to a missing, invalid, or mismatching redirection URI, or if the client identifier is missing or invalid,... the Authorization Endpoint will inform you of the error our itsme® sign-in page.
 
-
+ ![Authorization Endpoint error reponse](/doc/public/images/AuthorizationEndpoint_ErrorResponse.png)
 
 If the User denies the access request or if the request fails for reasons other than the one mentionned above, the Authorization Endpoint will inform you by adding the following parameters to the query component of the redirection URI using the "application/x-www-form-urlencoded" format. For more information see https://tools.ietf.org/html/rfc6749#section-4.1.2
 
