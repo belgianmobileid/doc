@@ -232,44 +232,10 @@ List of error codes and corresponding error description :
     </tr>
     <tr>
       <td>{% include parameter.html name="invalid_request_object" req="" %}</td>
-      <td>Possible root causes : <ul><li>The request object contained in the request is unencrypted.</li><li>The request object contained in the request is unsigned.</li><li>Unable to parse the request object.<li><li>Invalid request object: Payload of JWE object is not a valid JSON object.</li><li>Invalid request object: Signed JWT rejected: Another algorithm expected, or no matching key(s) found.</li></ul></td>
+      <td>Possible root causes : the request object contained in the request is unencrypted ; the request object contained in the request is unsigned ; unable to parse the request object ; invalid request object: Payload of JWE object is not a valid JSON object ; invalid request object: Signed JWT rejected: Another algorithm expected, or no matching key(s) found.</td>
     </tr>
   </tbody>
 </table>
-
-
-   <tr>
-      <td>{% include parameter.html name="invalid_request_uri" req="" %}</td>
-      <td>Possible root causes : 
-        <ul>
-          <li>Request URI does not have <code>https</code> scheme.</li>
-          <li>Request URI is not white listed.</li>
-          <li>No JWT found with request URI.<li>
-          <li>Invalid JWT.</li>
-        </ul>
-      </td>
-    </tr>
-    <tr>
-      <td>{% include parameter.html name="invalid_request" req="" %}</td>
-      <td>Oauth2 parameters do not match Request object.</td>
-    </tr>
-    <tr>
-      <td>{% include parameter.html name="temporary_unavailable" req="" %}</td>
-      <td>System is temporary unavailable.</td>
-    </tr>
-
-
-      <td>Possible root causes : 
-        <ul>
-          <li>The request object contained in the request is unencrypted.</li>
-          <li>The request object contained in the request is unsigned.</li>
-          <li>Unable to parse the request object.<li>
-          <li>Invalid request object: Payload of JWE object is not a valid JSON object.</li>
-          <li>Invalid request object: Signed JWT rejected: Another algorithm expected, or no matching key(s) found.</li>
-        </ul>
-      </td>
-    </tr>
-    <tr>
 
 <u><i>Token Request</i></u> - if the request fails the Token Endpoint responds with an HTTP 400 (Bad Request) status code and includes the parameters in the entity-body of the HTTP response using the "application/json" media type. 
 
