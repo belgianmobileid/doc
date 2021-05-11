@@ -178,21 +178,52 @@ For example, the Authorization Endpoint redirects the User by sending the follow
 
 <code>HTTP/1.1 302 Found Location: https://client.example.com/cb?error=access_denied&state=xyz</code>
 
-List of error codes and corresponding error description :
+<u><i>Token Request</i></u> - if the request fails the Token Endpoint responds with an HTTP 400 (Bad Request) status code and includes the fllowing parameters in the entity-body of the HTTP response using the "application/json" media type :
+
+<table>
+  <tbody>
+    <tr>
+      <td>{% include parameter.html name="error" req="REQUIRED" %}</td>
+      <td>A single ASCII error code.</td>
+    </tr>
+     <tr>
+      <td>{% include parameter.html name="error_description" req="OPTIONAL" %}</td>
+      <td>Human-readable text providing additional information, used to assist the developer in understanding the error that occurred.</td>
+    </tr>
+    <tr>
+      <td>{% include parameter.html name="state" req="" %}</td>
+      <td>The string value provided in the Authorization Request. You SHOULD validate that the value returned matches the one supplied.</td>
+    </tr>
+  </tbody>
+</table>
+
+For example:
+
+<code>HTTP/1.1 400 Bad Request Content-Type: application/json;charset=UTF-8 Cache-Control: no-store Pragma: no-cache { "error":"invalid_request" }</code>
+
+<u><i>UserInfo Request</i></u> - When a request fails, the UserInfo Endpoint responds using the appropriate HTTP status code (typically, 400, 401, 403, or 405) and includes specific error codes in the response.
+
+For example:
+
+<code>HTTP/1.1 401 Unauthorized WWW-Authenticate: Bearer realm="example"</code>
+
+### Possible error codes and corresponding error description
+
+**Authorization Endpoint errors**
 
 <table>
   <tbody>
     <tr>
       <td>{% include parameter.html name="invalid_request" req="" %}</td>
-      <td>Unable to parse Authorization Request. No corresponding service found for the given OpenID scope.</td>
+      <td>The request is missing a required parameter, includes an invalid parameter value, includes a parameter more than once, or is otherwise malformed.</td>
     </tr>
-     <tr>
+    <tr>
       <td>{% include parameter.html name="login_required" req="" %}</td>
-      <td>The Authorization Server requires User authentication.</td>
+      <td>The Authorization Endpoint requires User authentication. This error MAY be returned when the <code>prompt</code> parameter value in the Authorization Request is <code>none</code>, but the Authentication Request cannot be completed without displaying a user interface for User authentication.</td>
     </tr>
     <tr>
       <td>{% include parameter.html name="interaction_required" req="" %}</td>
-      <td>Prompt value <code>none</code> is not supported.</td>
+      <td>The Authorization Endpoint requires User interaction of some form to proceed. This error MAY be returned when the <code>prompt</code> parameter value in the Authorization Request is <code>none</code>, but the Autorization Request cannot be completed without displaying a user interface for User interaction.</td>
     </tr>
     <tr>
       <td>{% include parameter.html name="unsupported_request" req="" %}</td>
@@ -216,7 +247,7 @@ List of error codes and corresponding error description :
     </tr>
     <tr>
       <td>{% include parameter.html name="invalid_scope" req="" %}</td>
-      <td>Scope must be <code>openid</code>.</td>
+      <td>The requested scope is invalid, unknown, or malformed.</td>
     </tr>
     <tr>
       <td>{% include parameter.html name="unsupported_display" req="" %}</td>
@@ -228,66 +259,53 @@ List of error codes and corresponding error description :
     </tr>
     <tr>
       <td>{% include parameter.html name="unsupported_response_type" req="" %}</td>
-      <td>Unsupported <code>response_type</code>.</td>
+      <td>The Authorization Endpoint does not support obtaining an authorization code using this method.</td>
     </tr>
     <tr>
       <td>{% include parameter.html name="invalid_request_object" req="" %}</td>
-      <td>Possible root causes : the request object contained in the request is unencrypted ; the request object contained in the request is unsigned ; unable to parse the request object ; invalid request object: Payload of JWE object is not a valid JSON object ; invalid request object: Signed JWT rejected: Another algorithm expected, or no matching key(s) found.</td>
+      <td>The <code>request</code> parameter contains an invalid Request Object.</td>
+    </tr>
+    <tr>
+      <td>{% include parameter.html name="invalid_request_uri" req="" %}</td>
+      <td>The <code>request_uri</code> in the Authorization Request returns an error or contains invalid data.</td>
+    </tr>
+    <tr>
+      <td>{% include parameter.html name="invalid_request" req="" %}</td>
+      <td>Oauth2 parameters do not match Request object.</td>
+    </tr>
+    <tr>
+      <td>{% include parameter.html name="temporary_unavailable" req="" %}</td>
+      <td>The authorization server is currently unable to handle the request due to a temporary overloading or maintenance of the server.</td>
     </tr>
   </tbody>
 </table>
 
-<u><i>Token Request</i></u> - if the request fails the Token Endpoint responds with an HTTP 400 (Bad Request) status code and includes the parameters in the entity-body of the HTTP response using the "application/json" media type. 
-
-For example:
-
-<code>HTTP/1.1 400 Bad Request Content-Type: application/json;charset=UTF-8 Cache-Control: no-store Pragma: no-cache { "error":"invalid_request" }</code>
-
-List of error codes and corresponding error description :
+**Token Endpoint errors**
 
 <table>
   <tbody>
     <tr>
-      <td>{% include parameter.html name="unauthorized_client" req="" %}</td>
-      <td>Possible root causes : 
-        <ul>
-          <li>Assertion type should be <code>urn:ietf:params:oauth:client-assertion-type:jwt-bearer</code>.</li>
-          <li>Missing <code>client_assertion</code> parameter.</li>
-          <li>Missing <code>client_assertion_type</code> parameter.<li>
-          <li>Signature algorithm is not supported.</li>
-          <li>Signed assertion is not valid.</li>
-          <li>Error when verifying private_key_jwt.</li>
-          <li>JWT ID is blank or null.</li>
-          <li><code>client_assertion</code> value was not signed nor encrypted.</li>
-        </ul>
-      </td>
+      <td>{% include parameter.html name="invalid_request" req="" %}</td>
+      <td>The request is missing a required parameter, includes an unsupported parameter value (other than grant type), repeats a parameter, includes multiple credentials, utilizes more than one mechanism for authenticating the client, or is otherwise malformed.</td>
+    </tr>
+    <tr>
+      <td>{% include parameter.html name="invalid_client" req="" %}</td>
+      <td>Client authentication failed (e.g., unknown client, no client authentication included, or unsupported authentication method).</td>
     </tr>
    </tbody>
 </table>
 
-<u><i>UserInfo Request</i></u> - When a request fails, the UserInfo Endpoint responds using the appropriate HTTP status code (typically, 400, 401, 403, or 405) and includes specific error codes in the response.
-
-For example:
-
-<code>HTTP/1.1 401 Unauthorized WWW-Authenticate: Bearer realm="example"</code>
-
-List of error codes and corresponding error description :
+**UserInfo Endpoint errors**
 
 <table>
   <tbody>
     <tr>
-      <td>{% include parameter.html name="invalid_token" req="" %}</td>
-      <td>Possible root causes : 
-        <ul>
-          <li>Invalid token.</code>.</li>
-          <li>Expired token.</li>
-          <li>Account does not exists.<li>
-        </ul>
-      </td>
+      <td>{% include parameter.html name="invalid_request" req="" %}</td>
+      <td>The request is missing a required parameter, includes an unsupported parameter or parameter value, repeats the same parameter, uses more than one method for including an access token, or is otherwise malformed.</td>
     </tr>
     <tr>
-      <td>{% include parameter.html name="invalid_request" req="" %}</td>
-      <td>The request is missing a required parameter, includes an invalid parameter value, includes a parameter more than once, or is otherwise malformed.</td>
+      <td>{% include parameter.html name="invalid_token" req="" %}</td>
+      <td>The access token provided is expired, revoked, malformed, or  invalid for other reasons.</td>
     </tr>
    </tbody>
 </table>
