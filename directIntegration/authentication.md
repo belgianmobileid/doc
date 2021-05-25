@@ -345,7 +345,6 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
   <li>...</li>
 </ul>
 
-
 {% endtab %}
 
 {% tab DiscoveryDocument Symmetric keys %}
@@ -359,7 +358,6 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
   <li>supported claims</li>
   <li>...</li>
 </ul>
-
 
 {% endtab %}
 
