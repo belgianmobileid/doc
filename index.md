@@ -1,6 +1,6 @@
 ---
 layout: homepage
-title: Welcome
+title: Home - Use Cases
 permalink: /index
 nav_exclude: false
 nav_order: 1

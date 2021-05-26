@@ -1,10 +1,10 @@
 ---
 
 layout: page
-title: Direct Integration
+title: Getting started
 permalink: directIntegration/
 nav_order: 2
-toc_list: true
+toc_list: false
 
 ---
 

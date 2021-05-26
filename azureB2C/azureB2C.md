@@ -1,14 +1,13 @@
 ---
 
-layout: page
+layout: indirect_integration
 title: Azure B2C
 permalink: azureB2C/
-nav_order: 6
-toc_list: true
+nav_exclude: true
 
 ---
 
-# Welcome
+# Integratre through Azure B2C
 
 itsme® API allows partners to use verified identities for authentication and authorization on web desktop, mobile web or mobile applications.
 
