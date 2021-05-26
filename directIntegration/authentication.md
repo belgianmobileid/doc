@@ -547,7 +547,7 @@ If the User denies the access request or if the request fails for reasons other 
 
 {% endtab %}
 
-{% tab AuthorizationRequest Symmetric key %}
+{% tab AuthorizationRequest AES key %}
 
 <b><code>GET https://oidc.<i>[e2e/prd]</i>.itsme.services/clientsecret-oidc/csapi/v0.1/connect/authorize</code></b>
 
@@ -727,7 +727,7 @@ Location: https://client.example.org/cb?
 
 {% endtab %}
 
-{% tab AuthorizationExample Symmetric key %}
+{% tab AuthorizationExample AES key %}
 
 
 ***Request***
@@ -839,7 +839,7 @@ To assert the identity of the user, the <code>code</code> received previously ne
 
 {% endtab %}
 
-{% tab TokenRequest Symmetric key %}
+{% tab TokenRequest AES key %}
 
 <b><code>POST https://oidc.<i>[e2e/prd]</i>.itsme.services/clientsecret-oidc/csapi/v0.1/connect/token</code></b>
 
@@ -946,7 +946,7 @@ Pragma: no-cache
 
 {% endtab %}
 
-{% tab TokenExample Symmetric key %}
+{% tab TokenExample AES key %}
 
 ***Request***
 
@@ -1012,7 +1012,7 @@ The UserInfo Response is a signed and encrypted JSON Web Token. So, before being
 
 {% endtab %}
 
-{% tab UserInfoRequest Symmetric key %}
+{% tab UserInfoRequest AES key %}
 
 <b><code>GET https://oidc.<i>[e2e/prd]</i>.itsme.services/clientsecret-oidc/csapi/v0.1/connect/userinfo</code></b>
 
@@ -1063,7 +1063,7 @@ Content-Type: application/json
 
 {% endtab %}
 
-{% tab UserInfoExample Symmetric key %}
+{% tab UserInfoExample AES key %}
 
 ***Request***
 
@@ -1106,13 +1106,13 @@ Not applicable.
 
 {% endtab %}
 
-{% tab RevokeRequest Symmetric keys %}
+{% tab RevokeRequest AES key %}
 
 <b><code>POST https://oidc.<i>[e2e/prd]</i>.itsme.services/clientsecret-oidc/csapi/v0.1/connect/revoke</code></b>
 
 The Revocation Endpoint enables your application to notify itsme® that a previously obtained access token is no longer needed and MUST be revoked.
 
- ### Parameters
+### Parameters
 
 <table>
   <tbody>
@@ -1153,7 +1153,7 @@ Not applicable.
 
 {% endtab %}
 
-{% tab RevokeExample Symmetric key %}
+{% tab RevokeExample AES key %}
 
 ***Request***
 
