@@ -345,10 +345,9 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
   <li>...</li>
 </ul>
 
-
 {% endtab %}
 
-{% tab Discovery Symmetric keys %}
+{% tab Discovery AES key %}
 
 <b><code>GET https://oidc.<i>[e2e/prd]</i>.itsme.services/clientsecret-oidc/csapi/v0.1/.well-known/openid-configuration</code></b>
 

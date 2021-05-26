@@ -55,3 +55,7 @@
 .tab-content li.active {
     display: initial;
 }
+
+.tab-content li.active li {
+    display: block;
+}
