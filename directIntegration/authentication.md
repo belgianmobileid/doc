@@ -339,12 +339,6 @@ If the same user would opt to re-create an itsme® afterwards, he will need to r
 
 To simplify implementations and increase flexibility, <a href="https://openid.net/specs/openid-connect-discovery-1_0.html" target="blank">OpenID Connect allows the use of a Discovery Document</a>, a JSON document containing key-value pairs which provide details about itsme® configuration, such as the  
 
-<ul>
-  <li>Authorization, Token and userInfo Endpoints</li>
-  <li>supported claims</li>
-  <li>...</li>
-</ul>
-
 {% endtab %}
 
 {% tab Discovery Symmetric keys %}
@@ -352,12 +346,6 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
 <b><code>GET https://oidc.<i>[e2e/prd]</i>.itsme.services/clientsecret-oidc/csapi/v0.1/.well-known/openid-configuration</code></b>
 
 To simplify implementations and increase flexibility, <a href="https://openid.net/specs/openid-connect-discovery-1_0.html" target="blank">OpenID Connect allows the use of a Discovery Document</a>, a JSON document containing key-value pairs which provide details about itsme® configuration, such as the  
-
-<ul>
-  <li>Authorization, Token and userInfo Endpoints</li>
-  <li>supported claims</li>
-  <li>...</li>
-</ul>
 
 {% endtab %}
 
