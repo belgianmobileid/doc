@@ -209,7 +209,7 @@ For example:
 
 ### Possible error codes and corresponding error description
 
-<i><b>Authorization Endpoint errors</b></i>
+<br>***Authorization Endpoint errors***
 
 <table>
   <tbody>
