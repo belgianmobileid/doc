@@ -120,10 +120,10 @@
     "relUrl": "/authentication/"
   },"20": {
     "doc": "Azure B2C",
-    "title": "Welcome",
+    "title": "Integratre through Azure B2C",
     "content": "itsme® API allows partners to use verified identities for authentication and authorization on web desktop, mobile web or mobile applications. Learn how to integrate our services with Azure Active Directory B2C. For a more detailed, in-depth explanation of each, please read through the appropriate developer docs. ",
-    "url": "https://belgianmobileid.github.io/doc/azureB2C/#welcome",
-    "relUrl": "/azureB2C/#welcome"
+    "url": "https://belgianmobileid.github.io/doc/azureB2C/#integratre-through-azure-b2c",
+    "relUrl": "/azureB2C/#integratre-through-azure-b2c"
   },"21": {
     "doc": "Azure B2C",
     "title": "Use cases",
@@ -155,69 +155,69 @@
     "url": "https://belgianmobileid.github.io/doc/confirmation/",
     "relUrl": "/confirmation/"
   },"26": {
-    "doc": "Direct Integration",
+    "doc": "Getting started",
     "title": "Welcome",
     "content": "itsme® API allows partners to use verified identities for authentication and authorization on web desktop, mobile web or mobile applications. Learn how to integrate our services that you and your business will benefit from. For a more detailed, in-depth explanation of each, please read through the appropriate developer docs. ",
     "url": "https://belgianmobileid.github.io/doc/directIntegration/#welcome",
     "relUrl": "/directIntegration/#welcome"
   },"27": {
-    "doc": "Direct Integration",
+    "doc": "Getting started",
     "title": "Use cases",
     "content": "For more information on how itsme® can best work for your business, please contact us. itsme® will be happy to help ! . ",
     "url": "https://belgianmobileid.github.io/doc/directIntegration/#use-cases",
     "relUrl": "/directIntegration/#use-cases"
   },"28": {
-    "doc": "Direct Integration",
+    "doc": "Getting started",
     "title": "Services",
     "content": "Head over to our developer documentation for each of our services. Here you will find: . | A techical overview | Step by step instructions on how to integrate | Code snippets | . | Services | Description | . | Authentication | Enables your users/customers to log in securely to your application (on web, tablet or mobile) | . | Identification | Enables you to identify your users and access their verified data. | . | Confirmation | Enables your users/customers to give their consent to a payment or order/action. | . | Signing | Enables your users/customers to sign documents electronically. The itsme® Sign responds to the requirements for the creation of Qualified Electronic Signature (QES). | . ",
     "url": "https://belgianmobileid.github.io/doc/directIntegration/#services",
     "relUrl": "/directIntegration/#services"
   },"29": {
-    "doc": "Direct Integration",
+    "doc": "Getting started",
     "title": "Getting started",
     "content": "In order to start your integration you will first need to setup your personal Sanbox environment. To do so, you will be requested to provide the following information : . | Contact details such as your email, name, phone number. | Organisation details as shown on the company register for your jurisdiction. | Information about the project you want to setup (the services you want to use, the client authentication method you want to set-up, the user attributes you want to request, ...) | . Our onboarding team will review your project and get in touch with you in no time to provide your credentials : . | a \"client_id\" | a \"service_code\" | information about your client authentication method | the list of user attributes you can request | . Request your Sandbox . ",
-    "url": "https://belgianmobileid.github.io/doc/directIntegration/#getting-started",
-    "relUrl": "/directIntegration/#getting-started"
-  },"30": {
-    "doc": "Direct Integration",
-    "title": "Direct Integration",
-    "content": " ",
     "url": "https://belgianmobileid.github.io/doc/directIntegration/",
     "relUrl": "/directIntegration/"
-  },"31": {
+  },"30": {
     "doc": "Identification API",
     "title": "Identification API",
     "content": " ",
     "url": "https://belgianmobileid.github.io/doc/identification/",
     "relUrl": "/identification/"
-  },"32": {
-    "doc": "Welcome",
+  },"31": {
+    "doc": "Home - Use Cases",
     "title": "Welcome",
     "content": "itsme® API allows partners to use verified identities for authentication and authorization on web desktop, mobile web or mobile applications. ",
-    "url": "https://belgianmobileid.github.io/doc/index",
-    "relUrl": "/index"
-  },"33": {
-    "doc": "Welcome",
+    "url": "https://belgianmobileid.github.io/doc/index#welcome",
+    "relUrl": "/index#welcome"
+  },"32": {
+    "doc": "Home - Use Cases",
     "title": "Services",
     "content": " ",
     "url": "https://belgianmobileid.github.io/doc/index#services",
     "relUrl": "/index#services"
-  },"34": {
-    "doc": "Welcome",
+  },"33": {
+    "doc": "Home - Use Cases",
     "title": "Authentication",
     "content": "This Service enables your users/customers to log in securely to your application (on web, tablet or mobile). Direct integration with itsme&reg; Integration through Azure B2C ",
     "url": "https://belgianmobileid.github.io/doc/index",
     "relUrl": "/index"
-  },"35": {
-    "doc": "Welcome",
+  },"34": {
+    "doc": "Home - Use Cases",
     "title": "Identification",
     "content": "This Service enables you to identify your users and access their verified data. Direct integration with itsme&reg; Integration through Azure B2C ",
     "url": "https://belgianmobileid.github.io/doc/index",
     "relUrl": "/index"
-  },"36": {
-    "doc": "Welcome",
+  },"35": {
+    "doc": "Home - Use Cases",
     "title": "Confirmation",
     "content": "This Service enables your users/customers to give their consent to a payment or order/action. Direct integration with itsme&reg; ",
+    "url": "https://belgianmobileid.github.io/doc/index",
+    "relUrl": "/index"
+  },"36": {
+    "doc": "Home - Use Cases",
+    "title": "Home - Use Cases",
+    "content": " ",
     "url": "https://belgianmobileid.github.io/doc/index",
     "relUrl": "/index"
   },"37": {
