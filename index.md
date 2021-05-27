@@ -15,7 +15,7 @@ For a more detailed, in-depth explanation of each service, please read through t
 # Get set-up
 
 <div class="services">
-  <div class="services">
+  <div class="service">
     <h2>Onboarding</h2>
     <p class="description">Get your project register in order to start the integration.</p>
     <div class="docLinks">
