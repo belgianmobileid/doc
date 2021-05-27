@@ -21,6 +21,7 @@ For a more detailed, in-depth explanation of each service, please read through t
     <div class="docLinks">
       <a href="onboarding">Getting started</a>
     </div>
+    <img src="assets/login.svg" />
   </div>
 </div>
 
