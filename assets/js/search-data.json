@@ -185,38 +185,38 @@
     "url": "https://belgianmobileid.github.io/doc/identification/",
     "relUrl": "/identification/"
   },"31": {
-    "doc": "Home - Use Cases",
+    "doc": "Home",
     "title": "Welcome",
-    "content": "itsme® API allows partners to use verified identities for authentication and authorization on web desktop, mobile web or mobile applications. ",
+    "content": "We’re here to help you get your business set up with one of our services, and allow you or your business to use verified identities for authentication and authorization on web desktop, mobile web or mobile applications. For a more detailed, in-depth explanation of each service, please read through the appropriate developer documents. ",
     "url": "https://belgianmobileid.github.io/doc/index#welcome",
     "relUrl": "/index#welcome"
   },"32": {
-    "doc": "Home - Use Cases",
-    "title": "Services",
+    "doc": "Home",
+    "title": "Services and integration APIs",
     "content": " ",
-    "url": "https://belgianmobileid.github.io/doc/index#services",
-    "relUrl": "/index#services"
+    "url": "https://belgianmobileid.github.io/doc/index#services-and-integration-apis",
+    "relUrl": "/index#services-and-integration-apis"
   },"33": {
-    "doc": "Home - Use Cases",
+    "doc": "Home",
     "title": "Authentication",
-    "content": "This Service enables your users/customers to log in securely to your application (on web, tablet or mobile). Direct integration with itsme&reg; Integration through Azure B2C ",
+    "content": "This Service enables your users/customers to log in securely to your application. Direct integration API Azure B2C API ",
     "url": "https://belgianmobileid.github.io/doc/index",
     "relUrl": "/index"
   },"34": {
-    "doc": "Home - Use Cases",
+    "doc": "Home",
     "title": "Identification",
-    "content": "This Service enables you to identify your users and access their verified data. Direct integration with itsme&reg; Integration through Azure B2C ",
+    "content": "This Service enables you to identify your users and access their verified data. Direct integration API Azure B2C API ",
     "url": "https://belgianmobileid.github.io/doc/index",
     "relUrl": "/index"
   },"35": {
-    "doc": "Home - Use Cases",
+    "doc": "Home",
     "title": "Confirmation",
-    "content": "This Service enables your users/customers to give their consent to a payment or order/action. Direct integration with itsme&reg; ",
+    "content": "This Service enables your users/customers to give their consent to a payment or order/action. Direct integration API ",
     "url": "https://belgianmobileid.github.io/doc/index",
     "relUrl": "/index"
   },"36": {
-    "doc": "Home - Use Cases",
-    "title": "Home - Use Cases",
+    "doc": "Home",
+    "title": "Home",
     "content": " ",
     "url": "https://belgianmobileid.github.io/doc/index",
     "relUrl": "/index"
