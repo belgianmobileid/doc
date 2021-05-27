@@ -204,41 +204,53 @@
     "relUrl": "/index#welcome"
   },"34": {
     "doc": "Home",
+    "title": "Get set-up",
+    "content": " ",
+    "url": "https://belgianmobileid.github.io/doc/index#get-set-up",
+    "relUrl": "/index#get-set-up"
+  },"35": {
+    "doc": "Home",
+    "title": "Onboarding",
+    "content": "Get your project register in order to start the integration. Getting started ",
+    "url": "https://belgianmobileid.github.io/doc/index",
+    "relUrl": "/index"
+  },"36": {
+    "doc": "Home",
     "title": "Services and integration APIs",
     "content": "For more information on how itsme® can best work for your business, please contact us. itsme® will be happy to help ! . ",
     "url": "https://belgianmobileid.github.io/doc/index#services-and-integration-apis",
     "relUrl": "/index#services-and-integration-apis"
-  },"35": {
+  },"37": {
     "doc": "Home",
     "title": "Authentication",
     "content": "This Service enables your users/customers to log in securely to your application. Direct integration API Azure B2C API ",
     "url": "https://belgianmobileid.github.io/doc/index",
     "relUrl": "/index"
-  },"36": {
+  },"38": {
     "doc": "Home",
     "title": "Identification",
     "content": "This Service enables you to identify your users and access their verified data. Direct integration API Azure B2C API ",
     "url": "https://belgianmobileid.github.io/doc/index",
     "relUrl": "/index"
-  },"37": {
+  },"39": {
     "doc": "Home",
     "title": "Confirmation",
     "content": "This Service enables your users/customers to give their consent to a payment or order/action. Direct integration API ",
     "url": "https://belgianmobileid.github.io/doc/index",
     "relUrl": "/index"
-  },"38": {
+  },"40": {
     "doc": "Home",
     "title": "Home",
     "content": " ",
     "url": "https://belgianmobileid.github.io/doc/index",
     "relUrl": "/index"
-  },"39": {
+  },"41": {
     "doc": "Test",
     "title": "testing code snippet",
     "content": "// Javascript code with syntax highlighting. var fun = function lang(l) { dateformat.i18n = require('./lang/' + l) return true; } . $ npm install -g yo generator-itsme . &lt;code style=display:block;white-space:pre-wrap&gt;$ npm install -g yo generator-itsme&lt;/code&gt; . | Parameter | Description | . | Param1required | Global description of Param1 | subparam1optional | description of subparam1 | . | subparam2required | description of subparam2 | . | . | Param2optional | Global description of Param2 | . ",
     "url": "https://belgianmobileid.github.io/doc/test/#testing-code-snippet",
     "relUrl": "/test/#testing-code-snippet"
-  },"40": {
+  },"42": {
     "doc": "Test",
     "title": "Test",
     "content": "Voilà une page de test de Jekyll . First tabs . | js | ruby | . | tagada . | tsoin tsoin here goes some code . | . Second tabs . | yaml | json | . | hello: . | ‘whatsup’ | ‘hi’ | . | { “hello”: [“whatsup”, “hi”] } . | . ",
