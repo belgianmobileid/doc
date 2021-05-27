@@ -14,14 +14,13 @@ For a more detailed, in-depth explanation of each service, please read through t
 
 # Get set-up
 
-<div class="onboarding">
-  <div class="onboarding">
+<div class="services">
+  <div class="services">
     <h2>Onboarding</h2>
     <p class="description">Get your project register in order to start the integration.</p>
     <div class="docLinks">
       <a href="onboarding">Getting started</a>
     </div>
-    <img src="assets/login.svg" />
   </div>
 </div>
 
