@@ -19,7 +19,7 @@ For a more detailed, in-depth explanation of each service, please read through t
     <h2>Onboarding</h2>
     <p class="description">Get your project register in order to start the integration.</p>
     <div class="docLinks">
-      <a href="authentication">Getting started</a>
+      <a href="https://belgianmobileid.github.io/doc/getting-started/">Getting started</a>
     </div>
   </div>
 </div>
