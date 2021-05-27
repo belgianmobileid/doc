@@ -1,6 +1,6 @@
 ---
 layout: homepage
-title: Home - Use Cases
+title: Home
 permalink: /index
 nav_exclude: false
 nav_order: 1
@@ -8,17 +8,20 @@ nav_order: 1
 
 # Welcome
 
-itsme® API allows partners to use verified identities for authentication and authorization on web desktop, mobile web or mobile applications.
+We’re here to help you get your business set up with one of our services, and allow you or your business to use verified identities for authentication and authorization on web desktop, mobile web or mobile applications.
 
-# Services
+For a more detailed, in-depth explanation of each service, please read through the appropriate developer documents.
+
+
+# Services and integration APIs
 
 <div class="services">
   <div class="service">
     <h2>Authentication</h2>
-    <p class="description">This Service enables your users/customers to log in securely to your application (on web, tablet or mobile).</p>
+    <p class="description">This Service enables your users/customers to log in securely to your application.</p>
     <div class="docLinks">
-      <a href="authentication">Direct integration with itsme&reg;</a>
-      <a href="azureB2C">Integration through Azure B2C</a>
+      <a href="authentication">Direct integration API</a>
+      <a href="azureB2C">Azure B2C API</a>
     </div>
     <img src="assets/login.svg" />
   </div>
@@ -26,8 +29,8 @@ itsme® API allows partners to use verified identities for authentication and au
     <h2>Identification</h2>
     <p class="description">This Service enables you to identify your users and access their verified data.</p>
     <div class="docLinks">
-      <a href="identification">Direct integration with itsme&reg;</a>
-      <a href="azureB2C">Integration through Azure B2C</a>
+      <a href="identification">Direct integration API</a>
+      <a href="azureB2C">Azure B2C API</a>
     </div>
     <img src="assets/signup.svg" />
   </div>
@@ -35,7 +38,7 @@ itsme® API allows partners to use verified identities for authentication and au
     <h2>Confirmation</h2>
     <p>This Service enables your users/customers to give their consent to a payment or order/action.</p>
     <div class="docLinks">
-      <a href="confirmation">Direct integration with itsme&reg;</a>
+      <a href="confirmation">Direct integration API</a>
     </div>
     <img src="assets/confirm.svg" />
   </div>
