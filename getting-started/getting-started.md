@@ -1,0 +1,29 @@
+---
+
+layout: getting_started
+title: Getting started
+permalink: getting-started/
+nav_exclude: true
+
+---
+
+<a name="Onboarding"></a>
+# Getting started
+
+In order to start your integration you will first need to setup your personal Sanbox environment. To do so, you will be requested to provide the following information :  
+
+<ul>
+  <li>Contact details such as your email, name, phone number.</li>
+  <li>Organisation details as shown on the company register for your jurisdiction.</li>
+  <li>Information about the project you want to setup (the services you want to use, the client authentication method you want to set-up, the user attributes you want to request, ...)</li>
+</ul>
+
+Our onboarding team will review your project and get in touch with you in no time to provide your credentials :
+<ul>
+  <li>a <i>"client_id"</i></li>
+  <li>a <i>"service_code"</i></li>
+  <li>information about your <a href="https://belgianmobileid.github.io/doc/authentication/#client-authentication-methods" target="blank">client authentication method</a></li>
+  <li>the list of user attributes you can request</li>
+</ul>
+
+<br><br><button type="button"><a href="https://partner-support.itsme.be/hc/en-us/requests/new?ticket_form_id=360004640194" target="blank">Request your Sandbox</a></button>
