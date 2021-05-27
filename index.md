@@ -12,6 +12,17 @@ We’re here to help you get your business set up with one of our services, and 
 
 For a more detailed, in-depth explanation of each service, please read through the appropriate developer documents.
 
+# Get set-up
+
+<div class="onboarding">
+  <div class="onboarding">
+    <h2>Onboarding</h2>
+    <p class="description">Get your project register in order to start the integration.</p>
+    <div class="docLinks">
+      <a href="onboarding">Getting started</a>
+    </div>
+  </div>
+</div>
 
 # Services and integration APIs
 
