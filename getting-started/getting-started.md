@@ -22,7 +22,7 @@ Our onboarding team will review your project and get in touch with you in no tim
 <ul>
   <li>a <i>"client_id"</i></li>
   <li>a <i>"service_code"</i></li>
-  <li>information about your <a href="https://belgianmobileid.github.io/doc/authentication/#client-authentication-methods" target="blank">client authentication method</a></li>
+  <li>information about your client authentication method</li>
   <li>the list of user attributes you can request</li>
 </ul>
 
