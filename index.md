@@ -15,6 +15,8 @@ For a more detailed, in-depth explanation of each service, please read through t
 
 # Services and integration APIs
 
+For more information on how itsme® can best work for your business, please <a href = "mailto: onboarding@itsme.be">contact us</a>. itsme® will be happy to help !
+
 <div class="services">
   <div class="service">
     <h2>Authentication</h2>
