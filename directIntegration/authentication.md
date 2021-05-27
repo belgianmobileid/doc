@@ -45,12 +45,12 @@ itsme® supports the following authentication methods to protect the exchange of
 
 <ul>
   <li>asymmetric RSA key pair</li>
-  <li>symmetric shared secret</li>
+  <li>symmetric AES key secret</li>
 </ul>
 
 itsme® recommend using the asymmetric RSA key pair method and allow you to rotate your keys without the need to sync with us.  
 
-### Asymmetric RSA 
+### Asymmetric RSA key
 
 This method requires that each party exposes its public keys as a simple JWK Set document on a URI publicly accessible, and keep its private keys for itself. For itsme®, this URI can be retrieved from the [itsme® Discovery document](#OpenIDConfig), using the <i>"jwks_uri"</i> key.
 
@@ -71,11 +71,11 @@ The Yeoman tool will generate two files, the jwks_private.json which MUST be sto
 <aside class="notice">Whatever the tool you are choosing to create your key pairs, don't forget to send your JWK Set URI by email to <a href = "mailto: onboarding@itsme.be">onboarding@itsme.be</a> and itsme® will make sure to complete the configuration for you in no time!
 </aside>
 
-### Symmetric secret 
+### Symmetric AES key 
 
 This method requires the exchange of a static secret that will be used to authenticate with our Back-End. 
 
-The client_secret value will be provided by itsme® when <a href="https://belgianmobileid.github.io/doc/getting-started.html#getting-started" target="blank">registering your project</a>.
+The secret value will be provided by itsme® when <a href="https://belgianmobileid.github.io/doc/getting-started.html#getting-started" target="blank">registering your project</a>.
 
 
 ## Certificates and website security
