@@ -17,7 +17,7 @@ For a more detailed, in-depth explanation of each service, please read through t
 <div class="services">
   <div class="service">
     <h2>Onboarding</h2>
-    <p class="description">Get your project register in order to start the integration.</p>
+    <p class="description">Get your project registered in order to start the integration.</p>
     <div class="docLinks">
       <a href="https://belgianmobileid.github.io/doc/getting-started/">Getting started</a>
     </div>
