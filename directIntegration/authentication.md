@@ -311,6 +311,8 @@ For example:
    </tbody>
 </table>
 
+## Signing and encrypting JWTs
+
 
 ## Mapping the user
 
