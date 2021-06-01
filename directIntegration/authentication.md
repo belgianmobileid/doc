@@ -89,7 +89,7 @@ The Domain Validation certificate doesn’t provide sufficient identity guarante
 <aside class="notice">The chain of trust of these certificates need to be publicly accessible, meaning that our systems need to be able to access the root and the intermediate certificates.
 </aside>
 
-<aside class="notice">All of the API URL we publish use <code>https</code>.
+<aside class="notice">All itsme® API URL we publish use <code>https</code>.
 </aside>
 
 
