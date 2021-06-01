@@ -50,7 +50,7 @@ itsme® supports the following authentication methods to protect the exchange of
 
 itsme® recommend using the asymmetric RSA key pair method and allow you to rotate your keys without the need to sync with us.  
 
-### Asymmetric RSA key
+### Asymmetric RSA key and JWKSet URI
 
 This method requires that each party exposes its public keys as a simple JWK Set document on a URI publicly accessible, and keep its private keys for itself. For itsme®, this URI can be retrieved from the [itsme® Discovery document](#OpenIDConfig), using the <i>"jwks_uri"</i> key.
 
@@ -66,7 +66,7 @@ After installation, run the generator:
 $ yo itsme
 ```
 
-The Yeoman tool will generate two files, the jwks_private.json which MUST be stored securely in your system, and the jwks_public.json which needs to be exposed as a JWK Set on a URI publicly accessible and have the HTTPS scheme.
+The Yeoman tool will generate two files, the jwks_private.json which MUST be stored securely in your system, and the jwks_public.json which needs to be exposed as a JWK Set on a URI publicly accessible and have the HTTPS scheme (refer to <a href="https://belgianmobileid.github.io/doc/authentication/#certificates-and-website-security" target="blank">this section</a> for more information).
 
 <aside class="notice">Whatever the tool you are choosing to create your key pairs, don't forget to send your JWK Set URI by email to <a href = "mailto: onboarding@itsme.be">onboarding@itsme.be</a> and itsme® will make sure to complete the configuration for you in no time!
 </aside>
@@ -91,6 +91,11 @@ The Domain Validation certificate doesn’t provide sufficient identity guarante
 
 <aside class="notice">All itsme® API URL we publish use <code>https</code>.
 </aside>
+
+
+## Signing, encrypting and decoding JWTs
+
+In order to securely exchange of sensitive information and ensure the requested information gets issued to a legitimate application and not some other party, OpenID Connect uses the JSON Web Token (JWT) and JSON Object Signing and Encryption (JOSE) specifications. Libraries implementing JWT and the JOSE specs JWS, JWE, JWK, and JWA are listed <a href="https://openid.net/developers/jwt/" target="blank">here</a>.
 
 
 ## Handling responses
@@ -310,9 +315,6 @@ For example:
     </tr>
    </tbody>
 </table>
-
-## Signing and encrypting JWTs
-
 
 ## Mapping the user
 
