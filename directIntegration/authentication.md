@@ -542,12 +542,6 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
   </tbody>
 </table>
 
-***Error reponses***
-
-If the request fails due to a missing, invalid, or mismatching redirection URI, or if the client identifier is missing or invalid, the authorization server informs you about the error and will not automatically redirect the User to the invalid redirection URI.
-
-If the User denies the access request or if the request fails for reasons other than a missing or invalid redirection URI, the authorization server informs you by adding the following parameters to the query component of the redirection URI using the "application/x-www-form-urlencoded" format
-
 {% endtab %}
 
 {% tab AuthorizationRequest AES key %}
