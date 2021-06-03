@@ -153,7 +153,8 @@ If the User denies the access request or the User authentication fails, the Auth
   <tbody>
     <tr>
       <td>{% include parameter.html name="error" req="REQUIRED" %}</td>
-      <td>A single ASCII error code.</td>
+      <td>A single ASCII error code.
+        <table>
          <tr>
           <td>{% include parameter.html name="invalid_request" req="" %}</td>
           <td>The request is missing a required parameter, includes an invalid parameter value, includes a parameter more than once, or is otherwise malformed.</td>
@@ -218,8 +219,10 @@ If the User denies the access request or the User authentication fails, the Auth
           <td>{% include parameter.html name="temporary_unavailable" req="" %}</td>
           <td>The authorization server is currently unable to handle the request due to a temporary overloading or maintenance of the server.</td>
         </tr>
+       </table>
+      </td>
     </tr>
-     <tr>
+    <tr>
       <td>{% include parameter.html name="error_description" req="OPTIONAL" %}</td>
       <td>Human-readable text providing additional information, used to assist the developer in understanding the error that occurred.</td>
     </tr>
