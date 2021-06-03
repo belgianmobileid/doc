@@ -103,32 +103,16 @@ In order to securely exchange of sensitive information and ensure the requested 
 Whenever a partner is sending a request to the itsme OIDC endpoints he will get a response back. According to the OIDC protocol, and depending on the endpoint that was contacted, partners can get a 
 
 <ul>
-  <li>response where some parameters are added to the query component of the redirection URI using the "application/x-www-form-urlencoded" format, or</li>
+  <li>response where some parameters are added to the query component of the redirection URI using the <code>application/x-www-form-urlencoded</code> format, or</li>
   <li>response displayed directly on our itsme® sign-in page ;</li>
-  <li>response using the "application/json" media type</li>
+  <li>response using the <code>application/json</code> media type</li>
 </ul>
 
 This is a standard for data communication that’s easy to read for humans as well as machines. Alongside the type of response an HTTP status code is sent that shows whether the request was successful or not. If it was not, you can tell by the code and the message in the response what went wrong, why it went wrong and whether there is something the partner can do about it.
 
 ### A successful response
 
-An HTTP status <code>200 OK</code> or <code>302 Found</code> is issued whenever your request was a success. You see this type of response in our examples like the one where we successfully retrieve the <a href="https://belgianmobileid.github.io/doc/authentication/#example-1" target="blank">Token Response</a>.
-
-***Request***
-
-```http
-POST /token HTTP/1.1
-Host: openid.c2id.com
-Content-Type: application/x-www-form-urlencoded
-
-grant_type=authorization_code
- &code=SplxlOBeZQQYbYS6WxSbIA
- &redirect_uri=https%3A%2F%2Fclient.example.org%2Fcb
- &client_assertion_type=urn:ietf:params:oauth:client-assertion-type:jwt-bearer
- &client_assertion=PHNhbWxwOl ... ZT
-```
-
-***Response***
+An HTTP status <code>200 OK</code> or <code>302 Found</code> is issued whenever your request was a success. You see this type of response in our examples like the one where we successfully retrieve the <a href="https://belgianmobileid.github.io/doc/authentication/#example-1" target="blank">Token Response</a> : 
 
 ```http
 HTTP/1.1 200 OK
