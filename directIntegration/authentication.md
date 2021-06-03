@@ -139,7 +139,7 @@ Pragma: no-cache
 
 ### The error responses
 
-Things will sometimes go wrong. So, OpenID COnnect defines a number of rules regarding the format of errors returned from our endpoints. 
+Things will sometimes go wrong. So, OpenID Connect defines a number of rules regarding the format of errors returned from our endpoints. 
 
 ***Authorization Endpoint errors***
 
@@ -233,7 +233,7 @@ If the User denies the access request or the User authentication fails, the Auth
   </tbody>
 </table>
 
-For example, the Authorization Endpoint redirects the User by sending the following HTTP response:
+For example :
 
 ```http
 HTTP/1.1 302 Found Location: https://client.example.com/cb?error=access_denied&state=xyz
@@ -241,15 +241,34 @@ HTTP/1.1 302 Found Location: https://client.example.com/cb?error=access_denied&s
 
 ***Token Endpoint errors***
 
-If the request fails the Token Endpoint responds with an HTTP 400 (Bad Request) status code and includes the fllowing parameters in the entity-body of the HTTP response using the "application/json" media type :
+If the request fails the Token Endpoint responds with an HTTP 400 (Bad Request) status code (unless specified otherwise) and includes the following parameters in the entity-body of the HTTP response using the <code>application/json</code> media type :
 
 <table>
   <tbody>
     <tr>
       <td>{% include parameter.html name="error" req="REQUIRED" %}</td>
-      <td>A single ASCII error code.</td>
+      <td>A single ASCII error code.
+        <table>
+          <tr>
+            <td>{% include parameter.html name="invalid_request" req="" %}</td>
+            <td>The request is missing a required parameter, includes an unsupported parameter value (other than grant type), repeats a parameter, includes multiple credentials, utilizes more than one mechanism for authenticating the client, or is otherwise malformed.</td>
+          </tr>
+          <tr>
+            <td>{% include parameter.html name="invalid_client" req="" %}</td>
+            <td>Client authentication failed (e.g., unknown client, no client authentication included, or unsupported authentication method).</td>
+          </tr>
+          <tr>
+            <td>{% include parameter.html name="invalid_grant" req="" %}</td>
+            <td>The provided authorization grant (e.g., authorization code, resource owner credentials) is invalid, expired or does not match the redirection URI used in the authorization request.</td>
+          </tr>
+          <tr>
+            <td>{% include parameter.html name="unauthorized_client" req="" %}</td>
+            <td>The authenticated client is not authorized to use this authorization grant type.</td>
+          </tr>
+       </table>
+      </td>
     </tr>
-     <tr>
+    <tr>
       <td>{% include parameter.html name="error_description" req="OPTIONAL" %}</td>
       <td>Human-readable text providing additional information, used to assist the developer in understanding the error that occurred.</td>
     </tr>
@@ -260,7 +279,7 @@ If the request fails the Token Endpoint responds with an HTTP 400 (Bad Request) 
   </tbody>
 </table>
 
-For example:
+For example :
 
 ```http
 HTTP/1.1 400 Bad Request 
@@ -275,7 +294,20 @@ Content-Type: application/json;charset=UTF-8 Cache-Control: no-store Pragma: no-
 
 When a request fails, the UserInfo Endpoint responds using the appropriate HTTP status code (typically, 400, 401, 403, or 405) and includes specific error codes in the response.
 
-For example:
+<table>
+  <tbody>
+    <tr>
+      <td>{% include parameter.html name="invalid_request" req="" %}</td>
+      <td>The request is missing a required parameter, includes an unsupported parameter or parameter value, repeats the same parameter, uses more than one method for including an access token, or is otherwise malformed.</td>
+    </tr>
+    <tr>
+      <td>{% include parameter.html name="invalid_token" req="" %}</td>
+      <td>The access token provided is expired, revoked, malformed, or  invalid for other reasons.</td>
+    </tr>
+   </tbody>
+</table>
+
+For example :
 
 ```http
 HTTP/1.1 401 Unauthorized 
@@ -290,9 +322,32 @@ If the request fails the Revoke Endpoint responds with an HTTP 400 (Bad Request)
   <tbody>
     <tr>
       <td>{% include parameter.html name="error" req="REQUIRED" %}</td>
-      <td>A single ASCII error code.</td>
+      <td>A single ASCII error code.
+        <table>
+          <tr>
+            <td>{% include parameter.html name="invalid_request" req="" %}</td>
+            <td>The request is missing a required parameter, includes an unsupported parameter value (other than grant type), repeats a parameter, includes multiple credentials, utilizes more than one mechanism for authenticating the client, or is otherwise malformed.</td>
+          </tr>
+          <tr>
+            <td>{% include parameter.html name="invalid_client" req="" %}</td>
+            <td>Client authentication failed (e.g., unknown client, no client authentication included, or unsupported authentication method).</td>
+          </tr>
+          <tr>
+            <td>{% include parameter.html name="invalid_grant" req="" %}</td>
+            <td>The provided authorization grant (e.g., authorization code, resource owner credentials) is invalid, expired or does not match the redirection URI used in the authorization request.</td>
+          </tr>
+          <tr>
+            <td>{% include parameter.html name="unauthorized_client" req="" %}</td>
+            <td>The authenticated client is not authorized to use this authorization grant type.</td>
+          </tr>
+          <tr>
+            <td>{% include parameter.html name="unsupported_token_type" req="" %}</td>
+            <td>itsme® does not support the revocation of the presented access token.</td>
+          </tr>
+       </table>
+      </td>
     </tr>
-     <tr>
+    <tr>
       <td>{% include parameter.html name="error_description" req="OPTIONAL" %}</td>
       <td>Human-readable text providing additional information, used to assist the developer in understanding the error that occurred.</td>
     </tr>
@@ -313,109 +368,6 @@ Content-Type: application/json;charset=UTF-8 Cache-Control: no-store Pragma: no-
   "error":"invalid_request" 
 }
 ```
-
-### Possible error codes and corresponding error description
-
-<br>***Authorization Endpoint errors***
-
-<table>
-  <tbody>
-    <tr>
-      <td>{% include parameter.html name="invalid_request" req="" %}</td>
-      <td>The request is missing a required parameter, includes an invalid parameter value, includes a parameter more than once, or is otherwise malformed.</td>
-    </tr>
-    <tr>
-      <td>{% include parameter.html name="login_required" req="" %}</td>
-      <td>The Authorization Endpoint requires User authentication. This error MAY be returned when the <code>prompt</code> parameter value in the Authorization Request is <code>none</code>, but the Authentication Request cannot be completed without displaying a user interface for User authentication.</td>
-    </tr>
-    <tr>
-      <td>{% include parameter.html name="interaction_required" req="" %}</td>
-      <td>The Authorization Endpoint requires User interaction of some form to proceed. This error MAY be returned when the <code>prompt</code> parameter value in the Authorization Request is <code>none</code>, but the Autorization Request cannot be completed without displaying a user interface for User interaction.</td>
-    </tr>
-    <tr>
-      <td>{% include parameter.html name="unsupported_request" req="" %}</td>
-      <td>The request contains a not supported parameter.</td>
-    </tr>
-    <tr>
-      <td>{% include parameter.html name="invalid_client_id" req="" %}</td>
-      <td>The request contains an invalid <code>client_id</code>.</td>
-    </tr>
-    <tr>
-      <td>{% include parameter.html name="invalid_redirect_uri" req="" %}</td>
-      <td>The request contains an invalid redirect URI.</td>
-    </tr>
-    <tr>
-      <td>{% include parameter.html name="unsupported_grant_type" req="" %}</td>
-      <td>Grant type not supported.</td>
-    </tr>
-    <tr>
-      <td>{% include parameter.html name="invalid_grant" req="" %}</td>
-      <td>Invalid grant.</td>
-    </tr>
-    <tr>
-      <td>{% include parameter.html name="invalid_scope" req="" %}</td>
-      <td>The requested scope is invalid, unknown, or malformed.</td>
-    </tr>
-    <tr>
-      <td>{% include parameter.html name="unsupported_display" req="" %}</td>
-      <td>Only <code>page</code> is supported.</td>
-    </tr>
-    <tr>
-      <td>{% include parameter.html name="unauthorized_client" req="" %}</td>
-      <td>Unknown or unspecified <code>client_id</code>.</td>
-    </tr>
-    <tr>
-      <td>{% include parameter.html name="unsupported_response_type" req="" %}</td>
-      <td>The Authorization Endpoint does not support obtaining an authorization code using this method.</td>
-    </tr>
-    <tr>
-      <td>{% include parameter.html name="invalid_request_object" req="" %}</td>
-      <td>The <code>request</code> parameter contains an invalid Request Object.</td>
-    </tr>
-    <tr>
-      <td>{% include parameter.html name="invalid_request_uri" req="" %}</td>
-      <td>The <code>request_uri</code> in the Authorization Request returns an error or contains invalid data.</td>
-    </tr>
-    <tr>
-      <td>{% include parameter.html name="invalid_request" req="" %}</td>
-      <td>Oauth2 parameters do not match Request object.</td>
-    </tr>
-    <tr>
-      <td>{% include parameter.html name="temporary_unavailable" req="" %}</td>
-      <td>The authorization server is currently unable to handle the request due to a temporary overloading or maintenance of the server.</td>
-    </tr>
-  </tbody>
-</table>
-
-***Token Endpoint errors***
-
-<table>
-  <tbody>
-    <tr>
-      <td>{% include parameter.html name="invalid_request" req="" %}</td>
-      <td>The request is missing a required parameter, includes an unsupported parameter value (other than grant type), repeats a parameter, includes multiple credentials, utilizes more than one mechanism for authenticating the client, or is otherwise malformed.</td>
-    </tr>
-    <tr>
-      <td>{% include parameter.html name="invalid_client" req="" %}</td>
-      <td>Client authentication failed (e.g., unknown client, no client authentication included, or unsupported authentication method).</td>
-    </tr>
-   </tbody>
-</table>
-
-***UserInfo Endpoint errors***
-
-<table>
-  <tbody>
-    <tr>
-      <td>{% include parameter.html name="invalid_request" req="" %}</td>
-      <td>The request is missing a required parameter, includes an unsupported parameter or parameter value, repeats the same parameter, uses more than one method for including an access token, or is otherwise malformed.</td>
-    </tr>
-    <tr>
-      <td>{% include parameter.html name="invalid_token" req="" %}</td>
-      <td>The access token provided is expired, revoked, malformed, or  invalid for other reasons.</td>
-    </tr>
-   </tbody>
-</table>
 
 ## Mapping the user
 
