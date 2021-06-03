@@ -157,7 +157,7 @@ Pragma: no-cache
 
 Things will sometimes go wrong. Concretely,
 
-<u><i>Authorization Request</i></u> - if the request fails due to a missing, invalid, or mismatching redirection URI, or if the client identifier is missing or invalid,... the Authorization Endpoint will inform you of the error our itsme® sign-in page (possible values are listed in the table below).
+<u><i>Authorization Response</i></u> - if the request fails due to a missing, invalid, or mismatching redirection URI, or if the client identifier is missing or invalid,... the Authorization Endpoint will inform you of the error our itsme® sign-in page (possible values are listed in the table below).
 
  ![Authorization Endpoint error reponse](/doc/public/images/AuthorizationEndpoint_ErrorResponse.png)
  
@@ -182,9 +182,11 @@ If the User denies the access request or the User authentication fails, the Auth
 
 For example, the Authorization Endpoint redirects the User by sending the following HTTP response:
 
-<code>HTTP/1.1 302 Found Location: https://client.example.com/cb?error=access_denied&state=xyz</code>
+```http
+HTTP/1.1 302 Found Location: https://client.example.com/cb?error=access_denied&state=xyz
+```
 
-<u><i>Token Request</i></u> - if the request fails the Token Endpoint responds with an HTTP 400 (Bad Request) status code and includes the fllowing parameters in the entity-body of the HTTP response using the "application/json" media type :
+<u><i>Token Response</i></u> - if the request fails the Token Endpoint responds with an HTTP 400 (Bad Request) status code and includes the fllowing parameters in the entity-body of the HTTP response using the "application/json" media type :
 
 <table>
   <tbody>
@@ -205,13 +207,53 @@ For example, the Authorization Endpoint redirects the User by sending the follow
 
 For example:
 
-<code>HTTP/1.1 400 Bad Request Content-Type: application/json;charset=UTF-8 Cache-Control: no-store Pragma: no-cache { "error":"invalid_request" }</code>
+```http
+HTTP/1.1 400 Bad Request 
+Content-Type: application/json;charset=UTF-8 Cache-Control: no-store Pragma: no-cache 
 
-<u><i>UserInfo Request</i></u> - When a request fails, the UserInfo Endpoint responds using the appropriate HTTP status code (typically, 400, 401, 403, or 405) and includes specific error codes in the response.
+{ 
+  "error":"invalid_request" 
+}
+```
+
+<u><i>UserInfo Response</i></u> - when a request fails, the UserInfo Endpoint responds using the appropriate HTTP status code (typically, 400, 401, 403, or 405) and includes specific error codes in the response.
 
 For example:
 
-<code>HTTP/1.1 401 Unauthorized WWW-Authenticate: Bearer realm="example"</code>
+```http
+HTTP/1.1 401 Unauthorized 
+WWW-Authenticate: Bearer realm="example"
+```
+
+<u><i>Revocation Response</i></u> - if the request fails the Revoke Endpoint responds with an HTTP 400 (Bad Request) status code and includes the fllowing parameters in the entity-body of the HTTP response using the "application/json" media type :
+
+<table>
+  <tbody>
+    <tr>
+      <td>{% include parameter.html name="error" req="REQUIRED" %}</td>
+      <td>A single ASCII error code.</td>
+    </tr>
+     <tr>
+      <td>{% include parameter.html name="error_description" req="OPTIONAL" %}</td>
+      <td>Human-readable text providing additional information, used to assist the developer in understanding the error that occurred.</td>
+    </tr>
+    <tr>
+      <td>{% include parameter.html name="state" req="" %}</td>
+      <td>The string value provided in the Authorization Request. You SHOULD validate that the value returned matches the one supplied.</td>
+    </tr>
+  </tbody>
+</table>
+
+For example:
+
+```http
+HTTP/1.1 400 Bad Request 
+Content-Type: application/json;charset=UTF-8 Cache-Control: no-store Pragma: no-cache 
+
+{ 
+  "error":"invalid_request" 
+}
+```
 
 ### Possible error codes and corresponding error description
 
@@ -944,6 +986,7 @@ Pragma: no-cache
 }
 ```
 
+
 {% endtab %}
 
 {% tab TokenExample AES key %}
@@ -1007,6 +1050,8 @@ This is illustrated in the example below.
 
 ### Response
 
+<code>200</code> <code>application/json</code>
+
 The UserInfo Response is represented as a signed and encrypted JWT. So, before being able to extract the claims you will have to decrypt and verify the signature.
 
 
@@ -1022,6 +1067,8 @@ This is illustrated in the example below.
 
 
 ### Response
+
+<code>200</code> <code>application/json</code>
 
 The UserInfo Response is represented as a signed and encrypted JWT. So, before being able to extract the claims you will have to decrypt and verify the signature.
 
@@ -1117,27 +1164,25 @@ The Revocation Endpoint enables your application to notify itsme® that a previo
 <table>
   <tbody>
     <tr>
-      <td>{% include parameter.html name="client_id" req="REQUIRED" %}</td>
-      <td>It identifies your application. This parameter value is generated during registration.</td>
-    </tr>
-    <tr>
-      <td>{% include parameter.html name="client_secret" req="REQUIRED" %}</td>
-      <td>Contains the a key you reveiced when registering your application.</td>
-    </tr>
-    <tr>
       <td>{% include parameter.html name="token" req="REQUIRED" %}</td>
       <td>The <code>access_token</code> previously obtained that you want to revoke.</td>
     </tr>
     <tr>
       <td>{% include parameter.html name="token_type_hint" req="OPTIONAL" %}</td>
-      <td>If used, this is set to <code>access_token</code> because itsme® API don't support refresh tokens.</td>
+      <td>A hint about the type of the token submitted for revocation. You MAY pass this parameter in order to help itsme® to optimize the token lookup. If the server is unable to locate the token using the given hint, it MUST extend its search across all of its supported token types. If used, this is set to <code>access_token</code> because itsme® API don't support refresh tokens.</td>
     </tr>
   </tbody>
 </table>
 
 ### Response
 
-The response is very simple: it’s always an HTTP 200 if the token is revoked or unknown.
+<code>200</code> 
+
+itsme® responds with HTTP status code 200 if the token has been revoked successfully or if the client submitted an invalid token.
+
+<aside class="notice">Invalid tokens do not cause an error response since your application cannot handle such an error in a reasonable way. Moreover, the purpose of the revocation request, invalidating the particular token, is already achieved.
+</aside>
+
 
 {% endtab %}
 
@@ -1157,7 +1202,22 @@ Not applicable.
 
 ***Request***
 
+```http
+POST /connect/revoke HTTP/1.1
+Host: server.example.com
+Content-Type: application/x-www-form-urlencoded
+Authorization: Basic czZCaGRSa3F0MzpnWDFmQmF0M2JW
+
+token=45ghiukldjahdnhzdauz&token_type_hint=refresh_token
+```
+
 ***Response***
+
+
+```http
+HTTP/1.1 200 OK
+
+```
 
 {% endtab %}
 
