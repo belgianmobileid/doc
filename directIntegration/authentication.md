@@ -583,11 +583,11 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
     </tr>
     <tr>
       <td>{% include parameter.html name="request_uri" req="OPTIONAL" %}</td>
-      <td>A URL using the https scheme referencing a resource containing a JWT whose claims are the request parameters. The <code>request_uri</code> parameter is used to secure parameters in the authentication request from tainting or inspection when sending the request to the itsme® Authorization Endpoint.<br><br>If the <code>request_uri</code> parameter is used, the JWT MUST be signed and MUST contain the claims <code>iss</code> (issuer) and <code>aud</code> (audience) as members. The <code>iss</code> value SHOULD be your <code>client_id</code>. The <code>aud</code> value SHOULD be set to <code>https://idp.[e2e/prd].itsme.services/v2/authorization</code>. The JWT MAY also be encrypted. If both signing and encryption are performed, it MUST be signed then encrypted, with the result being a Nested JWT.<br><br>The following restrictions apply to request URIs:<br><ul><li>The request URI MUST be preregistered during the registration.</li><li>The request URI MUST contain the port <code>443</code>. Example : https://test.istme.be:443/p/test</li><li>The request URI MUST begin with the scheme <code>https</code> (refer to <a href="https://belgianmobileid.github.io/doc/authentication/#certificates-and-website-security" target="blank">this section</a> for more information). The usage of localhost request URIs that are not permitted.</li><li>The request URI JWT MUST be publicly accessible.</li></ul></td>
+      <td>A URL using the https scheme referencing a resource containing a JWT whose claims are the request parameters. The <code>request_uri</code> parameter is used to secure parameters in the authentication request from tainting or inspection when sending the request to the itsme® Authorization Endpoint.<br><br>If the <code>request_uri</code> parameter is used, the JWT MUST be signed and MUST contain the claims <code>iss</code> (issuer) and <code>aud</code> (audience) as members. The <code>iss</code> value SHOULD be your <code>client_id</code>. The <code>aud</code> value SHOULD be set to <code>https://idp.[e2e/prd].itsme.services/v2/authorization</code>. The JWT MAY also be encrypted. If both signing and encryption are performed, it MUST be signed then encrypted, with the result being a Nested JWT (refer to <a href="https://belgianmobileid.github.io/doc/authentication/#securing-the-exchange-of-information" target="blank">this section</a> for more information).<br><br>The following restrictions apply to request URIs:<br><ul><li>The request URI MUST be preregistered during the registration.</li><li>The request URI MUST contain the port <code>443</code>. Example : https://test.istme.be:443/p/test</li><li>The request URI MUST begin with the scheme <code>https</code> (refer to <a href="https://belgianmobileid.github.io/doc/authentication/#certificates-and-website-security" target="blank">this section</a> for more information). The usage of localhost request URIs that are not permitted.</li><li>The request URI JWT MUST be publicly accessible.</li></ul></td>
     </tr>
     <tr>
       <td>{% include parameter.html name="request" req="OPTIONAL" %}</td>
-      <td>It represents the request as a JWT whose Claims are the request parameters. The <code>request</code> parameter is used to secure parameters in the authentication request from tainting or inspection when sending the request to the itsme® Authorization Endpoint.<br><br>If the <code>request</code> parameter is used, the JWT MUST be signed and MUST contain the claims <code>iss</code> (issuer) and <code>aud</code> (audience) as members. The <code>iss</code> value SHOULD be your <code>client_id</code>. The <code>aud</code> value SHOULD be set to <code>https://idp.[e2e/prd].itsme.services/v2/authorization</code>. The JWT MAY also be encrypted. If both signing and encryption are performed, it MUST be signed then encrypted, with the result being a Nested JWT.</td>
+      <td>It represents the request as a JWT whose Claims are the request parameters. The <code>request</code> parameter is used to secure parameters in the authentication request from tainting or inspection when sending the request to the itsme® Authorization Endpoint.<br><br>If the <code>request</code> parameter is used, the JWT MUST be signed and MUST contain the claims <code>iss</code> (issuer) and <code>aud</code> (audience) as members. The <code>iss</code> value SHOULD be your <code>client_id</code>. The <code>aud</code> value SHOULD be set to <code>https://idp.[e2e/prd].itsme.services/v2/authorization</code>. The JWT MAY also be encrypted. If both signing and encryption are performed, it MUST be signed then encrypted, with the result being a Nested JWT (refer to <a href="https://belgianmobileid.github.io/doc/authentication/#securing-the-exchange-of-information" target="blank">this section</a> for more information).</td>
     </tr>
   </tbody>
 </table>
@@ -732,7 +732,7 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
     </tr>
     <tr>
       <td>{% include parameter.html name="request_uri" req="OPTIONAL" %}</td>
-       <td>A URL using the https scheme referencing a resource containing a JWT whose claims are the request parameters. The <code>request_uri</code> parameter is used to secure parameters in the authentication request from tainting or inspection when sending the request to the itsme® Authorization Endpoint.<br><br>If the <code>request_uri</code> parameter is used, the JWT MUST be signed and MUST contain the claims <code>iss</code> (issuer) and <code>aud</code> (audience) as members. The <code>iss</code> value SHOULD be your <code>client_id</code>. The <code>aud</code> value SHOULD be set to <code>https://idp.[e2e/prd].itsme.services/v2/authorization</code>. The JWT MAY also be encrypted. If both signing and encryption are performed, it MUST be signed then encrypted, with the result being a Nested JWT.<br><br>The following restrictions apply to request URIs:<br><ul><li>The request URI MUST be preregistered during the registration.</li><li>The request URI MUST contain the port <code>443</code>. Example : https://test.istme.be:443/p/test</li><li>The request URI MUST begin with the scheme <code>https</code> (refer to <a href="https://belgianmobileid.github.io/doc/authentication/#certificates-and-website-security" target="blank">this section</a> for more information). The usage of localhost request URIs that are not permitted.</li><li>The request URI JWT MUST be publicly accessible.</li></ul></td>
+       <td>A URL using the https scheme referencing a resource containing a JWT whose claims are the request parameters. The <code>request_uri</code> parameter is used to secure parameters in the authentication request from tainting or inspection when sending the request to the itsme® Authorization Endpoint.<br><br>If the <code>request_uri</code> parameter is used, the JWT MUST be signed and MUST contain the claims <code>iss</code> (issuer) and <code>aud</code> (audience) as members. The <code>iss</code> value SHOULD be your <code>client_id</code>. The <code>aud</code> value SHOULD be set to <code>https://idp.[e2e/prd].itsme.services/v2/authorization</code>. The JWT MAY also be encrypted. If both signing and encryption are performed, it MUST be signed then encrypted, with the result being a Nested JWT (refer to <a href="https://belgianmobileid.github.io/doc/authentication/#securing-the-exchange-of-information" target="blank">this section</a> for more information).<br><br>The following restrictions apply to request URIs:<br><ul><li>The request URI MUST be preregistered during the registration.</li><li>The request URI MUST contain the port <code>443</code>. Example : https://test.istme.be:443/p/test</li><li>The request URI MUST begin with the scheme <code>https</code> (refer to <a href="https://belgianmobileid.github.io/doc/authentication/#certificates-and-website-security" target="blank">this section</a> for more information). The usage of localhost request URIs that are not permitted.</li><li>The request URI JWT MUST be publicly accessible.</li></ul></td>
     </tr>
   </tbody>
 </table>
@@ -841,7 +841,7 @@ To assert the identity of the user, the <code>code</code> received previously ne
   <tbody>
     <tr>
       <td>{% include parameter.html name="grant_type" req="REQUIRED" %}</td>
-      <td>Set this to <code>authorization_code</code> to tell the Token Endpoint that your application wants to exchange an authorization code for an ID koken and access token. </td>
+      <td>Set this to <code>authorization_code</code> to tell the Token Endpoint that your application wants to exchange an authorization code for an ID token and access token. </td>
     </tr>
     <tr>
       <td>{% include parameter.html name="code" req="REQUIRED" %}</td>
@@ -857,7 +857,8 @@ To assert the identity of the user, the <code>code</code> received previously ne
     </tr>
     <tr>
       <td>{% include parameter.html name="client_assertion" req="REQUIRED" %}</td>
-      <td>Is a set of identity and security information, in the form of a JWT, used as an authentication method. To ensures that the request to get the id token and access token is made only from your application, and not from a potential attacker that may have intercepted the authorization code, the JWT MUST be signed, and MAY also be encrypted. If both signing and encryption are performed, it MUST be signed then encrypted, with the result being a Nested JWT.<br><br>The JWT contains the following claims.        <table>
+      <td>Is a set of identity and security information, in the form of a JWT, used as an authentication method. To ensures that the request to get the id token and access token is made only from your application, and not from a potential attacker that may have intercepted the authorization code, the JWT MUST be signed, and MAY also be encrypted. If both signing and encryption are performed, it MUST be signed then encrypted, with the result being a Nested JWT (refer to <a href="https://belgianmobileid.github.io/doc/authentication/#securing-the-exchange-of-information" target="blank">this section</a> for more information).<br><br>The JWT contains the following claims.        
+        <table>
           <tr>
             <td>{% include parameter.html name="iss" req="REQUIRED" %}</td><td>The issuer of the token. This value MUST be the same as the <code>client_id</code>.</td>
           </tr>
@@ -896,7 +897,7 @@ To assert the identity of the user, the <code>code</code> received previously ne
     </tr>
     <tr>
       <td>{% include parameter.html name="id_token" req="" %}</td>
-      <td>A security token that contains information about the authentication of an user, and potentially other requested claim data's. The <code>id_token</code> value is represented as a signed and encrypted JWT. So, before being able to use the ID Token claims you will have to decrypt and verify the signature.</td>      
+      <td>A security token that contains information about the authentication of an user, and potentially other requested claim data's. The <code>id_token</code> value is represented as a signed and encrypted JWT. So, before being able to use the ID Token claims you will have to decrypt and verify the signature (refer to <a href="https://belgianmobileid.github.io/doc/authentication/#securing-the-exchange-of-information" target="blank">this section</a> for more information).</td>      
     </tr>
   </tbody>
 </table>
@@ -953,7 +954,7 @@ To assert the identity of the user, the <code>code</code> received previously ne
     </tr>
     <tr>
       <td>{% include parameter.html name="id_token" req="" %}</td>
-      <td>A security token that contains information about the authentication of an user, and potentially other requested claim data's. The <code>id_token</code> value is represented as a signed and encrypted JWT. So, before being able to use the ID Token claims you will have to decrypt and verify the signature.</td>      
+      <td>A security token that contains information about the authentication of an user, and potentially other requested claim data's. The <code>id_token</code> value is represented as a signed and encrypted JWT. So, before being able to use the ID Token claims you will have to decrypt and verify the signature (refer to <a href="https://belgianmobileid.github.io/doc/authentication/#securing-the-exchange-of-information" target="blank">this section</a> for more information).</td>      
     </tr>
   </tbody>
 </table>
@@ -1074,7 +1075,7 @@ This is illustrated in the example below.
 
 <code>200</code> <code>application/json</code>
 
-The UserInfo Response is represented as a signed and encrypted JWT. So, before being able to extract the claims you will have to decrypt and verify the signature.
+The UserInfo Response is represented as a signed and encrypted JWT. So, before being able to extract the claims you will have to decrypt and verify the signature (refer to <a href="https://belgianmobileid.github.io/doc/authentication/#securing-the-exchange-of-information" target="blank">this section</a> for more information).
 
 
 {% endtab %}
@@ -1092,7 +1093,7 @@ This is illustrated in the example below.
 
 <code>200</code> <code>application/json</code>
 
-The UserInfo Response is represented as a signed and encrypted JWT. So, before being able to extract the claims you will have to decrypt and verify the signature.
+The UserInfo Response is represented as a signed and encrypted JWT. So, before being able to extract the claims you will have to decrypt and verify the signature (refer to <a href="https://belgianmobileid.github.io/doc/authentication/#securing-the-exchange-of-information" target="blank">this section</a> for more information).
 
 {% endtab %}
 
