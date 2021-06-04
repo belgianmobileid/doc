@@ -47,8 +47,6 @@ To protect the exchange of sensitive information and ensure the requested inform
   <li>Symmetric key</li>
 </ul>
 
-You will have to choose between one of these methods when registering your project.
-
 <aside class="notice">You will have to choose between one of these methods when <a href="https://belgianmobileid.github.io/doc/getting-started.html#getting-started" target="blank">registering your project</a>.
 </aside>
 
@@ -88,7 +86,7 @@ This method requires the exchange of a static secret to be held by both the send
 <aside class="notice">The symmetric algorithms – needed to sign and/or encrypt a JWT – are listed in the <a href="https://belgianmobileid.github.io/doc/authentication/#itsme-discovery-document" target="blank">itsme® Discovery document</a> for more information.
 </aside>
 
-<aside class="notice">If you choose to go with the symmetric method, you will be able to specify if the ID Token JWT needs to be signed with the an asymmetric algorithm (e.g. <code>RS256</code>) or with a symmetric algorithm (e.g. : <code>HS256</code>). If you choose the <code>RS256</code> algorithm you will need our public keys to verify the signature. This information can be found in our <a href="https://belgianmobileid.github.io/doc/authentication/#itsme-discovery-document" target="blank">itsme® Discovery document</a>, using the key <code>jwks_uri</code>.
+<aside class="notice">If you choose to go with the symmetric method, you will be able to specify if the ID Token JWT needs to be signed with the an asymmetric algorithm (e.g. <code>RS256</code>) or with a symmetric algorithm (e.g. : <code>HS256</code>). When using the <code>RS256</code> algorithm, our public keys will be needed to verify the signature. This information can be found in our <a href="https://belgianmobileid.github.io/doc/authentication/#itsme-discovery-document" target="blank">itsme® Discovery document</a>, using the key <code>jwks_uri</code>.
 </aside>
 
 ### Signing, encrypting and decoding JWTs
