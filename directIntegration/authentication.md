@@ -38,21 +38,25 @@ First, you will need to create a button to allow your users to authenticate with
 
 Upon clicking this button, the browser will redirect the User to our Front-End. itsme® then take care of authenticating him.
 
+## Securing the exchange of information
 
-## Client Authentication methods
-
-itsme® supports the following authentication methods to protect the exchange of sensitive information and ensure the requested information gets issued to a legitimate application and not some other party :
+To protect the exchange of sensitive information and ensure the requested information gets issued to a legitimate application and not some other party, the OpenID Connect protocol uses JSON Web Token (JWT) which can be signed and/or encrypted. itsme® supports 2 cryptographic methods to perform the signing and encryption of JWTs :
 
 <ul>
-  <li>asymmetric RSA key pair</li>
-  <li>symmetric AES key secret</li>
+  <li>Asymmetric key pair</li>
+  <li>Symmetric key</li>
 </ul>
 
-itsme® recommend using the asymmetric RSA key pair method and allow you to rotate your keys without the need to sync with us.  
+You will have to choose between one of these methods when registering your project.
 
-### Asymmetric RSA key and JWKSet URI
+<aside class="notice">You will have to choose between one of these methods when <a href="https://belgianmobileid.github.io/doc/getting-started.html#getting-started" target="blank">registering your project</a>.
+</aside>
 
-This method requires that each party exposes its public keys as a simple JWK Set document on a URI publicly accessible, and keep its private keys for itself. For itsme®, this URI can be retrieved from the [itsme® Discovery document](#OpenIDConfig), using the <i>"jwks_uri"</i> key.
+### Asymmetric key method and JWKSet URI
+
+Unlike Symmetric Encryption, which uses the same secret key to encrypt and decrypt sensitive information, Asymmetric Encryption, also known as public-key cryptography or public-key encryption, uses linked public- and private-key pairs to encrypt and decrypt senders’ and recipients’ sensitive data.
+
+This method requires that each party exposes its public keys as a simple JWK Set document on a URI publicly accessible, and keep its private keys for itself. For itsme®, this URI can be retrieved from the <a href="https://belgianmobileid.github.io/doc/authentication/#itsme-discovery-document" target="blank">itsme® Discovery document</a>, using the <code>jwks_uri</code> key.
 
 Your private and public keys can be generated using your own tool or via Yeoman. If using Yeoman, you need to install generator-itsme with NPM:
 
@@ -71,11 +75,25 @@ The Yeoman tool will generate two files, the jwks_private.json which MUST be sto
 <aside class="notice">Whatever the tool you are choosing to create your key pairs, don't forget to send your JWK Set URI by email to <a href = "mailto: onboarding@itsme.be">onboarding@itsme.be</a> and itsme® will make sure to complete the configuration for you in no time!
 </aside>
 
-### Symmetric AES key 
+<aside class="notice">The asymmetric algorithms – needed to sign and/or encrypt a JWT – are listed in the <a href="https://belgianmobileid.github.io/doc/authentication/#itsme-discovery-document" target="blank">itsme® Discovery document</a> for more information.
+</aside>
 
-This method requires the exchange of a static secret that will be used to authenticate with our Back-End. 
 
-The secret value will be provided by itsme® when <a href="https://belgianmobileid.github.io/doc/getting-started.html#getting-started" target="blank">registering your project</a>.
+### Symmetric key method
+
+Symmetric key cryptography method, or Symmetric Encryption, uses the same secret key to encrypt and decrypt sensitive information. This approach is the inverse of Asymmetric Encryption, which uses one key to encrypt and another to decrypt. 
+
+This method requires the exchange of a static secret to be held by both the sender and the data receiver. The secret value will be provided by itsme® when <a href="https://belgianmobileid.github.io/doc/getting-started.html#getting-started" target="blank">registering your project</a>.
+
+<aside class="notice">The symmetric algorithms – needed to sign and/or encrypt a JWT – are listed in the <a href="https://belgianmobileid.github.io/doc/authentication/#itsme-discovery-document" target="blank">itsme® Discovery document</a> for more information.
+</aside>
+
+<aside class="notice">If you choose to go with the symmetric method, you will be able to specify if the ID Token JWT needs to be signed with the an asymmetric algorithm (e.g. <code>RS256</code>) or with a symmetric algorithm (e.g. : <code>HS256</code>). If you choose the <code>RS256</code> algorithm you will need our public keys to verify the signature. This information can be found in our <a href="https://belgianmobileid.github.io/doc/authentication/#itsme-discovery-document" target="blank">itsme® Discovery document</a>, using the key <code>jwks_uri</code>.
+</aside>
+
+### Signing, encrypting and decoding JWTs
+
+Libraries implementing JWT and the JOSE specs JWS, JWE, JWK, and JWA are listed <a href="https://openid.net/developers/jwt/" target="blank">here</a>.
 
 
 ## Certificates and website security
@@ -91,11 +109,6 @@ The Domain Validation certificate doesn’t provide sufficient identity guarante
 
 <aside class="notice">All itsme® API URL we publish use <code>https</code>.
 </aside>
-
-
-## Signing, encrypting and decoding JWTs
-
-In order to securely exchange of sensitive information and ensure the requested information gets issued to a legitimate application and not some other party, OpenID Connect uses the JSON Web Token (JWT) and JSON Object Signing and Encryption (JOSE) specifications. Libraries implementing JWT and the JOSE specs JWS, JWE, JWK, and JWA are listed <a href="https://openid.net/developers/jwt/" target="blank">here</a>.
 
 
 ## Handling responses
