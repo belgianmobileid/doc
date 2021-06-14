@@ -119,114 +119,84 @@
     "url": "https://belgianmobileid.github.io/doc/authentication/",
     "relUrl": "/authentication/"
   },"20": {
-    "doc": "Azure B2C",
-    "title": "Integratre through Azure B2C",
-    "content": "itsme® API allows partners to use verified identities for authentication and authorization on web desktop, mobile web or mobile applications. Learn how to integrate our services with Azure Active Directory B2C. For a more detailed, in-depth explanation of each, please read through the appropriate developer docs. ",
-    "url": "https://belgianmobileid.github.io/doc/azureB2C/#integratre-through-azure-b2c",
-    "relUrl": "/azureB2C/#integratre-through-azure-b2c"
-  },"21": {
-    "doc": "Azure B2C",
-    "title": "Use cases",
-    "content": "For more information on how itsme® can best work for your business, please contact us. itsme® will be happy to help ! . ",
-    "url": "https://belgianmobileid.github.io/doc/azureB2C/#use-cases",
-    "relUrl": "/azureB2C/#use-cases"
-  },"22": {
-    "doc": "Azure B2C",
-    "title": "Services",
-    "content": "Hereby the list of itsme® services that can be implemented through Azure Active Directory B2C : . | Services | Description | . | Authentication | Enables your users/customers to log in securely to your application (on web, tablet or mobile) | . | Identification | Enables you to identify your users and access their verified data. | . ",
-    "url": "https://belgianmobileid.github.io/doc/azureB2C/#services",
-    "relUrl": "/azureB2C/#services"
-  },"23": {
-    "doc": "Azure B2C",
-    "title": "Getting started",
-    "content": "In order to start your integration you will first need to setup your personal Sanbox environment. To do so, you will be requested to provide the following information : . | Contact details such as your email, name, phone number. | Organisation details as shown on the company register for your jurisdiction. | Information about the project you want to setup (the services you want to use, the client authentication method you want to set-up, the user attributes you want to request, ...) | . Our onboarding team will review your project and get in touch with you in no time to provide your credentials : . | a \"client_id\" | a \"service_code\" | an email to a one-time link to the \"client_secret\" | the list of user attributes you can request | . Request your Sandbox . On top of this, you will also need to have an Azure Active Directory subscription. For more information, please visit the Microsoft partner documentation : https://docs.microsoft.com/en-us/azure/active-directory-b2c/partner-itsme. ",
-    "url": "https://belgianmobileid.github.io/doc/azureB2C/#getting-started",
-    "relUrl": "/azureB2C/#getting-started"
-  },"24": {
-    "doc": "Azure B2C",
-    "title": "Azure B2C",
-    "content": " ",
-    "url": "https://belgianmobileid.github.io/doc/azureB2C/",
-    "relUrl": "/azureB2C/"
-  },"25": {
     "doc": "Confirmation API",
     "title": "Confirmation API",
     "content": " ",
     "url": "https://belgianmobileid.github.io/doc/confirmation/",
     "relUrl": "/confirmation/"
-  },"26": {
+  },"21": {
     "doc": "Getting started",
     "title": "Getting started",
     "content": "In order to start your integration you will first need to setup your personal Sanbox environment. To do so, you will be requested to provide the following information : . | Contact details such as your email, name, phone number. | Organisation details as shown on the company register for your jurisdiction. | Information about the project you want to setup (the services you want to use, the client authentication method you want to set-up, the user attributes you want to request, ...) | . Our onboarding team will review your project and get in touch with you in no time to provide your credentials : . | a \"client_id\" | a \"service_code\" | information about your client authentication method | the list of user attributes you can request | . Request your Sandbox . ",
     "url": "https://belgianmobileid.github.io/doc/getting-started/#getting-started",
     "relUrl": "/getting-started/#getting-started"
-  },"27": {
+  },"22": {
     "doc": "Getting started",
     "title": "Getting started",
     "content": ". ",
     "url": "https://belgianmobileid.github.io/doc/getting-started/",
     "relUrl": "/getting-started/"
-  },"28": {
+  },"23": {
     "doc": "Identification API",
     "title": "Identification API",
     "content": " ",
     "url": "https://belgianmobileid.github.io/doc/identification/",
     "relUrl": "/identification/"
-  },"29": {
+  },"24": {
     "doc": "Home",
     "title": "Welcome",
     "content": "We’re here to help you get your business set up with one of our services, and allow you or your business to use verified identities for authentication and authorization on web desktop, mobile web or mobile applications. For a more detailed, in-depth explanation of each service, please read through the appropriate developer documents. ",
     "url": "https://belgianmobileid.github.io/doc/index#welcome",
     "relUrl": "/index#welcome"
-  },"30": {
+  },"25": {
     "doc": "Home",
     "title": "Get set-up",
     "content": " ",
     "url": "https://belgianmobileid.github.io/doc/index#get-set-up",
     "relUrl": "/index#get-set-up"
-  },"31": {
+  },"26": {
     "doc": "Home",
     "title": "Onboarding",
     "content": "Get your project registered in order to start the integration. Getting started ",
     "url": "https://belgianmobileid.github.io/doc/index",
     "relUrl": "/index"
-  },"32": {
+  },"27": {
     "doc": "Home",
     "title": "Services and integration APIs",
     "content": "For more information on how itsme® can best work for your business, please contact us. itsme® will be happy to help ! . ",
     "url": "https://belgianmobileid.github.io/doc/index#services-and-integration-apis",
     "relUrl": "/index#services-and-integration-apis"
-  },"33": {
+  },"28": {
     "doc": "Home",
     "title": "Authentication",
     "content": "This Service enables your users/customers to log in securely to your application. Direct integration API Azure B2C API ",
     "url": "https://belgianmobileid.github.io/doc/index",
     "relUrl": "/index"
-  },"34": {
+  },"29": {
     "doc": "Home",
     "title": "Identification",
     "content": "This Service enables you to identify your users and access their verified data. Direct integration API Azure B2C API ",
     "url": "https://belgianmobileid.github.io/doc/index",
     "relUrl": "/index"
-  },"35": {
+  },"30": {
     "doc": "Home",
     "title": "Confirmation",
     "content": "This Service enables your users/customers to give their consent to a payment or order/action. Direct integration API ",
     "url": "https://belgianmobileid.github.io/doc/index",
     "relUrl": "/index"
-  },"36": {
+  },"31": {
     "doc": "Home",
     "title": "Home",
     "content": " ",
     "url": "https://belgianmobileid.github.io/doc/index",
     "relUrl": "/index"
-  },"37": {
+  },"32": {
     "doc": "Test",
     "title": "testing code snippet",
     "content": "// Javascript code with syntax highlighting. var fun = function lang(l) { dateformat.i18n = require('./lang/' + l) return true; } . $ npm install -g yo generator-itsme . &lt;code style=display:block;white-space:pre-wrap&gt;$ npm install -g yo generator-itsme&lt;/code&gt; . | Parameter | Description | . | Param1required | Global description of Param1 | subparam1optional | description of subparam1 | . | subparam2required | description of subparam2 | . | . | Param2optional | Global description of Param2 | . ",
     "url": "https://belgianmobileid.github.io/doc/test/#testing-code-snippet",
     "relUrl": "/test/#testing-code-snippet"
-  },"38": {
+  },"33": {
     "doc": "Test",
     "title": "Test",
     "content": "Voilà une page de test de Jekyll . First tabs . | js | ruby | . | tagada . | tsoin tsoin here goes some code . | . Second tabs . | yaml | json | . | hello: . | ‘whatsup’ | ‘hi’ | . | { “hello”: [“whatsup”, “hi”] } . | . ",
