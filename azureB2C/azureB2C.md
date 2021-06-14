@@ -1,10 +1,12 @@
----
 
-layout: indirect_integration
-title: Azure B2C
+
+---
+layout: page
+title: Azure B2C API
 permalink: azureB2C/
 nav_exclude: true
-
+nav_order: 4
+toc_list: true
 ---
 
 # Integratre through Azure B2C
