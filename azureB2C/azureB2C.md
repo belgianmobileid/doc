@@ -1,17 +1,26 @@
 
 
 ---
-layout: page
+layout: indirect_integration
 title: Azure B2C API
 permalink: azureB2C/
 nav_exclude: true
 ---
 
-# Integratre through Azure B2C
+# What is Azure Active Directory B2C ?
 
-Learn how to integrate our services with Azure Active Directory B2C. For a more detailed, in-depth explanation of each, please read through the appropriate developer docs.
+Azure Active Directory B2C (Azure AD B2C) is an identity management service that enables custom control of how your customers sign up, sign in, and manage their profiles when using your iOS, Android, .NET, single-page (SPA), and other applications. 
 
-On top of this, you will also need to have an Azure Active Directory subscription. For more information, please visit the Microsoft partner documentation : https://docs.microsoft.com/en-us/azure/active-directory-b2c/partner-itsme.
+Azure AD B2C uses standards-based authentication protocols including OpenID Connect, OAuth 2.0, and SAML. It integrates with most modern applications and commercial off-the-shelf software. 
+
+You can configure Azure AD B2C to allow users to sign in to your application with credentials from itsme®, as we are supporting the OpenID Connect protocol. By integrating with us, you can offer your consumers the ability to sign in with their existing itsme® accounts, without having to create a new account just for your application.
+
+On the sign-up or sign-in page, Azure AD B2C presents a list of external identity providers the user can choose for sign-in. Once they select one of the external identity providers, itsme® for example, they're redirected to the itsme® to complete the sign in process. After the user successfully signs in, they're returned to Azure AD B2C for authentication of the account in your application.
+
+# API reference
+
+To see how to add itsme® in Azure AD B2C, see <a href="https://docs.microsoft.com/en-us/azure/active-directory-b2c/partner-itsme" target="blank">Configure itsme® OpenID Connect (OIDC) with Azure Active Directory B2C</a>.
+
 
 
 
