@@ -20,7 +20,9 @@ On the sign-up or sign-in page, Azure AD B2C presents a list of external identit
 
 # API reference
 
-To see how to add itsme® in Azure AD B2C, see <a href="https://docs.microsoft.com/en-us/azure/active-directory-b2c/partner-itsme" target="blank">Configure itsme® OpenID Connect (OIDC) with Azure Active Directory B2C</a>.
+To see how to add itsme® in Azure AD B2C, see 
+
+<br><br><button type="button"><a href="https://docs.microsoft.com/en-us/azure/active-directory-b2c/partner-itsme" target="blank">Configure itsme® OpenID Connect (OIDC) with Azure Active Directory B2C</a></button>
 
 
 
