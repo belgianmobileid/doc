@@ -1,11 +1,12 @@
-
-
 ---
+
 layout: indirect_integration
-title: Azure B2C API
+title: Azure B2C
 permalink: azureB2C/
 nav_exclude: true
+
 ---
+
 
 # What is Azure Active Directory B2C ?
 
