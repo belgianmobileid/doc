@@ -127,7 +127,7 @@
   },"21": {
     "doc": "Azure B2C",
     "title": "API reference",
-    "content": "To see how to add itsme® in Azure AD B2C, see Configure itsme® OpenID Connect (OIDC) with Azure Active Directory B2C. ",
+    "content": "To see how to add itsme® in Azure AD B2C, see . Configure itsme® OpenID Connect (OIDC) with Azure Active Directory B2C . ",
     "url": "https://belgianmobileid.github.io/doc/azureB2C/#api-reference",
     "relUrl": "/azureB2C/#api-reference"
   },"22": {
