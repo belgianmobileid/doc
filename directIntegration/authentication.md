@@ -466,7 +466,7 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
             <td>{% include parameter.html name="openid" req="REQUIRED" %}</td><td>It indicates that your application intends to use the OpenID Connect protocol to verify a user's identity by returning a <code>sub</code> claim which represents a unique identifier for the authenticated user.</td>
           </tr>
           <tr>
-            <td>{% include parameter.html name="profile" req="OPTIONAL" %}</td><td>Returns claims that represent basic profile information, specifically <code>family_name</code>, <code>given_name</code>, <code>name</code>, <code>gender</code> and <code>birthdate</code>.</td>
+            <td>{% include parameter.html name="profile" req="OPTIONAL" %}</td><td>Returns claims that represent basic profile information, specifically <code>family_name</code>, <code>given_name</code>, <code>name</code>, <code>gender</code>, <code>locale</code>, <code>picture</code> and <code>birthdate</code>.</td>
           </tr>
           <tr>
             <td>{% include parameter.html name="email" req="OPTIONAL" %}</td><td>Returns the <code>email</code> claim, which contains the user's email address, and <code>email_verified</code>, which is a boolean indicating whether the email address was verified by the user.</td>
@@ -538,6 +538,12 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
           </tr> 
           <tr>
             <td>{% include parameter.html name="gender" req="OPTIONAL" %}</td><td>Returns user's gender. Possible values are : <code>female</code> <code>male</code></td>
+          </tr> 
+          <tr>
+            <td>{% include parameter.html name="locale" req="OPTIONAL" %}</td><td>Returns user's mobile phone language, represented as an ISO 3166-1 Alpha-2 [ISO3166‑1] country code in uppercase. Possible values are : <code>NL</code> <code>FR</code> <code>DE</code> <code>EN</code></td>
+          </tr>
+          <tr>
+            <td>{% include parameter.html name="picture" req="OPTIONAL" %}</td><td>Returns the URL of the user's ID picture. This URL refers to an image file (for example, a PNG, JPEG, or GIF image file).</td>
           </tr> 
           <tr>
             <td>{% include parameter.html name="email" req="OPTIONAL" %}</td><td>Returns user's email address.</td>
@@ -640,7 +646,7 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
             <td>{% include parameter.html name="openid" req="REQUIRED" %}</td><td>It indicates that your application intends to use the OpenID Connect protocol to verify a user's identity by returning a <code>sub</code> claim which represents a unique identifier for the authenticated user.</td>
           </tr>
           <tr>
-            <td>{% include parameter.html name="profile" req="OPTIONAL" %}</td><td>Returns claims that represent basic profile information, specifically <code>family_name</code>, <code>given_name</code>, <code>name</code>, <code>gender</code> and <code>birthdate</code>.</td>
+            <td>{% include parameter.html name="profile" req="OPTIONAL" %}</td><td>Returns claims that represent basic profile information, specifically <code>family_name</code>, <code>given_name</code>, <code>name</code>, <code>gender</code>, <code>locale</code>, <code>picture</code> and <code>birthdate</code>.</td>
           </tr>
           <tr>
             <td>{% include parameter.html name="email" req="OPTIONAL" %}</td><td>Returns the <code>email</code> claim, which contains the user's email address, and <code>email_verified</code>, which is a boolean indicating whether the email address was verified by the user.</td>
@@ -687,6 +693,12 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
           </tr> 
           <tr>
             <td>{% include parameter.html name="gender" req="OPTIONAL" %}</td><td>Returns user's gender. Possible values are : <code>female</code> <code>male</code></td>
+          </tr> 
+          <tr>
+            <td>{% include parameter.html name="locale" req="OPTIONAL" %}</td><td>Returns user's mobile phone language, represented as an ISO 3166-1 Alpha-2 [ISO3166‑1] country code in uppercase. Possible values are : <code>NL</code> <code>FR</code> <code>DE</code> <code>EN</code></td>
+          </tr>
+          <tr>
+            <td>{% include parameter.html name="picture" req="OPTIONAL" %}</td><td>Returns the URL of the user's ID picture. This URL refers to an image file (for example, a PNG, JPEG, or GIF image file).</td>
           </tr> 
           <tr>
             <td>{% include parameter.html name="email" req="OPTIONAL" %}</td><td>Returns user's email address.</td>
