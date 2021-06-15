@@ -543,7 +543,7 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
             <td>{% include parameter.html name="locale" req="OPTIONAL" %}</td><td>Returns user's mobile phone language, represented as an ISO 3166-1 Alpha-2 [ISO3166‑1] country code in uppercase. Possible values are : <code>NL</code> <code>FR</code> <code>DE</code> <code>EN</code></td>
           </tr>
           <tr>
-            <td>{% include parameter.html name="picture" req="OPTIONAL" %}</td><td>Returns the URL of the user's ID picture. This URL refers to an image file (for example, a PNG, JPEG, or GIF image file).</td>
+            <td>{% include parameter.html name="picture" req="OPTIONAL" %}</td><td>Returns the URL of the user's ID picture. This URL refers to an image file (for example, a JPEG, JPEG2000, or PNG image file).</td>
           </tr> 
           <tr>
             <td>{% include parameter.html name="email" req="OPTIONAL" %}</td><td>Returns user's email address.</td>
@@ -567,7 +567,7 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
             <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/place_of_birth" req="OPTIONAL" %}</td><td>Returns the location where the user was born. The value of this attribute is a JSON structure containing some or all of these members <code>formatted</code> <code>city</code> <code>country</code>.</td>
           </tr> 
           <tr>
-            <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/physical_person_photo" req="OPTIONAL" %}</td><td>XXX</td>
+            <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/physical_person_photo" req="OPTIONAL" %}</td><td>Returns the user's ID picture in the following format : 200 x 140px resolution, 24 BPP, JPEG format. The aspect ratio of original image is maintained.</td>
           </tr> 
           <tr>
             <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/BEeidSn" req="OPTIONAL" %}</td><td>Returns the Belgian ID card number, 12 digits in the form xxx-xxxxxxx-yy. The check-number yy is the remainder of the division of xxxxxxxxxx by 97.</td>
@@ -698,7 +698,7 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
             <td>{% include parameter.html name="locale" req="OPTIONAL" %}</td><td>Returns user's mobile phone language, represented as an ISO 3166-1 Alpha-2 [ISO3166‑1] country code in uppercase. Possible values are : <code>NL</code> <code>FR</code> <code>DE</code> <code>EN</code></td>
           </tr>
           <tr>
-            <td>{% include parameter.html name="picture" req="OPTIONAL" %}</td><td>Returns the URL of the user's ID picture. This URL refers to an image file (for example, a PNG, JPEG, or GIF image file).</td>
+            <td>{% include parameter.html name="picture" req="OPTIONAL" %}</td><td>Returns the URL of the user's ID picture. This URL refers to an image file (for example, a JPEG, JPEG2000, or PNG image file).</td>
           </tr> 
           <tr>
             <td>{% include parameter.html name="email" req="OPTIONAL" %}</td><td>Returns user's email address.</td>
@@ -722,7 +722,7 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
             <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/place_of_birth" req="OPTIONAL" %}</td><td>Returns the location where the user was born. The value of this attribute is a JSON structure containing some or all of these members <code>formatted</code> <code>city</code> <code>country</code>.</td>
           </tr> 
           <tr>
-            <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/physical_person_photo" req="OPTIONAL" %}</td><td>XXX</td>
+            <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/physical_person_photo" req="OPTIONAL" %}</td><td>Returns the user's ID picture in the following format : 200 x 140px resolution, 24 BPP, JPEG format. The aspect ratio of original image is maintained.</td>
           </tr> 
           <tr>
             <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/BEeidSn" req="OPTIONAL" %}</td><td>Returns the Belgian ID card number, 12 digits in the form xxx-xxxxxxx-yy. The check-number yy is the remainder of the division of xxxxxxxxxx by 97.</td>
