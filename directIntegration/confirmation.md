@@ -380,7 +380,7 @@ Content-Type: application/json;charset=UTF-8 Cache-Control: no-store Pragma: no-
 }
 ```
 
-## Specifying the WYSIWYS template
+## WYSIWYS template
 
 When building your Authorization Request, one of the below template MUST be specified in the <code>claims</code> parameter.
 
@@ -557,7 +557,7 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
     </tr>
     <tr>
       <td>{% include parameter.html name="claims" req="REQUIRED" %}</td>
-      <td>Requests specific user's details to be returned from the UserInfo Endpoint and/or in the ID Token, and set the template to pre-structure the transaction screen in the itsme® app. It is represented as a JSON object that has two members - <code>{"userinfo":{...}</code> and <code>{"id_token":{...}</code>, which content indicates which claims to return at the UserInfo Endpoint and which at the ID Token, together with indication whether the claim is voluntary (default) or essential.<br><br><b>Note</b> : the <b>Confirmation</b> API is based on the notion of template, which helps pre-structure the transaction screen in the itsme® app. Using one of the available templates MUST be specified to form a valid Authorization Request. There are currently two templates available.<br><br>Possible user's details and transaction template your application can request is listed below.<br />
+      <td>Requests specific user's details to be returned from the UserInfo Endpoint and/or in the ID Token, and set the WYSIWYS template to pre-structure the transaction screen in the itsme® app. It is represented as a JSON object that has two members - <code>{"userinfo":{...}</code> and <code>{"id_token":{...}</code>, which content indicates which claims to return at the UserInfo Endpoint and which at the ID Token, together with indication whether the claim is voluntary (default) or essential.<br><br><b>Note</b> : the <b>Confirmation</b> API is based on the notion of template, which helps pre-structure the transaction screen in the itsme® app. Using one of the available templates MUST be specified to form a valid Authorization Request. There are currently two templates available (refer to <a href="https://belgianmobileid.github.io/doc/confirmation/#specifying-the-wysiwys-template" target="blank">this section</a> for more information)<br><br>Possible user's details your application can request is listed below :<br />
         <table>
           <tr>
             <td>{% include parameter.html name="name" req="OPTIONAL" %}</td><td>Returns user's full name in displayable form including all name parts, possibly including titles and suffixes.</td>
@@ -712,7 +712,7 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
     </tr>
     <tr>
       <td>{% include parameter.html name="claims" req="OPTIONAL" %}</td>
-      <td>Requests specific user's details to be returned from the UserInfo Endpoint and/or in the ID Token. It is represented as a JSON object that has two members - <code>{"userinfo":{...}</code> and <code>{"id_token":{...}</code>, which content indicates which claims to return at the UserInfo Endpoint and which with the ID Token, together with indication whether the claim is voluntary (default) or essential.<br><br>Possible user's details your application can request is listed below.<br />
+      <td>Requests specific user's details to be returned from the UserInfo Endpoint and/or in the ID Token, and set the WYSIWYS template to pre-structure the transaction screen in the itsme® app. It is represented as a JSON object that has two members - <code>{"userinfo":{...}</code> and <code>{"id_token":{...}</code>, which content indicates which claims to return at the UserInfo Endpoint and which at the ID Token, together with indication whether the claim is voluntary (default) or essential.<br><br><b>Note</b> : the <b>Confirmation</b> API is based on the notion of template, which helps pre-structure the transaction screen in the itsme® app. Using one of the available templates MUST be specified to form a valid Authorization Request. There are currently two templates available (refer to <a href="https://belgianmobileid.github.io/doc/confirmation/#specifying-the-wysiwys-template" target="blank">this section</a> for more information)<br><br>Possible user's details your application can request is listed below :<br />
         <table>
           <tr>
             <td>{% include parameter.html name="name" req="OPTIONAL" %}</td><td>Returns user's full name in displayable form including all name parts, possibly including titles and suffixes.</td>
