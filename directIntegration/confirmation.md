@@ -518,8 +518,30 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
       </td>
     </tr>
     <tr>
-      <td>{% include parameter.html name="claims" req="OPTIONAL" %}</td>
-      <td>Requests specific user's details to be returned from the UserInfo Endpoint and/or in the ID Token. It is represented as a JSON object that has two members - <code>{"userinfo":{...}</code> and <code>{"id_token":{...}</code>, which content indicates which claims to return at the UserInfo Endpoint and which at the ID Token, together with indication whether the claim is voluntary (default) or essential.<br><br>Possible user's details your application can request is listed below.<br />
+      <td>{% include parameter.html name="claims" req="REQUIRED" %}</td>
+      <td>Requests specific user's details to be returned from the UserInfo Endpoint and/or in the ID Token, and set the template to pre-structure the transaction screen in the itsme® app. It is represented as a JSON object that has two members - <code>{"userinfo":{...}</code> and <code>{"id_token":{...}</code>, which content indicates which claims to return at the UserInfo Endpoint and which at the ID Token, together with indication whether the claim is voluntary (default) or essential.<br><br><b>Note</b> : the <b>Confirmation</b> API is based on the notion of template, which helps pre-structure the transaction screen in the itsme® app. Using one of the available templates MUST be specified to form a valid Authorization Request. There are currently two templates available : <br><br><b>Advanced Payment template</b>
+        <table>
+          <tr>
+            <td>{% include parameter.html name="http://itsme.services/v2/ claim/claim_approval_template_name" req="" %}</td><td>This identifies the template used. It MUST be set to "http://itsme.services/v2/claim/claim_approval_template_name":{ "essential": true, "value": "adv_payment" }.</td>
+          </tr>
+          <tr>
+            <td>{% include parameter.html name="http://itsme.services/v2/ claim/claim_approval_amount_key" req="" %}</td><td>A string holding an integer value inside. This MUST be set to "http://itsme.services/v2/claim/claim_approval_amount_key":{ "essential": true, "value": "Amount_as_a_string" }.</td>
+          </tr>
+          <tr>
+            <td>{% include parameter.html name="http://itsme.services/v2/ claim/claim_approval_currency_key" req="" %}</td><td>A string holding a valid currency code (e.g. “EUR”). This MUST be set to "http://itsme.services/v2/claim/claim_approval_currency_key":{ "essential": true, "value": "Currency_as_a_string" }.</td>
+          </tr>
+          <tr>
+            <td>{% include parameter.html name="http://itsme.services/v2/ claim/claim_approval_iban_key" req="" %}</td><td>A string holding a valid IBAN account number. This MUST be set to "tag:sixdots.be,2016-08:claim_approval_iban_key":{ "essential": true, "value": "IBAN_as_a_string" }.</td>
+          </tr>
+        </table><br><b>Free Text template</b>
+        <table>
+          <tr>
+            <td>{% include parameter.html name="http://itsme.services/v2/ claim/claim_approval_template_name" req="" %}</td><td>This identifies the template used. It MUST be set to "http://itsme.services/v2/claim/claim_approval_template_name":{ "essential": true, "value": "free_text" }.</td>
+          </tr>
+          <tr>
+            <td>{% include parameter.html name="http://itsme.services/v2/ claim/claim_approval_text_key" req="" %}</td><td>A string holding any text to be displayed in the itsme® app. This MUST be set to"http://itsme.services/v2/claim/claim_approval_text_key":{ "essential": true, "value": "Text_as_a_string" }.</td>
+          </tr>
+        </table><br><br>Possible user's details and transaction template your application can request is listed below.<br />
         <table>
           <tr>
             <td>{% include parameter.html name="name" req="OPTIONAL" %}</td><td>Returns user's full name in displayable form including all name parts, possibly including titles and suffixes.</td>
