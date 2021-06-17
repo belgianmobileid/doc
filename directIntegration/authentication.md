@@ -422,11 +422,9 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
 
 To simplify implementations and increase flexibility, <a href="https://openid.net/specs/openid-connect-discovery-1_0.html" target="blank">OpenID Connect allows the use of a Discovery Document</a>, a JSON document containing key-value pairs which provide details about itsme® configuration, such as the
 
-<ul>
-  <li>Authorization, Token and userInfo Endpoints</li>
-  <li>supported claims</li>
-  <li>...</li>
-</ul>
+  - Authorization, Token and userInfo Endpoints
+  - supported claims
+  - ...
 
 {% endtab %}
 
