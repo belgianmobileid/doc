@@ -59,3 +59,21 @@
 .tab-content li.active li {
     display: block;
 }
+
+tabul {
+    display: block;
+    padding-left: 1.5em;
+    list-style-type: disc;
+}
+
+tabli {
+    margin: 0.25em 0;
+    display: block;
+}
+
+tabli:before {
+    content:'\2022';
+    display: inline-block;
+    padding-right: 10px;
+    color: #000;
+}
