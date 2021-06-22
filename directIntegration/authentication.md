@@ -430,6 +430,20 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
 
 {% endtab %}
 
+{% tab Discovery AES + PKCE %}
+
+<b><code>GET https://oidc.<i>[e2e/prd]</i>.itsme.services/clientsecret-oidc/csapi/v0.1/.well-known/openid-configuration</code></b>
+
+To simplify implementations and increase flexibility, <a href="https://openid.net/specs/openid-connect-discovery-1_0.html" target="blank">OpenID Connect allows the use of a Discovery Document</a>, a JSON document containing key-value pairs which provide details about itsme® configuration, such as the
+
+<tabul>
+  <tabli>Authorization, Token and userInfo Endpoints</tabli>
+  <tabli>Supported claims</tabli>
+  <tabli>...</tabli>
+</tabul>
+
+{% endtab %}
+
 {% endtabs %}
 
 
@@ -772,6 +786,182 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
           <tabli>The request URI MUST begin with the scheme <code>https</code> (refer to <a href="https://belgianmobileid.github.io/doc/authentication/#certificates-and-website-security" target="blank">this section</a> for more information). The usage of localhost request URIs that are not permitted.</tabli>
           <tabli>The request URI JWT MUST be publicly accessible.</tabli>
         </tabul>
+       </td>
+    </tr>
+  </tbody>
+</table>
+
+<a id="AuthNResp"></a>
+### Response
+
+<code>302</code> <code>application/x-www-form-urlencoded</code>
+
+<table>
+  <tbody>
+    <tr>
+      <td>{% include parameter.html name="code" req="" %}</td>
+      <td>An intermediate opaque credential used to retrieve the ID Token and Access Token.<br><br><b>Note</b> : the code has a lifetime of 3 minutes.</td>
+    </tr>
+    <tr>
+      <td>{% include parameter.html name="state" req="" %}</td>
+      <td>The string value provided in the Authorization Request. You SHOULD validate that the value returned matches the one supplied.</td>
+    </tr>
+  </tbody>
+</table>
+
+{% endtab %}
+
+{% tab AuthorizationRequest AES + PKCE %}
+
+<b><code>GET https://oidc.<i>[e2e/prd]</i>.itsme.services/clientsecret-oidc/csapi/v0.1/connect/authorize</code></b>
+
+### Parameters
+
+<table>
+  <tbody>
+    <tr>
+      <td>{% include parameter.html name="client_id" req="REQUIRED" %}</td>
+      <td>It identifies your application. This parameter value is generated during registration.</td>
+    </tr>
+     <tr>
+      <td>{% include parameter.html name="response_type" req="REQUIRED" %}</td>
+      <td>This defines the processing flow to be used when forming the response. Because itsme® supports the Authorization Code Flow, this value MUST be <code>code</code>.</td>
+    </tr>
+    <tr>
+      <td>{% include parameter.html name="scope" req="REQUIRED" %}</td>
+      <td>
+        It allows your application to express the desired scope of the access request. Each scope returns a set of user attributes. The scopes an application should request depend on which user attributes your application needs. Once the user authorizes the requested scopes, his details are returned in an ID Token and are also available through the UserInfo Endpoint.<br><br>All scope values must be space-separated.<br><br>The basic (and required) scopes are <code>openid</code> and <code>service</code>. Beyond that, your application can ask for additional standard scopes values which map to sets of related claims : <code>profile</code> <code>email</code> <code>address</code> <code>phone</code><br />
+        <table>
+          <tr>
+            <td>{% include parameter.html name="service" req="REQUIRED" %}</td><td>It indicates the itsme® service your application intends to use, e.g. <code>service:TEST_code</code> by replacing "TEST_code" with the service code generated during registration.</td>
+          </tr>
+          <tr>
+            <td>{% include parameter.html name="openid" req="REQUIRED" %}</td><td>It indicates that your application intends to use the OpenID Connect protocol to verify a user's identity by returning a <code>sub</code> claim which represents a unique identifier for the authenticated user.</td>
+          </tr>
+          <tr>
+            <td>{% include parameter.html name="profile" req="OPTIONAL" %}</td><td>Returns claims that represent basic profile information, specifically <code>family_name</code>, <code>given_name</code>, <code>name</code>, <code>gender</code>, <code>locale</code>, <code>picture</code> and <code>birthdate</code>.</td>
+          </tr>
+          <tr>
+            <td>{% include parameter.html name="email" req="OPTIONAL" %}</td><td>Returns the <code>email</code> claim, which contains the user's email address, and <code>email_verified</code>, which is a boolean indicating whether the email address was verified by the user.</td>
+          </tr>
+          <tr>
+            <td>{% include parameter.html name="address" req="OPTIONAL" %}</td><td>Returns the information about the user's postal address. The value of the address member is a JSON structure containing some or all of these members <code>formatted</code> <code>street_address</code> <code>postal_code</code> <code>locality</code> <code>country</code></td>
+          </tr> 
+          <tr>
+            <td>{% include parameter.html name="phone" req="OPTIONAL" %}</td><td>Returns the <code>phone</code> claim, which contains the user's phone number, and <code>phone_number_verified</code>, which is a boolean indicating whether the phone number was verified by the user.</td>
+          </tr> 
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td>{% include parameter.html name="redirect_uri" req="REQUIRED" %}</td>
+      <td>It is the URL to which users are redirected once the authentication is complete. <br><br>The following restrictions apply to redirect URIs:
+        <tabul>
+          <tabli>The redirect URI MUST match the value preregistered during the registration.</tabli>
+          <tabli>The redirect URI MUST begin with the scheme <code>https</code> (refer to <a href="https://belgianmobileid.github.io/doc/authentication/#certificates-and-website-security" target="blank">this section</a> for more information). There is an exception for localhost redirect URIs that are only permitted for development purposes, it’s not for use in production.</tabli>
+          <tabli>The redirect URI is case-sensitive. Its case MUST match the case of the URL path of your running application. For example, if your application includes as part of its path <code>.../abc/response-oidc</code>, do not specify <code>.../ABC/response-oidc</code> in the redirect URI. Because the web browser treats paths as case-sensitive, cookies associated with <code>.../abc/response-oidc</code> MAY be excluded if redirected to the case-mismatched <code>.../ABC/response-oidc</code> URL.</tabli>
+          <tabli>If relevant (in case you have a mobile app) make sure that your redirect URIs support the Universal links and App links mechanism. Functionally, it will allow you to have only one single link that will either open your desktop web application, your mobile app or your mobile site on the User’s device. Universal links and App links are standard web links (http://mydomain.com) that point to both a web page and a piece of content inside an app. When a Universal Link is opened, the app OS checks to see if any installed app is registered for that domain. If so, the app is launched immediately without ever loading the web page. If not, the web URL is loaded into the webbrowser.</tabli>
+        </tabul>
+      </td>
+    </tr>
+    <tr>
+      <td>{% include parameter.html name="state" req="Strongly RECOMMENDED" %}</td>
+      <td>Specifies any string value that your application uses to maintain state between your Authorization Request and the Authorization Server's response. You can use this parameter for several purposes, such as directing the user to the correct resource in your application and mitigating cross-site request forgery.</td>
+    </tr>
+    <tr>
+      <td>{% include parameter.html name="nonce" req="Strongly RECOMMENDED" %}</td>
+      <td>A string value used to associate a session with an ID Token, and to mitigate replay attacks. The value is passed through unmodified from the Authentication Request to the ID Token.</td>
+    </tr>
+    <tr>
+      <td>{% include parameter.html name="claims" req="OPTIONAL" %}</td>
+      <td>Requests specific user's details to be returned from the UserInfo Endpoint and/or in the ID Token. It is represented as a JSON object that has two members - <code>{"userinfo":{...}</code> and <code>{"id_token":{...}</code>, which content indicates which claims to return at the UserInfo Endpoint and which with the ID Token, together with indication whether the claim is voluntary (default) or essential.<br><br>Possible user's details your application can request is listed below.<br />
+        <table>
+          <tr>
+            <td>{% include parameter.html name="name" req="OPTIONAL" %}</td><td>Returns user's full name in displayable form including all name parts, possibly including titles and suffixes.</td>
+          </tr>
+          <tr>
+            <td>{% include parameter.html name="given_name" req="OPTIONAL" %}</td><td>Returns the given name(s) or first name(s) of the user. Note that in some cultures, people can have multiple given names; all can be present, with the names being separated by space characters.</td>
+          </tr>
+          <tr>
+            <td>{% include parameter.html name="family_name" req="OPTIONAL" %}</td><td>Returns the surname(s) or last name(s) of the user. Note that in some cultures, people can have multiple family names or no family name; all can be present, with the names being separated by space characters.</td>
+          </tr> 
+          <tr>
+            <td>{% include parameter.html name="birtdate" req="OPTIONAL" %}</td><td>Return user's birthday, represented as a YYYY-MM-DD format.</td>
+          </tr> 
+          <tr>
+            <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/birthdate_as_string" req="OPTIONAL" %}</td><td>Returns user's birthday, represented as a string.</td>
+          </tr> 
+          <tr>
+            <td>{% include parameter.html name="gender" req="OPTIONAL" %}</td><td>Returns user's gender. Possible values are : <code>female</code> <code>male</code></td>
+          </tr> 
+          <tr>
+            <td>{% include parameter.html name="locale" req="OPTIONAL" %}</td><td>Returns user's mobile phone language, represented as an ISO 3166-1 Alpha-2 [ISO3166‑1] country code in uppercase. Possible values are : <code>NL</code> <code>FR</code> <code>DE</code> <code>EN</code></td>
+          </tr>
+          <tr>
+            <td>{% include parameter.html name="picture" req="OPTIONAL" %}</td><td>Returns the URL of the user's ID picture. This URL refers to an image file (for example, a JPEG, JPEG2000, or PNG image file).</td>
+          </tr> 
+          <tr>
+            <td>{% include parameter.html name="email" req="OPTIONAL" %}</td><td>Returns user's email address.</td>
+          </tr> 
+          <tr>
+            <td>{% include parameter.html name="email_verified" req="OPTIONAL" %}</td><td>Returns <code>true</code> if the user's e-mail address is verified; otherwise <code>false</code>.</td>
+          </tr> 
+          <tr>
+            <td>{% include parameter.html name="phone_number" req="OPTIONAL" %}</td><td>Returns user's phone number, in <a href="https://en.wikipedia.org/wiki/E.164" target="blank">E.164</a> format.</td>
+          </tr> 
+          <tr>
+            <td>{% include parameter.html name="phone_number_verified" req="OPTIONAL" %}</td><td>Returns <code>true</code> if the user's e-phone number is verified; otherwise <code>false</code>.</td>
+          </tr> 
+          <tr>
+            <td>{% include parameter.html name="address" req="OPTIONAL" %}</td><td>Returns the information about the user's postal address. The value of the address is a JSON structure containing some or all of these members <code>formatted</code> <code>street_address</code> <code>postal_code</code> <code>locality</code> <code>country</code>.</td>
+          </tr> 
+          <tr>
+            <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/claim_citizenship" req="OPTIONAL" %}</td><td>Returns the jurisdiction that has conferred citizenship rights to the user, in <a href="https://en.wikipedia.org/wiki/ISO_3166" target="blank">ISO 3166</a> format.</td>
+          </tr> 
+           <tr>
+            <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/place_of_birth" req="OPTIONAL" %}</td><td>Returns the location where the user was born. The value of this attribute is a JSON structure containing some or all of these members <code>formatted</code> <code>city</code> <code>country</code>.</td>
+          </tr> 
+          <tr>
+            <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/physical_person_photo" req="OPTIONAL" %}</td><td>Returns the user's ID picture in the following format : 200 x 140px resolution, 24 BPP, JPEG format. The aspect ratio of original image is maintained.</td>
+          </tr> 
+          <tr>
+            <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/BEeidSn" req="OPTIONAL" %}</td><td>Returns the Belgian ID card number, 12 digits in the form xxx-xxxxxxx-yy. The check-number yy is the remainder of the division of xxxxxxxxxx by 97.</td>
+          </tr> 
+          <tr>
+            <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/claim_device" req="OPTIONAL" %}</td><td>Returns information about the user's phone. The value of this attribute is a JSON structure containing some or all of these members <code>os</code> <code>appName</code> <code>appRelease</code> <code>deviceLabel</code> <code>debugEnabled</code> <code>deviceID</code>	<code>osRelease</code> <code>manufacturer</code> <code>deviceLockLevel</code> <code>smsEnabled</code> <code>rooted</code> <code>msisdn</code> <code>deviceModel</code>	<code>sdkRelease</code>.</td>       
+          </tr> 
+          <tr>
+            <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/transaction_info" req="OPTIONAL" %}</td><td>Returns information about the itsme® transaction. The value of this attribute is a JSON structure containing some or all of these members <code>securityLevel</code> <code>bindLevel</code> <code>appRelease</code>.</td>
+           </tr> 
+           <tr>
+            <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/BENationalNumber" req="OPTIONAL" %}</td><td>Returns the unique identification number of natural persons who are registered in Belgium. This number consists of 11 digits of the form yy.mm.dd-xxx.cd where yy.mm.dd is the birthdate of the person, xxx a sequential number (odd for males and even for females) and cd a check-digit.</td>
+          </tr> 
+          <tr>
+            <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/claim_nl_bsn" req="OPTIONAL" %}</td><td>Returns the citizen service number, a unique registration number for everyone who lives in the Netherlands. This number consists of 8 to 9 digits.</td>
+          </tr>  
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td>{% include parameter.html name="request_uri" req="OPTIONAL" %}</td>
+       <td>A URL using the https scheme referencing a resource containing a JWT whose claims are the request parameters. The <code>request_uri</code> parameter is used to secure parameters in the authentication request from tainting or inspection when sending the request to the itsme® Authorization Endpoint.<br><br>If the <code>request_uri</code> parameter is used, the JWT MUST be signed and MUST contain the claims <code>iss</code> (issuer) and <code>aud</code> (audience) as members. The <code>iss</code> value SHOULD be your <code>client_id</code>. The <code>aud</code> value SHOULD be set to <code>https://idp.[e2e/prd].itsme.services/v2/authorization</code>. The JWT MAY also be encrypted. If both signing and encryption are performed, it MUST be signed then encrypted, with the result being a Nested JWT (refer to <a href="https://belgianmobileid.github.io/doc/authentication/#securing-the-exchange-of-information" target="blank">this section</a> for more information).<br><br>The following restrictions apply to request URIs:
+        <tabul>
+          <tabli>The request URI MUST be preregistered during the registration.</tabli>
+          <tabli>The request URI MUST contain the port <code>443</code>. Example : https://test.istme.be:443/p/test</tabli>
+          <tabli>The request URI MUST begin with the scheme <code>https</code> (refer to <a href="https://belgianmobileid.github.io/doc/authentication/#certificates-and-website-security" target="blank">this section</a> for more information). The usage of localhost request URIs that are not permitted.</tabli>
+          <tabli>The request URI JWT MUST be publicly accessible.</tabli>
+        </tabul>
+       </td>
+    </tr>
+    <tr>
+      <td>{% include parameter.html name="code_challenge" req="REQUIRED" %}</td>
+       <td>A challenge derived from the code verifier by using one of the following transformations on the code verifier : <code>plain</code> or <code>S256</code> method. 
+       </td>
+    </tr>
+    <tr>
+      <td>{% include parameter.html name="code_challenge_method" req="OPTIONAL" %}</td>
+       <td>Code verifier transformation method.<br>Possible values : <code>plain</code> or <code>S256</code>.<br>It MUST be set to <code>S256</code>. You are
+   permitted to use <code>plain</code> only if you cannot support <code>S256</code> for some technical reason.
        </td>
     </tr>
   </tbody>
