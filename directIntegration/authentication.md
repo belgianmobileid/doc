@@ -94,7 +94,7 @@ This method requires the exchange of a static secret to be held by both the send
 
 The symmetric key cryptography method can also be coupled with the Proof of Key for Code Exchange (PKCE) flow. This additionnal layer of security is intended to secure the redirect back to your mobile or web application. On mobile OS, the OS allows apps to register to handle redirect URis (Uniform Resource identifier), so a malicious app can register and receive redirects with the authorization code for legitimate apps. This is known as an Authorization Code Interception Attack. In order to prevent this Authorization Code Interception Attack, we will be using a unique string value, called the <code>code_verifier</code>, which it hashes and encodes as a <code>code_challenge</code>. When your application initiates the first part of the Authorization Code flow, it sends a hashed code_challenge. Once the user authenticates and the Authorization Code is returned to your mobile or web application, it requests an Access Token in exchange for the Authorization Code. In this step, your application MUST include the original unique string value in the <code>code_verifier</code> parameter. If the codes match, the authentication is complete and an ID Token and Access Token are returned.
 
-First, you create a code verifier, <code>code_verifier</code>, for each Authorization Request, in the following manner :
+First, you create a code verifier for each Authorization Request, in the following manner :
 
 ```
 var code_verifier = 'some-random-string'
