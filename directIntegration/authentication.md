@@ -960,7 +960,7 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
     </tr>
     <tr>
       <td>{% include parameter.html name="code_challenge_method" req="OPTIONAL" %}</td>
-       <td>Code verifier transformation method.<br>Possible values : <code>plain</code> or <code>S256</code>.<br>It MUST be set to <code>S256</code>. You are
+       <td>Code verifier transformation method.<br><br>Possible values : <code>plain</code> or <code>S256</code>.<br><br>It MUST be set to <code>S256</code>. You are
    permitted to use <code>plain</code> only if you cannot support <code>S256</code> for some technical reason.
        </td>
     </tr>
@@ -1023,6 +1023,35 @@ Location: https://client.example.org/cb?
 {% endtab %}
 
 {% tab AuthorizationExample AES key %}
+
+
+***Request***
+
+```http
+GET /authorize HTTP/1.1
+Host: server.example.com
+
+response_type=code
+  &client_id=s6BhdRkqt3
+  &redirect_uri=https%3A%2F%2Fclient.example.org%2Fcb
+  &scope=openid%20service:TEST_code%20profile%20email
+  &nonce=n-0S6_WzA2Mj
+  &state=af0ifjsldkj
+  &acr_values=http://itsme.services/V2/claim/acr_basic
+```
+
+***Response***
+
+```http
+HTTP/1.1 302 Found
+Location: https://client.example.org/cb?
+  code=SplxlOBeZQQYbYS6WxSbIA
+  &state=af0ifjsldkj
+```
+
+{% endtab %}
+
+{% tab AuthorizationExample AES + PKCE %}
 
 
 ***Request***
@@ -1191,6 +1220,67 @@ To assert the identity of the user, the <code>code</code> received previously ne
 
 {% endtab %}
 
+{% tab TokenRequest AES + PKCE %}
+
+<b><code>POST https://oidc.<i>[e2e/prd]</i>.itsme.services/clientsecret-oidc/csapi/v0.1/connect/token</code></b>
+
+To assert the identity of the user, the <code>code</code> received previously needs to be exchanged for an ID token and access token. During this step, your application has to authenticate itself to our server using AES keys. 
+
+### Parameters
+
+<table>
+  <tbody>
+    <tr>
+      <td>{% include parameter.html name="grant_type" req="REQUIRED" %}</td>
+      <td>Set this to <code>authorization_code</code> to tell the Token Endpoint that your application wants to exchange an authorization code for an ID koken and access token. </td>
+    </tr>
+    <tr>
+      <td>{% include parameter.html name="client_id" req="REQUIRED" %}</td>
+      <td>It identifies your application. This parameter value is generated during registration.</td>
+    </tr>
+    <tr>
+      <td>{% include parameter.html name="code" req="REQUIRED" %}</td>
+      <td>The intermediate opaque credential received in the Authorization Response.</td>
+    </tr>
+    <tr>
+      <td>{% include parameter.html name="redirect_uri" req="REQUIRED" %}</td>
+      <td>It is the URL to which users are redirected once the authentication is complete. It MUST match the value used in the Authorization Request.</td>
+    </tr>
+    <tr>
+      <td>{% include parameter.html name="client_secret" req="REQUIRED" %}</td>
+      <td>Contains the a key you reveiced when registering your application. This ensures that the request to get the id token and access token is made only from your application, and not from a potential attacker that may have intercepted the authorization code.</td>
+    </tr>
+    <tr>
+      <td>{% include parameter.html name="code_verifier" req="REQUIRED" %}</td>
+      <td>High-entropy cryptographic random string using the unreserved characters [A-Z] / [a-z] / [0-9] / "-" / "." / "_" / "~", with a minimum length of 43 characters and a maximum length of 128 characters.</td>
+    </tr>
+  </tbody>
+</table>
+
+
+### Response
+
+<code>200</code> <code>application/json</code>
+
+<table>
+  <tbody>
+    <tr>
+      <td>{% include parameter.html name="access_token" req="" %}</td>
+      <td>Allows an application to retrieve consented user information from the UserInfo Endpoint.</td>
+    </tr>
+    <tr>
+      <td>{% include parameter.html name="token_type" req="" %}</td>
+      <td>Provides your application with the information required to successfully utilize the access token. Returned value is <code>Bearer</code>.</td>
+    </tr>
+    <tr>
+      <td>{% include parameter.html name="id_token" req="" %}</td>
+      <td>A security token that contains information about the authentication of an user, and potentially other requested claim data's. The <code>id_token</code> value is represented as a signed and encrypted JWT. So, before being able to use the ID Token claims you will have to decrypt and verify the signature (refer to <a href="https://belgianmobileid.github.io/doc/authentication/#securing-the-exchange-of-information" target="blank">this section</a> for more information).</td>      
+    </tr>
+  </tbody>
+</table>
+
+{% endtab %}
+
 {% endtabs %}
 
 
@@ -1285,6 +1375,49 @@ Pragma: no-cache
 
 {% endtab %}
 
+{% tab TokenExample AES + PKCE %}
+
+***Request***
+
+```http
+POST /token HTTP/1.1
+Host: openid.c2id.com
+Content-Type: application/x-www-form-urlencoded
+
+grant_type=authorization_code
+ &code=SplxlOBeZQQYbYS6WxSbIA
+ &redirect_uri=https%3A%2F%2Fclient.example.org%2Fcb
+ &client_id=s6BhdRkqt3
+ &client_secret=PHNhbWxwOl ... ZT
+```
+
+***Response***
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+Cache-Control: no-store
+Pragma: no-cache
+
+{
+  "id_token": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjFlOWdkazcifQ.ewogImlzc
+    yI6ICJodHRwOi8vc2VydmVyLmV4YW1wbGUuY29tIiwKICJzdWIiOiAiMjQ4Mjg5
+    NzYxMDAxIiwKICJhdWQiOiAiczZCaGRSa3F0MyIsCiAibm9uY2UiOiAibi0wUzZ
+    fV3pBMk1qIiwKICJleHAiOiAxMzExMjgxOTcwLAogImlhdCI6IDEzMTEyODA5Nz
+    AKfQ.ggW8hZ1EuVLuxNuuIJKX_V8a_OMXzR0EHR9R6jgdqrOOF4daGU96Sr_P6q
+    Jp6IcmD3HP99Obi1PRs-cwh3LO-p146waJ8IhehcwL7F09JdijmBqkvPeB2T9CJ
+    NqeGpe-gccMg4vfKjkM8FcGvnzZUN4_KSP0aAp1tOJ1zZwgjxqGByKHiOtX7Tpd
+    QyHE5lcMiKPXfEIQILVq0pc_E2DzL7emopWoaoZTF_m0_N0YzFC6g6EJbOEoRoS
+    K5hoDalrcvRYLSrQAZZKflyuVCyixEoV9GfNQC3_osjzw2PAithfubEEBLuVVk4
+    XUVrWOLrLl0nx7RkKU8NXNHq-rvKMzqg"
+  "access_token": "SlAV32hkKG",
+  "token_type": "Bearer",
+  "expires_in": 3600,
+}
+```
+
+{% endtab %}
+
 {% endtabs %}
 
 <a id="UserInfoReq"></a>
@@ -1311,6 +1444,23 @@ The UserInfo Response is represented as a signed and encrypted JWT. So, before b
 {% endtab %}
 
 {% tab UserInfoRequest AES key %}
+
+<b><code>GET https://oidc.<i>[e2e/prd]</i>.itsme.services/clientsecret-oidc/csapi/v0.1/connect/userinfo</code></b>
+
+The UserInfo Endpoint returns previously consented user profile information to your application. In other words, if the required claims are not returned in the ID Token, you can obtain the additional claims by presenting the access token to the itsme® UserInfo Endpoint. This is achieved by sending a HTTP GET request to the Userinfo Endpoint, passing the access token value in the Authorization header using the Bearer authentication scheme.
+
+This is illustrated in the example below.
+
+
+### Response
+
+<code>200</code> <code>application/json</code>
+
+The UserInfo Response is represented as a signed and encrypted JWT. So, before being able to extract the claims you will have to decrypt and verify the signature (refer to <a href="https://belgianmobileid.github.io/doc/authentication/#securing-the-exchange-of-information" target="blank">this section</a> for more information).
+
+{% endtab %}
+
+{% tab UserInfoRequest AES + PKCE %}
 
 <b><code>GET https://oidc.<i>[e2e/prd]</i>.itsme.services/clientsecret-oidc/csapi/v0.1/connect/userinfo</code></b>
 
@@ -1392,6 +1542,35 @@ Content-Type: application/json
 
 {% endtab %}
 
+{% tab UserInfoExample AES + PKCE %}
+
+***Request***
+
+```http
+GET /userinfo HTTP/1.1
+Host: server.example.com
+Authorization: Bearer SlAV32hkKG
+```
+
+***Response***
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+  {
+   "sub": "248289761001",
+   "name": "Jane Doe",
+   "given_name": "Jane",
+   "family_name": "Doe",
+   "preferred_username": "j.doe",
+   "email": "janedoe@example.com",
+   "picture": "http://example.com/janedoe/me.jpg"
+  }
+```
+
+{% endtab %}
+
 {% endtabs %}
 
 
@@ -1436,6 +1615,37 @@ itsme® responds with HTTP status code 200 if the token has been revoked success
 <aside class="notice">Invalid tokens do not cause an error response since your application cannot handle such an error in a reasonable way. Moreover, the purpose of the revocation request, invalidating the particular token, is already achieved.
 </aside>
 
+{% endtab %}
+
+{% tab RevokeRequest AES + PKCE %}
+
+<b><code>POST https://oidc.<i>[e2e/prd]</i>.itsme.services/clientsecret-oidc/csapi/v0.1/connect/revoke</code></b>
+
+The Revocation Endpoint enables your application to notify itsme® that a previously obtained access token is no longer needed and MUST be revoked.
+
+### Parameters
+
+<table>
+  <tbody>
+    <tr>
+      <td>{% include parameter.html name="token" req="REQUIRED" %}</td>
+      <td>The <code>access_token</code> previously obtained that you want to revoke.</td>
+    </tr>
+    <tr>
+      <td>{% include parameter.html name="token_type_hint" req="OPTIONAL" %}</td>
+      <td>A hint about the type of the token submitted for revocation. You MAY pass this parameter in order to help itsme® to optimize the token lookup. If the server is unable to locate the token using the given hint, it MUST extend its search across all of its supported token types. If used, this is set to <code>access_token</code> because itsme® API don't support refresh tokens.</td>
+    </tr>
+  </tbody>
+</table>
+
+### Response
+
+<code>200</code> 
+
+itsme® responds with HTTP status code 200 if the token has been revoked successfully or if the client submitted an invalid token.
+
+<aside class="notice">Invalid tokens do not cause an error response since your application cannot handle such an error in a reasonable way. Moreover, the purpose of the revocation request, invalidating the particular token, is already achieved.
+</aside>
 
 {% endtab %}
 
@@ -1452,6 +1662,29 @@ Not applicable.
 {% endtab %}
 
 {% tab RevokeExample AES key %}
+
+***Request***
+
+```http
+POST /connect/revoke HTTP/1.1
+Host: server.example.com
+Content-Type: application/x-www-form-urlencoded
+Authorization: Basic czZCaGRSa3F0MzpnWDFmQmF0M2JW
+
+token=45ghiukldjahdnhzdauz&token_type_hint=refresh_token
+```
+
+***Response***
+
+
+```http
+HTTP/1.1 200 OK
+
+```
+
+{% endtab %}
+
+{% tab RevokeExample AES + PKCE %}
 
 ***Request***
 
