@@ -96,7 +96,7 @@ The symmetric key cryptography method can also be coupled with the Proof of Key 
 
 First, you create a code verifier, <code>code_verifier</code>, for each Authorization Request, in the following manner :
 
-```nodejs
+```
 
 var code_verifier = 'some-random-string'
 
@@ -106,7 +106,7 @@ with a minimum length of 43 characters and a maximum length of 128 characters.
 
 You then create a code challenge derived from the code verifier by using one of the following transformations on the code verifier :
 
-```nodejs
+```
 
 const crypto = require('crypto')
 const base64url = require('base64url')
