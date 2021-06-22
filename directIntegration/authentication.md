@@ -40,11 +40,12 @@ Upon clicking this button, the browser will redirect the User to our Front-End. 
 
 ## Securing the exchange of information
 
-To protect the exchange of sensitive information and ensure the requested information gets issued to a legitimate application and not some other party, the OpenID Connect protocol uses JSON Web Token (JWT) which can be signed and/or encrypted. itsme® supports 2 cryptographic methods to perform the signing and encryption of JWTs :
+To protect the exchange of sensitive information and ensure the requested information gets issued to a legitimate application and not some other party, the OpenID Connect protocol uses JSON Web Token (JWT) which can be signed and/or encrypted. itsme® supports 3 cryptographic methods to perform the signing and encryption of JWTs :
 
 <ul>
   <li>Asymmetric key pair</li>
   <li>Symmetric key</li>
+  <li>Symmetric key + PKCE</li>
 </ul>
 
 <aside class="notice">You will have to choose between one of these methods when <a href="https://belgianmobileid.github.io/doc/getting-started.html#getting-started" target="blank">registering your project</a>.
@@ -88,6 +89,28 @@ This method requires the exchange of a static secret to be held by both the send
 
 <aside class="notice">If you choose to go with the symmetric method, you will be able to specify if the ID Token JWT needs to be signed with the an asymmetric algorithm (e.g. <code>RS256</code>) or with a symmetric algorithm (e.g. : <code>HS256</code>). When using the <code>RS256</code> algorithm, our public keys will be needed to verify the signature. This information can be found in our <a href="https://belgianmobileid.github.io/doc/authentication/#itsme-discovery-document" target="blank">itsme® Discovery document</a>, using the key <code>jwks_uri</code>.
 </aside>
+
+### PKCE-enhanced flow
+
+The symmetric key cryptography method can also be coupled with the Proof of Key for Code Exchange (PKCE) flow. This additionnal layer of security is intended to secure the redirect back to your mobile or web application. On mobile OS, the OS allows apps to register to handle redirect URis (Uniform Resource identifier), so a malicious app can register and receive redirects with the authorization code for legitimate apps. This is known as an Authorization Code Interception Attack. In order to prevent this Authorization Code Interception Attack, we will be using a unique string value, called the <code>code_verifier</code>, which it hashes and encodes as a <code>code_challenge</code>. When your application initiates the first part of the Authorization Code flow, it sends a hashed code_challenge. Once the user authenticates and the Authorization Code is returned to your mobile or web application, it requests an Access Token in exchange for the Authorization Code. In this step, your application MUST include the original unique string value in the <code>code_verifier</code> parameter. If the codes match, the authentication is complete and an ID Token and Access Token are returned.
+
+First, you create a code verifier, <code>code_verifier</code>, for each Authorization Request, in the following manner :
+
+```http
+code_verifier = high-entropy cryptographic random STRING using the unreserved characters [A-Z] / [a-z] / [0-9] / "-" / "." / "_" / "~", with a minimum length of 43 characters and a maximum length of 128 characters.
+```
+
+You then create a code challenge derived from the code verifier by using one of the following transformations on the code verifier :
+
+```http
+plain
+  code_challenge = code_verifier
+
+S256
+  code_challenge = BASE64URL-ENCODE(SHA256(ASCII(code_verifier)))
+  
+It MUST be set to S256. You are permitted to use plain only if you cannot support S256 for some technical reason.
+```
 
 ### Signing, encrypting and decoding JWTs
 
