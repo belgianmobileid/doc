@@ -97,24 +97,23 @@ The symmetric key cryptography method can also be coupled with the Proof of Key 
 First, you create a code verifier, <code>code_verifier</code>, for each Authorization Request, in the following manner :
 
 ```
-
 var code_verifier = 'some-random-string'
 
-//should use the unreserved characters [A-Z] / [a-z] / [0-9] / "-" / "." / "_" / "~", 
-with a minimum length of 43 characters and a maximum length of 128 characters.
+Should use the unreserved characters [A-Z] / [a-z] / [0-9] / "-" / "." / "_" / "~", with a minimum length of 
+43 characters and a maximum length of 128 characters.
 ```
 
 You then create a code challenge derived from the code verifier by using one of the following transformations on the code verifier :
 
 ```
-
 const crypto = require('crypto')
 const base64url = require('base64url')
 
 var hash = crypto.createHash('sha256').update(code_verifier).digest();
 var code_challenge = base64url.encode(hash)
 
-//code_verifier MUST be hashed using S256.You are permitted to use plain only if you cannot support S256 for some technical reason.
+//code_verifier MUST be hashed using S256.You are permitted to use plain only if you cannot support S256 for 
+some technical reason.
 ```
 
 ### Signing, encrypting and decoding JWTs
