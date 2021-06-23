@@ -132,6 +132,8 @@ The Domain Validation certificate doesn’t provide sufficient identity guarante
 <aside class="notice">The chain of trust of these certificates need to be publicly accessible, meaning that our systems need to be able to access the root and the intermediate certificates.
 </aside>
 
+All requests to our endpoints MUST also use the SNI extension (https://datatracker.ietf.org/doc/html/rfc6066#section-3) of the TLS protocol, that allows our servers to provide you with the correct certificate based on which endpoint you are querying.
+
 <aside class="notice">All itsme® API URL we publish use <code>https</code>.
 </aside>
 
