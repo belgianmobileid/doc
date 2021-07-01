@@ -92,7 +92,9 @@ This method requires the exchange of a static secret to be held by both the send
 
 ### PKCE-enhanced flow
 
-The symmetric key cryptography method can also be coupled with the Proof of Key for Code Exchange (PKCE) flow. This additionnal layer of security is intended to secure the redirect back to your mobile or web application. On mobile OS, the OS allows apps to register to handle redirect URis (Uniform Resource identifier), so a malicious app can register and receive redirects with the authorization code for legitimate apps. This is known as an Authorization Code Interception Attack. In order to prevent this Authorization Code Interception Attack, we will be using a unique string value, called the <code>code_verifier</code>, which it hashes and encodes as a <code>code_challenge</code>. When your application initiates the first part of the Authorization Code flow, it sends a hashed code_challenge. Once the user authenticates and the Authorization Code is returned to your mobile or web application, it requests an Access Token in exchange for the Authorization Code. In this step, your application MUST include the original unique string value in the <code>code_verifier</code> parameter. If the codes match, the authentication is complete and an ID Token and Access Token are returned.
+When using the symmetric key cryptography method, itsme® also supports an extra security extension named Proof of Key for Code Exchange (<a href="https://datatracker.ietf.org/doc/html/rfc7636" target="blank">PKCE</a>). This additionnal layer of security is intended mitigate some Authorization Code Interception Attack.
+
+It implies adding a random string, named <code>code_verifier</code>, to your Authorization Request and then a SHA256 hash of that string, named <code>code_challenge</code>, to your Token Request.
 
 First, you create a code verifier for each Authorization Request, in the following manner :
 
@@ -132,11 +134,11 @@ The Domain Validation certificate doesn’t provide sufficient identity guarante
 <aside class="notice">The chain of trust of these certificates need to be publicly accessible, meaning that our systems need to be able to access the root and the intermediate certificates.
 </aside>
 
-All requests to our endpoints MUST also use the SNI extension (<a href="https://datatracker.ietf.org/doc/html/rfc6066#section-3">RFC</a>) of the TLS protocol, that allows our servers to provide you with the correct certificate based on which endpoint you are querying.
-
 <aside class="notice">All itsme® API URL we publish use <code>https</code>.
 </aside>
 
+<aside class="notice">All requests to our endpoints MUST also use the SNI extension (refer to the <a href="https://datatracker.ietf.org/doc/html/rfc6066#section-3">RFC</a> for more information) of the TLS protocol, that allows our servers to provide you with the correct certificate based on which endpoint you are querying.
+</aside>
 
 ## Handling responses
 
