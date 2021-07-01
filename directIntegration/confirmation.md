@@ -40,11 +40,12 @@ Upon clicking this button, the browser will redirect the User to our Front-End. 
 
 ## Securing the exchange of information
 
-To protect the exchange of sensitive information and ensure the requested information gets issued to a legitimate application and not some other party, the OpenID Connect protocol uses JSON Web Token (JWT) which can be signed and/or encrypted. itsme® supports 2 cryptographic methods to perform the signing and encryption of JWTs :
+To protect the exchange of sensitive information and ensure the requested information gets issued to a legitimate application and not some other party, the OpenID Connect protocol uses JSON Web Token (JWT) which can be signed and/or encrypted. itsme® supports 3 cryptographic methods to perform the signing and encryption of JWTs :
 
 <ul>
   <li>Asymmetric key pair</li>
   <li>Symmetric key</li>
+  <li>Symmetric key + PKCE</li>
 </ul>
 
 <aside class="notice">You will have to choose between one of these methods when <a href="https://belgianmobileid.github.io/doc/getting-started.html#getting-started" target="blank">registering your project</a>.
@@ -89,6 +90,33 @@ This method requires the exchange of a static secret to be held by both the send
 <aside class="notice">If you choose to go with the symmetric method, you will be able to specify if the ID Token JWT needs to be signed with the an asymmetric algorithm (e.g. <code>RS256</code>) or with a symmetric algorithm (e.g. : <code>HS256</code>). When using the <code>RS256</code> algorithm, our public keys will be needed to verify the signature. This information can be found in our <a href="https://belgianmobileid.github.io/doc/authentication/#itsme-discovery-document" target="blank">itsme® Discovery document</a>, using the key <code>jwks_uri</code>.
 </aside>
 
+### PKCE-enhanced flow
+
+When using the symmetric key cryptography method, itsme® also supports an extra security extension named Proof of Key for Code Exchange (<a href="https://datatracker.ietf.org/doc/html/rfc7636" target="blank">PKCE</a>). This additionnal layer of security is intended mitigate some Authorization Code Interception Attack.
+
+It implies adding a random string, named <code>code_verifier</code>, to your Authorization Request and then a SHA256 hash of that string, named <code>code_challenge</code>, to your Token Request.
+
+First, you create a code verifier for each Authorization Request, in the following manner :
+
+```
+var code_verifier = 'some-random-string'
+
+Should use the unreserved characters [A-Z] / [a-z] / [0-9] / "-" / "." / "_" / "~", with a minimum length of 
+43 characters and a maximum length of 128 characters.
+```
+
+You then create a code challenge derived from the code verifier by using one of the following transformations on the code verifier :
+
+```
+const crypto = require('crypto')
+const base64url = require('base64url')
+
+var hash = crypto.createHash('sha256').update(code_verifier).digest();
+var code_challenge = base64url.encode(hash)
+
+//code_verifier MUST be hashed using S256.You are permitted to use plain only if you cannot support S256 for 
+some technical reason.
+```
 ### Signing, encrypting and decoding JWTs
 
 Libraries implementing JWT and the JOSE specs JWS, JWE, JWK, and JWA are listed <a href="https://openid.net/developers/jwt/" target="blank">here</a>.
@@ -106,6 +134,9 @@ The Domain Validation certificate doesn’t provide sufficient identity guarante
 </aside>
 
 <aside class="notice">All itsme® API URL we publish use <code>https</code>.
+</aside>
+
+<aside class="notice">All requests to our endpoints MUST also use the SNI extension (refer to the <a href="https://datatracker.ietf.org/doc/html/rfc6066#section-3">RFC</a> for more information) of the TLS protocol, that allows our servers to provide you with the correct certificate based on which endpoint you are querying.
 </aside>
 
 
