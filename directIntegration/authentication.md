@@ -150,7 +150,7 @@ Whenever a partner is sending a request to the itsme OIDC endpoints he will get 
   <li>response using the <code>application/json</code> media type</li>
 </ul>
 
-This is a standard for data communication that’s easy to read for humans as well as machines. Alongside the type of response an HTTP status code is sent that shows whether the request was successful or not. If it was not, you can tell by the code and the message in the response what went wrong, why it went wrong and whether there is something the partner can do about it.
+Alongside the type of response an HTTP status code is sent that shows whether the request was successful or not. If it was not, you can tell by the code and the message in the response what went wrong, why it went wrong and whether there is something the partner can do about it.
 
 ### A successful response
 
@@ -185,7 +185,7 @@ Things will sometimes go wrong. So, OpenID Connect defines a number of rules reg
 
 ***Authorization Endpoint errors***
 
-If the request fails due to a missing, invalid, or mismatching redirection URI, or if the client identifier is missing or invalid,... the Authorization Endpoint will inform you of the error our itsme® sign-in page (possible values are listed in the table below).
+If the request fails due to a missing, invalid, or mismatching redirection URI, or if the client identifier is missing or invalid,... the Authorization Endpoint will inform you of the error our itsme® sign-in page.
 
  ![Authorization Endpoint error reponse](/doc/public/images/AuthorizationEndpoint_ErrorResponse.png)
  
@@ -200,6 +200,10 @@ If the User denies the access request or the User authentication fails, the Auth
          <tr>
           <td>{% include parameter.html name="invalid_request" req="" %}</td>
           <td>The request is missing a required parameter, includes an invalid parameter value, includes a parameter more than once, or is otherwise malformed.</td>
+        </tr>
+        <tr>
+          <td>{% include parameter.html name="access_denied" req="" %}</td>
+          <td>The User or the Authorization Endpoint denied the request.</td>
         </tr>
         <tr>
           <td>{% include parameter.html name="login_required" req="" %}</td>
