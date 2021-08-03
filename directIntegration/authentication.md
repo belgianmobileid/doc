@@ -8,7 +8,7 @@ toc_list: true
 
 # Overview
 
-This API is based on the Authorization Code Flow of OpenID Connect 1.0. It allows you to verify the identity of an end-user based on the authentication performed by an authorization server, as well as to obtain basic profile information about the end-user. 
+This API is based on the Authorization Code Flow of OpenID Connect 1.0. You can use it to verify the identity of an end-user based on the authentication performed by an authorization server, as well as to obtain basic profile information about the end-user. 
 
 The diagram below describes the **Authentication** process and how your systems will be interacting with itsme® :
   
@@ -36,7 +36,7 @@ To get to this result please make sure you
 
 First, you will need to create a button to allow your users to authenticate with itsme®. Check the <a href="https://brand.belgianmobileid.be/d/CX5YsAKEmVI7/documentation#/ux/buttons-1518207548" target="blank">Button design guide</a> before you start the integration. 
 
-Upon clicking this button, the browser will redirect the User to our Front-End. itsme® then take care of authenticating him.
+Upon clicking this button, the user will be redirected to our Front-End. itsme® then take care of authenticating him.
 
 ## Securing the exchange of information
 
@@ -53,9 +53,12 @@ To protect the exchange of sensitive information and ensure the requested inform
 
 ### Asymmetric key method and JWKSet URI
 
-Unlike Symmetric Encryption, which uses the same secret key to encrypt and decrypt sensitive information, Asymmetric Encryption, also known as public-key cryptography or public-key encryption, uses linked public- and private-key pairs to encrypt and decrypt senders’ and recipients’ sensitive data.
+Asymmetric Encryption uses linked public- and private-key pairs to encrypt and decrypt senders’ and recipients’ sensitive data. It is also known as public-key cryptography or public-key encryption.
 
-This method requires that each party exposes its public keys as a simple JWK Set document on a URI publicly accessible, and keep its private keys for itself. For itsme®, this URI can be retrieved from the <a href="https://belgianmobileid.github.io/doc/authentication/#itsme-discovery-document" target="blank">itsme® Discovery document</a>, using the <code>jwks_uri</code> key.
+<aside class="notice">This method requires that each party exposes its public keys as a simple JWK Set document on a URI publicly accessible, and keep its private keys for itself. 
+</aside>
+
+Using the <code>jwks_uri</code> key retrieve the URI for itsme® from the <a href="https://belgianmobileid.github.io/doc/authentication/#itsme-discovery-document" target="blank">itsme® Discovery document</a>, .
 
 Your private and public keys can be generated using your own tool or via Yeoman. If using Yeoman, you need to install generator-itsme with NPM:
 
@@ -69,7 +72,10 @@ After installation, run the generator:
 $ yo itsme
 ```
 
-The Yeoman tool will generate two files, the jwks_private.json which MUST be stored securely in your system, and the jwks_public.json which needs to be exposed as a JWK Set on a URI publicly accessible and have the HTTPS scheme (refer to <a href="https://belgianmobileid.github.io/doc/authentication/#certificates-and-website-security" target="blank">this section</a> for more information).
+The Yeoman tool will generate two files, the jwks_private.json which MUST be stored securely in your system, and the jwks_public.json which needs to be exposed as a JWK Set on a URI publicly accessible and have the HTTPS scheme 
+
+<aside class="notice">Refer to <a href="https://belgianmobileid.github.io/doc/authentication/#certificates-and-website-security" target="blank">this section</a> for more information.
+</aside>
 
 <aside class="notice">Whatever the tool you are choosing to create your key pairs, don't forget to send your JWK Set URI by email to <a href = "mailto: onboarding@itsme.be">onboarding@itsme.be</a> and itsme® will make sure to complete the configuration for you in no time!
 </aside>
