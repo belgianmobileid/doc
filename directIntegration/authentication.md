@@ -586,7 +586,7 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
     </tr>
     <tr>
       <td>{% include parameter.html name="claims" req="OPTIONAL" %}</td>
-      <td>Requests specific user's details to be returned from the UserInfo Endpoint or in the ID Token. It is represented as a JSON object that could use as member <code>{"userinfo":{...}</code> - which content indicates which claims to return at the UserInfo Endpoint - or <code>{"id_token":{...}</code> - which indicates those to return at the ID Token -, together with indication whether the claim is voluntary (default) or essential.<br><br>Possible user's details your application can request is listed below.<br />
+      <td>Requests specific user's details to be returned from the UserInfo Endpoint or in the ID Token. It is represented as a JSON object that could use as member <code>{"userinfo":{...}</code> - which content indicates which claims to return at the UserInfo Endpoint - or <code>{"id_token":{...}</code> - which indicates those to return at the ID Token -, together with indication whether the claim is voluntary (default) or essential.<br><br><b>Note</b>: to avoid the need of creating an additionnal request, itsme® recomends to create a JSON object using <code>{"id_token":{...}</code> as member.<br /><br><br>Possible user's details your application can request is listed below.<br />
         <table>
           <tr>
             <td>{% include parameter.html name="name" req="OPTIONAL" %}</td><td>Returns user's full name in displayable form including all name parts, possibly including titles and suffixes.</td>
@@ -779,7 +779,7 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
     </tr>
     <tr>
       <td>{% include parameter.html name="claims" req="OPTIONAL" %}</td>
-      <td>Requests specific user's details to be returned from the UserInfo Endpoint or in the ID Token. It is represented as a JSON object that could use as member <code>{"userinfo":{...}</code> - which content indicates which claims to return at the UserInfo Endpoint - or <code>{"id_token":{...}</code> - which indicates those to return at the ID Token -, together with indication whether the claim is voluntary (default) or essential.<br><br>Possible user's details your application can request is listed below.<br />
+      <td>Requests specific user's details to be returned from the UserInfo Endpoint or in the ID Token. It is represented as a JSON object that could use as member <code>{"userinfo":{...}</code> - which content indicates which claims to return at the UserInfo Endpoint - or <code>{"id_token":{...}</code> - which indicates those to return at the ID Token -, together with indication whether the claim is voluntary (default) or essential.<br><br><b>Note</b>: to avoid the need of creating an additionnal request, itsme® recomends to create a JSON object using <code>{"id_token":{...}</code> as member.<br /><br><br>Possible user's details your application can request is listed below.<br />
         <table>
           <tr>
             <td>{% include parameter.html name="name" req="OPTIONAL" %}</td><td>Returns user's full name in displayable form including all name parts, possibly including titles and suffixes.</td>
@@ -972,7 +972,7 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
     </tr>
     <tr>
       <td>{% include parameter.html name="claims" req="OPTIONAL" %}</td>
-      <td>Requests specific user's details to be returned from the UserInfo Endpoint or in the ID Token. It is represented as a JSON object that could use as member <code>{"userinfo":{...}</code> - which content indicates which claims to return at the UserInfo Endpoint - or <code>{"id_token":{...}</code> - which indicates those to return at the ID Token -, together with indication whether the claim is voluntary (default) or essential.<br><br>Possible user's details your application can request is listed below.<br />
+      <td>Requests specific user's details to be returned from the UserInfo Endpoint or in the ID Token. It is represented as a JSON object that could use as member <code>{"userinfo":{...}</code> - which content indicates which claims to return at the UserInfo Endpoint - or <code>{"id_token":{...}</code> - which indicates those to return at the ID Token -, together with indication whether the claim is voluntary (default) or essential.<br><br><b>Note</b>: to avoid the need of creating an additionnal request, itsme® recomends to create a JSON object using <code>{"id_token":{...}</code> as member.<br /><br><br>Possible user's details your application can request is listed below.<br />
         <table>
           <tr>
             <td>{% include parameter.html name="name" req="OPTIONAL" %}</td><td>Returns user's full name in displayable form including all name parts, possibly including titles and suffixes.</td>
