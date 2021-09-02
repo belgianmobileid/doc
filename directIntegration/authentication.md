@@ -451,7 +451,7 @@ If the same user would opt to re-create an itsme® afterwards, he will need to r
 
 {% tab Discovery RSA keys %}
 
-<b><code>GET https://idp.<i>[e2e/prd]</i>.itsme.services/v2/.well-known/openid-configuration</code></b>
+<b><code>GET https://idp.<i><b>[e2e/prd]</b></i>.itsme.services/v2/.well-known/openid-configuration</code></b>
 
 To simplify implementations and increase flexibility, <a href="https://openid.net/specs/openid-connect-discovery-1_0.html" target="blank">OpenID Connect allows the use of a Discovery Document</a>, a JSON document containing key-value pairs which provide details about itsme® configuration, such as the 
 
@@ -465,7 +465,7 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
 
 {% tab Discovery AES key %}
 
-<b><code>GET https://oidc.<i>[e2e/prd]</i>.itsme.services/clientsecret-oidc/csapi/v0.1/.well-known/openid-configuration</code></b>
+<b><code>GET https://oidc.<i><b>[e2e/prd]</b></i>.itsme.services/clientsecret-oidc/csapi/v0.1/.well-known/openid-configuration</code></b>
 
 To simplify implementations and increase flexibility, <a href="https://openid.net/specs/openid-connect-discovery-1_0.html" target="blank">OpenID Connect allows the use of a Discovery Document</a>, a JSON document containing key-value pairs which provide details about itsme® configuration, such as the
 
@@ -479,7 +479,7 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
 
 {% tab Discovery AES + PKCE %}
 
-<b><code>GET https://oidc.<i>[e2e/prd]</i>.itsme.services/clientsecret-oidc/csapi/v0.1/.well-known/openid-configuration</code></b>
+<b><code>GET https://oidc.<i><b>[e2e/prd]</b></i>.itsme.services/clientsecret-oidc/csapi/v0.1/.well-known/openid-configuration</code></b>
 
 To simplify implementations and increase flexibility, <a href="https://openid.net/specs/openid-connect-discovery-1_0.html" target="blank">OpenID Connect allows the use of a Discovery Document</a>, a JSON document containing key-value pairs which provide details about itsme® configuration, such as the
 
@@ -501,7 +501,7 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
 
 {% tab AuthorizationRequest RSA keys %}
 
-<b><code>GET https://idp.<i>[e2e/prd]</i>.itsme.services/v2/authorization</code></b>
+<b><code>GET https://idp.<i><b>[e2e/prd]</b></i>.itsme.services/v2/authorization</code></b>
 
 ### Parameters
 
@@ -694,7 +694,7 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
 
 {% tab AuthorizationRequest AES key %}
 
-<b><code>GET https://oidc.<i>[e2e/prd]</i>.itsme.services/clientsecret-oidc/csapi/v0.1/connect/authorize</code></b>
+<b><code>GET https://oidc.<i><b>[e2e/prd]</b></i>.itsme.services/clientsecret-oidc/csapi/v0.1/connect/authorize</code></b>
 
 ### Parameters
 
@@ -887,7 +887,7 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
 
 {% tab AuthorizationRequest AES + PKCE %}
 
-<b><code>GET https://oidc.<i>[e2e/prd]</i>.itsme.services/clientsecret-oidc/csapi/v0.1/connect/authorize</code></b>
+<b><code>GET https://oidc.<i><b>[e2e/prd]</b></i>.itsme.services/clientsecret-oidc/csapi/v0.1/connect/authorize</code></b>
 
 ### Parameters
 
@@ -1193,7 +1193,7 @@ Location: https://client.example.org/cb?
 
 {% tab TokenRequest RSA keys %}
 
-<b><code>POST https://idp.<i>[e2e/prd]</i>.itsme.services/v2/token</code></b>
+<b><code>POST https://idp.<i><b>[e2e/prd]</b></i>.itsme.services/v2/token</code></b>
 
 To assert the identity of the user, the <code>code</code> received previously needs to be exchanged for an ID token and access token. During this step, your application has to authenticate itself to our server using RSA keys. 
 
@@ -1268,7 +1268,7 @@ To assert the identity of the user, the <code>code</code> received previously ne
 
 {% tab TokenRequest AES key %}
 
-<b><code>POST https://oidc.<i>[e2e/prd]</i>.itsme.services/clientsecret-oidc/csapi/v0.1/connect/token</code></b>
+<b><code>POST https://oidc.<i><b>[e2e/prd]</b></i>.itsme.services/clientsecret-oidc/csapi/v0.1/connect/token</code></b>
 
 To assert the identity of the user, the <code>code</code> received previously needs to be exchanged for an ID token and access token. During this step, your application has to authenticate itself to our server using AES keys. 
 
@@ -1325,7 +1325,7 @@ To assert the identity of the user, the <code>code</code> received previously ne
 
 {% tab TokenRequest AES + PKCE %}
 
-<b><code>POST https://oidc.<i>[e2e/prd]</i>.itsme.services/clientsecret-oidc/csapi/v0.1/connect/token</code></b>
+<b><code>POST https://oidc.<i><b>[e2e/prd]</b></i>.itsme.services/clientsecret-oidc/csapi/v0.1/connect/token</code></b>
 
 To assert the identity of the user, the <code>code</code> received previously needs to be exchanged for an ID token and access token. During this step, your application has to authenticate itself to our server using AES keys. 
 
@@ -1552,7 +1552,7 @@ Pragma: no-cache
 
 {% tab UserInfoRequest RSA keys %}
 
-<b><code>GET https://idp.<i>[e2e/prd]</i>.itsme.services/v2/userinfo</code></b>
+<b><code>GET https://idp.<i><b>[e2e/prd]</b></i>.itsme.services/v2/userinfo</code></b>
 
 The UserInfo Endpoint returns previously consented user profile information to your application. In other words, if the required claims are not returned in the ID Token, you can obtain the additional claims by presenting the access token to the itsme® UserInfo Endpoint. This is achieved by sending a HTTP GET request to the Userinfo Endpoint, passing the access token value in the Authorization header using the Bearer authentication scheme.
 
@@ -1570,7 +1570,7 @@ The UserInfo Response is represented as a signed and encrypted JWT. So, before b
 
 {% tab UserInfoRequest AES key %}
 
-<b><code>GET https://oidc.<i>[e2e/prd]</i>.itsme.services/clientsecret-oidc/csapi/v0.1/connect/userinfo</code></b>
+<b><code>GET https://oidc.<i><b>[e2e/prd]</b></i>.itsme.services/clientsecret-oidc/csapi/v0.1/connect/userinfo</code></b>
 
 The UserInfo Endpoint returns previously consented user profile information to your application. In other words, if the required claims are not returned in the ID Token, you can obtain the additional claims by presenting the access token to the itsme® UserInfo Endpoint. This is achieved by sending a HTTP GET request to the Userinfo Endpoint, passing the access token value in the Authorization header using the Bearer authentication scheme.
 
@@ -1587,7 +1587,7 @@ The UserInfo Response is represented as a signed and encrypted JWT. So, before b
 
 {% tab UserInfoRequest AES + PKCE %}
 
-<b><code>GET https://oidc.<i>[e2e/prd]</i>.itsme.services/clientsecret-oidc/csapi/v0.1/connect/userinfo</code></b>
+<b><code>GET https://oidc.<i><b>[e2e/prd]</b></i>.itsme.services/clientsecret-oidc/csapi/v0.1/connect/userinfo</code></b>
 
 The UserInfo Endpoint returns previously consented user profile information to your application. In other words, if the required claims are not returned in the ID Token, you can obtain the additional claims by presenting the access token to the itsme® UserInfo Endpoint. This is achieved by sending a HTTP GET request to the Userinfo Endpoint, passing the access token value in the Authorization header using the Bearer authentication scheme.
 
@@ -1712,7 +1712,7 @@ Not applicable.
 
 {% tab RevokeRequest AES key %}
 
-<b><code>POST https://oidc.<i>[e2e/prd]</i>.itsme.services/clientsecret-oidc/csapi/v0.1/connect/revoke</code></b>
+<b><code>POST https://oidc.<i><b>[e2e/prd]</b></i>.itsme.services/clientsecret-oidc/csapi/v0.1/connect/revoke</code></b>
 
 The Revocation Endpoint enables your application to notify itsme® that a previously obtained access token is no longer needed and MUST be revoked.
 
