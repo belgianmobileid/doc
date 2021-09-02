@@ -1744,7 +1744,7 @@ itsme® responds with HTTP status code 200 if the token has been revoked success
 
 {% tab RevokeRequest AES + PKCE %}
 
-<b><code>POST https://oidc.<i>[e2e/prd]</i>.itsme.services/clientsecret-oidc/csapi/v0.1/connect/revoke</code></b>
+<b><code>POST https://oidc.<i><b>[e2e/prd]</b></i>.itsme.services/clientsecret-oidc/csapi/v0.1/connect/revoke</code></b>
 
 The Revocation Endpoint enables your application to notify itsme® that a previously obtained access token is no longer needed and MUST be revoked.
 
