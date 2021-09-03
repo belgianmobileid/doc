@@ -503,7 +503,7 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
 
 <b><code>GET https://idp.<i><b>[e2e/prd]</b></i>.itsme.services/v2/authorization</code></b>
 
-<aside class="notice">When implementing the <b>Identification</b> service, following rule apply : you MUST at least specify one user claim in the <code>scope</code> parameter - <code>profile</code> <code>email</code> <code>address</code> ... - or in the <code>claims</code> parameter - <code>name</code> <code>birthdate</code><code>http://itsme.services/v2/claim/claim_citizenship</code>.
+<aside class="notice">When implementing the <b>Identification</b> service, you MUST at least specify one user claim in the <code>scope</code> parameter - <code>profile</code> <code>email</code> <code>address</code> ... - or in the <code>claims</code> parameter - <code>name</code> <code>birthdate</code><code>http://itsme.services/v2/claim/claim_citizenship</code>.
 </aside>
 
 ### Parameters
@@ -576,7 +576,7 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
     </tr>
     <tr>
       <td>{% include parameter.html name="acr_values" req="OPTIONAL" %}</td>
-      <td>Indicates the authentication method required to process the request, represented as a space-separated list of tag values, ordered by preference.<br><br>Possible values : <code>http://itsme.services/v2/claim/acr_basic</code> <code>http://itsme.services/v2/claim/acr_advanced</code><br><br><b>Note</b> : If these two values are provided only the most constraining authentication method will be applied, e.g. <code>http://itsme.services/v2/claim/acr_advanced</code>.<br />
+      <td>Indicates the authentication method required to process the request, represented as a space-separated list of tag values, ordered by preference.<br><br>Possible values : <code>http://itsme.services/v2/claim/acr_basic</code> <code>http://itsme.services/v2/claim/acr_advanced</code><br><br><b>Note</b> : if these two values are provided only the most constraining authentication method will be applied, e.g. <code>http://itsme.services/v2/claim/acr_advanced</code>.<br />
         <table>
           <tr>
             <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/acr_basic" req="" %}</td><td>It lets the user to choose either fingerprint usage (if device is compatible) or itsme® code. If the <code>acr_values</code> parameter is not specified, this is the default authentication method.</td>
@@ -699,7 +699,7 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
 
 <b><code>GET https://oidc.<i><b>[e2e/prd]</b></i>.itsme.services/clientsecret-oidc/csapi/v0.1/connect/authorize</code></b>
 
-<aside class="notice">When implementing the <b>Identification</b> service, following rule apply : you MUST at least specify one user claim in the <code>scope</code> parameter - <code>profile</code> <code>email</code> <code>address</code> ... - or in the <code>claims</code> parameter - <code>name</code> <code>birthdate</code><code>http://itsme.services/v2/claim/claim_citizenship</code>.
+<aside class="notice">When implementing the <b>Identification</b> service, you MUST at least specify one user claim in the <code>scope</code> parameter - <code>profile</code> <code>email</code> <code>address</code> ... - or in the <code>claims</code> parameter - <code>name</code> <code>birthdate</code><code>http://itsme.services/v2/claim/claim_citizenship</code>.
 </aside>
 
 ### Parameters
@@ -895,7 +895,7 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
 
 <b><code>GET https://oidc.<i><b>[e2e/prd]</b></i>.itsme.services/clientsecret-oidc/csapi/v0.1/connect/authorize</code></b>
 
-<aside class="notice">When implementing the <b>Identification</b> service, following rule apply : you MUST at least specify one user claim in the <code>scope</code> parameter - <code>profile</code> <code>email</code> <code>address</code> ... - or in the <code>claims</code> parameter - <code>name</code> <code>birthdate</code><code>http://itsme.services/v2/claim/claim_citizenship</code>.
+<aside class="notice">When implementing the <b>Identification</b> service, you MUST at least specify one user claim in the <code>scope</code> parameter - <code>profile</code> <code>email</code> <code>address</code> ... - or in the <code>claims</code> parameter - <code>name</code> <code>birthdate</code><code>http://itsme.services/v2/claim/claim_citizenship</code>.
 </aside>
 
 ### Parameters
