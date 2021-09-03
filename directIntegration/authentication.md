@@ -43,24 +43,24 @@ Upon clicking this button, the user will be redirected to our Front-End. itsme®
 To protect the exchange of sensitive information and ensure the requested information gets issued to a legitimate application and not some other party, the OpenID Connect protocol uses JSON Web Token (JWT) which can be signed and/or encrypted. itsme® supports 3 cryptographic methods to perform the signing and encryption of JWTs :
 
 <ul>
-  <li>Asymmetric key pair</li>
-  <li>Symmetric key</li>
-  <li>Symmetric key + PKCE</li>
+  <li>Public- and private-key key pair</li>
+  <li>secret key</li>
+  <li>secret key + Proof of Key for Code Exchange PKCE) security extension</li>
 </ul>
 
 <aside class="notice">You will have to choose between one of these methods when <a href="https://belgianmobileid.github.io/doc/getting-started.html#getting-started" target="blank">registering your project</a>.
 </aside>
 
-### Asymmetric key method and JWKSet URI
+### Public- and private-key method and JWKSet URI
 
-Asymmetric Encryption uses linked public- and private-key pairs to encrypt and decrypt senders’ and recipients’ sensitive data. It is also known as public-key cryptography or public-key encryption.
+This method uses linked public- and private-key pairs to encrypt and decrypt senders’ and recipients’ sensitive data. It is also known as public-key cryptography or public-key encryption.
 
 <aside class="notice">This method requires that each party exposes its public keys as a simple JWK Set document on a URI publicly accessible, and keep its private keys for itself. 
 </aside>
 
 Using the <code>jwks_uri</code> key retrieve the URI for itsme® from the <a href="https://belgianmobileid.github.io/doc/authentication/#itsme-discovery-document" target="blank">itsme® Discovery document</a>, .
 
-Your private and public keys can be generated using your own tool or via Yeoman. If using Yeoman, you need to install generator-itsme with NPM:
+Your public and private key can be generated using your own tool or via Yeoman. If using Yeoman, you need to install generator-itsme with NPM:
 
 ```
 $ npm install -g yo generator-itsme
@@ -80,25 +80,25 @@ The Yeoman tool will generate two files, the jwks_private.json which MUST be sto
 <aside class="notice">Whatever the tool you are choosing to create your key pairs, don't forget to send your JWK Set URI by email to <a href = "mailto: onboarding@itsme.be">onboarding@itsme.be</a> and itsme® will make sure to complete the configuration for you in no time!
 </aside>
 
-<aside class="notice">The asymmetric algorithms – needed to sign and/or encrypt a JWT – are listed in the <a href="https://belgianmobileid.github.io/doc/authentication/#itsme-discovery-document" target="blank">itsme® Discovery document</a> for more information.
+<aside class="notice">The algorithms – needed to sign and/or encrypt a JWT or to authenticate to our Token Endpoint – are listed in the <a href="https://belgianmobileid.github.io/doc/authentication/#itsme-discovery-document" target="blank">itsme® Discovery document</a> for more information.
 </aside>
 
 
-### Symmetric key method
+### Secret key method
 
-Symmetric key cryptography method, or Symmetric Encryption, uses the same secret key to encrypt and decrypt sensitive information. This approach is the inverse of Asymmetric Encryption, which uses one key to encrypt and another to decrypt. 
+Secret key cryptography method uses the same secret key to encrypt and decrypt sensitive information. This approach is the inverse of public- and private-key encryption.
 
 This method requires the exchange of a static secret to be held by both the sender and the data receiver. The secret value will be provided by itsme® when <a href="https://belgianmobileid.github.io/doc/getting-started.html#getting-started" target="blank">registering your project</a>.
 
-<aside class="notice">The symmetric algorithms – needed to sign and/or encrypt a JWT – are listed in the <a href="https://belgianmobileid.github.io/doc/authentication/#itsme-discovery-document" target="blank">itsme® Discovery document</a> for more information.
+<aside class="notice">The algorithms – needed to sign and/or encrypt a JWT or to authenticate to our Token Endpoint – are listed in the <a href="https://belgianmobileid.github.io/doc/authentication/#itsme-discovery-document" target="blank">itsme® Discovery document</a> for more information.
 </aside>
 
-<aside class="notice">If you choose to go with the symmetric method, you will be able to specify if the ID Token JWT needs to be signed with the an asymmetric algorithm (e.g. <code>RS256</code>) or with a symmetric algorithm (e.g. : <code>HS256</code>). When using the <code>RS256</code> algorithm, our public keys will be needed to verify the signature. This information can be found in our <a href="https://belgianmobileid.github.io/doc/authentication/#itsme-discovery-document" target="blank">itsme® Discovery document</a>, using the key <code>jwks_uri</code>.
+<aside class="notice">If you choose to go with the secret key method, you will be able to specify if the ID Token JWT needs to be signed with the an asymmetric algorithm (e.g. <code>RS256</code>) or with a symmetric algorithm (e.g. : <code>HS256</code>). When using the <code>RS256</code> algorithm, our public keys will be needed to verify the signature. This information can be found in our <a href="https://belgianmobileid.github.io/doc/authentication/#itsme-discovery-document" target="blank">itsme® Discovery document</a>, using the key <code>jwks_uri</code>.
 </aside>
 
 ### PKCE-enhanced flow
 
-When using the symmetric key cryptography method, itsme® also supports an extra security extension named Proof of Key for Code Exchange (<a href="https://datatracker.ietf.org/doc/html/rfc7636" target="blank">PKCE</a>). This additionnal layer of security is intended mitigate some Authorization Code Interception Attack.
+When using the secret key cryptography method, itsme® also supports an extra security extension named Proof of Key for Code Exchange (<a href="https://datatracker.ietf.org/doc/html/rfc7636" target="blank">PKCE</a>). This additionnal layer of security is intended mitigate some Authorization Code Interception Attack.
 
 It implies adding a random string, named <code>code_verifier</code>, to your Authorization Request and then a SHA256 hash of that string, named <code>code_challenge</code>, to your Token Request.
 
@@ -449,7 +449,7 @@ If the same user would opt to re-create an itsme® afterwards, he will need to r
 
 {% tabs Discovery %}
 
-{% tab Discovery RSA keys %}
+{% tab Discovery Public- and private-key %}
 
 <b><code>GET https://idp.<i><b>[e2e/prd]</b></i>.itsme.services/v2/.well-known/openid-configuration</code></b>
 
@@ -463,7 +463,7 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
 
 {% endtab %}
 
-{% tab Discovery AES key %}
+{% tab Discovery Secret key %}
 
 <b><code>GET https://oidc.<i><b>[e2e/prd]</b></i>.itsme.services/clientsecret-oidc/csapi/v0.1/.well-known/openid-configuration</code></b>
 
@@ -477,7 +477,7 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
 
 {% endtab %}
 
-{% tab Discovery AES + PKCE %}
+{% tab Discovery Secret key + PKCE %}
 
 <b><code>GET https://oidc.<i><b>[e2e/prd]</b></i>.itsme.services/clientsecret-oidc/csapi/v0.1/.well-known/openid-configuration</code></b>
 
@@ -499,7 +499,7 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
 
 {% tabs AuthorizationRequest %}
 
-{% tab AuthorizationRequest RSA keys %}
+{% tab AuthorizationRequest Public- and private-key keys %}
 
 <b><code>GET https://idp.<i><b>[e2e/prd]</b></i>.itsme.services/v2/authorization</code></b>
 
@@ -692,7 +692,7 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
 
 {% endtab %}
 
-{% tab AuthorizationRequest AES key %}
+{% tab AuthorizationRequest Secret key %}
 
 <b><code>GET https://oidc.<i><b>[e2e/prd]</b></i>.itsme.services/clientsecret-oidc/csapi/v0.1/connect/authorize</code></b>
 
@@ -885,7 +885,7 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
 
 {% endtab %}
 
-{% tab AuthorizationRequest AES + PKCE %}
+{% tab AuthorizationRequest Secret key + PKCE %}
 
 <b><code>GET https://oidc.<i><b>[e2e/prd]</b></i>.itsme.services/clientsecret-oidc/csapi/v0.1/connect/authorize</code></b>
 
@@ -1097,7 +1097,7 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
 
 {% tabs AuthorizationExample %}
 
-{% tab AuthorizationExample RSA keys %}
+{% tab AuthorizationExample Public- and private-key %}
 
 ***Request***
 
@@ -1191,7 +1191,7 @@ Location: https://client.example.org/cb?
 
 {% tabs TokenRequest %}
 
-{% tab TokenRequest RSA keys %}
+{% tab TokenRequest Public- and private-key %}
 
 <b><code>POST https://idp.<i><b>[e2e/prd]</b></i>.itsme.services/v2/token</code></b>
 
@@ -1266,7 +1266,7 @@ To assert the identity of the user, the <code>code</code> received previously ne
 
 {% endtab %}
 
-{% tab TokenRequest AES key %}
+{% tab TokenRequest Secret key %}
 
 <b><code>POST https://oidc.<i><b>[e2e/prd]</b></i>.itsme.services/clientsecret-oidc/csapi/v0.1/connect/token</code></b>
 
@@ -1323,7 +1323,7 @@ To assert the identity of the user, the <code>code</code> received previously ne
 
 {% endtab %}
 
-{% tab TokenRequest AES + PKCE %}
+{% tab TokenRequest Secret key + PKCE %}
 
 <b><code>POST https://oidc.<i><b>[e2e/prd]</b></i>.itsme.services/clientsecret-oidc/csapi/v0.1/connect/token</code></b>
 
@@ -1391,7 +1391,7 @@ To assert the identity of the user, the <code>code</code> received previously ne
 
 {% tabs TokenExample %}
 
-{% tab TokenExample RSA keys %}
+{% tab TokenExample Public- and private-key %}
 
 ***Request***
 
@@ -1435,7 +1435,7 @@ Pragma: no-cache
 
 {% endtab %}
 
-{% tab TokenExample AES key %}
+{% tab TokenExample Secret key %}
 
 ***Request***
 
@@ -1489,7 +1489,7 @@ Pragma: no-cache
 
 {% endtab %}
 
-{% tab TokenExample AES + PKCE %}
+{% tab TokenExample Secret key + PKCE %}
 
 ***Request***
 
@@ -1550,7 +1550,7 @@ Pragma: no-cache
 
 {% tabs UserInfoRequest %}
 
-{% tab UserInfoRequest RSA keys %}
+{% tab UserInfoRequest Public- and private-key %}
 
 <b><code>GET https://idp.<i><b>[e2e/prd]</b></i>.itsme.services/v2/userinfo</code></b>
 
@@ -1568,7 +1568,7 @@ The UserInfo Response is represented as a signed and encrypted JWT. So, before b
 
 {% endtab %}
 
-{% tab UserInfoRequest AES key %}
+{% tab UserInfoRequest Secret key %}
 
 <b><code>GET https://oidc.<i><b>[e2e/prd]</b></i>.itsme.services/clientsecret-oidc/csapi/v0.1/connect/userinfo</code></b>
 
@@ -1585,7 +1585,7 @@ The UserInfo Response is represented as a signed and encrypted JWT. So, before b
 
 {% endtab %}
 
-{% tab UserInfoRequest AES + PKCE %}
+{% tab UserInfoRequest Secret key + PKCE %}
 
 <b><code>GET https://oidc.<i><b>[e2e/prd]</b></i>.itsme.services/clientsecret-oidc/csapi/v0.1/connect/userinfo</code></b>
 
@@ -1609,7 +1609,7 @@ The UserInfo Response is represented as a signed and encrypted JWT. So, before b
 
 {% tabs UserInfoExample %}
 
-{% tab UserInfoExample RSA keys %}
+{% tab UserInfoExample Public- and private-key %}
 
 ***Request***
 
@@ -1638,7 +1638,7 @@ Content-Type: application/json
 
 {% endtab %}
 
-{% tab UserInfoExample AES key %}
+{% tab UserInfoExample Secret key %}
 
 ***Request***
 
@@ -1667,7 +1667,7 @@ Content-Type: application/json
 
 {% endtab %}
 
-{% tab UserInfoExample AES + PKCE %}
+{% tab UserInfoExample Secret key + PKCE %}
 
 ***Request***
 
@@ -1704,13 +1704,13 @@ Content-Type: application/json
 
 {% tabs RevokeRequest %}
 
-{% tab RevokeRequest RSA keys %}
+{% tab RevokeRequest Public- and private-key %}
 
 Not applicable.
 
 {% endtab %}
 
-{% tab RevokeRequest AES key %}
+{% tab RevokeRequest Secret key %}
 
 <b><code>POST https://oidc.<i><b>[e2e/prd]</b></i>.itsme.services/clientsecret-oidc/csapi/v0.1/connect/revoke</code></b>
 
@@ -1742,7 +1742,7 @@ itsme® responds with HTTP status code 200 if the token has been revoked success
 
 {% endtab %}
 
-{% tab RevokeRequest AES + PKCE %}
+{% tab RevokeRequest Secret key + PKCE %}
 
 <b><code>POST https://oidc.<i><b>[e2e/prd]</b></i>.itsme.services/clientsecret-oidc/csapi/v0.1/connect/revoke</code></b>
 
@@ -1780,13 +1780,13 @@ itsme® responds with HTTP status code 200 if the token has been revoked success
 
 {% tabs RevokeExample %}
 
-{% tab RevokeExample RSA keys %}
+{% tab RevokeExample Public- and private-key %}
 
 Not applicable.
 
 {% endtab %}
 
-{% tab RevokeExample AES key %}
+{% tab RevokeExample Secret key %}
 
 ***Request***
 
@@ -1809,7 +1809,7 @@ HTTP/1.1 200 OK
 
 {% endtab %}
 
-{% tab RevokeExample AES + PKCE %}
+{% tab RevokeExample Secret key + PKCE %}
 
 ***Request***
 
