@@ -499,7 +499,7 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
 
 {% tabs AuthorizationRequest %}
 
-{% tab AuthorizationRequest Public- and private-key keys %}
+{% tab AuthorizationRequest Public- and private-key %}
 
 <b><code>GET https://idp.<i><b>[e2e/prd]</b></i>.itsme.services/v2/authorization</code></b>
 
