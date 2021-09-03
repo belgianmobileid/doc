@@ -447,9 +447,9 @@ If the same user would opt to re-create an itsme® afterwards, he will need to r
 <a id="OpenIDConfig"></a>
 ## itsme® Discovery Document
 
-{% tabs IdDiscovery %}
+{% tabs Discovery %}
 
-{% tab IdDiscovery Public- and private-key %}
+{% tab Discovery Public- and private-key %}
 
 <b><code>GET https://idp.<i><b>[e2e/prd]</b></i>.itsme.services/v2/.well-known/openid-configuration</code></b>
 
@@ -463,7 +463,7 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
 
 {% endtab %}
 
-{% tab IdDiscovery Secret key %}
+{% tab Discovery Secret key %}
 
 <b><code>GET https://oidc.<i><b>[e2e/prd]</b></i>.itsme.services/clientsecret-oidc/csapi/v0.1/.well-known/openid-configuration</code></b>
 
@@ -477,7 +477,7 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
 
 {% endtab %}
 
-{% tab IdDiscovery Secret key + PKCE %}
+{% tab Discovery Secret key + PKCE %}
 
 <b><code>GET https://oidc.<i><b>[e2e/prd]</b></i>.itsme.services/clientsecret-oidc/csapi/v0.1/.well-known/openid-configuration</code></b>
 
@@ -497,9 +497,9 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
 <a id="AuthNReq"></a>
 ## Authorization Request
 
-{% tabs IdAuthorizationRequest %}
+{% tabs AuthorizationRequest %}
 
-{% tab IdAuthorizationRequest Public- and private-key %}
+{% tab AuthorizationRequest Public- and private-key %}
 
 <b><code>GET https://idp.<i><b>[e2e/prd]</b></i>.itsme.services/v2/authorization</code></b>
 
@@ -692,7 +692,7 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
 
 {% endtab %}
 
-{% tab IdAuthorizationRequest Secret key %}
+{% tab AuthorizationRequest Secret key %}
 
 <b><code>GET https://oidc.<i><b>[e2e/prd]</b></i>.itsme.services/clientsecret-oidc/csapi/v0.1/connect/authorize</code></b>
 
@@ -885,7 +885,7 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
 
 {% endtab %}
 
-{% tab IdAuthorizationRequest Secret key + PKCE %}
+{% tab AuthorizationRequest Secret key + PKCE %}
 
 <b><code>GET https://oidc.<i><b>[e2e/prd]</b></i>.itsme.services/clientsecret-oidc/csapi/v0.1/connect/authorize</code></b>
 
@@ -1095,38 +1095,9 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
 
 ### Example
 
-{% tabs IdAuthorizationExample %}
+{% tabs AuthorizationExample %}
 
-{% tab IdAuthorizationExample Public- and private-key %}
-
-***Request***
-
-```http
-GET /authorize HTTP/1.1
-Host: server.example.com
-
-response_type=code
-  &client_id=s6BhdRkqt3
-  &redirect_uri=https%3A%2F%2Fclient.example.org%2Fcb
-  &scope=openid%20service:TEST_code%20profile%20email
-  &nonce=n-0S6_WzA2Mj
-  &state=af0ifjsldkj
-  &acr_values=http://itsme.services/V2/claim/acr_basic
-```
-
-***Response***
-
-```http
-HTTP/1.1 302 Found
-Location: https://client.example.org/cb?
-  code=SplxlOBeZQQYbYS6WxSbIA
-  &state=af0ifjsldkj
-```
-
-{% endtab %}
-
-{% tab IdAuthorizationExample Secret key %}
-
+{% tab AuthorizationExample Public- and private-key %}
 
 ***Request***
 
@@ -1154,7 +1125,36 @@ Location: https://client.example.org/cb?
 
 {% endtab %}
 
-{% tab IdAuthorizationExample Secret key + PKCE %}
+{% tab AuthorizationExample Secret key %}
+
+
+***Request***
+
+```http
+GET /authorize HTTP/1.1
+Host: server.example.com
+
+response_type=code
+  &client_id=s6BhdRkqt3
+  &redirect_uri=https%3A%2F%2Fclient.example.org%2Fcb
+  &scope=openid%20service:TEST_code%20profile%20email
+  &nonce=n-0S6_WzA2Mj
+  &state=af0ifjsldkj
+  &acr_values=http://itsme.services/V2/claim/acr_basic
+```
+
+***Response***
+
+```http
+HTTP/1.1 302 Found
+Location: https://client.example.org/cb?
+  code=SplxlOBeZQQYbYS6WxSbIA
+  &state=af0ifjsldkj
+```
+
+{% endtab %}
+
+{% tab AuthorizationExample Secret key + PKCE %}
 
 
 ***Request***
@@ -1189,9 +1189,9 @@ Location: https://client.example.org/cb?
 <a id="TokenReq"></a>
 ## Token Request
 
-{% tabs IdTokenRequest %}
+{% tabs TokenRequest %}
 
-{% tab IdTokenRequest Public- and private-key %}
+{% tab TokenRequest Public- and private-key %}
 
 <b><code>POST https://idp.<i><b>[e2e/prd]</b></i>.itsme.services/v2/token</code></b>
 
@@ -1266,7 +1266,7 @@ To assert the identity of the user, the <code>code</code> received previously ne
 
 {% endtab %}
 
-{% tab IdTokenRequest Secret key %}
+{% tab TokenRequest Secret key %}
 
 <b><code>POST https://oidc.<i><b>[e2e/prd]</b></i>.itsme.services/clientsecret-oidc/csapi/v0.1/connect/token</code></b>
 
@@ -1323,7 +1323,7 @@ To assert the identity of the user, the <code>code</code> received previously ne
 
 {% endtab %}
 
-{% tab IdTokenRequest Secret key + PKCE %}
+{% tab TokenRequest Secret key + PKCE %}
 
 <b><code>POST https://oidc.<i><b>[e2e/prd]</b></i>.itsme.services/clientsecret-oidc/csapi/v0.1/connect/token</code></b>
 
@@ -1389,9 +1389,9 @@ To assert the identity of the user, the <code>code</code> received previously ne
 
 ### Example
 
-{% tabs IdTokenExample %}
+{% tabs TokenExample %}
 
-{% tab IdTokenExample Public- and private-key %}
+{% tab TokenExample Public- and private-key %}
 
 ***Request***
 
@@ -1435,7 +1435,7 @@ Pragma: no-cache
 
 {% endtab %}
 
-{% tab IdTokenExample Secret key %}
+{% tab TokenExample Secret key %}
 
 ***Request***
 
@@ -1489,7 +1489,7 @@ Pragma: no-cache
 
 {% endtab %}
 
-{% tab IdTokenExample Secret key + PKCE %}
+{% tab TokenExample Secret key + PKCE %}
 
 ***Request***
 
@@ -1548,9 +1548,9 @@ Pragma: no-cache
 <a id="UserInfoReq"></a>
 ## UserInfo Request
 
-{% tabs IdUserInfoRequest %}
+{% tabs UserInfoRequest %}
 
-{% tab IdUserInfoRequest Public- and private-key %}
+{% tab UserInfoRequest Public- and private-key %}
 
 <b><code>GET https://idp.<i><b>[e2e/prd]</b></i>.itsme.services/v2/userinfo</code></b>
 
@@ -1568,7 +1568,7 @@ The UserInfo Response is represented as a signed and encrypted JWT. So, before b
 
 {% endtab %}
 
-{% tab IdUserInfoRequest Secret key %}
+{% tab UserInfoRequest Secret key %}
 
 <b><code>GET https://oidc.<i><b>[e2e/prd]</b></i>.itsme.services/clientsecret-oidc/csapi/v0.1/connect/userinfo</code></b>
 
@@ -1585,7 +1585,7 @@ The UserInfo Response is represented as a signed and encrypted JWT. So, before b
 
 {% endtab %}
 
-{% tab IdUserInfoRequest Secret key + PKCE %}
+{% tab UserInfoRequest Secret key + PKCE %}
 
 <b><code>GET https://oidc.<i><b>[e2e/prd]</b></i>.itsme.services/clientsecret-oidc/csapi/v0.1/connect/userinfo</code></b>
 
@@ -1607,38 +1607,9 @@ The UserInfo Response is represented as a signed and encrypted JWT. So, before b
 
 ### Example
 
-{% tabs IdUserInfoExample %}
+{% tabs UserInfoExample %}
 
-{% tab IdUserInfoExample Public- and private-key %}
-
-***Request***
-
-```http
-GET /userinfo HTTP/1.1
-Host: server.example.com
-Authorization: Bearer SlAV32hkKG
-```
-
-***Response***
-
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-  {
-   "sub": "248289761001",
-   "name": "Jane Doe",
-   "given_name": "Jane",
-   "family_name": "Doe",
-   "preferred_username": "j.doe",
-   "email": "janedoe@example.com",
-   "picture": "http://example.com/janedoe/me.jpg"
-  }
-```
-
-{% endtab %}
-
-{% tab IdUserInfoExample Secret key %}
+{% tab UserInfoExample Public- and private-key %}
 
 ***Request***
 
@@ -1667,7 +1638,36 @@ Content-Type: application/json
 
 {% endtab %}
 
-{% tab IdUserInfoExample Secret key + PKCE %}
+{% tab UserInfoExample Secret key %}
+
+***Request***
+
+```http
+GET /userinfo HTTP/1.1
+Host: server.example.com
+Authorization: Bearer SlAV32hkKG
+```
+
+***Response***
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+  {
+   "sub": "248289761001",
+   "name": "Jane Doe",
+   "given_name": "Jane",
+   "family_name": "Doe",
+   "preferred_username": "j.doe",
+   "email": "janedoe@example.com",
+   "picture": "http://example.com/janedoe/me.jpg"
+  }
+```
+
+{% endtab %}
+
+{% tab UserInfoExample Secret key + PKCE %}
 
 ***Request***
 
@@ -1702,15 +1702,15 @@ Content-Type: application/json
 
 ## Revoke Request
 
-{% tabs IdRevokeRequest %}
+{% tabs RevokeRequest %}
 
-{% tab IdRevokeRequest Public- and private-key %}
+{% tab RevokeRequest Public- and private-key %}
 
 Not applicable.
 
 {% endtab %}
 
-{% tab IdRevokeRequest Secret key %}
+{% tab RevokeRequest Secret key %}
 
 <b><code>POST https://oidc.<i><b>[e2e/prd]</b></i>.itsme.services/clientsecret-oidc/csapi/v0.1/connect/revoke</code></b>
 
@@ -1742,7 +1742,7 @@ itsme® responds with HTTP status code 200 if the token has been revoked success
 
 {% endtab %}
 
-{% tab IdRevokeRequest Secret key + PKCE %}
+{% tab RevokeRequest Secret key + PKCE %}
 
 <b><code>POST https://oidc.<i><b>[e2e/prd]</b></i>.itsme.services/clientsecret-oidc/csapi/v0.1/connect/revoke</code></b>
 
@@ -1778,15 +1778,15 @@ itsme® responds with HTTP status code 200 if the token has been revoked success
 
 ### Example
 
-{% tabs IdRevokeExample %}
+{% tabs RevokeExample %}
 
-{% tab IdRevokeExample Public- and private-key %}
+{% tab RevokeExample Public- and private-key %}
 
 Not applicable.
 
 {% endtab %}
 
-{% tab IdRevokeExample Secret key %}
+{% tab RevokeExample Secret key %}
 
 ***Request***
 
@@ -1809,7 +1809,7 @@ HTTP/1.1 200 OK
 
 {% endtab %}
 
-{% tab IdRevokeExample Secret key + PKCE %}
+{% tab RevokeExample Secret key + PKCE %}
 
 ***Request***
 
