@@ -1125,7 +1125,7 @@ Location: https://client.example.org/cb?
 
 {% endtab %}
 
-{% tab AuthorizationExample AES key %}
+{% tab AuthorizationExample Secret key %}
 
 
 ***Request***
@@ -1154,7 +1154,7 @@ Location: https://client.example.org/cb?
 
 {% endtab %}
 
-{% tab AuthorizationExample AES + PKCE %}
+{% tab AuthorizationExample Secret key + PKCE %}
 
 
 ***Request***
@@ -1195,7 +1195,7 @@ Location: https://client.example.org/cb?
 
 <b><code>POST https://idp.<i><b>[e2e/prd]</b></i>.itsme.services/v2/token</code></b>
 
-To assert the identity of the user, the <code>code</code> received previously needs to be exchanged for an ID token and access token. During this step, your application has to authenticate itself to our server using RSA keys. 
+To assert the identity of the user, the <code>code</code> received previously needs to be exchanged for an ID token and access token. During this step, your application has to authenticate itself to our server using the public- and private-key pair method. 
 
 ### Parameters
 
@@ -1270,7 +1270,7 @@ To assert the identity of the user, the <code>code</code> received previously ne
 
 <b><code>POST https://oidc.<i><b>[e2e/prd]</b></i>.itsme.services/clientsecret-oidc/csapi/v0.1/connect/token</code></b>
 
-To assert the identity of the user, the <code>code</code> received previously needs to be exchanged for an ID token and access token. During this step, your application has to authenticate itself to our server using AES keys. 
+To assert the identity of the user, the <code>code</code> received previously needs to be exchanged for an ID token and access token. During this step, your application has to authenticate itself to our server using the secret key method. 
 
 ### Parameters
 
@@ -1327,7 +1327,7 @@ To assert the identity of the user, the <code>code</code> received previously ne
 
 <b><code>POST https://oidc.<i><b>[e2e/prd]</b></i>.itsme.services/clientsecret-oidc/csapi/v0.1/connect/token</code></b>
 
-To assert the identity of the user, the <code>code</code> received previously needs to be exchanged for an ID token and access token. During this step, your application has to authenticate itself to our server using AES keys. 
+To assert the identity of the user, the <code>code</code> received previously needs to be exchanged for an ID token and access token. During this step, your application has to authenticate itself to our server using the secret key method. 
 
 ### Parameters
 
