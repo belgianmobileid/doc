@@ -43,7 +43,7 @@ Please note also the Confirm links are only valid for a limited amount of time. 
 
 <a href="https://e2emerchant.itsme.be/oidc/authorization?redirect_uri=https%3A%2F%2Fcore-emulators-ssl.default-clu01.mgmt.belgianmobileid.be%2Fopenidclient%2Fe2e_OIDC_TEST1%2Fauthz_cb&response_type=code&client_id=OIDC_TEST1&scope=openid+service%3AOIDC_TEST1_LOGIN+profile+phone+email+address+eid&state=anystate&nonce=anonce&prompt=login+consent&max_age=1" target="blank">E2E - OIDC V1 login</a>
 
-<a href="https://idp.e2e.itsme.services/v2/authorization?response_type=code&client_id=OIDC_TEST1&redirect_uri=https%3A%2F%2Fcore-emulators-ssl.default-clu01.mgmt.belgianmobileid.be%2Fopenidclient%2Fe2e_OIDC_TEST1_I18N%2Fauthz_cb_withPicture&scope=openid+service%3AOIDC_TEST1_LOGIN_I18N+profile+phone+email+address+eid&state=anystate&nonce=anonce&prompt=login+consent&max_age=1" target="blank">E2E - OIDC V2 login</a>
+<a href="https://idp.e2e.itsme.services/v2/authorization?response_type=code&client_id=OIDC_TEST1&redirect_uri=https%3A%2F%2Fcore-emulators-ssl.default-clu01.mgmt.belgianmobileid.be%2Fopenidclient%2Fe2e_OIDC_TEST1_I18N%2Fauthz_cb_withPicture&scope=openid+service%3AOIDC_TEST1_LOGIN_I18N+profile+phone+email+address+eid&state=anystate&nonce=anonce&prompt=login+consent&max_age=1&claims={"userinfo":{"http://itsme.services/v2/claim/claim_citizenship":null}}" target="blank">E2E - OIDC V2 login</a>
       
 ### Confirm
 
