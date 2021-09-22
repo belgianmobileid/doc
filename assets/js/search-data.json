@@ -19,7 +19,7 @@
   },"3": {
     "doc": "App to App test links",
     "title": "E2E",
-    "content": "Login . E2E - OIDC V1 login . E2E - OIDC V2 login . Confirm . E2E - OIDC V1 confirm . E2E - OIDC V2 confirm . Azure B2C ClientSecret . E2E - Azure B2C . ",
+    "content": "Login . E2E - OIDC V1 login . &lt;a href=”https://idp.e2e.itsme.services/v2/authorization?response_type=code&amp;client_id=OIDC_TEST1&amp;redirect_uri=https%3A%2F%2Fcore-emulators-ssl.default-clu01.mgmt.belgianmobileid.be%2Fopenidclient%2Fe2e_OIDC_TEST1_I18N%2Fauthz_cb_withPicture&amp;scope=openid+service%3AOIDC_TEST1_LOGIN_I18N+profile+phone+email+address+eid&amp;state=anystate&amp;nonce=anonce&amp;prompt=login+consent&amp;max_age=1&amp;claims={“userinfo”:{“http://itsme.services/v2/claim/claim_citizenship”:null}}” target=”blank”&gt;E2E - OIDC V2 login&lt;/a&gt; . Confirm . E2E - OIDC V1 confirm . E2E - OIDC V2 confirm . Azure B2C ClientSecret . E2E - Azure B2C . ",
     "url": "https://belgianmobileid.github.io/doc/TestLinks/#e2e",
     "relUrl": "/TestLinks/#e2e"
   },"4": {
