@@ -14,6 +14,7 @@ Please note all the requests below ask for the following claims (all from 'scope
         <li>eid</li>
         <li>email</li>
         <li>address</li>
+      <li>phone number</li>
       </ul>
 
 Please note also the Confirm links are only valid for a limited amount of time. After a while, the request object on which they are based are wiped in the hosting server. To re-create new ones, please consult <a href="https://confluence.belgianmobileid.be/display/ITSME/How+to+create+A2A+Confirm+links" target="blank">How to create A2A confirm links</a> (hosted on BMID Confluence).
@@ -23,7 +24,7 @@ Please note also the Confirm links are only valid for a limited amount of time. 
 ## UAT
 
 ### Login
-<a href="https://uatmerchant.itsme.be/oidc/authorization?redirect_uri=https%3A%2F%2Fcore-emulators-ssl.default-clu01.mgmt.belgianmobileid.be%2Fopenidclient%2Fuat_OIDC_TEST1%2Fauthz_cb&response_type=code&client_id=OIDC_TEST1&scope=openid+service%3AOIDC_TEST1_LOGIN+profile+phone+email+address+eid&state=anystate&nonce=anonce&prompt=login+consent&max_age=1" target="blank">UAT - OIDC V1 login</a>
+<a href="https://uatmerchant.itsme.be/oidc/authorization?redirect_uri=https%3A%2F%2Fcore-emulators-ssl.default-clu01.mgmt.belgianmobileid.be%2Fopenidclient%2Fuat_OIDC_TEST1%2Fauthz_cb&response_type=code&client_id=OIDC_TEST1&scope=openid+service%3AOIDC_TEST1_LOGIN+profile+phone+email+address+eid&state=anystate&nonce=anonce&prompt=login+consent&max_age=1&claims={%22userinfo%22:{%22http://itsme.services/v2/claim/BENationalNumber%22:null, %22http://itsme.services/v2/claim/claim_citizenship%22:null,%22http://itsme.services/v2/claim/place_of_birth%22:null,%22http://itsme.services/v2/claim/physical_person_photo%22:null,%22http://itsme.services/v2/claim/claim_device%22:null,%22http://itsme.services/v2/claim/transaction_info%22:null,%22http://itsme.services/v2/claim/validityFrom%22:null,%22http://itsme.services/v2/claim/validityTo%22:null,%22http://itsme.services/v2/claim/IDDocumentSN%22:null,%22http://itsme.services/v2/claim/IDDocumentType%22:null,%22http://itsme.services/v2/claim/claim_luxtrust_ssn%22:null,%22http://itsme.services/v2/claim/BENationalNumber%22:null,%22http://itsme.services/v2/claim/claim_nl_bsn%22:null}}" target="blank">UAT - OIDC V1 login</a>
       
 <a href="https://idp.uat.itsme.services/v2/authorization?response_type=code&client_id=OIDC_TEST1&redirect_uri=https%3A%2F%2Fcore-emulators-ssl.default-clu01.mgmt.belgianmobileid.be%2Fopenidclient%2Fuat_OIDC_TEST1_I18N%2Fauthz_cb_withPicture&scope=openid+service%3AOIDC_TEST1_LOGIN_I18N+profile+phone+email+address+eid&state=anystate&nonce=anonce&prompt=login&max_age=1" target="blank">UAT - OIDC V2 login</a>
 
