@@ -1,7 +1,7 @@
 {"0": {
     "doc": "App to App test links",
     "title": "Requested data",
-    "content": "Please note all the requests below ask for the following claims (all from ‘scope’ values): &lt;ul&gt; &lt;li&gt;profile&lt;/li&gt; &lt;li&gt;eid&lt;/li&gt; &lt;li&gt;email&lt;/li&gt; &lt;li&gt;address&lt;/li&gt; &lt;/ul&gt; . Please note also the Confirm links are only valid for a limited amount of time. After a while, the request object on which they are based are wiped in the hosting server. To re-create new ones, please consult How to create A2A confirm links (hosted on BMID Confluence). ",
+    "content": "The login links request all data available. The confirm links request a basic set of data (profile, eid, address, email and phone number). Please note also the Confirm links are only valid for a limited amount of time. Under some occasions, the JWKSet of the test partner is re-generated, making the request object in the links below obsolete. To re-create new ones, please consult How to create A2A confirm links (hosted on BMID Confluence). ",
     "url": "https://belgianmobileid.github.io/doc/TestLinks/#requested-data",
     "relUrl": "/TestLinks/#requested-data"
   },"1": {
