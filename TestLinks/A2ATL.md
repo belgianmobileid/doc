@@ -8,16 +8,10 @@ nav_exclude: true
 
 # Requested data
 
-Please note all the requests below ask for the following claims (all from 'scope' values):
-      <ul>
-        <li>profile</li>
-        <li>eid</li>
-        <li>email</li>
-        <li>address</li>
-      <li>phone number</li>
-      </ul>
+The login links request all data available.
+The confirm links request a basic set of data (profile, eid, address, email and phone number).
 
-Please note also the Confirm links are only valid for a limited amount of time. After a while, the request object on which they are based are wiped in the hosting server. To re-create new ones, please consult <a href="https://confluence.belgianmobileid.be/display/ITSME/How+to+create+A2A+Confirm+links" target="blank">How to create A2A confirm links</a> (hosted on BMID Confluence).
+Please note also the Confirm links are only valid for a limited amount of time. Under some occasions, the JWKSet of the test partner is re-generated, making the request object in the links below obsolete. To re-create new ones, please consult <a href="https://confluence.belgianmobileid.be/display/ITSME/How+to+create+A2A+Confirm+links" target="blank">How to create A2A confirm links</a> (hosted on BMID Confluence).
 
 # Links
 
