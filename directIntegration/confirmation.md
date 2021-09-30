@@ -687,6 +687,12 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
           <tr>
             <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/claim_nl_bsn" req="OPTIONAL" %}</td><td>Returns the citizen service number, a unique registration number for everyone who lives in the Netherlands. This number consists of 8 to 9 digits.</td>
           </tr> 
+          <tr>
+            <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/IDDocumentSN" req="OPTIONAL" %}</td><td>Returns the Dutch ID card/passport number. This number is composed of letters at positions 1 and 2 ; letters or digits from positions 3-8: ; and a digit at position 9. The letter ‘O’ is not used in the document numbers. The digit ‘0’ (zero) MAY be used.</td>
+          </tr> 
+          <tr>
+            <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/IDDocumentType" req="OPTIONAL" %}</td><td>Returns the Dutch ID card/passport document type.</td>
+          </tr> 
         </table>
       </td>
     </tr>
@@ -880,6 +886,12 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
           <tr>
             <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/claim_nl_bsn" req="OPTIONAL" %}</td><td>Returns the citizen service number, a unique registration number for everyone who lives in the Netherlands. This number consists of 8 to 9 digits.</td>
           </tr> 
+          <tr>
+            <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/IDDocumentSN" req="OPTIONAL" %}</td><td>Returns the Dutch ID card/passport number. This number is composed of letters at positions 1 and 2 ; letters or digits from positions 3-8: ; and a digit at position 9. The letter ‘O’ is not used in the document numbers. The digit ‘0’ (zero) MAY be used.</td>
+          </tr> 
+          <tr>
+            <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/IDDocumentType" req="OPTIONAL" %}</td><td>Returns the Dutch ID card/passport document type.</td>
+          </tr> 
         </table>
       </td>
     </tr>
@@ -1072,6 +1084,12 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
           </tr> 
           <tr>
             <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/claim_nl_bsn" req="OPTIONAL" %}</td><td>Returns the citizen service number, a unique registration number for everyone who lives in the Netherlands. This number consists of 8 to 9 digits.</td>
+          </tr>
+          <tr>
+            <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/IDDocumentSN" req="OPTIONAL" %}</td><td>Returns the Dutch ID card/passport number. This number is composed of letters at positions 1 and 2 ; letters or digits from positions 3-8: ; and a digit at position 9. The letter ‘O’ is not used in the document numbers. The digit ‘0’ (zero) MAY be used.</td>
+          </tr> 
+          <tr>
+            <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/IDDocumentType" req="OPTIONAL" %}</td><td>Returns the Dutch ID card/passport document type.</td>
           </tr> 
         </table>
       </td>
