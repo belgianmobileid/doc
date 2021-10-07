@@ -527,19 +527,19 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
             <td>{% include parameter.html name="openid" req="REQUIRED" %}</td><td>It indicates that your application intends to use the OpenID Connect protocol to verify a user's identity by returning a <code>sub</code> claim which represents a unique identifier for the authenticated user.</td>
           </tr>
           <tr>
-            <td>{% include parameter.html name="profile" req="OPTIONAL" %}</td><td>Returns claims that represent basic profile information, specifically <code>family_name</code>, <code>given_name</code>, <code>name</code>, <code>gender</code>, <code>locale</code>, <code>picture</code> and <code>birthdate</code>.<br>If requested, a value will always be returned for each claim except for the <code>given_name</code> claim.</td>
+            <td>{% include parameter.html name="profile" req="OPTIONAL" %}</td><td>Returns claims that represent basic profile information, specifically <code>family_name</code>, <code>given_name</code>, <code>name</code>, <code>gender</code>, <code>locale</code>, <code>picture</code> and <code>birthdate</code>.<br><br>If requested, a value SHALL always be returned for the above claims except for the <code>given_name</code> claim which MAY NOT be returned if the user doesn't have any first name(s).</td>
           </tr>
           <tr>
-            <td>{% include parameter.html name="email" req="OPTIONAL" %}</td><td>Returns the <code>email</code> claim, which contains the user's email address, and <code>email_verified</code>, which is a boolean indicating whether the email address was verified by the user.</td>
+            <td>{% include parameter.html name="email" req="OPTIONAL" %}</td><td>Returns the <code>email</code> claim, which contains the user's email address, and <code>email_verified</code>, which is a boolean indicating whether the email address was verified by the user.<br><br>If requested, a value SHALL always be returned for the <code>email_verified</code> claim whereas the <code>email</code> claim MAY NOT be returned if the user doesn't have an email address.</td>
           </tr>
           <tr>
-            <td>{% include parameter.html name="address" req="OPTIONAL" %}</td><td>Returns the information about the user's postal address. The value of the address member is a JSON structure containing some or all of these members <code>formatted</code> <code>street_address</code> <code>postal_code</code> <code>locality</code> <code>country</code></td>
+            <td>{% include parameter.html name="address" req="OPTIONAL" %}</td><td>Returns the information about the user's postal address. The value of the address member is a JSON structure containing some or all of these members <code>formatted</code> <code>street_address</code> <code>postal_code</code> <code>locality</code> <code>country</code><br><br>If requested, a value SHALL always be returned for Belgian ID documents, and SHALL NOT be returned for Dutch ID documents.</td>
           </tr> 
           <tr>
-            <td>{% include parameter.html name="phone" req="OPTIONAL" %}</td><td>Returns the <code>phone</code> claim, which contains the user's phone number, and <code>phone_number_verified</code>, which is a boolean indicating whether the phone number was verified by the user.</td>
+            <td>{% include parameter.html name="phone" req="OPTIONAL" %}</td><td>Returns the <code>phone</code> claim, which contains the user's phone number, and <code>phone_number_verified</code>, which is a boolean indicating whether the phone number was verified by the user.<br><br>If requested, a value SHALL always be returned for the above claims.</td>
           </tr> 
           <tr>
-            <td>{% include parameter.html name="eid" req="OPTIONAL" %}</td><td>Returns the unique identification number of natural persons who are registered in Belgium, which consists of 11 digits of the form yy.mm.dd-xxx.cd (where yy.mm.dd is the birthdate of the person, xxx a sequential number - odd for males and even for females - and cd a check-digit), and the Belgian ID card number, which contains 12 digits in the form xxx-xxxxxxx-yy (the check-number yy is the remainder of the division of xxxxxxxxxx by 97).</td>
+            <td>{% include parameter.html name="eid" req="OPTIONAL" %}</td><td>Returns the unique identification number of natural persons who are registered in Belgium, which consists of 11 digits of the form yy.mm.dd-xxx.cd (where yy.mm.dd is the birthdate of the person, xxx a sequential number - odd for males and even for females - and cd a check-digit), and the Belgian ID card number, which contains 12 digits in the form xxx-xxxxxxx-yy (the check-number yy is the remainder of the division of xxxxxxxxxx by 97).<br><br>If requested, a value SHALL always be returned for the above claims.</td>
           </tr>
         </table>
       </td>
@@ -589,73 +589,73 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
       <td>Requests specific user's details to be returned from the UserInfo Endpoint or in the ID Token. It is represented as a JSON object that could use as member <code>{"userinfo":{...}</code> - which content indicates which claims to return at the UserInfo Endpoint - or <code>{"id_token":{...}</code> - which indicates those to return at the ID Token -, together with indication whether the claim is voluntary (default) or essential.<br><br><b>Note</b>: to avoid the need of creating an additionnal request, itsme® recomends to create a JSON object using <code>{"id_token":{...}</code> as member.<br /><br><br>Possible user's details your application can request is listed below.<br />
         <table>
           <tr>
-            <td>{% include parameter.html name="name" req="OPTIONAL" %}</td><td>Returns user's full name in displayable form including all name parts, possibly including titles and suffixes.</td>
+            <td>{% include parameter.html name="name" req="OPTIONAL" %}</td><td>Returns user's full name in displayable form including all name parts, possibly including titles and suffixes.<br><br>If requested, a value SHALL always be returned for this claim.</td>
           </tr>
           <tr>
-            <td>{% include parameter.html name="given_name" req="OPTIONAL" %}</td><td>Returns the given name(s) or first name(s) of the user. Note that in some cultures, people can have multiple given names; all can be present, with the names being separated by space characters.</td>
+            <td>{% include parameter.html name="given_name" req="OPTIONAL" %}</td><td>Returns the given name(s) or first name(s) of the user. Note that in some cultures, people can have multiple given names; all can be present, with the names being separated by space characters.<br><br>If requested, a value MAY NOT be returned if the user doesn't have any first name(s).</td>
           </tr>
           <tr>
-            <td>{% include parameter.html name="family_name" req="OPTIONAL" %}</td><td>Returns the surname(s) or last name(s) of the user. Note that in some cultures, people can have multiple family names or no family name; all can be present, with the names being separated by space characters.</td>
+            <td>{% include parameter.html name="family_name" req="OPTIONAL" %}</td><td>Returns the surname(s) or last name(s) of the user. Note that in some cultures, people can have multiple family names or no family name; all can be present, with the names being separated by space characters.<br><br>If requested, a value SHALL always be returned for this claim.</td>
           </tr> 
           <tr>
-            <td>{% include parameter.html name="birtdate" req="OPTIONAL" %}</td><td>Return user's birthday, represented in a YYYY-MM-DD format. This value is derived from the <code>birthdate_as_string</code> claim.</td>
+            <td>{% include parameter.html name="birtdate" req="OPTIONAL" %}</td><td>Return user's birthday, represented in a YYYY-MM-DD format. This value is derived from the <code>birthdate_as_string</code> claim.<br><br>If requested, a value SHALL always be returned for this claim.</td>
           </tr> 
           <tr>
-            <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/birthdate_as_string" req="OPTIONAL" %}</td><td>Returns user's birthday, represented as a string. It is considered as official or at least coming unprocessed from the ID document.</td>
+            <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/birthdate_as_string" req="OPTIONAL" %}</td><td>Returns user's birthday, represented as a string. It is considered as official or at least coming unprocessed from the ID document.<br><br>If requested, a value SHALL always be returned for this claim.</td>
           </tr> 
           <tr>
-            <td>{% include parameter.html name="gender" req="OPTIONAL" %}</td><td>Returns user's gender. Possible values are : <code>female</code> <code>male</code></td>
+            <td>{% include parameter.html name="gender" req="OPTIONAL" %}</td><td>Returns user's gender. Possible values are : <code>female</code> <code>male</code><br><br>If requested, a value SHALL always be returned for this claim.</td>
           </tr> 
           <tr>
-            <td>{% include parameter.html name="locale" req="OPTIONAL" %}</td><td>Returns user's mobile phone language, represented as an ISO 3166-1 Alpha-2 [ISO3166‑1] country code in uppercase. Possible values are : <code>NL</code> <code>FR</code> <code>DE</code> <code>EN</code></td>
+            <td>{% include parameter.html name="locale" req="OPTIONAL" %}</td><td>Returns user's mobile phone language, represented as an ISO 3166-1 Alpha-2 [ISO3166‑1] country code in uppercase. Possible values are : <code>NL</code> <code>FR</code> <code>DE</code> <code>EN</code><br><br>If requested, a value SHALL always be returned for this claim.</td>
           </tr>
           <tr>
-            <td>{% include parameter.html name="picture" req="OPTIONAL" %}</td><td>Returns the URL of the user's ID picture. This URL refers to an image file (for example, a JPEG, JPEG2000, or PNG image file).</td>
+            <td>{% include parameter.html name="picture" req="OPTIONAL" %}</td><td>Returns the URL of the user's ID picture. This URL refers to an image file (for example, a JPEG, JPEG2000, or PNG image file).<br><br>If requested, a value SHALL always be returned for this claim.</td>
           </tr> 
           <tr>
-            <td>{% include parameter.html name="email" req="OPTIONAL" %}</td><td>Returns user's email address.</td>
+            <td>{% include parameter.html name="email" req="OPTIONAL" %}</td><td>Returns user's email address.<br><br>If requested, a value MAY NOT be returned if the user doesn't have an email address.</td>
           </tr> 
           <tr>
-            <td>{% include parameter.html name="email_verified" req="OPTIONAL" %}</td><td>Returns <code>true</code> if the user's e-mail address is verified; otherwise <code>false</code>.</td>
+            <td>{% include parameter.html name="email_verified" req="OPTIONAL" %}</td><td>Returns <code>true</code> if the user's e-mail address is verified; otherwise <code>false</code>.<br><br>If requested, a value SHALL always be returned for this claim.</td>
           </tr> 
           <tr>
-            <td>{% include parameter.html name="phone_number" req="OPTIONAL" %}</td><td>Returns user's phone number, in <a href="https://en.wikipedia.org/wiki/E.164" target="blank">E.164</a> format.</td>
+            <td>{% include parameter.html name="phone_number" req="OPTIONAL" %}</td><td>Returns user's phone number, in <a href="https://en.wikipedia.org/wiki/E.164" target="blank">E.164</a> format.<br><br>If requested, a value SHALL always be returned for this claim.</td>
           </tr> 
           <tr>
-            <td>{% include parameter.html name="phone_number_verified" req="OPTIONAL" %}</td><td>Returns <code>true</code> if the user's e-phone number is verified; otherwise <code>false</code>.</td>
+            <td>{% include parameter.html name="phone_number_verified" req="OPTIONAL" %}</td><td>Returns <code>true</code> if the user's e-phone number is verified; otherwise <code>false</code>.<br><br>If requested, a value SHALL always be returned for this claim.</td>
           </tr> 
           <tr>
-            <td>{% include parameter.html name="address" req="OPTIONAL" %}</td><td>Returns the information about the user's postal address. The value of the address is a JSON structure containing some or all of these members <code>formatted</code> <code>street_address</code> <code>postal_code</code> <code>locality</code> <code>country</code>.</td>
+            <td>{% include parameter.html name="address" req="OPTIONAL" %}</td><td>Returns the information about the user's postal address. The value of the address is a JSON structure containing some or all of these members <code>formatted</code> <code>street_address</code> <code>postal_code</code> <code>locality</code> <code>country</code>.<br><br>If requested, a value SHALL always be returned for Belgian ID documents, and SHALL NOT be returned for Dutch ID documents.</td>
           </tr> 
           <tr>
-            <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/claim_citizenship" req="OPTIONAL" %}</td><td>Returns a string containing free text ‘Nationality’ for Belgian ID documents, or an <a href="https://en.wikipedia.org/wiki/ISO_3166" target="blank">ISO 3166-1 alpha-3</a> for other docs, as for the Dutch ID documents.</td>
+            <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/claim_citizenship" req="OPTIONAL" %}</td><td>Returns a string containing free text ‘Nationality’ for Belgian ID documents, or an <a href="https://en.wikipedia.org/wiki/ISO_3166" target="blank">ISO 3166-1 alpha-3</a> for other docs, as for the Dutch ID documents.<br><br>If requested, a value SHALL always be returned for this claim.</td>
           </tr> 
            <tr>
-            <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/place_of_birth" req="OPTIONAL" %}</td><td>Returns the location where the user was born. The value of this attribute is a JSON structure containing some or all of these members <code>formatted</code> <code>city</code> <code>country</code>.</td>
+            <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/place_of_birth" req="OPTIONAL" %}</td><td>Returns the location where the user was born. The value of this attribute is a JSON structure containing some or all of these members <code>formatted</code> <code>city</code> <code>country</code>.<br><br>If requested, a value SHALL always be returned for this claim.</td>
           </tr> 
           <tr>
-            <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/physical_person_photo" req="OPTIONAL" %}</td><td>Returns the user's ID picture in the following format : 200 x 140px resolution, 24 BPP, JPEG format. The aspect ratio of original image is maintained.</td>
+            <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/physical_person_photo" req="OPTIONAL" %}</td><td>Returns the user's ID picture in the following format : 200 x 140px resolution, 24 BPP, JPEG format. The aspect ratio of original image is maintained.<br><br>If requested, a value SHALL always be returned for this claim.</td>
           </tr> 
           <tr>
-            <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/BEeidSn" req="OPTIONAL" %}</td><td>Returns the Belgian ID card number, 12 digits in the form xxx-xxxxxxx-yy. The check-number yy is the remainder of the division of xxxxxxxxxx by 97.</td>
+            <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/BEeidSn" req="OPTIONAL" %}</td><td>Returns the Belgian ID card number, 12 digits in the form xxx-xxxxxxx-yy. The check-number yy is the remainder of the division of xxxxxxxxxx by 97.<br><br>If requested, a value SHALL always be returned for this claim.</td>
           </tr> 
           <tr>
-            <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/claim_device" req="OPTIONAL" %}</td><td>Returns information about the user's phone. The value of this attribute is a JSON structure containing some or all of these members <code>os</code> <code>appName</code> <code>appRelease</code> <code>deviceLabel</code> <code>debugEnabled</code> <code>deviceID</code>	<code>osRelease</code> <code>manufacturer</code> <code>deviceLockLevel</code> <code>smsEnabled</code> <code>rooted</code> <code>msisdn</code> <code>deviceModel</code>	<code>sdkRelease</code>.</td>       
+            <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/claim_device" req="OPTIONAL" %}</td><td>Returns information about the user's phone. The value of this attribute is a JSON structure containing some or all of these members <code>os</code> <code>appName</code> <code>appRelease</code> <code>deviceLabel</code> <code>debugEnabled</code> <code>deviceID</code>	<code>osRelease</code> <code>manufacturer</code> <code>deviceLockLevel</code> <code>smsEnabled</code> <code>rooted</code> <code>msisdn</code> <code>deviceModel</code>	<code>sdkRelease</code>.<br><br>If requested, a value SHALL always be returned for this claim.</td>       
           </tr> 
           <tr>
-            <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/transaction_info" req="OPTIONAL" %}</td><td>Returns information about the itsme® transaction. The value of this attribute is a JSON structure containing some or all of these members <code>securityLevel</code> <code>bindLevel</code> <code>appRelease</code>.</td>
+            <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/transaction_info" req="OPTIONAL" %}</td><td>Returns information about the itsme® transaction. The value of this attribute is a JSON structure containing some or all of these members <code>securityLevel</code> <code>bindLevel</code> <code>appRelease</code>.<br><br>If requested, a value SHALL always be returned for this claim.</td>
            </tr> 
            <tr>
-            <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/BENationalNumber" req="OPTIONAL" %}</td><td>Returns the unique identification number of natural persons who are registered in Belgium. This number consists of 11 digits of the form yy.mm.dd-xxx.cd where yy.mm.dd is the birthdate of the person, xxx a sequential number (odd for males and even for females) and cd a check-digit.</td>
+            <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/BENationalNumber" req="OPTIONAL" %}</td><td>Returns the unique identification number of natural persons who are registered in Belgium. This number consists of 11 digits of the form yy.mm.dd-xxx.cd where yy.mm.dd is the birthdate of the person, xxx a sequential number (odd for males and even for females) and cd a check-digit.<br><br>If requested, a value SHALL always be returned for this claim.</td>
           </tr> 
           <tr>
-            <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/claim_nl_bsn" req="OPTIONAL" %}</td><td>Returns the citizen service number, a unique registration number for everyone who lives in the Netherlands. This number consists of 8 to 9 digits.</td>
+            <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/claim_nl_bsn" req="OPTIONAL" %}</td><td>Returns the citizen service number, a unique registration number for everyone who lives in the Netherlands. This number consists of 8 to 9 digits.<br><br>If requested, a value SHALL always be returned for this claim.</td>
           </tr> 
           <tr>
-            <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/IDDocumentSN" req="OPTIONAL" %}</td><td>Returns the Dutch ID card/passport number. This number is composed of letters at positions 1 and 2 ; letters or digits from positions 3-8: ; and a digit at position 9. The letter ‘O’ is not used in the document numbers. The digit ‘0’ (zero) MAY be used.</td>
+            <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/IDDocumentSN" req="OPTIONAL" %}</td><td>Returns the Dutch ID card/passport number. This number is composed of letters at positions 1 and 2 ; letters or digits from positions 3-8: ; and a digit at position 9. The letter ‘O’ is not used in the document numbers. The digit ‘0’ (zero) MAY be used.<br><br>If requested, a value SHALL always be returned for this claim.</td>
           </tr> 
           <tr>
-            <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/IDDocumentType" req="OPTIONAL" %}</td><td>Returns the Dutch ID card/passport document type.</td>
+            <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/IDDocumentType" req="OPTIONAL" %}</td><td>Returns the Dutch ID card/passport document type.<br><br>If requested, a value SHALL always be returned for this claim.</td>
           </tr> 
         </table>
       </td>
