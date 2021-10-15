@@ -652,7 +652,7 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
             <td>{% include parameter.html name="email" req="OPTIONAL" %}</td><td>Returns user's email address.</td>
           </tr> 
           <tr>
-            <td>{% include parameter.html name="email_verified" req="OPTIONAL" %}</td><td>Returns <code>true</code> if the user's e-mail address is verified; otherwise <code>false</code>.</td>
+            <td>{% include parameter.html name="email_verified" req="OPTIONAL" %}</td><td>Returns <code>true</code> if the user's e-mail address is verified; otherwise <code>false</code>.<br><br><b>Note</b> : currently, itsme® always returns <code>false</code> for this claim because the email verification feature is not yet implemented in our systems.</td>
           </tr> 
           <tr>
             <td>{% include parameter.html name="phone_number" req="OPTIONAL" %}</td><td>Returns user's phone number, in <a href="https://en.wikipedia.org/wiki/E.164" target="blank">E.164</a> format.</td>
@@ -849,9 +849,9 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
           </tr> 
           <tr>
             <td>{% include parameter.html name="email" req="OPTIONAL" %}</td><td>Returns user's email address.</td>
-          </tr> 
+          </tr>
           <tr>
-            <td>{% include parameter.html name="email_verified" req="OPTIONAL" %}</td><td>Returns <code>true</code> if the user's e-mail address is verified; otherwise <code>false</code>.</td>
+             <td>{% include parameter.html name="email_verified" req="OPTIONAL" %}</td><td>Returns <code>true</code> if the user's e-mail address is verified; otherwise <code>false</code>.<br><br><b>Note</b> : currently, itsme® always returns <code>false</code> for this claim because the email verification feature is not yet implemented in our systems.</td>
           </tr> 
           <tr>
             <td>{% include parameter.html name="phone_number" req="OPTIONAL" %}</td><td>Returns user's phone number, in <a href="https://en.wikipedia.org/wiki/E.164" target="blank">E.164</a> format.</td>
@@ -1050,8 +1050,8 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
             <td>{% include parameter.html name="email" req="OPTIONAL" %}</td><td>Returns user's email address.</td>
           </tr> 
           <tr>
-            <td>{% include parameter.html name="email_verified" req="OPTIONAL" %}</td><td>Returns <code>true</code> if the user's e-mail address is verified; otherwise <code>false</code>.</td>
-          </tr> 
+            <td>{% include parameter.html name="email_verified" req="OPTIONAL" %}</td><td>Returns <code>true</code> if the user's e-mail address is verified; otherwise <code>false</code>.<br><br><b>Note</b> : currently, itsme® always returns <code>false</code> for this claim because the email verification feature is not yet implemented in our systems.</td>
+          </tr>  
           <tr>
             <td>{% include parameter.html name="phone_number" req="OPTIONAL" %}</td><td>Returns user's phone number, in <a href="https://en.wikipedia.org/wiki/E.164" target="blank">E.164</a> format.</td>
           </tr> 
