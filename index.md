@@ -8,9 +8,9 @@ nav_order: 1
 
 # Welcome
 
-We’re here to help you get your business set up with one of our services, and allow you or your business to use verified identities for authentication and authorization on web desktop, mobile web or mobile applications.
+We are here to help you to set up itsme® service(s), and allow you to use verified identities for authentication and authorization on web desktop, mobile web or mobile applications.
 
-For a more detailed, in-depth explanation of each service, please read through the appropriate developer documents.
+For more details, please read through the corresponding developer documentation available below.
 
 # Get set-up
 
@@ -26,7 +26,7 @@ For a more detailed, in-depth explanation of each service, please read through t
 
 # Services and integration APIs
 
-For more information on how itsme® can best work for your business, please <a href = "mailto: onboarding@itsme.be">contact us</a>. itsme® will be happy to help !
+For more information on how itsme® can best work for your business, please <a href = "mailto: onboarding@itsme.be">contact us</a>. itsme® team will be happy to help.
 
 <div class="services">
   <div class="service">
