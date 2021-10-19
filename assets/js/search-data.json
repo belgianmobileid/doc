@@ -325,7 +325,7 @@
   },"54": {
     "doc": "Home",
     "title": "Welcome",
-    "content": "We’re here to help you get your business set up with one of our services, and allow you or your business to use verified identities for authentication and authorization on web desktop, mobile web or mobile applications. For a more detailed, in-depth explanation of each service, please read through the appropriate developer documents. ",
+    "content": "We are here to help you to set up itsme® service(s), and allow you to use verified identities for authentication and authorization on web desktop, mobile web or mobile applications. For more details, please read through the corresponding developer documentation available below. ",
     "url": "https://belgianmobileid.github.io/doc/index#welcome",
     "relUrl": "/index#welcome"
   },"55": {
@@ -343,7 +343,7 @@
   },"57": {
     "doc": "Home",
     "title": "Services and integration APIs",
-    "content": "For more information on how itsme® can best work for your business, please contact us. itsme® will be happy to help ! . ",
+    "content": "For more information on how itsme® can best work for your business, please contact us. itsme® team will be happy to help. ",
     "url": "https://belgianmobileid.github.io/doc/index#services-and-integration-apis",
     "relUrl": "/index#services-and-integration-apis"
   },"58": {
