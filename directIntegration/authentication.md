@@ -593,31 +593,31 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
             <td>{% include parameter.html name="name" req="OPTIONAL" %}</td><td>Returns user's full name in displayable form including all name parts, possibly including titles and suffixes.<br><br>If requested, a value SHALL always be returned for this claim.</td>
           </tr>
           <tr>
-            <td>{% include parameter.html name="given_name" req="OPTIONAL" %}</td><td>Returns the given name(s) or first name(s) of the user. Note that in some cultures, people can have multiple given names; all can be present, with the names being separated by space characters.<br><br>If requested, a value MAY NOT be returned if the user doesn't have any first name(s).</td>
+            <td>{% include parameter.html name="given_name" req="OPTIONAL" %}</td><td>Returns user's given name(s) or first name(s). Note that in some cultures, people can have multiple given names; all can be present, with the names being separated by space characters.<br><br>If requested, a value MAY NOT be returned if the user doesn't have any first name(s).</td>
           </tr>
           <tr>
-            <td>{% include parameter.html name="family_name" req="OPTIONAL" %}</td><td>Returns the surname(s) or last name(s) of the user. Note that in some cultures, people can have multiple family names or no family name; all can be present, with the names being separated by space characters.<br><br>If requested, a value SHALL always be returned for this claim.</td>
+            <td>{% include parameter.html name="family_name" req="OPTIONAL" %}</td><td>Returns user's surname(s) or last name(s). Note that in some cultures, people can have multiple family names or no family name; all can be present, with the names being separated by space characters.<br><br>If requested, a value SHALL always be returned for this claim.</td>
           </tr> 
           <tr>
-            <td>{% include parameter.html name="birthdate" req="OPTIONAL" %}</td><td>Return user's birthday, represented in a YYYY-MM-DD format. This value is derived from the <code>http://itsme.services/v2/claim/birthdate_as_string</code> claim.<br><br>If requested, a value SHALL always be returned for this claim.</td>
+            <td>{% include parameter.html name="birthdate" req="OPTIONAL" %}</td><td>Return user's birthday, represented as a string in YYYY-MM-DD date format. This value is derived from the birthdate_as_string claim for Belgian ID documents only.<br><br>If requested, a value MAY NOT be returned for users with a Belgian ID document, and SHALL NOT be returned for users with a Dutch ID documents.</td>
           </tr> 
           <tr>
-            <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/birthdate_as_string" req="OPTIONAL" %}</td><td>Returns user's birthday, represented as a string. It is considered as official or at least coming unprocessed from the ID document.<br><br>If requested, a value SHALL always be returned for this claim.</td>
+            <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/birthdate_as_string" req="OPTIONAL" %}</td><td>Returns user's birthday. It is considered as official or at least coming unprocessed from the ID document.<br><br>If requested, a value MAY NOT be returned for users with a Belgian ID document, and SHALL NOT be returned for users with a Dutch ID documents.</td>
           </tr> 
           <tr>
-            <td>{% include parameter.html name="gender" req="OPTIONAL" %}</td><td>Returns user's gender. Possible values are : <code>female</code> <code>male</code><br><br>If requested, a value SHALL always be returned for this claim.</td>
+            <td>{% include parameter.html name="gender" req="OPTIONAL" %}</td><td>Returns user's gender. Possible values are : <code>female</code> <code>male</code> <code>unknown</code> <code>n/a</code><br><br>If requested, a value SHALL always be returned for this claim.</td>
           </tr> 
           <tr>
-            <td>{% include parameter.html name="locale" req="OPTIONAL" %}</td><td>Returns user's mobile phone language, represented as an ISO 3166-1 Alpha-2 [ISO3166‑1] country code in uppercase. Possible values are : <code>NL</code> <code>FR</code> <code>DE</code> <code>EN</code><br><br>If requested, a value SHALL always be returned for this claim.</td>
+            <td>{% include parameter.html name="locale" req="OPTIONAL" %}</td><td>Returns user's mobile phone language, represented as a string format. Possible values are : <code>NL</code> <code>FR</code> <code>DE</code> <code>EN</code><br><br>If requested, a value MAY NOT be returned for this claim.</td>
           </tr>
           <tr>
-            <td>{% include parameter.html name="picture" req="OPTIONAL" %}</td><td>Returns the URL of the user's ID picture. This URL refers to an image file (for example, a JPEG, JPEG2000, or PNG image file).<br><br>If requested, a value SHALL always be returned for this claim.</td>
+            <td>{% include parameter.html name="picture" req="OPTIONAL" %}</td><td>Returns user's ID picture, represented as a URL string. This URL refers to an image file (for example, a JPEG, JPEG2000, or PNG image file).<br><br>If requested, a value MAY NOT be returned for users with a Belgian ID document, and SHALL always be returned for users with a Dutch ID documents.</td>
           </tr> 
           <tr>
-            <td>{% include parameter.html name="email" req="OPTIONAL" %}</td><td>Returns user's email address.<br><br>If requested, a value MAY NOT be returned if the user doesn't have an email address.</td>
+            <td>{% include parameter.html name="email" req="OPTIONAL" %}</td><td>Returns user's email address.<br><br>If requested, a value MAY NOT be returned if the user doesn't gave us an email address.</td>
           </tr> 
           <tr>
-            <td>{% include parameter.html name="email_verified" req="OPTIONAL" %}</td><td>Returns <code>true</code> if the user's e-mail address is verified; otherwise <code>false</code>.<br><br><b>Note</b> : currently, itsme® always returns <code>false</code> for this claim because the email verification feature is not yet implemented in our systems.<br><br>If requested, a value SHALL always be returned for this claim.</td>
+            <td>{% include parameter.html name="email_verified" req="OPTIONAL" %}</td><td>Returns <code>true</code> if the user's e-mail address is verified; otherwise <code>false</code>.<br><br><b>Note</b> : currently, itsme® always returns <code>false</code> for this claim because the email verification feature is not yet implemented in our systems.<br><br>If requested, a value SHALL NOT be returned if the <code>email</code> claim is not filled with a value.</td>
           </tr> 
           <tr>
             <td>{% include parameter.html name="phone_number" req="OPTIONAL" %}</td><td>Returns user's phone number, in <a href="https://en.wikipedia.org/wiki/E.164" target="blank">E.164</a> format.<br><br>If requested, a value SHALL always be returned for this claim.</td>
