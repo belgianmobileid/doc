@@ -724,7 +724,7 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
   <tbody>
     <tr>
       <td>{% include parameter.html name="code" req="" %}</td>
-      <td>An intermediate opaque credential used to retrieve the ID Token and Access Token.<br><br><b>Note</b> : the code has a lifetime of 3 minutes.</td>
+      <td>An intermediate opaque credential of 36 characters used to retrieve the ID Token and Access Token.<br><br><b>Note</b> : the code has a lifetime of 3 minutes.</td>
     </tr>
     <tr>
       <td>{% include parameter.html name="state" req="" %}</td>
@@ -924,7 +924,7 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
   <tbody>
     <tr>
       <td>{% include parameter.html name="code" req="" %}</td>
-      <td>An intermediate opaque credential used to retrieve the ID Token and Access Token.<br><br><b>Note</b> : the code has a lifetime of 3 minutes.</td>
+      <td>An intermediate opaque credential of 36 characters used to retrieve the ID Token and Access Token.<br><br><b>Note</b> : the code has a lifetime of 3 minutes.</td>
     </tr>
     <tr>
       <td>{% include parameter.html name="state" req="" %}</td>
@@ -1136,7 +1136,7 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
   <tbody>
     <tr>
       <td>{% include parameter.html name="code" req="" %}</td>
-      <td>An intermediate opaque credential used to retrieve the ID Token and Access Token.<br><br><b>Note</b> : the code has a lifetime of 3 minutes.</td>
+      <td>An intermediate opaque credential of 36 characters used to retrieve the ID Token and Access Token.<br><br><b>Note</b> : the code has a lifetime of 3 minutes.</td>
     </tr>
     <tr>
       <td>{% include parameter.html name="state" req="" %}</td>
