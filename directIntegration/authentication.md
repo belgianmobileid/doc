@@ -657,9 +657,6 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
             <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/validityTo" req="OPTIONAL" %}</td><td>Returns user's Belgian ID card expiry date, represented as a string in YYYY-MM-DDThh:mm:ss.nnnZ date format specified by ISO 8601.<br><br>If requested, a value MAY NOT be returned for users with a Belgian ID document, and MAY NOT be returned for users with a Dutch ID documents.</td>
           </tr> 
           <tr>
-            <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/claim_nl_bsn" req="OPTIONAL" %}</td><td>Returns user's Dutch citizen service number, represented as a string with 8 to 9 digits.<br><br>If requested, a value SHALL always be returned for this claim.</td>
-          </tr> 
-          <tr>
             <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/IDDocumentSN" req="OPTIONAL" %}</td><td>Returns the Dutch ID card/passport number, represented as a string composed of letters at positions 1 and 2 ; letters or digits from positions 3-8: ; and a digit at position 9. The letter ‘O’ is not used in the document numbers. The digit ‘0’ (zero) MAY be used.<br><br>If requested, a value SHALL always be returned for this claim.</td>
           </tr> 
           <tr>
@@ -864,9 +861,6 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
             <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/validityTo" req="OPTIONAL" %}</td><td>Returns user's Belgian ID card expiry date, represented as a string in YYYY-MM-DDThh:mm:ss date format specified by ISO 8601.<br><br>If requested, a value MAY NOT be returned for users with a Belgian ID document, and MAY NOT be returned for users with a Dutch ID documents.</td>
           </tr>
           <tr>
-            <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/claim_nl_bsn" req="OPTIONAL" %}</td><td>Returns user's Dutch citizen service number, represented as a string with 8 to 9 digits.<br><br>If requested, a value SHALL always be returned for this claim.</td>
-          </tr> 
-          <tr>
             <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/IDDocumentSN" req="OPTIONAL" %}</td><td>Returns the Dutch ID card/passport number, represented as a string composed of letters at positions 1 and 2 ; letters or digits from positions 3-8: ; and a digit at position 9. The letter ‘O’ is not used in the document numbers. The digit ‘0’ (zero) MAY be used.<br><br>If requested, a value SHALL always be returned for this claim.</td>
           </tr> 
           <tr>
@@ -1070,9 +1064,6 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
           <tr>
             <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/validityTo" req="OPTIONAL" %}</td><td>Returns user's Belgian ID card expiry date, represented as a string in YYYY-MM-DDThh:mm:ss date format specified by ISO 8601.<br><br>If requested, a value MAY NOT be returned for users with a Belgian ID document, and MAY NOT be returned for users with a Dutch ID documents.</td>
           </tr>
-          <tr>
-            <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/claim_nl_bsn" req="OPTIONAL" %}</td><td>Returns user's Dutch citizen service number, represented as a string with 8 to 9 digits.<br><br>If requested, a value SHALL always be returned for this claim.</td>
-          </tr> 
           <tr>
             <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/IDDocumentSN" req="OPTIONAL" %}</td><td>Returns the Dutch ID card/passport number, represented as a string composed of letters at positions 1 and 2 ; letters or digits from positions 3-8: ; and a digit at position 9. The letter ‘O’ is not used in the document numbers. The digit ‘0’ (zero) MAY be used.<br><br>If requested, a value SHALL always be returned for this claim.</td>
           </tr> 
