@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: homepage
 title: itsme - Forgerock
 permalink: Forgerock/
 nav_exclude: true
