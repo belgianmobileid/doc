@@ -29,6 +29,8 @@ ForgeRock Platform 7 and assumes integration between AM and IDM has been configu
 
 ## Scenario
 
+![itsme-Forgerock schema](itsme-forgerock-schema.jpg)
+
 1. On your website or application, include the Log in with itsme button by adapting in
 the Forgerock user flow. The interaction flow starts when the user clicks on this
 button.
