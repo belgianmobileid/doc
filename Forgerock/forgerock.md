@@ -15,22 +15,21 @@ authentication with itsme OpenID Connect (OIDC) using a client secret user flow 
 
 ## Onboard with itsme
 
-1. To create an account with itsme, visit itsme at the Forgerock Marketplace
-2. Activate your itsme account by sending an email to onboarding@itsme.be. You'll
+1. Activate your itsme account by sending an email to onboarding@itsme.be. You'll
 receive a ClientID and Service code that will be needed for your Forgerock setup.
-3. Provide itsme with a public link to your public keys. A tool that can assist you in
+2. Provide itsme with a public link to your public keys. A tool that can assist you in
 building those keypairs can be found here:
 https://belgianmobileid.github.io/slate/jose#1-introduction
-4. Provide itsme with your redirectURI you will be redirecting the user to after he/she
-has completed the transaction in the app.
+3. Provide itsme with your redirectURI you will be redirecting the user to after he/she
+has completed the transaction in the app (such as https://openam-itsme-demo.forgeblocks.com/am)
 
 ## Prerequisites
 
 This integration relies on the ForgeRock Social Provider Handler Node which is available in
 ForgeRock Platform 7 and assumes integration between AM and IDM has been configured.
 
-* A forgerock account/subscription. If you don't have a subscription, you can get an account here (insert Forgerock link)
-* A forgerock tenant that is linked to your forgerock subscription.
+* A Forgerock account/subscription. If you don't have a subscription, please contact Forgerock at https://www.forgerock.com/contact
+* A Forgerock tenant that is linked to your forgerock subscription.
 * Your Client ID, also known as Partner code, provided by itsme.
 * Your Service code provided by itsme.
 * Your client secret for your itsme account.
@@ -66,7 +65,7 @@ access token and the ID token containing the requested user information.
 3. Go to “services” > “social identity provider service” > “secondary configuration”
 4. Select itsme
 5. Populate the details with the parameters you got from itsme:
-(NOTE: forgerock automatically populates these fields with our production endpoints.
+(NOTE: Forgerock automatically populates these fields with our production endpoints.
 Initially, these need to be changed to our E2E endpoints in order to function.)
 
 | Parameter | Value |
@@ -76,7 +75,7 @@ Initially, these need to be changed to our E2E endpoints in order to function.)
 | Authentication Endpoint URL | "https://idp.e2e.itsme.services/v2/authorization" |
 | Token Endpoint | "https://idp.e2e.itsme.services/v2/token" |
 | User Profile Service URL | "https://idp.e2e.itsme.services/v2/userinfo" |
-| RedirectURI | your redirectURI <br>_**NOTE:** for itsme to function in production, the Forgerock tenant needs to be installed with a custom domain and an OV Cert. Please contact Forgerock support to make sure this is installed on your tenant._ |
+| RedirectURI | your redirectURI <br>_**NOTE:** for itsme to function in production, the Forgerock tenant needs to be installed with a custom domain (https://backstage.forgerock.com/docs/idcloud/latest/realms/custom-domains.html#set_up_a_custom_domain_in_identity_cloud) and an OV Cert. Please contact Forgerock support to make sure this is installed on your tenant._ |
 | OAuth Scopes | openid profile email service:YOURSERVICECODE |
 | Client Authentication Method | _ENCRYPTED_PRIVATE_KEY_JWT_ |
 | PKCE method | S256 |
