@@ -539,7 +539,7 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
             <td>{% include parameter.html name="address" req="OPTIONAL" %}</td><td>Returns user's postal address, represented as JSON Object containing some or all of these members <code>formatted</code> <code>street_address</code> <code>postal_code</code> <code>locality</code><br><br>If requested, a value SHALL always be returned for users with a Belgian ID document, and SHALL NOT be returned for users with a Dutch ID documents.</td>
           </tr> 
           <tr>
-            <td>{% include parameter.html name="phone" req="OPTIONAL" %}</td><td>Returns the <code>phone</code> claim, which contains the user's phone number, and <code>phone_number_verified</code>, which is a boolean indicating whether the phone number was verified by the user.<br><br>If requested, a value SHALL always be returned for the above claims.</td>
+            <td>{% include parameter.html name="phone" req="OPTIONAL" %}</td><td>Returns the <code>phone_number</code> claim, which contains the user's phone number, and <code>phone_number_verified</code>, which is a boolean indicating whether the phone number was verified by the user.<br><br>If requested, a value SHALL always be returned for the above claims.</td>
           </tr> 
           <tr>
             <td>{% include parameter.html name="eid" req="OPTIONAL" %}</td><td>Returns the <code>http://itsme.services/v2/claim/BENationalNumbe</code> claim, which contains the unique identification number of natural persons who are registered in Belgium, and <code>http://itsme.services/v2/claim/BEeidSn</code>, which is a string indicating the Belgian ID card number.<br><br>If requested, a value SHALL always be returned for the above claims.</td>
@@ -609,7 +609,7 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
             <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/birthdate_as_string" req="OPTIONAL" %}</td><td>Returns user's birthday. It is considered as official or at least coming unprocessed from the ID document.<br><br>If requested, a value MAY NOT be returned for users with a Belgian ID document, and SHALL NOT be returned for users with a Dutch ID documents.</td>
           </tr> 
           <tr>
-            <td>{% include parameter.html name="gender" req="OPTIONAL" %}</td><td>Returns user's gender. Possible values are : <code>female</code> <code>male</code> <code>unknown</code> <code>n/a</code><br><br>If requested, a value SHALL always be returned for this claim.</td>
+            <td>{% include parameter.html name="gender" req="OPTIONAL" %}</td><td>Returns user's gender. Possible values are : <code>female</code> <code>male</code> <code>unknown</code> <code>n/a</code> (note: Belgian accounts can only be <code>female</code> or <code>male</code>)<br><br>If requested, a value SHALL always be returned for this claim.</td>
           </tr> 
           <tr>
             <td>{% include parameter.html name="locale" req="OPTIONAL" %}</td><td>Returns user's mobile phone language, represented as a string format. Possible values are : <code>NL</code> <code>FR</code> <code>DE</code> <code>EN</code><br><br>If requested, a value MAY NOT be returned for this claim.</td>
@@ -954,7 +954,7 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
             <td>{% include parameter.html name="address" req="OPTIONAL" %}</td><td>Returns user's postal address, represented as JSON Object containing some or all of these members <code>formatted</code> <code>street_address</code> <code>postal_code</code> <code>locality</code><br><br>If requested, a value SHALL always be returned for users with a Belgian ID document, and SHALL NOT be returned for users with a Dutch ID documents.</td>
           </tr> 
           <tr>
-            <td>{% include parameter.html name="phone" req="OPTIONAL" %}</td><td>Returns the <code>phone</code> claim, which contains the user's phone number, and <code>phone_number_verified</code>, which is a boolean indicating whether the phone number was verified by the user.<br><br>If requested, a value SHALL always be returned for the above claims.</td>
+            <td>{% include parameter.html name="phone" req="OPTIONAL" %}</td><td>Returns the <code>phone_number</code> claim, which contains the user's phone number, and <code>phone_number_verified</code>, which is a boolean indicating whether the phone number was verified by the user.<br><br>If requested, a value SHALL always be returned for the above claims.</td>
           </tr> 
           <tr>
             <td>{% include parameter.html name="eid" req="OPTIONAL" %}</td><td>Returns the <code>http://itsme.services/v2/claim/BENationalNumbe</code> claim, which contains the unique identification number of natural persons who are registered in Belgium, and <code>http://itsme.services/v2/claim/BEeidSn</code>, which is a string indicating the Belgian ID card number.<br><br>If requested, a value SHALL always be returned for the above claims.</td>
@@ -1024,7 +1024,7 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
             <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/birthdate_as_string" req="OPTIONAL" %}</td><td>Returns user's birthday. It is considered as official or at least coming unprocessed from the ID document.<br><br>If requested, a value MAY NOT be returned for users with a Belgian ID document, and SHALL NOT be returned for users with a Dutch ID documents.</td>
           </tr> 
           <tr>
-            <td>{% include parameter.html name="gender" req="OPTIONAL" %}</td><td>Returns user's gender. Possible values are : <code>female</code> <code>male</code> <code>unknown</code> <code>n/a</code><br><br>If requested, a value SHALL always be returned for this claim.</td>
+            <td>{% include parameter.html name="gender" req="OPTIONAL" %}</td><td>Returns user's gender. Possible values are : <code>female</code> <code>male</code> <code>unknown</code> <code>n/a</code> (note: Belgian accounts can only be <code>female</code> or <code>male</code>)<br><br>If requested, a value SHALL always be returned for this claim.</td>
           </tr> 
           <tr>
             <td>{% include parameter.html name="locale" req="OPTIONAL" %}</td><td>Returns user's mobile phone language, represented as a string format. Possible values are : <code>NL</code> <code>FR</code> <code>DE</code> <code>EN</code><br><br>If requested, a value MAY NOT be returned for this claim.</td>
