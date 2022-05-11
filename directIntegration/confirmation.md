@@ -457,7 +457,7 @@ When building your Authorization Request, one of the below template MUST be spec
   </tbody>
 </table>
 
-We currently support the following HTML tags in the Free Text template: - < b > - < i > - < u > - < br >. Tags that are not rendered are ignored. The free text template can contain up to 3 lines of 50 characters each.
+We currently support the following HTML tags in the Free Text template: - < b > - < i > - < u > - < br >. Tags that are not rendered are ignored. The free text template can contain up to 7500 characters.
 
 ## Mapping the user
 
