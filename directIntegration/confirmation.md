@@ -698,6 +698,9 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
           <tr>
             <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/IDDocumentType" req="OPTIONAL" %}</td><td>Returns the Dutch ID card/passport document type.<br><br>If requested, a value SHALL always be returned for this claim.</td>
           </tr> 
+          <tr>
+            <td>{% include parameter.html name="sub" req="OPTIONAL" %}</td><td>Allows the user to bypass the itsme® identification page if he is already logged into your application, by using the user's unique identifier key as value (aka. the user's <code>sub</code> value returned in the ID Token response)</td>
+          </tr> 
         </table>
       </td>
     </tr>
@@ -902,6 +905,8 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
           <tr>
             <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/IDDocumentType" req="OPTIONAL" %}</td><td>Returns the Dutch ID card/passport document type.<br><br>If requested, a value SHALL always be returned for this claim.</td>
           </tr> 
+          <td>{% include parameter.html name="sub" req="OPTIONAL" %}</td><td>Allows the user to bypass the itsme® identification page if he is already logged into your application, by using the user's unique identifier key as value (aka. the user's <code>sub</code> value returned in the ID Token response)</td>
+          </tr> 
         </table>
       </td>
     </tr>
@@ -1105,6 +1110,8 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
           </tr> 
           <tr>
             <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/IDDocumentType" req="OPTIONAL" %}</td><td>Returns the Dutch ID card/passport document type.<br><br>If requested, a value SHALL always be returned for this claim.</td>
+          </tr> 
+          <td>{% include parameter.html name="sub" req="OPTIONAL" %}</td><td>Allows the user to bypass the itsme® identification page if he is already logged into your application, by using the user's unique identifier key as value (aka. the user's <code>sub</code> value returned in the ID Token response)</td>
           </tr> 
         </table>
       </td>
