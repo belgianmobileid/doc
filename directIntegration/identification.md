@@ -470,9 +470,9 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
 <a id="AuthNReq"></a>
 ## Authorization Request
 
-{% tabs AuthorizationRequest %}
+{% tabs idAuthorizationRequest %}
 
-{% tab AuthorizationRequest Public- and private-key %}
+{% tab idAuthorizationRequest Public- and private-key %}
 
 <b><code>GET https://idp.<i><b>[e2e/prd]</b></i>.itsme.services/v2/authorization</code></b>
 
@@ -690,7 +690,7 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
 
 {% endtab %}
 
-{% tab AuthorizationRequest Secret key %}
+{% tab idAuthorizationRequest Secret key %}
 
 <b><code>GET https://oidc.<i><b>[e2e/prd]</b></i>.itsme.services/clientsecret-oidc/csapi/v0.1/connect/authorize</code></b>
 
