@@ -34,6 +34,26 @@ highlighter: rouge
 
 color_scheme: itsme
 
+# Define Jekyll collections
+collections:
+  OIDC:
+    permalink: "/:collection/:path/"
+    output: true
+  OIDCplatforms:
+    permalink: "/:collection/:path/"
+    output: true
+  
+
+# Define which collections are used in just-the-docs
+just_the_docs:
+  collections:
+    OIDC:
+      name: oidc
+      nav_exclude: false
+    OIDCplatforms:
+      name: platforms
+      nav_exclude: false
+
 # Set a path/url to a logo that will be displayed instead of the title
 logo: "/public/images/ASMARTERWAY_RGB.png"
 

@@ -1,16 +1,16 @@
 ---
 
-layout: indirect_integration
+layout: OIDCviaPlatform
 title: Azure B2C
 permalink: azureB2C/
-nav_exclude: true
+nav_exclude: false
 
 ---
 
 
 # What is Azure Active Directory B2C ?
 
-Azure Active Directory B2C (Azure AD B2C) is an identity management service that enables custom control of how your customers sign up, sign in, and manage their profiles when using your iOS, Android, .NET, single-page (SPA), and other applications. 
+blabla Azure Active Directory B2C (Azure AD B2C) is an identity management service that enables custom control of how your customers sign up, sign in, and manage their profiles when using your iOS, Android, .NET, single-page (SPA), and other applications. 
 
 Azure AD B2C uses standards-based authentication protocols including OpenID Connect, OAuth 2.0, and SAML. It integrates with most modern applications and commercial off-the-shelf software. 
 

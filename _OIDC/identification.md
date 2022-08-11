@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: OIDC
 title: Identification API
 permalink: identification/
 nav_order: 4

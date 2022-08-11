@@ -1,8 +1,8 @@
 ---
-layout: page
-title: Authentication API
-permalink: authentication/
-nav_order: 4
+layout: OIDC
+title: Confirmation API
+permalink: confirmation/
+nav_order: 5
 toc_list: true
 ---
 
@@ -10,7 +10,7 @@ toc_list: true
 
 itsme® API is based on the Authorization Code Flow of OpenID Connect 1.0. The API can be used to verify the end-users' identity and obtain basic profile information about gien end-users. 
 
-The diagram below describes the **Authentication** process and how your systems should integrate with itsme® :
+The diagram below describes the **Confirmation** process and how your systems should integrate with itsme® :
   
  ![Sequence diagram describing the OpenID flow](/doc/public/images/OpenID_SeqDiag.png)
 
@@ -23,7 +23,7 @@ To get to this result please make sure you
       <li>to enter his phone number on the itsme® sign-in page</li> 
       <li>authorize the release of some information to your application</li>
       <li>to provide his credentials (itsme® code, fingerprint or FaceID)</li>
-    </ul><br>It is also in this Authorization Request that you will be able to request claims about the user and the Authentication event.</li>
+    </ul><br>It is also in this Authorization Request that you will be able to request claims about the user and the Confirmation event.</li>
   <li><a href="#AuthNResp" >collect the Authorization Code</a> once the user has been authenticated and redirected by itsme® to your mobile or web application.</li>
   <li><a href="#TokenReq" >exchange the Authorization Code for an ID token</a> (e.g. identifying the user) and an Access Token.</li>
   <li>Obtain the additional claims by <a href="#UserInfoReq" >presenting the access token to the itsme® UserInfo Endpoint</a> if the required claims are not returned in the ID token.</li>
@@ -57,7 +57,7 @@ This method uses linked public- and private-key pairs to encrypt and decrypt sen
 <aside class="notice">This method requires that each party exposes its public keys as a simple JWK Set document on a URI publicly accessible, and keep its private keys for itself. 
 </aside>
 
-Using the <code>jwks_uri</code> key retrieve the URI for itsme® from the <a href="https://belgianmobileid.github.io/doc/authentication/#itsme-discovery-document" target="blank">itsme® Discovery document</a>, .
+Using the <code>jwks_uri</code> key retrieve the URI for itsme® from the <a href="https://belgianmobileid.github.io/doc/confirmation/#itsme-discovery-document" target="blank">itsme® Discovery document</a>, .
 
 Your public and private key can be generated using your own tool or via Yeoman. If using Yeoman, you need to install generator-itsme with NPM:
 
@@ -73,13 +73,13 @@ $ yo itsme
 
 The Yeoman tool will generate two files, the jwks_private.json which MUST be stored securely in your system, and the jwks_public.json which needs to be exposed as a JWK Set on a URI publicly accessible and have the HTTPS scheme 
 
-<aside class="notice">Refer to <a href="https://belgianmobileid.github.io/doc/authentication/#certificates-and-website-security" target="blank">this section</a> for more information.
+<aside class="notice">Refer to <a href="https://belgianmobileid.github.io/doc/confirmation/#certificates-and-website-security" target="blank">this section</a> for more information.
 </aside>
 
 <aside class="notice">Whatever the tool you are choosing to create your key pairs, don't forget to send your JWK Set URI by email to <a href = "mailto: onboarding@itsme.be">onboarding@itsme.be</a> and itsme® will make sure to complete the configuration for you in no time!
 </aside>
 
-<aside class="notice">The algorithms – needed to sign and/or encrypt a JWT or to authenticate to our Token Endpoint – are listed in the <a href="https://belgianmobileid.github.io/doc/authentication/#itsme-discovery-document" target="blank">itsme® Discovery document</a> for more information.
+<aside class="notice">The algorithms – needed to sign and/or encrypt a JWT or to authenticate to our Token Endpoint – are listed in the <a href="https://belgianmobileid.github.io/doc/confirmation/#itsme-discovery-document" target="blank">itsme® Discovery document</a> for more information.
 </aside>
 
 
@@ -89,10 +89,10 @@ Secret key cryptography method uses the same secret key to encrypt and decrypt s
 
 This method requires the exchange of a static secret to be held by both the sender and the data receiver. The secret value will be provided by itsme® when <a href="https://belgianmobileid.github.io/doc/getting-started.html#getting-started" target="blank">registering your project</a>.
 
-<aside class="notice">The algorithms – needed to sign and/or encrypt a JWT or to authenticate to our Token Endpoint – are listed in the <a href="https://belgianmobileid.github.io/doc/authentication/#itsme-discovery-document" target="blank">itsme® Discovery document</a> for more information.
+<aside class="notice">The algorithms – needed to sign and/or encrypt a JWT or to authenticate to our Token Endpoint – are listed in the <a href="https://belgianmobileid.github.io/doc/confirmation/#itsme-discovery-document" target="blank">itsme® Discovery document</a> for more information.
 </aside>
 
-<aside class="notice">If you choose to go with the secret key method, you will be able to specify if the ID Token JWT needs to be signed with the an asymmetric algorithm (e.g. <code>RS256</code>) or with a symmetric algorithm (e.g. : <code>HS256</code>). When using the <code>RS256</code> algorithm, our public keys will be needed to verify the signature. This information can be found in our <a href="https://belgianmobileid.github.io/doc/authentication/#itsme-discovery-document" target="blank">itsme® Discovery document</a>, using the key <code>jwks_uri</code>.
+<aside class="notice">If you choose to go with the secret key method, you will be able to specify if the ID Token JWT needs to be signed with the an asymmetric algorithm (e.g. <code>RS256</code>) or with a symmetric algorithm (e.g. : <code>HS256</code>). When using the <code>RS256</code> algorithm, our public keys will be needed to verify the signature. This information can be found in our <a href="https://belgianmobileid.github.io/doc/confirmation/#itsme-discovery-document" target="blank">itsme® Discovery document</a>, using the key <code>jwks_uri</code>.
 </aside>
 
 ### PKCE-enhanced flow
@@ -147,7 +147,7 @@ Alongside the type of response an HTTP status code is sent that shows whether th
 
 ### A successful response
 
-An HTTP status <code>200 OK</code> or <code>302 Found</code> is issued whenever your request was a success. You see this type of response in our examples like the one where we successfully retrieve the <a href="https://belgianmobileid.github.io/doc/authentication/#example-1" target="blank">Token Response</a> : 
+An HTTP status <code>200 OK</code> or <code>302 Found</code> is issued whenever your request was a success. You see this type of response in our examples like the one where we successfully retrieve the <a href="https://belgianmobileid.github.io/doc/confirmation/#example-1" target="blank">Token Response</a> : 
 
 ```http
 HTTP/1.1 200 OK
@@ -408,6 +408,44 @@ Content-Type: application/json;charset=UTF-8 Cache-Control: no-store Pragma: no-
 }
 ```
 
+## WYSIWYS template
+
+When building your Authorization Request, one of the below template MUST be specified in the <code>claims</code> parameter.
+
+***Advanced Payment template***
+
+<table>
+  <tbody>
+     <tr>
+       <td>{% include parameter.html name="http://itsme.services/v2/ claim/claim_approval_template_name" req="" %}</td><td>This identifies the template used. It MUST be set to "http://itsme.services/v2/claim/claim_approval_template_name":{ "essential": true, "value": "adv_payment" }.</td>
+      </tr>
+      <tr>
+        <td>{% include parameter.html name="http://itsme.services/v2/ claim/claim_approval_amount_key" req="" %}</td><td>A string holding an integer value inside. This MUST be set to "http://itsme.services/v2/claim/claim_approval_amount_key":{ "essential": true, "value": "Amount_as_a_string" }.</td>
+       </tr>
+       <tr>
+         <td>{% include parameter.html name="http://itsme.services/v2/ claim/claim_approval_currency_key" req="" %}</td><td>A string holding a valid currency code (e.g. “EUR”). This MUST be set to "http://itsme.services/v2/claim/claim_approval_currency_key":{ "essential": true, "value": "Currency_as_a_string" }.</td>
+        </tr>
+        <tr>
+          <td>{% include parameter.html name="http://itsme.services/v2/ claim/claim_approval_iban_key" req="" %}</td><td>A string holding a valid IBAN account number. This MUST be set to "tag:sixdots.be,2016-08:claim_approval_iban_key":{ "essential": true, "value": "IBAN_as_a_string" }.</td>
+        </tr>
+  </tbody>
+</table>
+
+***Free Text template***
+
+<table>
+  <tbody>
+     <tr>
+       <td>{% include parameter.html name="http://itsme.services/v2/ claim/claim_approval_template_name" req="" %}</td><td>This identifies the template used. It MUST be set to "http://itsme.services/v2/claim/claim_approval_template_name":{ "essential": true, "value": "free_text" }.</td>
+     </tr>
+     <tr>
+        <td>{% include parameter.html name="http://itsme.services/v2/ claim/claim_approval_text_key" req="" %}</td><td>A string holding any text to be displayed in the itsme® app. This MUST be set to"http://itsme.services/v2/claim/claim_approval_text_key":{ "essential": true, "value": "Text_as_a_string" }.</td>
+     </tr>
+  </tbody>
+</table>
+
+We currently support the following HTML tags in the Free Text template: - < b > - < i > - < u > - < br >. Tags that are not rendered are ignored. The free text template can contain up to 7500 characters.
+
 ## Mapping the user
 
 ### Mapping using <code>sub</code> claim
@@ -427,8 +465,6 @@ The benefit of using a <code>sub</code> claim is that it will not change, not ev
 In a limited number of cases (e.g. technical issue,…) a user could ask itsme® to ‘delete’ his account. As a result the specific account will be ‘archived’ (for compliancy reasons) and thus also the unique identifier(s) (e.g. "sub").
 
 If the same user would opt to re-create an itsme® afterwards, he will need to re-bind his itsme® account with your application server, in the same way as for the initial binding. After successful re-binding you will need to overwrite the initial reference with the new <code>sub</code> claim value in your database.
-
-
 # API reference
 
 <a id="OpenIDConfig"></a>
@@ -470,9 +506,9 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
 <a id="AuthNReq"></a>
 ## Authorization Request
 
-{% tabs AuthorizationRequest %}
+{% tabs confAuthorizationRequest %}
 
-{% tab AuthorizationRequest Public- and private-key %}
+{% tab confAuthorizationRequest Public- and private-key %}
 
 <b><code>GET https://idp.<i><b>[e2e/prd]</b></i>.itsme.services/v2/authorization</code></b>
 
@@ -561,7 +597,7 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
     </tr>
     <tr>
       <td>{% include parameter.html name="claims" req="OPTIONAL" %}</td>
-      <td>Requests specific user's details to be returned from the UserInfo Endpoint or in the ID Token. It is represented as a JSON object that could use as member <code>{"userinfo":{...}</code> - which content indicates which claims to return at the UserInfo Endpoint - or <code>{"id_token":{...}</code> - which indicates those to return at the ID Token -, together with indication whether the claim is voluntary (default) or essential.<br><br><b>Note</b>: to avoid the need of creating an additionnal request, itsme® recomends to create a JSON object using <code>{"id_token":{...}</code> as member.<br /><br><br>Possible user's details your application can request is listed below.<br />
+      <td>Requests specific user's details to be returned from the UserInfo Endpoint or in the ID Token. It is represented as a JSON object that could use as member <code>{"userinfo":{...}</code> - which content indicates which claims to return at the UserInfo Endpoint - or <code>{"id_token":{...}</code> - which indicates those to return at the ID Token -, together with indication whether the claim is voluntary (default) or essential.<br><br><b>Note</b>: to avoid the need of creating an additionnal request, itsme® recomends to create a JSON object using <code>{"id_token":{...}</code> as member.<br /><br><b>Note</b>: when implementing the <b>Confirmation</b> service, you MUST set the WYSIWYS template to pre-structure the transaction screen in the itsme® app (refer to <a href=https://belgianmobileid.github.io/doc/confirmation/#wysiwys-templaten target="blank">this section</a> for more information).<br /><br><br>Possible user's details your application can request is listed below.<br />
         <table>
           <tr>
             <td>{% include parameter.html name="name" req="OPTIONAL" %}</td><td>Returns user's full name in displayable form including all name parts, possibly including titles and suffixes.<br><br>If requested, a value SHALL always be returned for this claim.</td>
@@ -627,7 +663,7 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
             <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/validityFrom" req="OPTIONAL" %}</td><td>Returns user's Belgian ID document issuance date, represented as a string in YYYY-MM-DDThh:mm:ss.nnnZ date format specified by ISO 8601.<br><br>If requested, a value MAY NOT be returned for users with a Belgian ID document, and SHALL NOT be returned for users with a Dutch ID documents.</td>
           </tr> 
           <tr>
-            <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/validityTo" req="OPTIONAL" %}</td><td>Returns user's Belgian ID card expiry date, represented as a string in YYYY-MM-DDThh:mm:ss.nnnZ date format specified by ISO 8601.<br><br>If requested, a value MAY NOT be returned for users with a Belgian ID document, and MAY NOT be returned for users with a Dutch ID documents.</td>
+            <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/validityTo" req="OPTIONAL" %}</td><td>Returns user's Belgian ID card expiry date, represented as a string in YYYY-MM-DDThh:mm:ss.nnnZ date format specified by ISO 8601.<br><br>If requested, a value MAY NOT be returned for users with a Belgian ID document, and MAY NOT be returned for users with a Dutch ID document.</td>
           </tr>
           <tr>
             <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/verificationDate" req="OPTIONAL" %}</td><td>Returns the date when the user's document was read for the last time, represented as a string in YYYY-MM-DDThh:mm:ss date format specified by ISO 8601.<br><br>If requested, a value MAY NOT be returned for users with a Belgian ID document, and SHALL always be returned for users with a Dutch ID document.</td>
@@ -637,6 +673,9 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
           </tr> 
           <tr>
             <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/IDDocumentType" req="OPTIONAL" %}</td><td>Returns the Dutch ID card/passport document type.<br><br>If requested, a value SHALL always be returned for this claim.</td>
+          </tr> 
+          <tr>
+            <td>{% include parameter.html name="sub" req="OPTIONAL" %}</td><td>Allows the user to bypass the itsme® identification page if he is already logged into your application, by using the user's unique identifier key as value (aka. the user's <code>sub</code> value returned in the ID Token response)</td>
           </tr> 
         </table>
       </td>
@@ -689,7 +728,7 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
 
 {% endtab %}
 
-{% tab AuthorizationRequest Secret Key %}
+{% tab confAuthorizationRequest Secret key %}
 
 <b><code>GET https://oidc.<i><b>[e2e/prd]</b></i>.itsme.services/clientsecret-oidc/csapi/v0.1/connect/authorize</code></b>
 
@@ -778,7 +817,7 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
     </tr>
     <tr>
       <td>{% include parameter.html name="claims" req="OPTIONAL" %}</td>
-      <td>Requests specific user's details to be returned from the UserInfo Endpoint or in the ID Token. It is represented as a JSON object that could use as member <code>{"userinfo":{...}</code> - which content indicates which claims to return at the UserInfo Endpoint - or <code>{"id_token":{...}</code> - which indicates those to return at the ID Token -, together with indication whether the claim is voluntary (default) or essential.<br><br><b>Note</b>: to avoid the need of creating an additionnal request, itsme® recomends to create a JSON object using <code>{"id_token":{...}</code> as member.<br /><br><br>Possible user's details your application can request is listed below.<br />
+      <td>Requests specific user's details to be returned from the UserInfo Endpoint or in the ID Token. It is represented as a JSON object that could use as member <code>{"userinfo":{...}</code> - which content indicates which claims to return at the UserInfo Endpoint - or <code>{"id_token":{...}</code> - which indicates those to return at the ID Token -, together with indication whether the claim is voluntary (default) or essential.<br><br><b>Note</b>: to avoid the need of creating an additionnal request, itsme® recomends to create a JSON object using <code>{"id_token":{...}</code> as member.<br /><br><b>Note</b>: when implementing the <b>Confirmation</b> service, you MUST set the WYSIWYS template to pre-structure the transaction screen in the itsme® app (refer to <a href=https://belgianmobileid.github.io/doc/confirmation/#wysiwys-templaten target="blank">this section</a> for more information).<br /><br><br>Possible user's details your application can request is listed below.<br />
         <table>
           <tr>
             <td>{% include parameter.html name="name" req="OPTIONAL" %}</td><td>Returns user's full name in displayable form including all name parts, possibly including titles and suffixes.<br><br>If requested, a value SHALL always be returned for this claim.</td>
@@ -844,7 +883,7 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
             <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/validityFrom" req="OPTIONAL" %}</td><td>Returns user's Belgian ID document issuance date, represented as a string in YYYY-MM-DDThh:mm:ss.nnnZ date format specified by ISO 8601.<br><br>If requested, a value MAY NOT be returned for users with a Belgian ID document, and SHALL NOT be returned for users with a Dutch ID documents.</td>
           </tr> 
           <tr>
-            <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/validityTo" req="OPTIONAL" %}</td><td>Returns user's Belgian ID card expiry date, represented as a string in YYYY-MM-DDThh:mm:ss.nnnZ date format specified by ISO 8601.<br><br>If requested, a value MAY NOT be returned for users with a Belgian ID document, and MAY NOT be returned for users with a Dutch ID documents.</td>
+            <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/validityTo" req="OPTIONAL" %}</td><td>Returns user's Belgian ID card expiry date, represented as a string in YYYY-MM-DDThh:mm:ss.nnnZ date format specified by ISO 8601.<br><br>If requested, a value MAY NOT be returned for users with a Belgian ID document, and MAY NOT be returned for users with a Dutch ID document.</td>
           </tr>
           <tr>
             <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/verificationDate" req="OPTIONAL" %}</td><td>Returns the date when the user's document was read for the last time, represented as a string in YYYY-MM-DDThh:mm:ss date format specified by ISO 8601.<br><br>If requested, a value MAY NOT be returned for users with a Belgian ID document, and SHALL always be returned for users with a Dutch ID document.</td>
@@ -854,6 +893,8 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
           </tr> 
           <tr>
             <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/IDDocumentType" req="OPTIONAL" %}</td><td>Returns the Dutch ID card/passport document type.<br><br>If requested, a value SHALL always be returned for this claim.</td>
+          </tr> 
+          <td>{% include parameter.html name="sub" req="OPTIONAL" %}</td><td>Allows the user to bypass the itsme® identification page if he is already logged into your application, by using the user's unique identifier key as value (aka. the user's <code>sub</code> value returned in the ID Token response)</td>
           </tr> 
         </table>
       </td>
@@ -1011,7 +1052,7 @@ To assert the identity of the user, the <code>code</code> received previously ne
     </tr>
     <tr>
       <td>{% include parameter.html name="client_assertion" req="REQUIRED" %}</td>
-      <td>Is a set of identity and security information, in the form of a JWT, used as an authentication method. To ensures that the request to get the id token and access token is made only from your application, and not from a potential attacker that may have intercepted the authorization code, the JWT MUST be signed, and MAY also be encrypted. If both signing and encryption are performed, it MUST be signed then encrypted, with the result being a Nested JWT (refer to <a href="https://belgianmobileid.github.io/doc/authentication/#securing-the-exchange-of-information" target="blank">this section</a> for more information).<br><br>The JWT contains the following claims.        
+      <td>Is a set of identity and security information, in the form of a JWT, used as an authentication method. To ensures that the request to get the id token and access token is made only from your application, and not from a potential attacker that may have intercepted the authorization code, the JWT MUST be signed, and MAY also be encrypted. If both signing and encryption are performed, it MUST be signed then encrypted, with the result being a Nested JWT (refer to <a href="https://belgianmobileid.github.io/doc/confirmation/#securing-the-exchange-of-information" target="blank">this section</a> for more information).<br><br>The JWT contains the following claims.        
         <table>
           <tr>
             <td>{% include parameter.html name="iss" req="REQUIRED" %}</td><td>The issuer of the token. This value MUST be the same as the <code>client_id</code>.</td>
@@ -1054,7 +1095,7 @@ To assert the identity of the user, the <code>code</code> received previously ne
     </tr>
     <tr>
       <td>{% include parameter.html name="id_token" req="" %}</td>
-      <td>A security token that contains information about the authentication of an user, and potentially other requested claim data's. The <code>id_token</code> value is represented as a signed and encrypted JWT. So, before being able to use the ID Token claims you will have to decrypt and verify the signature (refer to <a href="https://belgianmobileid.github.io/doc/authentication/#securing-the-exchange-of-information" target="blank">this section</a> for more information).</td>      
+      <td>A security token that contains information about the authentication of an user, and potentially other requested claim data's. The <code>id_token</code> value is represented as a signed and encrypted JWT. So, before being able to use the ID Token claims you will have to decrypt and verify the signature (refer to <a href="https://belgianmobileid.github.io/doc/confirmation/#securing-the-exchange-of-information" target="blank">this section</a> for more information).</td>      
     </tr>
   </tbody>
 </table>
@@ -1115,7 +1156,7 @@ To assert the identity of the user, the <code>code</code> received previously ne
     </tr>
     <tr>
       <td>{% include parameter.html name="id_token" req="" %}</td>
-      <td>A security token that contains information about the authentication of an user, and potentially other requested claim data's. The <code>id_token</code> value is represented as a signed and encrypted JWT. So, before being able to use the ID Token claims you will have to decrypt and verify the signature (refer to <a href="https://belgianmobileid.github.io/doc/authentication/#securing-the-exchange-of-information" target="blank">this section</a> for more information).</td>      
+      <td>A security token that contains information about the authentication of an user, and potentially other requested claim data's. The <code>id_token</code> value is represented as a signed and encrypted JWT. So, before being able to use the ID Token claims you will have to decrypt and verify the signature (refer to <a href="https://belgianmobileid.github.io/doc/confirmation/#securing-the-exchange-of-information" target="blank">this section</a> for more information).</td>      
     </tr>
   </tbody>
 </table>
@@ -1247,7 +1288,7 @@ This is illustrated in the example below.
 
 <code>200</code> <code>application/json</code>
 
-The UserInfo Response is represented as a signed and encrypted JWT. So, before being able to extract the claims you will have to decrypt and verify the signature (refer to <a href="https://belgianmobileid.github.io/doc/authentication/#securing-the-exchange-of-information" target="blank">this section</a> for more information).
+The UserInfo Response is represented as a signed and encrypted JWT. So, before being able to extract the claims you will have to decrypt and verify the signature (refer to <a href="https://belgianmobileid.github.io/doc/confirmation/#securing-the-exchange-of-information" target="blank">this section</a> for more information).
 
 
 {% endtab %}
@@ -1265,7 +1306,7 @@ This is illustrated in the example below.
 
 <code>200</code> <code>application/json</code>
 
-The UserInfo Response is represented as a signed and encrypted JWT. So, before being able to extract the claims you will have to decrypt and verify the signature (refer to <a href="https://belgianmobileid.github.io/doc/authentication/#securing-the-exchange-of-information" target="blank">this section</a> for more information).
+The UserInfo Response is represented as a signed and encrypted JWT. So, before being able to extract the claims you will have to decrypt and verify the signature (refer to <a href="https://belgianmobileid.github.io/doc/confirmation/#securing-the-exchange-of-information" target="blank">this section</a> for more information).
 
 {% endtab %}
 
@@ -1416,4 +1457,9 @@ HTTP/1.1 200 OK
 {% endtab %}
 
 {% endtabs %}
+
+
+
+
+
 

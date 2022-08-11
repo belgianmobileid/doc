@@ -48,10 +48,22 @@ layout: table_wrappers
       </a>
     </div>
     <nav role="navigation" aria-label="Main" id="site-nav" class="site-nav">
-      <ul class="nav-list">
-        <li class="nav-list-item"><a href="/doc/index" class="nav-list-link">Home</a></li>
-        <li class="nav-list-item"><a href="/doc/azureB2C" class="nav-list-link active">Azure B2C</a></li>
-      </ul>
+      {% if site.just_the_docs.collections %}
+        {% assign collections_size = site.just_the_docs.collections | size %}
+        {% for collection_entry in site.just_the_docs.collections %}
+          {% assign collection_value = collection_entry[1] %}
+          {% if collection_value.name == "oidc" %}
+            {% assign collection_key = collection_entry[0] %}
+            {% assign collection = site[collection_key] %}          
+            <ul class="nav-list">
+              <li class="nav-list-item"><a href="/doc/index" class="nav-list-link">Home</a></li>
+            </ul>
+            {% include nav.html pages=collection %}
+          {% endif %}
+        {% endfor %}
+      {% else %}
+        {% include nav.html pages=site.html_pages %}
+      {% endif %}
     </nav>
   </div>
   <div class="main" id="top">
