@@ -1,1 +1,7 @@
-<div class="paramName">{{ include.name }}</div><div class="paramReq">{{ include.req }}</div>
+<div class="paramName" style="padding-left: calc({{ include.level | default: 0 | to_integer }}*20px);">{{ include.name }}</div>
+<div class="param2" style="padding-left: calc({{ include.level | default: 0 | to_integer }}*20px);">
+    {% if include.type %}
+        <span class="paramType">{{ include.type }}</span>  
+    {% endif %}
+    <span class="paramReq" >{{ include.req }}</span>
+</div>
