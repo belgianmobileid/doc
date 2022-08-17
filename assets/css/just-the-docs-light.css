@@ -1562,6 +1562,8 @@ thead { text-align: left; }
 
 .paramReq { color: gray; font-style: italic; text-transform: capitalize; }
 
+.paramType { color: black; border: 1px solid gray; padding: 1px 2px; border-radius: 4px; font-size: smaller; text-transform: lowercase; }
+
 /** Homepage */
 /*************/
 .services { display: flex; flex-direction: row; flex-wrap: wrap; margin: auto; justify-content: space-between; }
