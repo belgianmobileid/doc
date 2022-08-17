@@ -454,34 +454,64 @@ If the Sign Request has been sucessfully validated we will return an HTTP 200 re
 
 The response body will include the following values:
 
+<table>
+  <tbody>
+    <tr>
+      <td>{% include parameter.html name="result" type="object" req="ALWAYS" %}</td>
+      <td>This is the status of the request (pending, success or error).</td>
+    </tr>
+    <tr>
+      <td>{% include parameter.html name="maj" type="string" req="ALWAYS" level="1" %}</td>
+      <td>This is a general message that will give the status of the request, pending, success or error. In case of failure, the root cause is given.</td>
+    </tr>
+    <tr>
+      <td>{% include parameter.html name="msg" type="string" req="Optional" level="1" %}</td>
+      <td>This indicates the origin of the error.</td>
+    </tr>
+    <tr>
+      <td>{% include parameter.html name="reqID" type="string" req="ALWAYS" %}</td>
+      <td>This is the ID of the request that you transfer.</td>
+    </tr>
+    <tr>
+      <td>{% include parameter.html name="respID" type="string" req="ALWAYS" %}</td>
+      <td>This parameter is the identifier of a User identification session. This parameter is needed for you to get the status of the signature.</td>
+    </tr>
+    <tr>
+      <td>{% include parameter.html name="optOutp" type="object" req="ALWAYS" %}</td>
+      <td>Contains additional information needed for the signature request. Please note this parameter is not returned in the other use of this call (see section <a href="#10-requesting-the-sign-session-status">Requesting the Sign session status</a>).</td>
+    </tr>
+    <tr>
+      <td>{% include parameter.html name="itsme" type="object" req="ALWAYS" level="1" %}</td>
+      <td>Contains all the information related to itsme® context. Please note this parameter is not returned in the other use of this call (see section <a href="#10-requesting-the-sign-session-status">Requesting the Sign session status</a>).</td>
+    </tr>
+    <tr>
+      <td>{% include parameter.html name="signingUrl" type="string" req="ALWAYS" level="2" %}</td>
+      <td>This signing URL is the link to redirect the User from the SCA frontend  to the itsme® Signing Page. Please note this parameter is not returned in the other use of this call (see section <a href="#10-requesting-the-sign-session-status">Requesting the Sign session status</a>).</td>
+    </tr>
+    <tr>
+      <td>{% include parameter.html name="userCode" type="string" req="ALWAYS" level="2" %}</td>
+      <td>An identifier for the User, unique among all itsme® accounts and never reused. Use <i>"userCode"</i> in the application as the unique-identifier key for the User. Please note this parameter is not returned in the other use of this call (see section <a href="#10-requesting-the-sign-session-status">Requesting the Sign session status</a>).</td>
+    </tr>
+  </tbody>
+</table>
+
+Example:
+
 ```
 {
-    "result": {
-        "maj": "urn:oasis:names:tc:dss:1.0:profiles:asynchronousprocessing:resultmajor:Pending"
-    },
-    "reqID": "ReqID4va0acsef3mv5ft1dp71",
-    "asyncRespID": "hjg3ngu3tvvv71k9qg1vyokc2mwmqgqk43iv",
-    "optOutp": {
-        "itsme": {
-            "signingUrl": "https://uatmerchant.itsme.be/qes/prove_its_you_poka?q=34u5jh2dltb1xhsu0g4bshnlziycdhow&language=FR",
-            "userCode" : endUserUserCode
-        }
-    }
+  "result": {
+      "maj": "urn:oasis:names:tc:dss:1.0:profiles:asynchronousprocessing:resultmajor:Pending"
+  },
+  "reqID": "ReqID4va0acsef3mv5ft1dp71",
+  "respID": "hjg3ngu3tvvv71k9qg1vyokc2mwmqgqk43iv",
+  "optOutp": {
+      "itsme": {
+          "signingUrl": "https://uatmerchant.itsme.be/qes/prove_its_you_poka?q=34u5jh2dltb1xhsu0g4bshnlziycdhow&language=FR",
+          "userCode" : endUserUserCode
+      }
+  }
 }
 ```
-
-Values | Type | Returned | Description
-:----- |:-------- |:-------- |:---
-**result** |  | Always | This is the status of the request (pending, success or error).
-**maj** | String | Always | This is a general message that will give the status of the request, pending, success or error. In case of failure, the root cause is given.  
-**min** | String | Optional | This is a specific message that, in case of failure, identifies the root cause of the failure.
-**msg** | | Optional | This indicates the origin of the error. 
-**reqID** | String | Always | This is the ID of the request that you transfer. 
-**respId** | String |  | This parameter is the identifier of a User identification session. This parameter is needed for you to get the status of the signature.
-**optOutp** | | Always | Those are additional information needed for the signature request. Please note this parameter is not returned in the other use of this call (see section [Requesting the Sign session status](#signStatus))
-**itsme** |  | Always | This value contains all the information related to itsme® context. Please note this parameter is not returned in the other use of this call (see section [Requesting the Sign session status](#signStatus))
-**signingUrl** | String | Always | This signing URL is the link to redirect the User from the SCA frontend  to the itsme® Signing Page. Please note this parameter is not returned in the other use of this call (see section [Requesting the Sign session status](#signStatus))
-**userCode** | String |  | An identifier for the User, unique among all itsme® accounts and never reused. Use <i>"userCode"</i> in the application as the unique-identifier key for the User. Please note this parameter is not returned in the other use of this call (see section [Requesting the Sign session status](#signStatus))
 
 ### Handling Error Response
 
@@ -503,36 +533,108 @@ This request has to be sent in order to get the information about the Sign sessi
 
 Below you will find the mandatory and optional parameters to integrate in the HTTPS POST request body formatted as application/json:
 
+<table>
+  <tbody>
+    <tr>
+      <td>{% include parameter.html name="inDocs" type="string" req="Required" %}</td>
+      <td>MUST be 'null'.</td>
+    </tr>
+    <tr>
+      <td>{% include parameter.html name="reqID" type="string" req="Required" %}</td>
+      <td>This is the ID of the request that you are sending to us.</td>
+    </tr>
+    <tr>
+      <td>{% include parameter.html name="asyncRespID" type="string" req="Required" %}</td>
+      <td>This parameter is the identifier of a User identification session. You MUST provide here the value of the parameter <i>respId</i> returned in <a href="#8-capturing-the-sign-response">step 8</a>. In case no <i>"asyncRespID"</i> is given in the request, a new session is created (corresponding to <a href="#7-requesting-a-new-sign-session">step 7</a>). <i>Please note you will receive a 409 error if you fill in this parameter with the asyncRespID returned at <a href="#5-requesting-the-user-identification-session-status">step 5</a> instead</i></td>
+    </tr>
+    <tr>
+      <td>{% include parameter.html name="optInp" type="object" req="Required" %}</td>
+      <td>Contains additional information needed for the signature request.</td>
+    </tr>
+    <tr>
+      <td>{% include parameter.html name="itsme" type="object" req="Required" level="1" %}</td>
+      <td>Contains all the information related to itsme® context.</td>
+    </tr>
+    <tr>
+      <td>{% include parameter.html name="partnerCode" type="string" req="Required" level="2" %}</td>
+      <td>MUST be the client identifier you received when registering your application during the <a href="#prerequisites">onboarding process</a>. Will be translated to a label describing the partner for which the User is signing the document.</td>
+    </tr>
+    <tr>
+      <td>{% include parameter.html name="serviceCode" type="string" req="Required" level="2" %}</td>
+      <td>MUST contain the value of the serviceCode defined for your application during the <a href="#prerequisites">onboarding process</a>.</td>
+    </tr>
+  </tbody>
+</table>
+
+Example:
+
 ```
 POST /BASE_URL/qes-partners/1.0.0/sign_document HTTP/1.1
-  {
-  "inDocs": null, 
-  "reqID": "ReqIDv1prg8pmn9mtive3otsc", 
+{
+  "inDocs": null,
+  "reqID": "ReqIDv1prg8pmn9mtive3otsc",
   "asyncRespID": "b99a7d03acb94ea5a4d972aa31bb1c36",
-  "optInp": {
-              "itsme": {
-                        "partnerCode":"myPartnerCode", 
-                        "serviceCode":"myServiceCode"
-              }
-        }
+  "optInp": {
+    "itsme": {
+      "partnerCode":"myPartnerCode",
+      "serviceCode":"myServiceCode"
+    }
+  }
 }
 ```
-
-Parameter | Type | Required | Description
-:-------- | :-------- | :--------| :----- 
-**inDocs** |  | Required | This MUST be 'null'. 
-**reqID** | String | Required | This is the ID of the request that you provide to us.
-**asyncRespID** | String | Required | This parameter is the identifier of a User identification session. You MUST provide here the value of the parameter <i>respId</i> returned in step 4.8. In case no <i>"asyncRespID"</i> is given in the request, a new session is created instead (corresponding to step 4.7). _Please note you will receive a 409 if you fill in this parameter with the asyncRespID returned at step 4.5 instead_
-**optInp** | | Required | Those are additional information needed for the signature request.
-**itsme** | | Required | This parameter contains all the information related to itsme® context. 
-**partnerCode** | String | Required | This MUST be the client identifier you received when registering your application during the [onboarding process](#prerequisites). This parameter will be translated to a label describing the customer for which the User is signing the document. 
-**serviceCode** | String | Required | It MUST contain the value of the serviceCode defined for your application during the [onboarding process](#prerequisites).
 
 ## 11. Capturing the Sign Status Response
 
 This section relates to the step 14 of the sequence diagram.
 
 ### Getting a successful Sign Status Response
+
+<table>
+  <tbody>
+    <tr>
+      <td>{% include parameter.html name="result" type="object" req="ALWAYS" %}</td>
+      <td>Status of the request (pending, success or error).</td>
+    </tr>
+    <tr>
+      <td>{% include parameter.html name="maj" type="string" req="ALWAYS" level="1" %}</td>
+      <td>General message giving the status of the request, pending, success or error. In case of failure, the root cause is given.</td>
+    </tr>
+    <tr>
+      <td>{% include parameter.html name="min" type="string" req="Optional" level="1" %}</td>
+      <td>Specific message that, in case of failure, identifies the root cause of the failure.</td>
+    </tr>
+    <tr>
+      <td>{% include parameter.html name="msg" type="string" req="Optional" level="1" %}</td>
+      <td>Indicates the origin of the error.</td>
+    </tr>
+    <tr>
+      <td>{% include parameter.html name="reqID" type="string" req="ALWAYS" %}</td>
+      <td>This is the ID of the request that you are sending to us.</td>
+    </tr>
+    <tr>
+      <td>{% include parameter.html name="respID" type="string" req="ALWAYS" %}</td>
+      <td>Same value as returned in <a href="#8-capturing-the-sign-response">step 8</a> in the parameter respID.</td>
+    </tr>
+    <tr>
+      <td>{% include parameter.html name="sigObj" type="array of objects" req="ALWAYS" %}</td>
+      <td>Contains the signed hashes within a Json array. Please note this parameter is not returned in the other use of this call (see section <a href="#7-requesting-a-new-sign-session">Requesting a new Sign session</a>).</td>
+    </tr>
+    <tr>
+      <td>{% include parameter.html name="b64Sig" type="object" req="ALWAYS" level="1" %}</td>
+      <td>Contains the signed has within a Json object. Please note this parameter is not returned in the other use of this call (see section <a href="#7-requesting-a-new-sign-session">Requesting a new Sign session</a>).</td>
+    </tr>
+    <tr>
+      <td>{% include parameter.html name="value" type="string" req="ALWAYS" level="2" %}</td>
+      <td>This is the base64 encoded hash. The Sign algorithm is SHA256, the Public Key Cryptographic Standard is PKCS1 and the Signature format is « raw ». Please note this parameter is not returned in the other use of this call (see section <a href="#7-requesting-a-new-sign-session">Requesting a new Sign session</a>).</td>
+    </tr>
+    <tr>
+      <td>{% include parameter.html name="whichdoc" type="string" req="ALWAYS" level="1" %}</td>
+      <td>This is the ID of the hash(es) to be signed, as provided in the first use of this call: <a href="#startSignSession">Requesting a new Sign session</a>. Please note this parameter is not returned in the response to the first use of this call (see section <a href="#8-capturing-the-sign-response">Capturing the sign response</a>).</td>
+    </tr>
+  </tbody>
+</table>
+
+Example:
 
 ```
 HTTP200 
@@ -552,19 +654,6 @@ HTTP200
   ]
 }
 ```
-
-Parameter | Type | Returned | Description
-:-------- | :-------- | :--------| :----- 
-**result** |  | Always | This is the status of the request (pending, success or error).
-**maj** | String | Always | This is a general message that will give the status of the request, pending, success or error. In case of failure, the root cause is given.
-**min** | String | Optional | This is a specific message that, in case of failure, identifies the root cause of the failure.
-**msg** | | Optional | This indicates the origin of the error. 
-**reqID** | String | Always | This is the ID of the request that you provide to us.
-**respID** | String | Always | This will be the same value as the value returned in 4.8 in the parameter respId.
-**sigObj** | Array| Always | This contains the signed hashes within a Json array. Please note this parameter is not returned in the other use of this call (see section [Requesting a new Sign session](#startSignSession)).
-**b64Sig** | | Always | This contains the signed has within a Json object. Please note this parameter is not returned in the other use of this call (see section [Requesting a new Sign session](#startSignSession)).
-**value** | String | Always | This is the base64 encoded hash. The Sign algorithm is SHA256, the Public Key Cryptographic Standard is PKCS1 and the Signature format is « raw ». Please note this parameter is not returned in the other use of this call (see section [Requesting a new Sign session](#startSignSession)).
-**whichdoc** | String | Always | This is the ID of the hash(es) to be signed, as provided in section <a href="#startSignSession">Requesting a new Sign session</a>. Please note this parameter is not returned in the other use of this call (see section [Requesting a new Sign session](#startSignSession)).
 
 ### Handling Error Response
 
