@@ -1552,9 +1552,7 @@ aside.notice { border-color: white; }
 
 /** Parameters table */
 /*********************/
-td, th { border-left: none; vertical-align: top; }
-
-thead { text-align: left; }
+td, th { border-left: none; vertical-align: top; text-align: left; }
 
 .table-wrapper .table-wrapper { box-shadow: none; }
 
