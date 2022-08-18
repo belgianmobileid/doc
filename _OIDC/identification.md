@@ -584,7 +584,15 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
             <td>{% include parameter.html name="locale" req="OPTIONAL" %}</td><td>Returns user's mobile phone language, represented as a string format. Possible values are : <code>NL</code> <code>FR</code> <code>DE</code> <code>EN</code><br><br>If requested, a value MAY NOT be returned for this claim.</td>
           </tr>
           <tr>
-            <td>{% include parameter.html name="picture" req="OPTIONAL" %}</td><td>Returns user's ID picture, represented as a URL string. This URL refers to an image file (for example, a JPEG, JPEG2000, or PNG image file).<br><br>If requested, a value MAY NOT be returned for users with a Belgian ID document, and SHALL always be returned for users with a Dutch ID documents.</td>
+            <td>{% include parameter.html name="picture" req="OPTIONAL" %}</td>
+            <td>Returns user's ID picture, represented as a URL string. This URL refers to an image file (for example, a JPEG, JPEG2000, or PNG image file).<br><br>If requested, a value MAY NOT be returned for users with a Belgian ID document, and SHALL always be returned for users with a Dutch ID documents.<br /><br />
+            Accessing this URL has to be done with your bearer token. Example:<br />
+            <code>
+              GET /v2/picture HTTP/1.1<br />
+              Host: idp.prd.itsme.services<br />
+              Authorization: Bearer SlAV32hkKG
+            </code>
+            </td>
           </tr> 
           <tr>
             <td>{% include parameter.html name="email" req="OPTIONAL" %}</td><td>Returns user's email address.<br><br>If requested, a value MAY NOT be returned if the user doesn't gave us an email address.</td>
@@ -804,7 +812,13 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
             <td>{% include parameter.html name="locale" req="OPTIONAL" %}</td><td>Returns user's mobile phone language, represented as a string format. Possible values are : <code>NL</code> <code>FR</code> <code>DE</code> <code>EN</code><br><br>If requested, a value MAY NOT be returned for this claim.</td>
           </tr>
           <tr>
-            <td>{% include parameter.html name="picture" req="OPTIONAL" %}</td><td>Returns user's ID picture, represented as a URL string. This URL refers to an image file (for example, a JPEG, JPEG2000, or PNG image file).<br><br>If requested, a value MAY NOT be returned for users with a Belgian ID document, and SHALL always be returned for users with a Dutch ID documents.</td>
+            <td>{% include parameter.html name="picture" req="OPTIONAL" %}</td><td>Returns user's ID picture, represented as a URL string. This URL refers to an image file (for example, a JPEG, JPEG2000, or PNG image file).<br><br>If requested, a value MAY NOT be returned for users with a Belgian ID document, and SHALL always be returned for users with a Dutch ID documents.<br /><br />
+            Accessing this URL has to be done with your bearer token. Example:<br />
+            <code>
+              GET /v2/picture HTTP/1.1<br />
+              Host: idp.prd.itsme.services<br />
+              Authorization: Bearer SlAV32hkKG
+            </code></td>
           </tr> 
           <tr>
             <td>{% include parameter.html name="email" req="OPTIONAL" %}</td><td>Returns user's email address.<br><br>If requested, a value MAY NOT be returned if the user doesn't gave us an email address.</td>
