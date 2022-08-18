@@ -311,10 +311,6 @@ If the request fails the Token Endpoint responds with an HTTP 400 (Bad Request) 
       <td>{% include parameter.html name="error_description" req="OPTIONAL" %}</td>
       <td>Human-readable text providing additional information, used to assist the developer in understanding the error that occurred.</td>
     </tr>
-    <tr>
-      <td>{% include parameter.html name="state" req="" %}</td>
-      <td>The string value provided in the Authorization Request. You SHOULD validate that the value returned matches the one supplied.</td>
-    </tr>
   </tbody>
 </table>
 
