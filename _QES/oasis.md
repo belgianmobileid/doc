@@ -665,31 +665,113 @@ See [Appendixes](#appendixes) to get more information on the error codes.
 
 If one of the above request is invalid or unauthorized an error code will be returned to the User using the appropriate HTTPS status code, as listed in the table below:
 
-HTTP Status code | Description
-:-- | :-- 
-**400** | Returned in case of invalid Request Object.
-**409** | Returned in case the User identification flow has been interrupted.
-**500** | Internal Server Error.
+<table>
+  <tbody>
+    <tr>
+      <th>HTTP status code</th>
+      <th>Description</th>
+    </tr>
+    <tr>
+      <td>{% include parameter.html name="400" %}</td>
+      <td>Returned in case of invalid Request Object.</td>
+    </tr>
+    <tr>
+      <td>{% include parameter.html name="409" %}</td>
+      <td>Returned in case the User identification flow has been interrupted.</td>
+    </tr>
+    <tr>
+      <td>{% include parameter.html name="500" %}</td>
+      <td>Internal Server Error.</td>
+    </tr>
+  </tbody>
+</table>
 
 The Error Response will contain the <i>"status"</i> and the `statusReason` value. The following table describes the various error types that can be returned in the `statusReason` value of the error response:
 
-HTTP Status code | statusReason |  Description
-:-------- | :-------- | :--------
-**400** | NOT_ALLOWED_TO_SIGN | This error means the user account is not eligible for itsme hash signing. There are a few reasons to this, the most frequent one is that the user account is blocked. In any case, the user has to take action that cannot be initiated at your side and might need to contact the support.
-**400** | NO_REQUEST | user_identification is a POST service. A body SHOULD be inserted into the request. For more information on the structure of this request, you can go to the section related to /user_identification.
-**400** | MISSING_PARTNER_CODE | In this case, the body request does not contain the field "partnerCode". This field corresponds to the "Partner Code/Client ID" referenced in your onboarding file.
-**400** | MISSING_SERVICE_CODE | The body request does not contain the field "serviceCode". This field corresponds to the "Service Code" referenced in your onboarding file.
-**400** | INVALID_URL | The field "redirectUrl" is null or its syntax is not correct, URL is invalid. This field corresponds to the "Redirect URL" referenced in your onboarding file.
-**400** | INVALID_REQUESTOR | The "partnerCode" and/or "serviceCode" referenced into the body do not reference an existing partner and/or service. The "partnerCode" corresponds to the "Partner Code/Client ID" referenced in your onboarding file. The "serviceCode" corresponds to the "Service Code" referenced in your onboarding file for a SIGN service.
-**400** | UNAUTHORIZED_URL | The partner and its service have been correctly found by itsme® following referenced "partnerCode" and "serviceCode", but the given "redirectUrl" is not authorized for the partner and/or service mentioned. You did not provide a valid redirectUrl. The "redirectUrl" used here corresponds to the "Redirect URL" referenced in your onboarding file.
-**400** | INVALID_LANG | The "lang" field does not reference a language supported by itsme®. You can consult "BMID Well-Known Configuration" to check which are the languages supported by  itsme®, /well-known/configuration.
-**400** | UNEXPECTED_ERROR | An error occurred during the validation of partner information. You SHOULD try again later. If the error persists, then you SHOULD contact itsme® support team for investigation. 
-**400** | UNKNOWN | An unknown error occurred during the request. You SHOULD contact itsme® support team for investigation.
-**409** | PENDING | The User Identification Session you created is  pending. The User is currently following the User Identification flow at itsme® side (web and mobile).
-**409** | REJECTED | The User had to create a certificate in order to make a signature. However, he rejected his CREATE_CERT action in the itsme® App. A new User Identification session must be initialized. During that session, User has to confirm the CREATE_CERT action.
-**409** | EXPIRED | The User had to create a certificate in order to make a signature. However, he waited too long (more than three minutes) before confirming his CREATE_CERT action in the itsme® App and his action expired. A new User Identification Session must be initialized. During that session, User has to confirm the CREATE_CERT action in time.
-**409** | UNEXPECTED_ERROR | An unexpected error occurred during User’s Identification flow. You SHOULD try again later. If the error persists, then you SHOULD contact itsme® support team for investigation.
-**409** | No payload | This error can be thrown in different cases. One frequent case is when the sign_document request is called with an asyncRespID that is not found. Please consult section 4.10 for this specific case.
+<table>
+  <tbody>
+    <tr>
+      <th>HTTP code</th>
+      <th>statusReason</th>
+      <th>Description</th>
+    </tr>
+    <tr>
+      <td>{% include parameter.html name="400" %}</td>
+      <td>NOT_ALLOWED_TO_SIGN</td>
+      <td>The user account is not eligible for itsme hash signing. There are a few reasons to this, the most frequent one is that the user account is blocked. In any case, the user has to take action that cannot be initiated at your side and might need to contact the support.</td>
+    </tr>
+    <tr>
+      <td>{% include parameter.html name="400" %}</td>
+      <td>NO_REQUEST</td>
+      <td>user_identification is a POST service. A body SHOULD be inserted into the request. For more information on the structure of this request, you can go to the section related to /user_identification.</td>
+    </tr>
+    <tr>
+      <td>{% include parameter.html name="400" %}</td>
+      <td>MISSING_PARTNER_CODE</td>
+      <td>The request body does not contain the field "partnerCode". This field corresponds to the "Partner Code/Client ID" referenced in your onboarding file.</td>
+    </tr>
+    <tr>
+      <td>{% include parameter.html name="400" %}</td>
+      <td>MISSING_SERVICE_CODE</td>
+      <td>The request body does not contain the field "serviceCode". This field corresponds to the "Service Code" referenced in your onboarding file.</td>
+    </tr>
+    <tr>
+      <td>{% include parameter.html name="400" %}</td>
+      <td>INVALID_URL</td>
+      <td>The field "redirectUrl" is null or its syntax is not correct, URL is invalid. This field corresponds to the "Redirect URL" referenced in your onboarding file.</td>
+    </tr>
+    <tr>
+      <td>{% include parameter.html name="400" %}</td>
+      <td>INVALID_REQUESTOR</td>
+      <td>The "partnerCode" and/or "serviceCode" referenced into the body do not reference an existing partner and/or service. The "partnerCode" corresponds to the "Partner Code/Client ID" referenced in your onboarding file. The "serviceCode" corresponds to the "Service Code" referenced in your onboarding file for a SIGN service.</td>
+    </tr>
+    <tr>
+      <td>{% include parameter.html name="400" %}</td>
+      <td>UNAUTHORIZED_URL</td>
+      <td>The partner and its service have been correctly found by itsme® following referenced "partnerCode" and "serviceCode", but the given "redirectUrl" is not authorized for the partner and/or service mentioned. You did not provide a valid redirectUrl. The "redirectUrl" used here must correspond to the "Redirect URL" referenced in your onboarding file.</td>
+    </tr>
+    <tr>
+      <td>{% include parameter.html name="400" %}</td>
+      <td>INVALID_LANG</td>
+      <td>The "lang" field does not reference a language supported by itsme®. You can consult "BMID Well-Known Configuration" to check which are the languages supported by  itsme®, /well-known/configuration.</td>
+    </tr>
+    <tr>
+      <td>{% include parameter.html name="400" %}</td>
+      <td>UNEXPECTED_ERROR</td>
+      <td>An error occurred during the validation of partner information. You SHOULD try again later. If the error persists, then you SHOULD contact itsme® support team for investigation.</td>
+    </tr>
+    <tr>
+      <td>{% include parameter.html name="400" %}</td>
+      <td>UNKNOWN</td>
+      <td>An unknown error occurred during the request. You SHOULD contact itsme® support team for investigation.</td>
+    </tr>
+    <tr>
+      <td>{% include parameter.html name="409" %}</td>
+      <td>PENDING</td>
+      <td>The User Identification Session you created is  pending. The User is currently following the User Identification flow at itsme® side (web and mobile).</td>
+    </tr>
+    <tr>
+      <td>{% include parameter.html name="409" %}</td>
+      <td>REJECTED</td>
+      <td>The User had to create a certificate in order to make a signature. However, he rejected his CREATE_CERT action in the itsme® App. A new User Identification session must be initialized. During that session, User has to confirm the CREATE_CERT action.</td>
+    </tr>
+    <tr>
+      <td>{% include parameter.html name="409" %}</td>
+      <td>EXPIRED</td>
+      <td>The User had to create a certificate in order to make a signature. However, he waited too long (more than 3 minutes) before confirming his CREATE_CERT action in the itsme® App and his action expired. A new User Identification Session must be initialized. During that session, User has to confirm the CREATE_CERT action in time.</td>
+    </tr>
+    <tr>
+      <td>{% include parameter.html name="409" %}</td>
+      <td>UNEXPECTED_ERROR</td>
+      <td>An unexpected error occurred during User’s Identification flow. You SHOULD try again later. If the error persists, then you SHOULD contact itsme® support team for investigation.</td>
+    </tr>
+    <tr>
+      <td>{% include parameter.html name="409" %}</td>
+      <td>No payload</td>
+      <td>This error can be thrown in different cases. One frequent case is when the sign_document request is called with an asyncRespID that is not found. Please consult <a href="#10-requesting-the-sign-session-status">section 10</a> for this specific case.</td>
+    </tr>
+  </tbody>
+</table>
 
 ## SSLMA Authentication
 
