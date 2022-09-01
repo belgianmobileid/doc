@@ -618,19 +618,6 @@ response:
 
 # Appendixes
 
-## SSLMA Authentication
-
-We make use of SSLMA Authentication with our b2b interface (BASE_URL/qes-partners/1.0.0). This means that the SSL certificate you present upon each call towards this interface must be the one whitelisted in our systems as part of the onboarding process.
-We combine this authentication with IP filtering, meaning that we need to whitelist the IP address of your server. This is also part of the onboarding process.
-
-When renewing your certificate (at expiration or for any other reason), please give us some advance notice to make sure the transition happens smoothly. If possible, the new certificate should:
-<ul>
-  <li>Be issued by the same CA as the previous certificate</li>
-  <li>Contain the same Common Name as the previous certificate</li>
-</ul>
-
-Those 2 conditions will allow for a streamlined process where you can replace your certificate in a transparent way from the itsme&#174; point of view.
-
 ## Supported character set
 
 The character set we support for free text fields is ISO 8859-15. You can buy the specification [on ISO website](https://www.iso.org/standard/29505.html) or find a free version [on Wikipedia](https://en.wikipedia.org/wiki/ISO/IEC_8859-15#Codepage_layout). You might be interested in knowing that, although most usual characters are supported, some softwares-generated characters like curly apostrophes and long dashes are not part of ISO 8859-15. If you provide a non-supported character in a free text field the signing flow will be stopped and you will receive an error message back.
