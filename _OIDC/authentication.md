@@ -606,7 +606,10 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
           </tr> 
           <tr>
             <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/claim_citizenship" req="OPTIONAL" %}</td><td>Returns user's nationality. The format is directly depending on the underlying ID document: for Belgian ID documents this is represented as a string, and for Dutch ID documents this is represented in the <a href="https://en.wikipedia.org/wiki/ISO_3166" target="blank">ISO 3166-1 alpha-3</a> format.<br><br>If requested, a value SHALL always be returned for this claim.</td>
-          </tr> 
+          </tr>
+          <tr>
+            <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/claim_citizenship_as_iso" req="OPTIONAL" %}</td><td>Returns user's nationality. The format is always the <a href="https://en.wikipedia.org/wiki/ISO_3166" target="blank">ISO 3166-1 alpha-3</a> format. Please be aware that this claim is computed by itsme® for users with a Belgian ID document on a best effort basis. For the original value as stored on the ID document, see http://itsme.services/v2/claim/claim_citizenship above.<br><br>If requested, a value MAY NOT be returned for users with a Belgian ID document, and SHALL always be returned for users with a Dutch ID documents.</td>
+          </tr>
            <tr>
             <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/place_of_birth" req="OPTIONAL" %}</td><td>Returns user's place of birth, represented as a JSON Object containing some or all of these members <code>formatted</code> <code>city</code> <code>country</code>.<br><br>If requested, a value MAY NOT be returned for users with a Belgian ID document, and SHALL NOT be returned for users with a Dutch ID documents.</td>
           </tr> 
@@ -829,7 +832,10 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
           </tr> 
           <tr>
             <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/claim_citizenship" req="OPTIONAL" %}</td><td>Returns user's nationality. The format is directly depending on the underlying ID document: for Belgian ID documents this is represented as a string, and for Dutch ID documents this is represented in the <a href="https://en.wikipedia.org/wiki/ISO_3166" target="blank">ISO 3166-1 alpha-3</a> format.<br><br>If requested, a value SHALL always be returned for this claim.</td>
-          </tr> 
+          </tr>
+          <tr>
+            <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/claim_citizenship_as_iso" req="OPTIONAL" %}</td><td>Returns user's nationality. The format is always the <a href="https://en.wikipedia.org/wiki/ISO_3166" target="blank">ISO 3166-1 alpha-3</a> format. Please be aware that this claim is computed by itsme® for users with a Belgian ID document on a best effort basis. For the original value as stored on the ID document, see http://itsme.services/v2/claim/claim_citizenship above.<br><br>If requested, a value MAY NOT be returned for users with a Belgian ID document, and SHALL always be returned for users with a Dutch ID documents.</td>
+          </tr>
            <tr>
             <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/place_of_birth" req="OPTIONAL" %}</td><td>Returns user's place of birth, represented as a JSON Object containing some or all of these members <code>formatted</code> <code>city</code> <code>country</code>.<br><br>If requested, a value MAY NOT be returned for users with a Belgian ID document, and SHALL NOT be returned for users with a Dutch ID documents.</td>
           </tr> 
