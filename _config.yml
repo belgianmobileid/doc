@@ -45,19 +45,25 @@ collections:
   QES:
     permalink: "/:collection/:path/"
     output: true
+  Appendix:
+    permalink: "/:collection/:path/"
+    output: true
   
 
 # Define which collections are used in just-the-docs
 just_the_docs:
   collections:
     OIDC:
-      name: oidc
+      name: OpenID Connect
       nav_exclude: false
     OIDCplatforms:
-      name: platforms
+      name: OIDC platforms
       nav_exclude: false
     QES:
-      name: qes
+      name: Qualified E-Signature
+      nav_exclude: false
+    Appendix:
+      name: Appendix
       nav_exclude: false
 
 # Set a path/url to a logo that will be displayed instead of the title
