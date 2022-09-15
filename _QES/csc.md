@@ -454,8 +454,8 @@ response_type=code
 &lang={{EN | FR | NL | DE}}
 &state=test
 &credentialID=f7642e62-72eb-4e83-8825-80c67d402c03
-&numSignatures=1
-&hash=w6uP8Tcg6K2QR905Rms8iXTlksL6OD1KOWBxTK7wxPI%3d
+&numSignatures=2
+&hash=w6uP8Tcg6K2QR905Rms8iXTlksL6OD1KOWBxTK7wxPI%3d,11rkeh832bdhwzc99iuvwegst9bfi8hgirfr5Rms8iXi
 &description=exampleDescription
 ```
 
@@ -563,7 +563,8 @@ Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJmN2VlM2ZiN
   "credentialID": "f7642e62-72eb-4e83-8825-80c67d402c03",
   "SAD": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwZmZhMDZlNy1lNmUyLTQ2NTgtYmE4OC1hODFiMzMwN2JkZGUiLCJuYW1lIjoiaGN3OWpoYzFuNmdqODN3OGlwYWx3endmeG16a2Vmc2x4MGl0IiwiQXNwTmV0LklkZW50aXR5LlNlY3VyaXR5U3RhbXAiOiJaUjdRUFNIVjNJWFJSS0k3WlZSQVlPR0hQNlRJR0ZWUyIsIkNyZWRlbnRpYWwiOiJ0cnVlIiwiZXhwIjoxNTYyMTQyNDE4LCJpc3MiOiJjc2NfYXBpIiwiYXVkIjoiY3NjX2FwaSJ9.KJvjsN6Ao3ZqJBaifoku2MlUNdwdhJX8RZ_IO68Z5hg",
   "hash": [
-    "w6uP8Tcg6K2QR905Rms8iXTlksL6OD1KOWBxTK7wxPI="
+    "w6uP8Tcg6K2QR905Rms8iXTlksL6OD1KOWBxTK7wxPI=",
+    "11rkeh832bdhwzc99iuvwegst9bfi8hgirfr5Rms8iXi"
   ],
   "signAlgo": "1.2.840.113549.1.1.11"
 }
@@ -572,7 +573,8 @@ response:
 ```
 {
   "signatures": [
-    "i0H6bbiwVcxGDjGeNn2qhY...gbWbs6/pp9lWe4w6o5UG3BZhiZUfQ=="
+    "i0H6bbiwVcxGDjGeNn2qhY...gbWbs6/pp9lWe4w6o5UG3BZhiZUfQ==",
+    "uiainrstinertanierstn398aiu...iueldvpa65enzdljr98lvvddq="
   ]
 }
 ```
