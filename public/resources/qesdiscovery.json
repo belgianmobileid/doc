@@ -1,0 +1,224 @@
+{
+    "sign_policy_templates_supported" : [ {
+      "oid" : "1.3.6.1.4.1.49274.1.1.5.1.0",
+      "ref" : "1.3.6.1.4.1.49274.1.1.5.1.0",
+      "url" : "https://www.itsme.be/files/itsme-TestSignaturePolicy-1.0-EN.pdf",
+      "status" : "ENABLED",
+      "sigDigest" : "88455cd6d8081c4e48d271da5532a73895878001267acdd767d71435a7d028ca",
+      "sigDigestAlg" : "SHA256",
+      "text" : {
+        "DE" : "Signaturrichtlinie für Signaturen, die nur zum Testen verwendet werden und den Unterzeichner nicht an irgendetwas binden.",
+        "EN" : "Signature Policy for signatures that are only used for testing and do not bind the signer to anything.",
+        "FR" : "Politique de signature pour les signatures qui ne sont utilisées que pour tester et ne lient pas le signataire.",
+        "NL" : "Handtekeningbeleid voor handtekeningen die enkel voor testdoeleinden gebruikt worden en de ondertekenaar tot niets verbinden."
+      }
+    }, {
+      "oid" : "1.3.6.1.4.1.49274.1.1.7.1.0",
+      "ref" : "1.3.6.1.4.1.49274.1.1.7.1.0",
+      "url" : "https://www.itsme.be/files/COMPL_POL_GenericQualifiedSignaturePolicy-version-1.0.pdf",
+      "status" : "ENABLED",
+      "sigDigest" : "8efd9f3c4a8277d0425c89d7330ab688a52a348c0976d119c176eec7b12e3c36",
+      "sigDigestAlg" : "SHA256",
+      "text" : {
+        "DE" : "Signaturrichtlinien für qualifizierte elektronische Signaturen. Diese Unterschriften haben den selben rechtlichen Wert wie eine handschriftliche Unterschrift.",
+        "EN" : "Signature Policy for qualified electronic signatures. These signatures have the same legal value as a handwritten signature.",
+        "FR" : "Politique de signature pour des signatures électroniques qualifiées. Ces signatures ont la même valeur qu'une signature manuscrite.",
+        "NL" : "Handtekeningbeleid voor gekwalificeerde elektronisch handtekeningen. Deze handtekeningen hebben dezelfde legale waarde als een handgeschreven handtekening."
+      }
+    }, {
+      "oid" : "1.3.6.1.4.1.49274.1.1.5.1.1",
+      "ref" : "1.3.6.1.4.1.49274.1.1.5.1.1",
+      "url" : "https://www.itsme.be/files/COMPL_POL_TestSignaturePolicy-version-1.1.pdf",
+      "status" : "ENABLED",
+      "sigDigest" : "62e726c4e5043a2f698944bd2e4777e24c105a74a113f1a0b4b6c5ad9c5d042e5cd026a06d9d97ae6cadd69831fa38304c80837b9e8f7ff35c7c249c1e780bc8",
+      "sigDigestAlg" : "SHA512",
+      "text" : {
+        "DE" : "Signaturrichtlinie für Signaturen, die nur zum Testen verwendet werden und den Unterzeichner nicht an irgendetwas binden.",
+        "EN" : "Signature Policy for signatures that are only used for testing and do not bind the signer to anything.",
+        "FR" : "Politique de signature pour les signatures qui ne sont utilisées que pour tester et ne lient pas le signataire.",
+        "NL" : "Handtekeningbeleid voor handtekeningen die enkel voor testdoeleinden gebruikt worden en de ondertekenaar tot niets verbinden."
+      }
+    }, {
+      "oid" : "1.3.6.1.4.1.49274.1.1.7.1.1",
+      "ref" : "1.3.6.1.4.1.49274.1.1.7.1.1",
+      "url" : "https://www.itsme.be/files/COMPL_POL_itsmeSignatureCreationServicePolicy-version-1.1.pdf",
+      "status" : "ENABLED",
+      "sigDigest" : "d830056731ef88f79f3e6964afe8182b3f6663d6421da1e80884877f5ee02f5270b6ee9318c500549f1affd7dba19f670cc7bbd53573bb45d7a07bf6a1f4be36",
+      "sigDigestAlg" : "SHA512",
+      "text" : {
+        "DE" : "Signaturrichtlinien für qualifizierte elektronische Signaturen. Diese Unterschriften haben den selben rechtlichen Wert wie eine handschriftliche Unterschrift.",
+        "EN" : "Signature Policy for qualified electronic signatures. These signatures have the same legal value as a handwritten signature.",
+        "FR" : "Politique de signature pour des signatures électroniques qualifiées. Ces signatures ont la même valeur qu'une signature manuscrite.",
+        "NL" : "Handtekeningbeleid voor gekwalificeerde elektronisch handtekeningen. Deze handtekeningen hebben dezelfde legale waarde als een handgeschreven handtekening."
+      }
+    }, {
+      "oid" : "1.3.171.1.4.1.1.2",
+      "ref" : "1.3.171.1.4.1.1.2",
+      "url" : "https://www.luxtrust.lu/upload/data/repository/LuxTrust%20Cloud%20Signature%20Policies%20v1.1.6.pdf",
+      "status" : "ENABLED",
+      "sigDigest" : "a109eaef0d9a9a341998306347ebf02b4faf3d45b1efb7020071c7e924f08a8d",
+      "sigDigestAlg" : "SHA256",
+      "text" : {
+        "DE" : "PDF - Dokument - Signatur",
+        "EN" : "PDF Document Signature",
+        "FR" : "Signature Document PDF",
+        "NL" : "Handtekening PDF - document"
+      }
+    }, {
+      "oid" : "1.3.171.1.4.1.2.2",
+      "ref" : "1.3.171.1.4.1.2.2",
+      "url" : "https://www.luxtrust.lu/upload/data/repository/LuxTrust%20Cloud%20Signature%20Policies%20v1.1.6.pdf",
+      "status" : "ENABLED",
+      "sigDigest" : "a109eaef0d9a9a341998306347ebf02b4faf3d45b1efb7020071c7e924f08a8d",
+      "sigDigestAlg" : "SHA256",
+      "text" : {
+        "DE" : "XML - Hash - Signatur",
+        "EN" : "XML hash signature",
+        "FR" : "Signature Hash Document XML",
+        "NL" : "XML Hash - Handtekening"
+      }
+    }, {
+      "oid" : "1.3.171.1.4.1.3.2",
+      "ref" : "1.3.171.1.4.1.3.2",
+      "url" : "https://www.luxtrust.lu/upload/data/repository/LuxTrust%20Cloud%20Signature%20Policies%20v1.1.6.pdf",
+      "status" : "ENABLED",
+      "sigDigest" : "a109eaef0d9a9a341998306347ebf02b4faf3d45b1efb7020071c7e924f08a8d",
+      "sigDigestAlg" : "SHA256",
+      "text" : {
+        "DE" : "PDF - Hash - Signatur",
+        "EN" : "PDF Hash Signature",
+        "FR" : "Signature Hash - Document PDF",
+        "NL" : "PDF Hash Handtekening"
+      }
+    }, {
+      "oid" : "1.3.171.1.4.1.4.2",
+      "ref" : "1.3.171.1.4.1.4.2",
+      "url" : "https://www.luxtrust.lu/upload/data/repository/LuxTrust%20Cloud%20Signature%20Policies%20v1.1.6.pdf",
+      "status" : "ENABLED",
+      "sigDigest" : "a109eaef0d9a9a341998306347ebf02b4faf3d45b1efb7020071c7e924f08a8d",
+      "sigDigestAlg" : "SHA256",
+      "text" : {
+        "DE" : "XML - Signatur",
+        "EN" : "XML Signature",
+        "FR" : "Signature Document XML",
+        "NL" : "XML - Handtekening"
+      }
+    }, {
+      "oid" : "1.3.171.1.4.1.5.2",
+      "ref" : "1.3.171.1.4.1.5.2",
+      "url" : "https://www.luxtrust.lu/upload/data/repository/LuxTrust%20Cloud%20Signature%20Policies%20v1.1.6.pdf",
+      "status" : "ENABLED",
+      "sigDigest" : "a109eaef0d9a9a341998306347ebf02b4faf3d45b1efb7020071c7e924f08a8d",
+      "sigDigestAlg" : "SHA256",
+      "text" : {
+        "DE" : "PDF - Hash - Signatur(en)",
+        "EN" : "PDF Hash Signature(s)",
+        "FR" : "Signature(s) Hash - Document PDF",
+        "NL" : "PDF Hash Handtekening(en)"
+      }
+    }, {
+      "oid" : "1.3.6.1.4.1.49274.1.1.7.1.2",
+      "ref" : "1.3.6.1.4.1.49274.1.1.7.1.2",
+      "url" : "https://www.itsme-id.com/content-assets/53388/1652270260-compl_pol_genericqualifiedsignaturepolicy-version-1-2.pdf",
+      "status" : "ENABLED",
+      "sigDigest" : "a805784b3f9e2db282077a0dcd5a2ee83f12837a4c1af068530178984809ee22d2f8fe1c49a696caf90e4257eda0bd20c5d0c4134f02401d6fc76d9fe67f6ff9",
+      "sigDigestAlg" : "SHA512",
+      "text" : {
+        "DE" : "Signaturrichtlinien für qualifizierte elektronische Signaturen. Diese Unterschriften haben den selben rechtlichen Wert wie eine handschriftliche Unterschrift.",
+        "EN" : "Signature Policy for qualified electronic signatures. These signatures have the same legal value as a handwritten signature.",
+        "FR" : "Politique de signature pour des signatures électroniques qualifiées. Ces signatures ont la même valeur qu'une signature manuscrite.",
+        "NL" : "Handtekeningbeleid voor gekwalificeerde elektronisch handtekeningen. Deze handtekeningen hebben dezelfde legale waarde als een handgeschreven handtekening."
+      }
+    }, {
+      "oid" : "1.3.6.1.4.1.49274.1.1.5.1.2",
+      "ref" : "1.3.6.1.4.1.49274.1.1.5.1.2",
+      "url" : "https://www.itsme-id.com/content-assets/53388/1652270326-compl_pol_testsignaturepolicy-version-1-2.pdf",
+      "status" : "ENABLED",
+      "sigDigest" : "a182422a72b8c4985b5d8ef1351caac4baf013ddf3c875099198b97074109f248691bd0100f36076e79b1d94eb6207a40f80e50a0e17166880c4ed20376c34ea",
+      "sigDigestAlg" : "SHA512",
+      "text" : {
+        "DE" : "Signaturrichtlinie für Signaturen, die nur zum Testen verwendet werden und den Unterzeichner nicht an irgendetwas binden.",
+        "EN" : "Signature Policy for signatures that are only used for testing and do not bind the signer to anything.",
+        "FR" : "Politique de signature pour les signatures qui ne sont utilisées que pour tester et ne lient pas le signataire.",
+        "NL" : "Handtekeningbeleid voor handtekeningen die enkel voor testdoeleinden gebruikt worden en de ondertekenaar tot niets verbinden."
+      }
+    }, {
+      "oid" : "1.3.6.1.4.1.49274.1.1.7.2.0",
+      "ref" : "1.3.6.1.4.1.49274.1.1.7.2.0",
+      "url" : "https://www.itsme-id.com/content-assets/53388/1662634565-compl_pol_genericqualifiedsignaturepolicy-2-0.pdf",
+      "status" : "ENABLED",
+      "sigDigest" : "c15df94f133c559ab5b37bbae5536e888efc3c5c36adabe391f99e540ed0b121",
+      "sigDigestAlg" : "SHA256",
+      "text" : {
+        "DE" : "Signaturrichtlinien für qualifizierte elektronische Signaturen. Diese Unterschriften haben den selben rechtlichen Wert wie eine handschriftliche Unterschrift.",
+        "EN" : "Signature Policy for qualified electronic signatures. These signatures have the same legal value as a handwritten signature.",
+        "FR" : "Politique de signature pour des signatures électroniques qualifiées. Ces signatures ont la même valeur qu'une signature manuscrite.",
+        "NL" : "Handtekeningbeleid voor gekwalificeerde elektronisch handtekeningen. Deze handtekeningen hebben dezelfde legale waarde als een handgeschreven handtekening."
+      }
+    } ],
+    "commitment_types_supported" : [ {
+      "oid" : "1.3.6.1.4.1.49274.1.2.1",
+      "ref" : "1.3.6.1.4.1.49274.1.2.1",
+      "text" : {
+        "DE" : "Test",
+        "EN" : "Testing",
+        "FR" : "Test",
+        "NL" : "Test"
+      }
+    }, {
+      "oid" : "1.2.840.113549.1.9.16.6.1",
+      "ref" : "1.2.840.113549.1.9.16.6.1",
+      "text" : {
+        "DE" : "Ursprungsnachweis",
+        "EN" : "Proof of origin",
+        "FR" : "Preuve d'origine",
+        "NL" : "Bewijs van herkomst"
+      }
+    }, {
+      "oid" : "1.2.840.113549.1.9.16.6.2",
+      "ref" : "1.2.840.113549.1.9.16.6.2",
+      "text" : {
+        "DE" : "Empfangsbescheinigung",
+        "EN" : "Proof of receipt",
+        "FR" : "Preuve de réception",
+        "NL" : "Bewijs van ontvangst"
+      }
+    }, {
+      "oid" : "1.2.840.113549.1.9.16.6.3",
+      "ref" : "1.2.840.113549.1.9.16.6.3",
+      "text" : {
+        "DE" : "Zustellnachweis",
+        "EN" : "Proof of delivery",
+        "FR" : "Preuve de livraison",
+        "NL" : "Bewijs van levering"
+      }
+    }, {
+      "oid" : "1.2.840.113549.1.9.16.6.4",
+      "ref" : "1.2.840.113549.1.9.16.6.4",
+      "text" : {
+        "DE" : "Nachweis des Absenders",
+        "EN" : "Proof of sender",
+        "FR" : "Preuve d'expéditeur",
+        "NL" : "Bewijs van afzender"
+      }
+    }, {
+      "oid" : "1.2.840.113549.1.9.16.6.5",
+      "ref" : "1.2.840.113549.1.9.16.6.5",
+      "text" : {
+        "DE" : "Nachweis der Zustimmung",
+        "EN" : "Proof of approval",
+        "FR" : "Preuve d'approbation",
+        "NL" : "Bewijs van goedkeuring"
+      }
+    }, {
+      "oid" : "1.2.840.113549.1.9.16.6.6",
+      "ref" : "1.2.840.113549.1.9.16.6.6",
+      "text" : {
+        "DE" : "Nachweis der Schöpfung",
+        "EN" : "Proof of creation",
+        "FR" : "Preuve de création",
+        "NL" : "Bewijs van creatie"
+      }
+    } ],
+    "sign_languages_supported" : [ "EN", "FR", "NL", "DE" ]
+  }
