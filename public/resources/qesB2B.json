@@ -1,0 +1,744 @@
+{
+    "swagger" : "2.0",
+    "info" : {
+      "description" : "API for partners (aka driving applications)",
+      "version" : "1.0.0",
+      "title" : "QES Partners API"
+    },
+    "host" : "b2b.itsme.be",
+    "basePath" : "/qes-partners/1.0.0",
+    "tags" : [ {
+      "name" : ".well-knownconfiguration",
+      "description" : "API containing the Well-Known Configuration used by the itsme Qualified Signature Solution"
+    }, {
+      "name" : "sign_document",
+      "description" : "API used by partner to start and manage a SIGN Session"
+    }, {
+      "name" : "user_identification",
+      "description" : "API used by partner to start and manage an IDENTIFICATION Session, during which user will be able to create a signature certificate, needed for the Signature flow"
+    }, {
+      "name" : "verify_document",
+      "description" : "Service returning a BMID report to the remote SCA attesting that signatures contained in a document are valid or not"
+    } ],
+    "schemes" : [ "https" ],
+    "paths" : {
+      "/.well-known/configuration" : {
+        "get" : {
+          "tags" : [ ".well-knownconfiguration" ],
+          "summary" : "Well-Known configuration of itsme Qualified Signature solution",
+          "description" : "Returns all Signing Policies, all Commitment Types and all languages (including their itsme references in the system used by the itsme Qualified Signature Solution",
+          "operationId" : "wellKnownConfiguration",
+          "consumes" : [ "*/*" ],
+          "produces" : [ "application/json" ],
+          "responses" : {
+            "200" : {
+              "description" : "Returned in case of success",
+              "schema" : {
+                "$ref" : "#/definitions/WellKnownConfiguration"
+              }
+            }
+          }
+        }
+      },
+      "/sign_document" : {
+        "post" : {
+          "tags" : [ "sign_document" ],
+          "summary" : "Process a SIGN session",
+          "description" : "Returns information of a SIGN session. If no asyncRespID is precised in request, creates a new session. If asyncRespID is precised, retrieves information for the corresponding session. \nHere is described the minimal set of data required for processing. \nAdditionally, DSS standards describe other parameter as mandatory inputs but are not required in the processing.",
+          "operationId" : "processSignRequest",
+          "consumes" : [ "application/json" ],
+          "produces" : [ "application/json" ],
+          "parameters" : [ {
+            "in" : "body",
+            "name" : "body",
+            "description" : "DSS Signing Request",
+            "required" : true,
+            "schema" : {
+              "$ref" : "#/definitions/DssSignRequest"
+            }
+          }, {
+            "name" : "X-Partner-Code",
+            "in" : "header",
+            "required" : false,
+            "type" : "string",
+            "default" : ""
+          } ],
+          "responses" : {
+            "200" : {
+              "description" : "Returned in case of success",
+              "schema" : {
+                "$ref" : "#/definitions/DssSignResponse"
+              }
+            },
+            "400" : {
+              "description" : "Returned in case of invalid request object",
+              "schema" : {
+                "$ref" : "#/definitions/DssSignResponse"
+              }
+            },
+            "409" : {
+              "description" : "Returned in case of error",
+              "schema" : {
+                "$ref" : "#/definitions/DssSignResponse"
+              }
+            }
+          }
+        }
+      },
+      "/user_identification" : {
+        "post" : {
+          "tags" : [ "user_identification" ],
+          "summary" : "Start a new user identification session",
+          "description" : "Creates a new user identification session. To have the status of this one or collect the user's certificate, partner must call the 'status' endpoint",
+          "operationId" : "requestUserIdentification",
+          "consumes" : [ "application/json" ],
+          "produces" : [ "application/json" ],
+          "parameters" : [ {
+            "in" : "body",
+            "name" : "body",
+            "description" : "User identification request",
+            "required" : true,
+            "schema" : {
+              "$ref" : "#/definitions/IdentificationRequest"
+            }
+          }, {
+            "name" : "X-Partner-Code",
+            "in" : "header",
+            "required" : false,
+            "type" : "string",
+            "default" : ""
+          } ],
+          "responses" : {
+            "200" : {
+              "description" : "Returned in case of success",
+              "schema" : {
+                "$ref" : "#/definitions/IdentificationResponse"
+              }
+            },
+            "400" : {
+              "description" : "Returned in case of invalid request object",
+              "schema" : {
+                "$ref" : "#/definitions/UserIdentificationBasicInfo"
+              }
+            },
+            "409" : {
+              "description" : "Returned in case of error",
+              "schema" : {
+                "$ref" : "#/definitions/UserIdentificationBasicInfo"
+              }
+            },
+            "500" : {
+              "description" : "Internal Server Error",
+              "schema" : {
+                "$ref" : "#/definitions/UserIdentificationBasicInfo"
+              }
+            }
+          }
+        }
+      },
+      "/user_identification/status" : {
+        "post" : {
+          "tags" : [ "user_identification" ],
+          "summary" : "Get the status of a user identification session",
+          "description" : "Get the status of an existing user identification session based on the 'asyncRespID' argument in the POST body",
+          "operationId" : "getUserCertificate",
+          "consumes" : [ "application/json" ],
+          "produces" : [ "application/json" ],
+          "parameters" : [ {
+            "in" : "body",
+            "name" : "body",
+            "description" : "Get certificate request",
+            "required" : true,
+            "schema" : {
+              "$ref" : "#/definitions/GetCertificateRequest"
+            }
+          }, {
+            "name" : "X-Partner-Code",
+            "in" : "header",
+            "required" : false,
+            "type" : "string",
+            "default" : ""
+          } ],
+          "responses" : {
+            "200" : {
+              "description" : "Returned in case of success",
+              "schema" : {
+                "$ref" : "#/definitions/UserCertificateResponse"
+              }
+            },
+            "400" : {
+              "description" : "Returned in case of invalid request object",
+              "schema" : {
+                "$ref" : "#/definitions/UserIdentificationBasicInfo"
+              }
+            },
+            "409" : {
+              "description" : "Returned in case of error",
+              "schema" : {
+                "$ref" : "#/definitions/UserIdentificationBasicInfo"
+              }
+            },
+            "500" : {
+              "description" : "Internal Server Error",
+              "schema" : {
+                "$ref" : "#/definitions/UserIdentificationBasicInfo"
+              }
+            }
+          }
+        }
+      },
+      "/verify_document" : {
+        "post" : {
+          "tags" : [ "verify_document" ],
+          "summary" : "Process Signature Validation",
+          "description" : "",
+          "operationId" : "processVerifyRequest",
+          "consumes" : [ "application/json" ],
+          "produces" : [ "application/json" ],
+          "parameters" : [ {
+            "in" : "body",
+            "name" : "body",
+            "required" : true,
+            "schema" : {
+              "$ref" : "#/definitions/DssVerifyRequest"
+            }
+          }, {
+            "name" : "X-Partner-Code",
+            "in" : "header",
+            "required" : false,
+            "type" : "string",
+            "default" : ""
+          } ],
+          "responses" : {
+            "default" : {
+              "description" : "successful operation"
+            }
+          }
+        }
+      }
+    },
+    "definitions" : {
+      "DssBase64Data" : {
+        "type" : "object",
+        "required" : [ "value" ],
+        "properties" : {
+          "value" : {
+            "type" : "string",
+            "example" : "Base64 format representing the signed hash",
+            "description" : "Signed hash created during the SIGN session, for the corresponding hash sent by the SCA to sign"
+          }
+        }
+      },
+      "DssDigestInfo" : {
+        "type" : "object",
+        "required" : [ "alg", "value" ],
+        "properties" : {
+          "alg" : {
+            "type" : "string",
+            "description" : "Algorithm used for the hash. Only sha256 is supported for now"
+          },
+          "value" : {
+            "type" : "string",
+            "example" : "Base64 format representing the signed hash",
+            "description" : "Hash to be signed by itsme QES solution in a signature flow"
+          }
+        }
+      },
+      "DssDocumentHash" : {
+        "type" : "object",
+        "required" : [ "di", "id" ],
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "description" : "Identifier of the hash series to be signed during signature flow"
+          },
+          "di" : {
+            "type" : "array",
+            "description" : "Array of hashes to sign during a signature flow.",
+            "items" : {
+              "$ref" : "#/definitions/DssDigestInfo"
+            }
+          }
+        }
+      },
+      "DssILocalizedLabel" : {
+        "type" : "object",
+        "required" : [ "lang", "value" ],
+        "properties" : {
+          "lang" : {
+            "type" : "string",
+            "description" : "Label's language"
+          },
+          "value" : {
+            "type" : "string",
+            "description" : "Label's value"
+          }
+        }
+      },
+      "DssISignPolicy" : {
+        "type" : "object",
+        "required" : [ "signPolicyRef" ],
+        "properties" : {
+          "signPolicyRef" : {
+            "type" : "string",
+            "description" : "Reference of the signing policy to use during BMID Signing flow. \nThe list of available codes is communicated by BMID through well-known configuration endpoint."
+          },
+          "commitmentTypeRef" : {
+            "type" : "string",
+            "description" : "Reference of the commitment type to use during BMID Signing flow. \nOnly used to show the user in the itsme app the commitment type of the signature. \nThe list of available codes is communicated by BMID through well-known configuration endpoint. \nNo commitment will be used if not provided"
+          },
+          "signerRole" : {
+            "type" : "array",
+            "description" : "Signer's role during BMID Signing flow. \nOnly used to show the user in the itsme app with what role he will be signing \nOptional: a signer role ? free text value  \nA value must be provided for each of the 4 supported languages \nmax 50 chars, only ISO-8859-1 compatible chars are supported \nNo signer role will be used if not provided ",
+            "items" : {
+              "$ref" : "#/definitions/DssILocalizedLabel"
+            }
+          }
+        }
+      },
+      "DssISignRequestContext" : {
+        "type" : "object",
+        "required" : [ "partnerCode", "redirectUrl", "serviceCode", "signPolicy", "signer" ],
+        "properties" : {
+          "signer" : {
+            "description" : "Identifying information of the signer in itsme solution",
+            "$ref" : "#/definitions/DssISigner"
+          },
+          "partnerCode" : {
+            "type" : "string",
+            "description" : "partnerCode (communicated by BMID) of the partner that needs to be be visualized in the app to the user and who delivers the userCode for the specific user"
+          },
+          "serviceCode" : {
+            "type" : "string",
+            "description" : "serviceCode (communicated by BMID) for the specific hash signing service of the partner who delivers the userCode for the specific user"
+          },
+          "description" : {
+            "type" : "array",
+            "description" : "A description about the data to be signed that will be shown to the end user in his itsme app. \nA value must be provided for each of the supported languages \nmax 50 chars, only ISO-8859-1 compatible chars are supported",
+            "items" : {
+              "$ref" : "#/definitions/DssILocalizedLabel"
+            }
+          },
+          "redirectUrl" : {
+            "type" : "string",
+            "description" : "URL used at the end of the BMID signing flow to redirect user to the remote SCA. \nAfter visiting this URL, the remote SCA should call QES Partners API to check the status of signature. \nThe value of this redirectUrl must correspond to the remote SCA's SIGN service created during its onboarding"
+          },
+          "signPolicy" : {
+            "description" : "Signature policy information. \nOptional, however if the SCA indicates itself the use of a signature policy to the user, the SCA MUST use this element to inform BMID about this to avoid that another signature policy will be referenced in the itsme app than in the SCA. If no specific signature policy is used by the SCA, the SCA should use the itsme generic signature policy",
+            "$ref" : "#/definitions/DssISignPolicy"
+          }
+        }
+      },
+      "DssISignResponseContext" : {
+        "type" : "object",
+        "required" : [ "signingUrl", "userCode" ],
+        "properties" : {
+          "signingUrl" : {
+            "type" : "string",
+            "description" : "Link to provide to the end user where he will receive BMID instructions and poka yoke code"
+          },
+          "userCode" : {
+            "type" : "string",
+            "description" : "User's identifier for the remote SCA in itsme solution"
+          }
+        }
+      },
+      "DssISigner" : {
+        "type" : "object",
+        "required" : [ "userCode" ],
+        "properties" : {
+          "userCode" : {
+            "type" : "string",
+            "description" : "User's identifier for the remote SCA in itsme solution. \nMandatory for hash signing request"
+          }
+        }
+      },
+      "DssIVerifyRequestContext" : {
+        "type" : "object",
+        "properties" : {
+          "partnerCode" : {
+            "type" : "string"
+          },
+          "serviceCode" : {
+            "type" : "string"
+          }
+        }
+      },
+      "DssInputDocuments" : {
+        "type" : "object",
+        "properties" : {
+          "docHash" : {
+            "type" : "array",
+            "description" : "List of hashes to be signed by the itsme solution. \nid of the element will be reused later when providing the signature response to link the returned information with the hash it was created for",
+            "items" : {
+              "$ref" : "#/definitions/DssDocumentHash"
+            }
+          }
+        }
+      },
+      "DssOptionalInputsSign" : {
+        "type" : "object",
+        "required" : [ "itsme" ],
+        "properties" : {
+          "lang" : {
+            "type" : "string",
+            "description" : "Language to use during itsme Signature flow"
+          },
+          "itsme" : {
+            "description" : "Information related to itsme context, in which the signature flow will be executed",
+            "$ref" : "#/definitions/DssISignRequestContext"
+          }
+        }
+      },
+      "DssOptionalInputsVerify" : {
+        "type" : "object",
+        "required" : [ "itsme" ],
+        "properties" : {
+          "profile" : {
+            "type" : "array",
+            "items" : {
+              "type" : "string"
+            }
+          },
+          "policy" : {
+            "type" : "array",
+            "items" : {
+              "type" : "string"
+            }
+          },
+          "lang" : {
+            "type" : "string"
+          },
+          "itsme" : {
+            "$ref" : "#/definitions/DssIVerifyRequestContext"
+          }
+        }
+      },
+      "DssOptionalOutputsSign" : {
+        "type" : "object",
+        "required" : [ "itsme" ],
+        "properties" : {
+          "itsme" : {
+            "description" : "Contextual information related to itsme application",
+            "$ref" : "#/definitions/DssISignResponseContext"
+          }
+        }
+      },
+      "DssResult" : {
+        "type" : "object",
+        "required" : [ "maj", "min", "msg" ],
+        "properties" : {
+          "maj" : {
+            "type" : "string"
+          },
+          "min" : {
+            "type" : "string",
+            "example" : "NO_HASH_PROVIDED, ONLY_SINGLE_HASH_SUPPORTED, NO_DIGEST_INFO_PROVIDED, ONLY_SINGLE_DIGEST_INFO_SUPPORTED, INVALID_DIGEST_INFO, INCOMPLETE_REQUEST, MISSING_PARTNER_CODE, MISSING_SERVICE_CODE, MISSING_ASYNC_RESP_ID, INVALID_LANGUAGE, INVALID_REQUESTOR, INVALID_POLICY, INVALID_POLICY_STATUS, NOT_ALLOWED_TO_SIGN, TECHNICAL_ERROR"
+          },
+          "msg" : {
+            "$ref" : "#/definitions/InternationalString"
+          }
+        }
+      },
+      "DssSignRequest" : {
+        "type" : "object",
+        "required" : [ "inDocs", "optInp", "reqID" ],
+        "properties" : {
+          "inDocs" : {
+            "$ref" : "#/definitions/DssInputDocuments"
+          },
+          "reqID" : {
+            "type" : "string"
+          },
+          "asyncRespID" : {
+            "type" : "string",
+            "description" : "Identifier of a SIGN session. \nTo check the status of a SIGN session, remote SCA will have to complete its request with that identifier, completing it using value contained in response's 'respID' field"
+          },
+          "optInp" : {
+            "$ref" : "#/definitions/DssOptionalInputsSign"
+          }
+        }
+      },
+      "DssSignResponse" : {
+        "type" : "object",
+        "required" : [ "reqID", "result" ],
+        "properties" : {
+          "result" : {
+            "$ref" : "#/definitions/DssResult"
+          },
+          "reqID" : {
+            "type" : "string"
+          },
+          "respID" : {
+            "type" : "string",
+            "description" : "Identifier of the SIGN session"
+          },
+          "optOutp" : {
+            "description" : "Contextual information concerning this SIGN session. Will be returned in case of success",
+            "$ref" : "#/definitions/DssOptionalOutputsSign"
+          },
+          "sigObj" : {
+            "type" : "array",
+            "description" : "List of signature objects (hashes) returned to the SCA at the end of the successful SIGN session",
+            "items" : {
+              "$ref" : "#/definitions/DssSignatureObject"
+            }
+          }
+        }
+      },
+      "DssSignatureObject" : {
+        "type" : "object",
+        "required" : [ "b64Sig", "whichDoc" ],
+        "properties" : {
+          "b64Sig" : {
+            "description" : "Information about the signed hash created during the SIGN session",
+            "$ref" : "#/definitions/DssBase64Data"
+          },
+          "whichDoc" : {
+            "type" : "string",
+            "description" : "Corresponds to the inDocs.docHash.id provided in the request"
+          }
+        }
+      },
+      "DssVerifyRequest" : {
+        "type" : "object",
+        "properties" : {
+          "inDocs" : {
+            "$ref" : "#/definitions/DssInputDocuments"
+          },
+          "reqID" : {
+            "type" : "string"
+          },
+          "optInp" : {
+            "$ref" : "#/definitions/DssOptionalInputsVerify"
+          },
+          "sigObject" : {
+            "$ref" : "#/definitions/DssSignatureObject"
+          }
+        }
+      },
+      "GetCertificateRequest" : {
+        "type" : "object",
+        "required" : [ "asyncRespID", "partnerCode", "serviceCode" ],
+        "properties" : {
+          "partnerCode" : {
+            "type" : "string",
+            "description" : "partnerCode (communicated by BMID) of the partner that needs to be be visualized in the app to the user and who delivers the userCode for the specific user",
+            "minLength" : 1,
+            "maxLength" : 10
+          },
+          "serviceCode" : {
+            "type" : "string",
+            "description" : "serviceCode (communicated by BMID) for the specific hash signing service of the partner who delivers the userCode for the specific user",
+            "minLength" : 1,
+            "maxLength" : 45
+          },
+          "asyncRespID" : {
+            "type" : "string",
+            "description" : "User identification's identifier provided through 'Request end user identification' service",
+            "minLength" : 1,
+            "maxLength" : 255
+          }
+        }
+      },
+      "IdentificationRequest" : {
+        "type" : "object",
+        "required" : [ "lang", "partnerCode", "redirectUrl", "serviceCode" ],
+        "properties" : {
+          "userCode" : {
+            "type" : "string",
+            "description" : "BMID assigned identifier (userCode) for the user. \nCannot be provided without a prior identification of the user via BMID. Optional ? default to null if not provided",
+            "minLength" : 36,
+            "maxLength" : 36
+          },
+          "partnerCode" : {
+            "type" : "string",
+            "description" : "partnerCode (communicated by BMID) of the partner that needs to be be visualized in the app to the user and who delivers the userCode for the specific user",
+            "minLength" : 1,
+            "maxLength" : 10
+          },
+          "serviceCode" : {
+            "type" : "string",
+            "description" : "serviceCode (communicated by BMID) for the specific hash signing service of the partner who delivers the userCode for the specific user",
+            "minLength" : 1,
+            "maxLength" : 45
+          },
+          "lang" : {
+            "type" : "string",
+            "example" : "EN, FR, NL, DE",
+            "description" : "Language to be used for GUI interaction",
+            "minLength" : 1,
+            "maxLength" : 8
+          },
+          "redirectUrl" : {
+            "type" : "string",
+            "description" : "will be used at the end of the BMID identification flow, to redirect the enduser to the remote SCA (after which the remote SCA should call to fetch the user certificate)",
+            "minLength" : 1,
+            "maxLength" : 255
+          }
+        }
+      },
+      "IdentificationResponse" : {
+        "type" : "object",
+        "required" : [ "asyncRespId", "identificationUrl", "status" ],
+        "properties" : {
+          "status" : {
+            "type" : "string",
+            "example" : "OK, NOK",
+            "description" : "Status of the user identification request"
+          },
+          "statusReason" : {
+            "type" : "string",
+            "example" : "NO_REQUEST, MISSING_PARTNER_CODE, MISSING_SERVICE_CODE, MISSING_ASYNC_RESP_ID, INVALID_URL, INVALID_REQUESTOR, UNAUTHORIZED_URL, INVALID_LANG, SIGNATURE_NOT_ALLOWED, UNEXPECTED_ERROR, PENDING, ERROR, TECHNICAL_ERROR, UNEXPECTED_ERROR, UNKNOWN",
+            "description" : "Status reason of the user identification request"
+          },
+          "asyncRespId" : {
+            "type" : "string",
+            "description" : "Identifier of the user identification session"
+          },
+          "identificationUrl" : {
+            "type" : "string",
+            "description" : "BMID URL where user will encode his phone number to identify himself"
+          }
+        }
+      },
+      "InternationalString" : {
+        "type" : "object",
+        "properties" : {
+          "lang" : {
+            "type" : "string"
+          },
+          "value" : {
+            "type" : "string"
+          }
+        }
+      },
+      "UserCertificateResponse" : {
+        "type" : "object",
+        "required" : [ "certificate", "status", "userCode" ],
+        "properties" : {
+          "status" : {
+            "type" : "string",
+            "example" : "OK, NOK",
+            "description" : "Status of the user identification request"
+          },
+          "statusReason" : {
+            "type" : "string",
+            "example" : "NO_REQUEST, MISSING_PARTNER_CODE, MISSING_SERVICE_CODE, MISSING_ASYNC_RESP_ID, INVALID_URL, INVALID_REQUESTOR, UNAUTHORIZED_URL, INVALID_LANG, SIGNATURE_NOT_ALLOWED, UNEXPECTED_ERROR, PENDING, ERROR, TECHNICAL_ERROR, UNEXPECTED_ERROR, UNKNOWN",
+            "description" : "Status reason of the user identification request"
+          },
+          "userCode" : {
+            "type" : "string",
+            "description" : "User code concerned by the current identification session, identified by the asyncRespID given in request"
+          },
+          "certificate" : {
+            "type" : "string",
+            "description" : "Public signature certificate of the user (X-509 Certificate in PEM format)"
+          }
+        }
+      },
+      "UserIdentificationBasicInfo" : {
+        "type" : "object",
+        "required" : [ "status" ],
+        "properties" : {
+          "status" : {
+            "type" : "string",
+            "example" : "OK, NOK",
+            "description" : "Status of the user identification request"
+          },
+          "statusReason" : {
+            "type" : "string",
+            "example" : "NO_REQUEST, MISSING_PARTNER_CODE, MISSING_SERVICE_CODE, MISSING_ASYNC_RESP_ID, INVALID_URL, INVALID_REQUESTOR, UNAUTHORIZED_URL, INVALID_LANG, SIGNATURE_NOT_ALLOWED, UNEXPECTED_ERROR, PENDING, ERROR, TECHNICAL_ERROR, UNEXPECTED_ERROR, UNKNOWN",
+            "description" : "Status reason of the user identification request"
+          }
+        }
+      },
+      "WellKnownCommitmentType" : {
+        "type" : "object",
+        "required" : [ "oid", "ref", "text" ],
+        "properties" : {
+          "oid" : {
+            "type" : "string",
+            "description" : "Object Id of the Commitment Type"
+          },
+          "ref" : {
+            "type" : "string",
+            "description" : "BMID Identifier of the Commitment Type, to indicate in requests in order to use this policy"
+          },
+          "text" : {
+            "type" : "object",
+            "description" : "Labels' list of the Commitment Type that will be displayed in the mobile application",
+            "additionalProperties" : {
+              "type" : "string"
+            }
+          }
+        }
+      },
+      "WellKnownConfiguration" : {
+        "type" : "object",
+        "required" : [ "commitment_types_supported", "sign_languages_supported", "sign_policy_templates_supported" ],
+        "properties" : {
+          "sign_policy_templates_supported" : {
+            "type" : "array",
+            "description" : "List of Signing Policies available for partners, concerning the itsme Signature solution",
+            "items" : {
+              "$ref" : "#/definitions/WellKnownSignPolicy"
+            }
+          },
+          "commitment_types_supported" : {
+            "type" : "array",
+            "description" : "List of Commitment Types available for partners, concerning the itsme Signature solution",
+            "items" : {
+              "$ref" : "#/definitions/WellKnownCommitmentType"
+            }
+          },
+          "sign_languages_supported" : {
+            "type" : "array",
+            "description" : "List of languages available for partners, concerning the itsme Signature solution",
+            "items" : {
+              "type" : "string"
+            }
+          }
+        }
+      },
+      "WellKnownSignPolicy" : {
+        "type" : "object",
+        "required" : [ "oid", "ref", "sigDigest", "sigDigestAlg", "status", "text", "url" ],
+        "properties" : {
+          "oid" : {
+            "type" : "string",
+            "description" : "Object Id of the Signing policy"
+          },
+          "ref" : {
+            "type" : "string",
+            "description" : "BMID Identifier of the Signing Policy, to indicate in requests in order to use this policy"
+          },
+          "url" : {
+            "type" : "string",
+            "description" : "URL where to find the Signing Policy PDF"
+          },
+          "status" : {
+            "type" : "string",
+            "example" : "ENABLED, DISABLED",
+            "description" : "Status of the Signing Policy"
+          },
+          "sigDigest" : {
+            "type" : "string",
+            "description" : "Digest of the Signing policy"
+          },
+          "sigDigestAlg" : {
+            "type" : "string",
+            "description" : "Digest's Algorithm of the Signing policy"
+          },
+          "text" : {
+            "type" : "object",
+            "description" : "Labels' list of the Signing Policy that will be displayed in the mobile application",
+            "additionalProperties" : {
+              "type" : "string"
+            }
+          }
+        }
+      }
+    }
+  }
+  
