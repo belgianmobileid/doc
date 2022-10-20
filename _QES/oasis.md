@@ -70,11 +70,11 @@ To simplify implementations and increase flexibility, the following key-value pa
 
 The JSON document for itsme® Sign service may be retrieved from <a href="BASE_URL/qes-partners/1.0.0/.well-known/configuration" target="blank">BASE_URL/qes-partners/1.0.0/.well-known/configuration</a>.
 
-Please note we are using SSLMA as authentication method, combined with IP filtering, as specified in [SSLMA Authentication](#sslma-authentication). If you need to access the discovery document before setting up the connectivity, you can use the public version here (this one is updated manually, while the previous one is automatically generated): <a href="/doc/public/images/Oasis_Hash_Signing_SeqDiag.png" target="blank">/doc/public/images/Oasis_Hash_Signing_SeqDiag.png</a>
+Please note we are using SSLMA as authentication method, combined with IP filtering, as specified in [SSLMA Authentication](#sslma-authentication). If you need to access the discovery document before setting up the connectivity, you can use the public version here (this one is updated manually, while the previous one is automatically generated): <a href="/doc/public/resources/qesdiscovery.json" target="blank">https://belgianmobileid.github.io/doc/public/resources/qesdiscovery.json</a>
 
 ### B2B interface swagger
 
-The swagger of the B2B interface (for the back-end to back-end calls) may be retrieved from <a href="https://belgianmobileid.github.io/slate/qesB2B.json" target="blank">https://belgianmobileid.github.io/slate/qesB2B.json</a>
+The swagger of the B2B interface (for the back-end to back-end calls) may be retrieved from <a href="/doc/public/resources/qesB2B.json" target="blank">https://belgianmobileid.github.io/doc/public/resources/qesB2B.json</a>
 
 ## 2. Starting a new User identification session
 
