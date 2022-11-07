@@ -686,7 +686,7 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
       </td>
     </tr>
     <tr>
-      <td>{% include parameter.html name="request_uri" req="OPTIONAL" %}</td>
+      <td>{% include parameter.html name="request_uri" req='REQUIRED if no "request"' %}</td>
       <td>A URL using the https scheme referencing a resource containing a JWT whose claims are the request parameters. The <code>request_uri</code> parameter is used to secure parameters in the Authorization Request from tainting or inspection when sending the request to the itsme® Authorization Endpoint.<br><br>If the <code>request_uri</code> parameter is used, the JWT MUST be signed and MUST contain the claims <code>iss</code> (issuer) and <code>aud</code> (audience) as members. The <code>iss</code> value SHOULD be your <code>client_id</code>. The <code>aud</code> value SHOULD be set to <code>https://idp.[e2e/prd].itsme.services/v2/authorization</code>. The JWT MAY also be encrypted. If both signing and encryption are performed, it MUST be signed then encrypted, with the result being a Nested JWT (refer to <a href="https://belgianmobileid.github.io/doc/JOSE/" target="blank">this page</a> for more information).<br><br>The following restrictions apply to request URIs:
         <tabul>
           <tabli>The request URI MUST be preregistered during the registration.</tabli>
@@ -697,7 +697,7 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
       </td>
     </tr>
     <tr>
-      <td>{% include parameter.html name="request" req="OPTIONAL" %}</td>
+      <td>{% include parameter.html name="request" req='REQUIRED if no "request_uri"' %}</td>
       <td>It represents the request as a JWT whose Claims are the request parameters. The <code>request</code> parameter is used to secure parameters in the Authorization Request from tainting or inspection when sending the request to the itsme® Authorization Endpoint.<br><br>If the <code>request</code> parameter is used, the JWT MUST be signed and MUST contain the claims <code>iss</code> (issuer) and <code>aud</code> (audience) as members. The <code>iss</code> value SHOULD be your <code>client_id</code>. The <code>aud</code> value SHOULD be set to <code>https://idp.[e2e/prd].itsme.services/v2/authorization</code>. The JWT MAY also be encrypted. If both signing and encryption are performed, it MUST be signed then encrypted, with the result being a Nested JWT (refer to <a href="https://belgianmobileid.github.io/doc/JOSE/" target="blank">this page</a> for more information).</td>
     </tr>
     <tr>
@@ -914,7 +914,7 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
       </td>
     </tr>
     <tr>
-      <td>{% include parameter.html name="request_uri" req="OPTIONAL" %}</td>
+      <td>{% include parameter.html name="request_uri" req='REQUIRED if no "request"' %}</td>
       <td>A URL using the https scheme referencing a resource containing a JWT whose claims are the request parameters. The <code>request_uri</code> parameter is used to secure parameters in the Authorization Request from tainting or inspection when sending the request to the itsme® Authorization Endpoint.<br><br>If the <code>request_uri</code> parameter is used, the JWT MUST be signed and MUST contain the claims <code>iss</code> (issuer) and <code>aud</code> (audience) as members. The <code>iss</code> value SHOULD be your <code>client_id</code>. The <code>aud</code> value SHOULD be set to <code>https://idp.[e2e/prd].itsme.services/v2/authorization</code>. The JWT MAY also be encrypted. If both signing and encryption are performed, it MUST be signed then encrypted, with the result being a Nested JWT (refer to <a href="https://belgianmobileid.github.io/doc/JOSE/" target="blank">this page</a> for more information).<br><br>The following restrictions apply to request URIs:
         <tabul>
           <tabli>The request URI MUST be preregistered during the registration.</tabli>
@@ -925,7 +925,7 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
       </td>
     </tr>
     <tr>
-      <td>{% include parameter.html name="request" req="OPTIONAL" %}</td>
+      <td>{% include parameter.html name="request" req='REQUIRED if no "request_uri"' %}</td>
       <td>It represents the request as a JWT whose Claims are the request parameters. The <code>request</code> parameter is used to secure parameters in the Authorization Request from tainting or inspection when sending the request to the itsme® Authorization Endpoint.<br><br>If the <code>request</code> parameter is used, the JWT MUST be signed and MUST contain the claims <code>iss</code> (issuer) and <code>aud</code> (audience) as members. The <code>iss</code> value SHOULD be your <code>client_id</code>. The <code>aud</code> value SHOULD be set to <code>https://idp.[e2e/prd].itsme.services/v2/authorization</code>. The JWT MAY also be encrypted. If both signing and encryption are performed, it MUST be signed then encrypted, with the result being a Nested JWT (refer to <a href="https://belgianmobileid.github.io/doc/JOSE/" target="blank">this page</a> for more information).</td>
     </tr>
     <tr>
