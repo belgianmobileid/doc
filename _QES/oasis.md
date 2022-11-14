@@ -12,7 +12,7 @@ itsme® is a trusted identity provider allowing partners to use verified identit
 
 The objective of this document is to provide all the information needed to integrate the **Sign** service. The implementation of the **Sign** service is based on Oasis Digital Signature Services protocol.
 
-At this moment only the Hash Signing variant is available and documented. In this variant, a remote Signature Creation Application (SCA) will provide the What You See Is What You Sign (WYSIWYS) experience to the User, provide the hash of the data to be signed to the itsme® service and use the returned digital signature value to format the signature in one of the AdES formats.
+At this moment only the Hash(es) Signing variant is available and documented. In this variant, an external Signature Creation Application (SCA) will provide the What You See Is What You Sign (WYSIWYS) experience to the User, provide the hash of the data to be signed to the itsme® service and use the returned digital signature value to format the signature in one of the AdES formats.
 
 # Audience
 
@@ -22,7 +22,7 @@ This document is intended to be read by developers of any Signature Creation App
 
 Before you can integrate your application with itsme® Sign service, you MUST set up a project in the <a href="https://brand.belgianmobileid.be/d/CX5YsAKEmVI7" target="blank">itsme® B2B portal</a> to obtain all the needed information.
 
-Please be aware that we support performing multiple signatures with 1 itsme® action, but this is an extra option. If you want to make use of it, be sure to mention it to the Onboarding team while setting up your project.
+Please be aware that we support performing up to 70 signatures within 1 itsme® action, but this is an extra option. If you want to make use of it, be sure to mention it to the Onboarding team while setting up your project.
 
 # Integrating Sign services
 
@@ -38,13 +38,13 @@ The itsme® Sign flow goes through the steps shown in the sequence diagram below
   <li>Finally, when the User is authenticated and has a signature certificate, he is redirected to the your SCA Front-End. The redirection to your SCA Front-End SHOULD be (almost) transparent to the User (with a possible displaying of a spinner) as the laps of time between step 5 and step 11 of this diagram SHOULD be extremely short.</li>
   <li>Your SCA Back-End contacts the itsme® Integration Layer Back-End to get the signature certificate of the User.</li>
   <li>The itsme® Integration Layer Back-End returns your SCA Back-End the signer information as well as the signature certificate of the User.</li>
-  <li>Your SCA Back-End constructs the data to be signed and the hash of the signature will be computed by yourself. The value of this hash MUST be base64url encoded.</li> 
-  <li>Your SCA Back-End will provide the hash to the itsme® Integration Layer Back-End to request the digital signature value.</li>
+  <li>Your SCA Back-End constructs the data to be signed and the hash(es) of the signature(s) will be computed by yourself. We support up to 70 hashes in 1 flow. The value of a hash MUST be base64url encoded.</li> 
+  <li>Your SCA Back-End will provide the hash(es) to the itsme® Integration Layer Back-End to request the digital signature value.</li>
   <li>A session id and redirect URL are returned by itsme® to your SCA Back-End.</li>
   <li>Your SCA frontend will then redirect the User to the signature webpage of itsme®, where he is guided through the itsme part of the signing flow.</li>    
   <li>The session of the User at itsme® side ends as the process is finished and the User is redirected to your SCA Front-End.</li>
   <li>Your SCA Back-End will contact the itsme® Integration Layer Back-End to check the signature status (same endpoint as for creating the signature session).</li>
-  <li>itsme® then returns the signature completion status and the digital signature value.</li>
+  <li>itsme® then returns the signature completion status and the digital signature value(s).</li>
   <li>At this stage, your SCA is able to confirm the success of the operation and display a success message.</li>
 </ol>
 
@@ -269,7 +269,7 @@ Below you will find the mandatory and optional parameters to integrate in the HT
   <tbody>
     <tr>
       <td>{% include parameter.html name="inDocs" type="object" req="REQUIRED" %}</td>
-      <td>This contains the element(s) to be signed.</td>
+      <td>This contains the element(s) to be signed. 1 package can contain at most 70 hashes to sign.</td>
     </tr>
     <tr>
       <td>{% include parameter.html name="docHash" type="array" req="REQUIRED" level="1" %}</td>
@@ -329,7 +329,7 @@ Below you will find the mandatory and optional parameters to integrate in the HT
     </tr>
     <tr>
       <td>{% include parameter.html name="description" type="array of objects" req="OPTIONAL" level="2" %}</td>
-      <td>Is a text you provide as the description of the document. The maximum length is 50 characters. It will be displayed in the itsme App. If providing a description, you MUST provide a value for each language supported by itsme ('en', 'fr', 'nl' and 'de'). Please see <a href="#supported-character-set">Supported character set</a> for encoding concerns.</td>
+      <td>Is a text you provide as the description of the (package of) document(s). The maximum length is 50 characters. It will be displayed in the itsme App. If providing a description, you MUST provide a value for each language supported by itsme ('en', 'fr', 'nl' and 'de'). Please see <a href="#supported-character-set">Supported character set</a> for encoding concerns.</td>
     </tr>
     <tr>
       <td>{% include parameter.html name="lang" type="string" req="REQUIRED" level="3" %}</td>
@@ -385,6 +385,15 @@ POST /BASE_URL/qes-partners/1.0.0/sign_document HTTP/1.1
           }
         ],
         "id":"ContractCar20180914u89236456.pdf"
+      },
+      {
+        "di":[
+          {
+            "alg":"http://www.w3.org/2001/04/xmlenc#sha256",
+            "value":"t9I89IEOCiue980A23A+ep/iAJM50+87BxgG65gVwtF="
+          }
+        ],
+        "id":"ContractHome20180915G74.pdf"
       }
     ]
   },
@@ -617,11 +626,11 @@ This section relates to the step 14 of the sequence diagram.
     </tr>
     <tr>
       <td>{% include parameter.html name="sigObj" type="array of objects" req="ALWAYS" %}</td>
-      <td>Contains the signed hashes within a Json array. Please note this parameter is not returned in the other use of this call (see section <a href="#7-requesting-a-new-sign-session">Requesting a new Sign session</a>).</td>
+      <td>Contains the signed hashes within a JSON array. Please note this parameter is not returned in the other use of this call (see section <a href="#7-requesting-a-new-sign-session">Requesting a new Sign session</a>).</td>
     </tr>
     <tr>
       <td>{% include parameter.html name="b64Sig" type="object" req="ALWAYS" level="1" %}</td>
-      <td>Contains the signed has within a Json object. Please note this parameter is not returned in the other use of this call (see section <a href="#7-requesting-a-new-sign-session">Requesting a new Sign session</a>).</td>
+      <td>Contains the signed hash within a JSON object. Please note this parameter is not returned in the other use of this call (see section <a href="#7-requesting-a-new-sign-session">Requesting a new Sign session</a>).</td>
     </tr>
     <tr>
       <td>{% include parameter.html name="value" type="string" req="ALWAYS" level="2" %}</td>

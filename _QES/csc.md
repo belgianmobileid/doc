@@ -14,7 +14,7 @@ The CSC API is an API built based on the CSC specification version 1.0.4.0. See 
 
 The objective of this document is to provide all the information needed to integrate the AUTH service using the OAuth specifications.
 
-At this moment only the Hash Signing variant is available and documented. In this variant, a remote Signature Creation Application (SCA) will provide the What You See Is What You Sign (WYSIWYS) experience to the User, provide the hash of the data to be signed to the itsme® service and use the returned digital signature value to format the signature in one of the AdES formats.
+At this moment only the Hash(es) Signing variant is available and documented. In this variant, an external Signature Creation Application (SCA) will provide the What You See Is What You Sign (WYSIWYS) experience to the User, provide the hash of the data to be signed to the itsme® service and use the returned digital signature value to format the signature in one of the AdES formats.
 
 # Particularities compared to the CSC Specification
 
@@ -44,7 +44,7 @@ This document is intended to be read by developers of any Signature Creation App
 
 Before you can integrate your application with itsme® Sign service, you MUST set up a project in the <a href="https://brand.belgianmobileid.be/d/CX5YsAKEmVI7" target="blank">itsme® B2B portal</a> to obtain all the needed information.
 
-Please be aware that we support performing multiple signatures with 1 itsme® action, but this is an extra option. If you want to make use of it, be sure to mention it to the Onboarding team while setting up your project.
+Please be aware that we support performing up to 70 signatures within 1 itsme® action, but this is an extra option. If you want to make use of it, be sure to mention it to the Onboarding team while setting up your project.
 
 # Integrating Sign services
 
@@ -426,15 +426,15 @@ This GET request should include the following query parameters:
     </tr>
     <tr>
       <td>{% include parameter.html name="numSignatures" req="REQUIRED" %}</td>
-      <td>This value must be set to 1.</td>
+      <td>This value must be the number of hashes you are sending. Must be between 1 and 70.</td>
     </tr>
     <tr>
       <td>{% include parameter.html name="hash" req="REQUIRED" %}</td>
-      <td>A base64url-encoded hash value to be signed. It allows the server to bind the SAD to the hash, thus preventing an authorization to be used to sign a different content. Multiple hashes are supported with a comma-seperated list.</td>
+      <td>A (list of) base64url-encoded hash value(s) to be signed. It allows the server to bind the SAD to the hash, thus preventing an authorization to be used to sign a different content. Multiple (up to 70) hashes are supported in the form of a comma-seperated list.</td>
     </tr>
     <tr>
       <td>{% include parameter.html name="description" req="Optional" %}</td>
-      <td>An optional description about the document being signed. This value will be visible in the itsme application.</td>
+      <td>An optional description about the (package of) document(s) being signed. This value will be visible in the itsme application.</td>
     </tr>
     <tr>
       <td>{% include parameter.html name="clientData" req="not supported" %}</td>
