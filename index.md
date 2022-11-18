@@ -56,3 +56,14 @@ For more information on how itsme® can best work for your business, please <a h
     <img src="assets/confirm.svg" />
   </div>
 </div>
+<div class="services">
+  <div class="service">
+    <h2>Qualified signature</h2>
+    <p>This Service enables your users/customers to sign documents with the same legally binding effect as a manual signature.</p>
+    <div class="docLinks">
+      <a href="QES-CSC">CSC Sign protocol</a>
+      <a href="QES-OASIS">OASIS DSS protocol</a>
+    </div>
+    <img src="assets/sign.svg" />
+  </div>
+</div>
