@@ -441,6 +441,7 @@ When building your Authorization Request, one of the below template MUST be spec
 </table>
 
 We currently support the following HTML tags in the Free Text template: - < b > - < i > - < u > - < br >. Tags that are not rendered are ignored. The free text template can contain up to 7500 characters.
+We also only support the following character set: https://en.wikipedia.org/wiki/ISO/IEC_8859-15
 
 ## Mapping the user
 
