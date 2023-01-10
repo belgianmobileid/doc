@@ -1039,7 +1039,9 @@ Location: https://client.example.org/cb?
 
 <b><code>POST https://idp.<i><b>[e2e/prd]</b></i>.itsme.services/v2/token</code></b>
 
-To assert the identity of the user, the <code>code</code> received previously needs to be exchanged for an ID token and access token. During this step, your application has to authenticate itself to our server using the public- and private-key pair method. 
+To assert the identity of the user, the <code>code</code> received previously needs to be exchanged for an ID token and access token. During this step, your application has to authenticate itself to our server using the public- and private-key pair method.
+
+<aside class="notice">The parameters below must be included in the body of the POST request, not in the query string.</aside>
 
 ### Parameters
 
@@ -1121,7 +1123,9 @@ To assert the identity of the user, the <code>code</code> received previously ne
 
 <b><code>POST https://oidc.<i><b>[e2e/prd]</b></i>.itsme.services/clientsecret-oidc/csapi/v0.1/connect/token</code></b>
 
-To assert the identity of the user, the <code>code</code> received previously needs to be exchanged for an ID token and access token. During this step, your application has to authenticate itself to our server using the secret key method. 
+To assert the identity of the user, the <code>code</code> received previously needs to be exchanged for an ID token and access token. During this step, your application has to authenticate itself to our server using the secret key method.
+
+<aside class="notice">The parameters below must be included in the body of the POST request, not in the query string.</aside>
 
 ### Parameters
 
