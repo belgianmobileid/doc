@@ -10,7 +10,7 @@ toc_list: true
 
 itsme® is a trusted identity provider allowing partners to use verified identities for authentication and authorization on web desktop, mobile web and mobile applications. 
 
-The objective of this document is to provide all the information needed to integrate the **Sign** service. The implementation of the **Sign** service is based on Oasis Digital Signature Services protocol.
+The objective of this document is to provide all the information needed to integrate the **Sign** service. This implementation of the **Sign** service is based on Oasis Digital Signature Services (DSS) protocol, using an asynchronous pattern in a pre-2.0 fashion.
 
 At this moment only the Hash(es) Signing variant is available and documented. In this variant, an external Signature Creation Application (SCA) will provide the What You See Is What You Sign (WYSIWYS) experience to the User, provide the hash of the data to be signed to the itsme® service and use the returned digital signature value to format the signature in one of the AdES formats.
 
@@ -471,7 +471,11 @@ The response body will include the following values:
     </tr>
     <tr>
       <td>{% include parameter.html name="maj" type="string" req="ALWAYS" level="1" %}</td>
-      <td>This is a general message that will give the status of the request, pending, success or error. In case of failure, the root cause is given.</td>
+      <td>This is a general message that will give the status of the request, pending, success or error. In case of failure, the root cause is given. This parameter can take one of the 4 values below:
+      <code>"urn:oasis:names:tc:dss:1.0:profiles:asynchronousprocessing:resultmajor:Pending"
+      "urn:oasis:names:tc:dss:1.0:resultmajor:Success"
+      "urn:oasis:names:tc:dss:1.0:resultmajor:RequesterError"
+      "urn:oasis:names:tc:dss:1.0:resultmajor:ResponderError"</code></td>
     </tr>
     <tr>
       <td>{% include parameter.html name="msg" type="string" req="Optional" level="1" %}</td>
