@@ -50,28 +50,14 @@ To protect the exchange of sensitive information and ensure the requested inform
 <aside class="notice">You will have to choose between one of these methods when <a href="https://belgianmobileid.github.io/doc/getting-started.html#getting-started" target="blank">registering your project</a>.
 </aside>
 
-### Public- and private-key method and JWKSet URI
+### Public-private key pair and JWKSet URI
 
-This method uses linked public- and private-key pairs to encrypt and decrypt senders’ and recipients’ sensitive data. It is also known as public-key cryptography or public-key encryption.
+This method uses a pair of keys (1 public, 1 private) to encrypt and decrypt senders’ and recipients’ sensitive data. It is also known as public-key cryptography or asymetric encryption.
 
-<aside class="notice">This method requires that each party exposes its public keys as a simple JWK Set document on a URI publicly accessible, and keep its private keys for itself. 
+<aside class="notice">This method requires that each party exposes its public keys in the form of a JWK Set document on a publicly accessible URI, and keep its private keys for itself. 
 </aside>
 
-Using the <code>jwks_uri</code> key retrieve the URI for itsme® from the <a href="https://belgianmobileid.github.io/doc/authentication/#itsme-discovery-document" target="blank">itsme® Discovery document</a>, .
-
-Your public and private key can be generated using your own tool or via Yeoman. If using Yeoman, you need to install generator-itsme with NPM:
-
-```
-$ npm install -g yo generator-itsme
-```
-
-After installation, run the generator:
-
-```
-$ yo itsme
-```
-
-The Yeoman tool will generate two files, the jwks_private.json which MUST be stored securely in your system, and the jwks_public.json which needs to be exposed as a JWK Set on a URI publicly accessible and have the HTTPS scheme (refer to <a href="https://belgianmobileid.github.io/doc/authentication/#certificates-and-website-security" target="blank">this section</a> for more information).
+You can retrieve the itsme® JWK Set from the URI metioned as <code>jwks_uri</code> in our <a href="https://belgianmobileid.github.io/doc/authentication/#itsme-discovery-document" target="blank">itsme® Discovery document</a>.
 
 <aside class="notice">Refer to <a href="https://belgianmobileid.github.io/doc/JOSE/" target="blank">this page</a> for more on signing and encrypting tokens.
 </aside>
