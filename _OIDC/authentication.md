@@ -543,7 +543,7 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
     </tr>
     <tr>
       <td>{% include parameter.html name="claims" req="OPTIONAL" %}</td>
-      <td>Requests specific user's details to be returned from the UserInfo Endpoint or in the ID Token. It is represented as a JSON object that could use as member <code>{"userinfo":{...}</code> - which content indicates which claims to return at the UserInfo Endpoint - or <code>{"id_token":{...}</code> - which indicates those to return at the ID Token -, together with indication whether the claim is voluntary (default) or essential.<br><br><b>Note</b>: to avoid the need of creating an additionnal request, itsme® recomends to create a JSON object using <code>{"id_token":{...}</code> as member.<br /><br><br>Possible user's details your application can request is listed below.<br />
+      <td>Allows to request specific user's details ("claims"). You can choose to receive those claims either in the ID Token (from /token endpoint) or in the UserInfo object (from /userinfo endpoint).<br />It MUST be a JSON object containing an <code>{"id_token":{...}</code> member or a <code>{"userinfo":{...}</code> member respectively. This member will then contain all the desired claims together with indication whether the claim is voluntary (returned if available) or essential (flow will stop if unavailable) - see example below.<br><b>Note</b>: to avoid the need of a /userinfo request, itsme® recommends to retrieve the claims directly from the ID Token.<br><br>Supported claims are listed below.<br />
         <table>
           <tr>
             <td>{% include parameter.html name="name" req="OPTIONAL" %}</td><td>Returns user's full name in displayable form including all name parts, possibly including titles and suffixes.<br><br>If requested, a value SHALL always be returned for this claim.</td>
@@ -769,7 +769,7 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
     </tr>
     <tr>
       <td>{% include parameter.html name="claims" req="OPTIONAL" %}</td>
-      <td>Requests specific user's details to be returned from the UserInfo Endpoint or in the ID Token. It is represented as a JSON object that could use as member <code>{"userinfo":{...}</code> - which content indicates which claims to return at the UserInfo Endpoint - or <code>{"id_token":{...}</code> - which indicates those to return at the ID Token -, together with indication whether the claim is voluntary (default) or essential.<br><br><b>Note</b>: to avoid the need of creating an additionnal request, itsme® recomends to create a JSON object using <code>{"id_token":{...}</code> as member.<br /><br><br>Possible user's details your application can request is listed below.<br />
+      <td>Allows to request specific user's details ("claims"). You can choose to receive those claims either in the ID Token (from /token endpoint) or in the UserInfo object (from /userinfo endpoint).<br />It MUST be a JSON object containing an <code>{"id_token":{...}</code> member or a <code>{"userinfo":{...}</code> member respectively. This member will then contain all the desired claims - see example below.<br><b>Note</b>: to avoid the need of a /userinfo request, itsme® recommends to retrieve the claims directly from the ID Token.<br><br>Supported claims are listed below.<br />
         <table>
           <tr>
             <td>{% include parameter.html name="name" req="OPTIONAL" %}</td><td>Returns user's full name in displayable form including all name parts, possibly including titles and suffixes.<br><br>If requested, a value SHALL always be returned for this claim.</td>
@@ -919,16 +919,26 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
 ***Request***
 
 ```http
-GET /authorize HTTP/1.1
+GET /v2/authorization HTTP/1.1
 Host: server.example.com
 
 response_type=code
-  &client_id=s6BhdRkqt3
-  &redirect_uri=https%3A%2F%2Fclient.example.org%2Fcb
-  &scope=openid%20service:TEST_code%20profile%20email
-  &nonce=n-0S6_WzA2Mj
-  &state=af0ifjsldkj
-  &acr_values=http://itsme.services/V2/claim/acr_basic
+&client_id=abcd1234
+&redirect_uri=https://client.example.org/cb
+&scope=openid+service:EXAMPLE+profile+eid+phone+email+address
+&state=anystate
+&nonce=anonce
+&prompt=login
+&max_age=1
+&claims={"id_token":{
+	"http://itsme.services/v2/claim/BENationalNumber":null,
+	"http://itsme.services/v2/claim/claim_citizenship":null,
+	"http://itsme.services/v2/claim/place_of_birth":null,
+	"http://itsme.services/v2/claim/physical_person_photo":null,
+	"http://itsme.services/v2/claim/birthdate_as_string":null,
+	"http://itsme.services/v2/claim/validityFrom":null,
+	"http://itsme.services/v2/claim/validityTo":null,
+	"http://itsme.services/v2/claim/IDDocumentSN":null}}
 ```
 
 ***Response***
@@ -937,7 +947,7 @@ response_type=code
 HTTP/1.1 302 Found
 Location: https://client.example.org/cb?
   code=SplxlOBeZQQYbYS6WxSbIA
-  &state=af0ifjsldkj
+  &state=anystate
 ```
 
 {% endtab %}
@@ -952,12 +962,22 @@ GET /authorize HTTP/1.1
 Host: server.example.com
 
 response_type=code
-  &client_id=s6BhdRkqt3
-  &redirect_uri=https%3A%2F%2Fclient.example.org%2Fcb
-  &scope=openid%20service:TEST_code%20profile%20email
-  &nonce=n-0S6_WzA2Mj
-  &state=af0ifjsldkj
-  &acr_values=http://itsme.services/V2/claim/acr_basic
+&client_id=abcd1234
+&redirect_uri=https://client.example.org/cb
+&scope=openid+service:EXAMPLE+profile+eid+phone+email+address
+&state=anystate
+&nonce=anonce
+&prompt=login
+&max_age=1
+&claims={"id_token":{
+	"http://itsme.services/v2/claim/BENationalNumber":null,
+	"http://itsme.services/v2/claim/claim_citizenship":null,
+	"http://itsme.services/v2/claim/place_of_birth":null,
+	"http://itsme.services/v2/claim/physical_person_photo":null,
+	"http://itsme.services/v2/claim/birthdate_as_string":null,
+	"http://itsme.services/v2/claim/validityFrom":null,
+	"http://itsme.services/v2/claim/validityTo":null,
+	"http://itsme.services/v2/claim/IDDocumentSN":null}}
 ```
 
 ***Response***
