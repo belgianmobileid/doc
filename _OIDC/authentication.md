@@ -36,18 +36,18 @@ To get to this result please make sure you
 
 First, you will need to create a button to allow your users to authenticate with itsme®. Check the <a href="https://brand.belgianmobileid.be/d/CX5YsAKEmVI7/documentation#/ux/buttons-1518207548" target="blank">Button design guide</a> before you start the integration. 
 
-Upon clicking this button, the user will be redirected to our Front-End. itsme® then take care of authenticating him.
+Upon clicking this button, the user will be redirected to our Front-End. itsme® then take care of their authentication.
 
 ## Securing the exchange of information
 
-To protect the exchange of sensitive information and ensure the requested information gets issued to a legitimate application and not some other party, the OpenID Connect protocol uses JSON Web Token (JWT) which can be signed and/or encrypted. Among the methods described in OpenID specification, itsme® supports 2 authentication methods to secure communications between your backend and itsme®:
+To protect the exchange of sensitive information and ensure the requested information gets issued to a legitimate application and not some other party, the OpenID Connect protocol uses JSON Web Token (JWT) which should be signed and encrypted. Among the methods described in OpenID specification, itsme® supports 2 authentication methods to secure communications between your backend and itsme®:
 
 <ul>
   <li>"Private key JWT" is based on a public/private key pair (asymmetric encryption). It is therefore the most secure option</li>
   <li>"Client secret" is based on a shared Secret key (symmetric encryption). It can be easier to implement in some cases</li>
 </ul>
 
-<aside class="notice">You will have to choose between one of these methods when <a href="https://belgianmobileid.github.io/doc/getting-started.html#getting-started" target="blank">registering your project</a>.
+<aside class="notice">You will have to choose between one of these methods when registering your project.
 </aside>
 
 ### Public-private key pair and JWKSet URI
@@ -57,15 +57,15 @@ This method uses a pair of keys (1 public, 1 private) to encrypt and decrypt sen
 <aside class="notice">This method requires that each party exposes its public keys in the form of a JWK Set document on a publicly accessible URI, and keep its private keys for itself. 
 </aside>
 
-You can retrieve the itsme® JWK Set from the URI metioned as <code>jwks_uri</code> in our <a href="https://belgianmobileid.github.io/doc/authentication/#itsme-discovery-document" target="blank">itsme® Discovery document</a>.
+You can retrieve the itsme® JWK Set from the URI mentioned as <code>jwks_uri</code> in our <a href="https://belgianmobileid.github.io/doc/authentication/#itsme-discovery-document" target="blank">itsme® Discovery document</a>.
 
 <aside class="notice">Refer to <a href="https://belgianmobileid.github.io/doc/JOSE/" target="blank">this page</a> for more on signing and encrypting tokens.
 </aside>
 
-<aside class="notice">Whatever the tool you are choosing to create your key pairs, don't forget to send your JWK Set URI by email to <a href = "mailto: onboarding@itsme.be">onboarding@itsme.be</a> and itsme® will make sure to complete the configuration for you in no time!
+<aside class="notice">Whatever the tool you are choosing to create your key pairs, don't forget to send your JWK Set URI by email to <a href = "mailto: onboarding@itsme-id.com">onboarding@itsme-id.com</a> and itsme® make sure to complete the configuration.
 </aside>
 
-<aside class="notice">The algorithms – needed to sign and/or encrypt a JWT or to authenticate to our Token Endpoint – are listed in the <a href="https://belgianmobileid.github.io/doc/authentication/#itsme-discovery-document" target="blank">itsme® Discovery document</a> for more information.
+<aside class="notice">The algorithms – needed to sign and encrypt a JWT or to authenticate to our Token Endpoint – are listed in the <a href="https://belgianmobileid.github.io/doc/authentication/#itsme-discovery-document" target="blank">itsme® Discovery document</a> for more information.
 </aside>
 
 
@@ -73,9 +73,9 @@ You can retrieve the itsme® JWK Set from the URI metioned as <code>jwks_uri</co
 
 Secret key cryptography method uses the same secret key to encrypt and decrypt sensitive information. This approach is the inverse of public- and private-key encryption.
 
-This method requires the exchange of a static secret to be held by both the sender and the data receiver. The secret value will be provided by itsme® when <a href="https://belgianmobileid.github.io/doc/getting-started.html#getting-started" target="blank">registering your project</a>.
+This method requires the exchange of a static secret to be held by both the sender and the data receiver. The secret value will be provided by itsme® when registering your project.
 
-<aside class="notice">The algorithms – needed to sign and/or encrypt a JWT or to authenticate to our Token Endpoint – are listed in the <a href="https://belgianmobileid.github.io/doc/authentication/#itsme-discovery-document" target="blank">itsme® Discovery document</a> for more information.
+<aside class="notice">The algorithms – needed to sign and encrypt a JWT or to authenticate to our Token Endpoint – are listed in the <a href="https://belgianmobileid.github.io/doc/authentication/#itsme-discovery-document" target="blank">itsme® Discovery document</a> for more information.
 </aside>
 
 <aside class="notice">If you choose to go with the secret key method, you will be able to specify if the ID Token JWT needs to be signed with the an asymmetric algorithm (e.g. <code>RS256</code>) or with a symmetric algorithm (e.g. : <code>HS256</code>). When using the <code>RS256</code> algorithm, our public keys will be needed to verify the signature. This information can be found in our <a href="https://belgianmobileid.github.io/doc/authentication/#itsme-discovery-document" target="blank">itsme® Discovery document</a>, using the key <code>jwks_uri</code>.
@@ -83,7 +83,7 @@ This method requires the exchange of a static secret to be held by both the send
 
 ### PKCE-enhanced flow
 
-Whatever the chosen authentication method, itsme® also supports an extra security extension named Proof of Key for Code Exchange (<a href="https://datatracker.ietf.org/doc/html/rfc7636" target="blank">PKCE</a>). This additionnal layer of security is intended mitigate some Authorization Code interception attacks. We strongly advise to enable enforcement of this mechanism. Please ask our onboarding team to do so when registering your project.
+Whatever the chosen authentication method, itsme® also supports an extra security extension named Proof of Key for Code Exchange (<a href="https://datatracker.ietf.org/doc/html/rfc7636" target="blank">PKCE</a>). This additionnal layer of security is intended mitigate some Authorization Code interception attacks. We strongly advise to enable enforcement of this mechanism.
 
 PKCE implies choosing a random string, named <code>code_verifier</code>, and then generating a SHA256 hash of that string, named <code>code_challenge</code>. The code_challenge has to be sent along with the Authorization Request, while the code_verifier must be sent with the Token Request, allowing our backend to make sure both requests are issued by the same source.
 
@@ -99,7 +99,7 @@ var code_challenge = base64url.encode(hash);
 
 ### Signing, encrypting and decoding JWTs
 
-Libraries implementing JWT and the JOSE specs JWS, JWE, JWK, and JWA are listed <a href="https://openid.net/developers/jwt/" target="blank">here</a>.
+Libraries implementing JWT and the JOSE specs JWS, JWE, JWK, and JWA are listed <a href="https://openid.net/developers/jwt/" target="blank">here</a>. For testing purposes only, we could advise the use of <a href="https://mkjwk.org/" target="blank">https://mkjwk.org/</a> for JWK generation and <a href="https://mkjose.org/" target="blank"> https://mkjose.org/</a> for payload check => these are 2 open-source tools which will help you visualize JWK mechanisms, client assertion construct. Please DO NOT generate production private keys on any website. Rather opt for your SDK library mentioned <a href="https://openid.net/developers/jwt/" target="blank">here</a> accordingly.
 
 
 ## Certificates and website security
