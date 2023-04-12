@@ -1320,6 +1320,8 @@ Authorization: Bearer SlAV32hkKG
 
 ***Response***
 
+This is an response example containing all possible claims for a Belgian account:
+
 ```http
 HTTP/1.1 200 OK
 Content-Type: application/json
