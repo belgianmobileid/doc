@@ -190,7 +190,7 @@ Below you will find the mandatory and optional query parameters to integrate in 
 Example:
 
 ```
-GET /oauth/authorize?
+GET /oauth2/authorize?
 response_type=code
 &client_id={ClientId}}
 &redirect_uri={RedirectUrl}
@@ -446,7 +446,7 @@ This GET request should include the following query parameters:
 Example:
 
 ```
-GET /oauth/authorize?
+GET /oauth2/authorize?
 response_type=code
 &client_id={{ClientId}}
 &redirect_uri={{RedirectUrl}}
