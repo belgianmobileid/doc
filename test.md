@@ -91,3 +91,10 @@ $ npm install -g yo generator-itsme
     </tr>
   </tbody>
 </table>
+
+
+## Testing PlantUML
+
+```plantuml!
+Bob -> Alice : hello world
+```
