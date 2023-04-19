@@ -630,7 +630,10 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
           </tr> 
           <tr>
             <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/IDDocumentType" req="OPTIONAL" %}</td><td>Returns the Dutch ID card/passport document type.<br><br>If requested, a value SHALL always be returned for this claim.</td>
-          </tr> 
+          </tr>
+          <tr>
+            <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/issuance_locality" req="OPTIONAL" %}</td><td>Returns the locality that issued the ID document used to create the itsme® account.<br><br>If requested, a value MAY NOT be returned for this claim.</td>
+          </tr>
         </table>
       </td>
     </tr>
@@ -856,6 +859,9 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
           </tr> 
           <tr>
             <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/IDDocumentType" req="OPTIONAL" %}</td><td>Returns the Dutch ID card/passport document type.<br><br>If requested, a value SHALL always be returned for this claim.</td>
+          </tr>
+          <tr>
+            <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/issuance_locality" req="OPTIONAL" %}</td><td>Returns the locality that issued the ID document used to create the itsme® account.<br><br>If requested, a value MAY NOT be returned for this claim.</td>
           </tr> 
         </table>
       </td>
