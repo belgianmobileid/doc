@@ -29,7 +29,6 @@ url: "https://belgianmobileid.github.io" # the base hostname & protocol for your
 theme: just-the-docs
 plugins:
   - jekyll-feed
-  - jekyll-spaceship
 
 highlighter: rouge
 
