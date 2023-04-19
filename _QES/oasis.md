@@ -28,7 +28,7 @@ Please be aware that we support performing up to 70 signatures within 1 itsme® 
 
 The itsme® Sign flow goes through the steps shown in the sequence diagram below.
 
-![Sequence diagram describing the Oasis Hash Signing flow](/doc/public/images/Oasis_Hash_Signing_SeqDiag.png)
+![Sequence diagram describing the Oasis Hash Signing flow](/doc/public/plantUML/OASIS_seq.png)
 
 <ol>
   <li>The User indicates on your end he wishes to sign a document with itsme®</li>

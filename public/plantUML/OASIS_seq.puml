@@ -1,0 +1,38 @@
+@startuml
+
+actor User #Red/Yellow
+skinparam ParticipantBorderColor #LightGreen
+participant "Signing platform\n(SCA)" as SCA #LightGreen
+skinparam ParticipantFontColor white
+skinparam ParticipantBorderColor #FF4612
+participant "itsme® backend" as itsme #FF4612
+
+User -> SCA: 1. Wants to sign a document
+activate SCA
+SCA -> itsme: 2. Creates user identification session
+activate itsme
+itsme --> SCA: 3. Session ID + redirection URL
+deactivate itsme
+SCA --> User: 4. Redirection to itsme® frontend
+note across: **User authentication and certificate creation**\nInternal itsme® process
+User -> SCA: 5. Redirection to SCA
+SCA -> itsme: 6. Get user identification status
+activate itsme
+itsme --> SCA: 7. End user information + certificate
+deactivate itsme
+SCA -> SCA: 8. Compute hash(es)
+SCA -> itsme: 9. Get signature value for hashes
+activate itsme
+itsme --> SCA: 10. Session ID + redirect URL
+deactivate itsme
+SCA --> User: 11. Redirection to itsme® frontend
+note across: **Confirmation of the signature with itsme®**\nInternal itsme® process
+User -> SCA: 12. Redirection to SCA
+SCA -> itsme: 13. Check signature status
+activate itsme
+itsme --> SCA: 14. Signature status (completed) + signature value
+deactivate itsme
+SCA --> User: 15. Success
+
+
+@enduml
