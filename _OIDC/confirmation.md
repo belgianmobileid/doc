@@ -895,10 +895,13 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
             <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/verificationDate" req="OPTIONAL" %}</td><td>Returns the date when the user's document was read for the last time, represented as a string in YYYY-MM-DDThh:mm:ss date format specified by ISO 8601.<br><br>If requested, a value MAY NOT be returned for users with a Belgian ID document, and SHALL always be returned for users with a Dutch ID document.</td>
           </tr>
           <tr>
-            <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/IDDocumentSN" req="OPTIONAL" %}</td><td>Returns the Dutch ID card/passport number, represented as a string composed of letters at positions 1 and 2 ; letters or digits from positions 3-8: ; and a digit at position 9. The letter ‘O’ is not used in the document numbers. The digit ‘0’ (zero) MAY be used.<br><br>If requested, a value SHALL always be returned for this claim.</td>
+            <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/IDDocumentSN" req="OPTIONAL" %}</td><td>Returns the Dutch or Luxembourgish ID card/passport number, represented as a string. (NL doc SN is composed of letters at positions 1 and 2 ; letters or digits from positions 3-8: ; and a digit at position 9. The letter ‘O’ is not used in the NL document numbers. The digit ‘0’ (zero) MAY be used.)<br><br>If requested, a value SHALL always be returned for this claim.</td>
           </tr> 
           <tr>
-            <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/IDDocumentType" req="OPTIONAL" %}</td><td>Returns the Dutch ID card/passport document type.<br><br>If requested, a value SHALL always be returned for this claim.</td>
+            <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/IDDocumentType" req="OPTIONAL" %}</td><td>Returns the Dutch or Luxembourg ID card/passport document type (1 or 2 letters).<br><br>If requested, a value SHALL always be returned for this claim.</td>
+          </tr>
+          <tr>
+            <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/IDIssuingCountry" req="OPTIONAL" %}</td><td>Returns the 3-letters iso code of the country that issued the identity document.<br><br>If requested, a value SHALL always be returned for this claim.</td>
           </tr>
           <tr>
             <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/issuance_locality" req="OPTIONAL" %}</td><td>Returns the locality that issued the ID document used to create the itsme® account.<br><br>If requested, a value MAY NOT be returned for this claim.</td>
