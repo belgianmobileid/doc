@@ -459,7 +459,7 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
 
 <b><code>GET https://idp.<i><b>[e2e/prd]</b></i>.itsme.services/v2/authorization</code></b>
 
-<aside class="notice">When implementing the <b>Identification</b> service, you MUST at least specify one user claim in the <code>scope</code> parameter - <code>profile</code> <code>email</code> <code>address</code> ... - or in the <code>claims</code> parameter - <code>name</code> <code>birthdate</code><code>http://itsme.services/v2/claim/claim_citizenship</code>.
+<aside class="notice">When implementing the <b>Identification</b> service, you MUST request at least one user claim, either via the <code>scope</code> parameter - <code>profile</code>, <code>email</code>, <code>address</code> ... - or via the <code>claims</code> parameter - <code>name</code>, <code>birthdate</code>, <code>http://itsme.services/v2/claim/claim_citizenship</code> ...
 </aside>
 
 ### Parameters
