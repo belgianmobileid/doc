@@ -337,7 +337,7 @@ Below you will find the mandatory and optional parameters to integrate in the HT
     </tr>
     <tr>
       <td>{% include parameter.html name="value" type="string" req="REQUIRED" level="3" %}</td>
-      <td>The description of the document in the above defined language.</td>
+      <td>The description of the (package of) document(s) in the above defined language.</td>
     </tr>
     <tr>
       <td>{% include parameter.html name="redirectUrl" type="string" req="REQUIRED" level="2" %}</td>
