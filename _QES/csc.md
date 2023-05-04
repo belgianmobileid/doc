@@ -528,7 +528,7 @@ response:
 
 ## 10. Sign hash
 
-Calculate the remote digital signature of the hash value provided in the request. This method requires credential authorization in the form of Signature ctivation Data (SAD) in the request body and the bearer token in the headers.
+Calculate the remote digital signature of the hash value provided in the request. This method requires credential authorization in the form of Signature Activation Data (SAD) in the request body and the bearer token in the headers.
 
 Below you will find the mandatory and optional parameters to integrate in the HTTPS POST request body formatted as application/json:
 
