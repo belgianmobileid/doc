@@ -137,7 +137,7 @@ Below you will find the mandatory and optional query parameters to integrate in 
         <div class="highlight language-plaintext highlighter-rouge"><pre class="highlight"><code>&lt;JWT_Signature&gt; = HMACSHA256(
           base64UrlEncode(&lt;JWT_Header&gt;) + "." +
           base64UrlEncode(&lt;JWT_Payload&gt;),
-          SHA256(&lt;client_secret&gt;)
+          &lt;client_secret&gt;
         )</code></pre></div>
         Parameters:
         <table>
