@@ -439,8 +439,6 @@ To sign in successfully in your web desktop, mobile web or mobile application, a
 
 If no user record is storing the <code>sub</code> claim value, then you should allow the user to associate his new or existing account to the <code>sub</code>.
 
-All these flows are depicted in the itsme® B2B portal.
-
 ### Benefit of <code>sub</code> claim
 
 The benefit of using a <code>sub</code> claim is that it will not change, not even if other user attributes (email, phone number, etc.) associated with that account are updated.
@@ -906,7 +904,7 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
           <tr>
             <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/issuance_locality" req="OPTIONAL" %}</td><td>Returns the locality that issued the ID document used to create the itsme® account.<br><br>If requested, a value MAY NOT be returned for this claim.</td>
           </tr> 
-          <td>{% include parameter.html name="sub" req="OPTIONAL" %}</td><td>Allows the user to bypass the itsme® identification page if he is already logged into your application, by using the user's unique identifier key as value (aka. the user's <code>sub</code> value returned in the ID Token response)</td>
+          <td>{% include parameter.html name="sub" req="OPTIONAL" %}</td><td>Allows the user to bypass the itsme® identification page if already logged into your application, by using the user's unique identifier key as value (aka. the user's <code>sub</code> value returned in the ID Token response). To claim it, please, use key:value syntax, i.e. "sub":{"essential":true,"value":"free_text"} </td>
           </tr> 
         </table>
       </td>
