@@ -401,16 +401,16 @@ When building your Authorization Request, one of the below template MUST be spec
 <table>
   <tbody>
      <tr>
-       <td>{% include parameter.html name="http://itsme.services/v2/ claim/claim_approval_template_name" req="" %}</td><td>This identifies the template used. It MUST be set to "http://itsme.services/v2/claim/claim_approval_template_name":{ "essential": true, "value": "adv_payment" }.</td>
+       <td>{% include parameter.html name="http://itsme.services/v2/claim/claim_approval_template_name" req="" %}</td><td>This identifies the template used. It MUST be set to "http://itsme.services/v2/claim/claim_approval_template_name":{ "essential": true, "value": "adv_payment" }.</td>
       </tr>
       <tr>
-        <td>{% include parameter.html name="http://itsme.services/v2/ claim/claim_approval_amount_key" req="" %}</td><td>A string holding an integer value inside. This MUST be set to "http://itsme.services/v2/claim/claim_approval_amount_key":{ "essential": true, "value": "Amount_as_a_string" }.</td>
+        <td>{% include parameter.html name="http://itsme.services/v2/claim/claim_approval_amount_key" req="" %}</td><td>A string holding an integer value inside. This MUST be set to "http://itsme.services/v2/claim/claim_approval_amount_key":{ "essential": true, "value": "Amount_as_a_string" }.</td>
        </tr>
        <tr>
-         <td>{% include parameter.html name="http://itsme.services/v2/ claim/claim_approval_currency_key" req="" %}</td><td>A string holding a valid currency code (e.g. “EUR”). This MUST be set to "http://itsme.services/v2/claim/claim_approval_currency_key":{ "essential": true, "value": "Currency_as_a_string" }.</td>
+         <td>{% include parameter.html name="http://itsme.services/v2/claim/claim_approval_currency_key" req="" %}</td><td>A string holding a valid currency code (e.g. “EUR”). This MUST be set to "http://itsme.services/v2/claim/claim_approval_currency_key":{ "essential": true, "value": "Currency_as_a_string" }.</td>
         </tr>
         <tr>
-          <td>{% include parameter.html name="http://itsme.services/v2/ claim/claim_approval_iban_key" req="" %}</td><td>A string holding a valid IBAN account number. This MUST be set to "tag:sixdots.be,2016-08:claim_approval_iban_key":{ "essential": true, "value": "IBAN_as_a_string" }.</td>
+          <td>{% include parameter.html name="http://itsme.services/v2/claim/claim_approval_iban_key" req="" %}</td><td>A string holding a valid IBAN account number. This MUST be set to "http://itsme.services/v2/claim/claim_approval_iban_key":{ "essential": true, "value": "IBAN_as_a_string" }.</td>
         </tr>
   </tbody>
 </table>
