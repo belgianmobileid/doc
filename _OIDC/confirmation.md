@@ -904,7 +904,7 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
           <tr>
             <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/issuance_locality" req="OPTIONAL" %}</td><td>Returns the locality that issued the ID document used to create the itsme® account.<br><br>If requested, a value MAY NOT be returned for this claim.</td>
           </tr> 
-          <td>{% include parameter.html name="sub" req="OPTIONAL" %}</td><td>Allows the user to bypass the itsme® identification page if already logged into your application, by using the user's unique identifier key as value (aka. the user's <code>sub</code> value returned in a ID previous Token response). To claim it, please, use the following syntax: "sub":{"value":"YOUR_SUB"}</td>
+          <td>{% include parameter.html name="sub" req="OPTIONAL" %}</td><td>Allows the user to bypass the itsme® identification page if already logged into your application, by using the user's unique identifier key as value (aka. the user's <code>sub</code> value returned in a previous Token response). Please, use the following syntax: "sub":{"value":"YOUR_SUB"}</td>
           </tr> 
         </table>
       </td>
