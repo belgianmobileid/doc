@@ -399,8 +399,6 @@ To sign in successfully in your web desktop, mobile web or mobile application, a
 
 If no user record is storing the <code>sub</code> claim value, then you should allow the user to associate his new or existing account to the <code>sub</code>.
 
-All these flows are depicted in the itsme® B2B portal.
-
 ### Benefit of <code>sub</code> claim
 
 The benefit of using a <code>sub</code> claim is that it will not change, not even if other user attributes (email, phone number, etc.) associated with that account are updated.
