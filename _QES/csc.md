@@ -521,7 +521,7 @@ response:
 {
   "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJmN2VlM2ZiNS0yOWRhLTQ5OTktYTZmMy01NTE1YTYwN2RlYTYiLCJuYW1lIjoiOXdxOWlpOG5kaWxmMzZrM3VvemVoOGdua2pzODRzY210aTc3IiwiQXNwTmV0LklkZW50aXR5LlNlY3VyaXR5U3RhbXAiOiJZSU02T0lVM0RNNUhUSEhGUEpUU09FSUM3Rk9ORzVXNiIsImV4cCI6MTU4MDM5ODYyOCwiaXNzIjoiY3NjX2FwaSIsImF1ZCI6ImNzY19hcGkifQ.kJERr_vNQaRabwSulL0Xbi2RBmrpXypvrxcGDC58nUQ",
   "refresh_token": null,
-  "token_type": "Bearer",
+  "token_type": "SAD",
   "expires_in": 3600
 }
 ```
