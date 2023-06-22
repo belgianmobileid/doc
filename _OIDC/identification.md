@@ -569,16 +569,17 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
             <td>{% include parameter.html name="locale" req="OPTIONAL" %}</td><td>Returns user's mobile phone language, represented as a string format. Possible values are : <code>NL</code> <code>FR</code> <code>DE</code> <code>EN</code><br><br>If requested, a value MAY NOT be returned for this claim.</td>
           </tr>
           <tr>
-            <td>{% include parameter.html name="picture" req="OPTIONAL" %}</td>
-            <td>Returns user's ID picture, represented as a URL string. This URL refers to an image file (for example, a JPEG, JPEG2000, or PNG image file).<br><br>If requested, a value MAY NOT be returned for users with a Belgian ID document, and SHALL always be returned for users with a Dutch ID documents.<br /><br />
+            <td>{% include parameter.html name="picture" req="OPTIONAL" %}</td><td>Returns user's ID picture, represented as a URL string. This URL refers to an image file (for example, a JPEG, JPEG2000, or PNG image file). This image is the raw (unprocessed) image contained on the ID document.<br><br><b>BE: </b>A value MAY NOT be returned for users with a Belgian ID document.<br><b>NL: </b>A value SHALL always be returned for users with a Dutch ID document.<br><b>LU: </b>A value SHALL always be returned for users with a Luxembourgish ID document.<br /><br />
             Accessing this URL has to be done with your bearer token. Example:<br />
             <code>
               GET /v2/picture HTTP/1.1<br />
               Host: idp.prd.itsme.services<br />
               Authorization: Bearer SlAV32hkKG
-            </code>
-            </td>
-          </tr> 
+            </code></td>
+          </tr>
+          <tr>
+            <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/physical_person_photo" req="OPTIONAL" %}</td><td>Returns user's ID picture, represented as a JSON Object containing these members:<br><code>format</code>: the MIME type<br><code>value</code>: the base64 encoded image.<br><br>This picture is read from the ID document but converted to always return a 200x140 px, 24 BPP JPEG image.<br><br><b>BE: </b>A value MAY NOT be returned for users with a Belgian ID document.<br><b>NL: </b>A value SHALL always be returned for users with a Dutch ID document.<br><b>LU: </b>A value SHALL always be returned for users with a Luxembourgish ID document.</td>
+          </tr>
           <tr>
             <td>{% include parameter.html name="email" req="OPTIONAL" %}</td><td>Returns user's email address.<br><br>If requested, a value MAY NOT be returned if the user doesn't gave us an email address.</td>
           </tr> 
@@ -602,10 +603,7 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
           </tr> 
            <tr>
             <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/place_of_birth" req="OPTIONAL" %}</td><td>Returns user's place of birth, represented as a JSON Object containing some or all of these members <code>formatted</code> <code>city</code> <code>country</code>.<br><br>If requested, a value MAY NOT be returned for users with a Belgian ID document, and SHALL NOT be returned for users with a Dutch ID documents.</td>
-          </tr> 
-          <tr>
-            <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/physical_person_photo" req="OPTIONAL" %}</td><td>Returns user's ID picture, represented as a JSON Object containing some or all of these members <code>format</code> <code>value</code>.<br><br>If requested, a value MAY NOT be returned for users with a Belgian ID document, and SHALL always be returned for users with a Dutch ID documents.</td>
-          </tr> 
+          </tr>
           <tr>
             <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/BEeidSn" req="OPTIONAL" %}</td><td>Returns user's Belgian ID document number, represented as a string with 12 digits in the form xxx-xxxxxxx-yy. (the check-number yy is the remainder of the division of xxxxxxxxxx by 97) for Belgian citizens, or starting with a letter and nine digits in the form B xxxxxxx xx for EU/EEA/Swiss citizens.<br><br>If requested, a value SHALL always be returned for users with a Belgian ID document, and SHALL NOT be returned for users with a Dutch ID documents.</td>
           </tr> 
@@ -803,14 +801,17 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
             <td>{% include parameter.html name="locale" req="OPTIONAL" %}</td><td>Returns user's mobile phone language, represented as a string format. Possible values are : <code>NL</code> <code>FR</code> <code>DE</code> <code>EN</code><br><br>If requested, a value MAY NOT be returned for this claim.</td>
           </tr>
           <tr>
-            <td>{% include parameter.html name="picture" req="OPTIONAL" %}</td><td>Returns user's ID picture, represented as a URL string. This URL refers to an image file (for example, a JPEG, JPEG2000, or PNG image file).<br><br>If requested, a value MAY NOT be returned for users with a Belgian ID document, and SHALL always be returned for users with a Dutch ID documents.<br /><br />
+            <td>{% include parameter.html name="picture" req="OPTIONAL" %}</td><td>Returns user's ID picture, represented as a URL string. This URL refers to an image file (for example, a JPEG, JPEG2000, or PNG image file). This image is the raw (unprocessed) image contained on the ID document.<br><br><b>BE: </b>A value MAY NOT be returned for users with a Belgian ID document.<br><b>NL: </b>A value SHALL always be returned for users with a Dutch ID document.<br><b>LU: </b>A value SHALL always be returned for users with a Luxembourgish ID document.<br /><br />
             Accessing this URL has to be done with your bearer token. Example:<br />
             <code>
               GET /v2/picture HTTP/1.1<br />
               Host: idp.prd.itsme.services<br />
               Authorization: Bearer SlAV32hkKG
             </code></td>
-          </tr> 
+          </tr>
+          <tr>
+            <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/physical_person_photo" req="OPTIONAL" %}</td><td>Returns user's ID picture, represented as a JSON Object containing these members:<br><code>format</code>: the MIME type<br><code>value</code>: the base64 encoded image.<br><br>This picture is read from the ID document but converted to always return a 200x140 px, 24 BPP JPEG image.<br><br><b>BE: </b>A value MAY NOT be returned for users with a Belgian ID document.<br><b>NL: </b>A value SHALL always be returned for users with a Dutch ID document.<br><b>LU: </b>A value SHALL always be returned for users with a Luxembourgish ID document.</td>
+          </tr>
           <tr>
             <td>{% include parameter.html name="email" req="OPTIONAL" %}</td><td>Returns user's email address.<br><br>If requested, a value MAY NOT be returned if the user doesn't gave us an email address.</td>
           </tr> 
@@ -834,10 +835,7 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
           </tr> 
            <tr>
             <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/place_of_birth" req="OPTIONAL" %}</td><td>Returns user's place of birth, represented as a JSON Object containing some or all of these members <code>formatted</code> <code>city</code> <code>country</code>.<br><br>If requested, a value MAY NOT be returned for users with a Belgian ID document, and SHALL NOT be returned for users with a Dutch ID documents.</td>
-          </tr> 
-          <tr>
-            <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/physical_person_photo" req="OPTIONAL" %}</td><td>Returns user's ID picture, represented as a JSON Object containing some or all of these members <code>format</code> <code>value</code>.<br><br>If requested, a value MAY NOT be returned for users with a Belgian ID document, and SHALL always be returned for users with a Dutch ID documents.</td>
-          </tr> 
+          </tr>
           <tr>
             <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/BEeidSn" req="OPTIONAL" %}</td><td>Returns user's Belgian ID document number, represented as a string with 12 digits in the form xxx-xxxxxxx-yy. (the check-number yy is the remainder of the division of xxxxxxxxxx by 97) for Belgian citizens, or starting with a letter and nine digits in the form B xxxxxxx xx for EU/EEA/Swiss citizens.<br><br>If requested, a value SHALL always be returned for users with a Belgian ID document, and SHALL NOT be returned for users with a Dutch ID documents.</td>
           </tr> 
