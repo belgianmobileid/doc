@@ -593,8 +593,8 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
             <td>{% include parameter.html name="phone_number_verified" req="OPTIONAL" %}</td><td>Returns <code>true</code> if the user's phone number is verified; otherwise <code>false</code>.<br><br>If requested, a value SHALL always be returned for this claim.<br>Note: currently, all phone numbers are verified so this claims always returns <code>true</code>.</td>
           </tr> 
           <tr>
-            <td>{% include parameter.html name="address" req="OPTIONAL" %}</td><td>Returns user's postal address, represented as JSON Object containing some or all of these members <code>formatted</code> <code>street_address</code> <code>postal_code</code> <code>locality</code>.<br><br>If requested, a value SHALL always be returned for users with a Belgian ID document, and SHALL NOT be returned for users with a Dutch ID documents.</td>
-          </tr> 
+            <td>{% include parameter.html name="address" req="OPTIONAL" %}</td><td>Returns user's postal address, represented as JSON Object containing some or all of these members: <code>formatted</code> <code>street_address</code> <code>postal_code</code> <code>locality</code>.<br><br><b>BE: </b>A value SHALL always be returned for users with a Belgian ID document.<br><b>NL: </b>A value SHALL NOT be returned for users with a Dutch ID document.<br><b>LU: </b>A value SHALL NOT be returned for users with a Luxembourgish ID document.</td>
+          </tr>
           <tr>
             <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/claim_citizenship" req="OPTIONAL" %}</td><td>Returns user's nationality. The format is directly depending on the underlying ID document: for Belgian ID documents this is represented as a string, and for Dutch ID documents this is represented in the <a href="https://en.wikipedia.org/wiki/ISO_3166" target="blank">ISO 3166-1 alpha-3</a> format.<br><br>If requested, a value SHALL always be returned for this claim.</td>
           </tr>
@@ -825,8 +825,8 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
             <td>{% include parameter.html name="phone_number_verified" req="OPTIONAL" %}</td><td>Returns <code>true</code> if the user's phone number is verified; otherwise <code>false</code>.<br><br>If requested, a value SHALL always be returned for this claim.<br>Note: currently, all phone numbers are verified so this claims always returns <code>true</code>.</td>
           </tr>
           <tr>
-            <td>{% include parameter.html name="address" req="OPTIONAL" %}</td><td>Returns user's postal address, represented as JSON Object containing some or all of these members <code>formatted</code> <code>street_address</code> <code>postal_code</code> <code>locality</code>.<br><br>If requested, a value SHALL always be returned for users with a Belgian ID document, and SHALL NOT be returned for users with a Dutch ID documents.</td>
-          </tr> 
+            <td>{% include parameter.html name="address" req="OPTIONAL" %}</td><td>Returns user's postal address, represented as JSON Object containing some or all of these members: <code>formatted</code> <code>street_address</code> <code>postal_code</code> <code>locality</code>.<br><br><b>BE: </b>A value SHALL always be returned for users with a Belgian ID document.<br><b>NL: </b>A value SHALL NOT be returned for users with a Dutch ID document.<br><b>LU: </b>A value SHALL NOT be returned for users with a Luxembourgish ID document.</td>
+          </tr>
           <tr>
             <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/claim_citizenship" req="OPTIONAL" %}</td><td>Returns user's nationality. The format is directly depending on the underlying ID document: for Belgian ID documents this is represented as a string, and for Dutch ID documents this is represented in the <a href="https://en.wikipedia.org/wiki/ISO_3166" target="blank">ISO 3166-1 alpha-3</a> format.<br><br>If requested, a value SHALL always be returned for this claim.</td>
           </tr>
