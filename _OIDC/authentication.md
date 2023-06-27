@@ -8,7 +8,7 @@ toc_list: true
 
 # Overview
 
-itsme® API is based on the Authorization Code Flow of OpenID Connect 1.0. The API can be used to verify the end-users' identity and obtain basic profile information about gien end-users. 
+itsme® API is based on the Authorization Code Flow of OpenID Connect 1.0. The API can be used to verify your end-users' identity and obtain some information about them. For the exact user data that can be requested, please see the <a href="#authorization-request>Authorization Request</a> parameters.
 
 The diagram below describes the **Authentication** process and how your systems should integrate with itsme® :
   
