@@ -289,7 +289,7 @@ If the request fails the Token Endpoint responds with an HTTP 400 (Bad Request) 
           </tr>
           <tr>
             <td>{% include parameter.html name="unauthorized_client" req="" %}</td>
-            <td>The authenticated client is not authorized to use this authorization grant type.</td>
+            <td>The authenticated client is not authorized to use this authorization grant type. Can also be caused by an invalid client_assertion.</td>
           </tr>
        </table>
       </td>
@@ -398,7 +398,6 @@ Content-Type: application/json;charset=UTF-8 Cache-Control: no-store Pragma: no-
 
 # API reference
 
-<a id="OpenIDConfig"></a>
 ## itsme® Discovery Document
 
 {% tabs Discovery %}
@@ -434,7 +433,6 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
 {% endtabs %}
 
 
-<a id="AuthNReq"></a>
 ## Authorization Request
 
 {% tabs idAuthorizationRequest %}

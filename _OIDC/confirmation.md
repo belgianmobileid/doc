@@ -290,7 +290,7 @@ If the request fails the Token Endpoint responds with an HTTP 400 (Bad Request) 
           </tr>
           <tr>
             <td>{% include parameter.html name="unauthorized_client" req="" %}</td>
-            <td>The authenticated client is not authorized to use this authorization grant type.</td>
+            <td>The authenticated client is not authorized to use this authorization grant type. Can also be caused by an invalid client_assertion.</td>
           </tr>
        </table>
       </td>
@@ -688,7 +688,6 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
   </tbody>
 </table>
 
-<a id="AuthNResp"></a>
 ### Response
 
 <code>302</code> <code>application/x-www-form-urlencoded</code>
@@ -923,7 +922,6 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
 </table>
 
 
-<a id="AuthNResp"></a>
 ### Response
 
 <code>302</code> <code>application/x-www-form-urlencoded</code>
