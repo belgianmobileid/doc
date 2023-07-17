@@ -66,7 +66,7 @@
     </tr>
     <tr>
       <td>{% include parameter.html name="display" req="OPTIONAL" %}</td>
-      <td>Specify how the itsme® sign-in page should be displayed to the user. If set to <code>touch</code>, it SHOULD displays the itsme® sign-in page with a device that leverages a touch interface. If set to <code>page</code>, the itsme® sign-in UI SHOULD be consistent with a full page view of the User-Agent. If the <code>display</code> parameter is not specified, this is the default display mode.</td>
+      <td>Specify how the itsme® sign-in page should be displayed to the user. Currently, only the <code>page</code> value is supported but in the future we might support additional display modes like <code>touch</code>.</td>
     </tr>
     <tr>
       <td>{% include parameter.html name="acr_values" req="OPTIONAL" %}</td>
