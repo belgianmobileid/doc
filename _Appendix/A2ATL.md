@@ -59,7 +59,7 @@ Please note also the Confirm links are only valid for a limited amount of time. 
 
 ### Azure B2C ClientSecret
 
-<a href="https://itsmedigitalidb2ce2e.b2clogin.com/itsmedigitalidb2ce2e.onmicrosoft.com/oauth2/v2.0/authorize?p=B2C_1_itsme_userflow&client_id=e3ed773e-b123-46a3-86ba-721c37a7850d&nonce=defaultNonce&redirect_uri=https%3A%2F%2Fjwt.ms&scope=openid&response_type=id_token&prompt=login" target="blank">E2E - Azure B2C</a>
+<a href="https://itsmedigitalidb2ce2e.b2clogin.com/itsmedigitalidb2ce2e.onmicrosoft.com/oauth2/v2.0/authorize?p=B2C_1_itsme_user_flow&client_id=e3ed773e-b123-46a3-86ba-721c37a7850d&nonce=defaultNonce&redirect_uri=https%3A%2F%2Fjwt.ms&scope=openid&response_type=id_token&prompt=login" target="blank">E2E - Azure B2C</a>
 
 ## PRD
 
