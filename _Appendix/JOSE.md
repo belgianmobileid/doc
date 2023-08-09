@@ -40,7 +40,7 @@ Next, you will need to ‘convert’ the PUBLIC keys (NOT the private key. You M
 
 The resulting JWK Set MUST contain (at least) 2 JWK: one whereby the “use” parameter is ”enc” (for encryption) and another with “sig” (for signature).
 
-This JWK Set is nothing more than a plain text file (“JSON” format) and you should place that on a publicly available website (https off course) and share that link with us when registering your project in the <a href="https://brand.belgianmobileid.be/d/CX5YsAKEmVI7" target="blank">itsme® B2B portal</a>. As these are the PUBLIC keys, there is no problem to share this information publicly (in other words, it should not be placed behind a password or login screen).
+This JWK Set is nothing more than a plain text file (“JSON” format) and you should place that on a publicly available website under https schema (with <a href="https://belgianmobileid.github.io/doc/authentication/#certificates-and-website-security" target="blank"> EV/OV certificate</a>)  and share that link with us if you have no access to itsme® B2B portal yet. As these are the PUBLIC keys, there is no problem to share this information publicly: in other words, it should not be placed behind a password or login screen. We expect that your server where jwkset is hosted responds fast, e.g. faster than 1000ms.
 
 Some more (technical) documentation on <a href="https://tools.ietf.org/html/rfc7517" target="blank">https://tools.ietf.org/html/rfc7517</a>.
 
