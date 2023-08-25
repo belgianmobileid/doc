@@ -759,6 +759,16 @@ The Error Response will contain the <i>"status"</i> and the `statusReason` value
       <td>An unknown error occurred during the request. You SHOULD contact itsme® support team for investigation.</td>
     </tr>
     <tr>
+      <td>{% include parameter.html name="400" %}</td>
+      <td>ONLY_SINGLE_HASH_SUPPORTED</td>
+      <td>Multiple hashes were sent for signature, but your contract only allows 1 hash signature at a time. You SHOULD contact itsme® to discuss enabling batch signing for your account.</td>
+    </tr>
+    <tr>
+      <td>{% include parameter.html name="400" %}</td>
+      <td>BATCH_TOO_LARGE</td>
+      <td>More hashes have been sent for signature than we support. The limit is currently 70 hashes in one request.</td>
+    </tr>
+    <tr>
       <td>{% include parameter.html name="409" %}</td>
       <td>PENDING</td>
       <td>The User Identification Session you created is  pending. The User is currently following the User Identification flow at itsme® side (web and mobile).</td>
