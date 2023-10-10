@@ -12,18 +12,6 @@ We are here to help you to set up itsme® service(s), and allow you to use verif
 
 For more details, please read through the corresponding developer documentation available below.
 
-# Get set-up
-
-<div class="services">
-  <div class="service">
-    <h2>Onboarding</h2>
-    <p class="description">Get your project registered in order to start the integration.</p>
-    <div class="docLinks">
-      <a href="https://belgianmobileid.github.io/doc/getting-started/">Getting started</a>
-    </div>
-  </div>
-</div>
-
 # Services and integration APIs
 
 For more information on how itsme® can best work for your business, please <a href = "mailto: onboarding@itsme.be">contact us</a>. itsme® team will be happy to help.
