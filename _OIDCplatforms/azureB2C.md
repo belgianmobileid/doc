@@ -49,6 +49,13 @@ claims returned as string or boolean (expected to be processed by Azure B2C)
 ```
 
 User flow is limited to sub, names & email. While IEF will allow you to process the rest of ID Data listed above in data type string or boolean.
+In both cases, we expect the redirect_uri to be in a format:
+```https://{partnerAzureB2C-tenant-name}.b2clogin.com/{partnerAzureB2C-tenant-name}/oauth2/authresp```
+or
+```https://{partnerAzureB2C-tenant-name}.b2clogin.com/{partnerAzureB2C-tenant-name}.onmicrosoft.com/oauth2/authresp```
+
+ref. to <button type="button"><a href="https://docs.microsoft.com/en-us/azure/active-directory-b2c/b2clogin#change-identity-provider-redirect-urls" target="blank">Azure B2C documentation for redirect format</a></button>.
+
 
 ## User Flows
 User flows is a portal (GUI) configurable flow, which is based on built-in user attributes (values collected on sign up) and application claims, which are values about the user, returned to the application in the token. One can create custom attributes, but unfortunately Azure B2C does not process any claims from itsme®, except the ones mapped during general idp setup (idp claims mapping), i.e. sub, given_name, family_name, email. Only those were returned consistently during testing of 2023.
