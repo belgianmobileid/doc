@@ -204,7 +204,8 @@ To validate a Nested JWT object, you will first need to decrypt the JWE object, 
 The decryption process is the reverse of the encryption process:
 
 <ol>
-  <li>Parse the JWE object to extract the serialized values of the base64url-encoded JWE Header, the base64url-encoded JWE Encrypted Key, the base64url-encoded JWE  Initialization Vector, the base64url-encoded JWE Ciphertext, and the base64url-encoded JWE Authentication Tag.</li>
+  <li>Parse the JWE object to extract the serialized values of the base64url-encoded JWE Header, the base64url-encoded JWE Encrypted Key, the base64url-encoded JWE  Initialization Vector, the base64url-encoded JWE Ciphertext, and the base64url-encoded JWE Authentication Tag.Please pay 
+  attention to the header for encryption alg.</li>
   <li>Base64url decode the encoded representations of the JWE Header, the JWE Encrypted Key, the JWE Initialization  Vector, the JWE Ciphertext, the JWE Authentication Tag, and the JWE Additional Authenticated Data (AAD).</li>
   <li>Verify that the octet sequence resulting from decoding the encoded JWE Header is a UTF-8-encoded representation of a completely valid JSON object.</li>
   <li>Determine the algorithm specified by the <i>"alg"</i> parameter in the JWE Header.</li>
