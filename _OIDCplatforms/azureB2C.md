@@ -3,7 +3,8 @@
 layout: OIDCviaPlatform
 title: Azure B2C
 permalink: azureB2C/
-nav_exclude: false
+nav_order: 5
+toc_list: true
 
 ---
 
