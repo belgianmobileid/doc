@@ -3,7 +3,7 @@
 layout: OIDCviaPlatform
 title: Azure B2C
 permalink: azureB2C/
-nav_order: 4
+nav_order: 5
 toc_list: true
 
 ---
@@ -51,8 +51,12 @@ claims returned as string or boolean (expected to be processed by Azure B2C)
 
 User flow is limited to sub, names & email. While IEF will allow you to process the rest of ID Data listed above in data type string or boolean.
 In both cases, we expect the redirect_uri to be in a format:
+
+```
 https://{partnerAzureB2C-tenant-name}.b2clogin.com/{partnerAzureB2C-tenant-name}/oauth2/authresp
 https://{partnerAzureB2C-tenant-name}.b2clogin.com/{partnerAzureB2C-tenant-name}.onmicrosoft.com/oauth2/authresp
+```
+
 ref. to <button type="button"><a href="https://docs.microsoft.com/en-us/azure/active-directory-b2c/b2clogin#change-identity-provider-redirect-urls" target="blank">Azure B2C documentation for redirect format</a></button>.
 
 
@@ -65,6 +69,7 @@ End-user will see in the app request to approve all data which is mentioned on t
 IEF is advanced method to configure Azure B2C via .xml files.
 Due to Azure B2C limitations, JSON Objects returned by itsme® can not be processed or transformed by Azure B2C, thus one could ask & receive data which is returned as strings or booleans only:
 
+<!-- trunk-ignore(markdownlint/MD040) -->
 ```
 IEF decoded token example
 {
@@ -110,9 +115,9 @@ Microsoft has elaborate documentation custom policy definition and how to work w
 
 #### Getting started with Custom Policies
 
-##### Add Signing and Encryption keys
+#### Add Signing and Encryption keys
 Open the B2C tenant and, under Policies, select Identity Experience Framework.
-###### Create the signing key
+##### Create the signing key
 1. Select Policy Keys and then select Add.
 2. For Options, choose Generate.
 3. In Name, enter TokenSigningKeyContainer. The prefix B2C_1A_ is added automatically.
@@ -120,7 +125,7 @@ Open the B2C tenant and, under Policies, select Identity Experience Framework.
 5. For Key usage, select Signature.
 6. Select Create.
 
-###### Create the encryption key
+##### Create the encryption key
 1. Select Policy Keys and then select Add.
 2. For Options, choose Generate.
 3. In Name, enter TokenEncryptionKeyContainer. The prefix B2C_1A_ is added automatically.
@@ -129,7 +134,7 @@ Open the B2C tenant and, under Policies, select Identity Experience Framework.
 6. Select Create.
 
 
-###### Register Identity Experience Framework applications
+##### Register Identity Experience Framework applications
 1. Open the B2C tenant and select under Manage App registrations.
 2. Select App registrations, and then select New registration.
 3. For Name, enter IdentityExperienceFramework.
@@ -149,7 +154,7 @@ Next, expose the API by adding a scope:
 4. Select Add scope
 
 
-###### Register the ProxyIdentityExperienceFramework application
+##### Register the ProxyIdentityExperienceFramework application
 (cf. <button type="button"><a href="https://docs.microsoft.com/en-us/azure/active-directory-b2c/custom-policy-get-started?tabs=app-reg-preview#register-the-proxyidentityexperienceframework-application" target="blank">register proxy IEF app</a></button>)
 
 1. Open the B2C tenant and select under Manage App registrations.
@@ -179,7 +184,7 @@ Now, grant permissions to the API scope you exposed earlier in the IdentityExpe
 8. Select Accept.
 9. Select Refresh, and then verify that "Granted for ..." appears under Status for the scopes - offline_access, openid and user_impersonation. It might take a few minutes for the permissions to propagate.
 
-###### App Registration
+##### App Registration
 1. Open the B2C tenant and select under Manage select App Registrations
 2. New registration
 3. Support account type: Account in this organizational directory only
@@ -188,7 +193,7 @@ Now, grant permissions to the API scope you exposed earlier in the IdentityExpe
 5. click on Register
 - For testing purposes, go to Authentication and select in the section implicit grant “Access Tokens” and “ID Tokens”.
 
-###### Client Secret Registration
+##### Client Secret Registration
 1. Open the B2C tenant and select under Policies Identity Experience Framework.
 2. Select Policy keys and then select Add.
 3. For Options, choose Manual.
@@ -196,7 +201,7 @@ Now, grant permissions to the API scope you exposed earlier in the IdentityExpe
 5. For Key usage, select Signature.
 6. Select Create.
 
-#####  Edit the Custom Policy Starter Pack
+####  Edit the Custom Policy Starter Pack
 1. Download the starter pack:
 ```git clone https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack```
 
@@ -220,7 +225,7 @@ Now, grant permissions to the API scope you exposed earlier in the IdentityExpe
 </InputClaims>
 ```
 
-###### Edit the Trustframeworkbase.xml to add the itsme provider
+#### Edit the Trustframeworkbase.xml to add the itsme provider
 1. In the <ContentDefinitions> element, adjust the URIs for the layout if needed
 2. In the <ClaimsProviders> element, remove the ClaimsProvider with the displayName facebook.com
 3. Add in the <ClaimsProviders> element the following <ClaimsProvider> element. 
@@ -285,7 +290,7 @@ with `<ClaimsProviderSelection TargetClaimsExchangeId="ItsmeExchange"/>`
 and `<ClaimsExchange Id="FacebookExchange" TechnicalProfileReferenceId="Facebook-OAUTH" />` with `<ClaimsExchange Id="ItsmeExchange" TechnicalProfileReferenceId="ItsmeProfile" />`
 
 
-###### Persist Custom Claims in AAD
+#### Persist Custom Claims in AAD
 1. Edit the TrustFrameworkBase.xml document.
 2. Add in the section <ClaimsSchema> element the follow <ClaimType> element
 
@@ -341,14 +346,14 @@ and `<ClaimsExchange Id="FacebookExchange" TechnicalProfileReferenceId="Facebo
     <OutputClaim ClaimTypeReferenceId="extension_BENationalNumber" />
 ```
 
-###### Edit the SignUpOrSignin.xml
+#### Edit the SignUpOrSignin.xml
 In the <OutputClaims>, add the custom claim(s) to have been requested.
 ```
 <OutputClaim ClaimTypeReferenceId="extension_BENationalNumber"/>
 <OutputClaim ClaimTypeReferenceId="extension_phoneNumberVerified" />
 ```
 
-###### Upload the policies
+#### Upload the policies
 1. Select the Identity Experience Framework
 2. Select Upload custom policy.
 3. In this order, upload the policy files:
@@ -358,7 +363,7 @@ In the <OutputClaims>, add the custom claim(s) to have been requested.
 - ProfileEdit.xml
 - PasswordReset.xml
 
-###### Test the flow
+#### Test the flow
 1. In the Identity Experience Framework, click on the B2C_1A_signup_sigin custom policy file.
 2. Select Application and the reply url
 3. Click on Run now
