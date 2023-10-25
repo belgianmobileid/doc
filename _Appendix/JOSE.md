@@ -24,7 +24,7 @@ The JSON Object Signing and Encryption (JOSE) framework consists of several tech
     As itsme® only support the RSA cryptosystem, it requires that each party exposes its public keys as a simple JWK Set document on a URI accessible to all.
         <ul>
             <li>For itsme®, this URI can be retrieved from the <a href="../authentication/#itsme-discovery-document" target="blank">itsme® Discovery document</a>, using the "jwks_uri" key.</li>
-            <li>Your JWK Set document MUST be accessible via the URI communicated when setting up your project in the <a href="https://brand.belgianmobileid.be/d/CX5YsAKEmVI7" target="blank">itsme® B2B portal</a>.</li>
+            <li>Your JWK Set document MUST be accessible via the URI communicated when setting up your project in the <a href="https://portal.itsme-id.com/login" target="blank">itsme® B2B portal</a> or via email to onboarding@itsme-id.com.</li>
         </ul></li>
 </ul>
 
@@ -82,7 +82,7 @@ Following steps will show you how to generate a JWS Compact Serialization object
 </code></pre></div>
 
   <li>Combine the JWS Header and JWS Payload, and separate them with period ('.') characters, to produce the JWS Signing Input.</li>
-  <li>Complete the signing operation over the JWS Signing Input with the algorithm defined in the <i>"alg"</i> parameter, to produce the JWS Signature. The JWS Signing Input is signed using your private key corresponding to the public key referenced in your JWK Set document. This information SHOULD be made available via the URI you communicated when setting up your project in the <a href="https://brand.belgianmobileid.be/d/CX5YsAKEmVI7" target="blank">itsme® B2B portal</a>.</li>
+  <li>Complete the signing operation over the JWS Signing Input with the algorithm defined in the <i>"alg"</i> parameter, to produce the JWS Signature. The JWS Signing Input is signed using your private key corresponding to the public key referenced in your JWK Set document. This information SHOULD be made available via the URI you communicated when setting up your project in the <a href="https://portal.itsme-id.com/login" target="blank">itsme® B2B portal</a> or via email to onboarding@itsme-id.com.</li>
   <li>The JWS Signature will then be encoded using base64url to produce the string below.</li>
 
 <div class="language-http highlighter-rouge"><pre class="highlight">
@@ -204,12 +204,11 @@ To validate a Nested JWT object, you will first need to decrypt the JWE object, 
 The decryption process is the reverse of the encryption process:
 
 <ol>
-  <li>Parse the JWE object to extract the serialized values of the base64url-encoded JWE Header, the base64url-encoded JWE Encrypted Key, the base64url-encoded JWE  Initialization Vector, the base64url-encoded JWE Ciphertext, and the base64url-encoded JWE Authentication Tag.Please pay 
-  attention to the header for encryption alg.</li>
+  <li>Parse the JWE object to extract the serialized values of the base64url-encoded JWE Header, the base64url-encoded JWE Encrypted Key, the base64url-encoded JWE  Initialization Vector, the base64url-encoded JWE Ciphertext, and the base64url-encoded JWE Authentication Tag.</li>
   <li>Base64url decode the encoded representations of the JWE Header, the JWE Encrypted Key, the JWE Initialization  Vector, the JWE Ciphertext, the JWE Authentication Tag, and the JWE Additional Authenticated Data (AAD).</li>
   <li>Verify that the octet sequence resulting from decoding the encoded JWE Header is a UTF-8-encoded representation of a completely valid JSON object.</li>
   <li>Determine the algorithm specified by the <i>"alg"</i> parameter in the JWE Header.</li>
-  <li>Decrypt the JWE Encrypted Key with the algorithm defined in the <i>"alg"</i> parameter, to produce the Content Encryption Key (CEK). The JWE Encrypted Key is decoded using your private key corresponding to the public key referenced in your JWK Set document. This information SHOULD be made available via the URI you communicated when setting up your project in the <a href="https://brand.belgianmobileid.be/d/CX5YsAKEmVI7" target="blank">itsme® B2B portal</a>.</li> 
+  <li>Decrypt the JWE Encrypted Key with the algorithm defined in the <i>"alg"</i> parameter, to produce the Content Encryption Key (CEK). The JWE Encrypted Key is decoded using your private key corresponding to the public key referenced in your jwkset. The jwkset uri SHOULD be made available when setting up your project in the <a href="https://portal.itsme-id.com/login" target="blank">itsme® B2B portal</a> or via email to onboarding@itsme-id.com. In case you expose several keys on your jwkset uri, our backend will randomly choose the encryption key, please, see the JWE header information to identify via kid, what key our backend picked up.</li>
   <li>Let the Additional Authenticated Data (AAD) encryption parameter be the octets of the ASCII representation of the encoded JWE Header value.</li>
   <li>Decrypt the JWE Ciphertext with the encryption algorithm defined by the <i>"enc"</i> parameter in the JWE Header. It will return the decrypted JWS object.</li>
 </ol>
