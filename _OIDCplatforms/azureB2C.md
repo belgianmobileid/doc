@@ -3,7 +3,7 @@
 layout: OIDCviaPlatform
 title: Azure B2C
 permalink: azureB2C/
-nav_order: 5
+nav_order: 4
 toc_list: true
 
 ---
@@ -51,10 +51,8 @@ claims returned as string or boolean (expected to be processed by Azure B2C)
 
 User flow is limited to sub, names & email. While IEF will allow you to process the rest of ID Data listed above in data type string or boolean.
 In both cases, we expect the redirect_uri to be in a format:
-```https://{partnerAzureB2C-tenant-name}.b2clogin.com/{partnerAzureB2C-tenant-name}/oauth2/authresp```
-or
-```https://{partnerAzureB2C-tenant-name}.b2clogin.com/{partnerAzureB2C-tenant-name}.onmicrosoft.com/oauth2/authresp```
-
+https://{partnerAzureB2C-tenant-name}.b2clogin.com/{partnerAzureB2C-tenant-name}/oauth2/authresp
+https://{partnerAzureB2C-tenant-name}.b2clogin.com/{partnerAzureB2C-tenant-name}.onmicrosoft.com/oauth2/authresp
 ref. to <button type="button"><a href="https://docs.microsoft.com/en-us/azure/active-directory-b2c/b2clogin#change-identity-provider-redirect-urls" target="blank">Azure B2C documentation for redirect format</a></button>.
 
 
