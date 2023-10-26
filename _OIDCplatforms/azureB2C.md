@@ -113,7 +113,7 @@ Microsoft has elaborate documentation custom policy definition and how to work w
 - Your itsme® provided ServiceCode
 - Your client secret for your itsme® account
 
-#### Getting started with Custom Policies
+### Getting started with Custom Policies
 
 #### Add Signing and Encryption keys
 Open the B2C tenant and, under Policies, select Identity Experience Framework.
@@ -203,6 +203,7 @@ Now, grant permissions to the API scope you exposed earlier in the IdentityExpe
 
 ####  Edit the Custom Policy Starter Pack
 1. Download the starter pack:
+
 ```git clone https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack```
 
 2. Edit the files from the “SocialAndLocalAccounts” folder in the downloaded starter pack
@@ -229,9 +230,10 @@ Now, grant permissions to the API scope you exposed earlier in the IdentityExpe
 1. In the <ContentDefinitions> element, adjust the URIs for the layout if needed
 2. In the <ClaimsProviders> element, remove the ClaimsProvider with the displayName facebook.com
 3. Add in the <ClaimsProviders> element the following <ClaimsProvider> element. 
-- the METADATA is different depending the environment:
-    - E2E: https://oidc.e2e.itsme.services/clientsecret-oidc/csapi/v0.1/.well-known/openid-configuration
-    - Production: https://oidc.prd.itsme.services/clientsecret-oidc/csapi/v0.1/.well-known/openid-configuration
+- the METADATA depends on the environment:
+    - E2E: ```https://oidc.e2e.itsme.services/clientsecret-oidc/csapi/v0.1/.well-known/openid-configuration```
+    - PRD: ```https://oidc.prd.itsme.services/clientsecret-oidc/csapi/v0.1/.well-known/openid-configuration```
+
 - Replace YOURitsmePARTNERCODE with your itsme partner code
 - Replace YOURitsmeSERVICECODE with your itsme service code
 In this example, the BENationalNumber claim is added as string and phone_number_verified as boolean. More claims can be added if needed:
@@ -275,7 +277,7 @@ In this example, the BENationalNumber claim is added as string and phone_number_
     </ClaimsProvider>
 ```
 
-4. Add in the section <ClaimsSchema> element the follow <ClaimType> element
+4. Add in the section  ```<ClaimsSchema>``` element the following ```<ClaimType>``` element:
 
 ```
 <ClaimType Id="claims">
@@ -284,15 +286,16 @@ In this example, the BENationalNumber claim is added as string and phone_number_
 </ClaimType>
 ```
 
-5. Adjust the <UserJourneys> elements to suit your needs
-For example, replace the `<ClaimsProviderSelection TargetClaimsExchangeId="FacebookExchange"/>`
-with `<ClaimsProviderSelection TargetClaimsExchangeId="ItsmeExchange"/>`
-and `<ClaimsExchange Id="FacebookExchange" TechnicalProfileReferenceId="Facebook-OAUTH" />` with `<ClaimsExchange Id="ItsmeExchange" TechnicalProfileReferenceId="ItsmeProfile" />`
+5. Adjust the ```<UserJourneys>``` elements to suit your needs. For example, replace the ```<ClaimsProviderSelection TargetClaimsExchangeId="FacebookExchange"/>```
+with ```<ClaimsProviderSelection TargetClaimsExchangeId="ItsmeExchange"/>```
+
+and ```<ClaimsExchange Id="FacebookExchange" TechnicalProfileReferenceId="Facebook-OAUTH" />``` 
+with ```<ClaimsExchange Id="ItsmeExchange" TechnicalProfileReferenceId="ItsmeProfile" />```
 
 
 #### Persist Custom Claims in AAD
 1. Edit the TrustFrameworkBase.xml document.
-2. Add in the section <ClaimsSchema> element the follow <ClaimType> element
+2. Add in the section ```<ClaimsSchema>``` element the follow ```<ClaimType>``` element
 
 ```
 <ClaimType Id="extension_BENationalNumber">
