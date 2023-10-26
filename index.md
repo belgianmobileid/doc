@@ -23,7 +23,6 @@ For more information on how itsme® can best work for your business, please <a h
     <div class="docLinks">
       <a href="authentication">Direct integration API</a>
       <a href="azureB2C">Azure B2C API</a>
-      <a href="awscognito">AWS Cognito</a>
     </div>
     <img src="assets/login.svg" />
   </div>
@@ -33,7 +32,6 @@ For more information on how itsme® can best work for your business, please <a h
     <div class="docLinks">
       <a href="identification">Direct integration API</a>
       <a href="azureB2C">Azure B2C API</a>
-      <a href="awscognito">AWS Cognito</a>
     </div>
     <img src="assets/signup.svg" />
   </div>
