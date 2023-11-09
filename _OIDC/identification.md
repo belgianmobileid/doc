@@ -804,6 +804,23 @@ Pragma: no-cache
 
 {% endtabs %}
 
+Example of a decrypted id_token:
+
+```
+{
+	"sub": "6g2k9rgglem2dttw5d51ulkxpv24phwatiu6",
+	"aud": "WXw9DMqkEv",
+	"birthdate": "1974-10-23",
+	"gender": "male",
+	"name": "Jean Jacques D. Goldman",
+	"iss": "https://oidc.uat.itsme.services/clientsecret-oidc/csapi/v0.1",
+	"nonce": "nonce",
+	"nbf": 1699538107,
+	"exp": 1699538407,
+	"iat": 1699538107
+}
+```
+
 <a id="UserInfoReq"></a>
 ## UserInfo Request
 
