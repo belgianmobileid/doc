@@ -22,7 +22,6 @@ For more information on how itsme® can best work for your business, please <a h
     <p class="description">This Service enables your users/customers to log in securely to your application.</p>
     <div class="docLinks">
       <a href="authentication">Direct integration API</a>
-      <a href="azureB2C">Azure B2C API</a>
     </div>
     <img src="assets/login.svg" />
   </div>
@@ -31,7 +30,6 @@ For more information on how itsme® can best work for your business, please <a h
     <p class="description">This Service enables you to identify your users and access their verified data.</p>
     <div class="docLinks">
       <a href="identification">Direct integration API</a>
-      <a href="azureB2C">Azure B2C API</a>
     </div>
     <img src="assets/signup.svg" />
   </div>
@@ -53,5 +51,14 @@ For more information on how itsme® can best work for your business, please <a h
       <a href="QES-OASIS">OASIS DSS protocol</a>
     </div>
     <img src="assets/sign.svg" />
+  </div>
+    <div class="service">
+    <h2>IAM</h2>
+    <p>Identity and Access Management (IAM) platform guides, which allow to add user sign-in and/or sign-up features and control access to your web and mobile applications.</p>
+    <div class="docLinks">
+      <a href="azureB2C">Azure B2C API</a>
+    </div>
+   <img src="assets/login.svg" />
+   <img src="assets/signup.svg" />
   </div>
 </div>
