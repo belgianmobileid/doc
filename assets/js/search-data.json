@@ -73,7 +73,7 @@
   },"12": {
     "doc": "Home",
     "title": "IAM",
-    "content": "Identity and Access Management (IAM) platform guides, which allow to add user sign-in and/or sign-up features and control access to your web and mobile applications. Azure B2C API ",
+    "content": "Identity and Access Management (IAM) platform guides, which allow to add user sign-in and/or sign-up features and control access to your web/mobile apps. Azure B2C API ",
     "url": "https://belgianmobileid.github.io/doc/index",
     "relUrl": "/index"
   },"13": {
