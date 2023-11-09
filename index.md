@@ -54,11 +54,8 @@ For more information on how itsme® can best work for your business, please <a h
   </div>
     <div class="service">
     <h2>IAM</h2>
-    <p>Identity and Access Management (IAM) platform guides, which allow to add user sign-in and/or sign-up features and control access to your web and mobile applications.</p>
+    <p>Identity and Access Management (IAM) platform guides, which allow to add user sign-in and/or sign-up features and control access to your web/mobile apps.</p>
     <div class="docLinks">
       <a href="azureB2C">Azure B2C API</a>
-    </div>
-   <img src="assets/login.svg" />
-   <img src="assets/signup.svg" />
   </div>
 </div>
