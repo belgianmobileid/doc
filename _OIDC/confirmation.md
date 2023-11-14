@@ -8,7 +8,7 @@ toc_list: true
 
 # Overview
 
-itsme® API is based on the Authorization Code Flow of OpenID Connect 1.0. The API can be used to verify your end-users' identity and obtain some information about them. For the exact user data that can be requested, please see the <a href="#authorization-request>Authorization Request</a> parameters.
+itsme® API is based on the Authorization Code Flow of OpenID Connect 1.0. The API can be used to verify your end-users' identity and obtain some information about them. For the exact user data that can be requested, please see the <a href="#authorization-request">Authorization Request</a> parameters.
 
 The diagram below describes the **Confirmation** process and how your systems should integrate with itsme® :
   
@@ -29,6 +29,14 @@ To get to this result please make sure you
   <li>Obtain the additional claims by <a href="#UserInfoReq" >presenting the access token to the itsme® UserInfo Endpoint</a> if the required claims are not returned in the ID token.</li>
   <li>Confirm the success of the operation and display a success message.</li>
 </ol>
+
+# Onboarding
+
+To make use of our services, you will need to contact our Customer Care team at <a href="mailto:onboarding@itsme-id.com">onboarding@itsme-id.com</a>. Based on your requirements, they will configure for you a new partner in our database. You will receive the clientID corresponding to this partner, that you will need to include in your <a href="#AuthNReq" >Authorization Request</a>.
+
+Each partner can contain multiple "services". Each service should correspond to one user flow at your side and can be of type Authentication, Identification or Confirmation. The service code will also be required in your Authorization Request.
+
+For each service, you will have to provide one or a few "redirect_uri", which are the landing page(s) where the end user will be sent after authenticating with itsme. Only the URIs whitelisted in a service will be allowed in your Authorization Request, so they have to be fully determined before you can use the service. This whitelisting works on an "exact match" basis, including the full (case sensitive) path and query string so please communicate the exact string you are planning to use in your Authorization Request.
 
 # Guides
 
