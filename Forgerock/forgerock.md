@@ -1,6 +1,6 @@
 ---
 layout: homepage
-title: Forgerock | | Ping Identity
+title: Forgerock | Ping Identity
 permalink: Forgerock/
 nav_order: 5
 nav_exclude: true
@@ -8,7 +8,7 @@ nav_exclude: true
 ---
 # What is Forgerock | Ping Identity?
 
-Forgerock | Ping Identity's software provides federated identity management and self-hosted identity access management to web identities via attribute based access controls. They offer the industry's only end-to-end, AI-driven platform purpose-built for all identities and for any environment — on-prem, multi-cloud, or hybrid.
+Forgerock & Ping Identity's software provides federated identity management and self-hosted identity access management to web identities via attribute based access controls. They offer the industry's only end-to-end, AI-driven platform purpose-built for all identities and for any environment — on-prem, multi-cloud, or hybrid.
 
 ## Prerequisites
 
@@ -29,8 +29,7 @@ This integration relies on the ForgeRock Social Provider Handler Node which is a
 the Forgerock user flow. The interaction flow starts when the user clicks on this
 button.
 2. Forgerock starts the OpenID connect flow by sending an Authorize request to the
-itsme® API. A well-known endpoint is pre-configured within Forgerock ecosystem &
-contains information about the endpoints.
+itsme® API.<button type="button"><a href="https://belgianmobileid.github.io/doc/authentication/#itsme-discovery-document" target="blank">A well-known endpoint</a></button>  is pre-configured within Forgerock ecosystem & contains information about the endpoints.
 3. itsme® environment redirects the user to the itsme® identify yourself page, allowing
 the user to fill in their phone number.
 4. itsme® receives the phone number from the user and validates it.
@@ -42,7 +41,7 @@ itsme® app.
 9. Using the authorization code, Forgerock makes a token request.
 10. The itsme® environment checks the token request, and if still valid, returns the OAuth
 access token and the ID token containing the requested user information.
-11. Finally, the user is redirected to the redirect URL as an authenticated user.
+11. Finally, the user is redirected to the redirect_uri as an authenticated user.
 
 ## Configuration between Forgerock and itsme®
 ### Step 1: Setup itsme® to ForgeRock AM
