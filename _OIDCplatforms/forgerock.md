@@ -3,9 +3,9 @@ layout: OIDCviaPlatform
 title: Forgerock | Ping Identity
 permalink: forgerock/
 nav_order: 5
-nav_exclude: true
 
 ---
+
 # What is Forgerock | Ping Identity?
 
 Forgerock & Ping Identity's software provides federated identity management and self-hosted identity access management to web identities via attribute based access controls. They offer the industry's only end-to-end, AI-driven platform purpose-built for all identities and for any environment — on-prem, multi-cloud, or hybrid.
@@ -23,7 +23,7 @@ This integration relies on the ForgeRock Social Provider Handler Node which is a
 
 ## Scenario
 
-![itsme-Forgerock schema](_OIDCplatforms/Forgerock/forgerock.md)
+![itsme-Forgerock schema](_OIDCplatforms/forgerock/forgerock.md)
 
 1. On your website or application, include the Log in with itsme® button by adapting in
 the Forgerock user flow. The interaction flow starts when the user clicks on this
@@ -79,4 +79,4 @@ All other fields can be left on the default settings from Forgerock.
 Go to Journeys and select itsme® to build your workflow. There is already a custom flow ready
 for you to use with itsme®. By default, it includes a username/password flow with itsme® added
 as a secondary option, but this can be adapted as you wish.
-![itsme tenant tree](_OIDCplatforms/Forgerock/tree.png)
+![itsme tenant tree](_OIDCplatforms/forgerock/tree.png)
