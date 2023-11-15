@@ -29,7 +29,7 @@ This integration relies on the ForgeRock Social Provider Handler Node which is a
 the Forgerock user flow. The interaction flow starts when the user clicks on this
 button.
 2. Forgerock starts the OpenID connect flow by sending an Authorize request to the
-itsme® API.<button type="button"><a href="https://belgianmobileid.github.io/doc/authentication/#itsme-discovery-document" target="blank">A well-known endpoint</a></button>  is pre-configured within Forgerock ecosystem & contains information about the endpoints.
+itsme® API. <button type="button"><a href="https://belgianmobileid.github.io/doc/authentication/#itsme-discovery-document" target="blank">A well-known endpoint</a></button>  is pre-configured within Forgerock ecosystem & contains information about the endpoints.
 3. itsme® environment redirects the user to the itsme® identify yourself page, allowing
 the user to fill in their phone number.
 4. itsme® receives the phone number from the user and validates it.
