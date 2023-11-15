@@ -12,7 +12,7 @@ Forgerock | Ping Identity's software provides federated identity management and 
 
 ## Prerequisites
 
-This integration relies on the ForgeRock Social Provider Handler Node which is available in ForgeRock Platform 7 and assumes integration between AM and IDM has been configured.
+This integration relies on the ForgeRock Social Provider Handler Node which is available in ForgeRock Platform 7 and assumes integration between AM and IDM has been configured. Please, refer to <button type="button"><a href="https://backstage.forgerock.com/docs/platform/7.2/platform-self-service/social-registration.html" target="blank">Forgerock Social Authentication chapter</a></button>.
 
 * A Forgerock account/subscription. If you don't have a subscription, please contact Forgerock at https://www.forgerock.com/contact
 * A Forgerock tenant that is linked to your forgerock subscription.
