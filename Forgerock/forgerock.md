@@ -1,5 +1,5 @@
 ---
-layout: homepage
+layout: OIDCviaPlatform
 title: Forgerock | Ping Identity
 permalink: Forgerock/
 nav_order: 5
@@ -56,7 +56,7 @@ Initially, these need to be changed to E2E endpoints in order to function.)
 | Parameter | Value |
 | --- | --- |
 | ClientID | Your **Client ID**, also known as **Partner code** |
-| Client Secret | Your **client_secret** (leave empty in case of public-private key pair use, jwkset_uri) |
+| Client Secret | Your **client_secret** (leave empty in case of public-private key pair, i.e. jwkset_uri) |
 | Authentication Endpoint URL | "https://idp.e2e.itsme.services/v2/authorization" |
 | Token Endpoint | "https://idp.e2e.itsme.services/v2/token" |
 | User Profile Service URL | "https://idp.e2e.itsme.services/v2/userinfo" |
