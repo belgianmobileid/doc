@@ -24,7 +24,7 @@ This integration relies on the ForgeRock Social Provider Handler Node which is a
 
 ## Scenario
 
-![itsme-Forgerock schema](./forgerock/itsme-forgerock-schema.jpg)
+![itsme-Forgerock schema](itsme-forgerock-schema.jpg)
 
 1. On your website or application, include the Log in with itsme® button by adapting in
 the Forgerock user flow. The interaction flow starts when the user clicks on this
@@ -80,4 +80,5 @@ All other fields can be left on the default settings from Forgerock.
 Go to Journeys and select itsme® to build your workflow. There is already a custom flow ready
 for you to use with itsme®. By default, it includes a username/password flow with itsme® added
 as a secondary option, but this can be adapted as you wish.
-![itsme tenant tree](./forgerock/tree.png)
+
+![itsme tenant tree](tree.png)
