@@ -80,5 +80,4 @@ All other fields can be left on the default settings from Forgerock.
 Go to Journeys and select itsme® to build your workflow. There is already a custom flow ready
 for you to use with itsme®. By default, it includes a username/password flow with itsme® added
 as a secondary option, but this can be adapted as you wish.
-
 ![itsme tenant tree](tree.png)
