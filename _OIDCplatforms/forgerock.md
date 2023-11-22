@@ -7,7 +7,7 @@ toc_list: true
 
 ---
 
-# What is Forgerock | Ping Identity?
+## What is Forgerock | Ping Identity?
 
 Forgerock & Ping Identity's software provides federated identity management and self-hosted identity access management to web identities via attribute based access controls. They offer the industry's only end-to-end, AI-driven platform purpose-built for all identities and for any environment — on-prem, multi-cloud, or hybrid.
 
