@@ -26,4 +26,4 @@ With Amazon Cognito, you can add user sign-up and sign-in features and control a
 ## Reference
 
 <button type="button"><a href="https://aws.amazon.com/blogs/security/scaling-national-identity-schemes-with-itsme-and-amazon-cognito/" target="blank">AWS Cognito: guide to itsme® integration</a></button>
-<button type="button"><a href="https://github.com/aws-samples/login-with-itsme-and-cognito" target="blank">AWS-itsme sample</a></button>
+<button type="button"><a href="https://github.com/aws-samples/login-with-itsme-and-cognito" target="blank">AWS code sample for itsme® integration</a></button>
