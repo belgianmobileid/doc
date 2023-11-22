@@ -58,5 +58,6 @@ For more information on how itsme® can best work for your business, please <a h
     <div class="docLinks">
       <a href="azureB2C">Azure B2C</a>
       <a href="forgerock">Forgerock</a>
+      <a href="auth0">Auth0</a>
   </div>
 </div>
