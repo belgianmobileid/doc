@@ -9,100 +9,38 @@ toc_list: true
 ---
 
 
-# What is Azure Active Directory B2C ?
+## What is Azure Active Directory B2C ?
 
-Azure Active Directory B2C (Azure AD B2C) is an identity management service that enables custom control of how your customers sign up, sign in, and manage their profiles when using your iOS, Android, .NET, single-page (SPA), and other applications. 
+Azure Active Directory B2C (Azure AD B2C) is an identity management service that enables custom control of how your customers sign up, sign in, and manage their profiles when using your iOS, Android, .NET, single-page (SPA), and other applications. On the sign-up or sign-in page, Azure AD B2C presents a list of external identity providers the user can choose for sign-in. Once they select one of the external identity providers, itsme®, for example, they're redirected to the itsme® to complete the sign in process. After the user successfully signs in, they're returned to Azure AD B2C for authentication of the account in your application.
 
-Azure AD B2C uses standards-based authentication protocols including OpenID Connect, OAuth 2.0, and SAML. It integrates with most modern applications and commercial off-the-shelf software. 
+## Prerequisites
 
-You can configure Azure AD B2C to allow users to sign in to your application with credentials from itsme®, as we are supporting the OpenID Connect protocol. By integrating with us, you can offer your consumers the ability to sign in with their existing itsme® accounts, without having to create a new account just for your application.
-
-On the sign-up or sign-in page, Azure AD B2C presents a list of external identity providers the user can choose for sign-in. Once they select one of the external identity providers, itsme® for example, they're redirected to the itsme® to complete the sign in process. After the user successfully signs in, they're returned to Azure AD B2C for authentication of the account in your application.
-
-# API reference
-
-To see how to add itsme® in Azure AD B2C, always refer to <button type="button"><a href="https://docs.microsoft.com/en-us/azure/active-directory-b2c/partner-itsme" target="blank">Configure itsme® OpenID Connect (OIDC) with Azure Active Directory B2C</a></button>
-
-Whether your set-up is via user flow (normally, via graphical user-interface (GUI) on Azure portal) or Identity Experience Framework (IEF), custom policies, configured via .xml files, will depend what ID data you wish (and entitled by commercial & legal agreements) to receive.
-
-As of 2023, Azure B2C technical limitation is no possibility to process JSON objects, only strings. The following claims returned by itsme® are strings or boolean data type:
-
-```
-claims returned as string or boolean (expected to be processed by Azure B2C)
-  "sub": "er8xm42w3u4ue6xvez8s3xr3jijnb4fugmmc",
-  "birthdate": "1985-01-02",
-	"http://itsme.services/v2/claim/claim_citizenship_as_iso": "BEL",
-	"gender": "female",
-	"http://itsme.services/v2/claim/IDDocumentType": "I",
-	"http://itsme.services/v2/claim/claim_citizenship": "Belg",
-	"locale": "EN",
-	"email": "test@itsme.be",
-	"name": "Joke Cookie",
-	"http://itsme.services/v2/claim/IDDocumentSN": "581721097415",
-	"phone_number": "+32 493310088",
-	"http://itsme.services/v2/claim/BEeidSn": "581721097415",
-	"family_name": "Cookie",
-	"email_verified": false,
-	"http://itsme.services/v2/claim/BENationalNumber": "85010244229",
-	"phone_number_verified": true,
-	"given_name": "Joke",
-	"picture": "https://oidc.e2e.itsme.services/clientsecret-oidc/csapi/v0.1/picture"
-```
-
-User flow is limited to sub, names & email. While IEF will allow you to process the rest of ID Data listed above in data type string or boolean.
-In both cases, we expect the redirect_uri to be in a format:
-
+* Azure B2C account and/or relevant subscription
+* Your Client ID, also known as Partner code, provided by itsme®.
+* Your Service code provided by itsme®.
+* Client secret provided by itsme®
+* redirect_uri you will be redirecting the user to. In Azure B2C, it is in the following format (please, provide it to onboarding@itsme-id.com):
 ```
 https://{partnerAzureB2C-tenant-name}.b2clogin.com/{partnerAzureB2C-tenant-name}/oauth2/authresp
 https://{partnerAzureB2C-tenant-name}.b2clogin.com/{partnerAzureB2C-tenant-name}.onmicrosoft.com/oauth2/authresp
 ```
 
-ref. to <button type="button"><a href="https://docs.microsoft.com/en-us/azure/active-directory-b2c/b2clogin#change-identity-provider-redirect-urls" target="blank">Azure B2C documentation for redirect format</a></button>.
+## Configuration between Azure B2C and itsme®
+Whether your set-up is via user flow (normally, via graphical user-interface (GUI) on Azure portal) or Identity Experience Framework (IEF), custom policies, configured via .xml files, will depend what ID data you wish (and entitled by commercial & legal agreements) to receive.
 
+As of 2023, Azure B2C technical limitation is no possibility to process JSON objects, only strings. Please, cosult this page to see what claims returned by itsme® are strings or JSON object data type.
+
+User flow is limited to sub, names & email. While IEF will allow you to process the rest of ID Data listed above in data type string or boolean.
+In both cases, we expect the redirect_uri to be in a format:
 
 ## User Flows
-User flows is a portal (GUI) configurable flow, which is based on built-in user attributes (values collected on sign up) and application claims, which are values about the user, returned to the application in the token. One can create custom attributes, but unfortunately Azure B2C does not process any claims from itsme®, except the ones mapped during general idp setup (idp claims mapping), i.e. sub, given_name, family_name, email. Only those were returned consistently during testing of 2023.
+User flows is a portal (GUI) configurable flow, which is based on built-in user attributes (values collected on sign up) and application claims, which are values about the user, returned to the application in the token. One can create custom attributes, but Azure B2C does not process any claims from itsme®, except the ones mapped during general idp setup (idp claims mapping), i.e. sub, given_name, family_name, email. Only those were returned consistently during testing of 2023.
 
 End-user will see in the app request to approve all data which is mentioned on the scope, e.g. if full scope defined => all data will be displayed to approve, but Azure B2C will process and return only mapped claims, i.e. sub, given_name, family_name, emails (returned as string collection).
 
 ## Identity Experience Framework (IEF) or custom policy
 IEF is advanced method to configure Azure B2C via .xml files.
-Due to Azure B2C limitations, JSON Objects returned by itsme® can not be processed or transformed by Azure B2C, thus one could ask & receive data which is returned as strings or booleans only:
-
-<!-- trunk-ignore(markdownlint/MD040) -->
-```
-IEF decoded token example
-{
-  "alg": "RS256",
-  "kid": "YHLNSahdjm68w79195aoKEPkwzv3R1MNHyy_xm52ioQ",
-  "typ": "JWT"
-}.{
-  "sub": "902f7e34-f038-49ad-99a5-b3c92f12123a",
-  "name": "Yauheniya Askolkava",
-  "email": "test@itsme.be",
-  "idp": "itsme-id.com",
-  "extension_BENationalNumber": "85010244229",
-  "extension_birthdate": "1985-01-02",
-  "extension_citizenshipIso": "BEL",
-  "extension_name": "Yauheniya Askolkava",
-  "extension_givenName": "Yauheniya",
-  "extension_familyName": "Askolkava",
-  "extension_birthdateString": "string",
-  "extension_gender": "female",
-  "extension_locale": "EN",
-  "extension_picture": "https://oidc.e2e.itsme.services/clientsecret-oidc/csapi/v0.1/picture",
-  "extension_idDocumentType": "string",
-  "extension_citizenship": "Belg",
-  "extension_email": "test@itsme.be",
-  "extension_idDocumentSn": "85010244229",
-  "extension_emailVerified": false,
-  "extension_phoneNumber": "+32 493310088",
-  "extension_phoneNumberVerified": true,
-  "extension_beEidSn": "581721097415",
-  "tid": "c1d38481-9611-417e-9b02-f502776cf5eb",
-  "nbf": 1689861444
-}.[Signature]
-```
+Due to Azure B2C limitations, JSON Objects returned by itsme® can not be processed or transformed by Azure B2C, thus one could ask & receive data which is returned as strings only.
 
 ### IEF configuration to retrieve custom OIDC claims (string or boolean data type)
 Microsoft has elaborate documentation custom policy definition and how to work with <button type="button"><a href="https://learn.microsoft.com/en-us/azure/active-directory-b2c/custom-policy-overview#custom-policy-starter-pack" target="blank">starter pack</a></button>. Below we attempt to provide guidance from partner perspective to smooth the configuration flow. We advise however always fall back to Azure B2C official documentation.
@@ -374,3 +312,9 @@ In the <OutputClaims>, add the custom claim(s) to have been requested.
 5. Enter your mobile phone number and click on send.
 6. Confirm the action in the itsme® app.
 7. If all succeeds, you will be redirected to the redirect URL.
+
+
+## Reference
+
+ <button type="button"><a href="https://docs.microsoft.com/en-us/azure/active-directory-b2c/partner-itsme" target="blank">Configure itsme® OpenID Connect (OIDC) with Azure Active Directory B2C</a></button>
+ <button type="button"><a href="https://docs.microsoft.com/en-us/azure/active-directory-b2c/b2clogin#change-identity-provider-redirect-urls" target="blank">Azure B2C documentation for redirect format</a></button>
