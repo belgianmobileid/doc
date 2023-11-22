@@ -33,27 +33,27 @@ As of 2023, Azure B2C technical limitation is no possibility to process JSON obj
 User flow is limited to sub, names & email. While IEF will allow you to process the rest of ID Data listed above in data type string or boolean.
 In both cases, we expect the redirect_uri to be in a format:
 
-## User Flows
+### User Flows
 User flows is a portal (GUI) configurable flow, which is based on built-in user attributes (values collected on sign up) and application claims, which are values about the user, returned to the application in the token. One can create custom attributes, but Azure B2C does not process any claims from itsme®, except the ones mapped during general idp setup (idp claims mapping), i.e. sub, given_name, family_name, email. Only those were returned consistently during testing of 2023.
 
 End-user will see in the app request to approve all data which is mentioned on the scope, e.g. if full scope defined => all data will be displayed to approve, but Azure B2C will process and return only mapped claims, i.e. sub, given_name, family_name, emails (returned as string collection).
 
-## Identity Experience Framework (IEF) or custom policy
+### Identity Experience Framework (IEF) or custom policy
 IEF is advanced method to configure Azure B2C via .xml files.
 Due to Azure B2C limitations, JSON Objects returned by itsme® can not be processed or transformed by Azure B2C, thus one could ask & receive data which is returned as strings only.
 
-### IEF configuration to retrieve custom OIDC claims (string or boolean data type)
+#### IEF configuration to retrieve custom OIDC claims (string or boolean data type)
 Microsoft has elaborate documentation custom policy definition and how to work with <button type="button"><a href="https://learn.microsoft.com/en-us/azure/active-directory-b2c/custom-policy-overview#custom-policy-starter-pack" target="blank">starter pack</a></button>. Below we attempt to provide guidance from partner perspective to smooth the configuration flow. We advise however always fall back to Azure B2C official documentation.
 
-#### Prerequisites
+##### Prerequisites
 - An Azure B2C Tenant
 - Your itsme® provided ClientID aka PartnerCode
 - Your itsme® provided ServiceCode
 - Your client secret for your itsme® account
 
-### Getting started with Custom Policies
+#### Getting started with Custom Policies
 
-#### Add Signing and Encryption keys
+##### Add Signing and Encryption keys
 Open the B2C tenant and, under Policies, select Identity Experience Framework.
 ##### Create the signing key
 1. Select Policy Keys and then select Add.
