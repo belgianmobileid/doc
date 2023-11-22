@@ -8,7 +8,6 @@ toc_list: true
 
 ---
 
-
 ## What is Azure Active Directory B2C ?
 
 Azure Active Directory B2C (Azure AD B2C) is an identity management service that enables custom control of how your customers sign up, sign in, and manage their profiles when using your iOS, Android, .NET, single-page (SPA), and other applications. On the sign-up or sign-in page, Azure AD B2C presents a list of external identity providers the user can choose for sign-in. Once they select one of the external identity providers, itsme®, for example, they're redirected to the itsme® to complete the sign in process. After the user successfully signs in, they're returned to Azure AD B2C for authentication of the account in your application.
@@ -28,10 +27,7 @@ https://{partnerAzureB2C-tenant-name}.b2clogin.com/{partnerAzureB2C-tenant-name}
 ## Configuration between Azure B2C and itsme®
 Whether your set-up is via user flow (normally, via graphical user-interface (GUI) on Azure portal) or Identity Experience Framework (IEF), custom policies, configured via .xml files, will depend what ID data you wish (and entitled by commercial & legal agreements) to receive.
 
-As of 2023, Azure B2C technical limitation is no possibility to process JSON objects, only strings. Please, cosult this page to see what claims returned by itsme® are strings or JSON object data type.
-
-User flow is limited to sub, names & email. While IEF will allow you to process the rest of ID Data listed above in data type string or boolean.
-In both cases, we expect the redirect_uri to be in a format:
+As of 2023, Azure B2C technical limitation is no possibility to process JSON objects, only strings. Please, cosult <button type="button"><a href="https://belgianmobileid.github.io/doc/IAM/" target="blank">this page</a></button> to see what claims returned by itsme® are strings or JSON object data type. User flow is limited to sub, names & email. While IEF will allow you to process the rest of ID Data listed above in data type string.
 
 ### User Flows
 User flows is a portal (GUI) configurable flow, which is based on built-in user attributes (values collected on sign up) and application claims, which are values about the user, returned to the application in the token. One can create custom attributes, but Azure B2C does not process any claims from itsme®, except the ones mapped during general idp setup (idp claims mapping), i.e. sub, given_name, family_name, email. Only those were returned consistently during testing of 2023.
