@@ -8,10 +8,6 @@ toc_list: true
 
 ---
 
-## What is Auth0?
-
-Auth0 is known for its simplicity and ease of integration. It provides a variety of SDKs and pre-built integrations, making it easy for developers to incorporate authentication and identification into their applications.
-
 ## Prerequisites
 
 * Auth0 account and/or relevant subscription
