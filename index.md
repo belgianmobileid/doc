@@ -56,8 +56,10 @@ For more information on how itsme® can best work for your business, please <a h
     <h2>IAM</h2>
     <p>Identity and Access Management (IAM) platform guides, which allow to add user sign-in and/or sign-up features and control access to your web/mobile apps.</p>
     <div class="docLinks">
+      <a href="IAM">What is an IAM?</a><br>
       <a href="azureB2C">Azure B2C</a>
-      <a href="forgerock">Forgerock</a>
       <a href="auth0">Auth0</a>
+      <a href="aws">AWS Cognito</a>
+      <a href="forgerock">Forgerock</a>
   </div>
 </div>

@@ -8,10 +8,6 @@ toc_list: true
 
 ---
 
-## What is Auth0?
-
-Auth0 is known for its simplicity and ease of integration. It provides a variety of SDKs and pre-built integrations, making it easy for developers to incorporate authentication and identification into their applications.
-
 ## Prerequisites
 
 * Auth0 account and/or relevant subscription
@@ -37,7 +33,6 @@ All other fields can be left on the default settings.
 
 3. Save and return to Authentication => Enterprise => OpenID Connect, click "Try" under newly created connection to test the flow.
 4. Under User Management, find test user and see raw json with requested data.
-5. For granular claims, <button type="button"><a href="https://belgianmobileid.github.io/doc/authentication/#authorization-request" target="blank">see our technical documentation</a></button>, configure them within your application as authorization parameters.
 
 ## Reference
 <button type="button"><a href="https://auth0.com/docs/authenticate/identity-providers/enterprise-identity-providers/oidc" target="blank">Auth0 guide to OpenID Connect Identity Provider</a></button>
