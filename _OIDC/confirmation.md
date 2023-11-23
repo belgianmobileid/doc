@@ -90,23 +90,21 @@ This method requires the exchange of a static secret to be held by both the send
 </aside>
 
 ### Key rotation procedure
-#### for public-private key pair and JWKSet URI
+### for public-private key pair and JWKSet URI
 
 itsme® backend has cache mechanism in place, which is sporadic (from 30min to 24h). During this time, we will keep on using old keys.
 <aside class="notice">use "Cache-Control: max-age=" HTTP header (min 30min) to lower waiting time.</aside>
 
-If a partner wants to change only key, there are 2 cases:
-
-Rotating signing key:
+#### Rotating signing key:
 <ul>
 <li>Add the new key to JWK set, with a new “kid”</li>
 <li>Start using the new key to sign JWTs</li>
 <li>When the flow is validated with the new key, remove the old one from the JWK set</li>
 </ul>
 
-Rotating encryption key:
+#### Rotating encryption key:
 <ul>
-<li>Replace the old key with the new one in JWK set (with the same or a new “kid”, it does not matter here) BUT still support old and new keys in decryption process</li>
+<li>Replace the old key with the new one in JWK set, but still support old and new keys in decryption process</li>
 <li>Wait 24h (or wait for “max-age” amount of time, if specified)</li>
 <li>Decommission the old key completely</li>
 </ul>
@@ -118,7 +116,7 @@ Changing the key could come along with changing the jwkset url. If that is the c
 <li>Rotate the keys in the jwkSet on the new URL as per rotating keys info above</li>
 </ul>
 
-#### for secret key method
+### for secret key method
 
 Please, reach out to onboarding@itsme-id.com in case the secret key should be rotated.
 
