@@ -8,10 +8,6 @@ toc_list: true
 
 ---
 
-## What is Azure Active Directory B2C ?
-
-Azure Active Directory B2C (Azure AD B2C) is an identity management service that enables custom control of how your customers sign up, sign in, and manage their profiles when using your iOS, Android, .NET, single-page (SPA), and other applications. On the sign-up or sign-in page, Azure AD B2C presents a list of external identity providers the user can choose for sign-in. Once they select one of the external identity providers, itsme®, for example, they're redirected to the itsme® to complete the sign in process. After the user successfully signs in, they're returned to Azure AD B2C for authentication of the account in your application.
-
 ## Prerequisites
 
 * Azure B2C account and/or relevant subscription

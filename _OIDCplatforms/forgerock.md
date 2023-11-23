@@ -7,10 +7,6 @@ toc_list: true
 
 ---
 
-## What is Forgerock | Ping Identity?
-
-Forgerock & Ping Identity's software provides federated identity management and self-hosted identity access management to web identities via attribute based access controls. They offer the industry's only end-to-end, AI-driven platform purpose-built for all identities and for any environment — on-prem, multi-cloud, or hybrid.
-
 ## Prerequisites
 
 This integration relies on the ForgeRock Social Provider Handler Node which is available in ForgeRock Platform 7 and assumes integration between AM and IDM has been configured. Please, refer to <button type="button"><a href="https://backstage.forgerock.com/docs/platform/7.2/platform-self-service/social-registration.html" target="blank">Forgerock Social Authentication chapter</a></button>.
