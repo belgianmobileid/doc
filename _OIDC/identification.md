@@ -88,6 +88,39 @@ This method requires the exchange of a static secret to be held by both the send
 <aside class="notice">If you choose to go with the secret key method, you will be able to specify if the ID Token JWT needs to be signed with the an asymmetric algorithm (e.g. <code>RS256</code>) or with a symmetric algorithm (e.g. : <code>HS256</code>). When using the <code>RS256</code> algorithm, our public keys will be needed to verify the signature. This information can be found in our <a href="https://belgianmobileid.github.io/doc/identification/#itsme-discovery-document" target="blank">itsme® Discovery document</a>, using the key <code>jwks_uri</code>.
 </aside>
 
+### Key rotation procedure
+#### for public-private key pair and JWKSet URI
+
+itsme® backend has cache mechanism in place, which is sporadic (from 30min to 24h). During this time, we will keep on using old keys.
+<aside class="notice">use "Cache-Control: max-age=" HTTP header (min 30min) to lower waiting time.</aside>
+
+If a partner wants to change only key, there are 2 cases:
+
+Rotating signing key:
+<ul>
+<li>Add the new key to JWK set, with a new “kid”</li>
+<li>Start using the new key to sign JWTs</li>
+<li>When the flow is validated with the new key, remove the old one from the JWK set</li>
+</ul>
+
+Rotating encryption key:
+<ul>
+<li>Replace the old key with the new one in JWK set (with the same or a new “kid”, it does not matter here) BUT still support old and new keys in decryption process</li>
+<li>Wait 24h (or wait for “max-age” amount of time, if specified)</li>
+<li>Decommission the old key completely</li>
+</ul>
+
+Changing the key could come along with changing the jwkset url. If that is the case, communicate new available jwkset url to onboarding@itsme-id.com. It is not be possible to be perfectly in sync, a few failed flows should be expected in the lapse of time between jwkset url update and the key update at the partner’s side. Smoother way would be:
+<ul>
+<li>Copy the old jwkSet on the new URL</li>
+<li>the URL is communicated & registered by itsme®</li>
+<li>Rotate the keys in the jwkSet on the new URL as per rotating keys info above</li>
+</ul>
+
+#### for secret key method
+
+Please, reach out to onboarding@itsme-id.com in case the secret key should be rotated.
+
 ### PKCE-enhanced flow
 
 Whatever the chosen authentication method, itsme® also supports an extra security extension named Proof of Key for Code Exchange (<a href="https://datatracker.ietf.org/doc/html/rfc7636" target="blank">PKCE</a>). This additionnal layer of security is intended to mitigate some Authorization Code interception attacks. For this mechanism to achieve its full potential, PKCE has to be made mandatory in your flow, which is an option we can enable for you (strongly recommended). Please ask our onboarding team to do so when registering your project.
