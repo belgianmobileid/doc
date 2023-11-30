@@ -77,3 +77,7 @@ tabli:before {
     padding-right: 10px;
     color: #000;
 }
+
+a.noLine {
+    background-image: none;
+}
