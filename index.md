@@ -22,6 +22,7 @@ For more information on how itsme® can best work for your business, please <a h
     <p class="description">This Service enables your users/customers to log in securely to your application.</p>
     <div class="docLinks">
       <a href="authentication">Direct integration API</a>
+      <a href="IAM">Integration to an IAM platform</a>
     </div>
     <img src="assets/login.svg" />
   </div>
@@ -30,6 +31,7 @@ For more information on how itsme® can best work for your business, please <a h
     <p class="description">This Service enables you to identify your users and access their verified data.</p>
     <div class="docLinks">
       <a href="identification">Direct integration API</a>
+      <a href="IAM">Integration to an IAM platform</a>
     </div>
     <img src="assets/signup.svg" />
   </div>
@@ -52,14 +54,18 @@ For more information on how itsme® can best work for your business, please <a h
     </div>
     <img src="assets/sign.svg" />
   </div>
-    <div class="service">
-    <h2>IAM</h2>
-    <p>Identity and Access Management (IAM) platform guides, which allow to add user sign-in and/or sign-up features and control access to your web/mobile apps.</p>
-    <div class="docLinks">
-      <a href="IAM">What is an IAM?</a><br>
-      <a href="azureB2C">Azure B2C</a>
-      <a href="auth0">Auth0</a>
-      <a href="aws">AWS Cognito</a>
-      <a href="forgerock">Forgerock</a>
-  </div>
 </div>
+
+# IAM platforms
+
+For your convenience and without any guarantee, we offer some guidance on how to integrate itsme to a few of the most popular 3rd party <a href="IAM">IAM platforms</a>:
+
+<ul>
+  <li><a href="azureB2C">Azure B2C</a></li>
+  <li><a href="auth0">Auth0</a></li>
+  <li><a href="aws">AWS Cognito</a></li>
+  <li><a href="forgerock">Forgerock</a></li>
+  <li><a href="okta">Okta</a></li>
+</ul>
+
+

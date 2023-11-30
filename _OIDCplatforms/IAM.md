@@ -214,7 +214,7 @@ Based on past experiences, we put together a list of the main platforms we encou
     <tr>
       <td>ForgeRock Identity Platform</td>
       <td>All</td>
-      <td>Complete support of integration via jwt_private_key</td>
+      <td>Complete support of jwt_private_key and Client Secret</td>
     </tr>
     <tr>
       <td>Amazon Cognito</td>
