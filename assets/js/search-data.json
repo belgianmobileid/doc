@@ -13,13 +13,13 @@
   },"2": {
     "doc": "Home",
     "title": "Authentication",
-    "content": "This Service enables your users/customers to log in securely to your application. Direct integration API ",
+    "content": "This Service enables your users/customers to log in securely to your application. Direct integration API Integration to an IAM platform ",
     "url": "https://belgianmobileid.github.io/doc/index",
     "relUrl": "/index"
   },"3": {
     "doc": "Home",
     "title": "Identification",
-    "content": "This Service enables you to identify your users and access their verified data. Direct integration API ",
+    "content": "This Service enables you to identify your users and access their verified data. Direct integration API Integration to an IAM platform ",
     "url": "https://belgianmobileid.github.io/doc/index",
     "relUrl": "/index"
   },"4": {
@@ -36,10 +36,10 @@
     "relUrl": "/index"
   },"6": {
     "doc": "Home",
-    "title": "IAM",
-    "content": "Identity and Access Management (IAM) platform guides, which allow to add user sign-in and/or sign-up features and control access to your web/mobile apps. What is an IAM? Azure B2C Auth0 AWS Cognito Forgerock ",
-    "url": "https://belgianmobileid.github.io/doc/index",
-    "relUrl": "/index"
+    "title": "IAM platforms",
+    "content": "For your convenience and without any guarantee, we offer some guidance on how to integrate itsme to a few of the most popular 3rd party IAM platforms: . | Azure B2C | Auth0 | AWS Cognito | Forgerock | Okta | . ",
+    "url": "https://belgianmobileid.github.io/doc/index#iam-platforms",
+    "relUrl": "/index#iam-platforms"
   },"7": {
     "doc": "Home",
     "title": "Home",
@@ -367,7 +367,7 @@
   },"61": {
     "doc": "IAM",
     "title": "List of platforms",
-    "content": "Based on past experiences, we put together a list of the main platforms we encountered with the characteristics we noticed for each of them. This table is given without any formal guarantee and some of this information might be outdated when you read it. | Platform | Supported claims | Note | . | MS Azure AD B2C | String only | The GUI \"User Flow\" method only gives access to sub, name and email. Other claims require to use the Identity Experience Framework with custom policies, configured via complex XML files. Client Secret only. | . | ForgeRock Identity Platform | All | Complete support of integration via jwt_private_key | . | Amazon Cognito | Scopes only | Client Secret only | . | Auth0 | Scopes only | Client Secret only | . | Okta | Scopes only | Client Secret only | . ",
+    "content": "Based on past experiences, we put together a list of the main platforms we encountered with the characteristics we noticed for each of them. This table is given without any formal guarantee and some of this information might be outdated when you read it. | Platform | Supported claims | Note | . | MS Azure AD B2C | String only | The GUI \"User Flow\" method only gives access to sub, name and email. Other claims require to use the Identity Experience Framework with custom policies, configured via complex XML files. Client Secret only. | . | ForgeRock Identity Platform | All | Complete support of jwt_private_key and Client Secret | . | Amazon Cognito | Scopes only | Client Secret only | . | Auth0 | Scopes only | Client Secret only | . | Okta | Scopes only | Client Secret only | . ",
     "url": "https://belgianmobileid.github.io/doc/IAM/#list-of-platforms",
     "relUrl": "/IAM/#list-of-platforms"
   },"62": {
