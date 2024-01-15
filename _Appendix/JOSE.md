@@ -62,8 +62,8 @@ Following steps will show you how to generate a JWS Compact Serialization object
       <td>Identifies the cryptographic algorithm used to secure the JWS. This MUST be set to <i>"RS256"</i></td>
     </tr>
     <tr>
-      <td>{% include parameter.html name="kid" req="Optionnal" %}</td>
-      <td>Hint indicating which key was used to secure the JWS. The structure of the <code>kid</code> value is a case-sensitive string. In case there are multiple signing keys referenced in your JWK Set document then a <code>kid</code> MUST be present.</td>
+      <td>{% include parameter.html name="kid" req="Required" %}</td>
+      <td>Hint indicating which key was used to secure the JWS. The structure of the <code>kid</code> value is a case-sensitive string.</td>
     </tr>
   </tbody>
 </table>
