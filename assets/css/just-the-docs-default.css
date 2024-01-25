@@ -1580,4 +1580,16 @@ a.service { white-space: normal; background-image: none; }
 
 .service img { position: absolute; bottom: 15px; }
 
+/** Big table */
+/**************/
+.bigtable h1 { width: 1024px; margin-left: auto; margin-right: auto; }
+
+.bigtable p { width: 1024px; margin-left: auto; margin-right: auto; }
+
+.bigtable aside { width: 1024px; margin-left: auto; margin-right: auto; }
+
+.bigtable .table-wrapper { overflow: visible; }
+
+.bigtable tr:nth-child(odd) td { background: #fcf3f0; }
+
 /*# sourceMappingURL=just-the-docs-default.css.map */
