@@ -122,22 +122,36 @@ a.service {
 /** Big table */
 /**************/
 
+.bigtable .site-header {
+    position: absolute;
+    z-index: 10;
+}
+
+.bigtable #main-header {
+    margin-left: 264px;
+}
+
+.bigtable #site-nav {
+    position: absolute;
+}
+
+.bigtable .main {
+    display: inline;
+}
+
 .bigtable h1 {
-    width: 1024px;
-    margin-left: auto;
-    margin-right: auto;
+    width: calc( min(1024px, (100% - 264px)));
+    margin-left: calc( max(((100% - 1024px) / 2), 264px)); 
 }
 
 .bigtable p {
-    width: 1024px;
-    margin-left: auto;
-    margin-right: auto;
+    width: calc( min(1024px, (100% - 264px)));
+    margin-left: calc( max(((100% - 1024px) / 2), 264px)); 
 }
 
 .bigtable aside {
-    width: 1024px;
-    margin-left: auto;
-    margin-right: auto;
+    width: calc( min(1024px, (100% - 264px)));
+    margin-left: calc( max(((100% - 1024px) / 2), 264px));
 }
 
 .bigtable .table-wrapper {
@@ -146,4 +160,21 @@ a.service {
 
 .bigtable tr:nth-child(odd) td {
     background: #fcf3f0;
+}
+
+@media screen and (max-width: 50rem) {
+    .bigtable h1 {
+        margin-left: 10px;
+        width: calc( 100% - 20px);
+    }
+    
+    .bigtable p {
+        margin-left: 10px;
+        width: calc( 100% - 20px);
+    }
+    
+    .bigtable aside {
+        margin-left: 10px;
+        width: calc( 100% - 20px);
+    }    
 }

@@ -7,12 +7,12 @@ nav_exclude: false
 ---
 
 # Introduction
-
-itsme® accounts are always created from an official ID document (eID card, passport...). However, each country can choose which attributes are presents on those documents so that, depending on the user's country, some itsme® accounts can contain more/different data than others.
-You will find below a list of all attributes ("claims") supported by itsme® and their availability per country.
-
-<aside class="notice">The availability of the claims does NOT depend on the nationality of the user but only on the issuing country of their ID document. Example: a Dutch citizen living in Belgium can create an itsme® account either with his Dutch eID or with his Belgian residents card. If he chooses to do so with his Belgian card, his address and gender will be available, while they won't if he uses his Dutch eID.
-</aside>
+  
+  itsme® accounts are always created from an official ID document (eID card, passport...). However, each country can choose which attributes are presents on those documents so that, depending on the user's country, some itsme® accounts can contain more/different data than others.
+  You will find below a list of all attributes ("claims") supported by itsme® and their availability per country.
+  
+  <aside class="notice">The availability of the claims does NOT depend on the nationality of the user but only on the issuing country of their ID document. Example: a Dutch citizen living in Belgium can create an itsme® account either with his Dutch eID or with his Belgian residents card. If he chooses to do so with his Belgian card, his address and gender will be available, while they won't if he uses his Dutch eID.
+  </aside>
 
 # Claims
 
