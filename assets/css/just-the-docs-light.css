@@ -1586,7 +1586,7 @@ a.service { white-space: normal; background-image: none; }
 
 .bigtable #main-header { margin-left: 264px; }
 
-.bigtable #site-nav { position: absolute; }
+.bigtable #site-nav { position: absolute; z-index: 10; }
 
 .bigtable .main { display: inline; }
 
