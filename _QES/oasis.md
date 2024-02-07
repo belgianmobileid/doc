@@ -329,7 +329,7 @@ Below you will find the mandatory and optional parameters to integrate in the HT
     </tr>
     <tr>
       <td>{% include parameter.html name="description" type="array of objects" req="OPTIONAL" level="2" %}</td>
-      <td>Is a text you provide as the description of the (package of) document(s). The maximum length is 50 characters. It will be displayed in the itsme App. If providing a description, you MUST provide a value for each language supported by itsme ('en', 'fr', 'nl' and 'de'). Please see <a href="#supported-character-set">Supported character set</a> for encoding concerns.</td>
+      <td>Is a text you provide as the description of the (package of) document(s). The maximum length is 255 characters. It will be displayed in the itsme App. If providing a description, you MUST provide a value for each language supported by itsme ('en', 'fr', 'nl' and 'de'). Please see <a href="#supported-character-set">Supported character set</a> for encoding concerns.</td>
     </tr>
     <tr>
       <td>{% include parameter.html name="lang" type="string" req="REQUIRED" level="3" %}</td>

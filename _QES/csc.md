@@ -434,7 +434,7 @@ This GET request should include the following query parameters:
     </tr>
     <tr>
       <td>{% include parameter.html name="description" req="Optional" %}</td>
-      <td>An optional description about the (package of) document(s) being signed. This value will be visible in the itsme application.</td>
+      <td>An optional description about the (package of) document(s) being signed. This value will be visible in the itsme application (max 255 chars).</td>
     </tr>
     <tr>
       <td>{% include parameter.html name="clientData" req="not supported" %}</td>
@@ -622,4 +622,4 @@ response:
 
 ## Supported character set
 
-The character set we support for free text fields is ISO 8859-15. You can buy the specification [on ISO website](https://www.iso.org/standard/29505.html) or find a free version [on Wikipedia](https://en.wikipedia.org/wiki/ISO/IEC_8859-15#Codepage_layout). You might be interested in knowing that, although most usual characters are supported, some softwares-generated characters like curly apostrophes and long dashes are not part of ISO 8859-15. If you provide a non-supported character in a free text field the signing flow will be stopped and you will receive an error message back.
+The character set we support for free text fields is ISO 8859-15. You can buy the specification [on ISO website](https://www.iso.org/standard/29505.html) or find a free version [on Wikipedia](https://en.wikipedia.org/wiki/ISO/IEC_8859-15#Codepage_layout). Please be aware that although most usual characters are supported, some like curly apostrophes and long dashes are not part of ISO 8859-15. If you provide a non-supported character in a free text field the signing flow will be stopped and you will receive an error message back.
