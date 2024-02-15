@@ -285,7 +285,7 @@ How to understand the table below:
     </tr>
     <tr>
       <td>http://itsme.services/v2/<br>claim/<b>validityFrom</b></td>
-      <td>This is a <a href="#metadata">metadata</a>.<br>User's Belgian ID document issuance date, represented as a string in YYYY-MM-DDThh:mm:ss.nnnZ date format specified by ISO 8601. Can only be returned in combination with claims <i>http://itsme.services/v2/claim/BEeidSn</i> or <i>http://itsme.services/v2/claim/IDDocumentSN</i>.</td>
+      <td>This is a <a href="https://belgianmobileid.github.io/doc/authentication/#metadata">metadata</a>.<br>User's Belgian ID document issuance date, represented as a string in YYYY-MM-DDThh:mm:ss.nnnZ date format specified by ISO 8601. Can only be returned in combination with claims <i>http://itsme.services/v2/claim/BEeidSn</i> or <i>http://itsme.services/v2/claim/IDDocumentSN</i>.</td>
       <td>MAY NOT</td> <!-- Belgium -->
       <td>SHALL NOT</td> <!-- Netherlands -->
       <td>SHALL NOT</td> <!-- Luxembourg -->
@@ -296,7 +296,7 @@ How to understand the table below:
     </tr>
     <tr>
       <td>http://itsme.services/v2/<br>claim/<b>validityTo</b></td>
-      <td>This is a <a href="#metadata">metadata</a>.<br>User's Belgian ID card expiry date, represented as a string in YYYY-MM-DDThh:mm:ss.nnnZ date format specified by ISO 8601. Can only be returned in combination with claims <i>http://itsme.services/v2/claim/BEeidSn</i> or <i>http://itsme.services/v2/claim/IDDocumentSN</i>.</td>
+      <td>This is a <a href="https://belgianmobileid.github.io/doc/authentication/https://belgianmobileid.github.io/doc/authentication/#metadata">metadata</a>.<br>User's Belgian ID card expiry date, represented as a string in YYYY-MM-DDThh:mm:ss.nnnZ date format specified by ISO 8601. Can only be returned in combination with claims <i>http://itsme.services/v2/claim/BEeidSn</i> or <i>http://itsme.services/v2/claim/IDDocumentSN</i>.</td>
       <td>MAY NOT</td> <!-- Belgium -->
       <td>SHALL</td> <!-- Netherlands -->
       <td>SHALL</td> <!-- Luxembourg -->
@@ -307,7 +307,7 @@ How to understand the table below:
     </tr>
     <tr>
       <td>http://itsme.services/v2/<br>claim/<b>verificationDate</b></td>
-      <td>This is a <a href="#metadata">metadata</a>.<br>The date when the user's document was read for the last time, represented as a string in YYYY-MM-DDThh:mm:ss date format specified by ISO 8601.</td>
+      <td>This is a <a href="https://belgianmobileid.github.io/doc/authentication/#metadata">metadata</a>.<br>The date when the user's document was read for the last time, represented as a string in YYYY-MM-DDThh:mm:ss date format specified by ISO 8601.</td>
       <td>MAY NOT</td> <!-- Belgium -->
       <td>SHALL</td> <!-- Netherlands -->
       <td>SHALL</td> <!-- Luxembourg -->
@@ -340,7 +340,7 @@ How to understand the table below:
     </tr>
     <tr>
       <td>http://itsme.services/v2/<br>claim/<b>IDIssuingCountry</b></td>
-      <td>This is a <a href="#metadata">metadata</a>.<br>The 3-letters iso code of the country that issued the identity document used to create the itsme® account.</td>
+      <td>This is a <a href="https://belgianmobileid.github.io/doc/authentication/#metadata">metadata</a>.<br>The 3-letters iso code of the country that issued the identity document used to create the itsme® account.</td>
       <td>SHALL</td> <!-- Belgium -->
       <td>SHALL</td> <!-- Netherlands -->
       <td>SHALL</td> <!-- Luxembourg -->
@@ -351,7 +351,7 @@ How to understand the table below:
     </tr>
     <tr>
       <td>http://itsme.services/v2/<br>claim/<b>issuance_locality</b></td>
-      <td>This is a <a href="#metadata">metadata</a>.<br>The locality that issued the ID document used to create the itsme® account.</td>
+      <td>This is a <a href="https://belgianmobileid.github.io/doc/authentication/#metadata">metadata</a>.<br>The locality that issued the ID document used to create the itsme® account.</td>
       <td>MAY NOT</td> <!-- Belgium -->
       <td>SHALL NOT</td> <!-- Netherlands -->
       <td>SHALL NOT</td> <!-- Luxembourg -->
