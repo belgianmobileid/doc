@@ -124,7 +124,7 @@ Here are the steps to generate those elements:
 <code>## JWE Header Example
 
 {
-    "alg": "RSA-OAEP",
+    "alg": "RSA-OAEP-256",
     "enc": "A128CBC-HS256",
     "cty": "JWT",
     "kid": "samwise.gamgee@hobbiton.example"
@@ -146,7 +146,7 @@ Here are the steps to generate those elements:
         <td>Defines the “content type” of the payload. In this case, the value MUST be *"JWT"*, to indicate that a nested JWT (= our JWS) is carried inside this JWT.</td>
         </tr>
         <tr>
-        <td>{% include parameter.html name="kid" req="Optionnal" %}</td>
+        <td>{% include parameter.html name="kid" req="Optional" %}</td>
         <td>This parameter has the same meaning, syntax, and processing rules as the "kid" parameter defined in the JWS section, except that the key hint references the public key with which the JWE was encrypted; this can be used to determine the private key needed to decrypt the JWE.</td>
         </tr>
     </tbody>
