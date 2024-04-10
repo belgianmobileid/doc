@@ -862,8 +862,9 @@ Example of a decrypted id_token:
 	"birthdate": "1974-10-23",
 	"gender": "male",
 	"name": "John Ronald R Tolkien",
-	"iss": "https://idp.prd.itsme.services/v2",
-	"nonce": "nonce",
+	"iss": "https://oidc.prd.itsme.services/clientsecret-oidc/csapi/v0.1",
+	"nonce": "5468798645321",
+	"nbf": 1699538107,
 	"exp": 1699538407,
 	"iat": 1699538107
 }
