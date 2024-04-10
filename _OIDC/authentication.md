@@ -783,6 +783,21 @@ Pragma: no-cache
 }
 ```
 
+Example of a decrypted id_token:
+
+```
+{
+	"sub": "6g2k9rgglem2dttw5d51ulkxpv24phwatiu6",
+	"aud": "WXw9DMqkEv",
+	"birthdate": "1974-10-23",
+	"gender": "male",
+	"name": "John Ronald R Tolkien",
+	"iss": "https://idp.prd.itsme.services/v2",
+	"nonce": "nonce",
+	"exp": 1699538407,
+	"iat": 1699538107
+}
+```
 
 {% endtab %}
 
@@ -838,10 +853,6 @@ Pragma: no-cache
 }
 ```
 
-{% endtab %}
-
-{% endtabs %}
-
 Example of a decrypted id_token:
 
 ```
@@ -851,13 +862,16 @@ Example of a decrypted id_token:
 	"birthdate": "1974-10-23",
 	"gender": "male",
 	"name": "John Ronald R Tolkien",
-	"iss": "https://oidc.prd.itsme.services/clientsecret-oidc/csapi/v0.1",
+	"iss": "https://idp.prd.itsme.services/v2",
 	"nonce": "nonce",
-	"nbf": 1699538107,
 	"exp": 1699538407,
 	"iat": 1699538107
 }
 ```
+
+{% endtab %}
+
+{% endtabs %}
 
 <a id="UserInfoReq"></a>
 ## UserInfo Request
