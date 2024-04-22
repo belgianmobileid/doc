@@ -36,11 +36,11 @@ How to understand the table below:
       <th>France</th>
       <th>Spain</th>
       <th>United Kingdom</th>
-      <!-- <th>Finland</th>
+      <th>Finland</th>
       <th>Norway</th>
       <th>Sweden</th>
       <th>Denmark</th>
-      <th>Iceland</th> -->
+      <!-- <th>Iceland</th> -->
       <th>Estonia</th>
     </tr>
     <tr>
@@ -55,10 +55,10 @@ How to understand the table below:
       <td>SHALL</td> <!-- France -->
       <td>SHALL</td> <!-- Spain -->
       <td>SHALL</td> <!-- UK -->
-      <!-- <td>SHALL</td> <!-- Finland -->
-      <!--<td>SHALL</td> <!-- Norway -->
-      <!--<td>SHALL</td> <!-- Sweden -->
-      <!--<td>SHALL</td> <!-- Denmark -->
+      <td>SHALL</td> <!-- Finland -->
+      <td>SHALL</td> <!-- Norway -->
+      <td>SHALL</td> <!-- Sweden -->
+      <td>SHALL</td> <!-- Denmark -->
       <!--<td>SHALL</td> <!-- Iceland -->
       <td>SHALL</td> <!-- Estonia -->
     </tr>
@@ -74,10 +74,10 @@ How to understand the table below:
       <td>MAY NOT</td> <!-- France -->
       <td>MAY NOT</td> <!-- Spain -->
       <td>MAY NOT</td> <!-- UK -->
-      <!--<td>MAY NOT</td> <!-- Finland -->
-      <!--<td>MAY NOT</td> <!-- Norway -->
-      <!--<td>MAY NOT</td> <!-- Sweden -->
-      <!--<td>MAY NOT</td> <!-- Denmark -->
+      <td>MAY NOT</td> <!-- Finland -->
+      <td>MAY NOT</td> <!-- Norway -->
+      <td>MAY NOT</td> <!-- Sweden -->
+      <td>MAY NOT</td> <!-- Denmark -->
       <!--<td>MAY NOT</td> <!-- Iceland -->
       <td>MAY NOT</td> <!-- Estonia -->
     </tr>
@@ -93,10 +93,10 @@ How to understand the table below:
       <td>SHALL</td> <!-- France -->
       <td>SHALL</td> <!-- Spain -->
       <td>SHALL</td> <!-- UK -->
-      <!--<td>SHALL</td> <!-- Finland -->
-      <!--<td>SHALL</td> <!-- Norway -->
-      <!--<td>SHALL</td> <!-- Sweden -->
-      <!--<td>SHALL</td> <!-- Denmark -->
+      <td>SHALL</td> <!-- Finland -->
+      <td>SHALL</td> <!-- Norway -->
+      <td>SHALL</td> <!-- Sweden -->
+      <td>SHALL</td> <!-- Denmark -->
       <!--<td>SHALL</td> <!-- Iceland -->
       <td>SHALL</td> <!-- Estonia -->
     </tr>
@@ -112,10 +112,10 @@ How to understand the table below:
       <td>SHALL</td> <!-- France -->
       <td>SHALL</td> <!-- Spain -->
       <td>SHALL</td> <!-- UK -->
-      <!--<td>SHALL</td> <!-- Finland -->
-      <!--<td>SHALL</td> <!-- Norway -->
-      <!--<td>SHALL</td> <!-- Sweden -->
-      <!--<td>SHALL</td> <!-- Denmark -->
+      <td>SHALL</td> <!-- Finland -->
+      <td>SHALL</td> <!-- Norway -->
+      <td>SHALL</td> <!-- Sweden -->
+      <td>SHALL</td> <!-- Denmark -->
       <!--<td>SHALL</td> <!-- Iceland -->
       <td>SHALL</td> <!-- Estonia -->
     </tr>
@@ -131,10 +131,10 @@ How to understand the table below:
       <td>SHALL NOT</td> <!-- France -->
       <td>SHALL NOT</td> <!-- Spain -->
       <td>SHALL NOT</td> <!-- UK -->
-      <!--<td>SHALL NOT</td> <!-- Finland -->
-      <!--<td>SHALL NOT</td> <!-- Norway -->
-      <!--<td>SHALL NOT</td> <!-- Sweden -->
-      <!--<td>SHALL NOT</td> <!-- Denmark -->
+      <td>SHALL NOT</td> <!-- Finland -->
+      <td>SHALL NOT</td> <!-- Norway -->
+      <td>SHALL NOT</td> <!-- Sweden -->
+      <td>SHALL NOT</td> <!-- Denmark -->
       <!--<td>SHALL NOT</td> <!-- Iceland -->
       <td>SHALL NOT</td> <!-- Estonia -->
     </tr>
@@ -150,10 +150,10 @@ How to understand the table below:
       <td>SHALL</td> <!-- France -->
       <td>SHALL</td> <!-- Spain -->
       <td>SHALL</td> <!-- UK -->
-      <!--<td>SHALL</td> <!-- Finland -->
-      <!--<td>SHALL</td> <!-- Norway -->
-      <!--<td>SHALL</td> <!-- Sweden -->
-      <!--<td>SHALL</td> <!-- Denmark -->
+      <td>SHALL</td> <!-- Finland -->
+      <td>SHALL</td> <!-- Norway -->
+      <td>SHALL</td> <!-- Sweden -->
+      <td>SHALL</td> <!-- Denmark -->
       <!--<td>SHALL</td> <!-- Iceland -->
       <td>SHALL</td> <!-- Estonia -->
     </tr>
@@ -169,10 +169,10 @@ How to understand the table below:
       <td>SHALL</td> <!-- France -->
       <td>SHALL</td> <!-- Spain -->
       <td>SHALL</td> <!-- UK -->
-      <!--<td>SHALL</td> <!-- Finland -->
-      <!--<td>SHALL</td> <!-- Norway -->
-      <!--<td>SHALL</td> <!-- Sweden -->
-      <!--<td>SHALL</td> <!-- Denmark -->
+      <td>SHALL</td> <!-- Finland -->
+      <td>SHALL</td> <!-- Norway -->
+      <td>SHALL</td> <!-- Sweden -->
+      <td>SHALL</td> <!-- Denmark -->
       <!--<td>SHALL</td> <!-- Iceland -->
       <td>SHALL</td> <!-- Estonia -->
     </tr>
@@ -188,10 +188,10 @@ How to understand the table below:
       <td>MAY NOT</td> <!-- France -->
       <td>MAY NOT</td> <!-- Spain -->
       <td>MAY NOT</td> <!-- UK -->
-      <!--<td>MAY NOT</td> <!-- Finland -->
-      <!--<td>MAY NOT</td> <!-- Norway -->
-      <!--<td>MAY NOT</td> <!-- Sweden -->
-      <!--<td>MAY NOT</td> <!-- Denmark -->
+      <td>MAY NOT</td> <!-- Finland -->
+      <td>MAY NOT</td> <!-- Norway -->
+      <td>MAY NOT</td> <!-- Sweden -->
+      <td>MAY NOT</td> <!-- Denmark -->
       <!--<td>MAY NOT</td> <!-- Iceland -->
       <td>MAY NOT</td> <!-- Estonia -->
     </tr>
@@ -213,10 +213,10 @@ How to understand the table below:
       <td>SHALL</td> <!-- France -->
       <td>SHALL</td> <!-- Spain -->
       <td>SHALL</td> <!-- UK -->
-      <!--<td>SHALL</td> <!-- Finland -->
-      <!--<td>SHALL</td> <!-- Norway -->
-      <!--<td>SHALL</td> <!-- Sweden -->
-      <!--<td>SHALL</td> <!-- Denmark -->
+      <td>SHALL</td> <!-- Finland -->
+      <td>SHALL</td> <!-- Norway -->
+      <td>SHALL</td> <!-- Sweden -->
+      <td>SHALL</td> <!-- Denmark -->
       <!--<td>SHALL</td> <!-- Iceland -->
       <td>SHALL</td> <!-- Estonia -->
     </tr>
@@ -232,10 +232,10 @@ How to understand the table below:
       <td>SHALL</td> <!-- France -->
       <td>SHALL</td> <!-- Spain -->
       <td>SHALL</td> <!-- UK -->
-      <!--<td>SHALL</td> <!-- Finland -->
-      <!--<td>SHALL</td> <!-- Norway -->
-      <!--<td>SHALL</td> <!-- Sweden -->
-      <!--<td>SHALL</td> <!-- Denmark -->
+      <td>SHALL</td> <!-- Finland -->
+      <td>SHALL</td> <!-- Norway -->
+      <td>SHALL</td> <!-- Sweden -->
+      <td>SHALL</td> <!-- Denmark -->
       <!--<td>SHALL</td> <!-- Iceland -->
       <td>SHALL</td> <!-- Estonia -->
     </tr>
@@ -251,10 +251,10 @@ How to understand the table below:
       <td>MAY NOT</td> <!-- France -->
       <td>MAY NOT</td> <!-- Spain -->
       <td>MAY NOT</td> <!-- UK -->
-      <!--<td>MAY NOT</td> <!-- Finland -->
-      <!--<td>MAY NOT</td> <!-- Norway -->
-      <!--<td>MAY NOT</td> <!-- Sweden -->
-      <!--<td>MAY NOT</td> <!-- Denmark -->
+      <td>MAY NOT</td> <!-- Finland -->
+      <td>MAY NOT</td> <!-- Norway -->
+      <td>MAY NOT</td> <!-- Sweden -->
+      <td>MAY NOT</td> <!-- Denmark -->
       <!--<td>MAY NOT</td> <!-- Iceland -->
       <td>MAY NOT</td> <!-- Estonia -->
     </tr>
@@ -270,10 +270,10 @@ How to understand the table below:
       <td>Only if "email" available</td> <!-- France -->
       <td>Only if "email" available</td> <!-- Spain -->
       <td>Only if "email" available</td> <!-- UK -->
-      <!--<td>Only if "email" available</td> <!-- Finland -->
-      <!--<td>Only if "email" available</td> <!-- Norway -->
-      <!--<td>Only if "email" available</td> <!-- Sweden -->
-      <!--<td>Only if "email" available</td> <!-- Denmark -->
+      <td>Only if "email" available</td> <!-- Finland -->
+      <td>Only if "email" available</td> <!-- Norway -->
+      <td>Only if "email" available</td> <!-- Sweden -->
+      <td>Only if "email" available</td> <!-- Denmark -->
       <!--<td>Only if "email" available</td> <!-- Iceland -->
       <td>Only if "email" available</td> <!-- Estonia -->
     </tr>
@@ -289,10 +289,10 @@ How to understand the table below:
       <td>SHALL</td> <!-- France -->
       <td>SHALL</td> <!-- Spain -->
       <td>SHALL</td> <!-- UK -->
-      <!--<td>SHALL</td> <!-- Finland -->
-      <!--<td>SHALL</td> <!-- Norway -->
-      <!--<td>SHALL</td> <!-- Sweden -->
-      <!--<td>SHALL</td> <!-- Denmark -->
+      <td>SHALL</td> <!-- Finland -->
+      <td>SHALL</td> <!-- Norway -->
+      <td>SHALL</td> <!-- Sweden -->
+      <td>SHALL</td> <!-- Denmark -->
       <!--<td>SHALL</td> <!-- Iceland -->
       <td>SHALL</td> <!-- Estonia -->
     </tr>
@@ -308,10 +308,10 @@ How to understand the table below:
       <td>SHALL</td> <!-- France -->
       <td>SHALL</td> <!-- Spain -->
       <td>SHALL</td> <!-- UK -->
-      <!--<td>SHALL</td> <!-- Finland -->
-      <!--<td>SHALL</td> <!-- Norway -->
-      <!--<td>SHALL</td> <!-- Sweden -->
-      <!--<td>SHALL</td> <!-- Denmark -->
+      <td>SHALL</td> <!-- Finland -->
+      <td>SHALL</td> <!-- Norway -->
+      <td>SHALL</td> <!-- Sweden -->
+      <td>SHALL</td> <!-- Denmark -->
       <!--<td>SHALL</td> <!-- Iceland -->
       <td>SHALL</td> <!-- Estonia -->
     </tr>
@@ -327,10 +327,10 @@ How to understand the table below:
       <td>SHALL NOT</td> <!-- France -->
       <td>SHALL NOT</td> <!-- Spain -->
       <td>SHALL NOT</td> <!-- UK -->
-      <!--<td>SHALL NOT</td> <!-- Finland -->
-      <!--<td>SHALL NOT</td> <!-- Norway -->
-      <!--<td>SHALL NOT</td> <!-- Sweden -->
-      <!--<td>SHALL NOT</td> <!-- Denmark -->
+      <td>SHALL NOT</td> <!-- Finland -->
+      <td>SHALL NOT</td> <!-- Norway -->
+      <td>SHALL NOT</td> <!-- Sweden -->
+      <td>SHALL NOT</td> <!-- Denmark -->
       <!--<td>SHALL NOT</td> <!-- Iceland -->
       <td>SHALL NOT</td> <!-- Estonia -->
     </tr>
@@ -346,10 +346,10 @@ How to understand the table below:
       <td>SHALL</td> <!-- France -->
       <td>SHALL</td> <!-- Spain -->
       <td>SHALL</td> <!-- UK -->
-      <!--<td>SHALL</td> <!-- Finland -->
-      <!--<td>SHALL</td> <!-- Norway -->
-      <!--<td>SHALL</td> <!-- Sweden -->
-      <!--<td>SHALL</td> <!-- Denmark -->
+      <td>SHALL</td> <!-- Finland -->
+      <td>SHALL</td> <!-- Norway -->
+      <td>SHALL</td> <!-- Sweden -->
+      <td>SHALL</td> <!-- Denmark -->
       <!--<td>SHALL</td> <!-- Iceland -->
       <td>SHALL</td> <!-- Estonia -->
     </tr>
@@ -365,10 +365,10 @@ How to understand the table below:
       <td>SHALL</td> <!-- France -->
       <td>SHALL</td> <!-- Spain -->
       <td>SHALL</td> <!-- UK -->
-      <!--<td>SHALL</td> <!-- Finland -->
-      <!--<td>SHALL</td> <!-- Norway -->
-      <!--<td>SHALL</td> <!-- Sweden -->
-      <!--<td>SHALL</td> <!-- Denmark -->
+      <td>SHALL</td> <!-- Finland -->
+      <td>SHALL</td> <!-- Norway -->
+      <td>SHALL</td> <!-- Sweden -->
+      <td>SHALL</td> <!-- Denmark -->
       <!--<td>SHALL</td> <!-- Iceland -->
       <td>SHALL</td> <!-- Estonia -->
     </tr>
@@ -384,10 +384,10 @@ How to understand the table below:
       <td>SHALL NOT</td> <!-- France -->
       <td>SHALL NOT</td> <!-- Spain -->
       <td>SHALL NOT</td> <!-- UK -->
-      <!--<td>SHALL NOT</td> <!-- Finland -->
-      <!--<td>SHALL NOT</td> <!-- Norway -->
-      <!--<td>SHALL NOT</td> <!-- Sweden -->
-      <!--<td>SHALL NOT</td> <!-- Denmark -->
+      <td>SHALL NOT</td> <!-- Finland -->
+      <td>SHALL NOT</td> <!-- Norway -->
+      <td>SHALL NOT</td> <!-- Sweden -->
+      <td>SHALL NOT</td> <!-- Denmark -->
       <!--<td>SHALL NOT</td> <!-- Iceland -->
       <td>SHALL NOT</td> <!-- Estonia -->
     </tr>
@@ -403,10 +403,10 @@ How to understand the table below:
       <td>SHALL NOT</td> <!-- France -->
       <td>SHALL NOT</td> <!-- Spain -->
       <td>SHALL NOT</td> <!-- UK -->
-      <!--<td>SHALL NOT</td> <!-- Finland -->
-      <!--<td>SHALL NOT</td> <!-- Norway -->
-      <!--<td>SHALL NOT</td> <!-- Sweden -->
-      <!--<td>SHALL NOT</td> <!-- Denmark -->
+      <td>SHALL NOT</td> <!-- Finland -->
+      <td>SHALL NOT</td> <!-- Norway -->
+      <td>SHALL NOT</td> <!-- Sweden -->
+      <td>SHALL NOT</td> <!-- Denmark -->
       <!--<td>SHALL NOT</td> <!-- Iceland -->
       <td>SHALL NOT</td> <!-- Estonia -->
     </tr>
@@ -422,10 +422,10 @@ How to understand the table below:
       <td>MAY NOT</td> <!-- France -->
       <td>MAY NOT</td> <!-- Spain -->
       <td>MAY NOT</td> <!-- UK -->
-      <!--<td>MAY NOT</td> <!-- Finland -->
-      <!--<td>MAY NOT</td> <!-- Norway -->
-      <!--<td>MAY NOT</td> <!-- Sweden -->
-      <!--<td>MAY NOT</td> <!-- Denmark -->
+      <td>MAY NOT</td> <!-- Finland -->
+      <td>MAY NOT</td> <!-- Norway -->
+      <td>MAY NOT</td> <!-- Sweden -->
+      <td>MAY NOT</td> <!-- Denmark -->
       <!--<td>MAY NOT</td> <!-- Iceland -->
       <td>MAY NOT</td> <!-- Estonia -->
     </tr>
@@ -441,10 +441,10 @@ How to understand the table below:
       <td>MAY NOT</td> <!-- France -->
       <td>MAY NOT</td> <!-- Spain -->
       <td>MAY NOT</td> <!-- UK -->
-      <!--<td>MAY NOT</td> <!-- Finland -->
-      <!--<td>MAY NOT</td> <!-- Norway -->
-      <!--<td>MAY NOT</td> <!-- Sweden -->
-      <!--<td>MAY NOT</td> <!-- Denmark -->
+      <td>MAY NOT</td> <!-- Finland -->
+      <td>MAY NOT</td> <!-- Norway -->
+      <td>MAY NOT</td> <!-- Sweden -->
+      <td>MAY NOT</td> <!-- Denmark -->
       <!--<td>MAY NOT</td> <!-- Iceland -->
       <td>MAY NOT</td> <!-- Estonia -->
     </tr>
@@ -460,10 +460,10 @@ How to understand the table below:
       <td>SHALL NOT</td> <!-- France -->
       <td>SHALL NOT</td> <!-- Spain -->
       <td>SHALL NOT</td> <!-- UK -->
-      <!--<td>SHALL NOT</td> <!-- Finland -->
-      <!--<td>SHALL NOT</td> <!-- Norway -->
-      <!--<td>SHALL NOT</td> <!-- Sweden -->
-      <!--<td>SHALL NOT</td> <!-- Denmark -->
+      <td>SHALL NOT</td> <!-- Finland -->
+      <td>SHALL NOT</td> <!-- Norway -->
+      <td>SHALL NOT</td> <!-- Sweden -->
+      <td>SHALL NOT</td> <!-- Denmark -->
       <!--<td>SHALL NOT</td> <!-- Iceland -->
       <td>SHALL NOT</td> <!-- Estonia -->
     </tr>
@@ -479,10 +479,10 @@ How to understand the table below:
       <td>SHALL NOT</td> <!-- France -->
       <td>SHALL NOT</td> <!-- Spain -->
       <td>SHALL NOT</td> <!-- UK -->
-      <!--<td>SHALL NOT</td> <!-- Finland -->
-      <!--<td>SHALL NOT</td> <!-- Norway -->
-      <!--<td>SHALL NOT</td> <!-- Sweden -->
-      <!--<td>SHALL NOT</td> <!-- Denmark -->
+      <td>SHALL NOT</td> <!-- Finland -->
+      <td>SHALL NOT</td> <!-- Norway -->
+      <td>SHALL NOT</td> <!-- Sweden -->
+      <td>SHALL NOT</td> <!-- Denmark -->
       <!--<td>SHALL NOT</td> <!-- Iceland -->
       <td>SHALL NOT</td> <!-- Estonia -->
     </tr>
@@ -498,10 +498,10 @@ How to understand the table below:
       <td>SHALL</td> <!-- France -->
       <td>SHALL</td> <!-- Spain -->
       <td>SHALL</td> <!-- UK -->
-      <!--<td>SHALL</td> <!-- Finland -->
-      <!--<td>SHALL</td> <!-- Norway -->
-      <!--<td>SHALL</td> <!-- Sweden -->
-      <!--<td>SHALL</td> <!-- Denmark -->
+      <td>SHALL</td> <!-- Finland -->
+      <td>SHALL</td> <!-- Norway -->
+      <td>SHALL</td> <!-- Sweden -->
+      <td>SHALL</td> <!-- Denmark -->
       <!--<td>SHALL</td> <!-- Iceland -->
       <td>SHALL</td> <!-- Estonia -->
     </tr>
@@ -517,10 +517,10 @@ How to understand the table below:
       <td>SHALL</td> <!-- France -->
       <td>SHALL</td> <!-- Spain -->
       <td>SHALL</td> <!-- UK -->
-      <!--<td>SHALL</td> <!-- Finland -->
-     <!-- <td>SHALL</td> <!-- Norway -->
-      <!--<td>SHALL</td> <!-- Sweden -->
-      <!--<td>SHALL</td> <!-- Denmark -->
+      <td>SHALL</td> <!-- Finland -->
+      <td>SHALL</td> <!-- Norway -->
+      <td>SHALL</td> <!-- Sweden -->
+      <td>SHALL</td> <!-- Denmark -->
       <!--<td>SHALL</td> <!-- Iceland -->
       <td>SHALL</td> <!-- Estonia -->
     </tr>
@@ -536,10 +536,10 @@ How to understand the table below:
       <td>SHALL</td> <!-- France -->
       <td>SHALL</td> <!-- Spain -->
       <td>SHALL</td> <!-- UK -->
-      <!--<td>SHALL</td> <!-- Finland -->
-      <!--<td>SHALL</td> <!-- Norway -->
-      <!--<td>SHALL</td> <!-- Sweden -->
-      <!--<td>SHALL</td> <!-- Denmark -->
+      <td>SHALL</td> <!-- Finland -->
+      <td>SHALL</td> <!-- Norway -->
+      <td>SHALL</td> <!-- Sweden -->
+      <td>SHALL</td> <!-- Denmark -->
       <!--<td>SHALL</td> <!-- Iceland -->
       <td>SHALL</td> <!-- Estonia -->
     </tr>
@@ -555,10 +555,10 @@ How to understand the table below:
       <td>SHALL</td> <!-- France -->
       <td>SHALL</td> <!-- Spain -->
       <td>SHALL</td> <!-- UK -->
-      <!--<td>SHALL</td> <!-- Finland -->
-      <!--<td>SHALL</td> <!-- Norway -->
-      <!--<td>SHALL</td> <!-- Sweden -->
-      <!--<td>SHALL</td> <!-- Denmark -->
+      <td>SHALL</td> <!-- Finland -->
+      <td>SHALL</td> <!-- Norway -->
+      <td>SHALL</td> <!-- Sweden -->
+      <td>SHALL</td> <!-- Denmark -->
       <!--<td>SHALL</td> <!-- Iceland -->
       <td>SHALL</td> <!-- Estonia -->
     </tr>
@@ -574,10 +574,10 @@ How to understand the table below:
       <td>SHALL</td> <!-- France -->
       <td>SHALL</td> <!-- Spain -->
       <td>SHALL</td> <!-- UK -->
-      <!--<td>SHALL</td> <!-- Finland -->
-      <!--<td>SHALL</td> <!-- Norway -->
-      <!--<td>SHALL</td> <!-- Sweden -->
-      <!--<td>SHALL</td> <!-- Denmark -->
+      <td>SHALL</td> <!-- Finland -->
+      <td>SHALL</td> <!-- Norway -->
+      <td>SHALL</td> <!-- Sweden -->
+      <td>SHALL</td> <!-- Denmark -->
       <!--<td>SHALL</td> <!-- Iceland -->
       <td>SHALL</td> <!-- Estonia -->
     </tr>
@@ -593,10 +593,10 @@ How to understand the table below:
       <td>SHALL NOT</td> <!-- France -->
       <td>SHALL NOT</td> <!-- Spain -->
       <td>SHALL NOT</td> <!-- UK -->
-      <!--<td>SHALL NOT</td> <!-- Finland -->
-      <!--<td>SHALL NOT</td> <!-- Norway -->
-      <!--<td>SHALL NOT</td> <!-- Sweden -->
-      <!--<td>SHALL NOT</td> <!-- Denmark -->
+      <td>SHALL NOT</td> <!-- Finland -->
+      <td>SHALL NOT</td> <!-- Norway -->
+      <td>SHALL NOT</td> <!-- Sweden -->
+      <td>SHALL NOT</td> <!-- Denmark -->
       <!--<td>SHALL NOT</td> <!-- Iceland -->
       <td>SHALL NOT</td> <!-- Estonia -->
     </tr>
@@ -612,10 +612,10 @@ How to understand the table below:
       <td>SHALL</td> <!-- France -->
       <td>SHALL</td> <!-- Spain -->
       <td>SHALL</td> <!-- UK -->
-      <!--<td>SHALL</td> <!-- Finland -->
-      <!--<td>SHALL</td> <!-- Norway -->
-      <!--<td>SHALL</td> <!-- Sweden -->
-      <!--<td>SHALL</td> <!-- Denmark -->
+      <td>SHALL</td> <!-- Finland -->
+      <td>SHALL</td> <!-- Norway -->
+      <td>SHALL</td> <!-- Sweden -->
+      <td>SHALL</td> <!-- Denmark -->
       <!--<td>SHALL</td> <!-- Iceland -->
       <td>SHALL</td> <!-- Estonia -->
     </tr>
@@ -631,10 +631,10 @@ How to understand the table below:
       <td>SHALL</td> <!-- France -->
       <td>SHALL</td> <!-- Spain -->
       <td>SHALL</td> <!-- UK -->
-      <!--<td>SHALL</td> <!-- Finland -->
-      <!--<td>SHALL</td> <!-- Norway -->
-      <!--<td>SHALL</td> <!-- Sweden -->
-      <!--<td>SHALL</td> <!-- Denmark -->
+      <td>SHALL</td> <!-- Finland -->
+      <td>SHALL</td> <!-- Norway -->
+      <td>SHALL</td> <!-- Sweden -->
+      <td>SHALL</td> <!-- Denmark -->
       <!--<td>SHALL</td> <!-- Iceland -->
       <td>SHALL</td> <!-- Estonia -->
     </tr>
@@ -650,10 +650,10 @@ How to understand the table below:
       <td>SHALL</td> <!-- France -->
       <td>SHALL</td> <!-- Spain -->
       <td>SHALL</td> <!-- UK -->
-      <!--<td>SHALL</td> <!-- Finland -->
-      <!--<td>SHALL</td> <!-- Norway -->
-      <!--<td>SHALL</td> <!-- Sweden -->
-      <!--<td>SHALL</td> <!-- Denmark -->
+      <td>SHALL</td> <!-- Finland -->
+      <td>SHALL</td> <!-- Norway -->
+      <td>SHALL</td> <!-- Sweden -->
+      <td>SHALL</td> <!-- Denmark -->
       <!--<td>SHALL</td> <!-- Iceland -->
       <td>SHALL</td> <!-- Estonia -->
     </tr>    
