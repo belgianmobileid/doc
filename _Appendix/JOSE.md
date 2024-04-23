@@ -63,7 +63,7 @@ Following steps will show you how to generate a JWS Compact Serialization object
     </tr>
     <tr>
       <td>{% include parameter.html name="kid" req="Required" %}</td>
-      <td>Hint indicating which key was used to secure the JWS. The structure of the <code>kid</code> value is a case-sensitive string.</td>
+      <td>Key ID indicating which key was used to secure the JWS. The structure of the <code>kid</code> value is a case-sensitive string.</td>
     </tr>
   </tbody>
 </table>
@@ -146,8 +146,8 @@ Here are the steps to generate those elements:
         <td>Defines the “content type” of the payload. In this case, the value MUST be *"JWT"*, to indicate that a nested JWT (= our JWS) is carried inside this JWT.</td>
         </tr>
         <tr>
-        <td>{% include parameter.html name="kid" req="Optional" %}</td>
-        <td>This parameter has the same meaning, syntax, and processing rules as the "kid" parameter defined in the JWS section, except that the key hint references the public key with which the JWE was encrypted; this can be used to determine the private key needed to decrypt the JWE.</td>
+        <td>{% include parameter.html name="kid" req="Required" %}</td>
+        <td>This parameter has the same meaning, syntax, and processing rules as the "kid" parameter defined in the JWS section, except that the key ID references the public key with which the JWE was encrypted; this can be used to determine the private key needed to decrypt the JWE.</td>
         </tr>
     </tbody>
     </table>
