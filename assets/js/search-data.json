@@ -55,7 +55,7 @@
   },"9": {
     "doc": "Test",
     "title": "Test",
-    "content": "Voilà une page de test de Jekyll . First tabs . | js | ruby | . | tagada . | tsoin tsoin here goes some code . | . Second tabs . | yaml | json | . | hello: . | ‘whatsup’ | ‘hi’ | . | { “hello”: [“whatsup”, “hi”] } . | . ",
+    "content": "Voilà une page de test de Jekyll . First tabs . | js | ruby | . | tagada test . | tsoin tsoin here goes some code . | . Second tabs . | yaml | json | . | hello: . | ‘whatsup’ | ‘hi’ | . | { “hello”: [“whatsup”, “hi”] } . | . ",
     "url": "https://belgianmobileid.github.io/doc/test/",
     "relUrl": "/test/"
   },"10": {
