@@ -13,7 +13,7 @@ Voilà une page de test de Jekyll
 
 {% tab truc js %}
 
-tagada
+tagada test
 
 {% endtab %}
 
