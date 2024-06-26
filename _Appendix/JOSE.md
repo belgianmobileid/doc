@@ -158,7 +158,7 @@ Here are the steps to generate those elements:
 <code>eyJhbGciOiJSU0ExXzUiLCJraWQiOiJmcm9kby5iYWdnaW5zQGhvYmJpdG9uLmV4YW1wbGUiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2In0</code></pre></div>
 
     <li>Generate a random 32 bytes string to be used as CEK</li>
-    <li>Encrypt the CEK using RSA-OAEP algorithm (<a href="https://tools.ietf.org/html/rfc7518#section-4.3">RFC7518</a>).
+    <li>Encrypt the CEK using RSA-OAEP-256 algorithm (<a href="https://tools.ietf.org/html/rfc7518#section-4.3">RFC7518</a>).
         The key to be used for this encryption is itsme® public key. This key is published in itsme® JWKset with parameter "use" set on "enc". Our JWKset can be found at the jwks_uri URL given in <a href="../authentication/#itsme-discovery-document" target="blank">itsme® Discovery document</a></li>
     <li>Base64url encode the (UTF-8 encoded) encrypted CEK, to obtain a string like:</li>
 
