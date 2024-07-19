@@ -109,7 +109,7 @@
             <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/official_gender" req="OPTIONAL" %}</td><td>Returns user's gender unaltered, exactly as mentioned on their ID document.</td>
           </tr> 
           <tr>
-            <td>{% include parameter.html name="locale" req="OPTIONAL" %}</td><td>Returns user's mobile phone language, represented as a string format. Possible values are : <code>NL</code> <code>FR</code> <code>DE</code> <code>EN</code></td>
+            <td>{% include parameter.html name="locale" req="OPTIONAL" %}</td><td>Returns user's itsme app language, represented as a string format. Possible values are : <code>NL</code> <code>FR</code> <code>DE</code> <code>EN</code></td>
           </tr>
           <tr>
             <td>{% include parameter.html name="picture" req="OPTIONAL" %}</td><td>Returns user's ID picture, represented as a URL string. This URL refers to an image file (for example, a JPEG, JPEG2000, or PNG image file). This image is the raw (unprocessed) image contained on the ID document.<br /><br />
