@@ -178,7 +178,7 @@ How to understand the table below:
     </tr>
     <tr>
       <td><b>locale</b></td>
-      <td>User's mobile phone language, represented as a string format. Possible values are : <code>NL</code> <code>FR</code> <code>DE</code> <code>EN</code></td>
+      <td>User's itsme app language, represented as a string format. Possible values are : <code>NL</code> <code>FR</code> <code>DE</code> <code>EN</code></td>
       <td>MAY NOT</td> <!-- Belgium -->
       <td>MAY NOT</td> <!-- Netherlands -->
       <td>MAY NOT</td> <!-- Luxembourg -->
