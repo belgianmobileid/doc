@@ -412,7 +412,7 @@ How to understand the table below:
     </tr>
     <tr>
       <td>http://itsme.services/v2/<br>claim/<b>claim_device</b></td>
-      <td>User's phone information, represented as a JSON Object containing some or all of these members <code>os</code> <code>appName</code> <code>appRelease</code> <code>deviceLabel</code> <code>debugEnabled</code> <code>deviceID</code>	<code>osRelease</code> <code>manufacturer</code> <code>deviceLockLevel</code> <code>smsEnabled</code> <code>rooted</code> <code>msisdn</code> <code>deviceModel</code>	<code>sdkRelease</code>.</td>
+      <td>User's phone information, represented as a JSON Object containing some or all of these members <code>os</code> <code>appName</code> <code>appRelease</code> <code>deviceLabel</code> <code>debugEnabled</code> <code>deviceID</code>	<code>osRelease</code> <code>manufacturer</code> <code>deviceLockLevel</code> <code>rooted</code> <code>deviceModel</code>.</td>
       <td>MAY NOT</td> <!-- Belgium -->
       <td>MAY NOT</td> <!-- Netherlands -->
       <td>MAY NOT</td> <!-- Luxembourg -->
