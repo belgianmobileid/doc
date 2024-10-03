@@ -696,7 +696,7 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
             <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/issuance_locality" req="OPTIONAL" %}</td><td>Returns the locality that issued the ID document used to create the itsme® account.</td>
           </tr> 
           <tr>
-            <td>{% include parameter.html name="sub" req="OPTIONAL" %}</td><td>Allows the user to bypass the itsme® identification page if he is already logged into your application, by using the user's unique identifier key as value (aka. the user's <code>sub</code> value returned in the ID Token response)</td>
+            <td>{% include parameter.html name="sub" req="OPTIONAL" %}</td><td>Allows the user to bypass the itsme® identification page if he is already logged into your application, by using the user's unique identifier key as value (aka. the user's <code>sub</code> value returned in the ID Token response).<br />The sub must be passed as a JSON object like: <code>"sub":{"value":"123456abcdefg"}</code></td>
           </tr> 
         </table>
       </td>
