@@ -335,7 +335,7 @@ If the request fails the Token Endpoint responds with an HTTP 400 (Bad Request) 
       </td>
     </tr>
     <tr>
-      <td>{% include parameter.html name="error_description" req="OPTIONAL" %}</td>
+      <td>{% include parameter.html name="detail" req="OPTIONAL" %}</td>
       <td>Human-readable text providing additional information, used to assist the developer in understanding the error that occurred.</td>
     </tr>
   </tbody>
