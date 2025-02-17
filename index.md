@@ -55,6 +55,16 @@ For more information on how itsme® can best work for your business, please <a h
     <img src="assets/sign.svg" />
   </div>
 </div>
+<div class="services">
+  <div class="service">
+    <h2>Qualified signature</h2>
+    <p>This Service enables your users/customers to share data from 3rd party wallets and sources.</p>
+    <div class="docLinks">
+      <a href="datasharing">Direct integration API</a>
+    </div>
+    <img src="assets/signup.svg" />
+  </div>
+</div>
 
 # IAM platforms
 
