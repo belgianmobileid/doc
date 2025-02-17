@@ -193,6 +193,11 @@
             <td>{% include parameter.html name="sub" req="OPTIONAL" %}</td><td>Allows the user to bypass the itsme® identification page if he is already logged into your application, by using the user's unique identifier key as value (aka. the user's <code>sub</code> value returned in the ID Token response).<br />The sub must be passed as a JSON object like: <code>"sub":{"value":"123456abcdefg"}</code><br />/!\ The sub parameter is only considered if specified within a "userinfo" set of claims. It will be ignored in an "id_token" set.<br />NB: you are allowed to include both a "userinfo" AND an "id_token" set in one Authorization Request, so that you still don’t have to perform a UserInfo Request at the end of the flow.</td>
           </tr>
           {% endif %}
+          {% if page.title contains "Data Sharing" %}
+          <tr>
+            <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/student_attestation_ag" req="OPTIONAL" %}</td><td>Returns the access grant to the user's student attestation. The access grant can be used to access the verifiable credential of the student attestation in the user's Athumi Pod.</td>
+          </tr>
+          {% endif %}
         </table>
       </td>
     </tr>
