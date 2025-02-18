@@ -1,4 +1,4 @@
-name: Jekyll Deploy
+name: Jekyll Build and Deploy
 
 on:
   push:
@@ -12,7 +12,6 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v4
 
@@ -22,8 +21,8 @@ jobs:
           ruby-version: '3.2'
           bundler-cache: true
 
-       - name: Build Jekyll
-         run: |
+      - name: Build Jekyll
+        run: |
           bundle install
           bundle exec jekyll build
 
