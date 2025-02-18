@@ -22,15 +22,6 @@ jobs:
           ruby-version: '3.2'
           bundler-cache: true
 
-      - name: Cache gems
-        uses: actions/cache@v4
-        with:
-          path: vendor/gems
-          key: ${{ runner.os }}-build-${{ hashFiles('**/Gemfile.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-build-
-            ${{ runner.os }}-
-
        - name: Build Jekyll
          run: |
           bundle install
