@@ -85,7 +85,9 @@
     </tr>
     <tr>
       <td>{% include parameter.html name="claims" req="OPTIONAL" %}</td>
-      <td>Allows to request specific user's details ("claims"). You can choose to receive those claims either in the ID Token (from /token endpoint) or in the UserInfo object (from /userinfo endpoint).<br />It MUST be a JSON object containing an <code>{"id_token":{...}}</code> member or a <code>{"userinfo":{...}}</code> member respectively. This member will then contain all the desired claims - see example below.<br><b>Note</b>: to avoid the need of a /userinfo request, itsme® recommends to retrieve the claims directly from the ID Token.<br><br>Supported claims are listed below. Please check <a href="https://belgianmobileid.github.io/doc/claims/" target="blank">this page</a> for availability and format per country.<br />
+      <td>Allows to request specific user's details ("claims"). You can choose to receive those claims either in the ID Token (from /token endpoint) or in the UserInfo object (from /userinfo endpoint).<br />It MUST be a JSON object containing an <code>{"id_token":{...}}</code> member or a <code>{"userinfo":{...}}</code> member respectively. This member will then contain all the desired claims - see example below.<br><b>Note</b>: to avoid the need of a /userinfo request, itsme® recommends to retrieve the claims directly from the ID Token.<br>
+      {% if page.title contains "Confirmation" %}<aside class="notice">When implementing the <b>Confirmation</b> service, you MUST use a WYSIWYS template to pre-structure the transaction screen in the itsme® app (refer to <a href="#wysiwys-template" target="blank">this section</a> for more information).</aside>{% endif %}
+      <br>Supported claims are listed below. Please check <a href="https://belgianmobileid.github.io/doc/claims/" target="blank">this page</a> for availability and format per country.<br />
         <table>
           <tr>
             <td>{% include parameter.html name="name" req="OPTIONAL" %}</td><td>Returns user's full name in displayable form including all name parts, possibly including titles and suffixes.</td>
@@ -139,7 +141,7 @@
             <td>{% include parameter.html name="address" req="OPTIONAL" %}</td><td>Returns user's postal address, represented as JSON Object containing some or all of these members: <code>formatted</code> <code>street_address</code> <code>postal_code</code> <code>locality</code>.<br></td>
           </tr>
           <tr>
-            <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/claim_citizenship" req="OPTIONAL" %}</td><td>Returns user's nationality. The format is directly depending on the underlying ID document: for Belgian ID documents this is represented as a string, and for Dutch or Lux ID documents this is represented in the <a href="https://en.wikipedia.org/wiki/ISO_3166" target="blank">ISO 3166-1 alpha-3</a> format.</td>
+            <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/claim_citizenship" req="OPTIONAL" %}</td><td>Returns user's nationality. The format is directly depending on the underlying ID document: for Belgian ID documents this is represented as a string, and for documents from other countries this is represented in the <a href="https://en.wikipedia.org/wiki/ISO_3166" target="blank">ISO 3166-1 alpha-3</a> format.</td>
           </tr>
           <tr>
             <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/claim_citizenship_as_iso" req="OPTIONAL" %}</td><td>Returns user's nationality. The format is always <a href="https://en.wikipedia.org/wiki/ISO_3166" target="blank">ISO 3166-1 alpha-3</a>.</td>
@@ -186,11 +188,21 @@
           <tr>
             <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/transaction_ip" req="OPTIONAL" %}</td><td>Returns the IP address of the smartphone approving the transaction.<br>This claim is intended to help partners detect fraudulent use cases.</td>
           </tr>
+          {% if page.title contains "Confirmation" %}
+          <tr>
+            <td>{% include parameter.html name="sub" req="OPTIONAL" %}</td><td>Allows the user to bypass the itsme® identification page if he is already logged into your application, by using the user's unique identifier key as value (aka. the user's <code>sub</code> value returned in the ID Token response).<br />The sub must be passed as a JSON object like: <code>"sub":{"value":"123456abcdefg"}</code><br />/!\ The sub parameter is only considered if specified within a "userinfo" set of claims. It will be ignored in an "id_token" set.<br />NB: you are allowed to include both a "userinfo" AND an "id_token" set in one Authorization Request, so that you still don’t have to perform a UserInfo Request at the end of the flow.</td>
+          </tr>
+          {% endif %}
+          {% if page.title contains "Data Sharing" %}
+          <tr>
+            <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/student_attestation_ag" req="OPTIONAL" %}</td><td>Returns the access grant to the user's student attestation. The access grant can be used to access the verifiable credential of the student attestation in the user's Athumi Pod.</td>
+          </tr>
+          {% endif %}
         </table>
       </td>
     </tr>
     <tr>
-      <td>{% include parameter.html name="request_uri" req="OPTIONAL" %}</td>
+      <td>{% if page.title contains "Confirmation" %}{% include parameter.html name="request_uri" req='REQUIRED if no "request"' %}{% else %}{% include parameter.html name="request_uri" req="OPTIONAL" %}{% endif %}</td>
       <td>A URL using the https scheme referencing a resource containing a JWT whose claims are the request parameters. The <code>request_uri</code> parameter is used to secure parameters in the Authorization Request from tainting or inspection when sending the request to the itsme® Authorization Endpoint.<br><br>If the <code>request_uri</code> parameter is used, the JWT MUST be signed and MUST contain the claims <code>iss</code> (issuer) and <code>aud</code> (audience) as members. The <code>iss</code> value SHOULD be your <code>client_id</code>. The <code>aud</code> value SHOULD be set to <code>https://idp.[e2e/prd].itsme.services/v2</code>. The JWT MUST also be encrypted and more precisely: it MUST be signed then encrypted, with the result being a Nested JWT (refer to <a href="https://belgianmobileid.github.io/doc/JOSE/" target="blank">this page</a> for more information).<br><br>The following restrictions apply to request URIs:
         <tabul>
           <tabli>The request URI MUST be preregistered during the registration.</tabli>
@@ -201,7 +213,7 @@
       </td>
     </tr>
     <tr>
-      <td>{% include parameter.html name="request" req="OPTIONAL" %}</td>
+      <td>{% if page.title contains "Confirmation" %}{% include parameter.html name="request" req='REQUIRED if no "request_uri"' %}{% else %}{% include parameter.html name="request" req="OPTIONAL" %}{% endif %}</td>
       <td>It represents the request as a JWT whose Claims are the request parameters. The <code>request</code> parameter is used to secure parameters in the Authorization Request from tainting or inspection when sending the request to the itsme® Authorization Endpoint.<br><br>If the <code>request</code> parameter is used, the JWT MUST be signed and MUST contain the claims <code>iss</code> (issuer) and <code>aud</code> (audience) as members. The <code>iss</code> value SHOULD be your <code>client_id</code>. The <code>aud</code> value SHOULD be set to <code>https://idp.[e2e/prd].itsme.services/v2</code>. The JWT MUST also be encrypted and more precisely: it MUST be signed then encrypted, with the result being a Nested JWT (refer to <a href="https://belgianmobileid.github.io/doc/JOSE/" target="blank">this page</a> for more information).</td>
     </tr>
     <tr>

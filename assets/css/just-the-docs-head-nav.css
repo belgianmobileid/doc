@@ -1,0 +1,3 @@
+@media screen and (max-width: 50rem) { .bigtable h1 { margin-left: 10px; width: calc( 100% - 20px); } .bigtable p { margin-left: 10px; width: calc( 100% - 20px); } .bigtable aside { margin-left: 10px; width: calc( 100% - 20px); } }
+
+.site-nav ul li a { background-image: linear-gradient(-90deg, #ebedf5 0%, rgba(235, 237, 245, 0.8) 80%, rgba(235, 237, 245, 0) 100%); }
