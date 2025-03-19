@@ -60,7 +60,7 @@ For more information on how itsme® can best work for your business, please <a h
     <div class="docLinks">
       <a href="datasharing">Direct integration API</a>
     </div>
-    <img src="assets/signup.svg" />
+    <img src="assets/share-data.svg" />
   </div>
 </div>
 
