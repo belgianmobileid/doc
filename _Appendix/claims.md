@@ -452,7 +452,7 @@ How to understand the table below:
     </tr>
     <tr>
       <td>http://itsme.services/v2/<br>claim/<b>BENationalNumber</b></td>
-      <td>User's Belgian unique identification number, represented as a string with 11 digits in the form YY.MM.DD-xxx.cd where YY.MM.DD is the birthdate of the person, xxx a sequential number (odd for males and even for females) and cd a check-digit (Some exceptions could apply).</td>
+      <td>User's Belgian unique identification number, represented as a string with 11 digits in the form YYMMDDxxxcd where YY.MM.DD is the birthdate of the person, xxx a sequential number (odd for males and even for females) and cd a check-digit (Some exceptions could apply).</td>
       <td>SHALL</td> <!-- Belgium -->
       <td>SHALL NOT</td> <!-- Netherlands -->
       <td>SHALL NOT</td> <!-- Luxembourg -->
