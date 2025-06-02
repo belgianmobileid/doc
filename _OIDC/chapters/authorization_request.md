@@ -155,8 +155,11 @@
           <tr>
             <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/claim_device" req="OPTIONAL" %}</td><td>Returns user's phone information, represented as a JSON Object containing some or all of these members <code>os</code> <code>appName</code> <code>appRelease</code> <code>deviceLabel</code> <code>debugEnabled</code> <code>deviceID</code>	<code>osRelease</code> <code>manufacturer</code> <code>deviceLockLevel</code> <code>rooted</code> <code>deviceModel</code>.</td>       
           </tr> 
-           <tr>
+          <tr>
             <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/BENationalNumber" req="OPTIONAL" %}</td><td>Returns user's Belgian unique identification number, represented as a string with 11 digits in the form YYMMDDxxxcd where YY.MM.DD is the birthdate of the person, xxx a sequential number (odd for males and even for females) and cd a check-digit. Some exceptions could apply.<br></td>
+          </tr>
+          <tr>
+            <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/RONationalNumber" req="OPTIONAL" %}</td><td>Returns user's Romanian unique identification number.<br></td>
           </tr>
           <tr>
             <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/validityFrom" req="OPTIONAL" %}</td><td>This is a <a href="#metadata">metadata</a>.<br>Returns user's Belgian ID document issuance date, represented as a string in YYYY-MM-DDThh:mm:ss.nnnZ date format specified by ISO 8601. Can only be returned in combination with claim http://itsme.services/v2/claim/BEeidSn.</td>
