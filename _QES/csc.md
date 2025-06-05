@@ -52,7 +52,7 @@ The itsme® Sign flow goes through the steps shown in the sequence diagram below
 
 ![Sequence diagram describing the CSC Hash Signing flow](/doc/public/images/csc-sequence.svg)
 
-<aside class="notice">The <b>BASE_URL</b> to be used in this flow will be communicated during your onboarding process</aside>
+<aside class="notice">The <b>BASE_URL</b> to be used in this flow is https://sign.[e2e|prd].itsme.services/csc/v1</aside>
 
 ## 1. Getting endpoint info
 
