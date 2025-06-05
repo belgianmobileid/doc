@@ -722,7 +722,7 @@
   },"103": {
     "doc": "CSC Qualified Signature",
     "title": "Integrating Sign services",
-    "content": "The itsme® Sign flow goes through the steps shown in the sequence diagram below. The BASE_URL to be used in this flow will be communicated during your onboarding process ",
+    "content": "The itsme® Sign flow goes through the steps shown in the sequence diagram below. The BASE_URL to be used in this flow is https://sign.[e2e|prd].itsme.services/csc/v1 ",
     "url": "/doc/QES-CSC/#integrating-sign-services",
     
     "relUrl": "/QES-CSC/#integrating-sign-services"
