@@ -459,7 +459,7 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
 
 <b><code>GET https://idp.<i><b>[e2e/prd]</b></i>.itsme.services/v2/.well-known/openid-configuration</code></b>
 
-If your onboarding happened before the 25th of June 2025, then URL was:<br \>
+If your onboarding happened before the 25th of June 2025, then URL was:<br>
 <b><code>GET https://oidc.<i><b>[e2e/prd]</b></i>.itsme.services/clientsecret-oidc/csapi/v0.1/.well-known/openid-configuration</code></b>
 
 To simplify implementations and increase flexibility, <a href="https://openid.net/specs/openid-connect-discovery-1_0.html" target="blank">OpenID Connect allows the use of a Discovery Document</a>, a JSON document containing key-value pairs which provide details about itsme® configuration, such as the
@@ -489,7 +489,7 @@ To simplify implementations and increase flexibility, <a href="https://openid.ne
 
 <b><code>GET https://idp.<i><b>[e2e/prd]</b></i>.itsme.services/v2/authorization</code></b>
 
-If your onboarding happened before the 25th of June 2025, then URL was:<br \>
+If your onboarding happened before the 25th of June 2025, then URL was:<br>
 <b><code>GET https://oidc.<i><b>[e2e/prd]</b></i>.itsme.services/clientsecret-oidc/csapi/v0.1/connect/authorize</code></b>
 
 {% endtab %}
@@ -682,7 +682,7 @@ To assert the identity of the user, the <code>code</code> received previously ne
 
 <b><code>POST https://idp.<i><b>[e2e/prd]</b></i>.itsme.services/v2/token</code></b>
 
-If your onboarding happened before the 25th of June 2025, then URL was:<br \>
+If your onboarding happened before the 25th of June 2025, then URL was:<br>
 <b><code>POST https://oidc.<i><b>[e2e/prd]</b></i>.itsme.services/clientsecret-oidc/csapi/v0.1/connect/token</code></b>
 
 To assert the identity of the user, the <code>code</code> received previously needs to be exchanged for an ID token and access token. During this step, your application has to authenticate itself to our server using the secret key method.
@@ -910,7 +910,7 @@ The UserInfo Response is represented as a signed and encrypted JWT. So, before b
 
 <b><code>GET https://idp.<i><b>[e2e/prd]</b></i>.itsme.services/v2/userinfo</code></b>
 
-If your onboarding happened before the 25th of June 2025, then URL was:<br \>
+If your onboarding happened before the 25th of June 2025, then URL was: <br \>
 <b><code>GET https://oidc.<i><b>[e2e/prd]</b></i>.itsme.services/clientsecret-oidc/csapi/v0.1/connect/userinfo</code></b>
 
 The UserInfo Endpoint returns previously consented user profile information to your application. In other words, if the required claims are not returned in the ID Token, you can obtain the additional claims by presenting the access token to the itsme® UserInfo Endpoint. This is achieved by sending a HTTP GET request to the Userinfo Endpoint, passing the access token value in the Authorization header using the Bearer authentication scheme.
