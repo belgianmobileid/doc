@@ -162,6 +162,15 @@
             <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/RONationalNumber" req="OPTIONAL" %}</td><td>Returns user's Romanian unique identification number.<br></td>
           </tr>
           <tr>
+            <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/BGNationalNumber" req="OPTIONAL" %}</td><td>Returns user's Bulgarian unique identification number.<br></td>
+          </tr>
+          <tr>
+            <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/CZNationalNumber" req="OPTIONAL" %}</td><td>Returns user's Czech unique identification number.<br></td>
+          </tr>
+          <tr>
+            <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/SKNationalNumber" req="OPTIONAL" %}</td><td>Returns user's Slovakian unique identification number.<br></td>
+          </tr>
+          <tr>
             <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/validityFrom" req="OPTIONAL" %}</td><td>This is a <a href="#metadata">metadata</a>.<br>Returns user's Belgian ID document issuance date, represented as a string in YYYY-MM-DDThh:mm:ss.nnnZ date format specified by ISO 8601. Can only be returned in combination with claim http://itsme.services/v2/claim/BEeidSn.</td>
           </tr>
           <tr>
