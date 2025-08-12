@@ -44,6 +44,13 @@ How to understand the table below:
       <th>Iceland</th> -->
       <th>Estonia</th>
       <th>Romania</th>
+      <th>Austria</th>
+      <th>Bulgaria</th>
+      <th>Czech Republic</th>
+      <th>Greece</th>
+      <th>Hungary</th>
+      <th>Poland</th>
+      <th>Slovakia</th>
     </tr>
     <tr>
       <td><b>name</b></td>
@@ -65,6 +72,13 @@ How to understand the table below:
       <td>SHALL</td> <!-- Iceland -->
       <td>SHALL</td> <!-- Estonia -->
       <td>SHALL</td> <!-- Romania -->
+      <td>SHALL</td> <!-- Austria -->
+      <td>SHALL</td> <!-- Bulgara -->
+      <td>SHALL</td> <!-- Czechia -->
+      <td>SHALL</td> <!-- Greece -->
+      <td>SHALL</td> <!-- Hungary -->
+      <td>SHALL</td> <!-- Poland -->
+      <td>SHALL</td> <!-- Slovakia -->
     </tr>
     <tr>
       <td><b>given_name</b></td>
@@ -86,6 +100,13 @@ How to understand the table below:
       <td>MAY NOT</td> <!-- Iceland -->
       <td>MAY NOT</td> <!-- Estonia -->
       <td>MAY NOT</td> <!-- Romania -->
+      <td>MAY NOT</td> <!-- Austria -->
+      <td>MAY NOT</td> <!-- Bulgara -->
+      <td>MAY NOT</td> <!-- Czechia -->
+      <td>MAY NOT</td> <!-- Greece -->
+      <td>MAY NOT</td> <!-- Hungary -->
+      <td>MAY NOT</td> <!-- Poland -->
+      <td>MAY NOT</td> <!-- Slovakia -->
     </tr>
     <tr>
       <td><b>family_name</b></td>
@@ -107,6 +128,13 @@ How to understand the table below:
       <td>SHALL</td> <!-- Iceland -->
       <td>SHALL</td> <!-- Estonia -->
       <td>SHALL</td> <!-- Romania -->
+      <td>SHALL</td> <!-- Austria -->
+      <td>SHALL</td> <!-- Bulgara -->
+      <td>SHALL</td> <!-- Czechia -->
+      <td>SHALL</td> <!-- Greece -->
+      <td>SHALL</td> <!-- Hungary -->
+      <td>SHALL</td> <!-- Poland -->
+      <td>SHALL</td> <!-- Slovakia -->
     </tr>
     <tr>
       <td><b>birthdate</b></td>
@@ -128,6 +156,13 @@ How to understand the table below:
       <td>SHALL</td> <!-- Iceland -->
       <td>SHALL</td> <!-- Estonia -->
       <td>SHALL</td> <!-- Romania -->
+      <td>SHALL</td> <!-- Austria -->
+      <td>SHALL</td> <!-- Bulgara -->
+      <td>SHALL</td> <!-- Czechia -->
+      <td>SHALL</td> <!-- Greece -->
+      <td>SHALL</td> <!-- Hungary -->
+      <td>SHALL</td> <!-- Poland -->
+      <td>SHALL</td> <!-- Slovakia -->
     </tr>
     <tr>
       <td>http://itsme.services/v2/<br>claim/<b>birthdate_as_string</b></td>
@@ -149,6 +184,13 @@ How to understand the table below:
       <td>SHALL NOT</td> <!-- Iceland -->
       <td>SHALL NOT</td> <!-- Estonia -->
       <td>SHALL NOT</td> <!-- Romania -->
+      <td>SHALL NOT</td> <!-- Austria -->
+      <td>SHALL NOT</td> <!-- Bulgara -->
+      <td>SHALL NOT</td> <!-- Czechia -->
+      <td>SHALL NOT</td> <!-- Greece -->
+      <td>SHALL NOT</td> <!-- Hungary -->
+      <td>SHALL NOT</td> <!-- Poland -->
+      <td>SHALL NOT</td> <!-- Slovakia -->
     </tr>
     <tr>
       <td><b>gender</b></td>
@@ -170,6 +212,13 @@ How to understand the table below:
       <td>SHALL</td> <!-- Iceland -->
       <td>SHALL</td> <!-- Estonia -->
       <td>SHALL</td> <!-- Romania -->
+      <td>SHALL</td> <!-- Austria -->
+      <td>SHALL</td> <!-- Bulgara -->
+      <td>SHALL</td> <!-- Czechia -->
+      <td>SHALL</td> <!-- Greece -->
+      <td>SHALL</td> <!-- Hungary -->
+      <td>SHALL</td> <!-- Poland -->
+      <td>SHALL</td> <!-- Slovakia -->
     </tr>
     <tr>
       <td>http://itsme.services/v2/<br>claim/<b>official_gender</b></td>
@@ -191,6 +240,13 @@ How to understand the table below:
       <td>SHALL</td> <!-- Iceland -->
       <td>SHALL</td> <!-- Estonia -->
       <td>SHALL</td> <!-- Romania -->
+      <td>SHALL</td> <!-- Austria -->
+      <td>SHALL</td> <!-- Bulgara -->
+      <td>SHALL</td> <!-- Czechia -->
+      <td>SHALL</td> <!-- Greece -->
+      <td>SHALL</td> <!-- Hungary -->
+      <td>SHALL</td> <!-- Poland -->
+      <td>SHALL</td> <!-- Slovakia -->
     </tr>
     <tr>
       <td><b>locale</b></td>
@@ -212,6 +268,13 @@ How to understand the table below:
       <td>MAY NOT</td> <!-- Iceland -->
       <td>MAY NOT</td> <!-- Estonia -->
       <td>MAY NOT</td> <!-- Romania -->
+      <td>MAY NOT</td> <!-- Austria -->
+      <td>MAY NOT</td> <!-- Bulgara -->
+      <td>MAY NOT</td> <!-- Czechia -->
+      <td>MAY NOT</td> <!-- Greece -->
+      <td>MAY NOT</td> <!-- Hungary -->
+      <td>MAY NOT</td> <!-- Poland -->
+      <td>MAY NOT</td> <!-- Slovakia -->
     </tr>
     <tr>
       <td><b>picture</b></td>
@@ -239,6 +302,13 @@ How to understand the table below:
       <td>SHALL</td> <!-- Iceland -->
       <td>SHALL</td> <!-- Estonia -->
       <td>SHALL</td> <!-- Romania -->
+      <td>SHALL</td> <!-- Austria -->
+      <td>SHALL</td> <!-- Bulgara -->
+      <td>SHALL</td> <!-- Czechia -->
+      <td>SHALL</td> <!-- Greece -->
+      <td>SHALL</td> <!-- Hungary -->
+      <td>SHALL</td> <!-- Poland -->
+      <td>SHALL</td> <!-- Slovakia -->
     </tr>
     <tr>
       <td>http://itsme.services/v2/<br>claim/<b>physical_person_photo</b></td>
@@ -260,6 +330,13 @@ How to understand the table below:
       <td>SHALL</td> <!-- Iceland -->
       <td>SHALL</td> <!-- Estonia -->
       <td>SHALL</td> <!-- Romania -->
+      <td>SHALL</td> <!-- Austria -->
+      <td>SHALL</td> <!-- Bulgara -->
+      <td>SHALL</td> <!-- Czechia -->
+      <td>SHALL</td> <!-- Greece -->
+      <td>SHALL</td> <!-- Hungary -->
+      <td>SHALL</td> <!-- Poland -->
+      <td>SHALL</td> <!-- Slovakia -->
     </tr>
     <tr>
       <td><b>email</b></td>
@@ -281,6 +358,13 @@ How to understand the table below:
       <td>MAY NOT</td> <!-- Iceland -->
       <td>MAY NOT</td> <!-- Estonia -->
       <td>MAY NOT</td> <!-- Romania -->
+      <td>MAY NOT</td> <!-- Austria -->
+      <td>MAY NOT</td> <!-- Bulgara -->
+      <td>MAY NOT</td> <!-- Czechia -->
+      <td>MAY NOT</td> <!-- Greece -->
+      <td>MAY NOT</td> <!-- Hungary -->
+      <td>MAY NOT</td> <!-- Poland -->
+      <td>MAY NOT</td> <!-- Slovakia -->
     </tr>
     <tr>
       <td><b>email_verified</b></td>
@@ -302,6 +386,13 @@ How to understand the table below:
       <td>Only if "email" available</td> <!-- Iceland -->
       <td>Only if "email" available</td> <!-- Estonia -->
       <td>Only if "email" available</td> <!-- Romania -->
+      <td>Only if "email" available</td> <!-- Austria -->
+      <td>Only if "email" available</td> <!-- Bulgara -->
+      <td>Only if "email" available</td> <!-- Czechia -->
+      <td>Only if "email" available</td> <!-- Greece -->
+      <td>Only if "email" available</td> <!-- Hungary -->
+      <td>Only if "email" available</td> <!-- Poland -->
+      <td>Only if "email" available</td> <!-- Slovakia -->
     </tr>
     <tr>
       <td><b>phone_number</b></td>
@@ -323,6 +414,13 @@ How to understand the table below:
       <td>SHALL</td> <!-- Iceland -->
       <td>SHALL</td> <!-- Estonia -->
       <td>SHALL</td> <!-- Romania -->
+      <td>SHALL</td> <!-- Austria -->
+      <td>SHALL</td> <!-- Bulgara -->
+      <td>SHALL</td> <!-- Czechia -->
+      <td>SHALL</td> <!-- Greece -->
+      <td>SHALL</td> <!-- Hungary -->
+      <td>SHALL</td> <!-- Poland -->
+      <td>SHALL</td> <!-- Slovakia -->
     </tr>
     <tr>
       <td><b>phone_number_verified</b></td>
@@ -344,6 +442,13 @@ How to understand the table below:
       <td>SHALL</td> <!-- Iceland -->
       <td>SHALL</td> <!-- Estonia -->
       <td>SHALL</td> <!-- Romania -->
+      <td>SHALL</td> <!-- Austria -->
+      <td>SHALL</td> <!-- Bulgara -->
+      <td>SHALL</td> <!-- Czechia -->
+      <td>SHALL</td> <!-- Greece -->
+      <td>SHALL</td> <!-- Hungary -->
+      <td>SHALL</td> <!-- Poland -->
+      <td>SHALL</td> <!-- Slovakia -->
     </tr>
     <tr>
       <td><b>address</b></td>
@@ -365,6 +470,13 @@ How to understand the table below:
       <td>SHALL NOT</td> <!-- Iceland -->
       <td>SHALL NOT</td> <!-- Estonia -->
       <td>SHALL NOT</td> <!-- Romania -->
+      <td>SHALL NOT</td> <!-- Austria -->
+      <td>SHALL NOT</td> <!-- Bulgara -->
+      <td>SHALL NOT</td> <!-- Czechia -->
+      <td>SHALL NOT</td> <!-- Greece -->
+      <td>SHALL NOT</td> <!-- Hungary -->
+      <td>SHALL NOT</td> <!-- Poland -->
+      <td>SHALL NOT</td> <!-- Slovakia -->
     </tr>
     <tr>
       <td>http://itsme.services/v2/<br>claim/<b>claim_citizenship</b></td>
@@ -386,6 +498,13 @@ How to understand the table below:
       <td>SHALL</td> <!-- Iceland -->
       <td>SHALL</td> <!-- Estonia -->
       <td>SHALL</td> <!-- Romania -->
+      <td>SHALL</td> <!-- Austria -->
+      <td>SHALL</td> <!-- Bulgara -->
+      <td>SHALL</td> <!-- Czechia -->
+      <td>SHALL</td> <!-- Greece -->
+      <td>SHALL</td> <!-- Hungary -->
+      <td>SHALL</td> <!-- Poland -->
+      <td>SHALL</td> <!-- Slovakia -->
     </tr>
     <tr>
       <td>http://itsme.services/v2/<br>claim/<b>claim_citizenship_as_iso</b></td>
@@ -407,6 +526,13 @@ How to understand the table below:
       <td>SHALL</td> <!-- Iceland -->
       <td>SHALL</td> <!-- Estonia -->
       <td>SHALL</td> <!-- Romania -->
+      <td>SHALL</td> <!-- Austria -->
+      <td>SHALL</td> <!-- Bulgara -->
+      <td>SHALL</td> <!-- Czechia -->
+      <td>SHALL</td> <!-- Greece -->
+      <td>SHALL</td> <!-- Hungary -->
+      <td>SHALL</td> <!-- Poland -->
+      <td>SHALL</td> <!-- Slovakia -->
     </tr>
     <tr>
       <td>http://itsme.services/v2/<br>claim/<b>place_of_birth</b></td>
@@ -428,6 +554,13 @@ How to understand the table below:
       <td>SHALL NOT</td> <!-- Iceland -->
       <td>SHALL NOT</td> <!-- Estonia -->
       <td>SHALL NOT</td> <!-- Romania -->
+      <td>SHALL NOT</td> <!-- Austria -->
+      <td>SHALL NOT</td> <!-- Bulgara -->
+      <td>SHALL NOT</td> <!-- Czechia -->
+      <td>SHALL NOT</td> <!-- Greece -->
+      <td>SHALL NOT</td> <!-- Hungary -->
+      <td>SHALL NOT</td> <!-- Poland -->
+      <td>SHALL NOT</td> <!-- Slovakia -->
     </tr>
     <tr>
       <td>http://itsme.services/v2/<br>claim/<b>BEeidSn</b></td>
@@ -449,6 +582,13 @@ How to understand the table below:
       <td>SHALL NOT</td> <!-- Iceland -->
       <td>SHALL NOT</td> <!-- Estonia -->
       <td>SHALL NOT</td> <!-- Romania -->
+      <td>SHALL NOT</td> <!-- Austria -->
+      <td>SHALL NOT</td> <!-- Bulgara -->
+      <td>SHALL NOT</td> <!-- Czechia -->
+      <td>SHALL NOT</td> <!-- Greece -->
+      <td>SHALL NOT</td> <!-- Hungary -->
+      <td>SHALL NOT</td> <!-- Poland -->
+      <td>SHALL NOT</td> <!-- Slovakia -->
     </tr>
     <tr>
       <td>http://itsme.services/v2/<br>claim/<b>claim_device</b></td>
@@ -470,6 +610,13 @@ How to understand the table below:
       <td>MAY NOT</td> <!-- Iceland -->
       <td>MAY NOT</td> <!-- Estonia -->
       <td>MAY NOT</td> <!-- Romania -->
+      <td>MAY NOT</td> <!-- Austria -->
+      <td>MAY NOT</td> <!-- Bulgara -->
+      <td>MAY NOT</td> <!-- Czechia -->
+      <td>MAY NOT</td> <!-- Greece -->
+      <td>MAY NOT</td> <!-- Hungary -->
+      <td>MAY NOT</td> <!-- Poland -->
+      <td>MAY NOT</td> <!-- Slovakia -->
     </tr>
     <tr>
       <td>http://itsme.services/v2/<br>claim/<b>BENationalNumber</b></td>
@@ -491,6 +638,13 @@ How to understand the table below:
       <td>SHALL NOT</td> <!-- Iceland -->
       <td>SHALL NOT</td> <!-- Estonia -->
       <td>SHALL NOT</td> <!-- Romania -->
+      <td>SHALL NOT</td> <!-- Austria -->
+      <td>SHALL NOT</td> <!-- Bulgara -->
+      <td>SHALL NOT</td> <!-- Czechia -->
+      <td>SHALL NOT</td> <!-- Greece -->
+      <td>SHALL NOT</td> <!-- Hungary -->
+      <td>SHALL NOT</td> <!-- Poland -->
+      <td>SHALL NOT</td> <!-- Slovakia -->
     </tr>
     <tr>
       <td>http://itsme.services/v2/<br>claim/<b>RONationalNumber</b></td>
@@ -512,6 +666,97 @@ How to understand the table below:
       <td>SHALL NOT</td> <!-- Iceland -->
       <td>SHALL NOT</td> <!-- Estonia -->
       <td>SHALL</td> <!-- Romania -->
+      <td>SHALL NOT</td> <!-- Austria -->
+      <td>SHALL NOT</td> <!-- Bulgara -->
+      <td>SHALL NOT</td> <!-- Czechia -->
+      <td>SHALL NOT</td> <!-- Greece -->
+      <td>SHALL NOT</td> <!-- Hungary -->
+      <td>SHALL NOT</td> <!-- Poland -->
+      <td>SHALL NOT</td> <!-- Slovakia -->
+    </tr>
+    <tr>
+      <td>http://itsme.services/v2/<br>claim/<b>BGNationalNumber</b></td>
+      <td>User's Bulgarian unique identification number.</td>
+      <td>SHALL NOT</td> <!-- Belgium -->
+      <td>SHALL NOT</td> <!-- Netherlands -->
+      <td>SHALL NOT</td> <!-- Luxembourg -->
+      <td>SHALL NOT</td> <!-- Ireland -->
+      <td>SHALL NOT</td> <!-- Portugal -->
+      <td>SHALL NOT</td> <!-- Italy -->
+      <td>SHALL NOT</td> <!-- France -->
+      <td>SHALL NOT</td> <!-- Spain -->
+      <td>SHALL NOT</td> <!-- UK -->
+      <td>SHALL NOT</td> <!-- Germany -->
+      <td>SHALL NOT</td> <!-- Finland -->
+      <td>SHALL NOT</td> <!-- Norway -->
+      <td>SHALL NOT</td> <!-- Sweden -->
+      <td>SHALL NOT</td> <!-- Denmark -->
+      <td>SHALL NOT</td> <!-- Iceland -->
+      <td>SHALL NOT</td> <!-- Estonia -->
+      <td>SHALL NOT</td> <!-- Romania -->
+      <td>SHALL NOT</td> <!-- Austria -->
+      <td>SHALL</td> <!-- Bulgara -->
+      <td>SHALL NOT</td> <!-- Czechia -->
+      <td>SHALL NOT</td> <!-- Greece -->
+      <td>SHALL NOT</td> <!-- Hungary -->
+      <td>SHALL NOT</td> <!-- Poland -->
+      <td>SHALL NOT</td> <!-- Slovakia -->
+    </tr>
+    <tr>
+      <td>http://itsme.services/v2/<br>claim/<b>CZNationalNumber</b></td>
+      <td>User's Czech unique identification number.</td>
+      <td>SHALL NOT</td> <!-- Belgium -->
+      <td>SHALL NOT</td> <!-- Netherlands -->
+      <td>SHALL NOT</td> <!-- Luxembourg -->
+      <td>SHALL NOT</td> <!-- Ireland -->
+      <td>SHALL NOT</td> <!-- Portugal -->
+      <td>SHALL NOT</td> <!-- Italy -->
+      <td>SHALL NOT</td> <!-- France -->
+      <td>SHALL NOT</td> <!-- Spain -->
+      <td>SHALL NOT</td> <!-- UK -->
+      <td>SHALL NOT</td> <!-- Germany -->
+      <td>SHALL NOT</td> <!-- Finland -->
+      <td>SHALL NOT</td> <!-- Norway -->
+      <td>SHALL NOT</td> <!-- Sweden -->
+      <td>SHALL NOT</td> <!-- Denmark -->
+      <td>SHALL NOT</td> <!-- Iceland -->
+      <td>SHALL NOT</td> <!-- Estonia -->
+      <td>SHALL NOT</td> <!-- Romania -->
+      <td>SHALL NOT</td> <!-- Austria -->
+      <td>SHALL NOT</td> <!-- Bulgara -->
+      <td>SHALL</td> <!-- Czechia -->
+      <td>SHALL NOT</td> <!-- Greece -->
+      <td>SHALL NOT</td> <!-- Hungary -->
+      <td>SHALL NOT</td> <!-- Poland -->
+      <td>SHALL NOT</td> <!-- Slovakia -->
+    </tr>
+    <tr>
+      <td>http://itsme.services/v2/<br>claim/<b>SKNationalNumber</b></td>
+      <td>User's Slovakian unique identification number.</td>
+      <td>SHALL NOT</td> <!-- Belgium -->
+      <td>SHALL NOT</td> <!-- Netherlands -->
+      <td>SHALL NOT</td> <!-- Luxembourg -->
+      <td>SHALL NOT</td> <!-- Ireland -->
+      <td>SHALL NOT</td> <!-- Portugal -->
+      <td>SHALL NOT</td> <!-- Italy -->
+      <td>SHALL NOT</td> <!-- France -->
+      <td>SHALL NOT</td> <!-- Spain -->
+      <td>SHALL NOT</td> <!-- UK -->
+      <td>SHALL NOT</td> <!-- Germany -->
+      <td>SHALL NOT</td> <!-- Finland -->
+      <td>SHALL NOT</td> <!-- Norway -->
+      <td>SHALL NOT</td> <!-- Sweden -->
+      <td>SHALL NOT</td> <!-- Denmark -->
+      <td>SHALL NOT</td> <!-- Iceland -->
+      <td>SHALL NOT</td> <!-- Estonia -->
+      <td>SHALL NOT</td> <!-- Romania -->
+      <td>SHALL NOT</td> <!-- Austria -->
+      <td>SHALL NOT</td> <!-- Bulgara -->
+      <td>SHALL NOT</td> <!-- Czechia -->
+      <td>SHALL NOT</td> <!-- Greece -->
+      <td>SHALL NOT</td> <!-- Hungary -->
+      <td>SHALL NOT</td> <!-- Poland -->
+      <td>SHALL</td> <!-- Slovakia -->
     </tr>
     <tr>
       <td>http://itsme.services/v2/<br>claim/<b>validityFrom</b></td>
@@ -533,6 +778,13 @@ How to understand the table below:
       <td>SHALL NOT</td> <!-- Iceland -->
       <td>SHALL NOT</td> <!-- Estonia -->
       <td>SHALL NOT</td> <!-- Romania -->
+      <td>SHALL NOT</td> <!-- Austria -->
+      <td>SHALL NOT</td> <!-- Bulgara -->
+      <td>SHALL NOT</td> <!-- Czechia -->
+      <td>SHALL NOT</td> <!-- Greece -->
+      <td>SHALL NOT</td> <!-- Hungary -->
+      <td>SHALL NOT</td> <!-- Poland -->
+      <td>SHALL NOT</td> <!-- Slovakia -->
     </tr>
     <tr>
       <td>http://itsme.services/v2/<br>claim/<b>validityTo</b></td>
@@ -554,6 +806,13 @@ How to understand the table below:
       <td>SHALL</td> <!-- Iceland -->
       <td>SHALL</td> <!-- Estonia -->
       <td>SHALL</td> <!-- Romania -->
+      <td>SHALL</td> <!-- Austria -->
+      <td>SHALL</td> <!-- Bulgara -->
+      <td>SHALL</td> <!-- Czechia -->
+      <td>SHALL</td> <!-- Greece -->
+      <td>SHALL</td> <!-- Hungary -->
+      <td>SHALL</td> <!-- Poland -->
+      <td>SHALL</td> <!-- Slovakia -->
     </tr>
     <tr>
       <td>http://itsme.services/v2/<br>claim/<b>verificationDate</b></td>
@@ -575,6 +834,13 @@ How to understand the table below:
       <td>SHALL</td> <!-- Iceland -->
       <td>SHALL</td> <!-- Estonia -->
       <td>SHALL</td> <!-- Romania -->
+      <td>SHALL</td> <!-- Austria -->
+      <td>SHALL</td> <!-- Bulgara -->
+      <td>SHALL</td> <!-- Czechia -->
+      <td>SHALL</td> <!-- Greece -->
+      <td>SHALL</td> <!-- Hungary -->
+      <td>SHALL</td> <!-- Poland -->
+      <td>SHALL</td> <!-- Slovakia -->
     </tr>
     <tr>
       <td>http://itsme.services/v2/<br>claim/<b>IDDocumentSN</b></td>
@@ -596,6 +862,13 @@ How to understand the table below:
       <td>SHALL</td> <!-- Iceland -->
       <td>SHALL</td> <!-- Estonia -->
       <td>SHALL</td> <!-- Romania -->
+      <td>SHALL</td> <!-- Austria -->
+      <td>SHALL</td> <!-- Bulgara -->
+      <td>SHALL</td> <!-- Czechia -->
+      <td>SHALL</td> <!-- Greece -->
+      <td>SHALL</td> <!-- Hungary -->
+      <td>SHALL</td> <!-- Poland -->
+      <td>SHALL</td> <!-- Slovakia -->
     </tr>
     <tr>
       <td>http://itsme.services/v2/<br>claim/<b>IDDocumentType</b></td>
@@ -617,6 +890,13 @@ How to understand the table below:
       <td>SHALL</td> <!-- Iceland -->
       <td>SHALL</td> <!-- Estonia -->
       <td>SHALL</td> <!-- Romania -->
+      <td>SHALL</td> <!-- Austria -->
+      <td>SHALL</td> <!-- Bulgara -->
+      <td>SHALL</td> <!-- Czechia -->
+      <td>SHALL</td> <!-- Greece -->
+      <td>SHALL</td> <!-- Hungary -->
+      <td>SHALL</td> <!-- Poland -->
+      <td>SHALL</td> <!-- Slovakia -->
     </tr>
     <tr>
       <td>http://itsme.services/v2/<br>claim/<b>IDIssuingCountry</b></td>
@@ -638,6 +918,13 @@ How to understand the table below:
       <td>SHALL</td> <!-- Iceland -->
       <td>SHALL</td> <!-- Estonia -->
       <td>SHALL</td> <!-- Romania -->
+      <td>SHALL</td> <!-- Austria -->
+      <td>SHALL</td> <!-- Bulgara -->
+      <td>SHALL</td> <!-- Czechia -->
+      <td>SHALL</td> <!-- Greece -->
+      <td>SHALL</td> <!-- Hungary -->
+      <td>SHALL</td> <!-- Poland -->
+      <td>SHALL</td> <!-- Slovakia -->
     </tr>
     <tr>
       <td>http://itsme.services/v2/<br>claim/<b>issuance_locality</b></td>
@@ -659,6 +946,13 @@ How to understand the table below:
       <td>SHALL NOT</td> <!-- Iceland -->
       <td>SHALL NOT</td> <!-- Estonia -->
       <td>SHALL NOT</td> <!-- Romania -->
+      <td>SHALL NOT</td> <!-- Austria -->
+      <td>SHALL NOT</td> <!-- Bulgara -->
+      <td>SHALL NOT</td> <!-- Czechia -->
+      <td>SHALL NOT</td> <!-- Greece -->
+      <td>SHALL NOT</td> <!-- Hungary -->
+      <td>SHALL NOT</td> <!-- Poland -->
+      <td>SHALL NOT</td> <!-- Slovakia -->
     </tr>
     <tr>
       <td>http://itsme.services/v2/<br>claim/<b>app</b></td>
@@ -680,6 +974,13 @@ How to understand the table below:
       <td>SHALL</td> <!-- Iceland -->
       <td>SHALL</td> <!-- Estonia -->
       <td>SHALL</td> <!-- Romania -->
+      <td>SHALL</td> <!-- Austria -->
+      <td>SHALL</td> <!-- Bulgara -->
+      <td>SHALL</td> <!-- Czechia -->
+      <td>SHALL</td> <!-- Greece -->
+      <td>SHALL</td> <!-- Hungary -->
+      <td>SHALL</td> <!-- Poland -->
+      <td>SHALL</td> <!-- Slovakia -->
     </tr>
     <tr>
       <td>http://itsme.services/v2/<br>claim/<b>account</b></td>
@@ -701,6 +1002,13 @@ How to understand the table below:
       <td>SHALL</td> <!-- Iceland -->
       <td>SHALL</td> <!-- Estonia -->
       <td>SHALL</td> <!-- Romania -->
+      <td>SHALL</td> <!-- Austria -->
+      <td>SHALL</td> <!-- Bulgara -->
+      <td>SHALL</td> <!-- Czechia -->
+      <td>SHALL</td> <!-- Greece -->
+      <td>SHALL</td> <!-- Hungary -->
+      <td>SHALL</td> <!-- Poland -->
+      <td>SHALL</td> <!-- Slovakia -->
     </tr>
     <tr>
       <td>http://itsme.services/v2/<br>claim/<b>transaction_ip</b></td>
@@ -722,6 +1030,13 @@ How to understand the table below:
       <td>SHALL</td> <!-- Iceland -->
       <td>SHALL</td> <!-- Estonia -->
       <td>SHALL</td> <!-- Romania -->
+      <td>SHALL</td> <!-- Austria -->
+      <td>SHALL</td> <!-- Bulgara -->
+      <td>SHALL</td> <!-- Czechia -->
+      <td>SHALL</td> <!-- Greece -->
+      <td>SHALL</td> <!-- Hungary -->
+      <td>SHALL</td> <!-- Poland -->
+      <td>SHALL</td> <!-- Slovakia -->
     </tr>    
   </tbody>
 </table>
