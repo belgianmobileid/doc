@@ -1011,6 +1011,34 @@ How to understand the table below:
       <td>SHALL</td> <!-- Slovakia -->
     </tr>
     <tr>
+      <td>http://itsme.services/v2/<br>claim/<b>identification_mode</b></td>
+      <td>An indication of the way the user initiated the itsme® transaction. Can contain "QR", "MSISDN" (i.e. phone number) or "a2a" (i.e. app to app flow). Other values can be added in the future.</td>
+      <td>SHALL</td> <!-- Belgium -->
+      <td>SHALL</td> <!-- Netherlands -->
+      <td>SHALL</td> <!-- Luxembourg -->
+      <td>SHALL</td> <!-- Ireland -->
+      <td>SHALL</td> <!-- Portugal -->
+      <td>SHALL</td> <!-- Italy -->
+      <td>SHALL</td> <!-- France -->
+      <td>SHALL</td> <!-- Spain -->
+      <td>SHALL</td> <!-- UK -->
+      <td>SHALL</td> <!-- Germany -->
+      <td>SHALL</td> <!-- Finland -->
+      <td>SHALL</td> <!-- Norway -->
+      <td>SHALL</td> <!-- Sweden -->
+      <td>SHALL</td> <!-- Denmark -->
+      <td>SHALL</td> <!-- Iceland -->
+      <td>SHALL</td> <!-- Estonia -->
+      <td>SHALL</td> <!-- Romania -->
+      <td>SHALL</td> <!-- Austria -->
+      <td>SHALL</td> <!-- Bulgara -->
+      <td>SHALL</td> <!-- Czechia -->
+      <td>SHALL</td> <!-- Greece -->
+      <td>SHALL</td> <!-- Hungary -->
+      <td>SHALL</td> <!-- Poland -->
+      <td>SHALL</td> <!-- Slovakia -->
+    </tr>
+    <tr>
       <td>http://itsme.services/v2/<br>claim/<b>transaction_ip</b></td>
       <td>The IP address of the smartphone approving the transaction.<br>This claim is intended to help partners detect fraudulent use cases.</td>
       <td>SHALL</td> <!-- Belgium -->

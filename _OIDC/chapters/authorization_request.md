@@ -198,6 +198,9 @@
             <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/account" req="OPTIONAL" %}</td><td>Returns a JSON object with 3 members: <code>activationDate</code> contains the date when the account was last activated (enrolled or unblocked), represented as a string in YYYY-MM-DDThh:mm:ss.nnnZ date format specified by ISO 8601. <code>activationMechanism</code> contains a string identifying the way this account was created. Possible values are "CARD_READER" (enrollment via a physical reading of the ID document chip), "CONTACT_LESS" (enrollment via a NFC reading of the ID document) or "ID_PROVIDER" (enrollment via a trusted partner, i.e. a bank).<br>This claim is intended to help partners detect fraudulent use cases.</td>
           </tr>
           <tr>
+            <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/identification_mode" req="OPTIONAL" %}</td><td>An indication of the way the user initiated the itsme® transaction. Can contain "QR", "MSISDN" (i.e. phone number) or "a2a" (i.e. app to app flow). Other values can be added in the future.</td>
+          </tr>
+          <tr>
             <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/transaction_ip" req="OPTIONAL" %}</td><td>Returns the IP address of the smartphone approving the transaction.<br>This claim is intended to help partners detect fraudulent use cases.</td>
           </tr>
           {% if page.title contains "Confirmation" %}
