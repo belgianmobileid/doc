@@ -279,7 +279,7 @@ How to understand the table below:
     <tr>
       <td><b>picture</b></td>
       <td>User's ID picture, represented as a URL string. This URL points to an image file (for example, a JPEG, JPEG2000, or PNG image file). This image is the raw (unprocessed) image contained on the ID document.<br />
-      Accessing this URL has to be done with your bearer token. Example:<br />
+      Accessing this URL requires using your Access Token (received in the response to your Token Request) as a bearer token. Example:<br />
             <code>
               GET /v2/picture HTTP/1.1<br />
               Host: idp.prd.itsme.services<br />

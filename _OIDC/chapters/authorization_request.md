@@ -34,7 +34,10 @@
           </tr> 
           <tr>
             <td>{% include parameter.html name="phone" req="OPTIONAL" %}</td><td>Returns the <code>phone_number</code> claim, which contains the user's phone number, and <code>phone_number_verified</code>, which is a boolean indicating whether the phone number was verified by the user.<br><br>If requested, a value SHALL always be returned for the above claims.</td>
-          </tr> 
+          </tr>
+          <tr>
+            <td>{% include parameter.html name="idDocument" req="OPTIONAL" %}</td><td>Returns the following claims, providing complete information about the ID document used to create the user's itsme account: <code>http://itsme.services/v2/claim/IDDocumentSN</code>, <code>http://itsme.services/v2/claim/IDDocumentType</code>, <code>http://itsme.services/v2/claim/IDIssuingCountry</code>, <code>http://itsme.services/v2/claim/validityFrom</code> and <code>http://itsme.services/v2/claim/validityTo</code>.<br><br>If requested, a value SHALL always be returned for the above claims, except for <code>http://itsme.services/v2/claim/validityFrom</code> which is only available on Belgian documents.</td>
+          </tr>
           <tr>
             <td>{% include parameter.html name="eid" req="OPTIONAL" %}</td><td>Returns the <code>http://itsme.services/v2/claim/BENationalNumber</code> claim, which contains the unique identification number of natural persons who are registered in Belgium, and <code>http://itsme.services/v2/claim/BEeidSn</code>, which is a string indicating the Belgian ID card number.<br><br>If requested, a value SHALL always be returned for the above claims.</td>
           </tr>
@@ -115,7 +118,7 @@
           </tr>
           <tr>
             <td>{% include parameter.html name="picture" req="OPTIONAL" %}</td><td>Returns user's ID picture, represented as a URL string. This URL refers to an image file (for example, a JPEG, JPEG2000, or PNG image file). This image is the raw (unprocessed) image contained on the ID document.<br /><br />
-            Accessing this URL has to be done with your bearer token. Example:<br />
+            Accessing this URL requires using your Access Token (received in the response to your Token Request) as a bearer token. Example:<br />
             <code>
               GET /v2/picture HTTP/1.1<br />
               Host: idp.prd.itsme.services<br />
