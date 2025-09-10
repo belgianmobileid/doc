@@ -108,16 +108,16 @@
             <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/birthdate_as_string" req="OPTIONAL" %}</td><td>Returns user's birthdate in an unprocessed way, as mentioned on the ID document. itsme® users are always 16 years old or more.</td>
           </tr>
           <tr>
-            <td>{% include parameter.html name="age_gte_16" req="OPTIONAL" %}</td><td>Returns "true" if the age of the user is greater than or equal to 16 years old. Returns "false" otherwise. This claim is meant to be used for age verification in contexts where data minimisation is relevant and you don't need the exact birthdate.</td>
+            <td>{% include parameter.html name="age_gte_16" req="OPTIONAL" %}</td><td>Returns <code>true</code> if the age of the user is greater than or equal to 16 years old. Returns <code>false</code> otherwise. This claim is meant to be used for age verification in contexts where data minimisation is relevant and you don't need the exact birthdate.</td>
           </tr>
           <tr>
-            <td>{% include parameter.html name="age_gte_18" req="OPTIONAL" %}</td><td>Returns "true" if the age of the user is greater than or equal to 18 years old. Returns "false" otherwise. This claim is meant to be used for age verification in contexts where data minimisation is relevant and you don't need the exact birthdate.</td>
+            <td>{% include parameter.html name="age_gte_18" req="OPTIONAL" %}</td><td>Returns <code>true</code> if the age of the user is greater than or equal to 18 years old. Returns <code>false</code> otherwise. This claim is meant to be used for age verification in contexts where data minimisation is relevant and you don't need the exact birthdate.</td>
           </tr>
           <tr>
-            <td>{% include parameter.html name="age_gte_21" req="OPTIONAL" %}</td><td>Returns "true" if the age of the user is greater than or equal to 21 years old. Returns "false" otherwise. This claim is meant to be used for age verification in contexts where data minimisation is relevant and you don't need the exact birthdate.</td>
+            <td>{% include parameter.html name="age_gte_21" req="OPTIONAL" %}</td><td>Returns <code>true</code> if the age of the user is greater than or equal to 21 years old. Returns <code>false</code> otherwise. This claim is meant to be used for age verification in contexts where data minimisation is relevant and you don't need the exact birthdate.</td>
           </tr>
           <tr>
-            <td>{% include parameter.html name="age_gte_30" req="OPTIONAL" %}</td><td>Returns "true" if the age of the user is greater than or equal to 30 years old. Returns "false" otherwise. This claim is meant to be used for age verification in contexts where data minimisation is relevant and you don't need the exact birthdate.</td>
+            <td>{% include parameter.html name="age_gte_30" req="OPTIONAL" %}</td><td>Returns <code>true</code> if the age of the user is greater than or equal to 30 years old. Returns <code>false</code> otherwise. This claim is meant to be used for age verification in contexts where data minimisation is relevant and you don't need the exact birthdate.</td>
           </tr>
           <tr>
             <td>{% include parameter.html name="gender" req="OPTIONAL" %}</td><td>Returns user's gender. Possible values are: <code>female</code> <code>male</code> <code>unknown</code> <code>n/a</code>. If the value mentioned on the user's ID document is different from those (local language, letter code...), then we apply a best-effort mapping to one of those values.</td>

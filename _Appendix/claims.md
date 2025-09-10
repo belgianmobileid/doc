@@ -194,7 +194,7 @@ How to understand the table below:
     </tr>
     <tr>
       <td><b>age_gte_16</b></td>
-      <td>Returns "true" if the age of the user is greater than or equal to 16 years old. Returns "false" otherwise. This claim is meant to be used for age verification in contexts where data minimisation is relevant and you don't need the exact birthdate. This claim is always returned except for accounts without a valid birthdate.</td>
+      <td>Returns <code>true</code> if the age of the user is greater than or equal to 16 years old. Returns <code>false</code> otherwise. This claim is meant to be used for age verification in contexts where data minimisation is relevant and you don't need the exact birthdate. This claim is always returned except for accounts without a valid birthdate.</td>
       <td>MAY NOT</td> <!-- Belgium -->
       <td>SHALL</td> <!-- Netherlands -->
       <td>SHALL</td> <!-- Luxembourg -->
@@ -222,7 +222,7 @@ How to understand the table below:
     </tr>
     <tr>
       <td><b>age_gte_18</b></td>
-      <td>Returns "true" if the age of the user is greater than or equal to 18 years old. Returns "false" otherwise. This claim is meant to be used for age verification in contexts where data minimisation is relevant and you don't need the exact birthdate. This claim is always returned except for accounts without a valid birthdate.</td>
+      <td>Returns <code>true</code> if the age of the user is greater than or equal to 18 years old. Returns <code>false</code> otherwise. This claim is meant to be used for age verification in contexts where data minimisation is relevant and you don't need the exact birthdate. This claim is always returned except for accounts without a valid birthdate.</td>
       <td>MAY NOT</td> <!-- Belgium -->
       <td>SHALL</td> <!-- Netherlands -->
       <td>SHALL</td> <!-- Luxembourg -->
@@ -250,7 +250,7 @@ How to understand the table below:
     </tr>
     <tr>
       <td><b>age_gte_21</b></td>
-      <td>Returns "true" if the age of the user is greater than or equal to 21 years old. Returns "false" otherwise. This claim is meant to be used for age verification in contexts where data minimisation is relevant and you don't need the exact birthdate. This claim is always returned except for accounts without a valid birthdate.</td>
+      <td>Returns <code>true</code> if the age of the user is greater than or equal to 21 years old. Returns <code>false</code> otherwise. This claim is meant to be used for age verification in contexts where data minimisation is relevant and you don't need the exact birthdate. This claim is always returned except for accounts without a valid birthdate.</td>
       <td>MAY NOT</td> <!-- Belgium -->
       <td>SHALL</td> <!-- Netherlands -->
       <td>SHALL</td> <!-- Luxembourg -->
@@ -278,7 +278,7 @@ How to understand the table below:
     </tr>
     <tr>
       <td><b>age_gte_30</b></td>
-      <td>Returns "true" if the age of the user is greater than or equal to 30 years old. Returns "false" otherwise. This claim is meant to be used for age verification in contexts where data minimisation is relevant and you don't need the exact birthdate. This claim is always returned except for accounts without a valid birthdate.</td>
+      <td>Returns <code>true</code> if the age of the user is greater than or equal to 30 years old. Returns <code>false</code> otherwise. This claim is meant to be used for age verification in contexts where data minimisation is relevant and you don't need the exact birthdate. This claim is always returned except for accounts without a valid birthdate.</td>
       <td>MAY NOT</td> <!-- Belgium -->
       <td>SHALL</td> <!-- Netherlands -->
       <td>SHALL</td> <!-- Luxembourg -->
