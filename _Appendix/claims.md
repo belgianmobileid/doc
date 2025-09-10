@@ -193,6 +193,118 @@ How to understand the table below:
       <td>SHALL NOT</td> <!-- Slovakia -->
     </tr>
     <tr>
+      <td><b>age_gte_16</b></td>
+      <td>Returns "true" if the age of the user is greater than or equal to 16 years old. Returns "false" otherwise. This claim is meant to be used for age verification in contexts where data minimisation is relevant and you don't need the exact birthdate. This claim is always returned except for accounts without a valid birthdate.</td>
+      <td>MAY NOT</td> <!-- Belgium -->
+      <td>SHALL</td> <!-- Netherlands -->
+      <td>SHALL</td> <!-- Luxembourg -->
+      <td>SHALL</td> <!-- Ireland -->
+      <td>SHALL</td> <!-- Portugal -->
+      <td>SHALL</td> <!-- Italy -->
+      <td>SHALL</td> <!-- France -->
+      <td>SHALL</td> <!-- Spain -->
+      <td>SHALL</td> <!-- UK -->
+      <td>SHALL</td> <!-- Germany -->
+      <td>SHALL</td> <!-- Finland -->
+      <td>SHALL</td> <!-- Norway -->
+      <td>SHALL</td> <!-- Sweden -->
+      <td>SHALL</td> <!-- Denmark -->
+      <td>SHALL</td> <!-- Iceland -->
+      <td>SHALL</td> <!-- Estonia -->
+      <td>SHALL</td> <!-- Romania -->
+      <td>SHALL</td> <!-- Austria -->
+      <td>SHALL</td> <!-- Bulgara -->
+      <td>SHALL</td> <!-- Czechia -->
+      <td>SHALL</td> <!-- Greece -->
+      <td>SHALL</td> <!-- Hungary -->
+      <td>SHALL</td> <!-- Poland -->
+      <td>SHALL</td> <!-- Slovakia -->
+    </tr>
+    <tr>
+      <td><b>age_gte_18</b></td>
+      <td>Returns "true" if the age of the user is greater than or equal to 18 years old. Returns "false" otherwise. This claim is meant to be used for age verification in contexts where data minimisation is relevant and you don't need the exact birthdate. This claim is always returned except for accounts without a valid birthdate.</td>
+      <td>MAY NOT</td> <!-- Belgium -->
+      <td>SHALL</td> <!-- Netherlands -->
+      <td>SHALL</td> <!-- Luxembourg -->
+      <td>SHALL</td> <!-- Ireland -->
+      <td>SHALL</td> <!-- Portugal -->
+      <td>SHALL</td> <!-- Italy -->
+      <td>SHALL</td> <!-- France -->
+      <td>SHALL</td> <!-- Spain -->
+      <td>SHALL</td> <!-- UK -->
+      <td>SHALL</td> <!-- Germany -->
+      <td>SHALL</td> <!-- Finland -->
+      <td>SHALL</td> <!-- Norway -->
+      <td>SHALL</td> <!-- Sweden -->
+      <td>SHALL</td> <!-- Denmark -->
+      <td>SHALL</td> <!-- Iceland -->
+      <td>SHALL</td> <!-- Estonia -->
+      <td>SHALL</td> <!-- Romania -->
+      <td>SHALL</td> <!-- Austria -->
+      <td>SHALL</td> <!-- Bulgara -->
+      <td>SHALL</td> <!-- Czechia -->
+      <td>SHALL</td> <!-- Greece -->
+      <td>SHALL</td> <!-- Hungary -->
+      <td>SHALL</td> <!-- Poland -->
+      <td>SHALL</td> <!-- Slovakia -->
+    </tr>
+    <tr>
+      <td><b>age_gte_21</b></td>
+      <td>Returns "true" if the age of the user is greater than or equal to 21 years old. Returns "false" otherwise. This claim is meant to be used for age verification in contexts where data minimisation is relevant and you don't need the exact birthdate. This claim is always returned except for accounts without a valid birthdate.</td>
+      <td>MAY NOT</td> <!-- Belgium -->
+      <td>SHALL</td> <!-- Netherlands -->
+      <td>SHALL</td> <!-- Luxembourg -->
+      <td>SHALL</td> <!-- Ireland -->
+      <td>SHALL</td> <!-- Portugal -->
+      <td>SHALL</td> <!-- Italy -->
+      <td>SHALL</td> <!-- France -->
+      <td>SHALL</td> <!-- Spain -->
+      <td>SHALL</td> <!-- UK -->
+      <td>SHALL</td> <!-- Germany -->
+      <td>SHALL</td> <!-- Finland -->
+      <td>SHALL</td> <!-- Norway -->
+      <td>SHALL</td> <!-- Sweden -->
+      <td>SHALL</td> <!-- Denmark -->
+      <td>SHALL</td> <!-- Iceland -->
+      <td>SHALL</td> <!-- Estonia -->
+      <td>SHALL</td> <!-- Romania -->
+      <td>SHALL</td> <!-- Austria -->
+      <td>SHALL</td> <!-- Bulgara -->
+      <td>SHALL</td> <!-- Czechia -->
+      <td>SHALL</td> <!-- Greece -->
+      <td>SHALL</td> <!-- Hungary -->
+      <td>SHALL</td> <!-- Poland -->
+      <td>SHALL</td> <!-- Slovakia -->
+    </tr>
+    <tr>
+      <td><b>age_gte_30</b></td>
+      <td>Returns "true" if the age of the user is greater than or equal to 30 years old. Returns "false" otherwise. This claim is meant to be used for age verification in contexts where data minimisation is relevant and you don't need the exact birthdate. This claim is always returned except for accounts without a valid birthdate.</td>
+      <td>MAY NOT</td> <!-- Belgium -->
+      <td>SHALL</td> <!-- Netherlands -->
+      <td>SHALL</td> <!-- Luxembourg -->
+      <td>SHALL</td> <!-- Ireland -->
+      <td>SHALL</td> <!-- Portugal -->
+      <td>SHALL</td> <!-- Italy -->
+      <td>SHALL</td> <!-- France -->
+      <td>SHALL</td> <!-- Spain -->
+      <td>SHALL</td> <!-- UK -->
+      <td>SHALL</td> <!-- Germany -->
+      <td>SHALL</td> <!-- Finland -->
+      <td>SHALL</td> <!-- Norway -->
+      <td>SHALL</td> <!-- Sweden -->
+      <td>SHALL</td> <!-- Denmark -->
+      <td>SHALL</td> <!-- Iceland -->
+      <td>SHALL</td> <!-- Estonia -->
+      <td>SHALL</td> <!-- Romania -->
+      <td>SHALL</td> <!-- Austria -->
+      <td>SHALL</td> <!-- Bulgara -->
+      <td>SHALL</td> <!-- Czechia -->
+      <td>SHALL</td> <!-- Greece -->
+      <td>SHALL</td> <!-- Hungary -->
+      <td>SHALL</td> <!-- Poland -->
+      <td>SHALL</td> <!-- Slovakia -->
+    </tr>
+    <tr>
       <td><b>gender</b></td>
       <td>User's gender. Possible values are: <code>female</code> <code>male</code> <code>unknown</code> <code>n/a</code>. If the value mentioned on the user's ID document is different from those (local language, letter code...), then we apply a best-effort mapping to one of those values.</td>
       <td>SHALL</td> <!-- Belgium -->
