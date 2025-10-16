@@ -186,6 +186,24 @@
             <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/SKNationalNumber" req="OPTIONAL" %}</td><td>Returns user's Slovakian unique identification number.<br></td>
           </tr>
           <tr>
+            <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/HRNationalNumber" req="OPTIONAL" %}</td><td>Returns user's Croatian unique identification number.<br></td>
+          </tr>
+          <tr>
+            <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/LTNationalNumber" req="OPTIONAL" %}</td><td>Returns user's Lithuanian unique identification number.<br></td>
+          </tr>
+          <tr>
+            <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/SVNationalNumber" req="OPTIONAL" %}</td><td>Returns user's Slovenian unique identification number.<br></td>
+          </tr>
+          <tr>
+            <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/LVNationalNumber" req="OPTIONAL" %}</td><td>Returns user's Latvian unique identification number.<br></td>
+          </tr>
+          <tr>
+            <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/CYNationalNumber" req="OPTIONAL" %}</td><td>Returns user's Cypriot unique identification number.<br></td>
+          </tr>
+          <tr>
+            <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/MTNationalNumber" req="OPTIONAL" %}</td><td>Returns user's Maltese unique identification number.<br></td>
+          </tr>
+          <tr>
             <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/validityFrom" req="OPTIONAL" %}</td><td>This is a <a href="#metadata">metadata</a>.<br>Returns user's Belgian ID document issuance date, represented as a string in YYYY-MM-DDThh:mm:ss.nnnZ date format specified by ISO 8601. Can only be returned in combination with claim http://itsme.services/v2/claim/BEeidSn.</td>
           </tr>
           <tr>
