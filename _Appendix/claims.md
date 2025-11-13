@@ -1627,6 +1627,40 @@ How to understand the table below:
       <td>SHALL</td> <!-- Latvia -->
       <td>SHALL</td> <!-- Cyprus -->
       <td>SHALL</td> <!-- Malta -->
+    </tr>
+    <tr>
+      <td>http://itsme.services/v2/<br>claim/<b>ongoing_call</b></td>
+      <td>Returns <code>true</code> if an ongoing call was detected during the action approval or <code>false</code> otherwise.<br>This claim is intended to help partners detect fraudulent use cases.</td>
+      <td>SHALL</td> <!-- Belgium -->
+      <td>SHALL</td> <!-- Netherlands -->
+      <td>SHALL</td> <!-- Luxembourg -->
+      <td>SHALL</td> <!-- Ireland -->
+      <td>SHALL</td> <!-- Portugal -->
+      <td>SHALL</td> <!-- Italy -->
+      <td>SHALL</td> <!-- France -->
+      <td>SHALL</td> <!-- Spain -->
+      <td>SHALL</td> <!-- UK -->
+      <td>SHALL</td> <!-- Germany -->
+      <td>SHALL</td> <!-- Finland -->
+      <td>SHALL</td> <!-- Norway -->
+      <td>SHALL</td> <!-- Sweden -->
+      <td>SHALL</td> <!-- Denmark -->
+      <td>SHALL</td> <!-- Iceland -->
+      <td>SHALL</td> <!-- Estonia -->
+      <td>SHALL</td> <!-- Romania -->
+      <td>SHALL</td> <!-- Austria -->
+      <td>SHALL</td> <!-- Bulgara -->
+      <td>SHALL</td> <!-- Czechia -->
+      <td>SHALL</td> <!-- Greece -->
+      <td>SHALL</td> <!-- Hungary -->
+      <td>SHALL</td> <!-- Poland -->
+      <td>SHALL</td> <!-- Slovakia -->
+      <td>SHALL</td> <!-- Croatia -->
+      <td>SHALL</td> <!-- Lithuania -->
+      <td>SHALL</td> <!-- Slovenia -->
+      <td>SHALL</td> <!-- Latvia -->
+      <td>SHALL</td> <!-- Cyprus -->
+      <td>SHALL</td> <!-- Malta -->
     </tr>    
   </tbody>
 </table>
