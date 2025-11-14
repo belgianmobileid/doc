@@ -198,9 +198,6 @@
             <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/LVNationalNumber" req="OPTIONAL" %}</td><td>Returns user's Latvian unique identification number.<br></td>
           </tr>
           <tr>
-            <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/CYNationalNumber" req="OPTIONAL" %}</td><td>Returns user's Cypriot unique identification number.<br></td>
-          </tr>
-          <tr>
             <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/MTNationalNumber" req="OPTIONAL" %}</td><td>Returns user's Maltese unique identification number.<br></td>
           </tr>
           <tr>
