@@ -201,6 +201,12 @@
             <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/MTNationalNumber" req="OPTIONAL" %}</td><td>Returns user's Maltese unique identification number.<br></td>
           </tr>
           <tr>
+            <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/RSNationalNumber" req="OPTIONAL" %}</td><td>Returns user's Serbian unique identification number.<br></td>
+          </tr>
+          <tr>
+            <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/MDNationalNumber" req="OPTIONAL" %}</td><td>Returns user's Moldovan unique identification number.<br></td>
+          </tr>
+          <tr>
             <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/validityFrom" req="OPTIONAL" %}</td><td>This is a <a href="#metadata">metadata</a>.<br>Returns user's Belgian ID document issuance date, represented as a string in YYYY-MM-DDThh:mm:ss.nnnZ date format specified by ISO 8601. Can only be returned in combination with claim http://itsme.services/v2/claim/BEeidSn.</td>
           </tr>
           <tr>
