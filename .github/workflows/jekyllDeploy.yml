@@ -10,8 +10,7 @@ on:
     - cron: "0 2 * * *"
 
 permissions:
-  id-token: write
-  contents: read
+  contents: write
 
 jobs:
   deploy:
