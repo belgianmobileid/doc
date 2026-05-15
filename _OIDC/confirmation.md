@@ -20,6 +20,7 @@ To get to this result please make sure you
   <li>add itsme® button to your front-end page so the user can indicate he wishes to authenticate with itsme® : <a href="https://brand.belgianmobileid.be/d/CX5YsAKEmVI7/documentation#/ux/buttons-1518207548" target="blank">itsme® button specifications</a>.</li>
   <li>create the <a href="#AuthNReq" >Authorization Request</a> to authenticate the User. This request will redirect the user to the itsme® app. itsme® will then authenticates the user by asking him 
     <ul type>
+	  <li>to scan the QR code on the itsme® sign-in page</li>
       <li>authorize the release of some information to your application</li>
       <li>to provide his credentials (itsme® code, fingerprint or FaceID)</li>
     </ul><br>It is also in this Authorization Request that you will be able to request claims about the user and the Confirmation event.</li>
