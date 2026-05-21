@@ -6,74 +6,138 @@ nav_exclude: false
 nav_order: 1
 ---
 
-# Welcome
-
-We are here to help you to set up itsme® service(s), and allow you to use verified identities for authentication and authorization on web desktop, mobile web or mobile applications.
-
-For more details, please read through the corresponding developer documentation available below.
-
-# Services and integration APIs
-
-For more information on how itsme® can best work for your business, please <a href = "mailto: onboarding@itsme.be">contact us</a>. itsme® team will be happy to help.
-
-<div class="services">
-  <div class="service">
-    <h2>Authentication</h2>
-    <p class="description">This Service enables your users/customers to log in securely to your application.</p>
-    <div class="docLinks">
-      <a href="authentication">Direct integration API</a>
-      <a href="IAM">Integration to an IAM platform</a>
-    </div>
-    <img src="assets/login.svg" />
+<section class="home-hero">
+  <div class="home-hero__content">
+    <span class="home-hero__eyebrow">itsme® Developer Hub</span>
+    <p class="home-hero__lead">
+      Integrate itsme® to authenticate users, capture verified personal data,
+      collect consent and sign documents — on web, mobile web and native apps.
+    </p>
   </div>
-  <div class="service">
-    <h2>Identification</h2>
-    <p class="description">This Service enables you to identify your users and access their verified data.</p>
-    <div class="docLinks">
-      <a href="identification">Direct integration API</a>
-      <a href="IAM">Integration to an IAM platform</a>
-    </div>
-    <img src="assets/signup.svg" />
-  </div>
-  <div class="service">
-    <h2>Confirmation</h2>
-    <p>This Service enables your users/customers to give their consent to a payment or order/action.</p>
-    <div class="docLinks">
-      <a href="confirmation">Direct integration API</a>
-    </div>
-    <img src="assets/confirm.svg" />
-  </div>
-</div>
-<div class="services">
-  <div class="service">
-    <h2>Qualified signature</h2>
-    <p>This Service enables your users/customers to sign documents with the same legally binding effect as a manual signature.</p>
-    <div class="docLinks">
-      <a href="QES-CSC">CSC Sign protocol</a>
-      <a href="QES-OASIS">OASIS DSS protocol</a>
-    </div>
-    <img src="assets/sign.svg" />
-  </div>
-  <div class="service">
-    <h2>Data Sharing</h2>
-    <p>This Service enables your users/customers to share data from 3rd party wallets and sources.</p>
-    <div class="docLinks">
-      <a href="datasharing">Direct integration API</a>
-    </div>
-    <img src="assets/share-data.svg" />
-  </div>
-</div>
+</section>
 
-# IAM platforms
+<section class="home-section">
+  <header class="home-section__head">
+    <h2>Services &amp; integration APIs</h2>
+    <p>Pick the flow that fits your use case.</p>
+  </header>
 
-For your convenience and without any guarantee, we offer some guidance on how to integrate itsme to a few of the most popular 3rd party <a href="IAM">IAM platforms</a>:
+  <div class="home-grid">
+    <article class="home-card">
+      <h3>Authentication</h3>
+      <p>Let users log in securely to your application using their itsme® identity.</p>
+      <div class="home-card__links">
+        <a href="authentication">Direct integration →</a>
+        <a href="IAM">Via IAM platform →</a>
+      </div>
+    </article>
 
-<ul>
-  <li><a href="azureB2C">Azure B2C</a></li>
-  <li><a href="auth0">Auth0</a></li>
-  <li><a href="aws">AWS Cognito</a></li>
-  <li><a href="forgerock">Forgerock</a></li>
-  <li><a href="okta">Okta</a></li>
-</ul>
+    <article class="home-card">
+      <h3>Identification</h3>
+      <p>Identify your users and access their verified personal data in one step.</p>
+      <div class="home-card__links">
+        <a href="identification">Direct integration →</a>
+        <a href="IAM">Via IAM platform →</a>
+      </div>
+    </article>
+
+    <article class="home-card">
+      <h3>Confirmation</h3>
+      <p>Collect explicit user consent for payments, orders or sensitive actions.</p>
+      <div class="home-card__links">
+        <a href="confirmation">Direct integration →</a>
+      </div>
+    </article>
+
+    <article class="home-card">
+      <h3>Qualified signature</h3>
+      <p>Sign documents with the same legal value as a handwritten signature.</p>
+      <div class="home-card__links">
+        <a href="QES-CSC">CSC Sign protocol →</a>
+        <a href="QES-OASIS">OASIS DSS protocol →</a>
+      </div>
+    </article>
+
+    <article class="home-card">
+      <h3>Data sharing</h3>
+      <p>Let users share data from 3rd party wallets and trusted sources.</p>
+      <div class="home-card__links">
+        <a href="datasharing">Direct integration →</a>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="home-section home-section--alt">
+  <header class="home-section__head">
+    <h2>IAM platforms</h2>
+    <p>
+      Already using an Identity &amp; Access Management platform? We provide
+      integration guidance for some of the most common ones (without guarantee).
+      See the <a href="IAM">IAM overview</a>.
+    </p>
+  </header>
+
+  <ul class="home-pills">
+    <li><a href="azureB2C">Azure B2C</a></li>
+    <li><a href="auth0">Auth0</a></li>
+    <li><a href="aws">AWS Cognito</a></li>
+    <li><a href="forgerock">Forgerock</a></li>
+    <li><a href="okta">Okta</a></li>
+  </ul>
+</section>
+
+<section class="home-section">
+  <header class="home-section__head">
+    <h2>Deeplinks</h2>
+    <p>
+      “Deeplink” is the term we use across our documentation, but in practice it
+      means a <strong>Universal Link</strong> on iOS and an <strong>App Link</strong> on Android.
+      Learn how they work, how to configure them and how to debug the most common issues.
+    </p>
+  </header>
+
+  <div class="home-grid">
+    <article class="home-card">
+      <h3>How deeplinks work</h3>
+      <p>End-to-end overview of how a deeplink hands off from your app to itsme® and back.</p>
+      <div class="home-card__links">
+        <a href="deeplinks-overview">Read the overview →</a>
+      </div>
+    </article>
+
+    <article class="home-card">
+      <h3>iOS — Universal Links</h3>
+      <p>Associated domains, the <code>apple-app-site-association</code> file and iOS-specific gotchas.</p>
+      <div class="home-card__links">
+        <a href="deeplinks-ios">iOS configuration →</a>
+      </div>
+    </article>
+
+    <article class="home-card">
+      <h3>Android — App Links</h3>
+      <p>Intent filters, <code>assetlinks.json</code> and Play App Signing fingerprints.</p>
+      <div class="home-card__links">
+        <a href="deeplinks-android">Android configuration →</a>
+      </div>
+    </article>
+
+    <article class="home-card">
+      <h3>Troubleshooting</h3>
+      <p>The ordered triage steps to run before escalating a deeplink ticket to us.</p>
+      <div class="home-card__links">
+        <a href="deeplinks-troubleshooting">Troubleshooting guide →</a>
+      </div>
+    </article>
+
+    <article class="home-card">
+      <h3>Common issues</h3>
+      <p>The misconfigurations and user actions behind most “the app doesn’t open” reports.</p>
+      <div class="home-card__links">
+        <a href="deeplinks-issues">View all →</a>
+      </div>
+    </article>
+  </div>
+</section>
 
 
