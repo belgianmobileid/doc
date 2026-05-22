@@ -1768,23 +1768,148 @@ td, th { border-left: none; vertical-align: top; text-align: left; }
 
 .paramType { color: black; border: 1px solid gray; padding: 1px 2px; border-radius: 4px; font-size: smaller; text-transform: lowercase; }
 
-/** Homepage */
-/*************/
-.services { display: flex; flex-direction: row; flex-wrap: wrap; margin: auto; justify-content: space-between; }
+/** Homepage (refreshed) */
+/*************************/
+/* Sticky, full-width top bar on the homepage. The theme's homepage layout puts the brand/menu inside .site-header (left side, already fixed inline) and the search/aux inside #main-header (right side, NOT fixed). We turn the whole strip into a single fixed bar across the full viewport width, sitting above all page content. */
+.side-bar.homepage { position: static !important; /* don't trap the fixed child */ height: auto !important; z-index: 1000; }
 
-.service { margin: 20px; display: flex; flex-direction: column; align-items: center; width: 290px; text-align: center; border: solid 2px rgba(235, 237, 245, 0.8); border-radius: 8px; padding: 15px; color: #5c5962; height: 275px; position: relative; }
+.side-bar.homepage .site-header { position: fixed !important; top: 0 !important; left: 0 !important; right: 0 !important; width: 100% !important; background: #fff; border-bottom: 1px solid rgba(31, 29, 38, 0.08); z-index: 1000 !important; }
 
-a.service { white-space: normal; background-image: none; }
+/* Hide the now-empty secondary header on the right */
+.main > #main-header { display: none !important; }
 
-.service:hover { background-color: rgba(235, 237, 245, 0.8); }
+/* Push page content below the fixed top bar */
+#main-content-wrap { padding-top: 84px !important; position: relative; z-index: 1; /* Override the inline width:1064px from the homepage layout so the page (and the cards grid) become responsive. */ width: 100% !important; max-width: 1064px; box-sizing: border-box; padding-left: 1.5rem; padding-right: 1.5rem; }
 
-.service:not(a):hover p { display: none; }
+/* Hero */
+.home-hero { position: relative; margin: 0 0 2rem; padding: 1.75rem 1.75rem 2rem; border-radius: 12px; overflow: hidden; color: #fff; background: radial-gradient(1200px 400px at 90% -10%, rgba(255, 255, 255, 0.18), transparent 60%), radial-gradient(800px 300px at -10% 110%, rgba(255, 255, 255, 0.12), transparent 60%), linear-gradient(135deg, #ff4612 0%, #ff7a3d 55%, #ffb27a 100%); box-shadow: 0 12px 28px -18px rgba(255, 70, 18, 0.45); }
 
-.service .docLinks { display: none; flex-direction: column; height: 100px; justify-content: space-evenly; }
+.home-hero__content { max-width: 720px; }
 
-.service:hover .docLinks { display: flex; }
+.home-hero__eyebrow { display: inline-block; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.25rem 0.6rem; border-radius: 999px; background: rgba(255, 255, 255, 0.18); backdrop-filter: blur(4px); margin-bottom: 0.75rem; }
 
-.service img { position: absolute; bottom: 15px; }
+.home-hero__title { font-size: clamp(1.4rem, 2.4vw, 1.9rem); line-height: 1.15; font-weight: 700; margin: 0 0 0.5rem; color: #fff; border: 0; }
+
+.home-hero__lead { font-size: 0.98rem; line-height: 1.5; max-width: 620px; margin: 0; color: rgba(255, 255, 255, 0.92); }
+
+.home-hero__cta { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+
+.home-btn { display: inline-flex; align-items: center; justify-content: center; padding: 0.7rem 1.25rem; border-radius: 10px; font-weight: 600; text-decoration: none; background-image: none; transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease; }
+
+.home-btn--primary { background: #fff; color: #d83a0e; box-shadow: 0 6px 18px -8px rgba(0, 0, 0, 0.35); }
+
+.home-btn--primary:hover { transform: translateY(-1px); box-shadow: 0 10px 22px -10px rgba(0, 0, 0, 0.45); color: #d83a0e; }
+
+.home-btn--ghost { color: #fff; border: 1px solid rgba(255, 255, 255, 0.6); }
+
+.home-btn--ghost:hover { background: rgba(255, 255, 255, 0.12); color: #fff; }
+
+/* Sections */
+.home-section { margin: 3rem 0; }
+
+.home-section--alt { padding: 2rem; background: #faf7f5; border-radius: 14px; border: 1px solid rgba(31, 29, 38, 0.08); }
+
+.home-section__head { margin-bottom: 1.5rem; }
+
+.home-section__head h2 { font-size: 1.6rem; margin: 0 0 0.4rem; border: 0; color: #1f1d26; }
+
+.home-section__head p { color: #5c5962; margin: 0; max-width: 720px; }
+
+/* Grid of service cards */
+.home-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem; }
+
+.home-card { position: relative; display: flex; flex-direction: column; gap: 0.6rem; padding: 1.5rem; background: #ffffff; border: 1px solid rgba(31, 29, 38, 0.08); border-radius: 14px; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04); overflow: hidden; }
+
+.home-card:hover { border-color: rgba(255, 70, 18, 0.35); }
+
+.home-card__icon { width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; border-radius: 12px; background: rgba(255, 70, 18, 0.08); margin-bottom: 0.25rem; }
+
+.home-card__icon img { width: 28px; height: 28px; }
+
+.home-card h3 { margin: 0; font-size: 1.15rem; color: #1f1d26; border: 0; }
+
+.home-card p { margin: 0; color: #5c5962; line-height: 1.5; flex: 1; }
+
+.home-card__links { display: flex; flex-direction: column; gap: 0.35rem; margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px dashed rgba(31, 29, 38, 0.08); }
+
+.home-card__links a { color: #d83a0e; font-weight: 600; text-decoration: none; background-image: none; }
+
+.home-card__links a:hover { color: #ff4612; text-decoration: underline; }
+
+/* Stretched-link pattern: the first link in a card covers the whole card, so clicking anywhere on the card follows it. Any extra links stay individually clickable because they sit on a higher z-index. */
+.home-card { cursor: pointer; isolation: isolate; /* .home-card is already position: relative */ }
+
+.home-card__links a:first-child::after { content: ""; position: absolute; inset: 0; z-index: 0; }
+
+.home-card__links a:not(:first-child) { position: relative; z-index: 2; }
+
+/* IAM pills */
+.home-pills { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 0.6rem; }
+
+.home-pills li { margin: 0; padding: 0; list-style: none; }
+
+.home-pills li::before, .home-pills li::marker { content: "" !important; display: none; }
+
+.home-pills a { display: inline-block; padding: 0.5rem 0.95rem; border-radius: 999px; background: #fff; color: #1f1d26; border: 1px solid rgba(31, 29, 38, 0.08); text-decoration: none; background-image: none; font-weight: 500; transition: all 0.15s ease; }
+
+.home-pills a:hover { border-color: #ff4612; color: #d83a0e; transform: translateY(-1px); box-shadow: 0 6px 14px -10px rgba(0, 0, 0, 0.25); }
+
+/* Feature callout (single full-width card) */
+.home-feature { position: relative; padding: 2rem 2.25rem; border-radius: 14px; border: 1px solid rgba(31, 29, 38, 0.08); background: radial-gradient(600px 200px at 100% 0%, rgba(255, 70, 18, 0.06), transparent 70%), #ffffff; overflow: hidden; }
+
+.home-feature::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: linear-gradient(180deg, #ff4612, #ff8a4c); }
+
+.home-feature__body { max-width: 760px; }
+
+.home-feature__eyebrow { display: inline-block; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #d83a0e; margin-bottom: 0.5rem; }
+
+.home-feature h2 { margin: 0 0 0.6rem; font-size: 1.4rem; color: #1f1d26; border: 0; }
+
+.home-feature p { margin: 0 0 1rem; color: #5c5962; line-height: 1.55; }
+
+.home-feature__topics { list-style: none; padding: 0; margin: 0 0 1.25rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0.35rem 1rem; }
+
+.home-feature__topics li { position: relative; padding-left: 1.25rem; color: #1f1d26; font-size: 0.95rem; list-style: none; margin: 0; }
+
+.home-feature__topics li::before, .home-feature__topics li::marker { content: ""; }
+
+.home-feature__topics li::before { content: "✓"; position: absolute; left: 0; color: #ff4612; font-weight: 700; }
+
+.home-feature__cta { display: inline-flex; align-items: center; padding: 0.6rem 1.1rem; border-radius: 10px; background: #ff4612; color: #fff !important; font-weight: 600; text-decoration: none; background-image: none; transition: background 0.15s ease; }
+
+.home-feature__cta:hover { background: #d83a0e; }
+
+@media (max-width: 50rem) { .home-hero { margin: 0 0 1.5rem; padding: 1.25rem 1rem 1.5rem; border-radius: 10px; } .home-section--alt { padding: 1.25rem; } }
+
+/* Flowchart blocks */
+.fc-decision { display: block; background: #f0f2ff; border: 1.5px solid #a2a9c9; color: #1f1d26; font-weight: 500; border-radius: 6px; padding: 0.5rem 0.85rem; width: 270px; box-sizing: border-box; }
+
+.fc-outcome { display: inline-block; border-radius: 6px; padding: 0.45rem 0.75rem; font-size: 0.78rem; max-width: 260px; box-sizing: border-box; vertical-align: middle; }
+
+.fc-warn { background: #fff5f1; border: 1.5px solid #ff4612; color: #1f1d26; }
+
+.fc-ok { background: #f2f8f0; border: 1.5px solid #62a86e; color: #1f1d26; }
+
+.fc-badge { display: inline-block; font-size: 0.68rem; font-weight: 700; color: #1f1d26; background: #f0f2ff; border: 1px solid #a2a9c9; border-radius: 999px; padding: 0.05rem 0.5rem; white-space: nowrap; vertical-align: middle; margin-right: 0.4rem; }
+
+.fc-badge-yes { color: #d83a0e; background: #fff5f1; border-color: #ff4612; }
+
+/* Flowchart table: remove all table chrome (borders, zebra rows, cell background) */
+.fc-flow, .fc-flow .table-wrapper { border: none !important; box-shadow: none !important; background: transparent !important; }
+
+.fc-flow .table-wrapper { padding: 0 !important; margin: 0 !important; }
+
+table.fc-plain, table.fc-plain thead, table.fc-plain tbody, table.fc-plain tr, table.fc-plain th, table.fc-plain td { border: none !important; background: transparent !important; box-shadow: none !important; }
+
+table.fc-plain { border-collapse: separate !important; border-spacing: 0 0.45rem; margin: 1.5rem 0; border: 0 !important; outline: 0 !important; box-shadow: none !important; }
+
+table.fc-plain td, table.fc-plain th { padding: 0.1rem 0 !important; }
+
+table.fc-plain td.fc-q { padding-top: 0.35rem !important; padding-bottom: 0.05rem !important; }
+
+table.fc-plain td.fc-arrow-cell { width: 270px; text-align: center; vertical-align: middle; padding-right: 0.9rem !important; }
+
+table.fc-plain td.fc-exit-cell { vertical-align: middle; padding-left: 0.9rem !important; }
 
 /** Big table */
 /**************/
