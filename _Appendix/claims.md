@@ -93,14 +93,14 @@ How to understand the table below:
       <td>SHALL</td> <!-- Latvia -->
       <td>SHALL</td> <!-- Cyprus -->
       <td>SHALL</td> <!-- Malta -->
-      <th>SHALL</th> <!-- Serbia -->
-      <th>SHALL</th> <!-- Moldova -->
+      <td>SHALL</td> <!-- Serbia -->
+      <td>SHALL</td> <!-- Moldova -->
     </tr>
     <tr>
       <td><b>given_name</b></td>
       <td>User's given name(s) or first name(s). Note that in some cultures, people can have multiple given names or none at all; all can be present, separated by space characters.</td>
       <td>MAY NOT</td> <!-- Belgium -->
-      <td>MAY NOT</td> <!-- Netherlands -->
+      <td>MAY NOT</td> <!-- Netderlands -->
       <td>MAY NOT</td> <!-- Luxembourg -->
       <td>MAY NOT</td> <!-- Ireland -->
       <td>MAY NOT</td> <!-- Portugal -->
@@ -129,8 +129,8 @@ How to understand the table below:
       <td>MAY NOT</td> <!-- Latvia -->
       <td>MAY NOT</td> <!-- Cyprus -->
       <td>MAY NOT</td> <!-- Malta -->
-      <th>MAY NOT</th> <!-- Serbia -->
-      <th>MAY NOT</th> <!-- Moldova -->
+      <td>MAY NOT</td> <!-- Serbia -->
+      <td>MAY NOT</td> <!-- Moldova -->
     </tr>
     <tr>
       <td><b>family_name</b></td>
@@ -165,8 +165,8 @@ How to understand the table below:
       <td>SHALL</td> <!-- Latvia -->
       <td>SHALL</td> <!-- Cyprus -->
       <td>SHALL</td> <!-- Malta -->
-      <th>SHALL</th> <!-- Serbia -->
-      <th>SHALL</th> <!-- Moldova -->
+      <td>SHALL</td> <!-- Serbia -->
+      <td>SHALL</td> <!-- Moldova -->
     </tr>
     <tr>
       <td><b>birthdate</b></td>
@@ -201,8 +201,8 @@ How to understand the table below:
       <td>SHALL</td> <!-- Latvia -->
       <td>SHALL</td> <!-- Cyprus -->
       <td>SHALL</td> <!-- Malta -->
-      <th>SHALL</th> <!-- Serbia -->
-      <th>SHALL</th> <!-- Moldova -->
+      <td>SHALL</td> <!-- Serbia -->
+      <td>SHALL</td> <!-- Moldova -->
     </tr>
     <tr>
       <td>http://itsme.services/v2/<br>claim/<b>birthdate_as_string</b></td>
@@ -237,8 +237,8 @@ How to understand the table below:
       <td>SHALL NOT</td> <!-- Latvia -->
       <td>SHALL NOT</td> <!-- Cyprus -->
       <td>SHALL NOT</td> <!-- Malta -->
-      <th>SHALL NOT</th> <!-- Serbia -->
-      <th>SHALL NOT</th> <!-- Moldova -->
+      <td>SHALL NOT</td> <!-- Serbia -->
+      <td>SHALL NOT</td> <!-- Moldova -->
     </tr>
     <tr>
       <td><b>age_gte_16</b></td>
@@ -273,8 +273,8 @@ How to understand the table below:
       <td>SHALL</td> <!-- Latvia -->
       <td>SHALL</td> <!-- Cyprus -->
       <td>SHALL</td> <!-- Malta -->
-      <th>SHALL</th> <!-- Serbia -->
-      <th>SHALL</th> <!-- Moldova -->
+      <td>SHALL</td> <!-- Serbia -->
+      <td>SHALL</td> <!-- Moldova -->
     </tr>
     <tr>
       <td><b>age_gte_18</b></td>
@@ -309,8 +309,8 @@ How to understand the table below:
       <td>SHALL</td> <!-- Latvia -->
       <td>SHALL</td> <!-- Cyprus -->
       <td>SHALL</td> <!-- Malta -->
-      <th>SHALL</th> <!-- Serbia -->
-      <th>SHALL</th> <!-- Moldova -->
+      <td>SHALL</td> <!-- Serbia -->
+      <td>SHALL</td> <!-- Moldova -->
     </tr>
     <tr>
       <td><b>age_gte_21</b></td>
@@ -345,8 +345,8 @@ How to understand the table below:
       <td>SHALL</td> <!-- Latvia -->
       <td>SHALL</td> <!-- Cyprus -->
       <td>SHALL</td> <!-- Malta -->
-      <th>SHALL</th> <!-- Serbia -->
-      <th>SHALL</th> <!-- Moldova -->
+      <td>SHALL</td> <!-- Serbia -->
+      <td>SHALL</td> <!-- Moldova -->
     </tr>
     <tr>
       <td><b>age_gte_30</b></td>
@@ -381,8 +381,8 @@ How to understand the table below:
       <td>SHALL</td> <!-- Latvia -->
       <td>SHALL</td> <!-- Cyprus -->
       <td>SHALL</td> <!-- Malta -->
-      <th>SHALL</th> <!-- Serbia -->
-      <th>SHALL</th> <!-- Moldova -->
+      <td>SHALL</td> <!-- Serbia -->
+      <td>SHALL</td> <!-- Moldova -->
     </tr>
     <tr>
       <td><b>gender</b></td>
@@ -417,8 +417,8 @@ How to understand the table below:
       <td>SHALL</td> <!-- Latvia -->
       <td>SHALL</td> <!-- Cyprus -->
       <td>SHALL</td> <!-- Malta -->
-      <th>SHALL</th> <!-- Serbia -->
-      <th>SHALL</th> <!-- Moldova -->
+      <td>SHALL</td> <!-- Serbia -->
+      <td>SHALL</td> <!-- Moldova -->
     </tr>
     <tr>
       <td>http://itsme.services/v2/<br>claim/<b>official_gender</b></td>
@@ -453,8 +453,8 @@ How to understand the table below:
       <td>SHALL</td> <!-- Latvia -->
       <td>SHALL</td> <!-- Cyprus -->
       <td>SHALL</td> <!-- Malta -->
-      <th>SHALL</th> <!-- Serbia -->
-      <th>SHALL</th> <!-- Moldova -->
+      <td>SHALL</td> <!-- Serbia -->
+      <td>SHALL</td> <!-- Moldova -->
     </tr>
     <tr>
       <td><b>locale</b></td>
@@ -489,8 +489,8 @@ How to understand the table below:
       <td>MAY NOT</td> <!-- Latvia -->
       <td>MAY NOT</td> <!-- Cyprus -->
       <td>MAY NOT</td> <!-- Malta -->
-      <th>MAY NOT</th> <!-- Serbia -->
-      <th>MAY NOT</th> <!-- Moldova -->
+      <td>MAY NOT</td> <!-- Serbia -->
+      <td>MAY NOT</td> <!-- Moldova -->
     </tr>
     <tr>
       <td><b>picture</b></td>
@@ -531,8 +531,8 @@ How to understand the table below:
       <td>SHALL</td> <!-- Latvia -->
       <td>SHALL</td> <!-- Cyprus -->
       <td>SHALL</td> <!-- Malta -->
-      <th>SHALL</th> <!-- Serbia -->
-      <th>SHALL</th> <!-- Moldova -->
+      <td>SHALL</td> <!-- Serbia -->
+      <td>SHALL</td> <!-- Moldova -->
     </tr>
     <tr>
       <td>http://itsme.services/v2/<br>claim/<b>physical_person_photo</b></td>
@@ -567,8 +567,8 @@ How to understand the table below:
       <td>SHALL</td> <!-- Latvia -->
       <td>SHALL</td> <!-- Cyprus -->
       <td>SHALL</td> <!-- Malta -->
-      <th>SHALL</th> <!-- Serbia -->
-      <th>SHALL</th> <!-- Moldova -->
+      <td>SHALL</td> <!-- Serbia -->
+      <td>SHALL</td> <!-- Moldova -->
     </tr>
     <tr>
       <td><b>email</b></td>
@@ -603,8 +603,8 @@ How to understand the table below:
       <td>MAY NOT</td> <!-- Latvia -->
       <td>MAY NOT</td> <!-- Cyprus -->
       <td>MAY NOT</td> <!-- Malta -->
-      <th>MAY NOT</th> <!-- Serbia -->
-      <th>MAY NOT</th> <!-- Moldova -->
+      <td>MAY NOT</td> <!-- Serbia -->
+      <td>MAY NOT</td> <!-- Moldova -->
     </tr>
     <tr>
       <td><b>email_verified</b></td>
@@ -639,8 +639,8 @@ How to understand the table below:
       <td>Only if "email" available</td> <!-- Latvia -->
       <td>Only if "email" available</td> <!-- Cyprus -->
       <td>Only if "email" available</td> <!-- Malta -->
-      <th>Only if "email" available</th> <!-- Serbia -->
-      <th>Only if "email" available</th> <!-- Moldova -->
+      <td>Only if "email" available</td> <!-- Serbia -->
+      <td>Only if "email" available</td> <!-- Moldova -->
     </tr>
     <tr>
       <td><b>phone_number</b></td>
@@ -675,8 +675,8 @@ How to understand the table below:
       <td>SHALL</td> <!-- Latvia -->
       <td>SHALL</td> <!-- Cyprus -->
       <td>SHALL</td> <!-- Malta -->
-      <th>SHALL</th> <!-- Serbia -->
-      <th>SHALL</th> <!-- Moldova -->
+      <td>SHALL</td> <!-- Serbia -->
+      <td>SHALL</td> <!-- Moldova -->
     </tr>
     <tr>
       <td><b>phone_number_verified</b></td>
@@ -711,8 +711,8 @@ How to understand the table below:
       <td>SHALL</td> <!-- Latvia -->
       <td>SHALL</td> <!-- Cyprus -->
       <td>SHALL</td> <!-- Malta -->
-      <th>SHALL</th> <!-- Serbia -->
-      <th>SHALL</th> <!-- Moldova -->
+      <td>SHALL</td> <!-- Serbia -->
+      <td>SHALL</td> <!-- Moldova -->
     </tr>
     <tr>
       <td><b>address</b></td>
@@ -747,8 +747,8 @@ How to understand the table below:
       <td>SHALL NOT</td> <!-- Latvia -->
       <td>SHALL NOT</td> <!-- Cyprus -->
       <td>SHALL NOT</td> <!-- Malta -->
-      <th>SHALL NOT</th> <!-- Serbia -->
-      <th>SHALL NOT</th> <!-- Moldova -->
+      <td>SHALL NOT</td> <!-- Serbia -->
+      <td>SHALL NOT</td> <!-- Moldova -->
     </tr>
     <tr>
       <td>http://itsme.services/v2/<br>claim/<b>claim_citizenship</b></td>
@@ -783,8 +783,8 @@ How to understand the table below:
       <td>SHALL</td> <!-- Latvia -->
       <td>SHALL</td> <!-- Cyprus -->
       <td>SHALL</td> <!-- Malta -->
-      <th>SHALL</th> <!-- Serbia -->
-      <th>SHALL</th> <!-- Moldova -->
+      <td>SHALL</td> <!-- Serbia -->
+      <td>SHALL</td> <!-- Moldova -->
     </tr>
     <tr>
       <td>http://itsme.services/v2/<br>claim/<b>claim_citizenship_as_iso</b></td>
@@ -819,8 +819,8 @@ How to understand the table below:
       <td>SHALL</td> <!-- Latvia -->
       <td>SHALL</td> <!-- Cyprus -->
       <td>SHALL</td> <!-- Malta -->
-      <th>SHALL</th> <!-- Serbia -->
-      <th>SHALL</th> <!-- Moldova -->
+      <td>SHALL</td> <!-- Serbia -->
+      <td>SHALL</td> <!-- Moldova -->
     </tr>
     <tr>
       <td>http://itsme.services/v2/<br>claim/<b>place_of_birth</b></td>
@@ -855,8 +855,8 @@ How to understand the table below:
       <td>SHALL NOT</td> <!-- Latvia -->
       <td>SHALL NOT</td> <!-- Cyprus -->
       <td>SHALL NOT</td> <!-- Malta -->
-      <th>SHALL NOT</th> <!-- Serbia -->
-      <th>SHALL NOT</th> <!-- Moldova -->
+      <td>SHALL NOT</td> <!-- Serbia -->
+      <td>SHALL NOT</td> <!-- Moldova -->
     </tr>
     <tr>
       <td>http://itsme.services/v2/<br>claim/<b>BEeidSn</b></td>
@@ -891,8 +891,8 @@ How to understand the table below:
       <td>SHALL NOT</td> <!-- Latvia -->
       <td>SHALL NOT</td> <!-- Cyprus -->
       <td>SHALL NOT</td> <!-- Malta -->
-      <th>SHALL NOT</th> <!-- Serbia -->
-      <th>SHALL NOT</th> <!-- Moldova -->
+      <td>SHALL NOT</td> <!-- Serbia -->
+      <td>SHALL NOT</td> <!-- Moldova -->
     </tr>
     <tr>
       <td>http://itsme.services/v2/<br>claim/<b>claim_device</b></td>
@@ -927,8 +927,8 @@ How to understand the table below:
       <td>MAY NOT</td> <!-- Latvia -->
       <td>MAY NOT</td> <!-- Cyprus -->
       <td>MAY NOT</td> <!-- Malta -->
-      <th>MAY NOT</th> <!-- Serbia -->
-      <th>MAY NOT</th> <!-- Moldova -->
+      <td>MAY NOT</td> <!-- Serbia -->
+      <td>MAY NOT</td> <!-- Moldova -->
     </tr>
     <tr>
       <td>http://itsme.services/v2/<br>claim/<b>BENationalNumber</b></td>
@@ -963,8 +963,8 @@ How to understand the table below:
       <td>SHALL NOT</td> <!-- Latvia -->
       <td>SHALL NOT</td> <!-- Cyprus -->
       <td>SHALL NOT</td> <!-- Malta -->
-      <th>SHALL NOT</th> <!-- Serbia -->
-      <th>SHALL NOT</th> <!-- Moldova -->
+      <td>SHALL NOT</td> <!-- Serbia -->
+      <td>SHALL NOT</td> <!-- Moldova -->
     </tr>
     <tr>
       <td>http://itsme.services/v2/<br>claim/<b>RONationalNumber</b></td>
@@ -999,8 +999,8 @@ How to understand the table below:
       <td>SHALL NOT</td> <!-- Latvia -->
       <td>SHALL NOT</td> <!-- Cyprus -->
       <td>SHALL NOT</td> <!-- Malta -->
-      <th>SHALL NOT</th> <!-- Serbia -->
-      <th>SHALL NOT</th> <!-- Moldova -->
+      <td>SHALL NOT</td> <!-- Serbia -->
+      <td>SHALL NOT</td> <!-- Moldova -->
     </tr>
     <tr>
       <td>http://itsme.services/v2/<br>claim/<b>BGNationalNumber</b></td>
@@ -1035,8 +1035,8 @@ How to understand the table below:
       <td>SHALL NOT</td> <!-- Latvia -->
       <td>SHALL NOT</td> <!-- Cyprus -->
       <td>SHALL NOT</td> <!-- Malta -->
-      <th>SHALL NOT</th> <!-- Serbia -->
-      <th>SHALL NOT</th> <!-- Moldova -->
+      <td>SHALL NOT</td> <!-- Serbia -->
+      <td>SHALL NOT</td> <!-- Moldova -->
     </tr>
     <tr>
       <td>http://itsme.services/v2/<br>claim/<b>CZNationalNumber</b></td>
@@ -1071,8 +1071,8 @@ How to understand the table below:
       <td>SHALL NOT</td> <!-- Latvia -->
       <td>SHALL NOT</td> <!-- Cyprus -->
       <td>SHALL NOT</td> <!-- Malta -->
-      <th>SHALL NOT</th> <!-- Serbia -->
-      <th>SHALL NOT</th> <!-- Moldova -->
+      <td>SHALL NOT</td> <!-- Serbia -->
+      <td>SHALL NOT</td> <!-- Moldova -->
     </tr>
     <tr>
       <td>http://itsme.services/v2/<br>claim/<b>SKNationalNumber</b></td>
@@ -1107,8 +1107,8 @@ How to understand the table below:
       <td>SHALL NOT</td> <!-- Latvia -->
       <td>SHALL NOT</td> <!-- Cyprus -->
       <td>SHALL NOT</td> <!-- Malta -->
-      <th>SHALL NOT</th> <!-- Serbia -->
-      <th>SHALL NOT</th> <!-- Moldova -->
+      <td>SHALL NOT</td> <!-- Serbia -->
+      <td>SHALL NOT</td> <!-- Moldova -->
     </tr>
     <tr>
       <td>http://itsme.services/v2/<br>claim/<b>HRNationalNumber</b></td>
@@ -1143,8 +1143,8 @@ How to understand the table below:
       <td>SHALL NOT</td> <!-- Latvia -->
       <td>SHALL NOT</td> <!-- Cyprus -->
       <td>SHALL NOT</td> <!-- Malta -->
-      <th>SHALL NOT</th> <!-- Serbia -->
-      <th>SHALL NOT</th> <!-- Moldova -->
+      <td>SHALL NOT</td> <!-- Serbia -->
+      <td>SHALL NOT</td> <!-- Moldova -->
     </tr>
     <tr>
       <td>http://itsme.services/v2/<br>claim/<b>LTNationalNumber</b></td>
@@ -1179,8 +1179,8 @@ How to understand the table below:
       <td>SHALL NOT</td> <!-- Latvia -->
       <td>SHALL NOT</td> <!-- Cyprus -->
       <td>SHALL NOT</td> <!-- Malta -->
-      <th>SHALL NOT</th> <!-- Serbia -->
-      <th>SHALL NOT</th> <!-- Moldova -->
+      <td>SHALL NOT</td> <!-- Serbia -->
+      <td>SHALL NOT</td> <!-- Moldova -->
     </tr>
     <tr>
       <td>http://itsme.services/v2/<br>claim/<b>SINationalNumber</b></td>
@@ -1215,8 +1215,8 @@ How to understand the table below:
       <td>SHALL NOT</td> <!-- Latvia -->
       <td>SHALL NOT</td> <!-- Cyprus -->
       <td>SHALL NOT</td> <!-- Malta -->
-      <th>SHALL NOT</th> <!-- Serbia -->
-      <th>SHALL NOT</th> <!-- Moldova -->
+      <td>SHALL NOT</td> <!-- Serbia -->
+      <td>SHALL NOT</td> <!-- Moldova -->
     </tr>
     <tr>
       <td>http://itsme.services/v2/<br>claim/<b>LVNationalNumber</b></td>
@@ -1251,8 +1251,8 @@ How to understand the table below:
       <td>SHALL</td> <!-- Latvia -->
       <td>SHALL NOT</td> <!-- Cyprus -->
       <td>SHALL NOT</td> <!-- Malta -->
-      <th>SHALL NOT</th> <!-- Serbia -->
-      <th>SHALL NOT</th> <!-- Moldova -->
+      <td>SHALL NOT</td> <!-- Serbia -->
+      <td>SHALL NOT</td> <!-- Moldova -->
     </tr>
     <tr>
       <td>http://itsme.services/v2/<br>claim/<b>MTNationalNumber</b></td>
@@ -1287,8 +1287,8 @@ How to understand the table below:
       <td>SHALL NOT</td> <!-- Latvia -->
       <td>SHALL NOT</td> <!-- Cyprus -->
       <td>SHALL</td> <!-- Malta -->
-      <th>SHALL NOT</th> <!-- Serbia -->
-      <th>SHALL NOT</th> <!-- Moldova -->
+      <td>SHALL NOT</td> <!-- Serbia -->
+      <td>SHALL NOT</td> <!-- Moldova -->
     </tr>
     <tr>
       <td>http://itsme.services/v2/<br>claim/<b>RSNationalNumber</b></td>
@@ -1323,8 +1323,8 @@ How to understand the table below:
       <td>SHALL NOT</td> <!-- Latvia -->
       <td>SHALL NOT</td> <!-- Cyprus -->
       <td>SHALL NOT</td> <!-- Malta -->
-      <th>SHALL</th> <!-- Serbia -->
-      <th>SHALL NOT</th> <!-- Moldova -->
+      <td>SHALL</td> <!-- Serbia -->
+      <td>SHALL NOT</td> <!-- Moldova -->
     </tr>
     <tr>
       <td>http://itsme.services/v2/<br>claim/<b>MDNationalNumber</b></td>
@@ -1359,8 +1359,8 @@ How to understand the table below:
       <td>SHALL NOT</td> <!-- Latvia -->
       <td>SHALL NOT</td> <!-- Cyprus -->
       <td>SHALL NOT</td> <!-- Malta -->
-      <th>SHALL NOT</th> <!-- Serbia -->
-      <th>SHALL</th> <!-- Moldova -->
+      <td>SHALL NOT</td> <!-- Serbia -->
+      <td>SHALL</td> <!-- Moldova -->
     </tr>
     <tr>
       <td>http://itsme.services/v2/<br>claim/<b>validityFrom</b></td>
@@ -1395,8 +1395,8 @@ How to understand the table below:
       <td>SHALL NOT</td> <!-- Latvia -->
       <td>SHALL NOT</td> <!-- Cyprus -->
       <td>SHALL NOT</td> <!-- Malta -->
-      <th>SHALL NOT</th> <!-- Serbia -->
-      <th>SHALL NOT</th> <!-- Moldova -->
+      <td>SHALL NOT</td> <!-- Serbia -->
+      <td>SHALL NOT</td> <!-- Moldova -->
     </tr>
     <tr>
       <td>http://itsme.services/v2/<br>claim/<b>validityTo</b></td>
@@ -1431,8 +1431,8 @@ How to understand the table below:
       <td>SHALL</td> <!-- Latvia -->
       <td>SHALL</td> <!-- Cyprus -->
       <td>SHALL</td> <!-- Malta -->
-      <th>SHALL</th> <!-- Serbia -->
-      <th>SHALL</th> <!-- Moldova -->
+      <td>SHALL</td> <!-- Serbia -->
+      <td>SHALL</td> <!-- Moldova -->
     </tr>
     <tr>
       <td>http://itsme.services/v2/<br>claim/<b>verificationDate</b></td>
@@ -1467,8 +1467,8 @@ How to understand the table below:
       <td>SHALL</td> <!-- Latvia -->
       <td>SHALL</td> <!-- Cyprus -->
       <td>SHALL</td> <!-- Malta -->
-      <th>SHALL</th> <!-- Serbia -->
-      <th>SHALL</th> <!-- Moldova -->
+      <td>SHALL</td> <!-- Serbia -->
+      <td>SHALL</td> <!-- Moldova -->
     </tr>
     <tr>
       <td>http://itsme.services/v2/<br>claim/<b>IDDocumentSN</b></td>
@@ -1503,8 +1503,8 @@ How to understand the table below:
       <td>SHALL</td> <!-- Latvia -->
       <td>SHALL</td> <!-- Cyprus -->
       <td>SHALL</td> <!-- Malta -->
-      <th>SHALL</th> <!-- Serbia -->
-      <th>SHALL</th> <!-- Moldova -->
+      <td>SHALL</td> <!-- Serbia -->
+      <td>SHALL</td> <!-- Moldova -->
     </tr>
     <tr>
       <td>http://itsme.services/v2/<br>claim/<b>IDDocumentType</b></td>
@@ -1539,8 +1539,8 @@ How to understand the table below:
       <td>SHALL</td> <!-- Latvia -->
       <td>SHALL</td> <!-- Cyprus -->
       <td>SHALL</td> <!-- Malta -->
-      <th>SHALL</th> <!-- Serbia -->
-      <th>SHALL</th> <!-- Moldova -->
+      <td>SHALL</td> <!-- Serbia -->
+      <td>SHALL</td> <!-- Moldova -->
     </tr>
     <tr>
       <td>http://itsme.services/v2/<br>claim/<b>IDIssuingCountry</b></td>
@@ -1575,8 +1575,8 @@ How to understand the table below:
       <td>SHALL</td> <!-- Latvia -->
       <td>SHALL</td> <!-- Cyprus -->
       <td>SHALL</td> <!-- Malta -->
-      <th>SHALL</th> <!-- Serbia -->
-      <th>SHALL</th> <!-- Moldova -->
+      <td>SHALL</td> <!-- Serbia -->
+      <td>SHALL</td> <!-- Moldova -->
     </tr>
     <tr>
       <td>http://itsme.services/v2/<br>claim/<b>issuance_locality</b></td>
@@ -1611,8 +1611,8 @@ How to understand the table below:
       <td>SHALL NOT</td> <!-- Latvia -->
       <td>SHALL NOT</td> <!-- Cyprus -->
       <td>SHALL NOT</td> <!-- Malta -->
-      <th>SHALL NOT</th> <!-- Serbia -->
-      <th>SHALL NOT</th> <!-- Moldova -->
+      <td>SHALL NOT</td> <!-- Serbia -->
+      <td>SHALL NOT</td> <!-- Moldova -->
     </tr>
     <tr>
       <td>http://itsme.services/v2/<br>claim/<b>app</b></td>
@@ -1647,8 +1647,8 @@ How to understand the table below:
       <td>SHALL</td> <!-- Latvia -->
       <td>SHALL</td> <!-- Cyprus -->
       <td>SHALL</td> <!-- Malta -->
-      <th>SHALL</th> <!-- Serbia -->
-      <th>SHALL</th> <!-- Moldova -->
+      <td>SHALL</td> <!-- Serbia -->
+      <td>SHALL</td> <!-- Moldova -->
     </tr>
     <tr>
       <td>http://itsme.services/v2/<br>claim/<b>account</b></td>
@@ -1683,8 +1683,8 @@ How to understand the table below:
       <td>SHALL</td> <!-- Latvia -->
       <td>SHALL</td> <!-- Cyprus -->
       <td>SHALL</td> <!-- Malta -->
-      <th>SHALL</th> <!-- Serbia -->
-      <th>SHALL</th> <!-- Moldova -->
+      <td>SHALL</td> <!-- Serbia -->
+      <td>SHALL</td> <!-- Moldova -->
     </tr>
     <tr>
       <td>http://itsme.services/v2/<br>claim/<b>identification_mode</b></td>
@@ -1719,8 +1719,8 @@ How to understand the table below:
       <td>SHALL</td> <!-- Latvia -->
       <td>SHALL</td> <!-- Cyprus -->
       <td>SHALL</td> <!-- Malta -->
-      <th>SHALL</th> <!-- Serbia -->
-      <th>SHALL</th> <!-- Moldova -->
+      <td>SHALL</td> <!-- Serbia -->
+      <td>SHALL</td> <!-- Moldova -->
     </tr>
     <tr>
       <td>http://itsme.services/v2/<br>claim/<b>transaction_ip</b></td>
@@ -1755,8 +1755,8 @@ How to understand the table below:
       <td>SHALL</td> <!-- Latvia -->
       <td>SHALL</td> <!-- Cyprus -->
       <td>SHALL</td> <!-- Malta -->
-      <th>SHALL</th> <!-- Serbia -->
-      <th>SHALL</th> <!-- Moldova -->
+      <td>SHALL</td> <!-- Serbia -->
+      <td>SHALL</td> <!-- Moldova -->
     </tr>
     <tr>
       <td>http://itsme.services/v2/<br>claim/<b>ongoing_call</b></td>
@@ -1791,8 +1791,8 @@ How to understand the table below:
       <td>SHALL</td> <!-- Latvia -->
       <td>SHALL</td> <!-- Cyprus -->
       <td>SHALL</td> <!-- Malta -->
-      <th>SHALL</th> <!-- Serbia -->
-      <th>SHALL</th> <!-- Moldova -->
+      <td>SHALL</td> <!-- Serbia -->
+      <td>SHALL</td> <!-- Moldova -->
     </tr>    
   </tbody>
 </table>
