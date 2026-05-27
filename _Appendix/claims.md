@@ -206,7 +206,7 @@ How to understand the table below:
     </tr>
     <tr>
       <td>http://itsme.services/v2/<br>claim/<b>birthdate_as_string</b></td>
-      <td>User's birthdate in an unprocessed way, exactly as mentioned on the ID document. itsme® users are always 16 years old or more.</td>
+      <td>User's birthdate in an unprocessed way, exactly as mentioned on the ID document. itsme® users are always 13 years old or more.</td>
       <td>MAY NOT<br>At least one of <i>birthdate</i> or <i>birthdate_as_string</i> will always be available.</td> <!-- Belgium -->
       <td>SHALL NOT</td> <!-- Netherlands -->
       <td>SHALL NOT</td> <!-- Luxembourg -->
