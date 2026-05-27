@@ -158,6 +158,7 @@
           <tr>
             <td>{% include parameter.html name="address" req="OPTIONAL" %}</td><td>Returns user's postal address, represented as JSON Object containing some or all of these members: <code>formatted</code> <code>street_address</code> <code>postal_code</code> <code>locality</code>.<br></td>
           </tr>
+          <tr>
             <td>{% include parameter.html name="address_assurance_level" req="OPTIONAL" %}</td><td>Indicates the level of assurance associated with the user's address claim, depending on whether the address is <code>SELF_DECLARED</code> (provided by the user without verification), <code>VALIDATED</code> (provided by the user and validated against a source), or <code>VERIFIED</code> (obtained from an official document).<br></td>
           </tr>
           <tr>
