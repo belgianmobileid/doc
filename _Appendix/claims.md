@@ -754,7 +754,43 @@ How to understand the table below:
       <td><b>address</b></td>
       <td>User's postal address, represented as JSON Object containing some or all of these members: <code>formatted</code> <code>street_address</code> <code>postal_code</code> <code>locality</code>.</td>
       <td>SHALL</td> <!-- Belgium -->
-      <td>SHALL NOT</td> <!-- Netherlands -->
+      <td>MAY NOT</td> <!-- Netherlands -->
+      <td>SHALL NOT</td> <!-- Luxembourg -->
+      <td>SHALL NOT</td> <!-- Ireland -->
+      <td>SHALL NOT</td> <!-- Portugal -->
+      <td>SHALL NOT</td> <!-- Italy -->
+      <td>SHALL NOT</td> <!-- France -->
+      <td>SHALL NOT</td> <!-- Spain -->
+      <td>SHALL NOT</td> <!-- UK -->
+      <td>SHALL NOT</td> <!-- Germany -->
+      <td>SHALL NOT</td> <!-- Finland -->
+      <td>SHALL NOT</td> <!-- Norway -->
+      <td>SHALL NOT</td> <!-- Sweden -->
+      <td>SHALL NOT</td> <!-- Denmark -->
+      <td>SHALL NOT</td> <!-- Iceland -->
+      <td>SHALL NOT</td> <!-- Estonia -->
+      <td>SHALL NOT</td> <!-- Romania -->
+      <td>SHALL NOT</td> <!-- Austria -->
+      <td>SHALL NOT</td> <!-- Bulgara -->
+      <td>SHALL NOT</td> <!-- Czechia -->
+      <td>SHALL NOT</td> <!-- Greece -->
+      <td>SHALL NOT</td> <!-- Hungary -->
+      <td>SHALL NOT</td> <!-- Poland -->
+      <td>SHALL NOT</td> <!-- Slovakia -->
+      <td>SHALL NOT</td> <!-- Croatia -->
+      <td>SHALL NOT</td> <!-- Lithuania -->
+      <td>SHALL NOT</td> <!-- Slovenia -->
+      <td>SHALL NOT</td> <!-- Latvia -->
+      <td>SHALL NOT</td> <!-- Cyprus -->
+      <td>SHALL NOT</td> <!-- Malta -->
+      <td>SHALL NOT</td> <!-- Serbia -->
+      <td>SHALL NOT</td> <!-- Moldova -->
+    </tr>
+    <tr>
+      <td><b>address_assurance_level</b></td>
+      <td>Indicates the level of assurance associated with the user's address claim, depending on whether the address is <code>SELF_DECLARED</code> (provided by the user without verification), <code>VALIDATED</code> (provided by the user and validated against a source), or <code>VERIFIED</code> (obtained from an official document).</td>
+      <td>SHALL</td> <!-- Belgium -->
+      <td>MAY NOT</td> <!-- Netherlands -->
       <td>SHALL NOT</td> <!-- Luxembourg -->
       <td>SHALL NOT</td> <!-- Ireland -->
       <td>SHALL NOT</td> <!-- Portugal -->
