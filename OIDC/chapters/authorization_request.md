@@ -102,10 +102,13 @@
             <td>{% include parameter.html name="family_name" req="OPTIONAL" %}</td><td>Returns user's surname(s) or last name(s). Note that in some cultures, people can have multiple family names or no family name; all can be present, with the names being separated by space characters.</td>
           </tr> 
           <tr>
-            <td>{% include parameter.html name="birthdate" req="OPTIONAL" %}</td><td>Return user's birthdate, represented as a string in YYYY-MM-DD date format. itsme® users are always 16 years old or more.</td>
+            <td>{% include parameter.html name="birthdate" req="OPTIONAL" %}</td><td>Return user's birthdate, represented as a string in YYYY-MM-DD date format. itsme® users are always 13 years old or more.</td>
           </tr> 
           <tr>
-            <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/birthdate_as_string" req="OPTIONAL" %}</td><td>Returns user's birthdate in an unprocessed way, as mentioned on the ID document. itsme® users are always 16 years old or more.</td>
+            <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/birthdate_as_string" req="OPTIONAL" %}</td><td>Returns user's birthdate in an unprocessed way, as mentioned on the ID document. itsme® users are always 13 years old or more.</td>
+          </tr>
+          <tr>
+            <td>{% include parameter.html name="age_gte_13" req="OPTIONAL" %}</td><td>Returns <code>true</code> if the age of the user is greater than or equal to 13 years old. Returns <code>false</code> otherwise. This claim is meant to be used for age verification in contexts where data minimisation is relevant and you don't need the exact birthdate.</td>
           </tr>
           <tr>
             <td>{% include parameter.html name="age_gte_16" req="OPTIONAL" %}</td><td>Returns <code>true</code> if the age of the user is greater than or equal to 16 years old. Returns <code>false</code> otherwise. This claim is meant to be used for age verification in contexts where data minimisation is relevant and you don't need the exact birthdate.</td>
@@ -154,6 +157,8 @@
           </tr>
           <tr>
             <td>{% include parameter.html name="address" req="OPTIONAL" %}</td><td>Returns user's postal address, represented as JSON Object containing some or all of these members: <code>formatted</code> <code>street_address</code> <code>postal_code</code> <code>locality</code>.<br></td>
+          </tr>
+            <td>{% include parameter.html name="address_assurance_level" req="OPTIONAL" %}</td><td>Indicates the level of assurance associated with the user's address claim, depending on whether the address is <code>SELF_DECLARED</code> (provided by the user without verification), <code>VALIDATED</code> (provided by the user and validated against a source), or <code>VERIFIED</code> (obtained from an official document).<br></td>
           </tr>
           <tr>
             <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/claim_citizenship" req="OPTIONAL" %}</td><td>Returns user's nationality. The format is directly depending on the underlying ID document: for Belgian ID documents this is represented as a string, and for documents from other countries this is represented in the <a href="https://en.wikipedia.org/wiki/ISO_3166" target="blank">ISO 3166-1 alpha-3</a> format.</td>
