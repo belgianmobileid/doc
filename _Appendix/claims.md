@@ -241,6 +241,42 @@ How to understand the table below:
       <td>SHALL NOT</td> <!-- Moldova -->
     </tr>
     <tr>
+      <td><b>age_gte_13</b></td>
+      <td>Returns <code>true</code> if the age of the user is greater than or equal to 13 years old. Returns <code>false</code> otherwise. This claim is meant to be used for age verification in contexts where data minimisation is relevant and you don't need the exact birthdate. This claim is always returned except for accounts without a valid birthdate.</td>
+      <td>MAY NOT</td> <!-- Belgium -->
+      <td>SHALL</td> <!-- Netherlands -->
+      <td>SHALL</td> <!-- Luxembourg -->
+      <td>SHALL</td> <!-- Ireland -->
+      <td>SHALL</td> <!-- Portugal -->
+      <td>SHALL</td> <!-- Italy -->
+      <td>SHALL</td> <!-- France -->
+      <td>SHALL</td> <!-- Spain -->
+      <td>SHALL</td> <!-- UK -->
+      <td>SHALL</td> <!-- Germany -->
+      <td>SHALL</td> <!-- Finland -->
+      <td>SHALL</td> <!-- Norway -->
+      <td>SHALL</td> <!-- Sweden -->
+      <td>SHALL</td> <!-- Denmark -->
+      <td>SHALL</td> <!-- Iceland -->
+      <td>SHALL</td> <!-- Estonia -->
+      <td>SHALL</td> <!-- Romania -->
+      <td>SHALL</td> <!-- Austria -->
+      <td>SHALL</td> <!-- Bulgara -->
+      <td>SHALL</td> <!-- Czechia -->
+      <td>SHALL</td> <!-- Greece -->
+      <td>SHALL</td> <!-- Hungary -->
+      <td>SHALL</td> <!-- Poland -->
+      <td>SHALL</td> <!-- Slovakia -->
+      <td>SHALL</td> <!-- Croatia -->
+      <td>SHALL</td> <!-- Lithuania -->
+      <td>SHALL</td> <!-- Slovenia -->
+      <td>SHALL</td> <!-- Latvia -->
+      <td>SHALL</td> <!-- Cyprus -->
+      <td>SHALL</td> <!-- Malta -->
+      <td>SHALL</td> <!-- Serbia -->
+      <td>SHALL</td> <!-- Moldova -->
+    </tr>
+    <tr>
       <td><b>age_gte_16</b></td>
       <td>Returns <code>true</code> if the age of the user is greater than or equal to 16 years old. Returns <code>false</code> otherwise. This claim is meant to be used for age verification in contexts where data minimisation is relevant and you don't need the exact birthdate. This claim is always returned except for accounts without a valid birthdate.</td>
       <td>MAY NOT</td> <!-- Belgium -->
