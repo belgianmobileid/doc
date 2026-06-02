@@ -68,6 +68,16 @@ nav_order: 1
   </div>
 </section>
 
+<section class="home-section home-section--subtle">
+  <header class="home-section__head">
+    <h2>Appendix</h2>
+    <p>
+      Need the full list of supported claims?
+      <a href="https://belgianmobileid.github.io/doc/claims/">View claims reference →</a>
+    </p>
+  </header>
+</section>
+
 <section class="home-section home-section--alt">
   <header class="home-section__head">
     <h2>IAM platforms</h2>
