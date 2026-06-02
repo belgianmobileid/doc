@@ -65,6 +65,14 @@ nav_order: 1
         <a href="datasharing">Direct integration →</a>
       </div>
     </article>
+
+    <article class="home-card">
+      <h3>CIBA</h3>
+      <p>Implement decoupled authentication using Client-Initiated Backchannel Authentication.</p>
+      <div class="home-card__links">
+        <a href="ciba">Learn more →</a>
+      </div>
+    </article>
   </div>
 </section>
 
