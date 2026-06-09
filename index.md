@@ -65,7 +65,25 @@ nav_order: 1
         <a href="datasharing">Direct integration →</a>
       </div>
     </article>
+
+    <article class="home-card">
+      <h3>CIBA</h3>
+      <p>Implement decoupled authentication using Client-Initiated Backchannel Authentication.</p>
+      <div class="home-card__links">
+        <a href="ciba">Learn more →</a>
+      </div>
+    </article>
   </div>
+</section>
+
+<section class="home-section home-section--subtle">
+  <header class="home-section__head">
+    <h2>Appendix</h2>
+    <p>
+      Need the full list of supported claims?
+      <a href="https://belgianmobileid.github.io/doc/claims/">View claims reference →</a>
+    </p>
+  </header>
 </section>
 
 <section class="home-section home-section--alt">

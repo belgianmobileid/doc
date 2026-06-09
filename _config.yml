@@ -75,6 +75,10 @@ just_the_docs:
 # Set a path/url to a logo that will be displayed instead of the title
 logo: "/public/images/ASMARTERWAY_RGB.png"
 
+# Process CIBA markdown files stored in underscored directory
+include:
+  - _CIBA
+
 
 # Exclude from processing.
 # The following items will not be processed, by default.

@@ -48,23 +48,13 @@ layout: table_wrappers
       </a>
     </div>
     <nav role="navigation" aria-label="Main" id="site-nav" class="site-nav">
-      {% if site.just_the_docs.collections %}
-        {% for collection_entry in site.just_the_docs.collections %}
-          {% assign collection_value = collection_entry[1] %}
-          {% if collection_value.name == "Deeplinks" %}
-            {% assign collection_key = collection_entry[0] %}
-            {% assign collection = site[collection_key] %}
-            <ul class="nav-list">
-              <li class="nav-list-item"><a href="/doc/index" class="nav-list-link">Home</a></li>
-            </ul>
-            {% include nav.html pages=collection %}
-          {% endif %}
-        {% endfor %}
-      {% else %}
-        {% include nav.html pages=site.html_pages %}
-      {% endif %}
+      <ul class="nav-list">
+        <li class="nav-list-item"><a href="/doc/index" class="nav-list-link">Home</a></li>
+      </ul>
+      {% include toc.html html=content sanitize=true h_min=2 h_max=3 class="nav-list" item_class="nav-list-item" anchor_class="nav-list-link" %}
     </nav>
   </div>
+
   <div class="main" id="top">
     <div id="main-header" class="main-header">
       {% if site.search_enabled != false %}
@@ -95,6 +85,7 @@ layout: table_wrappers
         </nav>
       {% endif %}
     </div>
+
     <div id="main-content-wrap" class="main-content-wrap">
       <div id="main-content" class="main-content" role="main">
         {% if site.heading_anchors != false %}
@@ -111,6 +102,7 @@ layout: table_wrappers
           <svg viewBox="0 0 24 24" class="icon"><use xlink:href="#svg-search"></use></svg>
         </a>
       {% endif %}
+
       <div class="search-overlay"></div>
     {% endif %}
   </div>

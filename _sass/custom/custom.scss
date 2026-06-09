@@ -217,6 +217,27 @@ $home-border: rgba(31, 29, 38, 0.08);
     border: 1px solid $home-border;
 }
 
+.home-section--subtle {
+    margin-top: 1.75rem;
+    padding: 1rem 1.25rem;
+    background: rgba(255, 255, 255, 0.65);
+    border: 1px solid $home-border;
+    border-radius: 10px;
+}
+
+.home-section--subtle .home-section__head {
+    margin-bottom: 0;
+}
+
+.home-section--subtle .home-section__head h2 {
+    font-size: 1.15rem;
+    margin-bottom: 0.2rem;
+}
+
+.home-section--subtle .home-section__head p {
+    font-size: 0.96rem;
+}
+
 .home-section__head {
     margin-bottom: 1.5rem;
 }
