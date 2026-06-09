@@ -1957,6 +1957,14 @@ div.opaque { background-color: #27262b; }
 
 .side-bar { border-right: none; }
 
+.ciba-toc .nav-list-item > .nav-list { display: block; }
+
+.ciba-toc > .nav-list { padding-left: 0.75rem; }
+
+.ciba-toc .nav-list-item > .nav-list-link { color: #5c5962; }
+
+.ciba-title { cursor: default; }
+
 .side-bar.homepage { height: initial; }
 
 aside { padding: 15px; padding-left: 50px; border: solid 1px; border-radius: 4px; margin: 10px; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 3px 10px rgba(0, 0, 0, 0.08); position: relative; }
