@@ -871,7 +871,7 @@ Example of a decrypted id_token:
 	"birthdate": "1974-10-23",
 	"gender": "male",
 	"name": "John Ronald R Tolkien",
-	"iss": "https://oidc.prd.itsme.services/clientsecret-oidc/csapi/v0.1",
+	"iss": "https://oidc.[e2e/prd].itsme.services/v2",
 	"nonce": "5468798645321",
 	"nbf": 1699538107,
 	"exp": 1699538407,
@@ -957,7 +957,7 @@ Content-Type: application/json
 	"gender": "male",
 	"http://itsme.services/v2/claim/birthdate_as_string": "01.11.1978",
 	"http://itsme.services/v2/claim/IDDocumentType": "I",
-	"iss": "https://oidc.uat.itsme.services/clientsecret-oidc/csapi/v0.1",
+	"iss": "https://oidc.[e2e/prd].itsme.services/v2",
 	"http://itsme.services/v2/claim/validityTo": {
 		"http://itsme.services/v2/claim/BEeidSn": "2028-11-10T00:00:00Z"
 	},
@@ -980,7 +980,7 @@ Content-Type: application/json
 	"email_verified": false,
 	"http://itsme.services/v2/claim/claim_device": {
 		"os": "ANDROID",
-		"appName": "be.bmid.itsme.uat",
+		"appName": "be.bmid.itsme.[e2e/prd]",
 		"appRelease": "4.0.0",
 		"deviceLabel": "lucye",
 		"debugEnabled": false,
@@ -995,7 +995,7 @@ Content-Type: application/json
 	"http://itsme.services/v2/claim/BENationalNumber": "99060427181",
 	"phone_number_verified": true,
 	"given_name": "George",
-	"picture": "https://oidc.uat.itsme.services/clientsecret-oidc/csapi/v0.1/picture",
+	"picture": "https://oidc.[e2e/prd].itsme.services/v2/picture",
 	"http://itsme.services/v2/claim/verificationDate": {
 		"http://itsme.services/v2/claim/place_of_birth": "2023-04-12T15:02:23Z",
 		"birthdate": "2023-04-12T15:02:23Z",
@@ -1058,7 +1058,7 @@ Not applicable.
 
 {% tab RevokeRequest Secret key %}
 
-<b><code>POST https://oidc.<i><b>[e2e/prd]</b></i>.itsme.services/clientsecret-oidc/csapi/v0.1/connect/revoke</code></b>
+<b><code>POST https://oidc.<i><b>[e2e/prd]</b></i>.itsme.services/v2/connect/revoke</code></b>
 
 The Revocation Endpoint enables your application to notify itsme® that a previously obtained access token is no longer needed and MUST be revoked.
 
