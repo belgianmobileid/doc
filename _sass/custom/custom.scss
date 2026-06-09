@@ -2,6 +2,22 @@
     border-right: none;
 }
 
+.ciba-toc .nav-list-item > .nav-list {
+    display: block;
+}
+
+.ciba-toc > .nav-list {
+    padding-left: 0.75rem;
+}
+
+.ciba-toc .nav-list-item > .nav-list-link {
+    color: #5c5962;
+}
+
+.ciba-title {
+    cursor: default;
+}
+
 .side-bar.homepage {
     height: initial;
 }

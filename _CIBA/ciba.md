@@ -1,5 +1,5 @@
 ---
-layout: OIDC
+layout: ciba
 title: CIBA QR flow
 permalink: /ciba
 nav_exclude: false
@@ -17,6 +17,10 @@ To support use cases where the Client does not have such a user identifier in ad
 The User Discovery Flow involves displaying a QR code on the Client's frontend, which the user scans using their itsme® mobile app. Upon scanning, the mobile app identifies the user and communicates with the itsme® backend, enabling the Client to receive a valid user identifier that can then be used to initiate a standard CIBA flow.
 
 The diagram below describes both the User Discovery Flow & the OIDC CIBA Flow and how your systems should integrate with itsme®. A more extensive explanation of the flow can be found under Guides.
+
+![Partner POV OIDC CIBA QR Ping flow](/doc/public/images/pov_partner_oidc_ciba_qr_ping.png)
+
+![Partner POV OIDC CIBA QR Poll flow](/doc/public/images/pov_partner_oidc_ciba_qr_poll.png)
 
 # Onboarding
 
@@ -64,8 +68,8 @@ Once you have obtained the <code>user_identifier_token</code> from the User Disc
   <li><b>Receiving the authentication result:</b> When the user has completed authentication in the itsme® app, the partner will receive an <code>access_token</code> and <code>id_token</code>.<br><br>
     We support the POLL and PING token delivery modes. Please let our Onboarding team know which flow you want to implement.
     <ul>
-      <li><b>CIBA Ping mode:</b> Once the end user has confirmed the action in their itsme® app, we will send a POST request on your preregistered callback endpoint. That request will contain your <code>client_notification_token</code> as a bearer token. It will use the <code>application/json</code> media type and will only contain the <code>auth_req_id</code> as body content.</li>
-      <li><b>CIBA Poll mode:</b> Partner polls endpoint <code>POST /token</code> with the <code>auth_request_id</code> for the authentication result. The response may contain an <code>interval</code> value. The Partner is allowed to poll the endpoint every <code>interval</code> seconds. If no interval value is present, default to 5 seconds. Polling more frequently than allowed will result in a <code>slow_down</code> error.</li>
+      <li><b>CIBA Ping mode:</b> Once the end user has confirmed the action in their itsme® app, we will send a POST request on your preregistered callback endpoint. That request will contain your <code>client_notification_token</code> as a bearer token. It will use the <code>application/json</code> media type and will only contain the <code>auth_req_id</code> as body content.<br><br><img src="/doc/public/images/oidc_ciba_ping.png" alt="OIDC CIBA Ping mode"></li>
+      <li><b>CIBA Poll mode:</b> Partner polls endpoint <code>POST /token</code> with the <code>auth_request_id</code> for the authentication result. The response may contain an <code>interval</code> value. The Partner is allowed to poll the endpoint every <code>interval</code> seconds. If no interval value is present, default to 5 seconds. Polling more frequently than allowed will result in a <code>slow_down</code> error.<br><br><img src="/doc/public/images/oidc_ciba_poll.png" alt="OIDC CIBA Poll mode"></li>
     </ul>
   </li>
   <li><b>Retrieve user data:</b> Use <code>GET /userinfo</code> with the <code>access_token</code> to retrieve the user's attributes and metadata.</li>

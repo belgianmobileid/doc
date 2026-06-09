@@ -67,8 +67,8 @@ nav_order: 1
     </article>
 
     <article class="home-card">
-      <h3>CIBA</h3>
-      <p>Implement decoupled authentication using Client-Initiated Backchannel Authentication.</p>
+      <h3>CIBA QR</h3>
+      <p>Use OIDC CIBA for decoupled authentication, with a QR User Discovery flow to obtain a valid user identifier before starting CIBA.</p>
       <div class="home-card__links">
         <a href="ciba">Learn more →</a>
       </div>
