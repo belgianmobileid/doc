@@ -47,6 +47,36 @@ aside.notice {
     left: 15px;
 }
 
+/* Fenced code examples (```...```) */
+div.highlighter-rouge,
+figure.highlight {
+    background: #f8f9fa;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+div.highlighter-rouge pre.highlight,
+figure.highlight pre.highlight,
+div.highlighter-rouge code,
+figure.highlight code {
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+div.highlighter-rouge .highlight,
+div.highlighter-rouge div.highlight,
+figure.highlight .highlight,
+figure.highlight pre,
+figure.highlight pre.highlight {
+    background: #f8f9fa;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+}
+
 /** Parameters table */
 /*********************/
 

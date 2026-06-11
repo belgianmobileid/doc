@@ -53,8 +53,8 @@ nav_order: 1
       <h3>Qualified signature</h3>
       <p>Sign documents with the same legal value as a handwritten signature.</p>
       <div class="home-card__links">
-        <a href="QES-CSC">CSC Sign protocol →</a>
-        <a href="QES-OASIS">OASIS DSS protocol →</a>
+        <a href="QES-OASIS">OASIS DSS →</a>
+        <a href="QES-CSC">CSC Sign →</a>
       </div>
     </article>
 
@@ -70,7 +70,7 @@ nav_order: 1
       <h3>CIBA QR</h3>
       <p>Use OIDC CIBA for decoupled authentication, with a QR User Discovery flow to obtain a valid user identifier before starting CIBA.</p>
       <div class="home-card__links">
-        <a href="ciba">Learn more →</a>
+        <a href="ciba">Direct integration →</a>
       </div>
     </article>
   </div>
@@ -81,7 +81,7 @@ nav_order: 1
     <h2>Appendix</h2>
     <p>
       Need the full list of supported claims?
-      <a href="https://belgianmobileid.github.io/doc/claims/">View claims reference →</a>
+      <a href="{{ '/claims/' | relative_url }}">View claims reference →</a>
     </p>
   </header>
 </section>

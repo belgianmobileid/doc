@@ -75,22 +75,9 @@ layout: table_wrappers
     {% endif %}
   </div>
   <nav role="navigation" aria-label="Main" id="site-nav" class="site-nav">
-    {% if site.just_the_docs.collections %}
-      {% assign collections_size = site.just_the_docs.collections | size %}
-      {% for collection_entry in site.just_the_docs.collections %}
-        {% assign collection_value = collection_entry[1] %}
-        {% if collection_value.name == "OpenID Connect" %}            
-          {% assign collection_key = collection_entry[0] %}
-          {% assign collection = site[collection_key] %}          
-          <ul class="nav-list">
-            <li class="nav-list-item"><a href="/doc/index" class="nav-list-link">Home</a></li>
-          </ul>
-          {% include nav.html pages=collection %}
-        {% endif %}
-      {% endfor %}
-    {% else %}
-      {% include nav.html pages=site.html_pages %}
-    {% endif %}
+    <ul class="nav-list">
+      <li class="nav-list-item"><a href="{{ '/' | relative_url }}" class="nav-list-link">Home</a></li>
+    </ul>
   </nav>
   <div class="main" id="top">
     <div id="main-content-wrap" class="main-content-wrap bigtable">
