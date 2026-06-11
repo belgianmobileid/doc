@@ -1723,6 +1723,13 @@ aside.notice { border-color: white; }
 
 .notice::before { content: "🛈"; font-size: large; font-weight: bold; color: #ff4612; margin-right: 6px; position: absolute; top: 15px; left: 15px; }
 
+/* Fenced code examples (```...```) */
+div.highlighter-rouge, figure.highlight { background: #f8f9fa; border: none; border-radius: 0; box-shadow: none; }
+
+div.highlighter-rouge pre.highlight, figure.highlight pre.highlight, div.highlighter-rouge code, figure.highlight code { background: transparent; border: none; border-radius: 0; box-shadow: none; }
+
+div.highlighter-rouge .highlight, div.highlighter-rouge div.highlight, figure.highlight .highlight, figure.highlight pre, figure.highlight pre.highlight { background: #f8f9fa; border: none; border-radius: 0; box-shadow: none; }
+
 /** Parameters table */
 /*********************/
 td, th { border-left: none; vertical-align: top; text-align: left; }

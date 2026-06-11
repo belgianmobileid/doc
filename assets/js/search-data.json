@@ -127,7 +127,7 @@
   },"18": {
     "doc": "Home",
     "title": "Services &amp; integration APIs",
-    "content": "Pick the flow that fits your use case. Authentication . Let users log in securely to your application using their itsme® identity. Direct integration → Via IAM platform → Identification . Identify your users and access their verified personal data in one step. Direct integration → Via IAM platform → Confirmation . Collect explicit user consent for payments, orders or sensitive actions. Direct integration → Qualified signature . Sign documents with the same legal value as a handwritten signature. CSC Sign protocol → OASIS DSS protocol → Data sharing . Let users share data from 3rd party wallets and trusted sources. Direct integration → CIBA QR . Use OIDC CIBA for decoupled authentication, with a QR User Discovery flow to obtain a valid user identifier before starting CIBA. Learn more → ",
+    "content": "Pick the flow that fits your use case. Authentication . Let users log in securely to your application using their itsme® identity. Direct integration → Via IAM platform → Identification . Identify your users and access their verified personal data in one step. Direct integration → Via IAM platform → Confirmation . Collect explicit user consent for payments, orders or sensitive actions. Direct integration → Qualified signature . Sign documents with the same legal value as a handwritten signature. OASIS DSS → CSC Sign → Data sharing . Let users share data from 3rd party wallets and trusted sources. Direct integration → CIBA QR . Use OIDC CIBA for decoupled authentication, with a QR User Discovery flow to obtain a valid user identifier before starting CIBA. Direct integration → ",
     "url": "/doc/index",
     
     "relUrl": "/index"
