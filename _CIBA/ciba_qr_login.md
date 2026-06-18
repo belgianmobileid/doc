@@ -1,8 +1,8 @@
 ---
 layout: ciba
-title: CIBA QR flow
-permalink: /ciba
-nav_exclude: false
+title: CIBA QR login API
+permalink: ciba-qr-login/
+nav_order: 1
 toc_list: true
 ---
 
@@ -22,6 +22,8 @@ The diagram below describes both the User Discovery Flow & the OIDC CIBA Flow an
 
 ![Partner POV OIDC CIBA QR Poll flow](/doc/public/images/pov_partner_oidc_ciba_qr_poll.png)
 
+
+
 # Onboarding
 
 To make use of the itsme® OIDC CIBA API, you will need to contact our Customer Care team at <a href="mailto:onboarding@itsme-id.com">onboarding@itsme-id.com</a>. Based on your requirements, they will invite you to our self-service Portal where you will be able to configure an account. A clientID will be generated and linked to your account, which you will need to include in these requests:
@@ -37,7 +39,9 @@ Each partner can configure multiple "services" in the portal. Each service shoul
 
 <aside class="notice">Unlike redirect-based flows, there is no need to provide or whitelist redirect URIs for OIDC CIBA.</aside>
 
-# Guides
+
+
+{% include_relative chapters/guides.md %}
 
 ## Request QR Code for User Discovery Flow
 
@@ -59,6 +63,8 @@ To use the User Discovery Flow via QR code, follow these steps:
   </li>
 </ol>
 
+
+
 ## Initiating the OIDC CIBA Flow
 
 Once you have obtained the <code>user_identifier_token</code> from the User Discovery Flow, you can initiate the OIDC CIBA backchannel authentication request:
@@ -74,6 +80,8 @@ Once you have obtained the <code>user_identifier_token</code> from the User Disc
   </li>
   <li><b>Retrieve user data:</b> Use <code>GET /userinfo</code> with the <code>access_token</code> to retrieve the user's attributes and metadata.</li>
 </ol>
+
+
 
 ## Securing the exchange of information
 
@@ -132,19 +140,7 @@ All tokens issued by itsme® must be treated as confidential. These tokens must 
 
 List of all the issued tokens: <code>user_identifier_token</code>, <code>auth_req_id</code>, <code>access_token</code>, <code>refresh_token</code> and <code>client_notification_token</code>.
 
-## Certificates and website security
-
-itsme® requires <code>https</code> connections to guarantee security. With the <code>https</code> protocol, a web site operator obtains a certificate by applying to a certificate authority with a certificate signing request. The certificate request is an electronic document that contains the web site name, company information and the public key. The certificate provider signs the request, thus producing a public certificate. During web browsing, this public certificate is served to any web browser that connects to the web site and proves to the web browser that the provider believes it has issued a certificate to the owner of the web site.
-
-A certificate provider can opt to issue three types of certificates, each requiring its own degree of vetting rigor. In order of increasing rigor (and naturally, cost) they are: Domain Validation, Organization Validation and Extended Validation.
-
-The Domain Validation certificate doesn't provide sufficient identity guarantees to itsme®. So, <b>only the Organization Validation and Extended Validation certificates</b> are supported. For example, using the Let's Encrypt open certificate authority is not sufficient because it only provide standard Domain Validation certificates.
-
-<aside class="notice">The chain of trust of these certificates need to be publicly accessible, meaning that our systems need to be able to access the root and the intermediate certificates.</aside>
-
-<aside class="notice">All itsme® API URL we publish use <code>https</code>.</aside>
-
-<aside class="notice">All requests to our endpoints MUST also use the SNI extension (refer to the <a href="https://datatracker.ietf.org/doc/html/rfc6066#section-3">RFC 6066</a> for more information) of the TLS protocol, that allows our servers to provide you with the correct certificate based on which endpoint you are querying.</aside>
+{% include_relative chapters/certificates_and_website_security.md %}
 
 ## Handling responses
 
@@ -347,61 +343,15 @@ HTTP/1.1 401 Unauthorized
 WWW-Authenticate: Bearer realm="example"
 ```
 
-## Mapping the user
 
-### Mapping using sub claim
 
-To sign in successfully in your web desktop, mobile web or mobile application, a given user must be mapped to a user account in your database. By default, your application Server will use the subject identifier, or sub claim, in the ID Token to identify and verify a user account. The sub claim is a string that uniquely identifies a given user account. The benefit of using a sub claim is that it will not change, even if other user attributes (email, phone number, etc) associated with that account are updated.
+{% include_relative chapters/mapping_the_user.md %}
 
-If no user record is storing the sub claim value, then you should allow the user to associate his new or existing account to the sub.
+{% include_relative chapters/user_data.md %}
 
-### Benefit of sub claim
+{% include_relative chapters/api_reference.md %}
 
-The benefit of using a sub claim is that it will not change, not even if other user attributes (email, phone number, etc.) associated with that account are updated.
-
-### Deleting and re-creating an itsme® account
-
-In a limited number of cases (e.g. technical issue,...) a user could ask itsme® to ‘delete' his account. As a result the specific account will be ‘archived' (for compliancy reasons) and thus also the unique identifier(s) (e.g. "sub").
-
-If the same user would opt to re-create an itsme® afterwards, he will need to re-bind his itsme® account with your application server, in the same way as for the initial binding. After successful re-binding you will need to overwrite the initial reference with the new sub claim value in your database.
-
-## User Data
-
-itsme® makes a range of user data available for its partners. These data elements (called "claims") can be requested through the backchannel Authentication Request, either individually or as part of a broader "scope". The claims are grouped into two categories:
-
-### User Attributes
-
-User attributes are saying something about the end user. They are part of the identity of a person and we retrieve them from an identity document (ID card, passport...). Examples: name, address, birthdate, etc.
-
-### Metadata
-
-Metadata are saying something about the data we have for an end user. They are not directly related to a person, but rather to an information about this person. Examples are the validityTo, the verificationDate etc. Those metadata, if requested, will only return values relating to the user attributes that are also requested. The metadata will then return an object containing one value for each relevant user attribute.
-
-Examples:
-
-The verificationDate is a metadata that has a value for most user attributes. So requesting the verificationDate AND the birthdate AND the given_name will return the following pattern for verificationDate:
-
-```text
-"http://itsme.services/v2/claim/verificationDate": {
-	"birthdate": "2023-06-01T13:04:26Z",
-	"given_name": "2023-06-01T13:04:26Z"}
-```
-
-Requesting only the verificationDate will return nothing, as it only returns values for other requested attributes.
-
-The validityTo metadata only has a value for BEeidSn and IDDocumentSN (because other attributes don't have an expiry date). So validityTo will only return a value if BEeidSn and/or IDDocumentSN is also requested. Even if other attributes are requested, validityTo will not return a value for those other attributes.
-
-# API Reference
-
-Currently, only Private Key JWT is supported for CIBA authentication. Client Secret is not supported.
-
-## itsme® Discovery Document
-
-### Public- And Private-Key
-
-<b><code>GET https://idp.[e2e/prd].itsme.services/v2/.well-known/openid-configuration</code></b>
-
-To simplify implementations and increase flexibility, OpenID Connect allows the use of a Discovery Document, a JSON document containing key-value pairs which provide details about itsme® configuration, such as the Authentication, Token and userInfo Endpoints, Supported claims, ...
+{% include_relative chapters/itsme_discovery_document.md %}
 
 ## User Discovery Request
 
@@ -534,6 +484,8 @@ client_assertion=eyJraWQiO...
 }
 ```
 
+
+
 ## Authentication Request
 
 <b><code>POST https://idp.[e2e|prd].itsme.services/v2/backchannel/authentication</code></b>
@@ -578,7 +530,7 @@ This endpoint only accepts a signed Request Object (request JWT). All authentica
                 </tr>
                 <tr>
                   <td>{% include parameter.html name="address" req="OPTIONAL" %}</td>
-                  <td>Returns user's postal address as a JSON Object containing <code>formatted</code>, <code>street_address</code>, <code>postal_code</code>, <code>locality</code>.</td>
+                  <td>Returns <code>address_assurance_level</code> claim and user's postal address as a JSON Object containing <code>formatted</code>, <code>street_address</code>, <code>postal_code</code>, <code>locality</code>.</td>
                 </tr>
                 <tr>
                   <td>{% include parameter.html name="phone" req="OPTIONAL" %}</td>
@@ -741,284 +693,12 @@ Cache-Control: no-store
 }
 ```
 
-## PING callback
 
-This callback will only happen if your service is configured for Ping mode.
 
-Once the end user has confirmed the action in their itsme® app, we will send a POST request on your preregistered callback endpoint. That request will contain your <code>client_notification_token</code> as a bearer token. It will use the <code>application/json</code> media type and will only contain the <code>auth_req_id</code> as body content.
+{% include_relative chapters/ping_callback.md %}
 
-You should respond to that callback by calling the endpoint <code>POST /token</code>.
+{% include_relative chapters/token_request.md %}
 
-### Example
+{% include_relative chapters/userinfo_request.md %}
 
-```http
-POST /cb HTTP/1.1
-Host: idp.[e2e/prd].itsme.services
-Authorization: Bearer 8d67dc78-7faa-4d41-aabd-67707b374255
-Content-Type: application/json
 
-{"auth_req_id": "1c266114-a1be-4252-8ad1-04986c5b9ac1"}
-```
-
-## Token Request
-
-<b><code>POST https://idp.[e2e/prd].itsme.services/v2/token</code></b>
-
-During this step, your application has to authenticate itself to our server using the public- and private-key pair method.
-
-<aside class="notice">The parameters below must be included in the body of the POST request, not in the query string.</aside>
-
-### Parameters
-
-<table>
-  <tbody>
-    <tr>
-      <td>{% include parameter.html name="client_id" req="REQUIRED" %}</td>
-      <td>It identifies your application. This parameter value is generated during registration.</td>
-    </tr>
-    <tr>
-      <td>{% include parameter.html name="grant_type" req="REQUIRED" %}</td>
-      <td>Fixed value <code>urn:openid:params:grant-type:ciba</code>.</td>
-    </tr>
-    <tr>
-      <td>{% include parameter.html name="client_assertion_type" req="REQUIRED" %}</td>
-      <td>Specifies the type of assertion. Set this to <code>urn:ietf:params:oauth:client-assertion-type:jwt-bearer</code>.</td>
-    </tr>
-    <tr>
-      <td>{% include parameter.html name="auth_req_id" req="REQUIRED" %}</td>
-      <td>Unique identifier received in the response of the authentication request, generated by the OpenID Provider. Treated as opaque.</td>
-    </tr>
-    <tr>
-      <td>{% include parameter.html name="client_assertion" req="REQUIRED" %}</td>
-      <td>Is a set of identity and security information, in the form of a JWT, used as an authentication method. The JWT MUST be signed, and MAY also be encrypted.<br><br>
-        The JWT contains the following claims.
-        <table>
-          <tr>
-            <td>{% include parameter.html name="iss" req="REQUIRED" %}</td>
-            <td>The issuer of the token. This value MUST be the same as the <code>client_id</code>.</td>
-          </tr>
-          <tr>
-            <td>{% include parameter.html name="sub" req="REQUIRED" %}</td>
-            <td>The subject of the token. This value MUST be the same as the <code>client_id</code>.</td>
-          </tr>
-          <tr>
-            <td>{% include parameter.html name="aud" req="REQUIRED" %}</td>
-            <td>The full URL of the resource you're using the JWT to authenticate to. Set this to <code>https://idp.[e2e/prd].itsme.services/v2/token</code>.</td>
-          </tr>
-          <tr>
-            <td>{% include parameter.html name="jti" req="REQUIRED" %}</td>
-            <td>A unique identifier for the token, containing maximum 255 characters.</td>
-          </tr>
-          <tr>
-            <td>{% include parameter.html name="exp" req="REQUIRED" %}</td>
-            <td>The expiration time of the token in seconds since January 1, 1970 UTC.</td>
-          </tr>
-          <tr>
-            <td>{% include parameter.html name="iat" req="OPTIONAL" %}</td>
-            <td>The time at which the JWT was issued.</td>
-          </tr>
-        </table>
-      </td>
-    </tr>
-  </tbody>
-</table>
-
-### Example
-
-```http
-POST https://idp.[e2e/prd].itsme.services/v2/token
-Host: idp.[e2e/prd].itsme.services
-Content-Type: application/x-www-form-urlencoded
-
-grant_type=urn%3Aopenid%3Aparams%3Agrant-type%3Aciba
-&auth_req_id=YOUR_AUTH_REQ_ID
-&client_id=YOUR_CLIENT_ID
-&client_assertion_type=urn%3Aietf%3Aparams%3Aoauth%3Aclient-assertion-type%3Ajwt-bearer
-&client_assertion=PHNhbWxwOl...
-```
-
-Where the following is the JWT payload of <code>client_assertion</code>:
-
-```json
-{
-  "iss": "s6BhdRkqt3",
-  "aud": "https://idp.e2e.itsme.services/v2/token",
-  "exp": 1537820086,
-  "iat": 1537819486,
-  "nbf": 1537818886,
-  "jti": "4LTCqACC2ESC5BWCnN3j58EnA"
-}
-```
-
-### Response
-
-<code>200</code> <code>application/json</code>
-
-<table>
-  <tbody>
-    <tr>
-      <td>{% include parameter.html name="access_token" req="REQUIRED" %}</td>
-      <td>Allows an application to retrieve consented user information from the UserInfo Endpoint.</td>
-    </tr>
-    <tr>
-      <td>{% include parameter.html name="token_type" req="REQUIRED" %}</td>
-      <td>Provides your application with the information required to successfully utilize the access token. Returned value is <code>Bearer</code>.</td>
-    </tr>
-    <tr>
-      <td>{% include parameter.html name="expires_in" req="REQUIRED" %}</td>
-      <td>Access token lifetime (in seconds).</td>
-    </tr>
-    <tr>
-      <td>{% include parameter.html name="id_token" req="OPTIONAL" %}</td>
-      <td>A security token that contains information about the authentication of a user, and potentially other requested claim data's. The <code>id_token</code> value is represented as a signed and encrypted JWT. So, before being able to use the ID Token claims you will have to decrypt and verify the signature.</td>
-    </tr>
-  </tbody>
-</table>
-
-#### Example
-
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-Cache-Control: no-store
-
-{
-  "access_token": "G5kXH2wHvUra0sHlDy1iTkDJgsgUO1bN",
-  "token_type": "Bearer",
-  "refresh_token": "4bwc0ESC_IAhflf-ACC_vjD_ltc11ne-8gFPfA2Kx16",
-  "expires_in": 120,
-  "id_token": "eyJhbGciOiJSUzI1NiIsImtpZ..."
-}
-```
-
-Example of a decrypted <code>id_token</code>:
-
-```json
-{
-  "sub": "6g2k9rgglem2dttw5d51ulkxpv24phwatiu6",
-  "aud": "WXw9DMqkEv",
-  "birthdate": "1974-10-23",
-  "gender": "male",
-  "name": "John Ronald R Tolkien",
-  "iss": "https://idp.prd.itsme.services/v2",
-  "nonce": "nonce",
-  "exp": 1699538407,
-  "iat": 1699538107
-}
-```
-
-## Userinfo Request
-
-<b><code>GET https://idp.[e2e/prd].itsme.services/v2/userinfo</code></b>
-
-The UserInfo Endpoint returns previously consented user profile information to your application. In other words, if the required claims are not returned in the ID Token, you can obtain the additional claims by presenting the access token to the itsme® UserInfo Endpoint. This is achieved by sending a HTTP GET request to the Userinfo Endpoint, passing the access token value in the Authorization header using the Bearer authentication scheme.
-
-### Response
-
-<code>200</code> <code>application/json</code>
-
-The UserInfo Response is represented as a signed and encrypted JWT. So, before being able to extract the claims you will have to decrypt and verify the signature.
-
-### Example
-
-***Request***
-
-```http
-GET /userinfo HTTP/1.1
-Host: server.example.com
-Authorization: Bearer SlAV32hkKG
-```
-
-***Response***
-
-This is a response example containing all possible claims for a Belgian account:
-
-```http
-HTTP/1.1 200 OK
-Content-Type: application/json
-
-{
-  "http://itsme.services/v2/claim/validityFrom": {
-
-## User Discovery Request
-
-### Public- And Private-Key
-
-```text
-POST https://idp.[e2e/prd].itsme.services/v2/user_discovery_sessions
-POST https://idp.[e2e/prd].itsme.services/v2/user_discovery_sessions/
-{user_discovery_session_id}
-```
-
-#### Parameters
-
-<table>
-<tbody>
-<tr><td>client_id<br>REQUIRED</td><td>It identifies your application. This parameter value is generated during registration.</td></tr>
-<tr><td>client_assertion<br>REQUIRED</td><td>Is a set of identity and security information, in the form of a JWT, used as an authentication method. To ensures that the request to get the id token and access token is made only from your application, and not from a potential attacker that may have intercepted the authorization code, the JWT MUST be signed, and MAY also be encrypted. If both signing and encryption are performed, it MUST be signed then encrypted, with the result being a Nested JWT (refer to this page for more information).
-The JWT contains the following claims.<br>&lt;table&gt;
-&lt;tbody&gt;
-&lt;tr&gt;&lt;td&gt;iss&lt;br&gt;REQUIRED&lt;/td&gt;&lt;td&gt;The issuer of the token. This value MUST be the same as the client_id.&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td&gt;sub&lt;br&gt;REQUIRED&lt;/td&gt;&lt;td&gt;The subject of the token. This value MUST be the same as the client_id.&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td&gt;aud&lt;br&gt;REQUIRED&lt;/td&gt;&lt;td&gt;The full URL of the resource you&amp;#x27;re using the JWT to authenticate to. Set this to https://idp.[e2e/prd.itsme.services/v2/backchannel/authentication&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td&gt;jti&lt;br&gt;REQUIRED&lt;/td&gt;&lt;td&gt;An unique identifier for the token, containing maximum 255 characters.&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td&gt;exp&lt;br&gt;REQUIRED&lt;/td&gt;&lt;td&gt;The expiration time of the token in seconds since January 1, 1970 UTC.&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td&gt;iat&lt;br&gt;OPTIONAL&lt;/td&gt;&lt;td&gt;The time at which the JWT was issued.&lt;/td&gt;&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;</td></tr>
-<tr><td>client_assertion_type<br>REQUIRED</td><td>Specifies the type of assertion. Set this to urn:ietf:params:oauth:client-assertion-type:jwt-bearer.</td></tr>
-</tbody>
-</table>
-
-##### Example
-
-```text
-POST https://idp.[e2e/prd].itsme.services/v2/user_discovery_sessions OR
-POST https://idp.[e2e/prd].itsme.services/v2/user_discovery_sessions/
-{user_discovery_session_id}
-Host: idp.[e2e/prd].itsme.services
-Content-Type: application/x-www-form-urlencoded
-client_assertion=eyJraWQiO...
-&client_assertion_type=urn%3Aietf%3Aparams%3Aoauth%3Aclient-assertion-type%3Ajwt-bearer
-```
-
-#### Response PendingUserDiscoverySession
-
-200 application/json
-
-<table>
-<tbody>
-<tr><td>user_discovery_session_id</td><td>Unique session identifier as a string</td></tr>
-<tr><td>status</td><td>PENDING_USER_DISCOVERY</td></tr>
-<tr><td>qr_code</td><td>Base64-encoded image of the QR code. The QR code might differ from the previous one (dynamic QR code).</td></tr>
-<tr><td>expires_at</td><td>String in YYYY-MM-DDThh:mm:ssZ date format specified by ISO 8601</td></tr>
-</tbody>
-</table>
-
-##### Example
-
-```text
-{"user_discovery_session_id" : "abcdef...",
- "status" : "PENDING_USER_DISCOVERY",
- "user_discovery_token" : {
-  "qr_code" : "/9j/4AAQSkZJRgABAQAAZABk...",
-  "expires_at" : "2025-01-01T00:00:00Z"}}
-```
-
-#### Response DiscoveredUserDiscoverySession
-
-<table>
-<tbody>
-<tr><td>user_discovery_session_id</td><td>Unique session identifier as a string</td></tr>
-<tr><td>Status</td><td>USER_DISCOVERED</td></tr>
-<tr><td>user_identifier_token</td><td>This token is a single-use user identifier. It is used to initiate the Authentication process in the OIDC CIBA Flow (POST /backchannel/authentication), and is not a persistent user identifier. It cannot be used to map or store user accounts in your database for future sessions.</td></tr>
-</tbody>
-</table>
-
-##### Example
-
-```text
-{"user_discovery_session_id" : "abcdef...",
- "status" : "USER_DISCOVERED",
- "user_identifier_token" : "abcdef..."}}
-```

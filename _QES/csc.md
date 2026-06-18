@@ -36,15 +36,9 @@ At this moment only the Hash(es) Signing variant is available and documented. In
 </ul>
 
 
-# Audience
+{% include_relative chapters/audience.md %}
 
-This document is intended to be read by developers of any Signature Creation Application party. Partners who wish to use the itsme sign service through an existing SCA should refer to this SCA instead.
-
-# Prerequisites
-
-Before you can integrate your application with itsme® Sign service, you MUST set up a project in the <a href="https://brand.belgianmobileid.be/d/CX5YsAKEmVI7" target="blank">itsme® B2B portal</a> to obtain all the needed information.
-
-Please be aware that we support performing up to 70 signatures within 1 itsme® action, but this is an extra option. If you want to make use of it, be sure to mention it to the Onboarding team while setting up your project.
+{% include_relative chapters/prerequisites.md %}
 
 # Integrating Sign services
 
@@ -618,7 +612,7 @@ response:
 204 NOCONTENT
 ```
 
-# Appendixes
+{% include_relative chapters/appendixes.md %}
 
 ## Supported character set
 

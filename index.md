@@ -50,15 +50,6 @@ nav_order: 1
     </article>
 
     <article class="home-card">
-      <h3>Qualified signature</h3>
-      <p>Sign documents with the same legal value as a handwritten signature.</p>
-      <div class="home-card__links">
-        <a href="QES-OASIS">OASIS DSS →</a>
-        <a href="QES-CSC">CSC Sign →</a>
-      </div>
-    </article>
-
-    <article class="home-card">
       <h3>Data sharing</h3>
       <p>Let users share data from 3rd party wallets and trusted sources.</p>
       <div class="home-card__links">
@@ -67,10 +58,20 @@ nav_order: 1
     </article>
 
     <article class="home-card">
-      <h3>CIBA QR</h3>
-      <p>Use OIDC CIBA for decoupled authentication, with a QR User Discovery flow to obtain a valid user identifier before starting CIBA.</p>
+      <h3>CIBA</h3>
+      <p>Use OIDC CIBA for decoupled authentication.</p>
       <div class="home-card__links">
-        <a href="ciba">Direct integration →</a>
+        <a href="{{ '/ciba-qr-login/' | relative_url }}">CIBA QR Login →</a>
+        <a href="{{ '/ciba-confirm/' | relative_url }}">CIBA Confirm →</a>
+      </div>
+    </article>
+
+    <article class="home-card">
+      <h3>Qualified signature</h3>
+      <p>Sign documents with the same legal value as a handwritten signature.</p>
+      <div class="home-card__links">
+        <a href="QES-OASIS">OASIS DSS →</a>
+        <a href="QES-CSC">CSC Sign →</a>
       </div>
     </article>
   </div>

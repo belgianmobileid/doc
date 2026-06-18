@@ -14,15 +14,9 @@ The objective of this document is to provide all the information needed to integ
 
 At this moment only the Hash(es) Signing variant is available and documented. In this variant, an external Signature Creation Application (SCA) will provide the What You See Is What You Sign (WYSIWYS) experience to the User, provide the hash of the data to be signed to the itsme® service and use the returned digital signature value to format the signature in one of the AdES formats.
 
-# Audience
+{% include_relative chapters/audience.md %}
 
-This document is intended to be read by developers of any Signature Creation Application party. Partners who wish to use the itsme sign service through an existing SCA should refer to this SCA instead.
-
-# Prerequisites
-
-Before you can integrate your application with itsme® Sign service, you MUST set up a project in the <a href="https://brand.belgianmobileid.be/d/CX5YsAKEmVI7" target="blank">itsme® B2B portal</a> to obtain all the needed information.
-
-Please be aware that we support performing up to 70 signatures within 1 itsme® action, but this is an extra option. If you want to make use of it, be sure to mention it to the Onboarding team while setting up your project.
+{% include_relative chapters/prerequisites.md %}
 
 # Integrating Sign services
 
@@ -672,7 +666,7 @@ HTTP200
 
 See [Appendixes](#appendixes) to get more information on the error codes.
 
-# Appendixes
+{% include_relative chapters/appendixes.md %}
 
 ## Handling Error Response
 

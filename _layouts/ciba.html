@@ -50,13 +50,10 @@ layout: table_wrappers
     <nav role="navigation" aria-label="Main" id="site-nav" class="site-nav">
       <ul class="nav-list">
         <li class="nav-list-item"><a href="/doc/index" class="nav-list-link">Home</a></li>
-        <li class="nav-list-item active">
-          <span class="nav-list-link ciba-title">CIBA QR API</span>
-          <div class="ciba-toc">
-            {% include toc.html html=content sanitize=true h_min=1 h_max=2 class="nav-list" item_class="nav-list-item" anchor_class="nav-list-link" submenu_class="nav-list" %}
-          </div>
-        </li>
       </ul>
+      {%- assign ciba_pages = site.pages
+            | where_exp:"item", "item.url == '/ciba-qr-login/' or item.url == '/ciba-confirm/'" -%}
+      {% include nav.html pages=ciba_pages %}
     </nav>
   </div>
 
