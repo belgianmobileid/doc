@@ -21,10 +21,10 @@ The JSON Object Signing and Encryption (JOSE) framework consists of several tech
     <li>JSON Web Signature (<a href="https://tools.ietf.org/html/rfc7515" target="blank">JWS</a>) represents signed content using JSON data structures and base64url encoding as defined in the specifications.</li>
     <li>JSON Web Encryption (<a href="https://tools.ietf.org/html/rfc7516" target="blank">JWE</a>) specification standardizes the way to represent an encrypted content in a JSON-based data structure.</li>
     <li>JSON Web Key (<a href="https://tools.ietf.org/html/rfc7517" target="blank">JWK</a>) defines a consistent way to represent a cryptographic key in a JSON structure which is used to sign (JWS) and/or encrypt (JWE) a specific content. The JSON Web Key Set (JWKS) extension defines a consistent way to represent a set of cryptographic keys in a JSON structure.
-    As itsme® only support the RSA cryptosystem, it requires that each party exposes its public keys as a simple JWK Set document on a URI accessible to all.
+    As itsme only support the RSA cryptosystem, it requires that each party exposes its public keys as a simple JWK Set document on a URI accessible to all.
         <ul>
-            <li>For itsme®, this URI can be retrieved from the <a href="../authentication/#itsme-discovery-document" target="blank">itsme® Discovery document</a>, using the "jwks_uri" key.</li>
-            <li>Your JWK Set document MUST be accessible via the URI communicated when setting up your project in the <a href="https://portal.itsme-id.com/login" target="blank">itsme® B2B portal</a> or via email to onboarding@itsme-id.com.</li>
+            <li>For itsme, this URI can be retrieved from the <a href="../authentication/#itsme-discovery-document" target="blank">itsme Discovery document</a>, using the "jwks_uri" key.</li>
+            <li>Your JWK Set document MUST be accessible via the URI communicated when setting up your project in the <a href="https://portal.itsme-id.com/login" target="blank">itsme B2B portal</a> or via email to onboarding@itsme-id.com.</li>
         </ul></li>
 </ul>
 
@@ -40,7 +40,7 @@ Next, you will need to ‘convert’ the PUBLIC keys (NOT the private key. You M
 
 The resulting JWK Set MUST contain (at least) 2 JWK: one whereby the “use” parameter is ”enc” (for encryption) and another with “sig” (for signature).
 
-This JWK Set is nothing more than a plain text file (“JSON” format) and you should place that on a publicly available website under https schema (with <a href="https://belgianmobileid.github.io/doc/authentication/#certificates-and-website-security" target="blank"> EV/OV certificate</a>)  and share that link with us if you have no access to itsme® B2B portal yet. As these are the PUBLIC keys, there is no problem to share this information publicly: in other words, it should not be placed behind a password or login screen. We expect that your server where jwkset is hosted responds fast, e.g. faster than 1000ms.
+This JWK Set is nothing more than a plain text file (“JSON” format) and you should place that on a publicly available website under https schema (with <a href="https://belgianmobileid.github.io/doc/authentication/#certificates-and-website-security" target="blank"> EV/OV certificate</a>)  and share that link with us if you have no access to itsme B2B portal yet. As these are the PUBLIC keys, there is no problem to share this information publicly: in other words, it should not be placed behind a password or login screen. We expect that your server where jwkset is hosted responds fast, e.g. faster than 1000ms.
 
 Some more (technical) documentation on <a href="https://tools.ietf.org/html/rfc7517" target="blank">https://tools.ietf.org/html/rfc7517</a>.
 
@@ -82,7 +82,7 @@ Following steps will show you how to generate a JWS Compact Serialization object
 </code></pre></div>
 
   <li>Combine the JWS Header and JWS Payload, and separate them with period ('.') characters, to produce the JWS Signing Input.</li>
-  <li>Complete the signing operation over the JWS Signing Input with the algorithm defined in the <i>"alg"</i> parameter, to produce the JWS Signature. The JWS Signing Input is signed using your private key corresponding to the public key referenced in your JWK Set document. This information SHOULD be made available via the URI you communicated when setting up your project in the <a href="https://portal.itsme-id.com/login" target="blank">itsme® B2B portal</a> or via email to onboarding@itsme-id.com.</li>
+  <li>Complete the signing operation over the JWS Signing Input with the algorithm defined in the <i>"alg"</i> parameter, to produce the JWS Signature. The JWS Signing Input is signed using your private key corresponding to the public key referenced in your JWK Set document. This information SHOULD be made available via the URI you communicated when setting up your project in the <a href="https://portal.itsme-id.com/login" target="blank">itsme B2B portal</a> or via email to onboarding@itsme-id.com.</li>
   <li>The JWS Signature will then be encoded using base64url to produce the string below.</li>
 
 <div class="language-http highlighter-rouge"><pre class="highlight">
@@ -139,7 +139,7 @@ Here are the steps to generate those elements:
         </tr>
         <tr>
         <td>{% include parameter.html name="enc" req="Required" %}</td>
-        <td>Defines the algorithm used to perform authenticated encryption on the payload to produce the Ciphertext and the Authentication Tag. This MUST be set to one of the values advertised in the <a href="../authentication/#itsme-discovery-document" target="blank">itsme® Discovery document</a>.</td>
+        <td>Defines the algorithm used to perform authenticated encryption on the payload to produce the Ciphertext and the Authentication Tag. This MUST be set to one of the values advertised in the <a href="../authentication/#itsme-discovery-document" target="blank">itsme Discovery document</a>.</td>
         </tr>
         <tr>
         <td>{% include parameter.html name="cty" req="Required" %}</td>
@@ -159,7 +159,7 @@ Here are the steps to generate those elements:
 
     <li>Generate a random 32 bytes string to be used as CEK</li>
     <li>Encrypt the CEK using RSA-OAEP-256 algorithm (<a href="https://tools.ietf.org/html/rfc7518#section-4.3">RFC7518</a>).
-        The key to be used for this encryption is itsme® public key. This key is published in itsme® JWKset with parameter "use" set on "enc". Our JWKset can be found at the jwks_uri URL given in <a href="../authentication/#itsme-discovery-document" target="blank">itsme® Discovery document</a></li>
+        The key to be used for this encryption is itsme public key. This key is published in itsme JWKset with parameter "use" set on "enc". Our JWKset can be found at the jwks_uri URL given in <a href="../authentication/#itsme-discovery-document" target="blank">itsme Discovery document</a></li>
     <li>Base64url encode the (UTF-8 encoded) encrypted CEK, to obtain a string like:</li>
 
 <div class="language-http highlighter-rouge"><pre class="highlight">
@@ -208,7 +208,7 @@ The decryption process is the reverse of the encryption process:
   <li>Base64url decode the encoded representations of the JWE Header, the JWE Encrypted Key, the JWE Initialization  Vector, the JWE Ciphertext, the JWE Authentication Tag, and the JWE Additional Authenticated Data (AAD).</li>
   <li>Verify that the octet sequence resulting from decoding the encoded JWE Header is a UTF-8-encoded representation of a completely valid JSON object.</li>
   <li>Determine the algorithm specified by the <i>"alg"</i> parameter in the JWE Header.</li>
-  <li>Decrypt the JWE Encrypted Key with the algorithm defined in the <i>"alg"</i> parameter, to produce the Content Encryption Key (CEK). The JWE Encrypted Key is decoded using your private key corresponding to the public key referenced in your jwkset. The jwkset uri SHOULD be made available when setting up your project in the <a href="https://portal.itsme-id.com/login" target="blank">itsme® B2B portal</a> or via email to onboarding@itsme-id.com. In case you expose several keys on your jwkset uri, our backend will randomly choose the encryption key, please, see the JWE header information to identify via kid, what key our backend picked up.</li>
+  <li>Decrypt the JWE Encrypted Key with the algorithm defined in the <i>"alg"</i> parameter, to produce the Content Encryption Key (CEK). The JWE Encrypted Key is decoded using your private key corresponding to the public key referenced in your jwkset. The jwkset uri SHOULD be made available when setting up your project in the <a href="https://portal.itsme-id.com/login" target="blank">itsme B2B portal</a> or via email to onboarding@itsme-id.com. In case you expose several keys on your jwkset uri, our backend will randomly choose the encryption key, please, see the JWE header information to identify via kid, what key our backend picked up.</li>
   <li>Let the Additional Authenticated Data (AAD) encryption parameter be the octets of the ASCII representation of the encoded JWE Header value.</li>
   <li>Decrypt the JWE Ciphertext with the encryption algorithm defined by the <i>"enc"</i> parameter in the JWE Header. It will return the decrypted JWS object.</li>
 </ol>
@@ -261,5 +261,5 @@ You have decoded the JWS object. The next step is to validate the JWS Signature.
 
 <ol>
   <li>Determine the signing algorithm <code>alg</code> and the key identifier <code>kid</code> from the JWS Header.</li>
-  <li>Validate the JWS Signature in the manner defined for the algorithm being used, which MUST be accurately represented by the value of the <code>alg</code> parameter. The signature is verified using the public key of itsme®, which can be retrieved from the <a href="../authentication/#itsme-discovery-document" target="blank">itsme® Discovery document</a>, using the <code>jwks_uri</code> key. If the returned itsme® JSON Web Key (JWK) contains an array of keys, you MUST use the one corresponding to the value given by the <code>kid</code> parameter from the JWS Header.</li>
+  <li>Validate the JWS Signature in the manner defined for the algorithm being used, which MUST be accurately represented by the value of the <code>alg</code> parameter. The signature is verified using the public key of itsme, which can be retrieved from the <a href="../authentication/#itsme-discovery-document" target="blank">itsme Discovery document</a>, using the <code>jwks_uri</code> key. If the returned itsme JSON Web Key (JWK) contains an array of keys, you MUST use the one corresponding to the value given by the <code>kid</code> parameter from the JWS Header.</li>
 </ol>

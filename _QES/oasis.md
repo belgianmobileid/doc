@@ -8,11 +8,11 @@ toc_list: true
 
 # Introduction
 
-itsme® is a trusted identity provider allowing partners to use verified identities for authentication and authorization on web desktop, mobile web and mobile applications. 
+itsme is a trusted identity provider allowing partners to use verified identities for authentication and authorization on web desktop, mobile web and mobile applications. 
 
 The objective of this document is to provide all the information needed to integrate the **Sign** service. This implementation of the **Sign** service is based on Oasis Digital Signature Services (DSS) protocol, using an asynchronous pattern in a pre-2.0 fashion.
 
-At this moment only the Hash(es) Signing variant is available and documented. In this variant, an external Signature Creation Application (SCA) will provide the What You See Is What You Sign (WYSIWYS) experience to the User, provide the hash of the data to be signed to the itsme® service and use the returned digital signature value to format the signature in one of the AdES formats.
+At this moment only the Hash(es) Signing variant is available and documented. In this variant, an external Signature Creation Application (SCA) will provide the What You See Is What You Sign (WYSIWYS) experience to the User, provide the hash of the data to be signed to the itsme service and use the returned digital signature value to format the signature in one of the AdES formats.
 
 {% include_relative chapters/audience.md %}
 
@@ -20,31 +20,31 @@ At this moment only the Hash(es) Signing variant is available and documented. In
 
 # Integrating Sign services
 
-The itsme® Sign flow goes through the steps shown in the sequence diagram below.
+The itsme Sign flow goes through the steps shown in the sequence diagram below.
 
 ![Sequence diagram describing the Oasis Hash Signing flow](/doc/public/plantUML/OASIS_seq.png)
 
 <ol>
-  <li>The User indicates on your end he wishes to sign a document with itsme®</li>
-  <li>Your web desktop, mobile web or mobile SCA application sends a request to itsme® Integration Layer Back-End in order to create the User’s Identification session and obtain the User’s signing certificate to be include in the data to be signed.</li>
-  <li>itsme® returns the session id and the redirect URL specific to the User to your SCA Back-End.</li>
-  <li>Your SCA Front-End redirects the User to the Integration Layer Front-End of itsme®, meaning that the User will be identified in the meanwhile (in case the <i>"userCode"</i> is transmitted by the SCA, this step will be skipped as the user will already be identified). If the User has no signature certificate yet, the certificate creation process will be initiated automatically.</li>
+  <li>The User indicates on your end he wishes to sign a document with itsme</li>
+  <li>Your web desktop, mobile web or mobile SCA application sends a request to itsme Integration Layer Back-End in order to create the User’s Identification session and obtain the User’s signing certificate to be include in the data to be signed.</li>
+  <li>itsme returns the session id and the redirect URL specific to the User to your SCA Back-End.</li>
+  <li>Your SCA Front-End redirects the User to the Integration Layer Front-End of itsme, meaning that the User will be identified in the meanwhile (in case the <i>"userCode"</i> is transmitted by the SCA, this step will be skipped as the user will already be identified). If the User has no signature certificate yet, the certificate creation process will be initiated automatically.</li>
   <li>Finally, when the User is authenticated and has a signature certificate, he is redirected to the your SCA Front-End. The redirection to your SCA Front-End SHOULD be (almost) transparent to the User (with a possible displaying of a spinner) as the laps of time between step 5 and step 11 of this diagram SHOULD be extremely short.</li>
-  <li>Your SCA Back-End contacts the itsme® Integration Layer Back-End to get the signature certificate of the User.</li>
-  <li>The itsme® Integration Layer Back-End returns your SCA Back-End the signer information as well as the signature certificate of the User.</li>
+  <li>Your SCA Back-End contacts the itsme Integration Layer Back-End to get the signature certificate of the User.</li>
+  <li>The itsme Integration Layer Back-End returns your SCA Back-End the signer information as well as the signature certificate of the User.</li>
   <li>Your SCA Back-End constructs the data to be signed and the hash(es) of the signature(s) will be computed by yourself. We support up to 70 hashes in 1 flow. The value of a hash MUST be base64url encoded.</li> 
-  <li>Your SCA Back-End will provide the hash(es) to the itsme® Integration Layer Back-End to request the digital signature value.</li>
-  <li>A session id and redirect URL are returned by itsme® to your SCA Back-End.</li>
-  <li>Your SCA frontend will then redirect the User to the signature webpage of itsme®, where he is guided through the itsme part of the signing flow.</li>    
-  <li>The session of the User at itsme® side ends as the process is finished and the User is redirected to your SCA Front-End.</li>
-  <li>Your SCA Back-End will contact the itsme® Integration Layer Back-End to check the signature status (same endpoint as for creating the signature session).</li>
-  <li>itsme® then returns the signature completion status and the digital signature value(s).</li>
+  <li>Your SCA Back-End will provide the hash(es) to the itsme Integration Layer Back-End to request the digital signature value.</li>
+  <li>A session id and redirect URL are returned by itsme to your SCA Back-End.</li>
+  <li>Your SCA frontend will then redirect the User to the signature webpage of itsme, where he is guided through the itsme part of the signing flow.</li>    
+  <li>The session of the User at itsme side ends as the process is finished and the User is redirected to your SCA Front-End.</li>
+  <li>Your SCA Back-End will contact the itsme Integration Layer Back-End to check the signature status (same endpoint as for creating the signature session).</li>
+  <li>itsme then returns the signature completion status and the digital signature value(s).</li>
   <li>At this stage, your SCA is able to confirm the success of the operation and display a success message.</li>
 </ol>
 
 <aside class="notice">The <b>BASE_URL</b> to be used in this flow will be communicated during your onboarding process</aside>
 
-## 1. Checking itsme® Sign configuration
+## 1. Checking itsme Sign configuration
 
 Two JSON documents are available to ease the integration of itsme sign service:
 <ul>
@@ -54,7 +54,7 @@ Two JSON documents are available to ease the integration of itsme sign service:
 
 ### Discovery document
 
-To simplify implementations and increase flexibility, the following key-value pairs about itsme® configuration can be retrieved from a JSON document:
+To simplify implementations and increase flexibility, the following key-value pairs about itsme configuration can be retrieved from a JSON document:
 
 <ul>
   <li>the signature policies</li>
@@ -62,7 +62,7 @@ To simplify implementations and increase flexibility, the following key-value pa
   <li>supported languages</li>
 </ul>
 
-The JSON document for itsme® Sign service may be retrieved from <a href="BASE_URL/qes-partners/1.0.0/.well-known/configuration" target="blank">BASE_URL/qes-partners/1.0.0/.well-known/configuration</a>.
+The JSON document for itsme Sign service may be retrieved from <a href="BASE_URL/qes-partners/1.0.0/.well-known/configuration" target="blank">BASE_URL/qes-partners/1.0.0/.well-known/configuration</a>.
 
 Please note we are using SSLMA as authentication method, combined with IP filtering, as specified in [SSLMA Authentication](#sslma-authentication). If you need to access the discovery document before setting up the connectivity, you can use the public version here (this one is updated manually, while the previous one is automatically generated): <a href="/doc/public/resources/qesdiscovery.json" target="blank">https://belgianmobileid.github.io/doc/public/resources/qesdiscovery.json</a>
 
@@ -74,7 +74,7 @@ The swagger of the B2B interface (for the back-end to back-end calls) may be ret
 
 This section relates to the step 2 of the sequence diagram.
 
-First, you will forge a HTTPS POST request that MUST be sent to the itsme® User Identification Endpoint, which is BASE_URL/qes-partners/1.0.0/user_identification. Please note we are using SSLMA as authentication method, combined with IP filtering, as specified in [SSLMA Authentication](#sslma-authentication).
+First, you will forge a HTTPS POST request that MUST be sent to the itsme User Identification Endpoint, which is BASE_URL/qes-partners/1.0.0/user_identification. Please note we are using SSLMA as authentication method, combined with IP filtering, as specified in [SSLMA Authentication](#sslma-authentication).
 
 Below you will find the mandatory and optional parameters to integrate in the HTTPS POST request body formatted as application/json:
 
@@ -122,7 +122,7 @@ This section relates to the step 3 of the sequence diagram.
 
 ### Capturing a successful Identification Code
 
-If the User is successfully authenticated and authorizes access to the Identification Request, itsme® will return a response to your server component. This is achieved by returning an Identification Response to the <i>"redirectUrl"</i> specified previously in the Identification Request (preserving the URL parameters).
+If the User is successfully authenticated and authorizes access to the Identification Request, itsme will return a response to your server component. This is achieved by returning an Identification Response to the <i>"redirectUrl"</i> specified previously in the Identification Request (preserving the URL parameters).
 
 You MAY receive a set-cookie header back from this call, but you SHOULD ignore it, it is never used in this context.
 
@@ -144,7 +144,7 @@ The response will contain:
     </tr>
     <tr>
       <td>{% include parameter.html name="identificationUrl" req="ALWAYS" %}</td>
-      <td>This is the itsme® URL of the signature welcome page. On this webpage the User will identify himself by entering his mobile phone number.</td>
+      <td>This is the itsme URL of the signature welcome page. On this webpage the User will identify himself by entering his mobile phone number.</td>
     </tr>
   </tbody>
 </table>
@@ -211,7 +211,7 @@ POST /BASE_URL/qes-partners/1.0.0/user_identification/status HTTP/1.1
 
 This section relates to the step 7 of the sequence diagram.
 
-If the Identification Session Status Request has been sucessfully validated we will return an HTTP 200 OK response as in the example aside. In other words, you will get the confirmation that the User can perform a Sign transaction with itsme® and retrieve the User certificate reference value.
+If the Identification Session Status Request has been sucessfully validated we will return an HTTP 200 OK response as in the example aside. In other words, you will get the confirmation that the User can perform a Sign transaction with itsme and retrieve the User certificate reference value.
 
 The response body will include the following values:
 
@@ -267,7 +267,7 @@ Below you will find the mandatory and optional parameters to integrate in the HT
     </tr>
     <tr>
       <td>{% include parameter.html name="docHash" type="array" req="REQUIRED" level="1" %}</td>
-      <td>This parameter MUST contain information related to the document(s) to be signed by itsme®, expressed as an array.</td>
+      <td>This parameter MUST contain information related to the document(s) to be signed by itsme, expressed as an array.</td>
     </tr>
     <tr>
       <td>{% include parameter.html name="id" type="string" req="REQUIRED" level="2" %}</td>
@@ -303,11 +303,11 @@ Below you will find the mandatory and optional parameters to integrate in the HT
     </tr>
     <tr>
       <td>{% include parameter.html name="itsme" type="object" req="REQUIRED" level="1" %}</td>
-      <td>This parameter contains all the information related to itsme® context.</td>
+      <td>This parameter contains all the information related to itsme context.</td>
     </tr>
     <tr>
       <td>{% include parameter.html name="signer" type="object" req="REQUIRED" level="2" %}</td>
-      <td>This is all the information that allows identification of the User in itsme®.</td>
+      <td>This is all the information that allows identification of the User in itsme.</td>
     </tr>
     <tr>
       <td>{% include parameter.html name="userCode" type="string" req="REQUIRED" level="3" %}</td>
@@ -343,15 +343,15 @@ Below you will find the mandatory and optional parameters to integrate in the HT
     </tr>
     <tr>
       <td>{% include parameter.html name="signPolicyRef" type="string" req="REQUIRED" level="3" %}</td>
-      <td>Defines the reference of the signature policy to be used during itsme® Signing flow. In case no specific signature policy is applicable for that specific use case, the itsme® generic qualified signature policy SHOULD be used. The signature policy has to be indicated in the SCA Front-End to the User. The list of available codes can be retrieved from the <a href="#1-checking-itsme-sign-configuration">JSON document</a>.<br>The signature policies used SHOULD be defined during the <a href="#prerequisites">onboarding process</a>. It is up to you to choose your signature policies within the list given by itsme®. If you want to add new signature policies to your list, please ask the itsme® Onboarding team.</td>
+      <td>Defines the reference of the signature policy to be used during itsme Signing flow. In case no specific signature policy is applicable for that specific use case, the itsme generic qualified signature policy SHOULD be used. The signature policy has to be indicated in the SCA Front-End to the User. The list of available codes can be retrieved from the <a href="#1-checking-itsme-sign-configuration">JSON document</a>.<br>The signature policies used SHOULD be defined during the <a href="#prerequisites">onboarding process</a>. It is up to you to choose your signature policies within the list given by itsme. If you want to add new signature policies to your list, please ask the itsme Onboarding team.</td>
     </tr>
     <tr>
       <td>{% include parameter.html name="commitmentTypeRef" type="string" req="OPTIONAL" level="3" %}</td>
-      <td>Defines the reference of the commitment type to be used during itsme® Signing flow. This parameter is used to display (in the itsme® App) the commitment type of the signature to the User. There is no commitment type by default. If the parameter is not given by the SCA, then nothing is displayed in the itsme® App. You SHOULD use a code that corresponds to a specific commitment type. The list of available codes can be retrieved from the <a href="#1-checking-itsme-sign-configuration">JSON document</a>.<br>The commitment types used SHOULD be defined during the <a href="#prerequisites">onboarding process</a>. It is up to you to choose your commitment types within the list given by itsme®. If you want to add new commitment types to your list, please ask the itsme® Onboarding team.</td>
+      <td>Defines the reference of the commitment type to be used during itsme Signing flow. This parameter is used to display (in the itsme App) the commitment type of the signature to the User. There is no commitment type by default. If the parameter is not given by the SCA, then nothing is displayed in the itsme App. You SHOULD use a code that corresponds to a specific commitment type. The list of available codes can be retrieved from the <a href="#1-checking-itsme-sign-configuration">JSON document</a>.<br>The commitment types used SHOULD be defined during the <a href="#prerequisites">onboarding process</a>. It is up to you to choose your commitment types within the list given by itsme. If you want to add new commitment types to your list, please ask the itsme Onboarding team.</td>
     </tr>
     <tr>
       <td>{% include parameter.html name="signerRole" type="array of objects" req="OPTIONAL" level="3" %}</td>
-      <td>Defines the role of the signer. This information is displayed in the itsme® App to show to the signer under which role he will sign the document. If no signer role is provided nothing will be displayed in the itsme® App. This parameter is optional and freely defined in a free text of maximum 50 characters by yourself. You SHOULD provide this free text in all supported languages ('en', 'fr', 'nl' and 'de'). The characters used to define the Signer Role MUST be ISO-8859-1 compatible.</td>
+      <td>Defines the role of the signer. This information is displayed in the itsme App to show to the signer under which role he will sign the document. If no signer role is provided nothing will be displayed in the itsme App. This parameter is optional and freely defined in a free text of maximum 50 characters by yourself. You SHOULD provide this free text in all supported languages ('en', 'fr', 'nl' and 'de'). The characters used to define the Signer Role MUST be ISO-8859-1 compatible.</td>
     </tr>
     <tr>
       <td>{% include parameter.html name="lang" type="string" req="REQUIRED" level="4" %}</td>
@@ -489,15 +489,15 @@ The response body will include the following values:
     </tr>
     <tr>
       <td>{% include parameter.html name="itsme" type="object" req="ALWAYS" level="1" %}</td>
-      <td>Contains all the information related to itsme® context. Please note this parameter is not returned in the other use of this call (see section <a href="#10-requesting-the-sign-session-status">Requesting the Sign session status</a>).</td>
+      <td>Contains all the information related to itsme context. Please note this parameter is not returned in the other use of this call (see section <a href="#10-requesting-the-sign-session-status">Requesting the Sign session status</a>).</td>
     </tr>
     <tr>
       <td>{% include parameter.html name="signingUrl" type="string" req="ALWAYS" level="2" %}</td>
-      <td>This signing URL is the link to redirect the User from the SCA frontend  to the itsme® Signing Page. Please note this parameter is not returned in the other use of this call (see section <a href="#10-requesting-the-sign-session-status">Requesting the Sign session status</a>).</td>
+      <td>This signing URL is the link to redirect the User from the SCA frontend  to the itsme Signing Page. Please note this parameter is not returned in the other use of this call (see section <a href="#10-requesting-the-sign-session-status">Requesting the Sign session status</a>).</td>
     </tr>
     <tr>
       <td>{% include parameter.html name="userCode" type="string" req="ALWAYS" level="2" %}</td>
-      <td>An identifier for the User, unique among all itsme® accounts and never reused. Use <i>"userCode"</i> in the application as the unique-identifier key for the User. Please note this parameter is not returned in the other use of this call (see section <a href="#10-requesting-the-sign-session-status">Requesting the Sign session status</a>).</td>
+      <td>An identifier for the User, unique among all itsme accounts and never reused. Use <i>"userCode"</i> in the application as the unique-identifier key for the User. Please note this parameter is not returned in the other use of this call (see section <a href="#10-requesting-the-sign-session-status">Requesting the Sign session status</a>).</td>
     </tr>
   </tbody>
 </table>
@@ -560,7 +560,7 @@ Below you will find the mandatory and optional parameters to integrate in the HT
     </tr>
     <tr>
       <td>{% include parameter.html name="itsme" type="object" req="Required" level="1" %}</td>
-      <td>Contains all the information related to itsme® context.</td>
+      <td>Contains all the information related to itsme context.</td>
     </tr>
     <tr>
       <td>{% include parameter.html name="partnerCode" type="string" req="Required" level="2" %}</td>
@@ -735,27 +735,27 @@ The Error Response will contain the <i>"status"</i> and the `statusReason` value
     <tr>
       <td>{% include parameter.html name="400" %}</td>
       <td>UNAUTHORIZED_URL</td>
-      <td>The partner and its service have been correctly found by itsme® following referenced "partnerCode" and "serviceCode", but the given "redirectUrl" is not authorized for the partner and/or service mentioned. You did not provide a valid redirectUrl. The "redirectUrl" used here must correspond to the "Redirect URL" referenced in your onboarding file.</td>
+      <td>The partner and its service have been correctly found by itsme following referenced "partnerCode" and "serviceCode", but the given "redirectUrl" is not authorized for the partner and/or service mentioned. You did not provide a valid redirectUrl. The "redirectUrl" used here must correspond to the "Redirect URL" referenced in your onboarding file.</td>
     </tr>
     <tr>
       <td>{% include parameter.html name="400" %}</td>
       <td>INVALID_LANG</td>
-      <td>The "lang" field does not reference a language supported by itsme®. You can consult "BMID Well-Known Configuration" to check which are the languages supported by  itsme®, /well-known/configuration.</td>
+      <td>The "lang" field does not reference a language supported by itsme. You can consult "BMID Well-Known Configuration" to check which are the languages supported by  itsme, /well-known/configuration.</td>
     </tr>
     <tr>
       <td>{% include parameter.html name="400" %}</td>
       <td>UNEXPECTED_ERROR</td>
-      <td>An error occurred during the validation of partner information. You SHOULD try again later. If the error persists, then you SHOULD contact itsme® support team for investigation.</td>
+      <td>An error occurred during the validation of partner information. You SHOULD try again later. If the error persists, then you SHOULD contact itsme support team for investigation.</td>
     </tr>
     <tr>
       <td>{% include parameter.html name="400" %}</td>
       <td>UNKNOWN</td>
-      <td>An unknown error occurred during the request. You SHOULD contact itsme® support team for investigation.</td>
+      <td>An unknown error occurred during the request. You SHOULD contact itsme support team for investigation.</td>
     </tr>
     <tr>
       <td>{% include parameter.html name="400" %}</td>
       <td>ONLY_SINGLE_HASH_SUPPORTED</td>
-      <td>Multiple hashes were sent for signature, but your contract only allows 1 hash signature at a time. You SHOULD contact itsme® to discuss enabling batch signing for your account.</td>
+      <td>Multiple hashes were sent for signature, but your contract only allows 1 hash signature at a time. You SHOULD contact itsme to discuss enabling batch signing for your account.</td>
     </tr>
     <tr>
       <td>{% include parameter.html name="400" %}</td>
@@ -765,22 +765,22 @@ The Error Response will contain the <i>"status"</i> and the `statusReason` value
     <tr>
       <td>{% include parameter.html name="409" %}</td>
       <td>PENDING</td>
-      <td>The User Identification Session you created is  pending. The User is currently following the User Identification flow at itsme® side (web and mobile).</td>
+      <td>The User Identification Session you created is  pending. The User is currently following the User Identification flow at itsme side (web and mobile).</td>
     </tr>
     <tr>
       <td>{% include parameter.html name="409" %}</td>
       <td>REJECTED</td>
-      <td>The User had to create a certificate in order to make a signature. However, he rejected his CREATE_CERT action in the itsme® App. A new User Identification session must be initialized. During that session, User has to confirm the CREATE_CERT action.</td>
+      <td>The User had to create a certificate in order to make a signature. However, he rejected his CREATE_CERT action in the itsme App. A new User Identification session must be initialized. During that session, User has to confirm the CREATE_CERT action.</td>
     </tr>
     <tr>
       <td>{% include parameter.html name="409" %}</td>
       <td>EXPIRED</td>
-      <td>The User had to create a certificate in order to make a signature. However, he waited too long (more than 3 minutes) before confirming his CREATE_CERT action in the itsme® App and his action expired. A new User Identification Session must be initialized. During that session, User has to confirm the CREATE_CERT action in time.</td>
+      <td>The User had to create a certificate in order to make a signature. However, he waited too long (more than 3 minutes) before confirming his CREATE_CERT action in the itsme App and his action expired. A new User Identification Session must be initialized. During that session, User has to confirm the CREATE_CERT action in time.</td>
     </tr>
     <tr>
       <td>{% include parameter.html name="409" %}</td>
       <td>UNEXPECTED_ERROR</td>
-      <td>An unexpected error occurred during User’s Identification flow. You SHOULD try again later. If the error persists, then you SHOULD contact itsme® support team for investigation.</td>
+      <td>An unexpected error occurred during User’s Identification flow. You SHOULD try again later. If the error persists, then you SHOULD contact itsme support team for investigation.</td>
     </tr>
     <tr>
       <td>{% include parameter.html name="409" %}</td>

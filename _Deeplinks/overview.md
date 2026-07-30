@@ -25,20 +25,20 @@ app.
 
 # Actors and hand-offs
 
-In a typical itsme® flow, three actors are involved:
+In a typical itsme flow, three actors are involved:
 
 1. **Your application** (web page, mobile web, or native app) — starts the flow.
-2. **The itsme® app** — performs authentication / signature / confirmation.
+2. **The itsme app** — performs authentication / signature / confirmation.
 3. **The operating system** — decides whether a tapped/opened URL goes to a
    browser or to an installed app.
 
 The deeplink mechanism is used in two directions:
 
-1. **Hand-off to itsme®** — your application opens a URL like
+1. **Hand-off to itsme** — your application opens a URL like
    `https://merchant.itsme.be/...`. iOS/Android recognises the host as being
-   associated with the itsme® app and opens that app directly.
+   associated with the itsme app and opens that app directly.
 2. **Return to your application** — once the user has completed the action in
-   the itsme® app, itsme® opens a URL pointing back to **your** domain (the
+   the itsme app, itsme opens a URL pointing back to **your** domain (the
    `redirect_uri` configured in the partner portal). iOS/Android recognises
    the host as being associated with **your** app and returns the user there.
 
@@ -64,12 +64,12 @@ User in your app  ──tap──▶  HTTPS deeplink (itsme domain)
                        OS resolves owner
                               │
                               ▼
-                         itsme® app opens
+                         itsme app opens
                               │
                        user authenticates
                               │
                               ▼
-                  itsme® opens redirect_uri
+                  itsme opens redirect_uri
                               │
                        OS resolves owner
                               │

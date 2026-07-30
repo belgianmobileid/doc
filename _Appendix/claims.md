@@ -8,10 +8,10 @@ nav_exclude: false
 
 # Introduction
   
-  itsme® accounts are always created from an official ID document (eID card, passport...). However, each country can choose which attributes are presents on those documents so that, depending on the user's country, some itsme® accounts can contain more/different data than others.
-  You will find below a list of all attributes ("claims") supported by itsme® and their availability per country.
+  itsme accounts are always created from an official ID document (eID card, passport...). However, each country can choose which attributes are presents on those documents so that, depending on the user's country, some itsme accounts can contain more/different data than others.
+  You will find below a list of all attributes ("claims") supported by itsme and their availability per country.
   
-  <aside class="notice">The availability of the claims does NOT depend on the nationality of the user but only on the issuing country of their ID document. Example: a Dutch citizen living in Belgium can create an itsme® account either with his Dutch eID or with his Belgian residents card. If he chooses to do so with his Belgian card, his address and gender will be available, while they won't if he uses his Dutch eID.
+  <aside class="notice">The availability of the claims does NOT depend on the nationality of the user but only on the issuing country of their ID document. Example: a Dutch citizen living in Belgium can create an itsme account either with his Dutch eID or with his Belgian residents card. If he chooses to do so with his Belgian card, his address and gender will be available, while they won't if he uses his Dutch eID.
   </aside>
 
 # Claims
@@ -170,7 +170,7 @@ How to understand the table below:
     </tr>
     <tr>
       <td><b>birthdate</b></td>
-      <td>User's birthdate, represented as a string in YYYY-MM-DD date format. itsme® users are always 16 years old or more.</td>
+      <td>User's birthdate, represented as a string in YYYY-MM-DD date format. itsme users are always 16 years old or more.</td>
       <td>MAY NOT<br>At least one of <i>birthdate</i> or <i>birthdate_as_string</i> will always be available.</td> <!-- Belgium -->
       <td>SHALL</td> <!-- Netherlands -->
       <td>SHALL</td> <!-- Luxembourg -->
@@ -206,7 +206,7 @@ How to understand the table below:
     </tr>
     <tr>
       <td>http://itsme.services/v2/<br>claim/<b>birthdate_as_string</b></td>
-      <td>User's birthdate in an unprocessed way, exactly as mentioned on the ID document. itsme® users are always 13 years old or more.</td>
+      <td>User's birthdate in an unprocessed way, exactly as mentioned on the ID document. itsme users are always 13 years old or more.</td>
       <td>MAY NOT<br>At least one of <i>birthdate</i> or <i>birthdate_as_string</i> will always be available.</td> <!-- Belgium -->
       <td>SHALL NOT</td> <!-- Netherlands -->
       <td>SHALL NOT</td> <!-- Luxembourg -->
@@ -861,7 +861,7 @@ How to understand the table below:
     <tr>
       <td>http://itsme.services/v2/<br>claim/<b>claim_citizenship_as_iso</b></td>
       <td>User's nationality. The format is always <a href="https://en.wikipedia.org/wiki/ISO_3166" target="blank">ISO 3166-1 alpha-3</a>.</td>
-      <td>MAY NOT<br>Mapped by itsme® on a best effort basis</td> <!-- Belgium -->
+      <td>MAY NOT<br>Mapped by itsme on a best effort basis</td> <!-- Belgium -->
       <td>SHALL</td> <!-- Netherlands -->
       <td>SHALL</td> <!-- Luxembourg -->
       <td>SHALL</td> <!-- Ireland -->
@@ -1616,7 +1616,7 @@ How to understand the table below:
     </tr>
     <tr>
       <td>http://itsme.services/v2/<br>claim/<b>IDIssuingCountry</b></td>
-      <td>This is a <a href="https://belgianmobileid.github.io/doc/authentication/#metadata">metadata</a>.<br>The 3-letters iso code of the country that issued the identity document used to create the itsme® account.</td>
+      <td>This is a <a href="https://belgianmobileid.github.io/doc/authentication/#metadata">metadata</a>.<br>The 3-letters iso code of the country that issued the identity document used to create the itsme account.</td>
       <td>SHALL</td> <!-- Belgium -->
       <td>SHALL</td> <!-- Netherlands -->
       <td>SHALL</td> <!-- Luxembourg -->
@@ -1652,7 +1652,7 @@ How to understand the table below:
     </tr>
     <tr>
       <td>http://itsme.services/v2/<br>claim/<b>issuance_locality</b></td>
-      <td>This is a <a href="https://belgianmobileid.github.io/doc/authentication/#metadata">metadata</a>.<br>The locality that issued the ID document used to create the itsme® account.</td>
+      <td>This is a <a href="https://belgianmobileid.github.io/doc/authentication/#metadata">metadata</a>.<br>The locality that issued the ID document used to create the itsme account.</td>
       <td>MAY NOT</td> <!-- Belgium -->
       <td>SHALL NOT</td> <!-- Netherlands -->
       <td>SHALL NOT</td> <!-- Luxembourg -->
@@ -1760,7 +1760,7 @@ How to understand the table below:
     </tr>
     <tr>
       <td>http://itsme.services/v2/<br>claim/<b>identification_mode</b></td>
-      <td>An indication of the way the user initiated the itsme® transaction. Can contain "QR", "MSISDN" (i.e. phone number) or "a2a" (i.e. app to app flow). Other values can be added in the future.</td>
+      <td>An indication of the way the user initiated the itsme transaction. Can contain "QR", "MSISDN" (i.e. phone number) or "a2a" (i.e. app to app flow). Other values can be added in the future.</td>
       <td>SHALL</td> <!-- Belgium -->
       <td>SHALL</td> <!-- Netherlands -->
       <td>SHALL</td> <!-- Luxembourg -->

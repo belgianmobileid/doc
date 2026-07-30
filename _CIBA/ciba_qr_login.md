@@ -8,15 +8,15 @@ toc_list: true
 
 # Overview
 
-itsme® API supports an authentication flow based on the OpenID Connect CIBA (Client-Initiated Backchannel Authentication) specification. This flow enables partners to authenticate users in a host-to-host manner, without requiring any front-end interaction.
+itsme API supports an authentication flow based on the OpenID Connect CIBA (Client-Initiated Backchannel Authentication) specification. This flow enables partners to authenticate users in a host-to-host manner, without requiring any front-end interaction.
 
 Since there is no direct interaction, the Client must provide a user identifier in the backchannel authentication request.
 
-To support use cases where the Client does not have such a user identifier in advance, itsme® provides a proprietary User Discovery Flow. This flow allows the Client to obtain a user identifier prior to initiating CIBA authentication.
+To support use cases where the Client does not have such a user identifier in advance, itsme provides a proprietary User Discovery Flow. This flow allows the Client to obtain a user identifier prior to initiating CIBA authentication.
 
-The User Discovery Flow involves displaying a QR code on the Client's frontend, which the user scans using their itsme® mobile app. Upon scanning, the mobile app identifies the user and communicates with the itsme® backend, enabling the Client to receive a valid user identifier that can then be used to initiate a standard CIBA flow.
+The User Discovery Flow involves displaying a QR code on the Client's frontend, which the user scans using their itsme mobile app. Upon scanning, the mobile app identifies the user and communicates with the itsme backend, enabling the Client to receive a valid user identifier that can then be used to initiate a standard CIBA flow.
 
-The diagram below describes both the User Discovery Flow & the OIDC CIBA Flow and how your systems should integrate with itsme®. A more extensive explanation of the flow can be found under Guides.
+The diagram below describes both the User Discovery Flow & the OIDC CIBA Flow and how your systems should integrate with itsme. A more extensive explanation of the flow can be found under Guides.
 
 ![Partner POV OIDC CIBA QR Ping flow](/doc/public/images/pov_partner_oidc_ciba_qr_ping.png)
 
@@ -26,7 +26,7 @@ The diagram below describes both the User Discovery Flow & the OIDC CIBA Flow an
 
 # Onboarding
 
-To make use of the itsme® OIDC CIBA API, you will need to contact our Customer Care team at <a href="mailto:onboarding@itsme-id.com">onboarding@itsme-id.com</a>. Based on your requirements, they will invite you to our self-service Portal where you will be able to configure an account. A clientID will be generated and linked to your account, which you will need to include in these requests:
+To make use of the itsme OIDC CIBA API, you will need to contact our Customer Care team at <a href="mailto:onboarding@itsme-id.com">onboarding@itsme-id.com</a>. Based on your requirements, they will invite you to our self-service Portal where you will be able to configure an account. A clientID will be generated and linked to your account, which you will need to include in these requests:
 
 <ul>
   <li><code>POST /user_discovery_sessions</code></li>
@@ -52,7 +52,7 @@ To use the User Discovery Flow via QR code, follow these steps:
     Partner calls endpoint <code>POST /user_discovery_sessions</code> to create a new user discovery session. The response will include a QR code and a unique session identifier.<br><br>
     The response may contain an <code>interval</code> value. The Partner is allowed to poll the session status via the <code>POST /user_discovery_sessions/{user_discovery_session_id}</code> endpoint every <code>interval</code> seconds. If no interval value is present, default to 5 seconds.
   </li>
-  <li><b>Display the QR Code:</b> Show the QR code from the response on the partner's device (web page, kiosk, terminal, etc.) for the user to scan with the itsme® app.</li>
+  <li><b>Display the QR Code:</b> Show the QR code from the response on the partner's device (web page, kiosk, terminal, etc.) for the user to scan with the itsme app.</li>
   <li><b>User Discovery Poll for Session Status:</b> Partner regularly polls endpoint <code>POST /user_discovery_sessions/{user_discovery_session_id}</code> using the session identifier to check the status of the session.<br><br>
     If the status is <code>PENDING_USER_DISCOVERY</code>, the QR code has not yet been scanned. The endpoint can return a new QR code in the response, which will need to replace the old QR code on the partner's device.<br><br>
     The response may contain an <code>interval</code> value. The Partner is allowed to poll the endpoint every <code>interval</code> seconds. If no interval value is present, default to 5 seconds.<br><br>
@@ -71,10 +71,10 @@ Once you have obtained the <code>user_identifier_token</code> from the User Disc
 
 <ol>
   <li><b>Start the OIDC CIBA flow:</b> Partner calls endpoint <code>POST /backchannel/authentication</code>, including the <code>user_identifier_token</code> as the <code>login_hint_token</code> parameter, along with your client credentials and any required scopes/claims. Currently we only support signed authentication requests. The response will include an <code>auth_request_id</code>.</li>
-  <li><b>Receiving the authentication result:</b> When the user has completed authentication in the itsme® app, the partner will receive an <code>access_token</code> and <code>id_token</code>.<br><br>
+  <li><b>Receiving the authentication result:</b> When the user has completed authentication in the itsme app, the partner will receive an <code>access_token</code> and <code>id_token</code>.<br><br>
     We support the POLL and PING token delivery modes. Please let our Onboarding team know which flow you want to implement.
     <ul>
-      <li><b>CIBA Ping mode:</b> Once the end user has confirmed the action in their itsme® app, we will send a POST request on your preregistered callback endpoint. That request will contain your <code>client_notification_token</code> as a bearer token. It will use the <code>application/json</code> media type and will only contain the <code>auth_req_id</code> as body content.<br><br><img src="/doc/public/images/oidc_ciba_ping.png" alt="OIDC CIBA Ping mode"></li>
+      <li><b>CIBA Ping mode:</b> Once the end user has confirmed the action in their itsme app, we will send a POST request on your preregistered callback endpoint. That request will contain your <code>client_notification_token</code> as a bearer token. It will use the <code>application/json</code> media type and will only contain the <code>auth_req_id</code> as body content.<br><br><img src="/doc/public/images/oidc_ciba_ping.png" alt="OIDC CIBA Ping mode"></li>
       <li><b>CIBA Poll mode:</b> Partner polls endpoint <code>POST /token</code> with the <code>auth_request_id</code> for the authentication result. The response may contain an <code>interval</code> value. The Partner is allowed to poll the endpoint every <code>interval</code> seconds. If no interval value is present, default to 5 seconds. Polling more frequently than allowed will result in a <code>slow_down</code> error.<br><br><img src="/doc/public/images/oidc_ciba_poll.png" alt="OIDC CIBA Poll mode"></li>
     </ul>
   </li>
@@ -87,7 +87,7 @@ Once you have obtained the <code>user_identifier_token</code> from the User Disc
 
 To protect the exchange of sensitive information and ensure the requested information gets issued to a legitimate application and not some other party, the OpenID Connect protocol uses JSON Web Token (JWT) which can be signed and/or encrypted.
 
-Among the methods described in the OpenID specification, itsme® supports only Private Key JWT to secure communications between your backend and itsme® for the CIBA QR Process. Client Secret is not supported.
+Among the methods described in the OpenID specification, itsme supports only Private Key JWT to secure communications between your backend and itsme for the CIBA QR Process. Client Secret is not supported.
 
 ### Public-private key pair and JWKSet URI
 
@@ -95,17 +95,17 @@ This method uses a pair of keys (1 public, 1 private) to encrypt and decrypt sen
 
 <aside class="notice">This method requires that each party exposes its public keys in the form of a JWK Set document on a publicly accessible URI, and keeps its private keys for itself.</aside>
 
-You can retrieve the itsme® JWK Set from the URI mentioned as <code>jwks_uri</code> in our itsme® Discovery document.
+You can retrieve the itsme JWK Set from the URI mentioned as <code>jwks_uri</code> in our itsme Discovery document.
 
 <aside class="notice">Refer to <a href="https://belgianmobileid.github.io/doc/JOSE/" target="blank">this page</a> for more on signing and encrypting tokens.</aside>
 
-<aside class="notice">Whatever the tool you are choosing to create your key pairs, don't forget to send your JWK Set URI by email to <a href="mailto:onboarding@itsme-id.com">onboarding@itsme-id.com</a> and itsme® will make sure to complete the configuration for you in no time!</aside>
+<aside class="notice">Whatever the tool you are choosing to create your key pairs, don't forget to send your JWK Set URI by email to <a href="mailto:onboarding@itsme-id.com">onboarding@itsme-id.com</a> and itsme will make sure to complete the configuration for you in no time!</aside>
 
-<aside class="notice">The algorithms - needed to sign and encrypt a JWT - are listed in the itsme® Discovery document.</aside>
+<aside class="notice">The algorithms - needed to sign and encrypt a JWT - are listed in the itsme Discovery document.</aside>
 
 ### Key rotation procedure
 
-itsme® backend has a cache mechanism in place, which is sporadic (from 30min to 24h). During this time, we will keep on using old keys.
+itsme backend has a cache mechanism in place, which is sporadic (from 30min to 24h). During this time, we will keep on using old keys.
 
 <aside class="notice">Use the <code>Cache-Control: max-age=</code> HTTP header (min 30min) to lower waiting time.</aside>
 
@@ -126,7 +126,7 @@ itsme® backend has a cache mechanism in place, which is sporadic (from 30min to
 Changing the key could come along with changing the jwkset url. If that is the case, communicate the new available jwkset url to <a href="mailto:onboarding@itsme-id.com">onboarding@itsme-id.com</a>. It is not possible to be perfectly in sync, a few failed flows should be expected in the lapse of time between jwkset url update and the key update at the partner's side. Smoother way would be:
 <ul>
   <li>Copy the old jwkSet on the new URL</li>
-  <li>The URL is communicated & registered by itsme®</li>
+  <li>The URL is communicated & registered by itsme</li>
   <li>Rotate the keys in the jwkSet on the new URL as per rotating keys info above</li>
 </ul>
 
@@ -136,7 +136,7 @@ Libraries implementing JWT and the JOSE specs JWS, JWE, JWK, and JWA are listed 
 
 ### Token Confidentiality
 
-All tokens issued by itsme® must be treated as confidential. These tokens must never be exposed to the user, browser, or any third party, and must only be used server-to-server.
+All tokens issued by itsme must be treated as confidential. These tokens must never be exposed to the user, browser, or any third party, and must only be used server-to-server.
 
 List of all the issued tokens: <code>user_identifier_token</code>, <code>auth_req_id</code>, <code>access_token</code>, <code>refresh_token</code> and <code>client_notification_token</code>.
 
@@ -144,7 +144,7 @@ List of all the issued tokens: <code>user_identifier_token</code>, <code>auth_re
 
 ## Handling responses
 
-Whenever a partner is sending a request to itsme®, they will get a response back. The format and content of the response depend on the endpoint and the flow.
+Whenever a partner is sending a request to itsme, they will get a response back. The format and content of the response depend on the endpoint and the flow.
 
 Alongside the type of response, an HTTP status code is sent that shows whether the request was successful or not. If it was not, you can tell by the code and the message in the response what went wrong, why it went wrong and whether there is something the partner can do about it.
 
@@ -490,7 +490,7 @@ client_assertion=eyJraWQiO...
 
 <b><code>POST https://idp.[e2e|prd].itsme.services/v2/backchannel/authentication</code></b>
 
-<aside class="notice">Depending on the identity document used to create an itsme® account and the country issuing it, not all claims are always available or formatted the same way.</aside>
+<aside class="notice">Depending on the identity document used to create an itsme account and the country issuing it, not all claims are always available or formatted the same way.</aside>
 
 ### Signed authentication Request
 
@@ -514,7 +514,7 @@ This endpoint only accepts a signed Request Object (request JWT). All authentica
               <table>
                 <tr>
                   <td>{% include parameter.html name="service" req="REQUIRED" %}</td>
-                  <td>It indicates the itsme® service your application intends to use, e.g. <code>service:TEST_code</code>.</td>
+                  <td>It indicates the itsme service your application intends to use, e.g. <code>service:TEST_code</code>.</td>
                 </tr>
                 <tr>
                   <td>{% include parameter.html name="openid" req="REQUIRED" %}</td>
@@ -568,11 +568,11 @@ This endpoint only accepts a signed Request Object (request JWT). All authentica
               <table>
                 <tr>
                   <td>{% include parameter.html name="http://itsme.services/v2/claim/acr_basic" req="" %}</td>
-                  <td>It lets the user choose either fingerprint usage (if device is compatible) or itsme® code. This is the default if <code>acr_values</code> is not specified.</td>
+                  <td>It lets the user choose either fingerprint usage (if device is compatible) or itsme code. This is the default if <code>acr_values</code> is not specified.</td>
                 </tr>
                 <tr>
                   <td>{% include parameter.html name="http://itsme.services/v2/claim/acr_advanced" req="" %}</td>
-                  <td>It forces the user to use his itsme® code.</td>
+                  <td>It forces the user to use his itsme code.</td>
                 </tr>
               </table>
             </td>
@@ -583,7 +583,7 @@ This endpoint only accepts a signed Request Object (request JWT). All authentica
           </tr>
           <tr>
             <td>{% include parameter.html name="client_notification_token" req="REQUIRED IN PING" %}</td>
-            <td>Mandatory in PING mode. A bearer token to be used by itsme® when sending our PING. Max 1024 chars.</td>
+            <td>Mandatory in PING mode. A bearer token to be used by itsme when sending our PING. Max 1024 chars.</td>
           </tr>
         </table>
       </td>

@@ -13,22 +13,22 @@ toc_list: true
 
 An Identity and Access Management platform is a service that allows companies to manage identities in a centralized way. These identities can be collected from different parties (Identity Providers) and different ways can be offered to end-users to prove their identity (password, itsme...).
 
-# Integrating itsme® on an IAM platform
+# Integrating itsme on an IAM platform
 
 Most IAM platforms allow for the usage of different Identity Providers (IdP), either as pre-configured partners or via standardized communication protocols to be configured with the right parameters.
 
-OpenId Connect is the most common of those protocols and the one that itsme® strictly adheres to, which means that itsme® can be used as an IdP on pretty much any IAM platform.
-However, depending on the way each platform implemented the protocol and on the configurability they offer, not all features of itsme® will always be available. In general, we outline 3 attention points:
+OpenId Connect is the most common of those protocols and the one that itsme strictly adheres to, which means that itsme can be used as an IdP on pretty much any IAM platform.
+However, depending on the way each platform implemented the protocol and on the configurability they offer, not all features of itsme will always be available. In general, we outline 3 attention points:
 
-**1) Type of service from itsme®:** In general, only Identification and Authentication are available through an IAM platform. The Confirmation service from itsme® implies not only data communication from itsme® to the platform, but also communication from the platform to itsme® of the content to be confirmed. IAM platforms in general are not equipped for bi-directional communication.
+**1) Type of service from itsme:** In general, only Identification and Authentication are available through an IAM platform. The Confirmation service from itsme implies not only data communication from itsme to the platform, but also communication from the platform to itsme of the content to be confirmed. IAM platforms in general are not equipped for bi-directional communication.
 
-**2) Authentication Method:** itsme® allows partners to authenticate via 2 of the authentication specified by OpenId Connect: private_key_jwt is the most secure way, relying on asymmetric cryptography, while client_secret_post relies on symmetric cryptography. Most platforms will only support integration with itsme® through the Client Secret option either because they don't support private_key_jwt at all or because they have only basic support for it, not allowing signed and encrypted tokens at each step of the flow.
+**2) Authentication Method:** itsme allows partners to authenticate via 2 of the authentication specified by OpenId Connect: private_key_jwt is the most secure way, relying on asymmetric cryptography, while client_secret_post relies on symmetric cryptography. Most platforms will only support integration with itsme through the Client Secret option either because they don't support private_key_jwt at all or because they have only basic support for it, not allowing signed and encrypted tokens at each step of the flow.
 
-**3) Available attributes:** While itsme® offers a broad range of identity attributes for each user (called "claims" in OIDC), not all IAM platforms allow you to take advantage of all claims:
+**3) Available attributes:** While itsme offers a broad range of identity attributes for each user (called "claims" in OIDC), not all IAM platforms allow you to take advantage of all claims:
 - OIDC makes use of the concept of "scopes", regrouping a predefined set of claims. Some platforms only allow to request scopes, not individual claims, making it impossible to retrieve claims that are not part of a scope.
 - Most of our claims are returning a string value ("Name":"John Smith") but some are returning a structured JSON object, like address: {"street_adress":"Station Street 34", "postal_code":"12345"}. Some platforms are only able to handle simple strings, not objects.
 
-Here is a table of all the itsme® claims with their respective scope (if any) and format. See <a href="https://belgianmobileid.github.io/doc/authentication/#authorization-request">https://belgianmobileid.github.io/doc/authentication/#authorization-request</a> for more details about each of these claims.
+Here is a table of all the itsme claims with their respective scope (if any) and format. See <a href="https://belgianmobileid.github.io/doc/authentication/#authorization-request">https://belgianmobileid.github.io/doc/authentication/#authorization-request</a> for more details about each of these claims.
 
 <table>
   <tbody>
