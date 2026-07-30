@@ -8,13 +8,13 @@ toc_list: true
 
 # Introduction
 
-itsme® is a trusted identity provider allowing partners to use verified identities for authentication, authorization and signature on web desktop, mobile web and mobile applications. 
+itsme is a trusted identity provider allowing partners to use verified identities for authentication, authorization and signature on web desktop, mobile web and mobile applications. 
 
 The CSC API is an API built based on the CSC specification version 1.0.4.0. See <a href="https://cloudsignatureconsortium.org">https://cloudsignatureconsortium.org</a> and <a href="https://cloudsignatureconsortium.org/resources/download-api-specifications/">https://cloudsignatureconsortium.org/resources/download-api-specifications</a> to get the specification. The spec is implemented based on the OAuth2 specification.
 
 The objective of this document is to provide all the information needed to integrate the AUTH service using the OAuth specifications.
 
-At this moment only the Hash(es) Signing variant is available and documented. In this variant, an external Signature Creation Application (SCA) will provide the What You See Is What You Sign (WYSIWYS) experience to the User, provide the hash of the data to be signed to the itsme® service and use the returned digital signature value to format the signature in one of the AdES formats.
+At this moment only the Hash(es) Signing variant is available and documented. In this variant, an external Signature Creation Application (SCA) will provide the What You See Is What You Sign (WYSIWYS) experience to the User, provide the hash of the data to be signed to the itsme service and use the returned digital signature value to format the signature in one of the AdES formats.
 
 # Particularities compared to the CSC Specification
 
@@ -42,7 +42,7 @@ At this moment only the Hash(es) Signing variant is available and documented. In
 
 # Integrating Sign services
 
-The itsme® Sign flow goes through the steps shown in the sequence diagram below.
+The itsme Sign flow goes through the steps shown in the sequence diagram below.
 
 ![Sequence diagram describing the CSC Hash Signing flow](/doc/public/images/csc-sequence.svg)
 
@@ -66,11 +66,11 @@ response:
 ```
 {
   "specs": "1.0.3.0",
-  "name": "itsme®",
+  "name": "itsme",
   "logo": "https://itsmeprdweucscgeneral.blob.core.windows.net/public/logo.jpg",
   "region": "BE",
   "lang": "EN-US",
-  "description": "itsme®, your digital ID and a smarter way to sign with your smartphone.",
+  "description": "itsme, your digital ID and a smarter way to sign with your smartphone.",
   "authType": [ "oauth2code" ],
   "oauth2": "https://sign.prd.itsme.services/csc/v0/oauth2/authorize",
   "methods": [ "info", "auth/revoke", "oauth2/authorize", "oauth2/token", "credentials/list", "credentials/info", "signatures/signHash" ]
@@ -263,7 +263,7 @@ response:
 
 ## 5. Getting credential id('s)  
 
-Returns the list of credentials associated with a user identifier, an itsme® user will always have exactly 1 credential.
+Returns the list of credentials associated with a user identifier, an itsme user will always have exactly 1 credential.
 
 This POST request contains only 1 parameter:
 <table>

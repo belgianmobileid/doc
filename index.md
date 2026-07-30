@@ -8,9 +8,9 @@ nav_order: 1
 
 <section class="home-hero">
   <div class="home-hero__content">
-    <span class="home-hero__eyebrow">itsme® Developer Hub</span>
+    <span class="home-hero__eyebrow">itsme Developer Hub</span>
     <p class="home-hero__lead">
-      Integrate itsme® to authenticate users, capture verified personal data,
+      Integrate itsme to authenticate users, capture verified personal data,
       collect consent and sign documents — on web, mobile web and native apps.
     </p>
   </div>
@@ -25,7 +25,7 @@ nav_order: 1
   <div class="home-grid">
     <article class="home-card">
       <h3>Authentication</h3>
-      <p>Let users log in securely to your application using their itsme® identity.</p>
+      <p>Let users log in securely to your application using their itsme identity.</p>
       <div class="home-card__links">
         <a href="authentication">Direct integration →</a>
         <a href="IAM">Via IAM platform →</a>
@@ -119,7 +119,7 @@ nav_order: 1
   <div class="home-grid">
     <article class="home-card">
       <h3>How deeplinks work</h3>
-      <p>End-to-end overview of how a deeplink hands off from your app to itsme® and back.</p>
+      <p>End-to-end overview of how a deeplink hands off from your app to itsme and back.</p>
       <div class="home-card__links">
         <a href="deeplinks-overview">Read the overview →</a>
       </div>

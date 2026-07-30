@@ -1,6 +1,6 @@
 ## User Data
 
-itsme® makes a range of user data available for its partners. These data elements (called "claims") can be requested through the backchannel Authentication Request, either individually or as part of a broader "scope". The claims are grouped into two categories:
+itsme makes a range of user data available for its partners. These data elements (called "claims") can be requested through the backchannel Authentication Request, either individually or as part of a broader "scope". The claims are grouped into two categories:
 
 ### User Attributes
 

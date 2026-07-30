@@ -12,7 +12,7 @@ Not applicable.
 
 <b><code>POST https://oidc.<i><b>[e2e/prd]</b></i>.itsme.services/v2/connect/revoke</code></b>
 
-The Revocation Endpoint enables your application to notify itsme® that a previously obtained access token is no longer needed and MUST be revoked.
+The Revocation Endpoint enables your application to notify itsme that a previously obtained access token is no longer needed and MUST be revoked.
 
 ### Parameters
 
@@ -24,7 +24,7 @@ The Revocation Endpoint enables your application to notify itsme® that a previo
     </tr>
     <tr>
       <td>{% include parameter.html name="token_type_hint" req="OPTIONAL" %}</td>
-      <td>A hint about the type of the token submitted for revocation. You MAY pass this parameter in order to help itsme® to optimize the token lookup. If the server is unable to locate the token using the given hint, it MUST extend its search across all of its supported token types. If used, this is set to <code>access_token</code> because itsme® API don't support refresh tokens.</td>
+      <td>A hint about the type of the token submitted for revocation. You MAY pass this parameter in order to help itsme to optimize the token lookup. If the server is unable to locate the token using the given hint, it MUST extend its search across all of its supported token types. If used, this is set to <code>access_token</code> because itsme API don't support refresh tokens.</td>
     </tr>
   </tbody>
 </table>
@@ -33,7 +33,7 @@ The Revocation Endpoint enables your application to notify itsme® that a previo
 
 <code>200</code> 
 
-itsme® responds with HTTP status code 200 if the token has been revoked successfully or if the client submitted an invalid token.
+itsme responds with HTTP status code 200 if the token has been revoked successfully or if the client submitted an invalid token.
 
 <aside class="notice">Invalid tokens do not cause an error response since your application cannot handle such an error in a reasonable way. Moreover, the purpose of the revocation request, invalidating the particular token, is already achieved.
 </aside>

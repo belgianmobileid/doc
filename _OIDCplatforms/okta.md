@@ -11,7 +11,7 @@ toc_list: true
 <a href="https://okta.com" class="noLine"><img src="/doc/assets/logo_Okta.svg" alt="Okta logo" width=150></a>
 
 [Customer Identity Cloud](https://www.okta.com/customer-identity/) is the Customer IAM product from Okta.
-It can be configured to use itsme® as an Identity Provider via the OpenID Connect standardized protocol.
+It can be configured to use itsme as an Identity Provider via the OpenID Connect standardized protocol.
 
 # Prerequisite
 

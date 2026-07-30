@@ -10,9 +10,9 @@ If no user record is storing the sub claim value, then you should allow the user
 
 The benefit of using a sub claim is that it will not change, not even if other user attributes (email, phone number, etc.) associated with that account are updated.
 
-### Deleting and re-creating an itsme® account
+### Deleting and re-creating an itsme account
 
-In a limited number of cases (e.g. technical issue,...) a user could ask itsme® to ‘delete' his account. As a result the specific account will be ‘archived' (for compliancy reasons) and thus also the unique identifier(s) (e.g. "sub").
+In a limited number of cases (e.g. technical issue,...) a user could ask itsme to ‘delete' his account. As a result the specific account will be ‘archived' (for compliancy reasons) and thus also the unique identifier(s) (e.g. "sub").
 
-If the same user would opt to re-create an itsme® afterwards, he will need to re-bind his itsme® account with your application server, in the same way as for the initial binding. After successful re-binding you will need to overwrite the initial reference with the new sub claim value in your database.
+If the same user would opt to re-create an itsme afterwards, he will need to re-bind his itsme account with your application server, in the same way as for the initial binding. After successful re-binding you will need to overwrite the initial reference with the new sub claim value in your database.
 

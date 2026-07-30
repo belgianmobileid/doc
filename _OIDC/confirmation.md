@@ -8,25 +8,25 @@ toc_list: true
 
 # Overview
 
-itsme® API is based on the Authorization Code Flow of OpenID Connect 1.0. The API can be used to verify your end-users' identity and obtain some information about them. For the exact user data that can be requested, please see the <a href="#authorization-request">Authorization Request</a> parameters.
+itsme API is based on the Authorization Code Flow of OpenID Connect 1.0. The API can be used to verify your end-users' identity and obtain some information about them. For the exact user data that can be requested, please see the <a href="#authorization-request">Authorization Request</a> parameters.
 
-The diagram below describes the **Confirmation** process and how your systems should integrate with itsme® :
+The diagram below describes the **Confirmation** process and how your systems should integrate with itsme :
   
  ![Sequence diagram describing the OpenID flow](/doc/public/images/OpenID_SeqDiag.png)
 
 To get to this result please make sure you 
 
 <ol>
-  <li>add itsme® button to your front-end page so the user can indicate he wishes to authenticate with itsme® : <a href="https://design.itsme-id.com/499ca0b4f/p/9567c9-itsme-button" target="blank">itsme® button specifications</a>.</li>
-  <li>create the <a href="#AuthNReq" >Authorization Request</a> to authenticate the User. This request will redirect the user to the itsme® app. itsme® will then authenticates the user by asking him 
+  <li>add itsme button to your front-end page so the user can indicate he wishes to authenticate with itsme : <a href="https://design.itsme-id.com/499ca0b4f/p/9567c9-itsme-button" target="blank">itsme button specifications</a>.</li>
+  <li>create the <a href="#AuthNReq" >Authorization Request</a> to authenticate the User. This request will redirect the user to the itsme app. itsme will then authenticates the user by asking him 
     <ul type>
-	  <li>to scan the QR code on the itsme® sign-in page</li>
+	  <li>to scan the QR code on the itsme sign-in page</li>
       <li>authorize the release of some information to your application</li>
-      <li>to provide his credentials (itsme® code, fingerprint or FaceID)</li>
+      <li>to provide his credentials (itsme code, fingerprint or FaceID)</li>
     </ul><br>It is also in this Authorization Request that you will be able to request claims about the user and the Confirmation event.</li>
-  <li><a href="#AuthNResp" >collect the Authorization Code</a> once the user has been authenticated and redirected by itsme® to your mobile or web application.</li>
+  <li><a href="#AuthNResp" >collect the Authorization Code</a> once the user has been authenticated and redirected by itsme to your mobile or web application.</li>
   <li><a href="#TokenReq" >exchange the Authorization Code for an ID token</a> (e.g. identifying the user) and an Access Token.</li>
-  <li>Obtain the additional claims by <a href="#UserInfoReq" >presenting the access token to the itsme® UserInfo Endpoint</a> if the required claims are not returned in the ID token.</li>
+  <li>Obtain the additional claims by <a href="#UserInfoReq" >presenting the access token to the itsme UserInfo Endpoint</a> if the required claims are not returned in the ID token.</li>
   <li>Confirm the success of the operation and display a success message.</li>
 </ol>
 
@@ -34,15 +34,15 @@ To get to this result please make sure you
 
 # Guides
 
-## Generate itsme® button
+## Generate itsme button
 
-First, you will need to create a button to allow your users to authenticate with itsme®. Check the <a href="https://brand.belgianmobileid.be/d/CX5YsAKEmVI7/documentation#/ux/buttons-1518207548" target="blank">Button design guide</a> before you start the integration. 
+First, you will need to create a button to allow your users to authenticate with itsme. Check the <a href="https://brand.belgianmobileid.be/d/CX5YsAKEmVI7/documentation#/ux/buttons-1518207548" target="blank">Button design guide</a> before you start the integration. 
 
-Upon clicking this button, the user will be redirected to our Front-End. itsme® then take care of their authentication.
+Upon clicking this button, the user will be redirected to our Front-End. itsme then take care of their authentication.
 
 ## Securing the exchange of information
 
-To protect the exchange of sensitive information and ensure the requested information gets issued to a legitimate application and not some other party, the OpenID Connect protocol uses JSON Web Token (JWT) which can be signed and/or encrypted. Among the methods described in OpenID specification, itsme® supports 2 authentication methods to secure communications between your backend and itsme®:
+To protect the exchange of sensitive information and ensure the requested information gets issued to a legitimate application and not some other party, the OpenID Connect protocol uses JSON Web Token (JWT) which can be signed and/or encrypted. Among the methods described in OpenID specification, itsme supports 2 authentication methods to secure communications between your backend and itsme:
 
 <ul>
   <li>"Private key JWT" is based on a public/private key pair (asymmetric encryption). It is therefore the most secure option</li>
@@ -59,15 +59,15 @@ This method uses a pair of keys (1 public, 1 private) to encrypt and decrypt sen
 <aside class="notice">This method requires that each party exposes its public keys in the form of a JWK Set document on a publicly accessible URI, and keep its private keys for itself. 
 </aside>
 
-You can retrieve the itsme® JWK Set from the URI mentioned as <code>jwks_uri</code> in our <a href="https://belgianmobileid.github.io/doc/authentication/#itsme-discovery-document" target="blank">itsme® Discovery document</a>.
+You can retrieve the itsme JWK Set from the URI mentioned as <code>jwks_uri</code> in our <a href="https://belgianmobileid.github.io/doc/authentication/#itsme-discovery-document" target="blank">itsme Discovery document</a>.
 
 <aside class="notice">Refer to <a href="https://belgianmobileid.github.io/doc/JOSE/" target="blank">this page</a> for more on signing and encrypting tokens.
 </aside>
 
-<aside class="notice">Whatever the tool you are choosing to create your key pairs, don't forget to send your JWK Set URI by email to <a href = "mailto: onboarding@itsme.be">onboarding@itsme-id.com</a> and itsme® will make sure to complete the configuration for you in no time!
+<aside class="notice">Whatever the tool you are choosing to create your key pairs, don't forget to send your JWK Set URI by email to <a href = "mailto: onboarding@itsme.be">onboarding@itsme-id.com</a> and itsme will make sure to complete the configuration for you in no time!
 </aside>
 
-<aside class="notice">The algorithms – needed to sign and encrypt a JWT – are listed in the <a href="https://belgianmobileid.github.io/doc/authentication/#itsme-discovery-document" target="blank">itsme® Discovery document</a> for more information.
+<aside class="notice">The algorithms – needed to sign and encrypt a JWT – are listed in the <a href="https://belgianmobileid.github.io/doc/authentication/#itsme-discovery-document" target="blank">itsme Discovery document</a> for more information.
 </aside>
 
 
@@ -75,18 +75,18 @@ You can retrieve the itsme® JWK Set from the URI mentioned as <code>jwks_uri</c
 
 Secret key cryptography method uses the same secret key to encrypt and decrypt sensitive information. This approach is the inverse of public- and private-key encryption.
 
-This method requires the exchange of a static secret to be held by both the sender and the data receiver. The secret value will be provided by itsme® when registering your project.
+This method requires the exchange of a static secret to be held by both the sender and the data receiver. The secret value will be provided by itsme when registering your project.
 
-<aside class="notice">The algorithms – needed to sign and encrypt a JWT – are listed in the <a href="https://belgianmobileid.github.io/doc/confirmation/#itsme-discovery-document" target="blank">itsme® Discovery document</a> for more information.
+<aside class="notice">The algorithms – needed to sign and encrypt a JWT – are listed in the <a href="https://belgianmobileid.github.io/doc/confirmation/#itsme-discovery-document" target="blank">itsme Discovery document</a> for more information.
 </aside>
 
-<aside class="notice">If you choose to go with the secret key method, you will be able to specify if the ID Token JWT needs to be signed with the an asymmetric algorithm (e.g. <code>RS256</code>) or with a symmetric algorithm (e.g. : <code>HS256</code>). When using the <code>RS256</code> algorithm, our public keys will be needed to verify the signature. This information can be found in our <a href="https://belgianmobileid.github.io/doc/confirmation/#itsme-discovery-document" target="blank">itsme® Discovery document</a>, using the key <code>jwks_uri</code>.
+<aside class="notice">If you choose to go with the secret key method, you will be able to specify if the ID Token JWT needs to be signed with the an asymmetric algorithm (e.g. <code>RS256</code>) or with a symmetric algorithm (e.g. : <code>HS256</code>). When using the <code>RS256</code> algorithm, our public keys will be needed to verify the signature. This information can be found in our <a href="https://belgianmobileid.github.io/doc/confirmation/#itsme-discovery-document" target="blank">itsme Discovery document</a>, using the key <code>jwks_uri</code>.
 </aside>
 
 ### Key rotation procedure
 ### for public-private key pair and JWKSet URI
 
-itsme® backend has cache mechanism in place, which is sporadic (from 30min to 24h). During this time, we will keep on using old keys.
+itsme backend has cache mechanism in place, which is sporadic (from 30min to 24h). During this time, we will keep on using old keys.
 <aside class="notice">use "Cache-Control: max-age=" HTTP header (min 30min) to lower waiting time.</aside>
 
 #### Rotating signing key:
@@ -106,7 +106,7 @@ itsme® backend has cache mechanism in place, which is sporadic (from 30min to 2
 Changing the key could come along with changing the jwkset url. If that is the case, communicate new available jwkset url to onboarding@itsme-id.com. It is not be possible to be perfectly in sync, a few failed flows should be expected in the lapse of time between jwkset url update and the key update at the partner’s side. Smoother way would be:
 <ul>
 <li>Copy the old jwkSet on the new URL</li>
-<li>the URL is communicated & registered by itsme®</li>
+<li>the URL is communicated & registered by itsme</li>
 <li>Rotate the keys in the jwkSet on the new URL as per rotating keys info above</li>
 </ul>
 
@@ -116,9 +116,9 @@ Please, reach out to onboarding@itsme-id.com in case the secret key should be ro
 
 ### PKCE-enhanced flow
 
-Whatever the chosen authentication method, itsme® also supports an extra security extension named Proof of Key for Code Exchange (<a href="https://datatracker.ietf.org/doc/html/rfc7636" target="blank">PKCE</a>). This additionnal layer of security is intended to mitigate some Authorization Code interception attacks. For this mechanism to achieve its full potential, PKCE has to be made mandatory in your flow, which is an option we can enable for you (strongly recommended). Please ask our onboarding team to do so when registering your project.
+Whatever the chosen authentication method, itsme also supports an extra security extension named Proof of Key for Code Exchange (<a href="https://datatracker.ietf.org/doc/html/rfc7636" target="blank">PKCE</a>). This additionnal layer of security is intended to mitigate some Authorization Code interception attacks. For this mechanism to achieve its full potential, PKCE has to be made mandatory in your flow, which is an option we can enable for you (strongly recommended). Please ask our onboarding team to do so when registering your project.
 
-<aside class="notice">If this option is not enabled, you are still free to use PKCE for some added security but requests without the PKCE <code>code_challenge</code> will be accepted as well at itsme® side.</aside>
+<aside class="notice">If this option is not enabled, you are still free to use PKCE for some added security but requests without the PKCE <code>code_challenge</code> will be accepted as well at itsme side.</aside>
 
 PKCE implies choosing a random string, named <code>code_verifier</code>, and then generating a SHA256 hash of that string, named <code>code_challenge</code>. The code_challenge has to be sent along with the Authorization Request, while the code_verifier must be sent with the Token Request, allowing our backend to make sure both requests are issued by the same source.
 
@@ -145,7 +145,7 @@ Whenever a partner is sending a request to the itsme OIDC endpoints he will get 
 
 <ul>
   <li>response where some parameters are added to the query component of the redirection URI using the <code>application/x-www-form-urlencoded</code> format, or</li>
-  <li>response displayed directly on our itsme® sign-in page ;</li>
+  <li>response displayed directly on our itsme sign-in page ;</li>
   <li>response using the <code>application/json</code> media type</li>
 </ul>
 
@@ -184,7 +184,7 @@ Things will sometimes go wrong. So, OpenID Connect defines a number of rules reg
 
 ***Authorization Endpoint errors***
 
-If the request fails due to a missing, invalid, or mismatching redirection URI, or if the client identifier is missing or invalid,... the Authorization Endpoint will inform you of the error our itsme® sign-in page.
+If the request fails due to a missing, invalid, or mismatching redirection URI, or if the client identifier is missing or invalid,... the Authorization Endpoint will inform you of the error our itsme sign-in page.
 
  ![Authorization Endpoint error reponse](/doc/public/images/AuthorizationEndpoint_ErrorResponse.png)
  
@@ -383,7 +383,7 @@ If the request fails the Revoke Endpoint responds with an HTTP 400 (Bad Request)
           </tr>
           <tr>
             <td>{% include parameter.html name="unsupported_token_type" req="" %}</td>
-            <td>itsme® does not support the revocation of the presented access token.</td>
+            <td>itsme does not support the revocation of the presented access token.</td>
           </tr>
        </table>
       </td>
@@ -441,7 +441,7 @@ When building your Authorization Request, one of the below template MUST be spec
        <td>{% include parameter.html name="http://itsme.services/v2/ claim/claim_approval_template_name" req="" %}</td><td>This identifies the template used. It MUST be set to "http://itsme.services/v2/claim/claim_approval_template_name":{ "essential": true, "value": "free_text" }.</td>
      </tr>
      <tr>
-        <td>{% include parameter.html name="http://itsme.services/v2/ claim/claim_approval_text_key" req="" %}</td><td>A string holding any text to be displayed in the itsme® app. This MUST be set to"http://itsme.services/v2/claim/claim_approval_text_key":{ "essential": true, "value": "Text_as_a_string" }.</td>
+        <td>{% include parameter.html name="http://itsme.services/v2/ claim/claim_approval_text_key" req="" %}</td><td>A string holding any text to be displayed in the itsme app. This MUST be set to"http://itsme.services/v2/claim/claim_approval_text_key":{ "essential": true, "value": "Text_as_a_string" }.</td>
      </tr>
   </tbody>
 </table>
@@ -861,7 +861,7 @@ Not applicable.
 
 <b><code>POST https://oidc.<i><b>[e2e/prd]</b></i>.itsme.services/v2/connect/revoke</code></b>
 
-The Revocation Endpoint enables your application to notify itsme® that a previously obtained access token is no longer needed and MUST be revoked.
+The Revocation Endpoint enables your application to notify itsme that a previously obtained access token is no longer needed and MUST be revoked.
 
 ### Parameters
 
@@ -873,7 +873,7 @@ The Revocation Endpoint enables your application to notify itsme® that a previo
     </tr>
     <tr>
       <td>{% include parameter.html name="token_type_hint" req="OPTIONAL" %}</td>
-      <td>A hint about the type of the token submitted for revocation. You MAY pass this parameter in order to help itsme® to optimize the token lookup. If the server is unable to locate the token using the given hint, it MUST extend its search across all of its supported token types. If used, this is set to <code>access_token</code> because itsme® API don't support refresh tokens.</td>
+      <td>A hint about the type of the token submitted for revocation. You MAY pass this parameter in order to help itsme to optimize the token lookup. If the server is unable to locate the token using the given hint, it MUST extend its search across all of its supported token types. If used, this is set to <code>access_token</code> because itsme API don't support refresh tokens.</td>
     </tr>
   </tbody>
 </table>
@@ -882,7 +882,7 @@ The Revocation Endpoint enables your application to notify itsme® that a previo
 
 <code>200</code> 
 
-itsme® responds with HTTP status code 200 if the token has been revoked successfully or if the client submitted an invalid token.
+itsme responds with HTTP status code 200 if the token has been revoked successfully or if the client submitted an invalid token.
 
 <aside class="notice">Invalid tokens do not cause an error response since your application cannot handle such an error in a reasonable way. Moreover, the purpose of the revocation request, invalidating the particular token, is already achieved.
 </aside>

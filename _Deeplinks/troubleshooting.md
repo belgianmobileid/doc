@@ -20,7 +20,7 @@ You have integrated itsme in your application but when you try to open the itsme
     <td class="fc-exit-cell"><span class="fc-badge fc-badge-yes">Yes →</span><div class="fc-outcome fc-warn">Always open the itsme URL in the default browser app. Deeplinks do not work reliably inside webviews.</div></td>
   </tr>
   <tr>
-    <td class="fc-q" colspan="2"><div class="fc-decision">Send yourself the exact itsme URL by email, open it on mobile and tap it. Does the itsme® app open?</div></td>
+    <td class="fc-q" colspan="2"><div class="fc-decision">Send yourself the exact itsme URL by email, open it on mobile and tap it. Does the itsme app open?</div></td>
   </tr>
   <tr>
     <td class="fc-arrow-cell"><span class="fc-badge">No ↓</span></td>
@@ -54,7 +54,7 @@ When the flow at itsme side is finished, you expect your app to open but this do
 <div class="fc-flow">
 <table class="fc-plain">
   <tr>
-    <td class="fc-q" colspan="2"><div class="fc-decision">Do you stay in the itsme® app while you expect your webpage or mobile app to open?</div></td>
+    <td class="fc-q" colspan="2"><div class="fc-decision">Do you stay in the itsme app while you expect your webpage or mobile app to open?</div></td>
   </tr>
   <tr>
     <td class="fc-arrow-cell"><span class="fc-badge">No ↓</span></td>
