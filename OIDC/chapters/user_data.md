@@ -1,6 +1,6 @@
 ## User Data
 
-itsme® is making a range of user data available for its partners. Those can be requested through the <a href="#authorization-request">Authorization Request</a>, individually as "claims" or as part of a broader "scope".
+itsme is making a range of user data available for its partners. Those can be requested through the <a href="#authorization-request">Authorization Request</a>, individually as "claims" or as part of a broader "scope".
 These claims can be split in 2 categories:
 
 ### User Attributes

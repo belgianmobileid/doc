@@ -1,4 +1,4 @@
-<aside class="notice">Depending on the identity document used to create an itsme® account and the country issuing it, not all claims are always available or formated the same way. Please refer to <a href="https://belgianmobileid.github.io/doc/claims/" target="blank">this page</a> to check which claims are available in which cases.</aside>
+<aside class="notice">Depending on the identity document used to create an itsme account and the country issuing it, not all claims are always available or formated the same way. Please refer to <a href="https://belgianmobileid.github.io/doc/claims/" target="blank">this page</a> to check which claims are available in which cases.</aside>
 
 ### Parameters
 
@@ -10,7 +10,7 @@
     </tr>
      <tr>
       <td>{% include parameter.html name="response_type" req="REQUIRED" %}</td>
-      <td>This defines the processing flow to be used when forming the response. Because itsme® supports the Authorization Code Flow, this value MUST be <code>code</code>.</td>
+      <td>This defines the processing flow to be used when forming the response. Because itsme supports the Authorization Code Flow, this value MUST be <code>code</code>.</td>
     </tr>
     <tr>
       <td>{% include parameter.html name="scope" req="REQUIRED" %}</td>
@@ -18,7 +18,7 @@
         It allows your application to express the desired scope of the access request. Each scope returns a set of user attributes. The scopes an application should request depend on which user attributes your application needs. Once the user authorizes the requested scopes, his details are returned through the UserInfo Endpoint.<br><br>All scope values must be space-separated.<br><br>The basic (and required) scopes are <code>openid</code> and <code>service</code>. Beyond that, your application can ask for additional standard scopes values which map to sets of related claims are: <code>profile</code> <code>email</code> <code>address</code> <code>phone</code> <code>eid</code><br />
         <table>
           <tr>
-            <td>{% include parameter.html name="service" req="REQUIRED" %}</td><td>It indicates the itsme® service your application intends to use, e.g. <code>service:TEST_code</code> by replacing "TEST_code" with the service code generated during registration.</td>
+            <td>{% include parameter.html name="service" req="REQUIRED" %}</td><td>It indicates the itsme service your application intends to use, e.g. <code>service:TEST_code</code> by replacing "TEST_code" with the service code generated during registration.</td>
           </tr>
           <tr>
             <td>{% include parameter.html name="openid" req="REQUIRED" %}</td><td>It indicates that your application intends to use the OpenID Connect protocol to verify a user's identity by returning a <code>sub</code> claim which represents a unique identifier for the authenticated user.</td>
@@ -67,29 +67,29 @@
     </tr>
     <tr>
       <td>{% include parameter.html name="ui_locales" req="OPTIONAL" %}</td>
-      <td>Indicates the user's preferred languages for the itsme® sign-in page, represented as a space-separated list of language tag values, ordered by preference.<br><br>Possible values : <code>fr</code> <code>nl</code> <code>de</code> <code>en</code></td>
+      <td>Indicates the user's preferred languages for the itsme sign-in page, represented as a space-separated list of language tag values, ordered by preference.<br><br>Possible values : <code>fr</code> <code>nl</code> <code>de</code> <code>en</code></td>
     </tr>
     <tr>
       <td>{% include parameter.html name="display" req="OPTIONAL" %}</td>
-      <td>Specify how the itsme® sign-in page should be displayed to the user. Currently, only the <code>page</code> value is supported but in the future we might support additional display modes like <code>touch</code>.</td>
+      <td>Specify how the itsme sign-in page should be displayed to the user. Currently, only the <code>page</code> value is supported but in the future we might support additional display modes like <code>touch</code>.</td>
     </tr>
     <tr>
       <td>{% include parameter.html name="acr_values" req="OPTIONAL" %}</td>
       <td>Indicates the authentication method required to process the request, represented as a space-separated list of tag values, ordered by preference.<br><br>Possible values : <code>http://itsme.services/v2/claim/acr_basic</code> <code>http://itsme.services/v2/claim/acr_advanced</code><br><br><b>Note</b> : if these two values are provided only the most constraining authentication method will be applied, e.g. <code>http://itsme.services/v2/claim/acr_advanced</code>.<br />
         <table>
           <tr>
-            <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/acr_basic" req="" %}</td><td>It lets the user to choose either fingerprint usage (if device is compatible) or itsme® code. If the <code>acr_values</code> parameter is not specified, this is the default authentication method.</td>
+            <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/acr_basic" req="" %}</td><td>It lets the user to choose either fingerprint usage (if device is compatible) or itsme code. If the <code>acr_values</code> parameter is not specified, this is the default authentication method.</td>
           </tr>
           <tr>
-            <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/acr_advanced" req="" %}</td><td>It forces the user to use his itsme® code.</td>
+            <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/acr_advanced" req="" %}</td><td>It forces the user to use his itsme code.</td>
           </tr>
         </table>
       </td>
     </tr>
     <tr>
       <td>{% include parameter.html name="claims" req="OPTIONAL" %}</td>
-      <td>Allows to request specific user's details ("claims"). You can choose to receive those claims either in the ID Token (from /token endpoint) or in the UserInfo object (from /userinfo endpoint).<br />It MUST be a JSON object containing an <code>{"id_token":{...}}</code> member or a <code>{"userinfo":{...}}</code> member respectively. This member will then contain all the desired claims - see example below.<br><b>Note</b>: to avoid the need of a /userinfo request, itsme® recommends to retrieve the claims directly from the ID Token.<br>
-      {% if page.title contains "Confirmation" %}<aside class="notice">When implementing the <b>Confirmation</b> service, you MUST use a WYSIWYS template to pre-structure the transaction screen in the itsme® app (refer to <a href="#wysiwys-template" target="blank">this section</a> for more information).</aside>{% endif %}
+      <td>Allows to request specific user's details ("claims"). You can choose to receive those claims either in the ID Token (from /token endpoint) or in the UserInfo object (from /userinfo endpoint).<br />It MUST be a JSON object containing an <code>{"id_token":{...}}</code> member or a <code>{"userinfo":{...}}</code> member respectively. This member will then contain all the desired claims - see example below.<br><b>Note</b>: to avoid the need of a /userinfo request, itsme recommends to retrieve the claims directly from the ID Token.<br>
+      {% if page.title contains "Confirmation" %}<aside class="notice">When implementing the <b>Confirmation</b> service, you MUST use a WYSIWYS template to pre-structure the transaction screen in the itsme app (refer to <a href="#wysiwys-template" target="blank">this section</a> for more information).</aside>{% endif %}
       <br>Supported claims are listed below. Please check <a href="https://belgianmobileid.github.io/doc/claims/" target="blank">this page</a> for availability and format per country.<br />
         <table>
           <tr>
@@ -102,10 +102,10 @@
             <td>{% include parameter.html name="family_name" req="OPTIONAL" %}</td><td>Returns user's surname(s) or last name(s). Note that in some cultures, people can have multiple family names or no family name; all can be present, with the names being separated by space characters.</td>
           </tr> 
           <tr>
-            <td>{% include parameter.html name="birthdate" req="OPTIONAL" %}</td><td>Return user's birthdate, represented as a string in YYYY-MM-DD date format. itsme® users are always 13 years old or more.</td>
+            <td>{% include parameter.html name="birthdate" req="OPTIONAL" %}</td><td>Return user's birthdate, represented as a string in YYYY-MM-DD date format. itsme users are always 13 years old or more.</td>
           </tr> 
           <tr>
-            <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/birthdate_as_string" req="OPTIONAL" %}</td><td>Returns user's birthdate in an unprocessed way, as mentioned on the ID document. itsme® users are always 13 years old or more.</td>
+            <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/birthdate_as_string" req="OPTIONAL" %}</td><td>Returns user's birthdate in an unprocessed way, as mentioned on the ID document. itsme users are always 13 years old or more.</td>
           </tr>
           <tr>
             <td>{% include parameter.html name="age_gte_13" req="OPTIONAL" %}</td><td>Returns <code>true</code> if the age of the user is greater than or equal to 13 years old. Returns <code>false</code> otherwise. This claim is meant to be used for age verification in contexts where data minimisation is relevant and you don't need the exact birthdate.</td>
@@ -147,7 +147,7 @@
             <td>{% include parameter.html name="email" req="OPTIONAL" %}</td><td>Returns user's email address.</td>
           </tr> 
           <tr>
-            <td>{% include parameter.html name="email_verified" req="OPTIONAL" %}</td><td>Returns <code>true</code> if the user's e-mail address is verified; otherwise <code>false</code>.<br><br><b>Note</b> : currently, itsme® always returns <code>false</code> for this claim because the email verification feature is not yet implemented in our systems (or does not return a value if no email address is available).</td>
+            <td>{% include parameter.html name="email_verified" req="OPTIONAL" %}</td><td>Returns <code>true</code> if the user's e-mail address is verified; otherwise <code>false</code>.<br><br><b>Note</b> : currently, itsme always returns <code>false</code> for this claim because the email verification feature is not yet implemented in our systems (or does not return a value if no email address is available).</td>
           </tr> 
           <tr>
             <td>{% include parameter.html name="phone_number" req="OPTIONAL" %}</td><td>Returns user's phone number, represented as a string format. For example : <code>[+][country code] [subscriber number including area code]</code>.</td>
@@ -231,7 +231,7 @@
             <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/IDIssuingCountry" req="OPTIONAL" %}</td><td>This is a <a href="#metadata">metadata</a>.<br>Returns the 3-letters iso code of the country that issued the identity document.</td>
           </tr>
           <tr>
-            <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/issuance_locality" req="OPTIONAL" %}</td><td>This is a <a href="#metadata">metadata</a>.<br>Returns the locality that issued the ID document used to create the itsme® account.</td>
+            <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/issuance_locality" req="OPTIONAL" %}</td><td>This is a <a href="#metadata">metadata</a>.<br>Returns the locality that issued the ID document used to create the itsme account.</td>
           </tr>
           <tr>
             <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/app" req="OPTIONAL" %}</td><td>Returns a JSON object with 3 members: <code>appInstalledDate</code> contains the date when the app was installed on the user's device, represented as a string in YYYY-MM-DDThh:mm:ss.nnnZ date format specified by ISO 8601. <code>appName</code> contains the name of the app and <code>appRelease</code> contains a string identifying the release (example: "4.9.1").<br>This claim is intended to help partners detect fraudulent use cases.</td>
@@ -240,7 +240,7 @@
             <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/account" req="OPTIONAL" %}</td><td>Returns a JSON object with 3 members: <code>activationDate</code> contains the date when the account was last activated (enrolled or unblocked), represented as a string in YYYY-MM-DDThh:mm:ss.nnnZ date format specified by ISO 8601. <code>activationMechanism</code> contains a string identifying the way this account was created. Possible values are "CARD_READER" (enrollment via a physical reading of the ID document chip), "CONTACT_LESS" (enrollment via a NFC reading of the ID document) or "ID_PROVIDER" (enrollment via a trusted partner, i.e. a bank).<br>This claim is intended to help partners detect fraudulent use cases.</td>
           </tr>
           <tr>
-            <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/identification_mode" req="OPTIONAL" %}</td><td>An indication of the way the user initiated the itsme® transaction. Can contain "QR", "MSISDN" (i.e. phone number) or "a2a" (i.e. app to app flow). Other values can be added in the future.</td>
+            <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/identification_mode" req="OPTIONAL" %}</td><td>An indication of the way the user initiated the itsme transaction. Can contain "QR", "MSISDN" (i.e. phone number) or "a2a" (i.e. app to app flow). Other values can be added in the future.</td>
           </tr>
           <tr>
             <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/transaction_ip" req="OPTIONAL" %}</td><td>Returns the IP address of the smartphone approving the transaction.<br>This claim is intended to help partners detect fraudulent use cases.</td>
@@ -250,7 +250,7 @@
           </tr>
           {% if page.title contains "Confirmation" %}
           <tr>
-            <td>{% include parameter.html name="sub" req="OPTIONAL" %}</td><td>Allows the user to bypass the itsme® identification page if he is already logged into your application, by using the user's unique identifier key as value (aka. the user's <code>sub</code> value returned in the ID Token response).<br />The sub must be passed as a JSON object like: <code>"sub":{"value":"123456abcdefg"}</code><br />/!\ The sub parameter is only considered if specified within a "userinfo" set of claims. It will be ignored in an "id_token" set.<br />NB: you are allowed to include both a "userinfo" AND an "id_token" set in one Authorization Request, so that you still don’t have to perform a UserInfo Request at the end of the flow.</td>
+            <td>{% include parameter.html name="sub" req="OPTIONAL" %}</td><td>Allows the user to bypass the itsme identification page if he is already logged into your application, by using the user's unique identifier key as value (aka. the user's <code>sub</code> value returned in the ID Token response).<br />The sub must be passed as a JSON object like: <code>"sub":{"value":"123456abcdefg"}</code><br />/!\ The sub parameter is only considered if specified within a "userinfo" set of claims. It will be ignored in an "id_token" set.<br />NB: you are allowed to include both a "userinfo" AND an "id_token" set in one Authorization Request, so that you still don’t have to perform a UserInfo Request at the end of the flow.</td>
           </tr>
           {% endif %}
           {% if page.title contains "Data Sharing" %}
@@ -263,7 +263,7 @@
     </tr>
     <tr>
       <td>{% if page.title contains "Confirmation" %}{% include parameter.html name="request_uri" req='REQUIRED if no "request"' %}{% else %}{% include parameter.html name="request_uri" req="OPTIONAL" %}{% endif %}</td>
-      <td>A URL using the https scheme referencing a resource containing a JWT whose claims are the request parameters. The <code>request_uri</code> parameter is used to secure parameters in the Authorization Request from tainting or inspection when sending the request to the itsme® Authorization Endpoint.<br><br>If the <code>request_uri</code> parameter is used, the JWT MUST be signed and MUST contain the claims <code>iss</code> (issuer) and <code>aud</code> (audience) as members. The <code>iss</code> value SHOULD be your <code>client_id</code>. The <code>aud</code> value SHOULD be set to <code>https://idp.[e2e/prd].itsme.services/v2</code>. The JWT MUST also be encrypted and more precisely: it MUST be signed then encrypted, with the result being a Nested JWT (refer to <a href="https://belgianmobileid.github.io/doc/JOSE/" target="blank">this page</a> for more information).<br><br>The following restrictions apply to request URIs:
+      <td>A URL using the https scheme referencing a resource containing a JWT whose claims are the request parameters. The <code>request_uri</code> parameter is used to secure parameters in the Authorization Request from tainting or inspection when sending the request to the itsme Authorization Endpoint.<br><br>If the <code>request_uri</code> parameter is used, the JWT MUST be signed and MUST contain the claims <code>iss</code> (issuer) and <code>aud</code> (audience) as members. The <code>iss</code> value SHOULD be your <code>client_id</code>. The <code>aud</code> value SHOULD be set to <code>https://idp.[e2e/prd].itsme.services/v2</code>. The JWT MUST also be encrypted and more precisely: it MUST be signed then encrypted, with the result being a Nested JWT (refer to <a href="https://belgianmobileid.github.io/doc/JOSE/" target="blank">this page</a> for more information).<br><br>The following restrictions apply to request URIs:
         <tabul>
           <tabli>The request URI MUST be preregistered during the registration.</tabli>
           <tabli>The request URI MUST contain the TCP port number <code>443</code>. Example : https://test.istme.be:443/p/test</tabli>
@@ -274,7 +274,7 @@
     </tr>
     <tr>
       <td>{% if page.title contains "Confirmation" %}{% include parameter.html name="request" req='REQUIRED if no "request_uri"' %}{% else %}{% include parameter.html name="request" req="OPTIONAL" %}{% endif %}</td>
-      <td>It represents the request as a JWT whose Claims are the request parameters. The <code>request</code> parameter is used to secure parameters in the Authorization Request from tainting or inspection when sending the request to the itsme® Authorization Endpoint.<br><br>If the <code>request</code> parameter is used, the JWT MUST be signed and MUST contain the claims <code>iss</code> (issuer) and <code>aud</code> (audience) as members. The <code>iss</code> value SHOULD be your <code>client_id</code>. The <code>aud</code> value SHOULD be set to <code>https://idp.[e2e/prd].itsme.services/v2</code>. The JWT MUST also be encrypted and more precisely: it MUST be signed then encrypted, with the result being a Nested JWT (refer to <a href="https://belgianmobileid.github.io/doc/JOSE/" target="blank">this page</a> for more information).</td>
+      <td>It represents the request as a JWT whose Claims are the request parameters. The <code>request</code> parameter is used to secure parameters in the Authorization Request from tainting or inspection when sending the request to the itsme Authorization Endpoint.<br><br>If the <code>request</code> parameter is used, the JWT MUST be signed and MUST contain the claims <code>iss</code> (issuer) and <code>aud</code> (audience) as members. The <code>iss</code> value SHOULD be your <code>client_id</code>. The <code>aud</code> value SHOULD be set to <code>https://idp.[e2e/prd].itsme.services/v2</code>. The JWT MUST also be encrypted and more precisely: it MUST be signed then encrypted, with the result being a Nested JWT (refer to <a href="https://belgianmobileid.github.io/doc/JOSE/" target="blank">this page</a> for more information).</td>
     </tr>
     <tr>
       <td>{% include parameter.html name="code_challenge" req="OPTIONAL" %}</td>
