@@ -17,7 +17,7 @@ The diagram below describes the **Authentication** process and how your systems 
 To get to this result please make sure you 
 
 <ol>
-  <li>add itsme® button to your front-end page so the user can indicate he wishes to authenticate with itsme® : <a href="https://brand.belgianmobileid.be/d/CX5YsAKEmVI7/documentation#/ux/buttons-1518207548" target="blank">itsme® button specifications</a>.</li>
+  <li>add itsme® button to your front-end page so the user can indicate he wishes to authenticate with itsme® : <a href="https://design.itsme-id.com/499ca0b4f/p/9567c9-itsme-button" target="blank">itsme® button specifications</a>.</li>
   <li>create the <a href="#AuthNReq" >Authorization Request</a> to authenticate the User. This request will redirect the user to the itsme® app. itsme® will then authenticates the user by asking him 
     <ul type>
 	  <li>to scan the QR code on the itsme® sign-in page</li>	
