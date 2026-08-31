@@ -51,6 +51,9 @@ collections:
   Deeplinks:
     permalink: "/:path/"
     output: true
+  StatusPage:
+    permalink: "/:path/"
+    output: true
   
 
 # Define which collections are used in just-the-docs
@@ -71,6 +74,9 @@ just_the_docs:
     Deeplinks:
       name: Deeplinks
       nav_exclude: false
+    StatusPage:
+      name: Status page
+      nav_exclude: true
 
 # Set a path/url to a logo that will be displayed instead of the title
 logo: "/public/images/ASMARTERWAY_RGB.png"

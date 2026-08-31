@@ -301,6 +301,10 @@ $home-border: rgba(31, 29, 38, 0.08);
     max-width: 720px;
 }
 
+.home-section__head--wide p {
+    max-width: none;
+}
+
 /* Grid of service cards */
 .home-grid {
     display: grid;
@@ -353,6 +357,38 @@ $home-border: rgba(31, 29, 38, 0.08);
     color: $home-muted;
     line-height: 1.5;
     flex: 1;
+}
+
+.status-orange-bullets li::marker {
+    color: $home-brand;
+}
+
+.status-subscribe-steps li {
+    margin-bottom: 0.7rem;
+}
+
+.status-subscribe-steps img {
+    margin-top: 0.45rem;
+}
+
+.status-subscribe-steps a,
+.status-unsubscribe-steps a {
+    color: $home-brand-dark;
+    text-decoration: none;
+    background-image: none;
+    border-bottom: 1px solid rgba(255, 70, 18, 0.4);
+    font-weight: 600;
+}
+
+.status-subscribe-steps a:hover,
+.status-unsubscribe-steps a:hover {
+    color: $home-brand;
+    border-bottom-color: $home-brand;
+}
+
+.status-keyword {
+    font-weight: 600;
+    color: $home-ink;
 }
 
 .home-card__links {

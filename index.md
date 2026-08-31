@@ -107,11 +107,12 @@ nav_order: 1
 </section>
 
 <section class="home-section">
-  <header class="home-section__head">
+  <header class="home-section__head home-section__head--wide">
     <h2>Deeplinks</h2>
     <p>
       “Deeplink” is the term we use across our documentation, but in practice it
       means a <strong>Universal Link</strong> on iOS and an <strong>App Link</strong> on Android.
+      <br />
       Learn how they work, how to configure them and how to debug the most common issues.
     </p>
   </header>
@@ -157,6 +158,17 @@ nav_order: 1
       </div>
     </article>
   </div>
+</section>
+
+<section class="home-section">
+  <header class="home-section__head">
+    <h2>Status page notifications</h2>
+    <p>
+      Learn how to subscribe or unsubscribe from incident and maintenance emails via our status page.
+      <br />
+      <a href="status-page-subscription">Read the guide →</a>
+    </p>
+  </header>
 </section>
 
 
