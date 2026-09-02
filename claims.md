@@ -14,7 +14,7 @@ How to understand the table below:
 **MAY NOT**: Best-effort - will return a value in most cases but it may not be possible for some accounts.<br>
 **SHALL NOT**: This values is never available.
 
-<table>
+<table id="claims-availability">
   <tbody>
     <tr>
       <th>Claim</th>

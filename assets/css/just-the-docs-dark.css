@@ -1992,6 +1992,51 @@ td, th { border-left: none; vertical-align: top; text-align: left; }
 
 .paramType { color: black; border: 1px solid gray; padding: 1px 2px; border-radius: 4px; font-size: smaller; text-transform: lowercase; }
 
+/* Claims availability */
+.claims-availability { width: 100%; margin-top: 1.5rem; table-layout: fixed; }
+
+.claims-availability__search { display: grid; gap: 0.35rem; max-width: 24rem; margin: 1.25rem 0 0.5rem; padding: 0.875rem 1rem; border: 1px solid #d9d7d5; border-left: 4px solid #ff4612; border-radius: 4px; background: #faf9f8; }
+
+.claims-availability__countries { margin: 1.25rem 0 0; }
+
+.claims-availability__search label { color: #1f1d26; font-weight: 700; }
+
+.claims-availability__search input { width: 100%; padding: 0.55rem 0.7rem; border: 1px solid #b3b1ad; border-radius: 4px; background: #fff; box-sizing: border-box; font: inherit; }
+
+.claims-availability__search input:focus { outline: 2px solid #ff4612; outline-offset: 1px; border-color: #ff4612; }
+
+.claims-availability__search p { margin: 0; }
+
+.claims-availability th, .claims-availability td { padding: 0.875rem; border: 1px solid #d9d7d5; vertical-align: top; overflow-wrap: anywhere; }
+
+.claims-availability tbody tr.claims-availability__group--base td { background: #fff; }
+
+.claims-availability tbody tr.claims-availability__group--alternate td { background: #faf4f1; }
+
+.claims-availability tbody tr.claims-availability__group:not(.claims-availability__note-row) td { border-bottom: 0; }
+
+.claims-availability th { background: #f3f2f1; font-weight: 700; }
+
+.claims-availability thead th { position: sticky; top: 0; z-index: 2; box-shadow: inset 0 -1px 0 #d9d7d5; }
+
+.claims-availability th:nth-child(1), .claims-availability td:nth-child(1) { width: 20%; }
+
+.claims-availability th:nth-child(2), .claims-availability td:nth-child(2) { width: 28%; }
+
+.claims-availability__note { margin: 0; color: #5c5962; font-style: italic; }
+
+.claims-availability__note-row td { padding: 0.75rem 0.875rem; border-top: 0; box-shadow: inset 0 1px 0 #ebe9e7; }
+
+.claims-availability__status { width: 17.33%; }
+
+.claims-availability__status--shall { border-top: 3px solid #287a5b; }
+
+.claims-availability__status--may-not { border-top: 3px solid #c27c0e; }
+
+.claims-availability__status--shall-not { border-top: 3px solid #a64242; }
+
+@media (max-width: 800px) { .claims-availability { display: block; overflow-x: auto; } .claims-availability th, .claims-availability td { min-width: 10rem; } }
+
 /** Homepage (refreshed) */
 /*************************/
 /* Sticky, full-width top bar on the homepage. The theme's homepage layout puts the brand/menu inside .site-header (left side, already fixed inline) and the search/aux inside #main-header (right side, NOT fixed). We turn the whole strip into a single fixed bar across the full viewport width, sitting above all page content. */
@@ -2161,22 +2206,18 @@ table.fc-plain td.fc-exit-cell { vertical-align: middle; padding-left: 0.9rem !i
 /**************/
 .bigtable .site-header { position: absolute; z-index: 10; }
 
-.bigtable #main-header { margin-left: 264px; }
+.bigtable #main-header { display: none; }
 
-.bigtable #site-nav { position: absolute; z-index: 10; }
+.bigtable #site-nav { position: absolute; top: 5rem; left: 0; z-index: 10; }
 
-.bigtable .main { display: inline; }
+.bigtable .main { margin: auto; }
 
-.bigtable h1 { width: calc( min(1024px, (100% - 264px))); margin-left: calc( max(((100% - 1024px) / 2), 264px)); }
+@media (min-width: 50rem) { .bigtable .main { max-width: calc(50rem + 15.5rem); margin-left: 0; } }
 
-.bigtable p { width: calc( min(1024px, (100% - 264px))); margin-left: calc( max(((100% - 1024px) / 2), 264px)); }
-
-.bigtable aside { width: calc( min(1024px, (100% - 264px))); margin-left: calc( max(((100% - 1024px) / 2), 264px)); }
+@media (min-width: 66.5rem) { .bigtable .main { max-width: calc(50rem + 16.5rem); margin-left: Max(0px, calc((100% - 66.5rem) / 2)); } }
 
 .bigtable .table-wrapper { overflow: visible; }
 
 .bigtable tr:nth-child(odd) td { background: #fcf3f0; }
-
-@media screen and (max-width: 50rem) { .bigtable h1 { margin-left: 10px; width: calc( 100% - 20px); } .bigtable p { margin-left: 10px; width: calc( 100% - 20px); } .bigtable aside { margin-left: 10px; width: calc( 100% - 20px); } }
 
 /*# sourceMappingURL=just-the-docs-dark.css.map */
