@@ -1,0 +1,2145 @@
+# Overview
+
+itsme API is based on the Authorization Code Flow of OpenID Connect 1.0. The API can be used to verify your end-users' identity and obtain some information about them. For the exact user data that can be requested, please see the <a href="#authorization-request">Authorization Request</a> parameters.
+
+The diagram below describes the **Confirmation** process and how your systems should integrate with itsme :
+  
+ ![Sequence diagram describing the OpenID flow](/doc/public/images/OpenID_SeqDiag.png)
+
+To get to this result please make sure you 
+
+<ol>
+  <li>add itsme button to your front-end page so the user can indicate he wishes to authenticate with itsme : <a href="https://design.itsme-id.com/499ca0b4f/p/9567c9-itsme-button" target="blank">itsme button specifications</a>.</li>
+  <li>create the <a href="#AuthNReq" >Authorization Request</a> to authenticate the User. This request will redirect the user to the itsme app. itsme will then authenticates the user by asking him 
+    <ul type>
+	  <li>to scan the QR code on the itsme sign-in page</li>
+      <li>authorize the release of some information to your application</li>
+      <li>to provide his credentials (itsme code, fingerprint or FaceID)</li>
+    </ul><br>It is also in this Authorization Request that you will be able to request claims about the user and the Confirmation event.</li>
+  <li><a href="#AuthNResp" >collect the Authorization Code</a> once the user has been authenticated and redirected by itsme to your mobile or web application.</li>
+  <li><a href="#TokenReq" >exchange the Authorization Code for an ID token</a> (e.g. identifying the user) and an Access Token.</li>
+  <li>Obtain the additional claims by <a href="#UserInfoReq" >presenting the access token to the itsme UserInfo Endpoint</a> if the required claims are not returned in the ID token.</li>
+  <li>Confirm the success of the operation and display a success message.</li>
+</ol>
+
+# Onboarding
+
+To make use of our services, you will need to contact our Customer Care team at <a href="mailto:onboarding@itsme-id.com">onboarding@itsme-id.com</a>. Based on your requirements, they will invite you to our self-service Portal where you will be able to configure an account.  A clientID will be generated, linked to your account, that you will need to include in your <a href="#AuthNReq" >Authorization Request</a>.
+
+Each partner can contain multiple "services". Each service should correspond to one user flow at your side and can be of type Authentication, Identification or Confirmation. The service code will also be required in your Authorization Request.
+
+For each service, you will have to provide one or a few "redirect_uri", which are the landing page(s) where the end user will be sent after authenticating with itsme. Only the URIs whitelisted in a service will be allowed in your Authorization Request, so they have to be fully determined before you can use the service. This whitelisting works on an "exact match" basis, including the full (case sensitive) path and query string so please communicate the exact string you are planning to use in your Authorization Request.
+
+
+
+
+# Guides
+
+## Generate itsme button
+
+First, you will need to create a button to allow your users to authenticate with itsme. Check the <a href="https://brand.belgianmobileid.be/d/CX5YsAKEmVI7/documentation#/ux/buttons-1518207548" target="blank">Button design guide</a> before you start the integration. 
+
+Upon clicking this button, the user will be redirected to our Front-End. itsme then take care of their authentication.
+
+## Securing the exchange of information
+
+To protect the exchange of sensitive information and ensure the requested information gets issued to a legitimate application and not some other party, the OpenID Connect protocol uses JSON Web Token (JWT) which can be signed and/or encrypted. Among the methods described in OpenID specification, itsme supports 2 authentication methods to secure communications between your backend and itsme:
+
+<ul>
+  <li>"Private key JWT" is based on a public/private key pair (asymmetric encryption). It is therefore the most secure option</li>
+  <li>"Client secret" is based on a shared Secret key (symmetric encryption). It can be easier to implement in some cases</li>
+</ul>
+
+<aside class="notice">You will have to choose between one of these methods when registering your project.
+</aside>
+
+### Public-private key pair and JWKSet URI
+
+This method uses a pair of keys (1 public, 1 private) to encrypt and decrypt senders’ and recipients’ sensitive data. It is also known as public-key cryptography or asymetric encryption.
+
+<aside class="notice">This method requires that each party exposes its public keys in the form of a JWK Set document on a publicly accessible URI, and keep its private keys for itself. 
+</aside>
+
+You can retrieve the itsme JWK Set from the URI mentioned as <code>jwks_uri</code> in our <a href="https://belgianmobileid.github.io/doc/authentication/#itsme-discovery-document" target="blank">itsme Discovery document</a>.
+
+<aside class="notice">Refer to <a href="https://belgianmobileid.github.io/doc/JOSE/" target="blank">this page</a> for more on signing and encrypting tokens.
+</aside>
+
+<aside class="notice">Whatever the tool you are choosing to create your key pairs, don't forget to send your JWK Set URI by email to <a href = "mailto: onboarding@itsme.be">onboarding@itsme-id.com</a> and itsme will make sure to complete the configuration for you in no time!
+</aside>
+
+<aside class="notice">The algorithms – needed to sign and encrypt a JWT – are listed in the <a href="https://belgianmobileid.github.io/doc/authentication/#itsme-discovery-document" target="blank">itsme Discovery document</a> for more information.
+</aside>
+
+
+### Secret key method
+
+Secret key cryptography method uses the same secret key to encrypt and decrypt sensitive information. This approach is the inverse of public- and private-key encryption.
+
+This method requires the exchange of a static secret to be held by both the sender and the data receiver. The secret value will be provided by itsme when registering your project.
+
+<aside class="notice">The algorithms – needed to sign and encrypt a JWT – are listed in the <a href="https://belgianmobileid.github.io/doc/confirmation/#itsme-discovery-document" target="blank">itsme Discovery document</a> for more information.
+</aside>
+
+<aside class="notice">If you choose to go with the secret key method, you will be able to specify if the ID Token JWT needs to be signed with the an asymmetric algorithm (e.g. <code>RS256</code>) or with a symmetric algorithm (e.g. : <code>HS256</code>). When using the <code>RS256</code> algorithm, our public keys will be needed to verify the signature. This information can be found in our <a href="https://belgianmobileid.github.io/doc/confirmation/#itsme-discovery-document" target="blank">itsme Discovery document</a>, using the key <code>jwks_uri</code>.
+</aside>
+
+### Key rotation procedure
+### for public-private key pair and JWKSet URI
+
+itsme backend has cache mechanism in place, which is sporadic (from 30min to 24h). During this time, we will keep on using old keys.
+<aside class="notice">use "Cache-Control: max-age=" HTTP header (min 30min) to lower waiting time.</aside>
+
+#### Rotating signing key:
+<ul>
+<li>Add the new key to JWK set, with a new “kid”</li>
+<li>Start using the new key to sign JWTs</li>
+<li>When the flow is validated with the new key, remove the old one from the JWK set</li>
+</ul>
+
+#### Rotating encryption key:
+<ul>
+<li>Replace the old key with the new one in JWK set, but still support old and new keys in decryption process</li>
+<li>Wait 24h (or wait for “max-age” amount of time, if specified)</li>
+<li>Decommission the old key completely</li>
+</ul>
+
+Changing the key could come along with changing the jwkset url. If that is the case, communicate new available jwkset url to onboarding@itsme-id.com. It is not be possible to be perfectly in sync, a few failed flows should be expected in the lapse of time between jwkset url update and the key update at the partner’s side. Smoother way would be:
+<ul>
+<li>Copy the old jwkSet on the new URL</li>
+<li>the URL is communicated & registered by itsme</li>
+<li>Rotate the keys in the jwkSet on the new URL as per rotating keys info above</li>
+</ul>
+
+### for secret key method
+
+Please, reach out to onboarding@itsme-id.com in case the secret key should be rotated.
+
+### PKCE-enhanced flow
+
+Whatever the chosen authentication method, itsme also supports an extra security extension named Proof of Key for Code Exchange (<a href="https://datatracker.ietf.org/doc/html/rfc7636" target="blank">PKCE</a>). This additionnal layer of security is intended to mitigate some Authorization Code interception attacks. For this mechanism to achieve its full potential, PKCE has to be made mandatory in your flow, which is an option we can enable for you (strongly recommended). Please ask our onboarding team to do so when registering your project.
+
+<aside class="notice">If this option is not enabled, you are still free to use PKCE for some added security but requests without the PKCE <code>code_challenge</code> will be accepted as well at itsme side.</aside>
+
+PKCE implies choosing a random string, named <code>code_verifier</code>, and then generating a SHA256 hash of that string, named <code>code_challenge</code>. The code_challenge has to be sent along with the Authorization Request, while the code_verifier must be sent with the Token Request, allowing our backend to make sure both requests are issued by the same source.
+
+<aside class="notice"><code>code_verifier</code> MUST contain only the unreserved characters [A-Z] / [a-z] / [0-9] / "-" / "." / "_" / "~", with a minimum length of 
+43 characters and a maximum length of 128 characters.</aside>
+
+<code>code_challenge</code> can then be obtained via this kind of instructions:
+
+```
+var hash = code_verifier.createHash('sha256');
+var code_challenge = base64url.encode(hash);
+```
+
+### Signing, encrypting and decoding JWTs
+
+Libraries implementing JWT and the JOSE specs JWS, JWE, JWK, and JWA are listed <a href="https://openid.net/certified-open-id-developer-tools/" target="blank">here</a>. For testing purposes only, we could advise the use of <a href="https://mkjwk.org/" target="blank">https://mkjwk.org/</a> for JWK generation and <a href="https://mkjose.org/" target="blank"> https://mkjose.org/</a> for payload check => these are 2 open-source tools which will help you visualize JWK mechanisms, client assertion construct. Please DO NOT generate production private keys on any website. Rather opt for the relevant SDK library mentioned <a href="https://openid.net/certified-open-id-developer-tools/" target="blank">here</a>.
+
+
+## Certificates and website security
+
+itsme requires <code>https</code> connections to guarantee security. With the <code>https</code> protocol, a web site operator obtains a certificate by applying to a certificate authority with a certificate signing request. The certificate request is an electronic document that contains the web site name, company information and the public key. The certificate provider signs the request, thus producing a public certificate. During web browsing, this public certificate is served to any web browser that connects to the web site and proves to the web browser that the provider believes it has issued a certificate to the owner of the web site.
+
+A certificate provider can opt to issue three types of certificates, each requiring its own degree of vetting rigor. In order of increasing rigor (and naturally, cost) they are: Domain Validation, Organization Validation and Extended Validation.
+
+The Domain Validation certificate doesn’t provide sufficient identity guarantees to itsme. So, <b>only the Organization Validation and Extended Validation certificates</b> are supported. For example, using the Let's Encrypt open certificate authority is not suffcient because it only provide standard Domain Validation certificates. 
+
+<aside class="notice">The chain of trust of these certificates need to be publicly accessible, meaning that our systems need to be able to access the root and the intermediate certificates.
+</aside>
+
+<aside class="notice">All itsme API URL we publish use <code>https</code>.
+</aside>
+
+<aside class="notice">All requests to our endpoints MUST also use the SNI extension (refer to the <a href="https://datatracker.ietf.org/doc/html/rfc6066#section-3">RFC</a> for more information) of the TLS protocol, that allows our servers to provide you with the correct certificate based on which endpoint you are querying.
+</aside>
+
+
+
+
+## Handling responses
+
+Whenever a partner is sending a request to the itsme OIDC endpoints he will get a response back. According to the OIDC protocol, and depending on the endpoint that was contacted, partners can get a 
+
+<ul>
+  <li>response where some parameters are added to the query component of the redirection URI using the <code>application/x-www-form-urlencoded</code> format, or</li>
+  <li>response displayed directly on our itsme sign-in page ;</li>
+  <li>response using the <code>application/json</code> media type</li>
+</ul>
+
+Alongside the type of response an HTTP status code is sent that shows whether the request was successful or not. If it was not, you can tell by the code and the message in the response what went wrong, why it went wrong and whether there is something the partner can do about it.
+
+### A successful response
+
+An HTTP status <code>200 OK</code> or <code>302 Found</code> is issued whenever your request was a success. You see this type of response in our examples like the one where we successfully retrieve the <a href="https://belgianmobileid.github.io/doc/confirmation/#example-1" target="blank">Token Response</a> : 
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+Cache-Control: no-store
+Pragma: no-cache
+
+{
+  "id_token": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjFlOWdkazcifQ.ewogImlzc
+    yI6ICJodHRwOi8vc2VydmVyLmV4YW1wbGUuY29tIiwKICJzdWIiOiAiMjQ4Mjg5
+    NzYxMDAxIiwKICJhdWQiOiAiczZCaGRSa3F0MyIsCiAibm9uY2UiOiAibi0wUzZ
+    fV3pBMk1qIiwKICJleHAiOiAxMzExMjgxOTcwLAogImlhdCI6IDEzMTEyODA5Nz
+    AKfQ.ggW8hZ1EuVLuxNuuIJKX_V8a_OMXzR0EHR9R6jgdqrOOF4daGU96Sr_P6q
+    Jp6IcmD3HP99Obi1PRs-cwh3LO-p146waJ8IhehcwL7F09JdijmBqkvPeB2T9CJ
+    NqeGpe-gccMg4vfKjkM8FcGvnzZUN4_KSP0aAp1tOJ1zZwgjxqGByKHiOtX7Tpd
+    QyHE5lcMiKPXfEIQILVq0pc_E2DzL7emopWoaoZTF_m0_N0YzFC6g6EJbOEoRoS
+    K5hoDalrcvRYLSrQAZZKflyuVCyixEoV9GfNQC3_osjzw2PAithfubEEBLuVVk4
+    XUVrWOLrLl0nx7RkKU8NXNHq-rvKMzqg"
+  "access_token": "SlAV32hkKG",
+  "token_type": "Bearer",
+  "expires_in": 3600,
+}
+```
+
+### The error responses
+
+Things will sometimes go wrong. So, OpenID Connect defines a number of rules regarding the format of errors returned from our endpoints. 
+
+***Authorization Endpoint errors***
+
+If the request fails due to a missing, invalid, or mismatching redirection URI, or if the client identifier is missing or invalid,... the Authorization Endpoint will inform you of the error our itsme sign-in page.
+
+ ![Authorization Endpoint error reponse](/doc/public/images/AuthorizationEndpoint_ErrorResponse.png)
+ 
+If the User denies the access request or the User authentication fails, the Authorization Endpoint will inform you by adding the following parameters to the query component of the redirection URI using the <code>application/x-www-form-urlencoded</code> format :
+
+<table>
+  <tbody>
+    <tr>
+      <td><div class="paramName" style="padding-left: calc(0*20px);">error</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq" >REQUIRED</span>
+</div></td>
+      <td>A single ASCII error code.
+        <table>
+         <tr>
+          <td><div class="paramName" style="padding-left: calc(0*20px);">invalid_request</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq" ></span>
+</div></td>
+          <td>The request is missing a required parameter, includes an invalid parameter value, includes a parameter more than once, or is otherwise malformed.</td>
+        </tr>
+        <tr>
+          <td><div class="paramName" style="padding-left: calc(0*20px);">access_denied</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq" ></span>
+</div></td>
+          <td>The User or the Authorization Endpoint denied the request.</td>
+        </tr>
+        <tr>
+          <td><div class="paramName" style="padding-left: calc(0*20px);">login_required</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq" ></span>
+</div></td>
+          <td>The Authorization Endpoint requires User authentication. This error MAY be returned when the <code>prompt</code> parameter value in the Authorization Request is <code>none</code></td>
+        </tr>
+        <tr>
+          <td><div class="paramName" style="padding-left: calc(0*20px);">interaction_required</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq" ></span>
+</div></td>
+          <td>The Authorization Endpoint requires User interaction of some form to proceed. This error MAY be returned when the <code>prompt</code> parameter value in the Authorization Request is <code>none</code>, but the Autorization Request cannot be completed without displaying a user interface for User interaction.</td>
+        </tr>
+        <tr>
+          <td><div class="paramName" style="padding-left: calc(0*20px);">unsupported_request</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq" ></span>
+</div></td>
+          <td>The request contains a not supported parameter.</td>
+        </tr>
+        <tr>
+          <td><div class="paramName" style="padding-left: calc(0*20px);">invalid_client_id</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq" ></span>
+</div></td>
+          <td>The request contains an invalid <code>client_id</code>.</td>
+        </tr>
+        <tr>
+          <td><div class="paramName" style="padding-left: calc(0*20px);">invalid_redirect_uri</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq" ></span>
+</div></td>
+          <td>The request contains an invalid redirect URI.</td>
+        </tr>
+        <tr>
+          <td><div class="paramName" style="padding-left: calc(0*20px);">unsupported_grant_type</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq" ></span>
+</div></td>
+          <td>Grant type not supported.</td>
+        </tr>
+        <tr>
+          <td><div class="paramName" style="padding-left: calc(0*20px);">invalid_grant</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq" ></span>
+</div></td>
+          <td>Invalid grant.</td>
+        </tr>
+        <tr>
+          <td><div class="paramName" style="padding-left: calc(0*20px);">invalid_scope</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq" ></span>
+</div></td>
+          <td>The requested scope is invalid, unknown, or malformed.</td>
+        </tr>
+        <tr>
+          <td><div class="paramName" style="padding-left: calc(0*20px);">unsupported_display</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq" ></span>
+</div></td>
+          <td>Only <code>page</code> is supported.</td>
+        </tr>
+        <tr>
+          <td><div class="paramName" style="padding-left: calc(0*20px);">unauthorized_client</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq" ></span>
+</div></td>
+          <td>Unknown or unspecified <code>client_id</code>.</td>
+        </tr>
+        <tr>
+          <td><div class="paramName" style="padding-left: calc(0*20px);">unsupported_response_type</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq" ></span>
+</div></td>
+          <td>The Authorization Endpoint does not support obtaining an authorization code using this method.</td>
+        </tr>
+        <tr>
+          <td><div class="paramName" style="padding-left: calc(0*20px);">invalid_request_object</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq" ></span>
+</div></td>
+          <td>The <code>request</code> parameter contains an invalid Request Object.</td>
+        </tr>
+        <tr>
+          <td><div class="paramName" style="padding-left: calc(0*20px);">invalid_request_uri</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq" ></span>
+</div></td>
+          <td>The <code>request_uri</code> in the Authorization Request returns an error or contains invalid data.</td>
+        </tr>
+        <tr>
+          <td><div class="paramName" style="padding-left: calc(0*20px);">invalid_request</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq" ></span>
+</div></td>
+          <td>Oauth2 parameters do not match Request object.</td>
+        </tr>
+        <tr>
+          <td><div class="paramName" style="padding-left: calc(0*20px);">temporary_unavailable</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq" ></span>
+</div></td>
+          <td>The authorization server is currently unable to handle the request due to a temporary overloading or maintenance of the server.</td>
+        </tr>
+       </table>
+      </td>
+    </tr>
+    <tr>
+      <td><div class="paramName" style="padding-left: calc(0*20px);">error_description</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq" >OPTIONAL</span>
+</div></td>
+      <td>Human-readable text providing additional information, used to assist the developer in understanding the error that occurred.</td>
+    </tr>
+    <tr>
+      <td><div class="paramName" style="padding-left: calc(0*20px);">state</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq" ></span>
+</div></td>
+      <td>The string value provided in the Authorization Request. You SHOULD validate that the value returned matches the one supplied.</td>
+    </tr>
+  </tbody>
+</table>
+
+For example :
+
+```http
+HTTP/1.1 302 Found Location: https://client.example.com/cb?error=access_denied&state=xyz
+```
+
+***Token Endpoint errors***
+
+If the request fails the Token Endpoint responds with an HTTP 400 (Bad Request) status code (unless specified otherwise) and includes the following parameters in the entity-body of the HTTP response using the <code>application/json</code> media type :
+
+<table>
+  <tbody>
+    <tr>
+      <td><div class="paramName" style="padding-left: calc(0*20px);">error</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq" >REQUIRED</span>
+</div></td>
+      <td>A single ASCII error code.
+        <table>
+          <tr>
+            <td><div class="paramName" style="padding-left: calc(0*20px);">invalid_request</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq" ></span>
+</div></td>
+            <td>The request is missing a required parameter, includes an unsupported parameter value (other than grant type), repeats a parameter, includes multiple credentials, utilizes more than one mechanism for authenticating the client, or is otherwise malformed.</td>
+          </tr>
+          <tr>
+            <td><div class="paramName" style="padding-left: calc(0*20px);">invalid_client</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq" ></span>
+</div></td>
+            <td>Client authentication failed (e.g., unknown client, no client authentication included, or unsupported authentication method).</td>
+          </tr>
+          <tr>
+            <td><div class="paramName" style="padding-left: calc(0*20px);">invalid_grant</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq" ></span>
+</div></td>
+            <td>The provided authorization grant (e.g., authorization code, resource owner credentials) is invalid, expired or does not match the redirection URI used in the authorization request.</td>
+          </tr>
+          <tr>
+            <td><div class="paramName" style="padding-left: calc(0*20px);">unauthorized_client</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq" ></span>
+</div></td>
+            <td>The authenticated client is not authorized to use this authorization grant type. Can also be caused by an invalid client_assertion.</td>
+          </tr>
+       </table>
+      </td>
+    </tr>
+    <tr>
+      <td><div class="paramName" style="padding-left: calc(0*20px);">detail</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq" >OPTIONAL</span>
+</div></td>
+      <td>Human-readable text providing additional information, used to assist the developer in understanding the error that occurred.</td>
+    </tr>
+  </tbody>
+</table>
+
+For example :
+
+```http
+HTTP/1.1 400 Bad Request 
+Content-Type: application/json;charset=UTF-8 Cache-Control: no-store Pragma: no-cache 
+
+{ 
+  "error":"invalid_request" 
+}
+```
+
+***UserInfo Endpoint errors***
+
+When a request fails, the UserInfo Endpoint responds using the appropriate HTTP status code (typically, 400, 401, 403, or 405) and includes specific error codes in the response.
+
+<table>
+  <tbody>
+    <tr>
+      <td><div class="paramName" style="padding-left: calc(0*20px);">invalid_request</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq" ></span>
+</div></td>
+      <td>The request is missing a required parameter, includes an unsupported parameter or parameter value, repeats the same parameter, uses more than one method for including an access token, or is otherwise malformed.</td>
+    </tr>
+    <tr>
+      <td><div class="paramName" style="padding-left: calc(0*20px);">invalid_token</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq" ></span>
+</div></td>
+      <td>The access token provided is expired, revoked, malformed, or  invalid for other reasons.</td>
+    </tr>
+   </tbody>
+</table>
+
+For example :
+
+```http
+HTTP/1.1 401 Unauthorized 
+WWW-Authenticate: Bearer realm="example"
+```
+
+***Revocation Endpoint errors***
+
+If the request fails the Revoke Endpoint responds with an HTTP 400 (Bad Request) status code and includes the fllowing parameters in the entity-body of the HTTP response using the <code>application/json</code> media type :
+
+<table>
+  <tbody>
+    <tr>
+      <td><div class="paramName" style="padding-left: calc(0*20px);">error</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq" >REQUIRED</span>
+</div></td>
+      <td>A single ASCII error code.
+        <table>
+          <tr>
+            <td><div class="paramName" style="padding-left: calc(0*20px);">invalid_request</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq" ></span>
+</div></td>
+            <td>The request is missing a required parameter, includes an unsupported parameter value (other than grant type), repeats a parameter, includes multiple credentials, utilizes more than one mechanism for authenticating the client, or is otherwise malformed.</td>
+          </tr>
+          <tr>
+            <td><div class="paramName" style="padding-left: calc(0*20px);">invalid_client</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq" ></span>
+</div></td>
+            <td>Client authentication failed (e.g., unknown client, no client authentication included, or unsupported authentication method).</td>
+          </tr>
+          <tr>
+            <td><div class="paramName" style="padding-left: calc(0*20px);">invalid_grant</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq" ></span>
+</div></td>
+            <td>The provided authorization grant (e.g., authorization code, resource owner credentials) is invalid, expired or does not match the redirection URI used in the authorization request.</td>
+          </tr>
+          <tr>
+            <td><div class="paramName" style="padding-left: calc(0*20px);">unauthorized_client</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq" ></span>
+</div></td>
+            <td>The authenticated client is not authorized to use this authorization grant type.</td>
+          </tr>
+          <tr>
+            <td><div class="paramName" style="padding-left: calc(0*20px);">unsupported_token_type</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq" ></span>
+</div></td>
+            <td>itsme does not support the revocation of the presented access token.</td>
+          </tr>
+       </table>
+      </td>
+    </tr>
+    <tr>
+      <td><div class="paramName" style="padding-left: calc(0*20px);">error_description</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq" >OPTIONAL</span>
+</div></td>
+      <td>Human-readable text providing additional information, used to assist the developer in understanding the error that occurred.</td>
+    </tr>
+    <tr>
+      <td><div class="paramName" style="padding-left: calc(0*20px);">state</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq" ></span>
+</div></td>
+      <td>The string value provided in the Authorization Request. You SHOULD validate that the value returned matches the one supplied.</td>
+    </tr>
+  </tbody>
+</table>
+
+For example:
+
+```http
+HTTP/1.1 400 Bad Request 
+Content-Type: application/json;charset=UTF-8 Cache-Control: no-store Pragma: no-cache 
+
+{ 
+  "error":"invalid_request" 
+}
+```
+
+## WYSIWYS template
+
+When building your Authorization Request, one of the below template MUST be specified in the <code>claims</code> parameter.
+
+***Advanced Payment template***
+
+<table>
+  <tbody>
+     <tr>
+       <td><div class="paramName" style="padding-left: calc(0*20px);">http://itsme.services/v2/claim/claim_approval_template_name</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq" ></span>
+</div></td><td>This identifies the template used. It MUST be set to "http://itsme.services/v2/claim/claim_approval_template_name":{ "essential": true, "value": "adv_payment" }.</td>
+      </tr>
+      <tr>
+        <td><div class="paramName" style="padding-left: calc(0*20px);">http://itsme.services/v2/claim/claim_approval_amount_key</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq" ></span>
+</div></td><td>A string holding an integer value inside. This MUST be set to "http://itsme.services/v2/claim/claim_approval_amount_key":{ "essential": true, "value": "Amount_as_a_string" }.</td>
+       </tr>
+       <tr>
+         <td><div class="paramName" style="padding-left: calc(0*20px);">http://itsme.services/v2/claim/claim_approval_currency_key</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq" ></span>
+</div></td><td>A string holding a valid currency code (e.g. “EUR”). This MUST be set to "http://itsme.services/v2/claim/claim_approval_currency_key":{ "essential": true, "value": "Currency_as_a_string" }.</td>
+        </tr>
+        <tr>
+          <td><div class="paramName" style="padding-left: calc(0*20px);">http://itsme.services/v2/claim/claim_approval_iban_key</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq" ></span>
+</div></td><td>A string holding a valid IBAN account number. This MUST be set to "http://itsme.services/v2/claim/claim_approval_iban_key":{ "essential": true, "value": "IBAN_as_a_string" }.</td>
+        </tr>
+  </tbody>
+</table>
+
+***Free Text template***
+
+<table>
+  <tbody>
+     <tr>
+       <td><div class="paramName" style="padding-left: calc(0*20px);">http://itsme.services/v2/ claim/claim_approval_template_name</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq" ></span>
+</div></td><td>This identifies the template used. It MUST be set to "http://itsme.services/v2/claim/claim_approval_template_name":{ "essential": true, "value": "free_text" }.</td>
+     </tr>
+     <tr>
+        <td><div class="paramName" style="padding-left: calc(0*20px);">http://itsme.services/v2/ claim/claim_approval_text_key</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq" ></span>
+</div></td><td>A string holding any text to be displayed in the itsme app. This MUST be set to"http://itsme.services/v2/claim/claim_approval_text_key":{ "essential": true, "value": "Text_as_a_string" }.</td>
+     </tr>
+  </tbody>
+</table>
+
+We currently support the following HTML tags in the Free Text template: - < b > - < i > - < u > - < br >. Tags that are not rendered are ignored. The free text template can contain up to 7500 characters.
+We also only support the following character set: https://en.wikipedia.org/wiki/ISO/IEC_8859-15
+
+## Mapping the user
+
+### Mapping using <code>sub</code> claim
+
+To sign in successfully in your web desktop, mobile web or mobile application, a given user must be mapped to a user account in your database. By default, your application Server will use the subject identifier, or <code>sub</code> claim, in the ID Token to identify and verify a user account. The <code>sub</code> claim is a string that uniquely identifies a given user account. The benefit of using a <code>sub</code> claim is that it will not change, even if other user attributes (email, phone number, etc) associated with that account are updated.
+
+If no user record is storing the <code>sub</code> claim value, then you should allow the user to associate his new or existing account to the <code>sub</code>.
+
+### Benefit of <code>sub</code> claim
+
+The benefit of using a <code>sub</code> claim is that it will not change, not even if other user attributes (email, phone number, etc.) associated with that account are updated.
+
+### Deleting and re-creating an itsme account
+
+In a limited number of cases (e.g. technical issue,…) a user could ask itsme to ‘delete’ his account. As a result the specific account will be ‘archived’ (for compliancy reasons) and thus also the unique identifier(s) (e.g. "sub").
+
+If the same user would opt to re-create an itsme afterwards, he will need to re-bind his itsme account with your application server, in the same way as for the initial binding. After successful re-binding you will need to overwrite the initial reference with the new <code>sub</code> claim value in your database.
+
+## User Data
+
+itsme is making a range of user data available for its partners. Those can be requested through the <a href="#authorization-request">Authorization Request</a>, individually as "claims" or as part of a broader "scope".
+These claims can be split in 2 categories:
+
+### User Attributes
+
+User attributes are saying something about the end user. They are part of the identity of a person and we retrieve them from an identity document (ID card, passport...). Examples: name, address, birthdate, etc.
+
+### Metadata
+
+Metadata are saying something about the data we have for an end user. They are not directly related to a person, but rather to an information about this person. Examples are the validityTo, the verificationDate etc.
+Those metadata, if requested, will only return values relating to the user attributes that are also requested. The metadata will then return an object containing one value for each relevant user attribute.
+
+Examples:
+
+* The ```verificationDate``` is a metadata that has a value for most user attributes. So requesting the ```verificationDate``` AND the ```birthdate``` AND the ```given_name``` will return the following pattern for ```verificationDate```:
+
+```json
+"http://itsme.services/v2/claim/verificationDate": {
+		"birthdate": "2023-06-01T13:04:26Z",
+		"given_name": "2023-06-01T13:04:26Z"
+	}
+```
+
+* Requesting only the ```verificationDate``` will return nothing, as it only returns values for other requested attributes.
+
+* The ```validityTo``` metadata only has a value for ```BEeidSn``` and ```IDDocumentSN``` (because other attributes don't have an expiry date). So ```validityTo``` will only return a value if ```BEeidSn``` and/or ```IDDocumentSN``` is also requested. Even if other attributes are requested, ```validityTo``` will not return a value for those other attributes.
+
+# API reference
+
+## itsme Discovery Document
+
+<ul class="tab" data-tab="1c24d128-1114-42c0-9e7b-340f12f8b4c9">
+    
+        <li class="active">
+            <a href="">Public- and private-key </a>
+        </li>
+    
+        <li>
+            <a href="">Secret key </a>
+        </li>
+    
+</ul>
+<ul class="tab-content" id="1c24d128-1114-42c0-9e7b-340f12f8b4c9">
+    
+        <li class="active">
+<p><b><code>GET https://idp.<i><b>[e2e/prd]</b></i>.itsme.services/v2/.well-known/openid-configuration</code></b></p>
+
+<p>To simplify implementations and increase flexibility, <a href="https://openid.net/specs/openid-connect-discovery-1_0.html" target="blank">OpenID Connect allows the use of a Discovery Document</a>, a JSON document containing key-value pairs which provide details about itsme configuration, such as the</p>
+
+<tabul>
+  <tabli>Authorization, Token and userInfo Endpoints</tabli>
+  <tabli>Supported claims</tabli>
+  <tabli>...</tabli>
+</tabul>
+
+</li>
+    
+        <li>
+<p><b><code>GET https://idp.<i><b>[e2e/prd]</b></i>.itsme.services/v2/.well-known/openid-configuration</code></b></p>
+
+<p>If your onboarding happened before the 25th of June 2025, then URL was:<br />
+<b><code>GET https://oidc.<i><b>[e2e/prd]</b></i>.itsme.services/clientsecret-oidc/csapi/v0.1/.well-known/openid-configuration</code></b></p>
+
+<p>To simplify implementations and increase flexibility, <a href="https://openid.net/specs/openid-connect-discovery-1_0.html" target="blank">OpenID Connect allows the use of a Discovery Document</a>, a JSON document containing key-value pairs which provide details about itsme configuration, such as the</p>
+
+<tabul>
+  <tabli>Authorization, Token and userInfo Endpoints</tabli>
+  <tabli>Supported claims</tabli>
+  <tabli>...</tabli>
+</tabul>
+
+</li>
+    
+</ul>
+
+
+
+
+
+
+## Authorization Request
+
+<ul class="tab" data-tab="311d4a8d-ec47-4759-9123-c5b1f227d80e">
+    
+        <li class="active">
+            <a href="">Public- and private-key </a>
+        </li>
+    
+        <li>
+            <a href="">Secret key </a>
+        </li>
+    
+</ul>
+<ul class="tab-content" id="311d4a8d-ec47-4759-9123-c5b1f227d80e">
+    
+        <li class="active">
+<p><b><code>GET https://idp.<i><b>[e2e/prd]</b></i>.itsme.services/v2/authorization</code></b></p>
+
+</li>
+    
+        <li>
+<p><b><code>GET https://idp.<i><b>[e2e/prd]</b></i>.itsme.services/v2/authorization</code></b></p>
+
+<p>If your onboarding happened before the 25th of June 2025, then URL was:<br />
+<b><code>GET https://oidc.<i><b>[e2e/prd]</b></i>.itsme.services/clientsecret-oidc/csapi/v0.1/connect/authorize</code></b></p>
+
+</li>
+    
+</ul>
+
+
+<aside class="notice">Depending on the identity document used to create an itsme account and the country issuing it, not all claims are always available or formated the same way. Please refer to <a href="https://belgianmobileid.github.io/doc/claims/" target="blank">this page</a> to check which claims are available in which cases.</aside>
+
+### Parameters
+
+<table>
+  <tbody>
+    <tr>
+      <td><div class="paramName" style="padding-left: calc(0*20px);">client_id</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq" >REQUIRED</span>
+</div></td>
+      <td>It identifies your application. This parameter value is generated during registration.</td>
+    </tr>
+     <tr>
+      <td><div class="paramName" style="padding-left: calc(0*20px);">response_type</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq" >REQUIRED</span>
+</div></td>
+      <td>This defines the processing flow to be used when forming the response. Because itsme supports the Authorization Code Flow, this value MUST be <code>code</code>.</td>
+    </tr>
+    <tr>
+      <td><div class="paramName" style="padding-left: calc(0*20px);">scope</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq" >REQUIRED</span>
+</div></td>
+      <td>
+        It allows your application to express the desired scope of the access request. Each scope returns a set of user attributes. The scopes an application should request depend on which user attributes your application needs. Once the user authorizes the requested scopes, his details are returned through the UserInfo Endpoint.<br><br>All scope values must be space-separated.<br><br>The basic (and required) scopes are <code>openid</code> and <code>service</code>. Beyond that, your application can ask for additional standard scopes values which map to sets of related claims are: <code>profile</code> <code>email</code> <code>address</code> <code>phone</code> <code>eid</code><br />
+        <table>
+          <tr>
+            <td><div class="paramName" style="padding-left: calc(0*20px);">service</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq" >REQUIRED</span>
+</div></td><td>It indicates the itsme service your application intends to use, e.g. <code>service:TEST_code</code> by replacing "TEST_code" with the service code generated during registration.</td>
+          </tr>
+          <tr>
+            <td><div class="paramName" style="padding-left: calc(0*20px);">openid</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq" >REQUIRED</span>
+</div></td><td>It indicates that your application intends to use the OpenID Connect protocol to verify a user's identity by returning a <code>sub</code> claim which represents a unique identifier for the authenticated user.</td>
+          </tr>
+          <tr>
+            <td><div class="paramName" style="padding-left: calc(0*20px);">profile</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq" >OPTIONAL</span>
+</div></td><td>Returns claims that represent basic profile information, specifically <code>family_name</code>, <code>given_name</code>, <code>name</code>, <code>gender</code>, <code>locale</code>, <code>picture</code> and <code>birthdate</code>.<br><br>If requested, a value SHALL always be returned for the above claims except for the <code>given_name</code> claim which MAY NOT be returned if the user doesn't have any first name(s).</td>
+          </tr>
+          <tr>
+            <td><div class="paramName" style="padding-left: calc(0*20px);">email</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq" >OPTIONAL</span>
+</div></td><td>Returns the <code>email</code> claim, which contains the user's email address, and <code>email_verified</code>, which is a boolean indicating whether the email address was verified by the user.<br><br>If requested, a value SHALL always be returned for the <code>email_verified</code> claim only if <code>email</code> claim is filled with a value, whereas the <code>email</code> claim SHALL always be returned only if the user gave us an email address.</td>
+          </tr>
+          <tr>
+            <td><div class="paramName" style="padding-left: calc(0*20px);">address</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq" >OPTIONAL</span>
+</div></td><td>Returns <code>address_assurance_level</code> claim and user's postal address as a JSON Object containing <code>formatted</code>, <code>street_address</code>, <code>postal_code</code>, <code>locality</code>.</td>
+          </tr> 
+          <tr>
+            <td><div class="paramName" style="padding-left: calc(0*20px);">phone</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq" >OPTIONAL</span>
+</div></td><td>Returns the <code>phone_number</code> claim, which contains the user's phone number, and <code>phone_number_verified</code>, which is a boolean indicating whether the phone number was verified by the user.<br><br>If requested, a value SHALL always be returned for the above claims.</td>
+          </tr>
+          <tr>
+            <td><div class="paramName" style="padding-left: calc(0*20px);">idDocument</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq" >OPTIONAL</span>
+</div></td><td>Returns the following claims, providing complete information about the ID document used to create the user's itsme account:<br> <code>http://itsme.services/v2/claim/IDDocumentSN</code><br>  <code>http://itsme.services/v2/claim/IDDocumentType</code><br>  <code>http://itsme.services/v2/claim/IDIssuingCountry</code><br>  <code>http://itsme.services/v2/claim/validityFrom</code> and <code>http://itsme.services/v2/claim/validityTo</code>.<br><br>If requested, a value SHALL always be returned for the above claims, except for <code>http://itsme.services/v2/claim/validityFrom</code> which is only available on Belgian documents.</td>
+          </tr>
+          <tr>
+            <td><div class="paramName" style="padding-left: calc(0*20px);">eid</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq" >OPTIONAL</span>
+</div></td><td>Returns the <code>http://itsme.services/v2/claim/BENationalNumber</code> claim, which contains the unique identification number of natural persons who are registered in Belgium, and <code>http://itsme.services/v2/claim/BEeidSn</code>, which is a string indicating the Belgian ID card number.<br><br>If requested, a value SHALL always be returned for the above claims.</td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td><div class="paramName" style="padding-left: calc(0*20px);">redirect_uri</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq" >REQUIRED</span>
+</div></td>
+      <td>It is the URL to which users are redirected once the authentication is complete. <br><br>The following restrictions apply to redirect URIs:
+        <tabul>
+          <tabli>The redirect URI MUST match the value preregistered during the registration.</tabli>
+          <tabli>The redirect URI MUST begin with the scheme <code>https</code> (refer to <a href="https://belgianmobileid.github.io/doc/authentication/#certificates-and-website-security" target="blank">this section</a> for more information).</tabli>
+          <tabli>The redirect URI SHALL NOT be a custom URL.</tabli>
+          <tabli>The fragment identifier introduced by a hash mark <code>#</code> SHALL NOT be used.</tabli>
+          <tabli>The redirect URI is case-sensitive. Its case MUST match the case of the URL path of your running application. For example, if your application includes as part of its path <code>.../abc/response-oidc</code>, do not specify <code>.../ABC/response-oidc</code> in the redirect URI. Because the web browser treats paths as case-sensitive, cookies associated with <code>.../abc/response-oidc</code> MAY be excluded if redirected to the case-mismatched <code>.../ABC/response-oidc</code> URL.</tabli>
+          <tabli>If relevant (in case you have a mobile app) make sure that your redirect URIs support the <a href="https://developer.apple.com/ios/universal-links/" target="blank">Universal links</a> and <a href="https://developer.android.com/training/app-links" target="blank">App links</a> mechanism. Functionally, it will allow you to have only one single link that will either open your desktop web application, your mobile app or your mobile site on the User’s device. Universal links and App links are standard web links (http://mydomain.com) that point to both a web page and a piece of content inside an app. When a Universal Link is opened, the app OS checks to see if any installed app is registered for that domain. If so, the app is launched immediately without ever loading the web page. If not, the web URL is loaded into the webbrowser.</tabli>
+        </tabul>
+      </td>
+    </tr>
+    <tr>
+      <td><div class="paramName" style="padding-left: calc(0*20px);">state</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq" >Strongly RECOMMENDED</span>
+</div></td>
+      <td>Specifies any string value that your application uses to maintain state between your Authorization Request and the Authorization Server's response. You can use this parameter for several purposes, such as directing the user to the correct resource in your application and mitigating cross-site request forgery.</td>
+    </tr>
+    <tr>
+      <td><div class="paramName" style="padding-left: calc(0*20px);">nonce</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq" >Strongly RECOMMENDED</span>
+</div></td>
+      <td>A string value used to associate a session with an ID Token, and to mitigate replay attacks. The value is passed through unmodified from the Authorization Request to the ID Token.</td>
+    </tr>
+    <tr>
+      <td><div class="paramName" style="padding-left: calc(0*20px);">ui_locales</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq" >OPTIONAL</span>
+</div></td>
+      <td>Indicates the user's preferred languages for the itsme sign-in page, represented as a space-separated list of language tag values, ordered by preference.<br><br>Possible values : <code>fr</code> <code>nl</code> <code>de</code> <code>en</code></td>
+    </tr>
+    <tr>
+      <td><div class="paramName" style="padding-left: calc(0*20px);">display</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq" >OPTIONAL</span>
+</div></td>
+      <td>Specify how the itsme sign-in page should be displayed to the user. Currently, only the <code>page</code> value is supported but in the future we might support additional display modes like <code>touch</code>.</td>
+    </tr>
+    <tr>
+      <td><div class="paramName" style="padding-left: calc(0*20px);">acr_values</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq" >OPTIONAL</span>
+</div></td>
+      <td>Indicates the authentication method required to process the request, represented as a space-separated list of tag values, ordered by preference.<br><br>Possible values : <code>http://itsme.services/v2/claim/acr_basic</code> <code>http://itsme.services/v2/claim/acr_advanced</code><br><br><b>Note</b> : if these two values are provided only the most constraining authentication method will be applied, e.g. <code>http://itsme.services/v2/claim/acr_advanced</code>.<br />
+        <table>
+          <tr>
+            <td><div class="paramName" style="padding-left: calc(0*20px);">http://itsme.services/v2/<br>claim/acr_basic</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq" ></span>
+</div></td><td>It lets the user to choose either fingerprint usage (if device is compatible) or itsme code. If the <code>acr_values</code> parameter is not specified, this is the default authentication method.</td>
+          </tr>
+          <tr>
+            <td><div class="paramName" style="padding-left: calc(0*20px);">http://itsme.services/v2/<br>claim/acr_advanced</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq" ></span>
+</div></td><td>It forces the user to use his itsme code.</td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td><div class="paramName" style="padding-left: calc(0*20px);">claims</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq" >OPTIONAL</span>
+</div></td>
+      <td>Allows to request specific user's details ("claims"). You can choose to receive those claims either in the ID Token (from /token endpoint) or in the UserInfo object (from /userinfo endpoint).<br />It MUST be a JSON object containing an <code>{"id_token":{...}}</code> member or a <code>{"userinfo":{...}}</code> member respectively. This member will then contain all the desired claims - see example below.<br><b>Note</b>: to avoid the need of a /userinfo request, itsme recommends to retrieve the claims directly from the ID Token.<br>
+      <aside class="notice">When implementing the <b>Confirmation</b> service, you MUST use a WYSIWYS template to pre-structure the transaction screen in the itsme app (refer to <a href="#wysiwys-template" target="blank">this section</a> for more information).</aside>
+      <br>Supported claims are listed below. Please check <a href="https://belgianmobileid.github.io/doc/claims/" target="blank">this page</a> for availability and format per country.<br />
+        <table>
+          <tr>
+            <td><div class="paramName" style="padding-left: calc(0*20px);">name</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq" >OPTIONAL</span>
+</div></td><td>Returns user's full name in displayable form including all name parts, possibly including titles and suffixes.</td>
+          </tr>
+          <tr>
+            <td><div class="paramName" style="padding-left: calc(0*20px);">given_name</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq" >OPTIONAL</span>
+</div></td><td>Returns user's given name(s) or first name(s). Note that in some cultures, people can have multiple given names; all can be present, with the names being separated by space characters.<br><br>If requested, a value MAY NOT be returned if the user doesn't have any first name(s).</td>
+          </tr>
+          <tr>
+            <td><div class="paramName" style="padding-left: calc(0*20px);">family_name</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq" >OPTIONAL</span>
+</div></td><td>Returns user's surname(s) or last name(s). Note that in some cultures, people can have multiple family names or no family name; all can be present, with the names being separated by space characters.</td>
+          </tr> 
+          <tr>
+            <td><div class="paramName" style="padding-left: calc(0*20px);">birthdate</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq" >OPTIONAL</span>
+</div></td><td>Return user's birthdate, represented as a string in YYYY-MM-DD date format. itsme users are always 13 years old or more.</td>
+          </tr> 
+          <tr>
+            <td><div class="paramName" style="padding-left: calc(0*20px);">http://itsme.services/v2/<br>claim/birthdate_as_string</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq" >OPTIONAL</span>
+</div></td><td>Returns user's birthdate in an unprocessed way, as mentioned on the ID document. itsme users are always 13 years old or more.</td>
+          </tr>
+          <tr>
+            <td><div class="paramName" style="padding-left: calc(0*20px);">age_gte_13</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq" >OPTIONAL</span>
+</div></td><td>Returns <code>true</code> if the age of the user is greater than or equal to 13 years old. Returns <code>false</code> otherwise. This claim is meant to be used for age verification in contexts where data minimisation is relevant and you don't need the exact birthdate.</td>
+          </tr>
+          <tr>
+            <td><div class="paramName" style="padding-left: calc(0*20px);">age_gte_16</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq" >OPTIONAL</span>
+</div></td><td>Returns <code>true</code> if the age of the user is greater than or equal to 16 years old. Returns <code>false</code> otherwise. This claim is meant to be used for age verification in contexts where data minimisation is relevant and you don't need the exact birthdate.</td>
+          </tr>
+          <tr>
+            <td><div class="paramName" style="padding-left: calc(0*20px);">age_gte_18</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq" >OPTIONAL</span>
+</div></td><td>Returns <code>true</code> if the age of the user is greater than or equal to 18 years old. Returns <code>false</code> otherwise. This claim is meant to be used for age verification in contexts where data minimisation is relevant and you don't need the exact birthdate.</td>
+          </tr>
+          <tr>
+            <td><div class="paramName" style="padding-left: calc(0*20px);">age_gte_21</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq" >OPTIONAL</span>
+</div></td><td>Returns <code>true</code> if the age of the user is greater than or equal to 21 years old. Returns <code>false</code> otherwise. This claim is meant to be used for age verification in contexts where data minimisation is relevant and you don't need the exact birthdate.</td>
+          </tr>
+          <tr>
+            <td><div class="paramName" style="padding-left: calc(0*20px);">age_gte_30</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq" >OPTIONAL</span>
+</div></td><td>Returns <code>true</code> if the age of the user is greater than or equal to 30 years old. Returns <code>false</code> otherwise. This claim is meant to be used for age verification in contexts where data minimisation is relevant and you don't need the exact birthdate.</td>
+          </tr>
+          <tr>
+            <td><div class="paramName" style="padding-left: calc(0*20px);">gender</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq" >OPTIONAL</span>
+</div></td><td>Returns user's gender. Possible values are: <code>female</code> <code>male</code> <code>unknown</code> <code>n/a</code>. If the value mentioned on the user's ID document is different from those (local language, letter code...), then we apply a best-effort mapping to one of those values.</td>
+          </tr>
+          <tr>
+            <td><div class="paramName" style="padding-left: calc(0*20px);">http://itsme.services/v2/<br>claim/official_gender</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq" >OPTIONAL</span>
+</div></td><td>Returns user's gender unaltered, exactly as mentioned on their ID document.</td>
+          </tr> 
+          <tr>
+            <td><div class="paramName" style="padding-left: calc(0*20px);">locale</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq" >OPTIONAL</span>
+</div></td><td>Returns user's itsme app language, represented as a string format. Possible values are : <code>NL</code> <code>FR</code> <code>DE</code> <code>EN</code></td>
+          </tr>
+          <tr>
+            <td><div class="paramName" style="padding-left: calc(0*20px);">picture</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq" >OPTIONAL</span>
+</div></td><td>Returns user's ID picture, represented as a URL string. This URL refers to an image file (for example, a JPEG, JPEG2000, or PNG image file). This image is the raw (unprocessed) image contained on the ID document.<br /><br />
+            Accessing this URL requires using your Access Token (received in the response to your Token Request) as a bearer token. Example:<br />
+            <code>
+              GET /v2/picture HTTP/1.1<br />
+              Host: idp.prd.itsme.services<br />
+              Authorization: Bearer SlAV32hkKG
+            </code></td>
+          </tr>
+          <tr>
+            <td><div class="paramName" style="padding-left: calc(0*20px);">http://itsme.services/v2/<br>claim/physical_person_photo</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq" >OPTIONAL</span>
+</div></td><td>Returns user's ID picture, represented as a JSON Object containing these members:<br><code>format</code>: the MIME type<br><code>value</code>: the base64 encoded image.<br><br>This picture is read from the ID document but converted to always return a 200x140 px, 24 BPP JPEG image.</td>
+          </tr> 
+          <tr>
+            <td><div class="paramName" style="padding-left: calc(0*20px);">email</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq" >OPTIONAL</span>
+</div></td><td>Returns user's email address.</td>
+          </tr> 
+          <tr>
+            <td><div class="paramName" style="padding-left: calc(0*20px);">email_verified</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq" >OPTIONAL</span>
+</div></td><td>Returns <code>true</code> if the user's e-mail address is verified; otherwise <code>false</code>.<br><br><b>Note</b> : currently, itsme always returns <code>false</code> for this claim because the email verification feature is not yet implemented in our systems (or does not return a value if no email address is available).</td>
+          </tr> 
+          <tr>
+            <td><div class="paramName" style="padding-left: calc(0*20px);">phone_number</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq" >OPTIONAL</span>
+</div></td><td>Returns user's phone number, represented as a string format. For example : <code>[+][country code] [subscriber number including area code]</code>.</td>
+          </tr> 
+          <tr>
+            <td><div class="paramName" style="padding-left: calc(0*20px);">phone_number_verified</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq" >OPTIONAL</span>
+</div></td><td>Returns <code>true</code> if the user's phone number is verified; otherwise <code>false</code>.<br>Note: currently, all phone numbers are verified so this claims always returns <code>true</code>.</td>
+          </tr>
+          <tr>
+            <td><div class="paramName" style="padding-left: calc(0*20px);">address</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq" >OPTIONAL</span>
+</div></td><td>Returns user's postal address, represented as JSON Object containing some or all of these members: <code>formatted</code> <code>street_address</code> <code>postal_code</code> <code>locality</code>.<br></td>
+          </tr>
+          <tr>
+            <td><div class="paramName" style="padding-left: calc(0*20px);">address_assurance_level</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq" >OPTIONAL</span>
+</div></td><td>Indicates the level of assurance associated with the user's address claim, depending on whether the address is <code>SELF_DECLARED</code> (provided by the user without verification), <code>VALIDATED</code> (provided by the user and validated against a source), or <code>VERIFIED</code> (obtained from an official document).<br></td>
+          </tr>
+          <tr>
+            <td><div class="paramName" style="padding-left: calc(0*20px);">http://itsme.services/v2/<br>claim/claim_citizenship</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq" >OPTIONAL</span>
+</div></td><td>Returns user's nationality. The format is directly depending on the underlying ID document: for Belgian ID documents this is represented as a string, and for documents from other countries this is represented in the <a href="https://en.wikipedia.org/wiki/ISO_3166" target="blank">ISO 3166-1 alpha-3</a> format.</td>
+          </tr>
+          <tr>
+            <td><div class="paramName" style="padding-left: calc(0*20px);">http://itsme.services/v2/<br>claim/claim_citizenship_as_iso</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq" >OPTIONAL</span>
+</div></td><td>Returns user's nationality. The format is always <a href="https://en.wikipedia.org/wiki/ISO_3166" target="blank">ISO 3166-1 alpha-3</a>.</td>
+          </tr>
+           <tr>
+            <td><div class="paramName" style="padding-left: calc(0*20px);">http://itsme.services/v2/<br>claim/place_of_birth</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq" >OPTIONAL</span>
+</div></td><td>Returns user's place of birth, represented as a JSON Object containing some or all of these members <code>formatted</code> <code>city</code> <code>country</code>.</td>
+          </tr>
+          <tr>
+            <td><div class="paramName" style="padding-left: calc(0*20px);">http://itsme.services/v2/<br>claim/BEeidSn</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq" >OPTIONAL</span>
+</div></td><td>Returns user's Belgian ID document number, represented as a string with 12 digits in the form xxx-xxxxxxx-yy. (the check-number yy is the remainder of the division of xxxxxxxxxx by 97) for Belgian citizens, or starting with a letter and nine digits in the form B xxxxxxx xx for EU/EEA/Swiss citizens. This claim is made redundant by the <code>IDDocumentSN</code> claim below which we advise to use instead.</td>
+          </tr>
+          <tr>
+            <td><div class="paramName" style="padding-left: calc(0*20px);">http://itsme.services/v2/<br>claim/claim_device</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq" >OPTIONAL</span>
+</div></td><td>Returns user's phone information, represented as a JSON Object containing some or all of these members <code>os</code> <code>appName</code> <code>appRelease</code> <code>deviceLabel</code> <code>debugEnabled</code> <code>deviceID</code>	<code>osRelease</code> <code>manufacturer</code> <code>deviceLockLevel</code> <code>rooted</code> <code>deviceModel</code>.</td>       
+          </tr> 
+          <tr>
+            <td><div class="paramName" style="padding-left: calc(0*20px);">http://itsme.services/v2/<br>claim/BENationalNumber</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq" >OPTIONAL</span>
+</div></td><td>Returns user's Belgian unique identification number, represented as a string with 11 digits in the form YYMMDDxxxcd where YY.MM.DD is the birthdate of the person, xxx a sequential number (odd for males and even for females) and cd a check-digit. Some exceptions could apply.<br></td>
+          </tr>
+          <tr>
+            <td><div class="paramName" style="padding-left: calc(0*20px);">http://itsme.services/v2/<br>claim/RONationalNumber</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq" >OPTIONAL</span>
+</div></td><td>Returns user's Romanian unique identification number.<br></td>
+          </tr>
+          <tr>
+            <td><div class="paramName" style="padding-left: calc(0*20px);">http://itsme.services/v2/<br>claim/BGNationalNumber</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq" >OPTIONAL</span>
+</div></td><td>Returns user's Bulgarian unique identification number.<br></td>
+          </tr>
+          <tr>
+            <td><div class="paramName" style="padding-left: calc(0*20px);">http://itsme.services/v2/<br>claim/CZNationalNumber</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq" >OPTIONAL</span>
+</div></td><td>Returns user's Czech unique identification number.<br></td>
+          </tr>
+          <tr>
+            <td><div class="paramName" style="padding-left: calc(0*20px);">http://itsme.services/v2/<br>claim/SKNationalNumber</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq" >OPTIONAL</span>
+</div></td><td>Returns user's Slovakian unique identification number.<br></td>
+          </tr>
+          <tr>
+            <td><div class="paramName" style="padding-left: calc(0*20px);">http://itsme.services/v2/<br>claim/HRNationalNumber</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq" >OPTIONAL</span>
+</div></td><td>Returns user's Croatian unique identification number.<br></td>
+          </tr>
+          <tr>
+            <td><div class="paramName" style="padding-left: calc(0*20px);">http://itsme.services/v2/<br>claim/LTNationalNumber</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq" >OPTIONAL</span>
+</div></td><td>Returns user's Lithuanian unique identification number.<br></td>
+          </tr>
+          <tr>
+            <td><div class="paramName" style="padding-left: calc(0*20px);">http://itsme.services/v2/<br>claim/SVNationalNumber</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq" >OPTIONAL</span>
+</div></td><td>Returns user's Slovenian unique identification number.<br></td>
+          </tr>
+          <tr>
+            <td><div class="paramName" style="padding-left: calc(0*20px);">http://itsme.services/v2/<br>claim/LVNationalNumber</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq" >OPTIONAL</span>
+</div></td><td>Returns user's Latvian unique identification number.<br></td>
+          </tr>
+          <tr>
+            <td><div class="paramName" style="padding-left: calc(0*20px);">http://itsme.services/v2/<br>claim/MTNationalNumber</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq" >OPTIONAL</span>
+</div></td><td>Returns user's Maltese unique identification number.<br></td>
+          </tr>
+          <tr>
+            <td><div class="paramName" style="padding-left: calc(0*20px);">http://itsme.services/v2/<br>claim/RSNationalNumber</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq" >OPTIONAL</span>
+</div></td><td>Returns user's Serbian unique identification number.<br></td>
+          </tr>
+          <tr>
+            <td><div class="paramName" style="padding-left: calc(0*20px);">http://itsme.services/v2/<br>claim/MDNationalNumber</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq" >OPTIONAL</span>
+</div></td><td>Returns user's Moldovan unique identification number.<br></td>
+          </tr>
+          <tr>
+            <td><div class="paramName" style="padding-left: calc(0*20px);">http://itsme.services/v2/<br>claim/validityFrom</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq" >OPTIONAL</span>
+</div></td><td>This is a <a href="#metadata">metadata</a>.<br>Returns user's Belgian ID document issuance date, represented as a string in YYYY-MM-DDThh:mm:ss.nnnZ date format specified by ISO 8601. Can only be returned in combination with claim http://itsme.services/v2/claim/BEeidSn.</td>
+          </tr>
+          <tr>
+            <td><div class="paramName" style="padding-left: calc(0*20px);">http://itsme.services/v2/<br>claim/validityTo</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq" >OPTIONAL</span>
+</div></td><td>This is a <a href="#metadata">metadata</a>.<br>Returns user's Belgian ID card expiry date, represented as a string in YYYY-MM-DDThh:mm:ss.nnnZ date format specified by ISO 8601. Can only be returned in combination with claims http://itsme.services/v2/claim/BEeidSn or http://itsme.services/v2/claim/IDDocumentSN.<br><br>If requested, a value MAY NOT be returned.</td>
+          </tr>
+          <tr>
+            <td><div class="paramName" style="padding-left: calc(0*20px);">http://itsme.services/v2/<br>claim/verificationDate</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq" >OPTIONAL</span>
+</div></td><td>This is a <a href="#metadata">metadata</a>.<br>Returns the date when the user's document was read for the last time, represented as a string in YYYY-MM-DDThh:mm:ss date format specified by ISO 8601.</td>
+          </tr>
+          <tr>
+            <td><div class="paramName" style="padding-left: calc(0*20px);">http://itsme.services/v2/<br>claim/IDDocumentSN</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq" >OPTIONAL</span>
+</div></td><td>Returns the ID document number, represented as a string.</td>
+          </tr> 
+          <tr>
+            <td><div class="paramName" style="padding-left: calc(0*20px);">http://itsme.services/v2/<br>claim/IDDocumentType</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq" >OPTIONAL</span>
+</div></td><td>Returns the ID document type. This is a 1 or 2 characters code defined by the ICAO. Identity cards have a code with first letter I while passports have a code starting with P.</td>
+          </tr>
+          <tr>
+            <td><div class="paramName" style="padding-left: calc(0*20px);">http://itsme.services/v2/<br>claim/IDIssuingCountry</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq" >OPTIONAL</span>
+</div></td><td>This is a <a href="#metadata">metadata</a>.<br>Returns the 3-letters iso code of the country that issued the identity document.</td>
+          </tr>
+          <tr>
+            <td><div class="paramName" style="padding-left: calc(0*20px);">http://itsme.services/v2/<br>claim/issuance_locality</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq" >OPTIONAL</span>
+</div></td><td>This is a <a href="#metadata">metadata</a>.<br>Returns the locality that issued the ID document used to create the itsme account.</td>
+          </tr>
+          <tr>
+            <td><div class="paramName" style="padding-left: calc(0*20px);">http://itsme.services/v2/<br>claim/app</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq" >OPTIONAL</span>
+</div></td><td>Returns a JSON object with 3 members: <code>appInstalledDate</code> contains the date when the app was installed on the user's device, represented as a string in YYYY-MM-DDThh:mm:ss.nnnZ date format specified by ISO 8601. <code>appName</code> contains the name of the app and <code>appRelease</code> contains a string identifying the release (example: "4.9.1").<br>This claim is intended to help partners detect fraudulent use cases.</td>
+          </tr>
+          <tr>
+            <td><div class="paramName" style="padding-left: calc(0*20px);">http://itsme.services/v2/<br>claim/account</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq" >OPTIONAL</span>
+</div></td><td>Returns a JSON object with 3 members: <code>activationDate</code> contains the date when the account was last activated (enrolled or unblocked), represented as a string in YYYY-MM-DDThh:mm:ss.nnnZ date format specified by ISO 8601. <code>activationMechanism</code> contains a string identifying the way this account was created. Possible values are "CARD_READER" (enrollment via a physical reading of the ID document chip), "CONTACT_LESS" (enrollment via a NFC reading of the ID document) or "ID_PROVIDER" (enrollment via a trusted partner, i.e. a bank).<br>This claim is intended to help partners detect fraudulent use cases.</td>
+          </tr>
+          <tr>
+            <td><div class="paramName" style="padding-left: calc(0*20px);">http://itsme.services/v2/<br>claim/identification_mode</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq" >OPTIONAL</span>
+</div></td><td>An indication of the way the user initiated the itsme transaction. Can contain "QR", "MSISDN" (i.e. phone number) or "a2a" (i.e. app to app flow). Other values can be added in the future.</td>
+          </tr>
+          <tr>
+            <td><div class="paramName" style="padding-left: calc(0*20px);">http://itsme.services/v2/<br>claim/transaction_ip</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq" >OPTIONAL</span>
+</div></td><td>Returns the IP address of the smartphone approving the transaction.<br>This claim is intended to help partners detect fraudulent use cases.</td>
+          </tr>
+          <tr>
+            <td><div class="paramName" style="padding-left: calc(0*20px);">http://itsme.services/v2/<br>claim/ongoing_call</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq" >OPTIONAL</span>
+</div></td><td>Returns <code>true</code> if an ongoing call was detected during the action approval or <code>false</code> otherwise.<br>This claim is intended to help partners detect fraudulent use cases.</td>
+          </tr>
+          
+          <tr>
+            <td><div class="paramName" style="padding-left: calc(0*20px);">sub</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq" >OPTIONAL</span>
+</div></td><td>Allows the user to bypass the itsme identification page if he is already logged into your application, by using the user's unique identifier key as value (aka. the user's <code>sub</code> value returned in the ID Token response).<br />The sub must be passed as a JSON object like: <code>"sub":{"value":"123456abcdefg"}</code><br />/!\ The sub parameter is only considered if specified within a "userinfo" set of claims. It will be ignored in an "id_token" set.<br />NB: you are allowed to include both a "userinfo" AND an "id_token" set in one Authorization Request, so that you still don’t have to perform a UserInfo Request at the end of the flow.</td>
+          </tr>
+          
+          
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td><div class="paramName" style="padding-left: calc(0*20px);">request_uri</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq" >REQUIRED if no "request"</span>
+</div></td>
+      <td>A URL using the https scheme referencing a resource containing a JWT whose claims are the request parameters. The <code>request_uri</code> parameter is used to secure parameters in the Authorization Request from tainting or inspection when sending the request to the itsme Authorization Endpoint.<br><br>If the <code>request_uri</code> parameter is used, the JWT MUST be signed and MUST contain the claims <code>iss</code> (issuer) and <code>aud</code> (audience) as members. The <code>iss</code> value SHOULD be your <code>client_id</code>. The <code>aud</code> value SHOULD be set to <code>https://idp.[e2e/prd].itsme.services/v2</code>. The JWT MUST also be encrypted and more precisely: it MUST be signed then encrypted, with the result being a Nested JWT (refer to <a href="https://belgianmobileid.github.io/doc/JOSE/" target="blank">this page</a> for more information).<br><br>The following restrictions apply to request URIs:
+        <tabul>
+          <tabli>The request URI MUST be preregistered during the registration.</tabli>
+          <tabli>The request URI MUST contain the TCP port number <code>443</code>. Example : https://test.istme.be:443/p/test</tabli>
+          <tabli>The request URI MUST begin with the scheme <code>https</code> (refer to <a href="https://belgianmobileid.github.io/doc/authentication/#certificates-and-website-security" target="blank">this section</a> for more information). The usage of localhost request URIs that are not permitted.</tabli>
+          <tabli>The request URI JWT MUST be publicly accessible.</tabli>
+        </tabul>
+      </td>
+    </tr>
+    <tr>
+      <td><div class="paramName" style="padding-left: calc(0*20px);">request</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq" >REQUIRED if no "request_uri"</span>
+</div></td>
+      <td>It represents the request as a JWT whose Claims are the request parameters. The <code>request</code> parameter is used to secure parameters in the Authorization Request from tainting or inspection when sending the request to the itsme Authorization Endpoint.<br><br>If the <code>request</code> parameter is used, the JWT MUST be signed and MUST contain the claims <code>iss</code> (issuer) and <code>aud</code> (audience) as members. The <code>iss</code> value SHOULD be your <code>client_id</code>. The <code>aud</code> value SHOULD be set to <code>https://idp.[e2e/prd].itsme.services/v2</code>. The JWT MUST also be encrypted and more precisely: it MUST be signed then encrypted, with the result being a Nested JWT (refer to <a href="https://belgianmobileid.github.io/doc/JOSE/" target="blank">this page</a> for more information).</td>
+    </tr>
+    <tr>
+      <td><div class="paramName" style="padding-left: calc(0*20px);">code_challenge</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq" >OPTIONAL</span>
+</div></td>
+       <td>A challenge derived from the code verifier by applying a S256 hash. This parameter is REQUIRED if you requested PKCE to be enforced.
+       </td>
+    </tr>
+    <tr>
+      <td><div class="paramName" style="padding-left: calc(0*20px);">code_challenge_method</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq" >OPTIONAL</span>
+</div></td>
+       <td>Code verifier transformation method.<br><br>It MUST be set to <code>S256</code>.
+       </td>
+    </tr>
+  </tbody>
+</table>
+
+### Response
+
+<code>302</code> <code>application/x-www-form-urlencoded</code>
+
+<table>
+  <tbody>
+    <tr>
+      <td><div class="paramName" style="padding-left: calc(0*20px);">code</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq" ></span>
+</div></td>
+      <td>An intermediate opaque credential of 36 characters used to retrieve the ID Token and Access Token.<br><br><b>Note</b> : the code has a lifetime of 3 minutes.</td>
+    </tr>
+    <tr>
+      <td><div class="paramName" style="padding-left: calc(0*20px);">state</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq" ></span>
+</div></td>
+      <td>The string value provided in the Authorization Request. You SHOULD validate that the value returned matches the one supplied.</td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+### Example
+
+<ul class="tab" data-tab="f0972395-31c0-431f-b60c-f6d011bfa846">
+    
+        <li class="active">
+            <a href="">Public- and private-key </a>
+        </li>
+    
+        <li>
+            <a href="">Secret key </a>
+        </li>
+    
+</ul>
+<ul class="tab-content" id="f0972395-31c0-431f-b60c-f6d011bfa846">
+    
+        <li class="active">
+<p><strong><em>Request</em></strong></p>
+
+<div class="language-http highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">GET</span> <span class="nn">/v2/authorization</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">server.example.com</span>
+
+response_type=code
+  &amp;client_id=OIDC_TEST1
+  &amp;redirect_uri=https://client.example.org/cb
+  &amp;scope=openid+service:EXAMPLE+profile+phone+email+address+eid
+  &amp;state=anystate
+  &amp;nonce=anonce
+  &amp;prompt=login+consent
+  &amp;max_age=1
+  &amp;request_uri=https://client.example.org/RequestObject.json
+</code></pre></div></div>
+
+<p><strong><em>Response</em></strong></p>
+
+<div class="language-http highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">302</span> <span class="ne">Found</span>
+<span class="na">Location</span><span class="p">:</span> <span class="s">https://client.example.org/cb?</span>
+<span class="s">  code=SplxlOBeZQQYbYS6WxSbIA</span>
+<span class="s">  &amp;state=anystate</span>
+</code></pre></div></div>
+
+</li>
+    
+        <li>
+<p><strong><em>Request</em></strong></p>
+
+<div class="language-http highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">GET</span> <span class="nn">/authorize</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">server.example.com</span>
+
+response_type=code
+  &amp;client_id=OIDC_TEST1
+  &amp;redirect_uri=https://client.example.org/cb
+  &amp;scope=openid+service:EXAMPLE+profile+phone+email+address+eid
+  &amp;state=anystate
+  &amp;nonce=anonce
+  &amp;prompt=login+consent
+  &amp;max_age=1
+  &amp;request_uri=https://client.example.org/RequestObject.json
+</code></pre></div></div>
+
+<p><strong><em>Response</em></strong></p>
+
+<div class="language-http highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">302</span> <span class="ne">Found</span>
+<span class="na">Location</span><span class="p">:</span> <span class="s">https://client.example.org/cb?</span>
+<span class="s">  code=SplxlOBeZQQYbYS6WxSbIA</span>
+<span class="s">  &amp;state=anystate</span>
+</code></pre></div></div>
+
+</li>
+    
+</ul>
+
+
+
+<a id="TokenReq"></a>
+## Token Request
+
+<ul class="tab" data-tab="8488ac95-4ca6-4113-8758-702aaee2bcb0">
+    
+        <li class="active">
+            <a href="">Public- and private-key </a>
+        </li>
+    
+        <li>
+            <a href="">Secret key </a>
+        </li>
+    
+</ul>
+<ul class="tab-content" id="8488ac95-4ca6-4113-8758-702aaee2bcb0">
+    
+        <li class="active">
+<p><b><code>POST https://idp.<i><b>[e2e/prd]</b></i>.itsme.services/v2/token</code></b></p>
+
+<p>To assert the identity of the user, the <code>code</code> received previously needs to be exchanged for an ID token and access token. During this step, your application has to authenticate itself to our server using the public- and private-key pair method.</p>
+
+<aside class="notice">The parameters below must be included in the body of the POST request, not in the query string.</aside>
+
+<h3 id="parameters">Parameters</h3>
+
+<table>
+  <tbody>
+    <tr>
+      <td><div class="paramName" style="padding-left: calc(0*20px);">grant_type</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq">REQUIRED</span>
+</div></td>
+      <td>Set this to <code>authorization_code</code> to tell the Token Endpoint that your application wants to exchange an authorization code for an ID token and access token. </td>
+    </tr>
+    <tr>
+      <td><div class="paramName" style="padding-left: calc(0*20px);">code</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq">REQUIRED</span>
+</div></td>
+      <td>The intermediate opaque credential received in the Authorization Response.</td>
+    </tr>
+    <tr>
+      <td><div class="paramName" style="padding-left: calc(0*20px);">redirect_uri</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq">REQUIRED</span>
+</div></td>
+      <td>It is the URL to which users are redirected once the authentication is complete. It MUST match the value used in the Authorization Request.</td>
+    </tr>
+    <tr>
+      <td><div class="paramName" style="padding-left: calc(0*20px);">code_verifier</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq">OPTIONAL</span>
+</div></td>
+      <td>High-entropy cryptographic random string using the unreserved characters [A-Z] / [a-z] / [0-9] / "-" / "." / "_" / "~", with a minimum length of 43 characters and a maximum length of 128 characters. This parameter is REQUIRED if you required PKCE to be enforced.</td>
+    </tr>
+    <tr>
+      <td><div class="paramName" style="padding-left: calc(0*20px);">client_assertion_type</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq">REQUIRED</span>
+</div></td>
+      <td>Specifies the type of assertion. Set this to <code>urn:ietf:params:oauth:client-assertion-type:jwt-bearer</code>.</td>
+    </tr>
+    <tr>
+      <td><div class="paramName" style="padding-left: calc(0*20px);">client_assertion</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq">REQUIRED</span>
+</div></td>
+      <td>Is a set of identity and security information, in the form of a JWT, used as an authentication method. To ensures that the request to get the id token and access token is made only from your application, and not from a potential attacker that may have intercepted the authorization code, the JWT MUST be signed, and MAY also be encrypted. If both signing and encryption are performed, it MUST be signed then encrypted, with the result being a Nested JWT (refer to <a href="https://belgianmobileid.github.io/doc/JOSE/" target="blank">this page</a> for more information).<br /><br />The JWT contains the following claims.        
+        <table>
+          <tr>
+            <td><div class="paramName" style="padding-left: calc(0*20px);">iss</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq">REQUIRED</span>
+</div></td><td>The issuer of the token. This value MUST be the same as the <code>client_id</code>.</td>
+          </tr>
+          <tr>
+            <td><div class="paramName" style="padding-left: calc(0*20px);">sub</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq">REQUIRED</span>
+</div></td><td>The subject of the token. This value MUST be the same as the <code>client_id</code>.</td>
+          </tr>
+          <tr>
+            <td><div class="paramName" style="padding-left: calc(0*20px);">aud</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq">REQUIRED</span>
+</div></td><td>The full URL of the resource you're using the JWT to authenticate to. Set this to <code>https://idp.<i>[e2e/prd]</i>.itsme.services/v2/token</code>.</td>
+          </tr>
+          <tr>
+            <td><div class="paramName" style="padding-left: calc(0*20px);">jti</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq">REQUIRED</span>
+</div></td><td>An unique identifier for the token, containing maximum 255 characters.</td>
+          </tr>
+          <tr>
+            <td><div class="paramName" style="padding-left: calc(0*20px);">exp</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq">REQUIRED</span>
+</div></td><td>The expiration time of the token in seconds since January 1, 1970 UTC.</td>
+          </tr> 
+          <tr>
+            <td><div class="paramName" style="padding-left: calc(0*20px);">iat</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq">OPTIONAL</span>
+</div></td><td>The time at which the JWT was issued.</td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="response">Response</h3>
+
+<p><code>200</code> <code>application/json</code></p>
+
+<table>
+  <tbody>
+    <tr>
+      <td><div class="paramName" style="padding-left: calc(0*20px);">access_token</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq"></span>
+</div></td>
+      <td>Allows an application to retrieve consented user information from the UserInfo Endpoint.</td>
+    </tr>
+    <tr>
+      <td><div class="paramName" style="padding-left: calc(0*20px);">token_type</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq"></span>
+</div></td>
+      <td>Provides your application with the information required to successfully utilize the access token. Returned value is <code>Bearer</code>..</td>
+    </tr>
+    <tr>
+      <td><div class="paramName" style="padding-left: calc(0*20px);">id_token</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq"></span>
+</div></td>
+      <td>A security token that contains information about the authentication of an user, and potentially other requested claim data's. The <code>id_token</code> value is represented as a signed and encrypted JWT. So, before being able to use the ID Token claims you will have to decrypt and verify the signature (refer to <a href="https://belgianmobileid.github.io/doc/JOSE/" target="blank">this page</a> for more information).</td>      
+    </tr>
+  </tbody>
+</table>
+
+</li>
+    
+        <li>
+<p><b><code>POST https://idp.<i><b>[e2e/prd]</b></i>.itsme.services/v2/token</code></b></p>
+
+<p>If your onboarding happened before the 25th of June 2025, then URL was:<br />
+<b><code>POST https://oidc.<i><b>[e2e/prd]</b></i>.itsme.services/clientsecret-oidc/csapi/v0.1/connect/token</code></b></p>
+
+<p>To assert the identity of the user, the <code>code</code> received previously needs to be exchanged for an ID token and access token. During this step, your application has to authenticate itself to our server using the secret key method.</p>
+
+<aside class="notice">The parameters below must be included in the body of the POST request, not in the query string.</aside>
+
+<h3 id="parameters">Parameters</h3>
+
+<table>
+  <tbody>
+    <tr>
+      <td><div class="paramName" style="padding-left: calc(0*20px);">grant_type</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq">REQUIRED</span>
+</div></td>
+      <td>Set this to <code>authorization_code</code> to tell the Token Endpoint that your application wants to exchange an authorization code for an ID koken and access token. </td>
+    </tr>
+    <tr>
+      <td><div class="paramName" style="padding-left: calc(0*20px);">client_id</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq">REQUIRED</span>
+</div></td>
+      <td>It identifies your application. This parameter value is generated during registration.</td>
+    </tr>
+    <tr>
+      <td><div class="paramName" style="padding-left: calc(0*20px);">code</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq">REQUIRED</span>
+</div></td>
+      <td>The intermediate opaque credential received in the Authorization Response.</td>
+    </tr>
+    <tr>
+      <td><div class="paramName" style="padding-left: calc(0*20px);">redirect_uri</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq">REQUIRED</span>
+</div></td>
+      <td>It is the URL to which users are redirected once the authentication is complete. It MUST match the value used in the Authorization Request.</td>
+    </tr>
+    <tr>
+      <td><div class="paramName" style="padding-left: calc(0*20px);">client_secret</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq">REQUIRED</span>
+</div></td>
+      <td>Contains the a key you reveiced when registering your application. This ensures that the request to get the id token and access token is made only from your application, and not from a potential attacker that may have intercepted the authorization code.</td>
+    </tr>
+    <tr>
+      <td><div class="paramName" style="padding-left: calc(0*20px);">code_verifier</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq">OPTIONAL</span>
+</div></td>
+      <td>High-entropy cryptographic random string using the unreserved characters [A-Z] / [a-z] / [0-9] / "-" / "." / "_" / "~", with a minimum length of 43 characters and a maximum length of 128 characters. This parameter is REQUIRED if you required PKCE to be enforced.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="response">Response</h3>
+
+<p><code>200</code> <code>application/json</code></p>
+
+<table>
+  <tbody>
+    <tr>
+      <td><div class="paramName" style="padding-left: calc(0*20px);">access_token</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq"></span>
+</div></td>
+      <td>Allows an application to retrieve consented user information from the UserInfo Endpoint.</td>
+    </tr>
+    <tr>
+      <td><div class="paramName" style="padding-left: calc(0*20px);">token_type</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq"></span>
+</div></td>
+      <td>Provides your application with the information required to successfully utilize the access token. Returned value is <code>Bearer</code>.</td>
+    </tr>
+    <tr>
+      <td><div class="paramName" style="padding-left: calc(0*20px);">id_token</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq"></span>
+</div></td>
+      <td>A security token that contains information about the authentication of an user, and potentially other requested claim data's. The <code>id_token</code> value is represented as a signed and encrypted JWT. So, before being able to use the ID Token claims you will have to decrypt and verify the signature (refer to <a href="https://belgianmobileid.github.io/doc/JOSE/" target="blank">this page</a> for more information).</td>      
+    </tr>
+  </tbody>
+</table>
+
+</li>
+    
+</ul>
+
+
+
+### Example
+
+<ul class="tab" data-tab="b264f5b1-250c-48da-a478-9d1e788755d1">
+    
+        <li class="active">
+            <a href="">Public- and private-key </a>
+        </li>
+    
+        <li>
+            <a href="">Secret key </a>
+        </li>
+    
+</ul>
+<ul class="tab-content" id="b264f5b1-250c-48da-a478-9d1e788755d1">
+    
+        <li class="active">
+<p><strong><em>Request</em></strong></p>
+
+<div class="language-http highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">POST</span> <span class="nn">/token</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">openid.c2id.com</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/x-www-form-urlencoded</span>
+
+grant_type=authorization_code
+ &amp;code=SplxlOBeZQQYbYS6WxSbIA
+ &amp;redirect_uri=https%3A%2F%2Fclient.example.org%2Fcb
+ &amp;client_assertion_type=urn:ietf:params:oauth:client-assertion-type:jwt-bearer
+ &amp;client_assertion=PHNhbWxwOl ... ZT
+</code></pre></div></div>
+
+<p><strong><em>Response</em></strong></p>
+
+<div class="language-http highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">Cache-Control</span><span class="p">:</span> <span class="s">no-store</span>
+<span class="na">Pragma</span><span class="p">:</span> <span class="s">no-cache</span>
+
+<span class="p">{</span><span class="w">
+  </span><span class="nl">"id_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eyJhbGciOiJSUzI1NiIsImtpZCI6IjFlOWdkazcifQ.ewogImlzc
+    yI6ICJodHRwOi8vc2VydmVyLmV4YW1wbGUuY29tIiwKICJzdWIiOiAiMjQ4Mjg5
+    NzYxMDAxIiwKICJhdWQiOiAiczZCaGRSa3F0MyIsCiAibm9uY2UiOiAibi0wUzZ
+    fV3pBMk1qIiwKICJleHAiOiAxMzExMjgxOTcwLAogImlhdCI6IDEzMTEyODA5Nz
+    AKfQ.ggW8hZ1EuVLuxNuuIJKX_V8a_OMXzR0EHR9R6jgdqrOOF4daGU96Sr_P6q
+    Jp6IcmD3HP99Obi1PRs-cwh3LO-p146waJ8IhehcwL7F09JdijmBqkvPeB2T9CJ
+    NqeGpe-gccMg4vfKjkM8FcGvnzZUN4_KSP0aAp1tOJ1zZwgjxqGByKHiOtX7Tpd
+    QyHE5lcMiKPXfEIQILVq0pc_E2DzL7emopWoaoZTF_m0_N0YzFC6g6EJbOEoRoS
+    K5hoDalrcvRYLSrQAZZKflyuVCyixEoV9GfNQC3_osjzw2PAithfubEEBLuVVk4
+    XUVrWOLrLl0nx7RkKU8NXNHq-rvKMzqg"</span><span class="w">
+  </span><span class="nl">"access_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SlAV32hkKG"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"token_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bearer"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"expires_in"</span><span class="p">:</span><span class="w"> </span><span class="mi">3600</span><span class="p">,</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Example of a decrypted id_token:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
+	"sub": "6g2k9rgglem2dttw5d51ulkxpv24phwatiu6",
+	"aud": "WXw9DMqkEv",
+	"birthdate": "1974-10-23",
+	"gender": "male",
+	"name": "John Ronald R Tolkien",
+	"iss": "https://idp.prd.itsme.services/v2",
+	"nonce": "nonce",
+	"exp": 1699538407,
+	"iat": 1699538107
+}
+</code></pre></div></div>
+
+</li>
+    
+        <li>
+<p><strong><em>Request</em></strong></p>
+
+<div class="language-http highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">POST</span> <span class="nn">/token</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">openid.c2id.com</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/x-www-form-urlencoded</span>
+
+grant_type=authorization_code
+ &amp;code=SplxlOBeZQQYbYS6WxSbIA
+ &amp;redirect_uri=https%3A%2F%2Fclient.example.org%2Fcb
+ &amp;client_id=s6BhdRkqt3
+ &amp;client_secret=PHNhbWxwOl ... ZT
+</code></pre></div></div>
+
+<p><strong><em>Response</em></strong></p>
+
+<div class="language-http highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">Cache-Control</span><span class="p">:</span> <span class="s">no-store</span>
+<span class="na">Pragma</span><span class="p">:</span> <span class="s">no-cache</span>
+
+<span class="p">{</span><span class="w">
+  </span><span class="nl">"id_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIn0..UPzPZWb
+     Da_ZvysMK.7ZXAFd24uTT35_gzrdYeuLBPrPR3Gc8VdB7L7MgZWgS4hiP
+     72URWNDPbOMLYw4xHx2CVKPGp9K0L05UeSMDcB39n_anV5nZ3BbkNsufx
+     RiANOfoxx2W5jsb8Fj5W8F862wRWmClxTOosszauVhD6ZbhpJM0k9Iw7T
+     CmwlmK3WMg9aE-gSNlvsjgrfB5QFmgYH2PWF1YdWZ1gCdCw3rz1XvxHPV
+     yR9PfSy7SFFEoZos-2Y_rlO4R5_Oel3xy0YA_OucJVnV2x6oblxQ4TBXB
+     8YMCYyk3m7aS_S_oEs-2yAGCbQgwKU9jwqytF8Yw5X_rZmcbTpdvAF5qu
+     ozfnoiW2ijHxr6xlH_8cibSIjhKOHEPCBTc8AeAb9nHLGrx0H1q02o7nz
+     U-TwxUayrHXLBKd72l6aD8RxwCziATzjVWnvVVR7BmvOAV8L8IY_DTGgn
+     iH2NlHL6_2KVtuB8czkDjEToE-JUfuzoedja9PTzRp6paO3ZpXSQcLl6a
+     6qBe526hMNEiK9VPRWPOJ8xIqwpg3mSeMjdkvSS6A9xJVH_xEy9jzts1n
+     k2ge-YGrZZiQt8Do7NCd-ic7_HU8timZ_mfPFc8NDYgr0WtPefDQlC6en
+     8sUcMjuhuZOx_A3cQ7Mvoq662meUbkN64z50oBoh8Drora69I85zXQwes
+     sR9f4z0th2-XDDrPxPop6yuJx8vMmRQNhN55qvwxgFMTEJyvDNAVfBA9s
+     FZlj4hubY3wtYP5nLADjIFLresbrsu6iFQaE7v01FUMMDXcvBi_hw-M9s
+     0nBuWsQa2rZRcrVJOK9HVXUxXdUfTNL4MrrG5UzT7gdtcpesXeFVLSJtq
+     7HEGlHi3xaefgo4P5GN562CGVUl41BSmoBJT9oS5YJWKJOEOfpcAhYLKM
+     5iyMbgOxVz1Fz7z6Pfcd-PRcRlSQlHBXCdhP01AmRw-H_bdoKFIM1D33B
+     3AmmEKD6XRe8XM79F_gwySJ3AIWUzVLpJxe1lUphzIgy5O-VleJWyKl3D
+     nAkCQwvqV-P-MrjirZckzlDjjfyOlEA_KNAK-PwCvZ5Yh_Wv8f-8LXUWJ
+     ewfOCZmOM5pSKYXl-oZ.hfcIWiYPCtQMheNN8FB0Ww"</span><span class="w">
+  </span><span class="nl">"access_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SlAV32hkKG"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"token_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bearer"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"expires_in"</span><span class="p">:</span><span class="w"> </span><span class="mi">3600</span><span class="p">,</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>Example of a decrypted id_token:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
+	"sub": "6g2k9rgglem2dttw5d51ulkxpv24phwatiu6",
+	"aud": "WXw9DMqkEv",
+	"birthdate": "1974-10-23",
+	"gender": "male",
+	"name": "John Ronald R Tolkien",
+	"iss": "https://oidc.prd.itsme.services/v2",
+	"nonce": "5468798645321",
+	"nbf": 1699538107,
+	"exp": 1699538407,
+	"iat": 1699538107
+}
+</code></pre></div></div>
+
+</li>
+    
+</ul>
+
+
+<a id="UserInfoReq"></a>
+## UserInfo Request
+
+<ul class="tab" data-tab="1ed9be7a-4ea5-4053-a12c-e2bcc76c1e1d">
+    
+        <li class="active">
+            <a href="">Public- and private-key </a>
+        </li>
+    
+        <li>
+            <a href="">Secret key </a>
+        </li>
+    
+</ul>
+<ul class="tab-content" id="1ed9be7a-4ea5-4053-a12c-e2bcc76c1e1d">
+    
+        <li class="active">
+<p><b><code>GET https://idp.<i><b>[e2e/prd]</b></i>.itsme.services/v2/userinfo</code></b></p>
+
+<p>The UserInfo Endpoint returns previously consented user profile information to your application. In other words, if the required claims are not returned in the ID Token, you can obtain the additional claims by presenting the access token to the itsme UserInfo Endpoint. This is achieved by sending a HTTP GET request to the Userinfo Endpoint, passing the access token value in the Authorization header using the Bearer authentication scheme.</p>
+
+<p>This is illustrated in the example below.</p>
+
+<h3 id="response">Response</h3>
+
+<p><code>200</code> <code>application/json</code></p>
+
+<p>The UserInfo Response is represented as a signed and encrypted JWT. So, before being able to extract the claims you will have to decrypt and verify the signature (refer to <a href="https://belgianmobileid.github.io/doc/JOSE/" target="blank">this page</a> for more information).</p>
+
+</li>
+    
+        <li>
+<p><b><code>GET https://idp.<i><b>[e2e/prd]</b></i>.itsme.services/v2/userinfo</code></b></p>
+
+<p>If your onboarding happened before the 25th of June 2025, then URL was:<br />
+<b><code>GET https://oidc.<i><b>[e2e/prd]</b></i>.itsme.services/clientsecret-oidc/csapi/v0.1/connect/userinfo</code></b></p>
+
+<p>The UserInfo Endpoint returns previously consented user profile information to your application. In other words, if the required claims are not returned in the ID Token, you can obtain the additional claims by presenting the access token to the itsme UserInfo Endpoint. This is achieved by sending a HTTP GET request to the Userinfo Endpoint, passing the access token value in the Authorization header using the Bearer authentication scheme.</p>
+
+<p>This is illustrated in the example below.</p>
+
+<h3 id="response">Response</h3>
+
+<p><code>200</code> <code>application/json</code></p>
+
+<p>The UserInfo Response is represented as a signed and encrypted JWT. So, before being able to extract the claims you will have to decrypt and verify the signature (refer to <a href="https://belgianmobileid.github.io/doc/JOSE/" target="blank">this page</a> for more information).</p>
+
+</li>
+    
+</ul>
+
+
+
+### Example
+
+***Request***
+
+```http
+GET /userinfo HTTP/1.1
+Host: server.example.com
+Authorization: Bearer SlAV32hkKG
+```
+
+***Response***
+
+This is an response example containing all possible claims for a Belgian account:
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+	"http://itsme.services/v2/claim/validityFrom": {
+		"http://itsme.services/v2/claim/BEeidSn": "2018-11-08T00:00:00Z"
+	},
+	"sub": "e3xad7upx64grm14ttpnx4c586ve8gy0gp38",
+	"birthdate": "1978-11-01",
+	"http://itsme.services/v2/claim/claim_citizenship_as_iso": "BEL",
+	"gender": "male",
+	"http://itsme.services/v2/claim/birthdate_as_string": "01.11.1978",
+	"http://itsme.services/v2/claim/IDDocumentType": "I",
+	"iss": "https://oidc.[e2e/prd].itsme.services/v2",
+	"http://itsme.services/v2/claim/validityTo": {
+		"http://itsme.services/v2/claim/BEeidSn": "2028-11-10T00:00:00Z"
+	},
+	"http://itsme.services/v2/claim/claim_citizenship": "BE",
+	"locale": "FR",
+	"http://itsme.services/v2/claim/issuance_locality": {
+		"http://itsme.services/v2/claim/BEeidSn": "BRUXELLES"
+	},
+	"email": "test@itsme.be",
+	"http://itsme.services/v2/claim/place_of_birth": {
+		"city": "Brussels",
+		"formatted": "Brussels"
+	},
+	"address": {
+		"locality": "TONGEREN",
+		"street_address": "Jekerstraat 39",
+		"postal_code": "3700",
+		"formatted": "Jekerstraat 39 3700 TONGEREN"
+	},
+	"email_verified": false,
+	"http://itsme.services/v2/claim/claim_device": {
+		"os": "ANDROID",
+		"appName": "be.bmid.itsme.[e2e/prd]",
+		"appRelease": "4.0.0",
+		"deviceLabel": "lucye",
+		"debugEnabled": false,
+		"deviceId": "c22de2331dd249bba063afd3507fe3a4f",
+		"osRelease": "9",
+		"manufacturer": "LGE",
+		"deviceLockLevel": "true",
+		"rooted": false,
+		"deviceModel": "LG-H870",
+		"msisdn": "0032485694175"
+	},
+	"http://itsme.services/v2/claim/BENationalNumber": "99060427181",
+	"phone_number_verified": true,
+	"given_name": "George",
+	"picture": "https://oidc.[e2e/prd].itsme.services/v2/picture",
+	"http://itsme.services/v2/claim/verificationDate": {
+		"http://itsme.services/v2/claim/place_of_birth": "2023-04-12T15:02:23Z",
+		"birthdate": "2023-04-12T15:02:23Z",
+		"address": "2023-04-12T15:02:23Z",
+		"http://itsme.services/v2/claim/claim_citizenship_as_iso": "2023-04-12T15:02:23Z",
+		"gender": "2023-04-12T15:02:23Z",
+		"http://itsme.services/v2/claim/birthdate_as_string": "2023-04-12T15:02:23Z",
+		"http://itsme.services/v2/claim/BENationalNumber": "2023-04-12T15:02:23Z",
+		"given_name": "2023-04-12T15:02:23Z",
+		"http://itsme.services/v2/claim/claim_citizenship": "2023-04-12T15:02:23Z",
+		"picture": "2023-04-12T15:02:23Z",
+		"name": "2023-04-12T15:02:23Z",
+		"http://itsme.services/v2/claim/IDDocumentSN": "2023-04-12T15:02:23Z",
+		"http://itsme.services/v2/claim/BEeidSn": "2023-04-12T15:02:23Z",
+		"family_name": "2023-04-12T15:02:23Z",
+		"http://itsme.services/v2/claim/physical_person_photo": "2023-04-12T15:02:23Z"
+	},
+	"aud": "WXw9DMqkEv",
+	"http://itsme.services/v2/claim/IDIssuingCountry": {
+		"http://itsme.services/v2/claim/place_of_birth": "BEL",
+		"birthdate": "BEL",
+		"address": "BEL",
+		"http://itsme.services/v2/claim/claim_citizenship_as_iso": "BEL",
+		"gender": "BEL",
+		"http://itsme.services/v2/claim/birthdate_as_string": "BEL",
+		"http://itsme.services/v2/claim/BENationalNumber": "BEL",
+		"given_name": "BEL",
+		"http://itsme.services/v2/claim/claim_citizenship": "BEL",
+		"picture": "BEL",
+		"name": "BEL",
+		"http://itsme.services/v2/claim/IDDocumentSN": "BEL",
+		"http://itsme.services/v2/claim/BEeidSn": "BEL",
+		"family_name": "BEL",
+		"http://itsme.services/v2/claim/physical_person_photo": "BEL"
+	},
+	"name": "George Tǎnka",
+	"http://itsme.services/v2/claim/IDDocumentSN": "431522485012",
+	"phone_number": "+32 485694175",
+	"http://itsme.services/v2/claim/BEeidSn": "431522485012",
+	"family_name": "Tǎnka",
+	"http://itsme.services/v2/claim/physical_person_photo": {
+		"format": "image/jpeg",
+		"value": "/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAIBAQEBAQIBAQECAgICAgQDAgICAgUEBAMEBgUGBgYFBgYGBwkIBgcJBwYGCAsICQoKCgoKBggLDAsKDAkKCgr/wAALCADIAIwBAREA/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/9oACAEBAAA/AP38ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooorI/4SIf3h+tH/AAkQ/vD9aP8AhIh/eH60f8JEP7w/Wj/hIh/eH60f8JEP7w/Wj/hIh/eH60f8JEP7w/Wj/hIh/eH60f8ACRD+8P1o/wCEiH94frR/wkQ/vD9aP+EiH94frR/wkQ/vD9aP+EiH94frR/wkQ/vD9aP+EiH94frR/wAJEP7w/WuB/wCEj/2xR/wkf+2KP+Ej/wBsUf8ACR/7Yo/4SP8A2xR/wkf+2KP+Ej/2xR/wkf8Atij/AISP/bFH/CR/7Yo/4SP/AGxR/wAJH/tij/hI/wDbFH/CR/7Yo/4SP/bFH/CR/wC2KP8AhI/9sUf8JH/tiuD/AOEiX+/+tH/CRL/f/Wj/AISJf7/60f8ACRL/AH/1o/4SJf7/AOtH/CRL/f8A1o/4SJf7/wCtH/CRL/f/AFo/4SJf7/60f8JEv9/9aP8AhIl/v/rR/wAJEv8Af/Wj/hIl/v8A60f8JEv9/wDWj/hIl/v/AK0f8JEv9/8AWj/hIl/v/rR/wkS/3/1rgf8AhIm/v/rR/wAJE39/9aP+Eib+/wDrR/wkTf3/ANaP+Eib+/8ArR/wkTf3/wBaP+Eib+/+tH/CRN/f/Wj/AISJv7/60f8ACRN/f/Wj/hIm/v8A60f8JE39/wDWj/hIm/v/AK0f8JE39/8AWj/hIm/v/rR/wkTf3/1o/wCEib+/+tH/AAkTf3/1rgv+EjH/AD0P50f8JGP+eh/Oj/hIx/z0P50f8JGP+eh/Oj/hIx/z0P50f8JGP+eh/Oj/AISMf89D+dH/AAkY/wCeh/Oj/hIx/wA9D+dH/CRj/nofzo/4SMf89D+dH/CRj/nofzo/4SMf89D+dH/CRj/nofzo/wCEjH/PQ/nR/wAJGP8Anofzo/4SMf8APQ/nR/wkY/56H864L/hIz/z0b86P+EjP/PRvzo/4SM/89G/Oj/hIz/z0b86P+EjP/PRvzo/4SM/89G/Oj/hIz/z0b86P+EjP/PRvzo/4SM/89G/Oj/hIz/z0b86P+EjP/PRvzo/4SM/89G/Oj/hIz/z0b86P+EjP/PRvzo/4SM/89G/Oj/hIz/z0b86P+EjP/PRvzo/4SM/89G/OuC/4SIf89h+dH/CRD/nsPzo/4SIf89h+dH/CRD/nsPzo/wCEiH/PYfnR/wAJEP8AnsPzo/4SIf8APYfnR/wkQ/57D86P+EiH/PYfnR/wkQ/57D86P+EiH/PYfnR/wkQ/57D86P8AhIh/z2H50f8ACRD/AJ7D86P+EiH/AD2H50f8JEP+ew/Oj/hIh/z2H50f8JEP+ew/OuB/4SQ/89TR/wAJIf8AnqaP+EkP/PU0f8JIf+epo/4SQ/8APU0f8JIf+epo/wCEkP8Az1NH/CSH/nqaP+EkP/PU0f8ACSH/AJ6mj/hJD/z1NH/CSH/nqaP+EkP/AD1NH/CSH/nqaP8AhJD/AM9TR/wkh/56mj/hJD/z1NH/AAkh/wCeprgP+EkX/np+tH/CSL/z0/Wj/hJF/wCen60f8JIv/PT9aP8AhJF/56frR/wki/8APT9aP+EkX/np+tH/AAki/wDPT9aP+EkX/np+tH/CSL/z0/Wj/hJF/wCen60f8JIv/PT9aP8AhJF/56frR/wki/8APT9aP+EkX/np+tH/AAki/wDPT9aP+EkX/np+tH/CSL/z0/WuD/4SP/bH60f8JH/tj9aP+Ej/ANsfrR/wkf8Atj9aP+Ej/wBsfrR/wkf+2P1o/wCEj/2x+tH/AAkf+2P1o/4SP/bH60f8JH/tj9aP+Ej/ANsfrR/wkf8Atj9aP+Ej/wBsfrR/wkf+2P1o/wCEj/2x+tH/AAkf+2P1o/4SP/bH60f8JH/tj9a4H/hIR/eP50f8JCP7x/Oj/hIR/eP50f8ACQj+8fzo/wCEhH94/nR/wkI/vH86P+EhH94/nR/wkI/vH86P+EhH94/nR/wkI/vH86P+EhH94/nR/wAJCP7x/Oj/AISEf3j+dH/CQj+8fzo/4SEf3j+dH/CQj+8fzo/4SEf3j+dH/CQj+8fzrgv+EiH98/nR/wAJEP75/Oj/AISIf3z+dH/CRD++fzo/4SIf3z+dH/CRD++fzo/4SIf3z+dH/CRD++fzo/4SIf3z+dH/AAkQ/vn86P8AhIh/fP50f8JEP75/Oj/hIh/fP50f8JEP75/Oj/hIh/fP50f8JEP75/Oj/hIh/fP50f8ACRD++fzrgf8AhJf+mn60f8JL/wBNP1o/4SX/AKafrR/wkv8A00/Wj/hJf+mn60f8JL/00/Wj/hJf+mn60f8ACS/9NP1o/wCEl/6afrR/wkv/AE0/Wj/hJf8App+tH/CS/wDTT9aP+El/6afrR/wkv/TT9aP+El/6afrR/wAJL/00/Wj/AISX/pp+tH/CS/8ATT9a4H/hIR/z0P50f8JCP+eh/Oj/AISEf89D+dH/AAkI/wCeh/Oj/hIR/wA9D+dH/CQj/nofzo/4SEf89D+dH/CQj/nofzo/4SEf89D+dH/CQj/nofzo/wCEhH/PQ/nR/wAJCP8Anofzo/4SEf8APQ/nR/wkI/56H86P+EhH/PQ/nR/wkI/56H86P+EhH/PQ/nR/wkI/56H864L/AISNf+e1H/CRr/z2o/4SNf8AntR/wka/89qP+EjX/ntR/wAJGv8Az2o/4SNf+e1H/CRr/wA9qP8AhI1/57Uf8JGv/Paj/hI1/wCe1H/CRr/z2o/4SNf+e1H/AAka/wDPaj/hI1/57Uf8JGv/AD2o/wCEjX/ntR/wka/89q4L/hIz/wA9v1FH/CRn/nt+oo/4SM/89v1FH/CRn/nt+oo/4SM/89v1FH/CRn/nt+oo/wCEjP8Az2/UUf8ACRn/AJ7fqKP+EjP/AD2/UUf8JGf+e36ij/hIz/z2/UUf8JGf+e36ij/hIz/z2/UUf8JGf+e36ij/AISM/wDPb9RR/wAJGf8Ant+oo/4SM/8APb9RR/wkZ/57fqK+w/8AiGO/4Lt/9GNH/wAOZ4Y/+WdH/EMd/wAF2/8Aoxo/+HM8Mf8Ayzo/4hjv+C7f/RjR/wDDmeGP/lnR/wAQx3/Bdv8A6MaP/hzPDH/yzo/4hjv+C7f/AEY0f/DmeGP/AJZ0f8Qx3/Bdv/oxo/8AhzPDH/yzo/4hjv8Agu3/ANGNH/w5nhj/AOWdH/EMd/wXb/6MaP8A4czwx/8ALOj/AIhjv+C7f/RjR/8ADmeGP/lnR/xDHf8ABdv/AKMaP/hzPDH/AMs6P+IY7/gu3/0Y0f8Aw5nhj/5Z0f8AEMd/wXb/AOjGj/4czwx/8s6P+IY7/gu3/wBGNH/w5nhj/wCWdH/EMd/wXb/6MaP/AIczwx/8s6P+IY7/AILt/wDRjR/8OZ4Y/wDlnR/xDHf8F2/+jGj/AOHM8Mf/ACzo/wCIY7/gu3/0Y0f/AA5nhj/5Z0f8Qx3/AAXb/wCjGj/4czwx/wDLOv67aKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK/9k="
+	},
+	"nbf": 1681314190,
+	"exp": 1681314490,
+	"iat": 1681314190
+}
+```
+
+
+
+
+## Revoke Request
+
+<ul class="tab" data-tab="fa064167-dd9f-469e-a83d-0abd662db07c">
+    
+        <li class="active">
+            <a href="">Public- and private-key </a>
+        </li>
+    
+        <li>
+            <a href="">Secret key </a>
+        </li>
+    
+</ul>
+<ul class="tab-content" id="fa064167-dd9f-469e-a83d-0abd662db07c">
+    
+        <li class="active">
+<p>Not applicable.</p>
+
+</li>
+    
+        <li>
+<p><b><code>POST https://oidc.<i><b>[e2e/prd]</b></i>.itsme.services/v2/connect/revoke</code></b></p>
+
+<p>The Revocation Endpoint enables your application to notify itsme that a previously obtained access token is no longer needed and MUST be revoked.</p>
+
+<h3 id="parameters">Parameters</h3>
+
+<table>
+  <tbody>
+    <tr>
+      <td><div class="paramName" style="padding-left: calc(0*20px);">token</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq">REQUIRED</span>
+</div></td>
+      <td>The <code>access_token</code> previously obtained that you want to revoke.</td>
+    </tr>
+    <tr>
+      <td><div class="paramName" style="padding-left: calc(0*20px);">token_type_hint</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq">OPTIONAL</span>
+</div></td>
+      <td>A hint about the type of the token submitted for revocation. You MAY pass this parameter in order to help itsme to optimize the token lookup. If the server is unable to locate the token using the given hint, it MUST extend its search across all of its supported token types. If used, this is set to <code>access_token</code> because itsme API don't support refresh tokens.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="response">Response</h3>
+
+<p><code>200</code></p>
+
+<p>itsme responds with HTTP status code 200 if the token has been revoked successfully or if the client submitted an invalid token.</p>
+
+<aside class="notice">Invalid tokens do not cause an error response since your application cannot handle such an error in a reasonable way. Moreover, the purpose of the revocation request, invalidating the particular token, is already achieved.
+</aside>
+
+</li>
+    
+</ul>
+
+
+### Example
+
+<ul class="tab" data-tab="ae757f1a-7b4a-4b68-a5be-3d18aa572ddc">
+    
+        <li class="active">
+            <a href="">Public- and private-key </a>
+        </li>
+    
+        <li>
+            <a href="">Secret key </a>
+        </li>
+    
+</ul>
+<ul class="tab-content" id="ae757f1a-7b4a-4b68-a5be-3d18aa572ddc">
+    
+        <li class="active">
+<p>Not applicable.</p>
+
+</li>
+    
+        <li>
+<p><strong><em>Request</em></strong></p>
+
+<div class="language-http highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">POST</span> <span class="nn">/connect/revoke</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">server.example.com</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/x-www-form-urlencoded</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Basic czZCaGRSa3F0MzpnWDFmQmF0M2JW</span>
+
+token=45ghiukldjahdnhzdauz&amp;token_type_hint=refresh_token
+</code></pre></div></div>
+
+<p><strong><em>Response</em></strong></p>
+
+<div class="language-http highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+
+</code></pre></div></div>
+
+</li>
+    
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
