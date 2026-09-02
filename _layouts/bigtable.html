@@ -46,15 +46,6 @@ layout: table_wrappers
     </a>
   </div>
   <div id="main-header" class="main-header">
-    {% if site.search_enabled != false %}
-      <div class="search">
-        <div class="search-input-wrap">
-          <input type="text" id="search-input" class="search-input" tabindex="0" placeholder="Search {{ site.title }}" aria-label="Search {{ site.title }}" autocomplete="off">
-          <label for="search-input" class="search-label"><svg viewBox="0 0 24 24" class="search-icon"><use xlink:href="#svg-search"></use></svg></label>
-        </div>
-        <div id="search-results" class="search-results"></div>
-      </div>
-    {% endif %}
     {% include header_custom.html %}
     {% if site.aux_links %}
       <nav aria-label="Auxiliary" class="aux-nav">
@@ -76,7 +67,7 @@ layout: table_wrappers
   </div>
   <nav role="navigation" aria-label="Main" id="site-nav" class="site-nav">
     <ul class="nav-list">
-      <li class="nav-list-item"><a href="{{ '/' | relative_url }}" class="nav-list-link">Home</a></li>
+      <li class="nav-list-item"><a href="{{ '/' | relative_url }}" class="nav-list-link">Homepage</a></li>
     </ul>
   </nav>
   <div class="main" id="top">
@@ -180,5 +171,6 @@ layout: table_wrappers
     {% endif %}
   </div>
   <script src="{{ '/public/js/tabs.js' | relative_url }}"></script>
+  <script src="{{ '/public/js/claims-filter.js' | relative_url }}"></script>
 </body>
 </html>
