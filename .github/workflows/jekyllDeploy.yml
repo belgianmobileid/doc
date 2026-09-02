@@ -9,15 +9,18 @@ on:
     # redeploy every morning to update unpublished pages
     - cron: "0 2 * * *"
 
-permissions:
-  contents: write
+permissions: {}
 
 jobs:
   deploy:
+    permissions:
+      contents: write
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v5
+        with:
+          persist-credentials: false
 
       - name: Set up Ruby
         uses: ruby/setup-ruby@95ef2b042f9d7a56d8268cba8559e2842e2ad01b # v1.321.0
