@@ -43,6 +43,7 @@ Jekyll::Hooks.register :documents, :post_render do |page|
 
   status_names = ["SHALL", "MAY NOT", "SHALL NOT"]
   replacement = <<~HTML
+    <p class="claims-availability__countries"><strong>Available countries:</strong> #{countries.join(', ')}</p>
     <div class="claims-availability__search">
       <label for="claims-search">Search claims</label>
       <input id="claims-search" type="search" placeholder="Search by claim name" autocomplete="off">
