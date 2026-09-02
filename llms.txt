@@ -1,0 +1,39 @@
+# itsme OIDC Documentation
+
+> This site documents how to integrate itsme to authenticate users, capture verified personal data, collect consent, and sign documents via OpenID Connect (OIDC) and CIBA flows, and how to request Qualified Electronic Signatures (QES).
+
+## OpenID Connect (OIDC)
+- [Authentication API](https://belgianmobileid.github.io/doc/authentication/): Authorization Code Flow overview and integration steps.
+- [Identification](https://belgianmobileid.github.io/doc/identification/): Identifying end-users via itsme.
+- [Confirmation](https://belgianmobileid.github.io/doc/confirmation/): Confirming user actions/transactions via itsme.
+- [Data Sharing](https://belgianmobileid.github.io/doc/datasharing/): Requesting and sharing verified user data.
+
+## CIBA (Client Initiated Backchannel Authentication)
+- [CIBA Confirm](https://belgianmobileid.github.io/doc/ciba-confirm/): Confirmation flow using CIBA.
+- [CIBA QR Login](https://belgianmobileid.github.io/doc/ciba-qr-login/): QR-code based login using CIBA.
+
+## Qualified Electronic Signature (QES)
+- [CSC](https://belgianmobileid.github.io/doc/QES-CSC/): Cloud Signature Consortium based signing.
+- [OASIS](https://belgianmobileid.github.io/doc/QES-OASIS/): OASIS DSS based signing.
+
+## Deeplinks
+- [Overview](https://belgianmobileid.github.io/doc/deeplinks-overview/): Deeplink integration overview.
+- [Android](https://belgianmobileid.github.io/doc/deeplinks-android/): Android deeplink setup.
+- [iOS](https://belgianmobileid.github.io/doc/deeplinks-ios/): iOS deeplink setup.
+- [Fallback](https://belgianmobileid.github.io/doc/deeplinks-fallback/): Fallback behavior when itsme is not installed.
+- [Troubleshooting](https://belgianmobileid.github.io/doc/deeplinks-troubleshooting/): Common deeplink issues and fixes.
+
+## OIDC Platform Integrations
+- [Auth0](https://belgianmobileid.github.io/doc/auth0/)
+- [AWS](https://belgianmobileid.github.io/doc/aws/)
+- [Azure B2C](https://belgianmobileid.github.io/doc/azureB2C/)
+- [ForgeRock](https://belgianmobileid.github.io/doc/forgerock/)
+- [IAM](https://belgianmobileid.github.io/doc/IAM/)
+- [Okta](https://belgianmobileid.github.io/doc/okta/)
+
+## Appendix
+- [Claims](https://belgianmobileid.github.io/doc/claims/): Overview of available OIDC claims.
+- [JOSE](https://belgianmobileid.github.io/doc/JOSE/): JSON Object Signing and Encryption reference.
+
+## Optional
+- [Status Page Subscription](https://belgianmobileid.github.io/doc/status-page-subscription/): Subscribing to itsme service status updates.
