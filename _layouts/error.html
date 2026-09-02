@@ -1,0 +1,16 @@
+---
+layout: table_wrappers
+---
+
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: 'en-US' }}">
+{% include head.html %}
+<body>
+  <header class="site-header">
+    <a href="{{ '/' | relative_url }}" class="site-title lh-tight">{% include title.html %}</a>
+  </header>
+  <main class="main-content" role="main">
+    {{ content }}
+  </main>
+</body>
+</html>
