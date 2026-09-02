@@ -2,7 +2,7 @@ Voilà une page de test de Jekyll
 
 ### First tabs
 
-<ul class="tab" data-tab="247dda9b-4220-41af-9df4-9ab6b2204f8d">
+<ul class="tab" data-tab="d32f9296-fd12-45bd-abc8-5d85dad9e2c4">
     
         <li class="active">
             <a href="">js </a>
@@ -13,7 +13,7 @@ Voilà une page de test de Jekyll
         </li>
     
 </ul>
-<ul class="tab-content" id="247dda9b-4220-41af-9df4-9ab6b2204f8d">
+<ul class="tab-content" id="d32f9296-fd12-45bd-abc8-5d85dad9e2c4">
     
         <li class="active">
 <p>tagada test</p>
@@ -31,7 +31,7 @@ here goes some code</p>
 
 ### Second tabs
 
-<ul class="tab" data-tab="bb58e9e3-f912-4952-b7e4-3cc3d7f38bbb">
+<ul class="tab" data-tab="6b93a884-9f13-4bf0-ab90-ecdc194a22b6">
     
         <li class="active">
             <a href="">yaml </a>
@@ -42,7 +42,7 @@ here goes some code</p>
         </li>
     
 </ul>
-<ul class="tab-content" id="bb58e9e3-f912-4952-b7e4-3cc3d7f38bbb">
+<ul class="tab-content" id="6b93a884-9f13-4bf0-ab90-ecdc194a22b6">
     
         <li class="active">
 <p>hello:</p>
