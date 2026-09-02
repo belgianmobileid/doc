@@ -9,11 +9,12 @@ on:
     # redeploy every morning to update unpublished pages
     - cron: "0 2 * * *"
 
-permissions:
-  contents: write
+permissions: {}
 
 jobs:
   deploy:
+    permissions:
+      contents: write
     runs-on: ubuntu-latest
 
     steps:
