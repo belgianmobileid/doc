@@ -84,6 +84,7 @@ nav_order: 1
     <h2>Appendix</h2>
     <p>
       Need the full list of supported claims?
+      <br />
       <a href="{{ '/claims/' | relative_url }}">View claims reference →</a>
     </p>
   </header>
@@ -95,7 +96,7 @@ nav_order: 1
     <p>
       Already using an Identity &amp; Access Management platform? We provide
       integration guidance for some of the most common ones (without guarantee).
-      See the <a href="IAM">IAM overview</a>.
+      See the <a href="IAM">IAM overview →</a>.
     </p>
   </header>
 

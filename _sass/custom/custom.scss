@@ -385,6 +385,10 @@ $home-border: rgba(31, 29, 38, 0.08);
 }
 
 /* Sections */
+.homepage-content a {
+    font-weight: 600;
+}
+
 .home-section {
     margin: 3rem 0;
 }
