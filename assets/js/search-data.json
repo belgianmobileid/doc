@@ -260,7 +260,7 @@
   },"37": {
     "doc": "Home",
     "title": "IAM platforms",
-    "content": "Already using an Identity &amp; Access Management platform? We provide integration guidance for some of the most common ones (without guarantee). See the IAM overview. | Azure B2C | Auth0 | AWS Cognito | Forgerock | Okta | . ",
+    "content": "Already using an Identity &amp; Access Management platform? We provide integration guidance for some of the most common ones (without guarantee). See the IAM overview →. | Azure B2C | Auth0 | AWS Cognito | Forgerock | Okta | . ",
     "url": "/doc/index",
     
     "relUrl": "/index"
