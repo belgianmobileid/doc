@@ -295,8 +295,10 @@ $home-border: rgba(31, 29, 38, 0.08);
 /* Hero */
 .home-hero {
     position: relative;
+    display: flex;
+    align-items: center;
     margin: 0 0 2rem;
-    padding: 1.75rem 1.75rem 2rem;
+    padding: 1.75rem;
     border-radius: 12px;
     overflow: hidden;
     color: #fff;
@@ -308,7 +310,8 @@ $home-border: rgba(31, 29, 38, 0.08);
 }
 
 .home-hero__content {
-    max-width: 720px;
+    max-width: none;
+    width: 100%;
 }
 
 .home-hero__eyebrow {
@@ -336,7 +339,7 @@ $home-border: rgba(31, 29, 38, 0.08);
 .home-hero__lead {
     font-size: 0.98rem;
     line-height: 1.5;
-    max-width: 620px;
+    max-width: none;
     margin: 0;
     color: rgba(255, 255, 255, 0.92);
 }

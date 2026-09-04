@@ -11,7 +11,9 @@ nav_order: 1
     <span class="home-hero__eyebrow">itsme Developer Hub</span>
     <p class="home-hero__lead">
       Integrate itsme to authenticate users, capture verified personal data,
-      collect consent and sign documents — on web, mobile web and native apps.
+      collect consent and sign documents.
+      <br />
+      On web, mobile web and native apps.
     </p>
   </div>
 </section>
