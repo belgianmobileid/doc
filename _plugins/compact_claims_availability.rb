@@ -3,8 +3,8 @@
 Jekyll::Hooks.register :documents, :post_render do |page|
   next unless page.data["compact_claims_availability"]
 
-  table_pattern = /<table id="claims-availability">(.*?)<\/table>/m
-  source_table = page.output[table_pattern, 0]
+  table_pattern = /<div class="table-wrapper">\s*(<table id="claims-availability">(.*?)<\/table>)\s*<\/div>/m
+  source_table = page.output[table_pattern, 1]
   next unless source_table
 
   header = source_table[/<tr>(.*?)<\/tr>/m, 1]
