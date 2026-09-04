@@ -281,7 +281,7 @@
   },"40": {
     "doc": "Home",
     "title": "Home",
-    "content": "itsme Developer Hub Integrate itsme to authenticate users, capture verified personal data, collect consent and sign documents — on web, mobile web and native apps. ",
+    "content": "itsme Developer Hub Integrate itsme to authenticate users, capture verified personal data, collect consent and sign documents. On web, mobile web and native apps. ",
     "url": "/doc/index",
     
     "relUrl": "/index"

@@ -2051,15 +2051,15 @@ td, th { border-left: none; vertical-align: top; text-align: left; }
 #main-content-wrap { padding-top: 84px !important; position: relative; z-index: 1; /* Override the inline width:1064px from the homepage layout so the page (and the cards grid) become responsive. */ width: 100% !important; max-width: 1064px; box-sizing: border-box; padding-left: 1.5rem; padding-right: 1.5rem; }
 
 /* Hero */
-.home-hero { position: relative; margin: 0 0 2rem; padding: 1.75rem 1.75rem 2rem; border-radius: 12px; overflow: hidden; color: #fff; background: radial-gradient(1200px 400px at 90% -10%, rgba(255, 255, 255, 0.18), transparent 60%), radial-gradient(800px 300px at -10% 110%, rgba(255, 255, 255, 0.12), transparent 60%), linear-gradient(135deg, #ff4612 0%, #ff7a3d 55%, #ffb27a 100%); box-shadow: 0 12px 28px -18px rgba(255, 70, 18, 0.45); }
+.home-hero { position: relative; display: flex; align-items: center; margin: 0 0 2rem; padding: 1.75rem; border-radius: 12px; overflow: hidden; color: #fff; background: radial-gradient(1200px 400px at 90% -10%, rgba(255, 255, 255, 0.18), transparent 60%), radial-gradient(800px 300px at -10% 110%, rgba(255, 255, 255, 0.12), transparent 60%), linear-gradient(135deg, #ff4612 0%, #ff7a3d 55%, #ffb27a 100%); box-shadow: 0 12px 28px -18px rgba(255, 70, 18, 0.45); }
 
-.home-hero__content { max-width: 720px; }
+.home-hero__content { max-width: none; width: 100%; }
 
 .home-hero__eyebrow { display: inline-block; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.25rem 0.6rem; border-radius: 999px; background: rgba(255, 255, 255, 0.18); backdrop-filter: blur(4px); margin-bottom: 0.75rem; }
 
 .home-hero__title { font-size: clamp(1.4rem, 2.4vw, 1.9rem); line-height: 1.15; font-weight: 700; margin: 0 0 0.5rem; color: #fff; border: 0; }
 
-.home-hero__lead { font-size: 0.98rem; line-height: 1.5; max-width: 620px; margin: 0; color: rgba(255, 255, 255, 0.92); }
+.home-hero__lead { font-size: 0.98rem; line-height: 1.5; max-width: none; margin: 0; color: rgba(255, 255, 255, 0.92); }
 
 .home-hero__cta { display: flex; gap: 0.75rem; flex-wrap: wrap; }
 
