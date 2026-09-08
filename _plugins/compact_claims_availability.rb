@@ -65,7 +65,7 @@ Jekyll::Hooks.register :documents, :post_render do |page|
           columns = status_names.map do |status|
             countries_with_status = claim[:grouped][status]
             value = if countries_with_status.empty?
-                      "No countries"
+                      "-"
                     elsif countries_with_status.length == countries.length
                       "All countries"
                     elsif countries_with_status.length > countries.length - 4
