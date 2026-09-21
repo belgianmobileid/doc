@@ -1995,17 +1995,19 @@ td, th { border-left: none; vertical-align: top; text-align: left; }
 /* Claims availability */
 .claims-availability { width: 100%; margin-top: 1.5rem; table-layout: fixed; }
 
-.claims-availability__search { display: grid; gap: 0.35rem; max-width: 24rem; margin: 1.25rem 0 0.5rem; padding: 0.875rem 1rem; border: 1px solid #d9d7d5; border-left: 4px solid #ff4612; border-radius: 4px; background: #faf9f8; }
+.claims-availability__search { display: flex; flex-wrap: wrap; gap: 0.35rem; max-width: 48rem; margin: 1.25rem 0 0.5rem; padding: 0.875rem 1rem; border: 1px solid #d9d7d5; border-left: 4px solid #ff4612; border-radius: 4px; background: #faf9f8; }
 
 .claims-availability__countries { margin: 1.25rem 0 0; }
 
 .claims-availability__search label { color: #1f1d26; font-weight: 700; }
 
-.claims-availability__search input { width: 100%; padding: 0.55rem 0.7rem; border: 1px solid #b3b1ad; border-radius: 4px; background: #fff; box-sizing: border-box; font: inherit; }
+.claims-availability__control { display: grid; flex: 1 1 18rem; gap: 0.35rem; }
 
-.claims-availability__search input:focus { outline: 2px solid #ff4612; outline-offset: 1px; border-color: #ff4612; }
+.claims-availability__search input, .claims-availability__search select { width: 100%; padding: 0.55rem 0.7rem; border: 1px solid #b3b1ad; border-radius: 4px; background: #fff; box-sizing: border-box; font: inherit; }
 
-.claims-availability__search p { margin: 0; }
+.claims-availability__search input:focus, .claims-availability__search select:focus { outline: 2px solid #ff4612; outline-offset: 1px; border-color: #ff4612; }
+
+.claims-availability__search p { flex-basis: 100%; margin: 0; }
 
 .claims-availability th, .claims-availability td { padding: 0.875rem; border: 1px solid #d9d7d5; vertical-align: top; overflow-wrap: anywhere; }
 
