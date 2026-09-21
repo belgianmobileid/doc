@@ -1,9 +1,10 @@
 ---
-layout: homepage
+layout: statuspage
 title: Status Page Notifications
 permalink: /status-page-subscription/
-nav_exclude: true
-toc_list: false
+nav_exclude: false
+toc_list: true
+toc_h_min: 2
 ---
 
 # Status Page Notifications
