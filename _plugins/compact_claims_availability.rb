@@ -45,8 +45,18 @@ Jekyll::Hooks.register :documents, :post_render do |page|
   replacement = <<~HTML
     <p class="claims-availability__countries"><strong>Available countries:</strong> #{countries.join(', ')}</p>
     <div class="claims-availability__search">
-      <label for="claims-search">Search claims</label>
-      <input id="claims-search" type="search" placeholder="Search by claim name" autocomplete="off">
+      <div class="claims-availability__control">
+        <label for="claims-profile">Package</label>
+        <select id="claims-profile">
+          <option value="full-digital" selected>Full Digital</option>
+          <option value="full-check-in">Full Check-in</option>
+          <option value="connect">Connect</option>
+        </select>
+      </div>
+      <div class="claims-availability__control">
+        <label for="claims-search">Search claims</label>
+        <input id="claims-search" type="search" placeholder="Search by claim name" autocomplete="off">
+      </div>
       <p id="claims-search-empty" hidden>No matching claims.</p>
     </div>
     <table class="claims-availability" aria-label="Claim availability by issuing country">

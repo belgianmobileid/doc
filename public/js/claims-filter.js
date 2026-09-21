@@ -1,8 +1,9 @@
 document.addEventListener("DOMContentLoaded", function () {
   var input = document.getElementById("claims-search");
+  var profile = document.getElementById("claims-profile");
   var emptyMessage = document.getElementById("claims-search-empty");
 
-  if (!input || !emptyMessage) {
+  if (!input || !profile || !emptyMessage) {
     return;
   }
 
@@ -10,6 +11,20 @@ document.addEventListener("DOMContentLoaded", function () {
     document.querySelectorAll(".claims-availability tr[data-claim-index]")
   );
   var groups = {};
+  var connectClaims = [
+    "app",
+    "account",
+    "transaction_ip",
+    "identification_mode",
+    "ongoing_call",
+    "name",
+    "given_name",
+    "family_name",
+    "email",
+    "email_verified",
+    "phone_number",
+    "phone_number_verified"
+  ];
 
   claimRows.forEach(function (row) {
     var index = row.getAttribute("data-claim-index");
@@ -29,7 +44,7 @@ document.addEventListener("DOMContentLoaded", function () {
     return position === query.length;
   }
 
-  input.addEventListener("input", function () {
+  function applyFilters() {
     var query = input.value.toLowerCase().replace(/\s+/g, "");
     var matches = 0;
 
@@ -37,7 +52,9 @@ document.addEventListener("DOMContentLoaded", function () {
       var rows = groups[index];
       var claim = rows[0].querySelector(".claims-availability__claim");
       var value = claim.textContent.toLowerCase().replace(/\s+/g, "");
-      var isMatch = !query || isFuzzyMatch(value, query);
+      var claimName = (claim.querySelector("b:last-of-type") || claim).textContent.trim();
+      var matchesProfile = profile.value !== "connect" || connectClaims.indexOf(claimName) !== -1;
+      var isMatch = matchesProfile && (!query || isFuzzyMatch(value, query));
 
       rows.forEach(function (row) {
         row.hidden = !isMatch;
@@ -49,5 +66,8 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     emptyMessage.hidden = matches !== 0;
-  });
+  }
+
+  input.addEventListener("input", applyFilters);
+  profile.addEventListener("change", applyFilters);
 });
