@@ -93,7 +93,7 @@
       <br>Supported claims are listed below. Please check <a href="https://belgianmobileid.github.io/doc/claims/" target="blank">this page</a> for availability and format per country.<br />
         <table>
           <tr>
-            <td>{% include parameter.html name="name" req="OPTIONAL" %}</td><td>Returns user's full name in displayable form including all name parts, possibly including titles and suffixes.</td>
+            <td>{% include parameter.html name="name" req="OPTIONAL" %}</td><td>Returns user's full name in displayable form including all name parts.</td>
           </tr>
           <tr>
             <td>{% include parameter.html name="given_name" req="OPTIONAL" %}</td><td>Returns user's given name(s) or first name(s). Note that in some cultures, people can have multiple given names; all can be present, with the names being separated by space characters.<br><br>If requested, a value MAY NOT be returned if the user doesn't have any first name(s).</td>

@@ -54,7 +54,7 @@ How to understand the table below:
     </tr>
     <tr>
       <td><b>name</b></td>
-      <td>User's full name in displayable form including all name parts, possibly including titles and suffixes.</td>
+      <td>User's full name in displayable form including all name parts.</td>
       <td>SHALL</td> <!-- Belgium -->
       <td>SHALL</td> <!-- Netherlands -->
       <td>SHALL</td> <!-- Luxembourg -->
