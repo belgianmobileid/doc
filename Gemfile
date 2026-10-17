@@ -35,3 +35,5 @@ gem "wdm", ">= 0.1.0", :platforms => [:mingw, :x64_mingw, :mswin]
 gem "webrick", "~> 1.9"
 
 gem "concurrent-ruby", ">= 1.3.7"
+
+gem "jekyll-seo-tag", ">= 2.9.1"
