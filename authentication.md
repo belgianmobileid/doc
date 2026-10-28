@@ -144,8 +144,6 @@ itsme requires <code>https</code> connections to guarantee security. With the <c
 
 A certificate provider can opt to issue three types of certificates, each requiring its own degree of vetting rigor. In order of increasing rigor (and naturally, cost) they are: Domain Validation, Organization Validation and Extended Validation.
 
-The Domain Validation certificate doesn’t provide sufficient identity guarantees to itsme. So, <b>only the Organization Validation and Extended Validation certificates</b> are supported. For example, using the Let's Encrypt open certificate authority is not suffcient because it only provide standard Domain Validation certificates. 
-
 <aside class="notice">The chain of trust of these certificates need to be publicly accessible, meaning that our systems need to be able to access the root and the intermediate certificates.
 </aside>
 
@@ -624,7 +622,7 @@ Examples:
 
 ## itsme Discovery Document
 
-<ul class="tab" data-tab="98548479-6c60-42c6-9489-f339346afe80">
+<ul class="tab" data-tab="5da32933-6e1e-435b-8e12-c1693c18704f">
     
         <li class="active">
             <a href="">Public- and private-key </a>
@@ -635,7 +633,7 @@ Examples:
         </li>
     
 </ul>
-<ul class="tab-content" id="98548479-6c60-42c6-9489-f339346afe80">
+<ul class="tab-content" id="5da32933-6e1e-435b-8e12-c1693c18704f">
     
         <li class="active">
 <p><b><code>GET https://idp.<i><b>[e2e/prd]</b></i>.itsme.services/v2/.well-known/openid-configuration</code></b></p>
@@ -675,7 +673,7 @@ Examples:
 
 ## Authorization Request
 
-<ul class="tab" data-tab="7e5fa800-55b5-4406-ae16-f691c3ab88e6">
+<ul class="tab" data-tab="ffe508f2-324e-4607-a468-c718c14e76bf">
     
         <li class="active">
             <a href="">Public- and private-key </a>
@@ -686,7 +684,7 @@ Examples:
         </li>
     
 </ul>
-<ul class="tab-content" id="7e5fa800-55b5-4406-ae16-f691c3ab88e6">
+<ul class="tab-content" id="ffe508f2-324e-4607-a468-c718c14e76bf">
     
         <li class="active">
 <p><b><code>GET https://idp.<i><b>[e2e/prd]</b></i>.itsme.services/v2/authorization</code></b></p>
@@ -1314,7 +1312,7 @@ Examples:
 
 ### Example
 
-<ul class="tab" data-tab="1b3926db-1dc8-4bb9-b5d2-b4aaf243b58b">
+<ul class="tab" data-tab="b06b04c5-7291-4abf-805d-6d18bd5a2ceb">
     
         <li class="active">
             <a href="">Public- and private-key </a>
@@ -1325,7 +1323,7 @@ Examples:
         </li>
     
 </ul>
-<ul class="tab-content" id="1b3926db-1dc8-4bb9-b5d2-b4aaf243b58b">
+<ul class="tab-content" id="b06b04c5-7291-4abf-805d-6d18bd5a2ceb">
     
         <li class="active">
 <p><strong><em>Request</em></strong></p>
@@ -1408,7 +1406,7 @@ response_type=code
 <a id="TokenReq"></a>
 ## Token Request
 
-<ul class="tab" data-tab="dab37682-9952-4ff9-afc6-f5ea19d93759">
+<ul class="tab" data-tab="027bae2a-4eef-427f-8b39-ce8bc2b0ab5a">
     
         <li class="active">
             <a href="">Public- and private-key </a>
@@ -1419,7 +1417,7 @@ response_type=code
         </li>
     
 </ul>
-<ul class="tab-content" id="dab37682-9952-4ff9-afc6-f5ea19d93759">
+<ul class="tab-content" id="027bae2a-4eef-427f-8b39-ce8bc2b0ab5a">
     
         <li class="active">
 <p><b><code>POST https://idp.<i><b>[e2e/prd]</b></i>.itsme.services/v2/token</code></b></p>
@@ -1669,7 +1667,7 @@ response_type=code
 
 ### Example
 
-<ul class="tab" data-tab="6b78a937-37c4-43a7-a981-dcc0ddfbafed">
+<ul class="tab" data-tab="d39c4bd5-d4e0-47b9-bcae-8cbeab475c1d">
     
         <li class="active">
             <a href="">Public- and private-key </a>
@@ -1680,7 +1678,7 @@ response_type=code
         </li>
     
 </ul>
-<ul class="tab-content" id="6b78a937-37c4-43a7-a981-dcc0ddfbafed">
+<ul class="tab-content" id="d39c4bd5-d4e0-47b9-bcae-8cbeab475c1d">
     
         <li class="active">
 <p><strong><em>Request</em></strong></p>
@@ -1810,7 +1808,7 @@ grant_type=authorization_code
 <a id="UserInfoReq"></a>
 ## UserInfo Request
 
-<ul class="tab" data-tab="ae801775-c8f4-4fe5-bd95-88b56888117e">
+<ul class="tab" data-tab="5d95f195-db9c-4ade-b9c4-8f36adef61ee">
     
         <li class="active">
             <a href="">Public- and private-key </a>
@@ -1821,7 +1819,7 @@ grant_type=authorization_code
         </li>
     
 </ul>
-<ul class="tab-content" id="ae801775-c8f4-4fe5-bd95-88b56888117e">
+<ul class="tab-content" id="5d95f195-db9c-4ade-b9c4-8f36adef61ee">
     
         <li class="active">
 <p><b><code>GET https://idp.<i><b>[e2e/prd]</b></i>.itsme.services/v2/userinfo</code></b></p>
@@ -1982,7 +1980,7 @@ Content-Type: application/json
 
 ## Revoke Request
 
-<ul class="tab" data-tab="159c566f-1f3b-4a72-b33e-a99b656be888">
+<ul class="tab" data-tab="0db7dc40-a23e-473d-b0db-61ecb62fc5d3">
     
         <li class="active">
             <a href="">Public- and private-key </a>
@@ -1993,7 +1991,7 @@ Content-Type: application/json
         </li>
     
 </ul>
-<ul class="tab-content" id="159c566f-1f3b-4a72-b33e-a99b656be888">
+<ul class="tab-content" id="0db7dc40-a23e-473d-b0db-61ecb62fc5d3">
     
         <li class="active">
 <p>Not applicable.</p>
@@ -2044,7 +2042,7 @@ Content-Type: application/json
 
 ### Example
 
-<ul class="tab" data-tab="58504ecb-45f0-42b9-a1c5-e228ea4c71b9">
+<ul class="tab" data-tab="32a6d7a9-72e1-4829-bc91-fac939fd6593">
     
         <li class="active">
             <a href="">Public- and private-key </a>
@@ -2055,7 +2053,7 @@ Content-Type: application/json
         </li>
     
 </ul>
-<ul class="tab-content" id="58504ecb-45f0-42b9-a1c5-e228ea4c71b9">
+<ul class="tab-content" id="32a6d7a9-72e1-4829-bc91-fac939fd6593">
     
         <li class="active">
 <p>Not applicable.</p>
