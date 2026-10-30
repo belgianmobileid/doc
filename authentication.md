@@ -622,7 +622,7 @@ Examples:
 
 ## itsme Discovery Document
 
-<ul class="tab" data-tab="b8e72b2d-c28c-4998-bb5f-a0440603e88d">
+<ul class="tab" data-tab="524eef8b-5355-4b7b-b89e-ed7144b5fa22">
     
         <li class="active">
             <a href="">Public- and private-key </a>
@@ -633,7 +633,7 @@ Examples:
         </li>
     
 </ul>
-<ul class="tab-content" id="b8e72b2d-c28c-4998-bb5f-a0440603e88d">
+<ul class="tab-content" id="524eef8b-5355-4b7b-b89e-ed7144b5fa22">
     
         <li class="active">
 <p><b><code>GET https://idp.<i><b>[e2e/prd]</b></i>.itsme.services/v2/.well-known/openid-configuration</code></b></p>
@@ -673,7 +673,7 @@ Examples:
 
 ## Authorization Request
 
-<ul class="tab" data-tab="cf19fa69-edbf-497d-92a7-da8d3ba70a24">
+<ul class="tab" data-tab="b2e4e21b-ec13-47d4-8689-789cb11900a7">
     
         <li class="active">
             <a href="">Public- and private-key </a>
@@ -684,7 +684,7 @@ Examples:
         </li>
     
 </ul>
-<ul class="tab-content" id="cf19fa69-edbf-497d-92a7-da8d3ba70a24">
+<ul class="tab-content" id="b2e4e21b-ec13-47d4-8689-789cb11900a7">
     
         <li class="active">
 <p><b><code>GET https://idp.<i><b>[e2e/prd]</b></i>.itsme.services/v2/authorization</code></b></p>
@@ -1312,7 +1312,7 @@ Examples:
 
 ### Example
 
-<ul class="tab" data-tab="0d92dcc5-c3e0-407a-9b3b-7099440fa91c">
+<ul class="tab" data-tab="20e809d5-cfdb-42b0-a68c-da663548b58c">
     
         <li class="active">
             <a href="">Public- and private-key </a>
@@ -1323,7 +1323,7 @@ Examples:
         </li>
     
 </ul>
-<ul class="tab-content" id="0d92dcc5-c3e0-407a-9b3b-7099440fa91c">
+<ul class="tab-content" id="20e809d5-cfdb-42b0-a68c-da663548b58c">
     
         <li class="active">
 <p><strong><em>Request</em></strong></p>
@@ -1406,7 +1406,7 @@ response_type=code
 <a id="TokenReq"></a>
 ## Token Request
 
-<ul class="tab" data-tab="cc3dd5c9-329f-40d9-b6cd-ea2e9ae4a74c">
+<ul class="tab" data-tab="ed7e9181-fda6-4042-8efb-7b1e9f55fe08">
     
         <li class="active">
             <a href="">Public- and private-key </a>
@@ -1417,7 +1417,7 @@ response_type=code
         </li>
     
 </ul>
-<ul class="tab-content" id="cc3dd5c9-329f-40d9-b6cd-ea2e9ae4a74c">
+<ul class="tab-content" id="ed7e9181-fda6-4042-8efb-7b1e9f55fe08">
     
         <li class="active">
 <p><b><code>POST https://idp.<i><b>[e2e/prd]</b></i>.itsme.services/v2/token</code></b></p>
@@ -1667,7 +1667,7 @@ response_type=code
 
 ### Example
 
-<ul class="tab" data-tab="3811e2b9-b01b-4be4-9fb1-116eeb1b02ae">
+<ul class="tab" data-tab="3118b89b-c01c-435f-98fd-01e4400a0e33">
     
         <li class="active">
             <a href="">Public- and private-key </a>
@@ -1678,7 +1678,7 @@ response_type=code
         </li>
     
 </ul>
-<ul class="tab-content" id="3811e2b9-b01b-4be4-9fb1-116eeb1b02ae">
+<ul class="tab-content" id="3118b89b-c01c-435f-98fd-01e4400a0e33">
     
         <li class="active">
 <p><strong><em>Request</em></strong></p>
@@ -1808,7 +1808,7 @@ grant_type=authorization_code
 <a id="UserInfoReq"></a>
 ## UserInfo Request
 
-<ul class="tab" data-tab="43662427-4720-47d3-939d-3d0ec199e26d">
+<ul class="tab" data-tab="f7b03faf-1a2c-450f-aa84-3865f56a1f40">
     
         <li class="active">
             <a href="">Public- and private-key </a>
@@ -1819,7 +1819,7 @@ grant_type=authorization_code
         </li>
     
 </ul>
-<ul class="tab-content" id="43662427-4720-47d3-939d-3d0ec199e26d">
+<ul class="tab-content" id="f7b03faf-1a2c-450f-aa84-3865f56a1f40">
     
         <li class="active">
 <p><b><code>GET https://idp.<i><b>[e2e/prd]</b></i>.itsme.services/v2/userinfo</code></b></p>
@@ -1980,7 +1980,7 @@ Content-Type: application/json
 
 ## Revoke Request
 
-<ul class="tab" data-tab="b3cb4e1d-299b-4464-90b0-d01dd653da3d">
+<ul class="tab" data-tab="085ad728-437f-4cd7-b922-05cfe857e121">
     
         <li class="active">
             <a href="">Public- and private-key </a>
@@ -1991,7 +1991,7 @@ Content-Type: application/json
         </li>
     
 </ul>
-<ul class="tab-content" id="b3cb4e1d-299b-4464-90b0-d01dd653da3d">
+<ul class="tab-content" id="085ad728-437f-4cd7-b922-05cfe857e121">
     
         <li class="active">
 <p>Not applicable.</p>
@@ -2042,7 +2042,7 @@ Content-Type: application/json
 
 ### Example
 
-<ul class="tab" data-tab="f6a15b79-c030-404c-bd09-64061e0f32cb">
+<ul class="tab" data-tab="1372e123-79f8-4d60-84bf-0182c5850aaf">
     
         <li class="active">
             <a href="">Public- and private-key </a>
@@ -2053,7 +2053,7 @@ Content-Type: application/json
         </li>
     
 </ul>
-<ul class="tab-content" id="f6a15b79-c030-404c-bd09-64061e0f32cb">
+<ul class="tab-content" id="1372e123-79f8-4d60-84bf-0182c5850aaf">
     
         <li class="active">
 <p>Not applicable.</p>
