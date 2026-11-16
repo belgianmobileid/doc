@@ -170,6 +170,114 @@ How to understand the table below:
       <td>SHALL</td> <!-- Moldova -->
     </tr>
     <tr>
+      <td><b>initials</b></td>
+      <td>User's initials, derived from the available given name information.</td>
+      <td>SHALL NOT</td> <!-- Belgium -->
+      <td>SHALL NOT<br>iDIN: SHALL<br> For now only available via iDIN scheme, soon available via itsme</td> <!-- Netherlands -->
+      <td>SHALL NOT</td> <!-- Luxembourg -->
+      <td>SHALL NOT</td> <!-- Ireland -->
+      <td>SHALL NOT</td> <!-- Portugal -->
+      <td>SHALL NOT</td> <!-- Italy -->
+      <td>SHALL NOT</td> <!-- France -->
+      <td>SHALL NOT</td> <!-- Spain -->
+      <td>SHALL NOT</td> <!-- UK -->
+      <td>SHALL NOT</td> <!-- Germany -->
+      <td>SHALL NOT</td> <!-- Finland -->
+      <td>SHALL NOT</td> <!-- Norway -->
+      <td>SHALL NOT</td> <!-- Sweden -->
+      <td>SHALL NOT</td> <!-- Denmark -->
+      <td>SHALL NOT</td> <!-- Iceland -->
+      <td>SHALL NOT</td> <!-- Estonia -->
+      <td>SHALL NOT</td> <!-- Romania -->
+      <td>SHALL NOT</td> <!-- Austria -->
+      <td>SHALL NOT</td> <!-- Bulgara -->
+      <td>SHALL NOT</td> <!-- Czechia -->
+      <td>SHALL NOT</td> <!-- Greece -->
+      <td>SHALL NOT</td> <!-- Hungary -->
+      <td>SHALL NOT</td> <!-- Poland -->
+      <td>SHALL NOT</td> <!-- Slovakia -->
+      <td>SHALL NOT</td> <!-- Croatia -->
+      <td>SHALL NOT</td> <!-- Lithuania -->
+      <td>SHALL NOT</td> <!-- Slovenia -->
+      <td>SHALL NOT</td> <!-- Latvia -->
+      <td>SHALL NOT</td> <!-- Cyprus -->
+      <td>SHALL NOT</td> <!-- Malta -->
+      <td>SHALL NOT</td> <!-- Serbia -->
+      <td>SHALL NOT</td> <!-- Moldova -->
+    </tr>
+    <tr>
+      <td><b>family_name_prefix</b></td>
+      <td>Recognized prefix part of the user's family name, when present.</td>
+      <td>SHALL NOT</td> <!-- Belgium -->
+      <td>SHALL NOT<br>iDIN: MAY NOT<br> For now only available via iDIN scheme, soon available via itsme</td> <!-- Netherlands -->
+      <td>SHALL NOT</td> <!-- Luxembourg -->
+      <td>SHALL NOT</td> <!-- Ireland -->
+      <td>SHALL NOT</td> <!-- Portugal -->
+      <td>SHALL NOT</td> <!-- Italy -->
+      <td>SHALL NOT</td> <!-- France -->
+      <td>SHALL NOT</td> <!-- Spain -->
+      <td>SHALL NOT</td> <!-- UK -->
+      <td>SHALL NOT</td> <!-- Germany -->
+      <td>SHALL NOT</td> <!-- Finland -->
+      <td>SHALL NOT</td> <!-- Norway -->
+      <td>SHALL NOT</td> <!-- Sweden -->
+      <td>SHALL NOT</td> <!-- Denmark -->
+      <td>SHALL NOT</td> <!-- Iceland -->
+      <td>SHALL NOT</td> <!-- Estonia -->
+      <td>SHALL NOT</td> <!-- Romania -->
+      <td>SHALL NOT</td> <!-- Austria -->
+      <td>SHALL NOT</td> <!-- Bulgara -->
+      <td>SHALL NOT</td> <!-- Czechia -->
+      <td>SHALL NOT</td> <!-- Greece -->
+      <td>SHALL NOT</td> <!-- Hungary -->
+      <td>SHALL NOT</td> <!-- Poland -->
+      <td>SHALL NOT</td> <!-- Slovakia -->
+      <td>SHALL NOT</td> <!-- Croatia -->
+      <td>SHALL NOT</td> <!-- Lithuania -->
+      <td>SHALL NOT</td> <!-- Slovenia -->
+      <td>SHALL NOT</td> <!-- Latvia -->
+      <td>SHALL NOT</td> <!-- Cyprus -->
+      <td>SHALL NOT</td> <!-- Malta -->
+      <td>SHALL NOT</td> <!-- Serbia -->
+      <td>SHALL NOT</td> <!-- Moldova -->
+    </tr>
+    <tr>
+      <td><b>family_name_without_prefix</b></td>
+      <td>Part of the user's family name after any recognized prefix. If no prefix is identified, this claim contains the full family name. The standard <i>family_name</i> claim continues to contain the full family name.</td>
+      <td>SHALL NOT</td> <!-- Belgium -->
+      <td>SHALL NOT<br>iDIN: SHALL<br> For now only available via iDIN scheme, soon available via itsme</td> <!-- Netherlands -->
+      <td>SHALL NOT</td> <!-- Luxembourg -->
+      <td>SHALL NOT</td> <!-- Ireland -->
+      <td>SHALL NOT</td> <!-- Portugal -->
+      <td>SHALL NOT</td> <!-- Italy -->
+      <td>SHALL NOT</td> <!-- France -->
+      <td>SHALL NOT</td> <!-- Spain -->
+      <td>SHALL NOT</td> <!-- UK -->
+      <td>SHALL NOT</td> <!-- Germany -->
+      <td>SHALL NOT</td> <!-- Finland -->
+      <td>SHALL NOT</td> <!-- Norway -->
+      <td>SHALL NOT</td> <!-- Sweden -->
+      <td>SHALL NOT</td> <!-- Denmark -->
+      <td>SHALL NOT</td> <!-- Iceland -->
+      <td>SHALL NOT</td> <!-- Estonia -->
+      <td>SHALL NOT</td> <!-- Romania -->
+      <td>SHALL NOT</td> <!-- Austria -->
+      <td>SHALL NOT</td> <!-- Bulgara -->
+      <td>SHALL NOT</td> <!-- Czechia -->
+      <td>SHALL NOT</td> <!-- Greece -->
+      <td>SHALL NOT</td> <!-- Hungary -->
+      <td>SHALL NOT</td> <!-- Poland -->
+      <td>SHALL NOT</td> <!-- Slovakia -->
+      <td>SHALL NOT</td> <!-- Croatia -->
+      <td>SHALL NOT</td> <!-- Lithuania -->
+      <td>SHALL NOT</td> <!-- Slovenia -->
+      <td>SHALL NOT</td> <!-- Latvia -->
+      <td>SHALL NOT</td> <!-- Cyprus -->
+      <td>SHALL NOT</td> <!-- Malta -->
+      <td>SHALL NOT</td> <!-- Serbia -->
+      <td>SHALL NOT</td> <!-- Moldova -->
+    </tr>
+    <tr>
       <td><b>birthdate</b></td>
       <td>User's birthdate, represented as a string in YYYY-MM-DD date format. itsme users are always 16 years old or more.</td>
       <td>MAY NOT<br>At least one of <i>birthdate</i> or <i>birthdate_as_string</i> will always be available.</td> <!-- Belgium -->
@@ -423,9 +531,9 @@ How to understand the table below:
     </tr>
     <tr>
       <td><b>gender</b></td>
-      <td>User's gender. Possible values are: <code>female</code> <code>male</code> <code>unknown</code> <code>n/a</code>. If the value mentioned on the user's ID document is different from those (local language, letter code...), then we apply a best-effort mapping to one of those values.</td>
+      <td>User's gender. Possible values are: <code>female</code> <code>male</code> <code>unknown</code> <code>n/a</code> <code>x</code>. If the value mentioned on the user's ID document is different from those (local language, letter code...), then we apply a best-effort mapping to one of those values.</td>
       <td>SHALL</td> <!-- Belgium -->
-      <td>MAY NOT</td> <!-- Netherlands -->
+      <td>SHALL</td> <!-- Netherlands -->
       <td>SHALL</td> <!-- Luxembourg -->
       <td>SHALL</td> <!-- Ireland -->
       <td>SHALL</td> <!-- Portugal -->
@@ -461,7 +569,7 @@ How to understand the table below:
       <td>http://itsme.services/v2/<br>claim/<b>official_gender</b></td>
       <td>User's gender unaltered, exactly as mentioned on their ID document.</td>
       <td>SHALL</td> <!-- Belgium -->
-      <td>MAY NOT</td> <!-- Netherlands -->
+      <td>SHALL</td> <!-- Netherlands -->
       <td>SHALL</td> <!-- Luxembourg -->
       <td>SHALL</td> <!-- Ireland -->
       <td>SHALL</td> <!-- Portugal -->
