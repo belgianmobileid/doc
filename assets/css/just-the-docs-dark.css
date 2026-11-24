@@ -1999,15 +1999,33 @@ td, th { border-left: none; vertical-align: top; text-align: left; }
 
 .claims-availability__countries { margin: 1.25rem 0 0; }
 
-.claims-availability__search label { color: #1f1d26; font-weight: 700; }
+.claims-availability__search label, .claims-availability__label { color: #1f1d26; font-weight: 700; }
 
 .claims-availability__control { display: grid; flex: 1 1 18rem; gap: 0.35rem; }
+
+.claims-availability__control[hidden] { display: none; }
 
 .claims-availability__search input, .claims-availability__search select { width: 100%; padding: 0.55rem 0.7rem; border: 1px solid #b3b1ad; border-radius: 4px; background: #fff; box-sizing: border-box; font: inherit; }
 
 .claims-availability__search input:focus, .claims-availability__search select:focus { outline: 2px solid #ff4612; outline-offset: 1px; border-color: #ff4612; }
 
 .claims-availability__search p { flex-basis: 100%; margin: 0; }
+
+.claims-availability__dropdown { position: relative; }
+
+.claims-availability__dropdown summary { padding: 0.55rem 0.7rem; border: 1px solid #b3b1ad; border-radius: 4px; background: #fff; cursor: pointer; }
+
+.claims-availability__dropdown-panel { position: absolute; z-index: 3; right: 0; left: 0; padding: 0.5rem; border: 1px solid #b3b1ad; border-radius: 4px; background: #fff; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); }
+
+.main-content .claims-availability__options { max-height: 15rem; margin: 0.5rem 0 0; padding: 0; overflow-y: auto; list-style: none; }
+
+.main-content .claims-availability__options > li::before { content: none; }
+
+.claims-availability__option--separator { border-top: 1px solid #d9d7d5; margin-top: 0.25rem; padding-top: 0.25rem; }
+
+.claims-availability__options button { width: 100%; padding: 0.45rem 0.7rem; border: 0; background: #fff; font: inherit; text-align: left; cursor: pointer; }
+
+.claims-availability__options button:hover, .claims-availability__options button:focus, .claims-availability__options button[aria-pressed="true"] { background: #faf4f1; }
 
 .claims-availability th, .claims-availability td { padding: 0.875rem; border: 1px solid #d9d7d5; vertical-align: top; overflow-wrap: anywhere; }
 

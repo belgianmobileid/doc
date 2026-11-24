@@ -622,7 +622,7 @@ Examples:
 
 ## itsme Discovery Document
 
-<ul class="tab" data-tab="ea32858a-0188-4595-90a1-16ced4ed2736">
+<ul class="tab" data-tab="232947f5-07ff-4927-b162-b0982def2ca2">
     
         <li class="active">
             <a href="">Public- and private-key </a>
@@ -633,7 +633,7 @@ Examples:
         </li>
     
 </ul>
-<ul class="tab-content" id="ea32858a-0188-4595-90a1-16ced4ed2736">
+<ul class="tab-content" id="232947f5-07ff-4927-b162-b0982def2ca2">
     
         <li class="active">
 <p><b><code>GET https://idp.<i><b>[e2e/prd]</b></i>.itsme.services/v2/.well-known/openid-configuration</code></b></p>
@@ -673,7 +673,7 @@ Examples:
 
 ## Authorization Request
 
-<ul class="tab" data-tab="4fd99da7-75c0-41d2-b45c-6d3e213762c0">
+<ul class="tab" data-tab="32ba510d-255e-4cc1-a16e-eab6e378a13d">
     
         <li class="active">
             <a href="">Public- and private-key </a>
@@ -684,7 +684,7 @@ Examples:
         </li>
     
 </ul>
-<ul class="tab-content" id="4fd99da7-75c0-41d2-b45c-6d3e213762c0">
+<ul class="tab-content" id="32ba510d-255e-4cc1-a16e-eab6e378a13d">
     
         <li class="active">
 <p><b><code>GET https://idp.<i><b>[e2e/prd]</b></i>.itsme.services/v2/authorization</code></b></p>
@@ -850,22 +850,36 @@ Examples:
     
     <span class="paramReq" >OPTIONAL</span>
 </div></td>
-      <td>Indicates the authentication method required to process the request, represented as a space-separated list of tag values, ordered by preference.<br><br>Possible values : <code>http://itsme.services/v2/claim/acr_basic</code> <code>http://itsme.services/v2/claim/acr_advanced</code><br><br><b>Note</b> : if these two values are provided only the most constraining authentication method will be applied, e.g. <code>http://itsme.services/v2/claim/acr_advanced</code>.<br />
+      <td>Indicates the authentication method required to process the request, represented as a space-separated list of tag values, ordered by preference.<br><br><b>Note</b> : If more then one value is provided, only the most constraining authentication method will be applied.<br>The list below is show from least to most constraining.<br />
         <table>
           <tr>
-            <td><div class="paramName" style="padding-left: calc(0*20px);">http://itsme.services/v2/<br>claim/acr_basic</div>
+            <td><div class="paramName" style="padding-left: calc(0*20px);">http://itsme.services/v2/claim/acr_basic</div>
 <div class="param2" style="padding-left: calc(0*20px);">
     
     <span class="paramReq" ></span>
-</div></td><td>It lets the user to choose either fingerprint usage (if device is compatible) or itsme code. If the <code>acr_values</code> parameter is not specified, this is the default authentication method.</td>
+</div></td><td>Standard authentication flow.<br><br>Initiated via QR code or App-to-App, with mobile number available as a fallback method.<br>The user can authorize using biometrics or their itsme PIN.</td>
           </tr>
           <tr>
-            <td><div class="paramName" style="padding-left: calc(0*20px);">http://itsme.services/v2/<br>claim/acr_advanced</div>
+            <td><div class="paramName" style="padding-left: calc(0*20px);">http://itsme.services/v2/claim/acr_advanced</div>
 <div class="param2" style="padding-left: calc(0*20px);">
     
     <span class="paramReq" ></span>
-</div></td><td>It forces the user to use his itsme code.</td>
+</div></td><td>High-assurance authentication flow.<br><br>Initiated via QR code or App-to-App, with mobile number available as a fallback method. <br>Strictly requires the user to authorize using their itsme PIN; biometrics are disallowed.</td>
           </tr>
+          <tr>
+            <td><div class="paramName" style="padding-left: calc(0*20px);">http://itsme.services/v2/claim/acr_basic_proximity</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq" ></span>
+</div></td><td>Enforces physical proximity initiation with standard authentication flow.<br><br>Initiation via QR code scan or App-to-App redirect. Mobile number fallback is disabled. <br>The user can authorize using biometrics or their itsme PIN.</td>
+          </tr>
+          <tr>
+            <td><div class="paramName" style="padding-left: calc(0*20px);">http://itsme.services/v2/claim/acr_advanced_proximity</div>
+<div class="param2" style="padding-left: calc(0*20px);">
+    
+    <span class="paramReq" ></span>
+</div></td><td>Enforces physical proximity intiation with high-assurance authentication flow.<br><br>Initiation via QR code scan or App-to-App redirect (no mobile number fallback allowed).<br>Strictly requires the user to authorize using their itsme PIN; biometrics are disallowed.</td>
+          </tr>                    
         </table>
       </td>
     </tr>
@@ -1321,7 +1335,7 @@ Examples:
 
 ### Example
 
-<ul class="tab" data-tab="5942d48b-2dda-4aba-89bb-256916f5c0c5">
+<ul class="tab" data-tab="73541285-b61b-44bb-852f-1bd431b7ae96">
     
         <li class="active">
             <a href="">Public- and private-key </a>
@@ -1332,7 +1346,7 @@ Examples:
         </li>
     
 </ul>
-<ul class="tab-content" id="5942d48b-2dda-4aba-89bb-256916f5c0c5">
+<ul class="tab-content" id="73541285-b61b-44bb-852f-1bd431b7ae96">
     
         <li class="active">
 <p><strong><em>Request</em></strong></p>
@@ -1415,7 +1429,7 @@ response_type=code
 <a id="TokenReq"></a>
 ## Token Request
 
-<ul class="tab" data-tab="b7b93d4d-9191-4281-8f86-c2d823b91d04">
+<ul class="tab" data-tab="45d8ee5e-0fbc-4744-8e06-88741f604cd8">
     
         <li class="active">
             <a href="">Public- and private-key </a>
@@ -1426,7 +1440,7 @@ response_type=code
         </li>
     
 </ul>
-<ul class="tab-content" id="b7b93d4d-9191-4281-8f86-c2d823b91d04">
+<ul class="tab-content" id="45d8ee5e-0fbc-4744-8e06-88741f604cd8">
     
         <li class="active">
 <p><b><code>POST https://idp.<i><b>[e2e/prd]</b></i>.itsme.services/v2/token</code></b></p>
@@ -1676,7 +1690,7 @@ response_type=code
 
 ### Example
 
-<ul class="tab" data-tab="65a0050b-c187-4326-b81a-a6de54a2f8ec">
+<ul class="tab" data-tab="ca93b4e0-a7b2-410f-b855-34e84242ebc7">
     
         <li class="active">
             <a href="">Public- and private-key </a>
@@ -1687,7 +1701,7 @@ response_type=code
         </li>
     
 </ul>
-<ul class="tab-content" id="65a0050b-c187-4326-b81a-a6de54a2f8ec">
+<ul class="tab-content" id="ca93b4e0-a7b2-410f-b855-34e84242ebc7">
     
         <li class="active">
 <p><strong><em>Request</em></strong></p>
@@ -1821,7 +1835,7 @@ grant_type=authorization_code
 <a id="UserInfoReq"></a>
 ## UserInfo Request
 
-<ul class="tab" data-tab="f8de643a-cb13-49c1-bb10-3be7726ca366">
+<ul class="tab" data-tab="9b2ebabb-6bda-4229-ad36-2b9ee4a990f7">
     
         <li class="active">
             <a href="">Public- and private-key </a>
@@ -1832,7 +1846,7 @@ grant_type=authorization_code
         </li>
     
 </ul>
-<ul class="tab-content" id="f8de643a-cb13-49c1-bb10-3be7726ca366">
+<ul class="tab-content" id="9b2ebabb-6bda-4229-ad36-2b9ee4a990f7">
     
         <li class="active">
 <p><b><code>GET https://idp.<i><b>[e2e/prd]</b></i>.itsme.services/v2/userinfo</code></b></p>
@@ -1995,7 +2009,7 @@ Content-Type: application/json
 <a id="RevokeReq"></a>
 ## Revoke Request
 
-<ul class="tab" data-tab="4d51776a-f866-4d1a-96eb-a8e82d9012df">
+<ul class="tab" data-tab="33874642-4071-4211-a161-1f0ee7e48aab">
     
         <li class="active">
             <a href="">Public- and private-key </a>
@@ -2006,7 +2020,7 @@ Content-Type: application/json
         </li>
     
 </ul>
-<ul class="tab-content" id="4d51776a-f866-4d1a-96eb-a8e82d9012df">
+<ul class="tab-content" id="33874642-4071-4211-a161-1f0ee7e48aab">
     
         <li class="active">
 <p>Not applicable.</p>
@@ -2057,7 +2071,7 @@ Content-Type: application/json
 
 ### Example
 
-<ul class="tab" data-tab="78cb4dbc-5c36-44cd-8454-b59845ade113">
+<ul class="tab" data-tab="57141a06-3416-4ef0-999e-e6869c176f00">
     
         <li class="active">
             <a href="">Public- and private-key </a>
@@ -2068,7 +2082,7 @@ Content-Type: application/json
         </li>
     
 </ul>
-<ul class="tab-content" id="78cb4dbc-5c36-44cd-8454-b59845ade113">
+<ul class="tab-content" id="57141a06-3416-4ef0-999e-e6869c176f00">
     
         <li class="active">
 <p>Not applicable.</p>
