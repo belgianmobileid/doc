@@ -11,6 +11,10 @@ Jekyll::Hooks.register :documents, :post_render do |page|
   countries = header.scan(/<th>(.*?)<\/th>/m).flatten.drop(2).map { |cell| cell.gsub(/<.*?>/, "").strip }
   available_countries = countries.dup
   available_countries << "Netherlands (iDIN)" if source_table.include?("iDIN:")
+  priority_countries = ["Belgium", "Netherlands", "Netherlands (iDIN)"]
+  available_countries.sort_by! do |country|
+    [priority_countries.index(country) || priority_countries.length, country.downcase]
+  end
   rows = source_table.scan(/<tr>\s*<td>(.*?)<\/td>\s*<td>(.*?)<\/td>(.*?)<\/tr>/m)
 
   claims = rows.map do |claim_html, description_html, availability_html|
@@ -54,13 +58,34 @@ Jekyll::Hooks.register :documents, :post_render do |page|
   replacement = <<~HTML
     <p class="claims-availability__countries"><strong>Available countries:</strong> #{available_countries.join(', ')}</p>
     <div class="claims-availability__search">
-      <div class="claims-availability__control">
+      <div class="claims-availability__control" hidden>
         <label for="claims-profile">Package</label>
         <select id="claims-profile">
           <option value="full-digital" selected>Full Digital</option>
           <option value="full-check-in">Full Check-in</option>
           <option value="connect">Connect</option>
         </select>
+      </div>
+      <div class="claims-availability__control">
+        <span id="claims-country-label" class="claims-availability__label">Country</span>
+        <select id="claims-country" aria-labelledby="claims-country-label">
+          <option value="all" selected>All countries</option>
+          #{available_countries.each_with_index.map { |country, index| "<option value=\"#{index}\">#{country}</option>" }.join}
+        </select>
+        <details id="claims-country-dropdown" class="claims-availability__dropdown" hidden>
+          <summary id="claims-country-selection" aria-labelledby="claims-country-label claims-country-selection">All countries</summary>
+          <div class="claims-availability__dropdown-panel">
+            <input id="claims-country-search" type="search" placeholder="Search countries" aria-label="Search countries" autocomplete="off">
+            <ul id="claims-country-options" class="claims-availability__options">
+              <li data-country-group="all"><button type="button" data-country-value="all" aria-pressed="true">All countries</button></li>
+              #{available_countries.each_with_index.map do |country, index|
+                group = priority_countries.include?(country) ? "priority" : "other"
+                "<li data-country-group=\"#{group}\"><button type=\"button\" data-country-value=\"#{index}\" aria-pressed=\"false\">#{country}</button></li>"
+              end.join}
+            </ul>
+            <p id="claims-country-empty" role="status" hidden>No matching countries.</p>
+          </div>
+        </details>
       </div>
       <div class="claims-availability__control">
         <label for="claims-search">Search claims</label>
@@ -93,7 +118,10 @@ Jekyll::Hooks.register :documents, :post_render do |page|
                     else
                       countries_with_status.join(", ")
                     end
-            "<td class=\"claims-availability__status claims-availability__status--#{status.downcase.gsub(' ', '-')}\">#{value}</td>"
+            country_indices = available_countries.each_with_index.map do |country, country_index|
+              country_index.to_s if countries_with_status.include?(country)
+            end.compact.join(",")
+            "<td class=\"claims-availability__status claims-availability__status--#{status.downcase.gsub(' ', '-')}\" data-country-indices=\"#{country_indices}\">#{value}</td>"
           end.join
           has_notes = claim[:notes].any?
           notes = if !has_notes
