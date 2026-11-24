@@ -10,8 +10,7 @@ Jekyll::Hooks.register :documents, :post_render do |page|
   header = source_table[/<tr>(.*?)<\/tr>/m, 1]
   countries = header.scan(/<th>(.*?)<\/th>/m).flatten.drop(2).map { |cell| cell.gsub(/<.*?>/, "").strip }
   available_countries = countries.dup
-  available_countries << "Netherlands (iDIN)" if source_table.include?("iDIN:")
-  priority_countries = ["Belgium", "Netherlands", "Netherlands (iDIN)"]
+  priority_countries = ["Belgium", "Netherlands"]
   available_countries.sort_by! do |country|
     [priority_countries.index(country) || priority_countries.length, country.downcase]
   end
@@ -32,9 +31,9 @@ Jekyll::Hooks.register :documents, :post_render do |page|
         note = status.delete_prefix(label).strip
         idin_status = note.match(/\AiDIN:\s*(SHALL NOT|MAY NOT|SHALL)(?:\s+(.+))?\z/)
         if countries[index] == "Netherlands" && idin_status
-          grouped[idin_status[1]] << "Netherlands (iDIN)"
-          explanation = idin_status[2]
-          notes << { status: "", country: countries[index], text: explanation } unless explanation.nil? || explanation.empty?
+          idin_note = "iDIN: #{idin_status[1]}"
+          idin_note += ". #{idin_status[2]}" if idin_status[2]
+          notes << { status: "", country: countries[index], text: idin_note }
         elsif !note.empty?
           notes << { status: label, country: countries[index], text: note }
         end
