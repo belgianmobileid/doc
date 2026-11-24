@@ -75,14 +75,20 @@
     </tr>
     <tr>
       <td>{% include parameter.html name="acr_values" req="OPTIONAL" %}</td>
-      <td>Indicates the authentication method required to process the request, represented as a space-separated list of tag values, ordered by preference.<br><br>Possible values : <code>http://itsme.services/v2/claim/acr_basic</code> <code>http://itsme.services/v2/claim/acr_advanced</code><br><br><b>Note</b> : if these two values are provided only the most constraining authentication method will be applied, e.g. <code>http://itsme.services/v2/claim/acr_advanced</code>.<br />
+      <td>Indicates the authentication method required to process the request, represented as a space-separated list of tag values, ordered by preference.<br><br><b>Note</b> : If more then one value is provided, only the most constraining authentication method will be applied.<br>The list below is show from least to most constraining.<br />
         <table>
           <tr>
-            <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/acr_basic" req="" %}</td><td>It lets the user to choose either fingerprint usage (if device is compatible) or itsme code. If the <code>acr_values</code> parameter is not specified, this is the default authentication method.</td>
+            <td>{% include parameter.html name="http://itsme.services/v2/claim/acr_basic" req="" %}</td><td>Standard authentication flow.<br><br>Initiated via QR code or App-to-App, with mobile number available as a fallback method.<br>The user can authorize using biometrics or their itsme PIN.</td>
           </tr>
           <tr>
-            <td>{% include parameter.html name="http://itsme.services/v2/<br>claim/acr_advanced" req="" %}</td><td>It forces the user to use his itsme code.</td>
+            <td>{% include parameter.html name="http://itsme.services/v2/claim/acr_advanced" req="" %}</td><td>High-assurance authentication flow.<br><br>Initiated via QR code or App-to-App, with mobile number available as a fallback method. <br>Strictly requires the user to authorize using their itsme PIN; biometrics are disallowed.</td>
           </tr>
+          <tr>
+            <td>{% include parameter.html name="http://itsme.services/v2/claim/acr_basic_proximity" req="" %}</td><td>Enforces physical proximity initiation with standard authentication flow.<br><br>Initiation via QR code scan or App-to-App redirect. Mobile number fallback is disabled. <br>The user can authorize using biometrics or their itsme PIN.</td>
+          </tr>
+          <tr>
+            <td>{% include parameter.html name="http://itsme.services/v2/claim/acr_advanced_proximity" req="" %}</td><td>Enforces physical proximity intiation with high-assurance authentication flow.<br><br>Initiation via QR code scan or App-to-App redirect (no mobile number fallback allowed).<br>Strictly requires the user to authorize using their itsme PIN; biometrics are disallowed.</td>
+          </tr>                    
         </table>
       </td>
     </tr>
