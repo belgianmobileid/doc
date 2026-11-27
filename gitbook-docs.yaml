@@ -1,0 +1,48 @@
+$schema: https://api.gitbook.com/gitbook-docs.yaml
+version: 1
+site:
+  title: itsme OIDC Documentation
+  structure:
+    - type: space
+      key: space-openid-connect
+      title: OpenID Connect
+      path: openid-connect
+      default: true
+      content:
+        directory: ./_OIDC
+    - type: space
+      key: space-ciba
+      title: CIBA
+      path: ciba
+      content:
+        directory: ./_CIBA
+    - type: space
+      key: space-deeplinks
+      title: Deeplinks
+      path: deeplinks
+      content:
+        directory: ./_Deeplinks
+    - type: space
+      key: space-oidc-platforms
+      title: OIDC Platform Integrations
+      path: oidc-platforms
+      content:
+        directory: ./_OIDCplatforms
+    - type: space
+      key: space-qualified-esignature
+      title: Qualified E-Signature
+      path: qualified-e-signature
+      content:
+        directory: ./_QES
+    - type: space
+      key: space-appendix
+      title: Appendix
+      path: appendix
+      content:
+        directory: ./_Appendix
+    - type: space
+      key: space-status-page
+      title: Status Page
+      path: status-page
+      content:
+        directory: ./_StatusPage
