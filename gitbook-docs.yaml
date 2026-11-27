@@ -45,10 +45,3 @@ site:
       path: status-page
       content:
         directory: ./_StatusPage
-    - type: space
-      key: space-1
-      title: Overview
-      path: overview
-      draft: true
-      content:
-        directory: ./overview
