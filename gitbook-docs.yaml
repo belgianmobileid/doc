@@ -45,3 +45,10 @@ site:
       path: status-page
       content:
         directory: ./_StatusPage
+    - type: space
+      key: space-1
+      title: Landing Page
+      path: landing-page
+      draft: true
+      content:
+        directory: ./landing-page
