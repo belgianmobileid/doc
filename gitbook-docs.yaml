@@ -1,6 +1,6 @@
 $schema: https://api.gitbook.com/gitbook-docs.yaml
 site:
-  title: itsme OIDC Documentation
+  title: itsme
   structure:
     - type: space
       key: space-openid-connect
