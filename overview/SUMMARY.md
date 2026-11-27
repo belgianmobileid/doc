@@ -1,3 +1,3 @@
 # Table of contents
 
-* [Page](README.md)
+* [Services & integration APIs](README.md)
